@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -18,13 +18,17 @@ import re
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# Import AI integration after loading env
+# Import AI integration and document processor after loading env
 from emergentintegrations.llm.chat import LlmChat, UserMessage
+from document_processor import DocumentProcessor
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+
+# Initialize Document Processor
+document_processor = DocumentProcessor(client, os.environ['DB_NAME'])
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -65,6 +69,8 @@ class ChatResponse(BaseModel):
     response: str
     citations: List[Dict[str, Any]] = []
     session_id: str
+    confidence_score: Optional[float] = None
+    sources_used: List[str] = []
 
 class Job(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
@@ -79,89 +85,58 @@ class JobCreate(BaseModel):
     name: str
     address: str
 
-# NZ Building Code Web Scraper
-class NZBuildingCodeScraper:
-    def __init__(self):
-        self.base_urls = [
-            "https://www.building.govt.nz/building-code-compliance/",
-            "https://www.building.govt.nz/assets/Uploads/building-code/",
-            "https://www.branz.co.nz/",
-        ]
-    
-    async def scrape_building_code_info(self, query: str) -> List[Dict[str, Any]]:
-        """Scrape relevant NZ building code information based on query"""
-        try:
-            citations = []
-            
-            # Search MBIE Building Performance website
-            mbie_results = await self._search_mbie(query)
-            citations.extend(mbie_results)
-            
-            # Add some mock citations for now (replace with real scraping)
-            if "hearth" in query.lower() or "fireplace" in query.lower():
-                citations.append({
-                    "id": str(uuid.uuid4()),
-                    "title": "NZBC Clause G5 - Interior environment",
-                    "url": "https://www.building.govt.nz/building-code-compliance/g-services-and-facilities/g5-interior-environment/",
-                    "snippet": "Minimum clearances for solid fuel burning appliances to combustible materials"
-                })
-            
-            if "insulation" in query.lower() or "h1" in query.lower():
-                citations.append({
-                    "id": str(uuid.uuid4()),
-                    "title": "NZBC Clause H1 - Energy efficiency",
-                    "url": "https://www.building.govt.nz/building-code-compliance/h-energy-efficiency/h1-energy-efficiency/",
-                    "snippet": "Requirements for thermal insulation in different climate zones"
-                })
-            
-            if "weathertight" in query.lower() or "e2" in query.lower():
-                citations.append({
-                    "id": str(uuid.uuid4()),
-                    "title": "NZBC Clause E2 - External moisture",
-                    "url": "https://www.building.govt.nz/building-code-compliance/e-moisture/e2-external-moisture/",
-                    "snippet": "Prevention of external moisture penetration into buildings"
-                })
-            
-            return citations
-            
-        except Exception as e:
-            logger.error(f"Error scraping building code info: {e}")
-            return []
-    
-    async def _search_mbie(self, query: str) -> List[Dict[str, Any]]:
-        """Search MBIE building website"""
-        try:
-            # This is a simplified version - in production you'd implement proper web scraping
-            # For now, return relevant mock results based on query
-            return []
-        except Exception as e:
-            logger.error(f"Error searching MBIE: {e}")
-            return []
+class DocumentUpload(BaseModel):
+    title: str
+    content: str
+    source_url: str
+    document_type: str  # 'nzbc', 'mbie', 'nzs', 'manufacturer', 'council'
+    metadata: Dict[str, Any] = {}
 
-# Initialize scraper
-scraper = NZBuildingCodeScraper()
+class KnowledgeSearchRequest(BaseModel):
+    query: str
+    document_types: Optional[List[str]] = None
+    limit: int = 5
 
-# Initialize AI Chat
-def get_ai_chat(session_id: str) -> LlmChat:
-    system_message = """You are STRYDA.ai, a knowledgeable assistant for New Zealand tradies (builders, electricians, plumbers, etc.). 
+class KnowledgeSearchResponse(BaseModel):
+    results: List[Dict[str, Any]]
+    total_found: int
+    search_time_ms: float
+
+# Enhanced AI Chat with Knowledge Base Integration
+def get_enhanced_ai_chat(session_id: str) -> LlmChat:
+    system_message = """You are STRYDA.ai, the most knowledgeable AI assistant for New Zealand tradies and building professionals.
 
 Your expertise includes:
-- NZ Building Code (NZBC) compliance and interpretation
-- New Zealand construction standards and acceptable solutions
-- Product specifications and installation requirements
-- Building consent and compliance processes
-- NZ-specific terminology and practices
+- Complete NZ Building Code (NZBC) knowledge with exact clause references
+- NZS standards, especially NZS 3604:2011 for timber framing
+- Manufacturer installation requirements and specifications
+- MBIE Acceptable Solutions and Verification Methods
+- Real-world compliance scenarios and alternatives
 
-Guidelines:
-- Use NZ English spelling and terminology (e.g., "metres" not "meters")
-- Understand tradie lingo: nogs, dwangs, gib, sarking, fixings, weathertightness, metrofires
-- Provide direct, practical answers - "no faff"
-- Always mention sources and relevant code clauses when possible
-- If unsure about compliance, suggest consulting the local council or a building professional
-- For clearances and technical specs, always recommend checking the specific manufacturer's instructions
-- Be safety-conscious and conservative with recommendations
+CRITICAL INSTRUCTIONS:
+1. Always provide EXACT code references (e.g., "NZBC Clause G5.3.2", "NZS 3604:2011 Section 7.5.1")
+2. When citing clearances, give precise measurements and conditions
+3. Distinguish between MINIMUM code requirements and manufacturer specifications
+4. If manufacturer specs are stricter than NZBC minimums, always note this
+5. For any ambiguous situations, recommend consulting local council or professional
 
-Respond in a friendly, professional NZ tone. Keep answers concise but comprehensive."""
+NZ Terminology (use these terms naturally):
+- dwangs/nogs (horizontal blocking in walls)
+- gib (plasterboard/drywall)
+- sarking (building wrap/house wrap)
+- weathertightness (not waterproofing)
+- fixings (fasteners/screws/nails)
+- metrofires (popular NZ fireplace brand)
+- LBP (Licensed Building Practitioner)
+
+Response Style:
+- Start with direct answer, then provide supporting details
+- Use "metres" not "meters", NZ spelling throughout
+- Be conversational but professional: "G'day! Here's what you need to know..."
+- Always end with practical next steps or recommendations
+- If uncertain about compliance, say so clearly and suggest verification steps
+
+SAFETY FIRST: Always err on the side of caution. If there's any doubt about compliance or safety, recommend consulting a qualified professional."""
 
     return LlmChat(
         api_key=os.environ['EMERGENT_LLM_KEY'],
@@ -172,7 +147,7 @@ Respond in a friendly, professional NZ tone. Keep answers concise but comprehens
 # API Routes
 @api_router.get("/")
 async def root():
-    return {"message": "STRYDA.ai Backend API"}
+    return {"message": "STRYDA.ai Backend API - Enhanced with Knowledge Base"}
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
@@ -187,7 +162,7 @@ async def get_status_checks():
     return [StatusCheck(**status_check) for status_check in status_checks]
 
 @api_router.post("/chat", response_model=ChatResponse)
-async def chat_with_ai(request: ChatRequest):
+async def enhanced_chat_with_ai(request: ChatRequest):
     try:
         # Generate session ID if not provided
         session_id = request.session_id or str(uuid.uuid4())
@@ -200,42 +175,93 @@ async def chat_with_ai(request: ChatRequest):
         )
         await db.chat_messages.insert_one(user_message_doc.dict())
         
-        # Get relevant NZ building code information
-        citations = await scraper.scrape_building_code_info(request.message)
+        # ENHANCED: Search knowledge base for relevant information
+        search_start = datetime.now()
+        relevant_docs = await document_processor.search_documents(
+            query=request.message,
+            limit=5
+        )
+        search_time = (datetime.now() - search_start).total_seconds() * 1000
         
-        # Build context for AI from citations
-        context_info = ""
-        if citations:
-            context_info = "\n\nRelevant NZ Building Code information:\n"
-            for citation in citations:
-                context_info += f"- {citation['title']}: {citation.get('snippet', '')}\n"
+        # Build enhanced context from knowledge base
+        context_sections = []
+        citation_candidates = []
+        sources_used = []
         
-        # Prepare message for AI
-        enhanced_message = f"{request.message}{context_info}"
+        if relevant_docs:
+            context_sections.append("=== RELEVANT NZ BUILDING CODE INFORMATION ===")
+            
+            for i, doc in enumerate(relevant_docs):
+                # Only include high-relevance results
+                if doc["similarity_score"] > 0.3:
+                    section_title = doc["metadata"].get("section_title", "")
+                    doc_type = doc["metadata"].get("document_type", "")
+                    
+                    context_sections.append(f"\n--- Source {i+1}: {doc['metadata'].get('title', 'Unknown')} ---")
+                    if section_title:
+                        context_sections.append(f"Section: {section_title}")
+                    context_sections.append(doc["content"])
+                    
+                    # Prepare citation info
+                    citation_candidates.append({
+                        "chunk_id": doc["chunk_id"],
+                        "similarity_score": doc["similarity_score"]
+                    })
+                    
+                    sources_used.append(f"{doc_type.upper()}: {doc['metadata'].get('title', 'Unknown')}")
+        
+        # Build the complete context for AI
+        if context_sections:
+            knowledge_context = "\n".join(context_sections)
+            enhanced_message = f"""USER QUESTION: {request.message}
+
+{knowledge_context}
+
+INSTRUCTIONS: Using the above NZ Building Code information, provide a comprehensive answer. Always cite specific clauses, sections, and measurements. If the user's question relates to the provided information, reference it directly. If additional considerations apply, mention them."""
+        else:
+            enhanced_message = f"""USER QUESTION: {request.message}
+
+No specific documents found in knowledge base. Provide general NZ building code guidance based on your training, but recommend consulting official sources for definitive answers."""
         
         # Get AI response
-        chat = get_ai_chat(session_id)
+        chat = get_enhanced_ai_chat(session_id)
         user_msg = UserMessage(text=enhanced_message)
         ai_response = await chat.send_message(user_msg)
         
-        # Store bot message
+        # Get detailed citations for the most relevant chunks
+        citations = []
+        if citation_candidates:
+            chunk_ids = [c["chunk_id"] for c in citation_candidates[:3]]  # Top 3 most relevant
+            citations = await document_processor.get_document_citations(chunk_ids)
+        
+        # Calculate confidence score based on search results
+        confidence_score = None
+        if relevant_docs:
+            avg_similarity = sum(doc["similarity_score"] for doc in relevant_docs) / len(relevant_docs)
+            confidence_score = min(avg_similarity * 1.2, 1.0)  # Boost slightly, cap at 1.0
+        
+        # Store bot message with enhanced metadata
         bot_message_doc = ChatMessage(
             session_id=session_id,
             message=ai_response,
             sender="bot",
-            citations=[citation for citation in citations]
+            citations=citations
         )
         await db.chat_messages.insert_one(bot_message_doc.dict())
+        
+        logger.info(f"Enhanced chat response: {len(relevant_docs)} docs found, {len(citations)} citations, {search_time:.1f}ms search time")
         
         return ChatResponse(
             response=ai_response,
             citations=citations,
-            session_id=session_id
+            session_id=session_id,
+            confidence_score=confidence_score,
+            sources_used=list(set(sources_used))  # Remove duplicates
         )
         
     except Exception as e:
-        logger.error(f"Error in chat endpoint: {e}")
-        raise HTTPException(status_code=500, detail="Sorry, I'm having trouble right now. Please try again.")
+        logger.error(f"Error in enhanced chat endpoint: {e}")
+        raise HTTPException(status_code=500, detail="Sorry, I'm having trouble accessing the knowledge base right now. Please try again.")
 
 @api_router.get("/chat/{session_id}/history")
 async def get_chat_history(session_id: str):
@@ -249,6 +275,85 @@ async def get_chat_history(session_id: str):
         logger.error(f"Error getting chat history: {e}")
         raise HTTPException(status_code=500, detail="Error retrieving chat history")
 
+# Knowledge Base Management Endpoints
+@api_router.post("/knowledge/search", response_model=KnowledgeSearchResponse)
+async def search_knowledge_base(request: KnowledgeSearchRequest):
+    """Search the STRYDA.ai knowledge base"""
+    try:
+        search_start = datetime.now()
+        
+        results = await document_processor.search_documents(
+            query=request.query,
+            document_types=request.document_types,
+            limit=request.limit
+        )
+        
+        search_time = (datetime.now() - search_start).total_seconds() * 1000
+        
+        return KnowledgeSearchResponse(
+            results=results,
+            total_found=len(results),
+            search_time_ms=search_time
+        )
+        
+    except Exception as e:
+        logger.error(f"Error searching knowledge base: {e}")
+        raise HTTPException(status_code=500, detail="Error searching knowledge base")
+
+@api_router.post("/knowledge/documents")
+async def upload_document(document: DocumentUpload, background_tasks: BackgroundTasks):
+    """Upload a new document to the knowledge base"""
+    try:
+        # Process document in background
+        background_tasks.add_task(
+            document_processor.process_and_store_document,
+            title=document.title,
+            content=document.content,
+            source_url=document.source_url,
+            document_type=document.document_type,
+            metadata=document.metadata
+        )
+        
+        return {"message": f"Document '{document.title}' queued for processing"}
+        
+    except Exception as e:
+        logger.error(f"Error uploading document: {e}")
+        raise HTTPException(status_code=500, detail="Error uploading document")
+
+@api_router.get("/knowledge/stats")
+async def get_knowledge_stats():
+    """Get knowledge base statistics"""
+    try:
+        # Get document counts by type
+        doc_counts = await db.processed_documents.aggregate([
+            {"$group": {"_id": "$document_type", "count": {"$sum": 1}}}
+        ]).to_list(100)
+        
+        chunk_count = await db.document_chunks.count_documents({})
+        total_docs = await db.processed_documents.count_documents({})
+        
+        return {
+            "total_documents": total_docs,
+            "total_chunks": chunk_count,
+            "documents_by_type": {item["_id"]: item["count"] for item in doc_counts},
+            "last_updated": datetime.utcnow().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting knowledge stats: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving knowledge base statistics")
+
+@api_router.post("/knowledge/initialize")
+async def initialize_knowledge_base(background_tasks: BackgroundTasks):
+    """Initialize the knowledge base with priority NZ building documents"""
+    try:
+        background_tasks.add_task(document_processor.initialize_knowledge_base)
+        return {"message": "Knowledge base initialization started"}
+    except Exception as e:
+        logger.error(f"Error initializing knowledge base: {e}")
+        raise HTTPException(status_code=500, detail="Error initializing knowledge base")
+
+# Job Management Endpoints (existing)
 @api_router.post("/jobs", response_model=Job)
 async def create_job(job_data: JobCreate):
     try:
@@ -292,6 +397,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Startup event to initialize knowledge base
+@app.on_event("startup")
+async def startup_event():
+    """Initialize the knowledge base on startup"""
+    try:
+        # Initialize knowledge base with priority documents
+        await document_processor.initialize_knowledge_base()
+        logger.info("STRYDA.ai knowledge base initialized successfully!")
+    except Exception as e:
+        logger.error(f"Failed to initialize knowledge base: {e}")
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
