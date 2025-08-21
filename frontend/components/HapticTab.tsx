@@ -1,13 +1,13 @@
 import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
+import { Platform, Pressable } from 'react-native';
 import * as Haptics from 'expo-haptics';
-import { PlatformPressable } from '@expo/react-native-action-sheet';
 
 export function HapticTab(props: BottomTabBarButtonProps) {
   return (
-    <PlatformPressable
+    <Pressable
       {...props}
       onPressIn={(ev) => {
-        if (process.env.EXPO_OS === 'ios') {
+        if (Platform.OS === 'ios') {
           // Add haptic feedback for iOS - important for tradie gloves
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         }
