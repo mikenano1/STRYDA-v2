@@ -13,6 +13,15 @@ import { Colors, BrandColors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { router } from 'expo-router';
 
+const quickQuestions = [
+  'Hearth clearances',
+  'H1 insulation requirements',
+  'E2 weathertightness',
+  'Building consent process',
+  'Fire rating requirements',
+  'Metrofires installation',
+];
+
 export default function HomeScreen() {
   const [inputText, setInputText] = useState('');
 
@@ -24,6 +33,13 @@ export default function HomeScreen() {
         params: { message: inputText.trim() }
       });
     }
+  };
+
+  const handleQuickQuestion = (question: string) => {
+    router.push({
+      pathname: '/chat',
+      params: { message: `Tell me about ${question} in New Zealand building code` }
+    });
   };
 
   const handleVoicePress = () => {
@@ -108,15 +124,15 @@ export default function HomeScreen() {
           <View style={styles.quickActions}>
             <Text style={styles.quickActionsTitle}>Quick Questions</Text>
             <View style={styles.quickActionButtons}>
-              <TouchableOpacity style={styles.quickActionButton}>
-                <Text style={styles.quickActionText}>Hearth clearances</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.quickActionButton}>
-                <Text style={styles.quickActionText}>H1 insulation</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.quickActionButton}>
-                <Text style={styles.quickActionText}>E2 weathertightness</Text>
-              </TouchableOpacity>
+              {quickQuestions.map((question, index) => (
+                <TouchableOpacity 
+                  key={index}
+                  style={styles.quickActionButton}
+                  onPress={() => handleQuickQuestion(question)}
+                >
+                  <Text style={styles.quickActionText}>{question}</Text>
+                </TouchableOpacity>
+              ))}
             </View>
           </View>
         </View>
