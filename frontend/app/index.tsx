@@ -102,7 +102,7 @@ export default function HomeScreen() {
                 color={inputText.trim() ? Colors.dark.background : Colors.dark.placeholder} 
               />
             </TouchableOpacity>
-          </div>
+          </View>
 
           {/* Quick actions */}
           <View style={styles.quickActions}>
