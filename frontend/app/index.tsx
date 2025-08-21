@@ -1,30 +1,242 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import { Colors, BrandColors } from '@/constants/Colors';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { router } from 'expo-router';
 
-const EXPO_PUBLIC_BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
+export default function HomeScreen() {
+  const [inputText, setInputText] = useState('');
 
-export default function Index() {
-  console.log(EXPO_PUBLIC_BACKEND_URL, "EXPO_PUBLIC_BACKEND_URL");
+  const handleSendMessage = () => {
+    if (inputText.trim()) {
+      // Navigate to chat with the message
+      router.push({
+        pathname: '/chat',
+        params: { message: inputText.trim() }
+      });
+    }
+  };
+
+  const handleVoicePress = () => {
+    router.push('/voice');
+  };
+
+  const handleContinuousVoice = () => {
+    router.push('/continuous-voice');
+  };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("../assets/images/app-image.png")}
-        style={styles.image}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.keyboardContainer}
+      >
+        <View style={styles.content}>
+          {/* Header with logo and greeting */}
+          <View style={styles.header}>
+            <View style={styles.logoContainer}>
+              <Text style={styles.logoText}>STRYDA</Text>
+              <Text style={styles.logoSubtext}>ai</Text>
+            </View>
+            <Text style={styles.greeting}>
+              G'day! Ask me anything about NZ building codes, products, or compliance. 
+              No faff, just straight answers with proper citations.
+            </Text>
+          </View>
+
+          {/* Main input area */}
+          <View style={styles.inputContainer}>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Ask about building codes, clearances, compliance..."
+                placeholderTextColor={Colors.dark.placeholder}
+                value={inputText}
+                onChangeText={setInputText}
+                multiline
+                maxLength={500}
+                returnKeyType="send"
+                onSubmitEditing={handleSendMessage}
+                blurOnSubmit={false}
+              />
+              
+              {/* Voice icons inside input */}
+              <View style={styles.voiceIcons}>
+                <TouchableOpacity 
+                  style={styles.voiceButton}
+                  onPress={handleVoicePress}
+                  activeOpacity={0.7}
+                >
+                  <IconSymbol name="mic.fill" size={20} color={Colors.dark.tint} />
+                </TouchableOpacity>
+                
+                <TouchableOpacity 
+                  style={styles.voiceButton}
+                  onPress={handleContinuousVoice}
+                  activeOpacity={0.7}
+                >
+                  <IconSymbol name="waveform" size={20} color={Colors.dark.tint} />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            {/* Send button */}
+            <TouchableOpacity 
+              style={[styles.sendButton, !inputText.trim() && styles.sendButtonDisabled]}
+              onPress={handleSendMessage}
+              disabled={!inputText.trim()}
+              activeOpacity={0.8}
+            >
+              <IconSymbol 
+                name="paperplane.fill" 
+                size={20} 
+                color={inputText.trim() ? Colors.dark.background : Colors.dark.placeholder} 
+              />
+            </TouchableOpacity>
+          </div>
+
+          {/* Quick actions */}
+          <View style={styles.quickActions}>
+            <Text style={styles.quickActionsTitle}>Quick Questions</Text>
+            <View style={styles.quickActionButtons}>
+              <TouchableOpacity style={styles.quickActionButton}>
+                <Text style={styles.quickActionText}>Hearth clearances</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.quickActionButton}>
+                <Text style={styles.quickActionText}>H1 insulation</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.quickActionButton}>
+                <Text style={styles.quickActionText}>E2 weathertightness</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0c0c0c",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: Colors.dark.background,
   },
-  image: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
+  keyboardContainer: {
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 60,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 60,
+  },
+  logoContainer: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    marginBottom: 16,
+  },
+  logoText: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    color: Colors.dark.text,
+    letterSpacing: -1,
+  },
+  logoSubtext: {
+    fontSize: 24,
+    fontWeight: '300',
+    color: Colors.dark.tint,
+    marginLeft: 4,
+  },
+  greeting: {
+    fontSize: 16,
+    color: Colors.dark.icon,
+    textAlign: 'center',
+    lineHeight: 22,
+    maxWidth: 320,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: 12,
+    marginBottom: 40,
+  },
+  inputWrapper: {
+    flex: 1,
+    backgroundColor: Colors.dark.inputBackground,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: Colors.dark.border,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    minHeight: 48,
+    maxHeight: 120,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  textInput: {
+    flex: 1,
+    fontSize: 16,
+    color: Colors.dark.text,
+    marginRight: 8,
+  },
+  voiceIcons: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  voiceButton: {
+    padding: 8,
+    borderRadius: 16,
+    backgroundColor: Colors.dark.surface,
+  },
+  sendButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: Colors.dark.tint,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  sendButtonDisabled: {
+    backgroundColor: Colors.dark.surface,
+  },
+  quickActions: {
+    marginTop: 'auto',
+    paddingBottom: 40,
+  },
+  quickActionsTitle: {
+    fontSize: 14,
+    color: Colors.dark.icon,
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  quickActionButtons: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  quickActionButton: {
+    backgroundColor: Colors.dark.surface,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Colors.dark.border,
+  },
+  quickActionText: {
+    fontSize: 14,
+    color: Colors.dark.text,
   },
 });
