@@ -410,7 +410,10 @@ class DocumentProcessor:
                     "document_type": document_type,
                     "title": title,
                     "section_title": chunk.section_title or "",
-                    **metadata
+                    "tags": ",".join(metadata.get("tags", [])),  # Convert list to comma-separated string
+                    "clause": metadata.get("clause", ""),
+                    "category": metadata.get("category", ""),
+                    "manufacturer": metadata.get("manufacturer", "")
                 }],
                 ids=[chunk.id],
                 embeddings=[embedding]
