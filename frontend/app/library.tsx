@@ -114,6 +114,30 @@ interface NavigationState {
 
 const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL;
 
+// Type icons mapping
+const typeIcons = {
+  nzbc: 'doc.text.fill',
+  manufacturer: 'building.2.fill',
+  nzs: 'checkmark.seal.fill',
+  lbp: 'person.badge.shield.checkmark.fill',
+  eboss_product: 'cube.box.fill',
+};
+
+// Building code color mapping
+const buildingCodeColors = {
+  G5: '#10B981', // Green
+  H1: '#F59E0B', // Amber
+  E2: '#3B82F6', // Blue
+  B1: '#EF4444', // Red
+  F2: '#8B5CF6', // Purple
+  C1: '#06B6D4', // Cyan
+  G1: '#84CC16', // Lime
+  A1: '#F97316', // Orange
+  D1: '#EC4899', // Pink
+  E1: '#6366F1', // Indigo
+  default: '#6B7280', // Gray
+};
+
 // Trade categories for filtering
 const TRADES: Trade[] = [
   { id: 'all', name: 'All Products', icon: 'square.grid.2x2', color: '#6B7280', brands: [] },
