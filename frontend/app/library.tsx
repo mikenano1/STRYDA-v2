@@ -272,7 +272,7 @@ export default function LibraryScreen() {
       {/* Search Bar */}
       <View style={styles.searchContainer}>
         <View style={styles.searchBar}>
-          <IconSymbol name="magnifyingglass" size={16} color={Colors.dark.icon} />
+          <IconSymbol name="house.fill" size={16} color={Colors.dark.icon} />
           <TextInput
             style={styles.searchInput}
             placeholder="Search brands or products..."
