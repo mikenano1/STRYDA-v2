@@ -120,6 +120,23 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
+          {/* Scanner Action */}
+          <View style={styles.scannerSection}>
+            <TouchableOpacity 
+              style={styles.scannerButton}
+              onPress={() => router.push('/scanner')}
+              activeOpacity={0.8}
+            >
+              <View style={styles.scannerButtonContent}>
+                <IconSymbol name="camera.viewfinder" size={24} color={Colors.dark.background} />
+                <View style={styles.scannerTextContainer}>
+                  <Text style={styles.scannerButtonTitle}>Scan Product</Text>
+                  <Text style={styles.scannerButtonSubtitle}>Use camera OCR to identify products instantly</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+
           {/* Quick actions */}
           <View style={styles.quickActions}>
             <Text style={styles.quickActionsTitle}>Quick Questions</Text>
@@ -226,6 +243,41 @@ const styles = StyleSheet.create({
   },
   sendButtonDisabled: {
     backgroundColor: Colors.dark.surface,
+  },
+  scannerSection: {
+    marginBottom: 24,
+  },
+  scannerButton: {
+    backgroundColor: BrandColors.primary,
+    borderRadius: 16,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  scannerButtonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+  },
+  scannerTextContainer: {
+    flex: 1,
+  },
+  scannerButtonTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: Colors.dark.background,
+    marginBottom: 4,
+  },
+  scannerButtonSubtitle: {
+    fontSize: 14,
+    color: Colors.dark.background + '80',
+    lineHeight: 18,
   },
   quickActions: {
     marginTop: 'auto',
