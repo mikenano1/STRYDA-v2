@@ -224,16 +224,34 @@ export default function LibraryScreen() {
   const convertSearchResultToCard = (result: SearchResult): ProductCard => {
     const { metadata } = result;
     
-    // Extract brand from title (format: "EBOSS Product: Title by Brand – EBOSS - Brand")
-    const titleMatch = metadata.title?.match(/^EBOSS Product: (.+) by (.+?) – EBOSS/);
-    const productTitle = titleMatch?.[1] || metadata.section_title || result.title || 'Unknown Product';
-    const brand = titleMatch?.[2] || metadata.manufacturer || 'Unknown Brand';
+    // Clean up EBOSS product titles - remove redundant "EBOSS Product:" and "– EBOSS" parts
+    let cleanTitle = metadata.section_title || result.title || 'Unknown Product';
     
-    // Extract categories from tags
+    // Remove "EBOSS Product: " prefix
+    cleanTitle = cleanTitle.replace(/^EBOSS Product:\s*/, '');
+    
+    // Extract title and brand - format: "Product Name by Brand – EBOSS - Brand"
+    const titleMatch = cleanTitle.match(/^(.+?)\s+by\s+(.+?)\s+–\s+EBOSS/);
+    
+    let productTitle: string;
+    let brand: string;
+    
+    if (titleMatch) {
+      productTitle = titleMatch[1].trim();
+      brand = titleMatch[2].trim();
+    } else {
+      // Fallback parsing for other formats
+      productTitle = cleanTitle.split(' by ')[0] || cleanTitle;
+      brand = metadata.manufacturer || 'Unknown Brand';
+    }
+    
+    // Extract categories from tags (remove non-meaningful tags)
     const tagArray = metadata.tags?.split(',') || [];
-    const categories = tagArray.filter(tag => 
-      !['product', 'eboss', 'nz_building'].includes(tag.trim())
-    );
+    const categories = tagArray
+      .map(tag => tag.trim())
+      .filter(tag => 
+        !['product', 'eboss', 'nz_building', 'document'].includes(tag.toLowerCase())
+      );
     
     // Extract building codes and specifications from content
     const buildingCodes = extractBuildingCodes(result.content, metadata);
