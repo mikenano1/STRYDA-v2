@@ -80,15 +80,17 @@ export default function ChatScreen() {
     setIsLoading(true);
 
     try {
-      // Call the backend API for AI response
-      const response = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/chat`, {
+      // Call the enhanced backend API for AI response
+      const response = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/chat/enhanced`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           message: messageText || initialMessage,
-          context: 'nz-building-code',
+          session_id: 'mobile_app_session',
+          enable_compliance_analysis: true,
+          enable_query_processing: true,
         }),
       });
 
@@ -100,6 +102,10 @@ export default function ChatScreen() {
         sender: 'bot',
         timestamp: new Date(),
         citations: data.citations || [],
+        confidence_score: data.confidence_score,
+        sources_used: data.sources_used || [],
+        compliance_issues: data.compliance_issues || [],
+        processing_time_ms: data.processing_time_ms,
       };
 
       setMessages(prev => [...prev, botMessage]);
