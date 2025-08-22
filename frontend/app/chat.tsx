@@ -133,16 +133,98 @@ export default function ChatScreen() {
             {message.text}
           </Text>
           
-          {/* Citations for bot messages */}
+          {/* Enhanced information for bot messages */}
+          {!isUser && (
+            <View style={styles.enhancedInfoContainer}>
+              {/* Confidence Score */}
+              {message.confidence_score && (
+                <View style={styles.confidenceContainer}>
+                  <IconSymbol name="chart.bar.fill" size={12} color={Colors.dark.tint} />
+                  <Text style={styles.confidenceText}>
+                    {Math.round(message.confidence_score * 100)}% confidence
+                  </Text>
+                </View>
+              )}
+              
+              {/* Processing Time */}
+              {message.processing_time_ms && (
+                <View style={styles.processingTimeContainer}>
+                  <IconSymbol name="clock" size={12} color={Colors.dark.icon} />
+                  <Text style={styles.processingTimeText}>
+                    {(message.processing_time_ms / 1000).toFixed(1)}s
+                  </Text>
+                </View>
+              )}
+            </View>
+          )}
+          
+          {/* Compliance Issues */}
+          {message.compliance_issues && message.compliance_issues.length > 0 && (
+            <View style={styles.complianceContainer}>
+              <View style={styles.complianceHeader}>
+                <IconSymbol name="exclamationmark.triangle.fill" size={14} color="#FF6B6B" />
+                <Text style={styles.complianceTitle}>Compliance Alert</Text>
+              </View>
+              {message.compliance_issues.map((issue, index) => (
+                <View key={index} style={styles.complianceIssue}>
+                  <Text style={styles.issueDescription}>{issue.description}</Text>
+                  <Text style={styles.issueReference}>
+                    {issue.code_reference} • {issue.severity}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          )}
+          
+          {/* Sources Used */}
+          {message.sources_used && message.sources_used.length > 0 && (
+            <View style={styles.sourcesContainer}>
+              <Text style={styles.sourcesTitle}>Sources:</Text>
+              <View style={styles.sourcesGrid}>
+                {message.sources_used.slice(0, 3).map((source, index) => (
+                  <View key={index} style={styles.sourceChip}>
+                    <Text style={styles.sourceText} numberOfLines={1}>
+                      {source.replace(/^(NZBC|MANUFACTURER|NZS):\s*/, '')}
+                    </Text>
+                  </View>
+                ))}
+                {message.sources_used.length > 3 && (
+                  <Text style={styles.moreSourcesText}>
+                    +{message.sources_used.length - 3} more
+                  </Text>
+                )}
+              </View>
+            </View>
+          )}
+          
+          {/* Citations */}
           {message.citations && message.citations.length > 0 && (
             <View style={styles.citationsContainer}>
-              <Text style={styles.citationsTitle}>Sources:</Text>
-              {message.citations.map((citation) => (
-                <TouchableOpacity key={citation.id} style={styles.citation}>
-                  <IconSymbol name="doc.text" size={14} color={Colors.dark.secondary} />
-                  <Text style={styles.citationText}>{citation.title}</Text>
+              <Text style={styles.citationsTitle}>References:</Text>
+              {message.citations.slice(0, 2).map((citation) => (
+                <TouchableOpacity key={citation.chunk_id} style={styles.citation}>
+                  <IconSymbol 
+                    name={citation.document_type === 'nzbc' ? 'doc.text.fill' : 'building.2.fill'} 
+                    size={14} 
+                    color={Colors.dark.tint} 
+                  />
+                  <View style={styles.citationContent}>
+                    <Text style={styles.citationTitle} numberOfLines={2}>
+                      {citation.title}
+                    </Text>
+                    {citation.snippet && (
+                      <Text style={styles.citationSnippet} numberOfLines={2}>
+                        {citation.snippet}
+                      </Text>
+                    )}
+                  </View>
                 </TouchableOpacity>
               ))}
+              {message.citations.length > 2 && (
+                <Text style={styles.moreCitationsText}>
+                  View {message.citations.length - 2} more references in Library
+                </Text>
+              )}
             </View>
           )}
         </View>
