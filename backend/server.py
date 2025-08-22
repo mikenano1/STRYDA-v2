@@ -658,6 +658,172 @@ async def _process_pdf_task(pdf_url: str, title: str, document_type: str):
             "success": False
         })
 
+# EBOSS Product Database Endpoints
+@api_router.post("/products/scrape-eboss", response_model=EBOSSScrapingResponse)
+async def scrape_eboss_product_database(request: EBOSSScrapingRequest, background_tasks: BackgroundTasks):
+    """Scrape comprehensive NZ building products from EBOSS.co.nz"""
+    try:
+        logger.info(f"Starting EBOSS product scraping with max_products: {request.max_products}")
+        
+        # Start EBOSS scraping in background
+        background_tasks.add_task(
+            _scrape_eboss_task,
+            request.max_products,
+            request.priority_brands_only
+        )
+        
+        return EBOSSScrapingResponse(
+            success=True,
+            scraping_stats={"status": "started", "max_products": request.max_products},
+            message=f"EBOSS product scraping started. This will scrape up to {request.max_products} products from eboss.co.nz.",
+            products_scraped=0,
+            brands_processed=0,
+            errors=[]
+        )
+        
+    except Exception as e:
+        logger.error(f"Error starting EBOSS scraping: {e}")
+        return EBOSSScrapingResponse(
+            success=False,
+            scraping_stats={"status": "failed"},
+            message=f"Failed to start EBOSS scraping: {str(e)}",
+            products_scraped=0,
+            brands_processed=0,
+            errors=[str(e)]
+        )
+
+@api_router.get("/products/eboss-status")
+async def get_eboss_scraping_status():
+    """Get status of EBOSS product scraping operations"""
+    try:
+        # Get EBOSS product statistics from database
+        eboss_products = await db.processed_documents.find(
+            {"metadata.document_type": "eboss_product"}
+        ).sort("processed_at", -1).limit(10).to_list(10)
+        
+        # Get product count by brand
+        pipeline = [
+            {"$match": {"metadata.document_type": "eboss_product"}},
+            {"$group": {"_id": "$metadata.brand_name", "count": {"$sum": 1}}},
+            {"$sort": {"count": -1}},
+            {"$limit": 20}
+        ]
+        brands_stats = await db.processed_documents.aggregate(pipeline).to_list(20)
+        
+        # Get product count by category
+        category_pipeline = [
+            {"$match": {"metadata.document_type": "eboss_product"}},
+            {"$unwind": "$metadata.categories"},
+            {"$group": {"_id": "$metadata.categories", "count": {"$sum": 1}}},
+            {"$sort": {"count": -1}}
+        ]
+        category_stats = await db.processed_documents.aggregate(category_pipeline).to_list(20)
+        
+        # Get total counts
+        total_eboss_products = await db.processed_documents.count_documents(
+            {"metadata.document_type": "eboss_product"}
+        )
+        total_eboss_chunks = await db.document_chunks.count_documents(
+            {"metadata.document_type": "eboss_product"}
+        )
+        
+        return {
+            "total_products": total_eboss_products,
+            "total_chunks": total_eboss_chunks,
+            "products_by_brand": brands_stats,
+            "products_by_category": category_stats,
+            "recent_products": [
+                {
+                    "title": product["title"],
+                    "brand": product["metadata"].get("brand_name", "Unknown"),
+                    "categories": product["metadata"].get("categories", []),
+                    "processed_at": product["processed_at"]
+                }
+                for product in eboss_products
+            ],
+            "last_updated": datetime.utcnow().isoformat(),
+            "status": "active" if total_eboss_products > 0 else "no_data"
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting EBOSS status: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving EBOSS status")
+
+@api_router.get("/products/search")
+async def search_products(
+    query: str = Query(..., description="Search query for products"),
+    category: Optional[str] = Query(None, description="Filter by category"),
+    brand: Optional[str] = Query(None, description="Filter by brand"),
+    building_code: Optional[str] = Query(None, description="Filter by building code"),
+    limit: int = Query(20, description="Maximum results to return")
+):
+    """Search EBOSS products with filters"""
+    try:
+        # Build search filters
+        search_filters = {"metadata.document_type": "eboss_product"}
+        
+        if category:
+            search_filters["metadata.categories"] = {"$in": [category]}
+        
+        if brand:
+            search_filters["metadata.brand_slug"] = brand
+        
+        if building_code:
+            search_filters["metadata.building_codes"] = {"$in": [building_code]}
+        
+        # Use the enhanced search from document processor
+        search_results = await document_processor.search_documents(
+            query=query,
+            limit=limit,
+            filters=search_filters
+        )
+        
+        return {
+            "query": query,
+            "filters": {
+                "category": category,
+                "brand": brand,
+                "building_code": building_code
+            },
+            "results": search_results,
+            "total_found": len(search_results)
+        }
+        
+    except Exception as e:
+        logger.error(f"Error searching products: {e}")
+        raise HTTPException(status_code=500, detail="Error searching products")
+
+async def _scrape_eboss_task(max_products: int, priority_brands_only: bool):
+    """Background task to scrape EBOSS products"""
+    try:
+        logger.info(f"Background EBOSS scraping started: max_products={max_products}")
+        
+        # Run the EBOSS scraper
+        scraping_result = await scrape_eboss_products(document_processor)
+        
+        logger.info(f"EBOSS scraping completed: {scraping_result.get('total_products', 0)} products scraped")
+        
+        # Store scraping result in database for status tracking
+        await db.eboss_scraping_results.insert_one({
+            "max_products": max_products,
+            "priority_brands_only": priority_brands_only,
+            "scraping_result": scraping_result,
+            "completed_at": datetime.utcnow(),
+            "success": True
+        })
+        
+    except Exception as e:
+        logger.error(f"Background EBOSS scraping failed: {e}")
+        
+        # Store error result
+        await db.eboss_scraping_results.insert_one({
+            "max_products": max_products,
+            "priority_brands_only": priority_brands_only,
+            "error": str(e),
+            "completed_at": datetime.utcnow(),
+            "success": False
+        })
+
 # Job Management (existing endpoints)
 @api_router.post("/jobs", response_model=Job)
 async def create_job(job_data: JobCreate):
