@@ -372,6 +372,8 @@ export default function LibraryScreen() {
       params: { message: productQuery }
     });
   };
+
+  const extractBuildingCodes = (content: string, metadata: any): string[] => {
     const codes = [];
     
     // From metadata first
