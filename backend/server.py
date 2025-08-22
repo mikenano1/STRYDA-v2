@@ -141,6 +141,18 @@ class PDFProcessingResponse(BaseModel):
     chunks_created: int = 0
     errors: List[str] = []
 
+class EBOSSScrapingRequest(BaseModel):
+    max_products: Optional[int] = 1000
+    priority_brands_only: bool = False
+    
+class EBOSSScrapingResponse(BaseModel):
+    success: bool
+    scraping_stats: Dict[str, Any]
+    message: str
+    products_scraped: int = 0
+    brands_processed: int = 0
+    errors: List[str] = []
+
 # Enhanced AI Chat with Full Intelligence System
 def get_super_enhanced_ai_chat(session_id: str) -> LlmChat:
     system_message = """You are STRYDA.ai, New Zealand's most advanced AI assistant for building professionals and tradies.
