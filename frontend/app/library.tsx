@@ -296,6 +296,12 @@ export default function LibraryScreen() {
       return searchResults.map(result => convertSearchResultToCard(result));
     }
     
+    if (selectedFilter === 'favorites' && favorites.size > 0) {
+      // Show favorite products by searching for them
+      // For now, return empty array - in a real app we'd store favorite metadata
+      return [];
+    }
+    
     if (knowledgeStats?.recent_documents) {
       return knowledgeStats.recent_documents
         .filter(doc => selectedFilter === 'all' || doc.type === selectedFilter)
