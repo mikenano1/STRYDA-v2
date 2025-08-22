@@ -137,6 +137,7 @@ export default function LibraryScreen() {
 
   const filters = [
     { id: 'all', label: 'All', count: knowledgeStats?.total_documents || 0 },
+    { id: 'favorites', label: 'Favorites', count: favorites.size },
     { id: 'nzbc', label: 'Building Code', count: knowledgeStats?.documents_by_type?.nzbc || 0 },
     { id: 'manufacturer', label: 'Manufacturers', count: knowledgeStats?.documents_by_type?.manufacturer || 0 },
     { id: 'nzs', label: 'NZ Standards', count: knowledgeStats?.documents_by_type?.nzs || 0 },
