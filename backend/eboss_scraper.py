@@ -249,6 +249,8 @@ class EBOSSProductScraper:
     async def _scrape_brand_products(self, brand: Dict[str, Any], stats: Dict[str, Any]):
         """Scrape all products for a specific brand"""
         
+        logger.info(f"🏢 Scraping brand: {brand['name']}")
+        
         try:
             async with self.session.get(brand["url"]) as response:
                 if response.status == 200:
@@ -257,19 +259,33 @@ class EBOSSProductScraper:
                     
                     # Find product links
                     product_links = soup.find_all('a', href=re.compile(r'/library/[^/]+/[^/]+$'))
+                    logger.info(f"📦 Found {len(product_links)} product links for {brand['name']}")
                     
-                    for link in product_links:
+                    products_processed = 0
+                    for i, link in enumerate(product_links[:10]):  # Limit to 10 products per brand for testing
                         product_href = link.get('href', '')
                         if product_href:
+                            logger.info(f"📦 Processing product {i+1}/{min(len(product_links), 10)}: {product_href}")
                             product_data = await self._scrape_single_product(product_href, brand)
                             if product_data:
                                 brand["products"].append(product_data)
                                 self.scraped_products.append(product_data)
+                                products_processed += 1
+                                logger.info(f"✅ Successfully scraped: {product_data['title']}")
+                            else:
+                                logger.warning(f"❌ Failed to scrape product: {product_href}")
+                            
+                            # Rate limiting between products
+                            await asyncio.sleep(0.5)
                     
-                    logger.info(f"📦 {brand['name']}: {len(brand['products'])} products")
+                    logger.info(f"✅ {brand['name']}: {products_processed} products scraped successfully")
+                    
+                else:
+                    logger.error(f"❌ Failed to load brand page {brand['name']}: HTTP {response.status}")
                     
         except Exception as e:
-            logger.error(f"Error scraping brand {brand['name']}: {e}")
+            logger.error(f"❌ Error scraping brand {brand['name']}: {e}")
+            stats["processing_errors"].append(f"Brand error {brand['name']}: {str(e)}")
     
     async def _scrape_library_products(self, stats: Dict[str, Any]):
         """Scrape products via main library pagination (for comprehensive coverage)"""
