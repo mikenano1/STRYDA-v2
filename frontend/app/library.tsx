@@ -986,6 +986,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
+  favoriteButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: Colors.dark.inputBackground,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.dark.border,
+  },
   categoryTag: {
     backgroundColor: Colors.dark.inputBackground,
     paddingHorizontal: 8,
