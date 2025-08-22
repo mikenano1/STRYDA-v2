@@ -149,9 +149,9 @@ class EBOSSProductScraper:
         }
         
         try:
-            # Initialize session
+            # Initialize session with proper timeout configuration
             self.session = aiohttp.ClientSession(
-                timeout=aiohttp.ClientTimeout(total=30),
+                timeout=aiohttp.ClientTimeout(total=10, connect=5),  # Reduced timeout
                 headers={
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
                 }
