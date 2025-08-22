@@ -21,13 +21,25 @@ interface Message {
   sender: 'user' | 'bot';
   timestamp: Date;
   citations?: Citation[];
+  confidence_score?: number;
+  sources_used?: string[];
+  compliance_issues?: ComplianceIssue[];
+  processing_time_ms?: number;
 }
 
 interface Citation {
-  id: string;
+  chunk_id: string;
   title: string;
   url?: string;
   snippet?: string;
+  document_type?: string;
+}
+
+interface ComplianceIssue {
+  description: string;
+  severity: string;
+  code_reference: string;
+  alternatives?: any[];
 }
 
 export default function ChatScreen() {
