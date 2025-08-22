@@ -488,25 +488,50 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.dark.background,
   },
-  statsHeader: {
+  header: {
     paddingHorizontal: 20,
     paddingTop: 16,
-    paddingBottom: 8,
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.dark.border,
   },
-  statsTitle: {
-    fontSize: 24,
+  titleContainer: {
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 28,
     fontWeight: 'bold',
     color: Colors.dark.text,
     marginBottom: 4,
   },
-  statsSubtitle: {
-    fontSize: 14,
+  subtitle: {
+    fontSize: 16,
     color: Colors.dark.icon,
   },
+  breadcrumbs: {
+    marginBottom: 12,
+  },
+  breadcrumbContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  breadcrumbSeparator: {
+    fontSize: 16,
+    color: Colors.dark.icon,
+    marginHorizontal: 8,
+  },
+  breadcrumbText: {
+    fontSize: 14,
+    color: Colors.dark.icon,
+    fontWeight: '500',
+  },
+  breadcrumbTextActive: {
+    color: Colors.dark.tint,
+    fontWeight: '600',
+  },
   searchContainer: {
-    paddingHorizontal: 20,
-    paddingTop: 8,
-    paddingBottom: 12,
+    marginTop: 8,
   },
   searchBar: {
     flexDirection: 'row',
@@ -522,167 +547,82 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.dark.text,
   },
-  loadingContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 40,
-  },
-  loadingText: {
-    fontSize: 16,
-    color: Colors.dark.icon,
-    marginTop: 16,
-  },
-  filtersContainer: {
-    paddingLeft: 20,
-    marginBottom: 20,
-  },
-  filtersContent: {
-    paddingRight: 20,
-    gap: 8,
-  },
-  filterTab: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    backgroundColor: Colors.dark.surface,
-    borderWidth: 1,
-    borderColor: Colors.dark.border,
-    gap: 6,
-  },
-  filterTabActive: {
-    backgroundColor: Colors.dark.tint,
-    borderColor: Colors.dark.tint,
-  },
-  filterText: {
-    fontSize: 14,
-    color: Colors.dark.text,
-    fontWeight: '500',
-  },
-  filterTextActive: {
-    color: Colors.dark.background,
-  },
-  countBadge: {
-    backgroundColor: Colors.dark.inputBackground,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 10,
-    minWidth: 20,
-    alignItems: 'center',
-  },
-  countBadgeActive: {
-    backgroundColor: Colors.dark.background + '40',
-  },
-  countText: {
-    fontSize: 11,
-    color: Colors.dark.text,
-    fontWeight: '600',
-  },
-  countTextActive: {
-    color: Colors.dark.background,
-  },
-  advancedFilterButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    backgroundColor: Colors.dark.surface,
-    borderWidth: 1,
-    borderColor: Colors.dark.border,
-    gap: 6,
-  },
-  advancedFilterButtonActive: {
-    backgroundColor: Colors.dark.tint,
-    borderColor: Colors.dark.tint,
-  },
-  advancedFilterText: {
-    fontSize: 14,
-    color: Colors.dark.text,
-    fontWeight: '500',
-  },
-  advancedFilterTextActive: {
-    color: Colors.dark.background,
-  },
-  advancedFiltersPanel: {
-    backgroundColor: Colors.dark.surface,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.dark.border,
-    paddingVertical: 16,
-  },
-  advancedFiltersScroll: {
-    paddingLeft: 20,
-  },
-  advancedFiltersContent: {
-    flexDirection: 'row',
-    gap: 24,
-    paddingRight: 20,
-  },
-  filterSection: {
-    minWidth: 200,
-  },
-  filterSectionTitle: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: Colors.dark.text,
-    marginBottom: 12,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-  },
-  filterChips: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-  },
-  filterChip: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 16,
-    backgroundColor: Colors.dark.inputBackground,
-    borderWidth: 1,
-    borderColor: Colors.dark.border,
-  },
-  filterChipActive: {
-    backgroundColor: Colors.dark.tint,
-    borderColor: Colors.dark.tint,
-  },
-  filterChipText: {
-    fontSize: 12,
-    color: Colors.dark.text,
-    fontWeight: '500',
-  },
-  filterChipTextActive: {
-    color: Colors.dark.background,
-    fontWeight: '600',
-  },
-  clearFiltersButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 12,
-    backgroundColor: Colors.dark.inputBackground,
-    borderWidth: 1,
-    borderColor: Colors.dark.border,
-    alignSelf: 'flex-start',
-  },
-  clearFiltersText: {
-    fontSize: 12,
-    color: Colors.dark.icon,
-    fontWeight: '500',
-  },
-  libraryList: {
+  content: {
     flex: 1,
     paddingHorizontal: 20,
   },
-  productCard: {
+  filterToggle: {
+    flexDirection: 'row',
+    backgroundColor: Colors.dark.surface,
+    borderRadius: 8,
+    padding: 4,
+    marginVertical: 16,
+  },
+  filterToggleButton: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 6,
+    alignItems: 'center',
+  },
+  filterToggleButtonActive: {
+    backgroundColor: Colors.dark.tint,
+  },
+  filterToggleText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.dark.icon,
+  },
+  filterToggleTextActive: {
+    color: Colors.dark.background,
+  },
+  categoriesContainer: {
+    flex: 1,
+  },
+  categoriesGrid: {
+    gap: 16,
+  },
+  categoryCard: {
     backgroundColor: Colors.dark.surface,
     borderRadius: 16,
     padding: 20,
-    marginBottom: 16,
+    borderLeftWidth: 4,
+    borderColor: Colors.dark.border,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  categoryIconContainer: {
+    marginBottom: 12,
+  },
+  categoryName: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.dark.text,
+    marginBottom: 4,
+  },
+  categoryCount: {
+    fontSize: 14,
+    color: Colors.dark.icon,
+  },
+  brandsContainer: {
+    flex: 1,
+    paddingTop: 16,
+  },
+  brandsGrid: {
+    gap: 16,
+  },
+  brandCard: {
+    backgroundColor: Colors.dark.surface,
+    borderRadius: 16,
+    padding: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: Colors.dark.border,
     shadowColor: '#000',
@@ -694,197 +634,116 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  productHeader: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    marginBottom: 12,
+  brandLogoContainer: {
+    marginRight: 16,
   },
-  productTitleContainer: {
+  brandLogoPlaceholder: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: Colors.dark.tint,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  brandLogoText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.dark.background,
+  },
+  brandInfo: {
     flex: 1,
-    marginRight: 12,
   },
-  productTitle: {
+  brandName: {
     fontSize: 18,
     fontWeight: '700',
     color: Colors.dark.text,
-    lineHeight: 24,
-    marginBottom: 8,
+    marginBottom: 4,
   },
-  productBrandContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  productBrand: {
+  brandProductCount: {
     fontSize: 14,
-    fontWeight: '600',
-    color: Colors.dark.tint,
-  },
-  productCategory: {
-    fontSize: 12,
     color: Colors.dark.icon,
-    textTransform: 'uppercase',
-    fontWeight: '500',
-    letterSpacing: 0.5,
-    marginBottom: 12,
-  },
-  productDescription: {
-    fontSize: 14,
-    color: Colors.dark.text,
-    lineHeight: 20,
-    marginBottom: 16,
-  },
-  specificationsContainer: {
-    marginBottom: 16,
-  },
-  specificationsTitle: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: Colors.dark.text,
     marginBottom: 8,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
   },
-  specificationsList: {
+  brandCategories: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 6,
   },
-  specificationChip: {
-    backgroundColor: Colors.dark.tint + '15',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: Colors.dark.tint + '30',
-  },
-  specificationText: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: Colors.dark.tint,
-  },
-  productFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  productActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  favoriteButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: Colors.dark.inputBackground,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: Colors.dark.border,
-  },
-  categoryTag: {
+  categoryChip: {
     backgroundColor: Colors.dark.inputBackground,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
   },
-  categoryTagText: {
+  categoryChipText: {
     fontSize: 11,
     color: Colors.dark.text,
     fontWeight: '500',
   },
-  // Legacy styles for compatibility
-  libraryItem: {
+  moreCategoriesText: {
+    fontSize: 11,
+    color: Colors.dark.placeholder,
+    fontStyle: 'italic',
+    alignSelf: 'center',
+  },
+  brandHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.dark.surface,
+    borderRadius: 16,
+    padding: 20,
+    marginTop: 16,
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: Colors.dark.border,
+  },
+  brandHeaderLogo: {
+    marginRight: 20,
+  },
+  brandHeaderInfo: {
+    flex: 1,
+  },
+  brandHeaderName: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.dark.text,
+    marginBottom: 4,
+  },
+  brandHeaderCount: {
+    fontSize: 16,
+    color: Colors.dark.icon,
+  },
+  brandCategoriesContainer: {
+    flex: 1,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: Colors.dark.text,
+    marginBottom: 16,
+  },
+  productCategoryCard: {
     backgroundColor: Colors.dark.surface,
     borderRadius: 12,
     padding: 16,
-    marginBottom: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
     borderWidth: 1,
     borderColor: Colors.dark.border,
   },
-  itemHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    marginBottom: 8,
+  categoryInfo: {
+    flex: 1,
+    marginLeft: 16,
   },
-  itemTitle: {
+  categoryTitle: {
     fontSize: 16,
     fontWeight: '600',
     color: Colors.dark.text,
-    flex: 1,
-    lineHeight: 22,
+    marginBottom: 4,
   },
-  scoreBadge: {
-    backgroundColor: Colors.dark.tint + '20',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 8,
-  },
-  scoreText: {
-    fontSize: 12,
-    color: Colors.dark.tint,
-    fontWeight: '600',
-  },
-  itemSnippet: {
+  categorySubtitle: {
     fontSize: 14,
     color: Colors.dark.icon,
-    lineHeight: 20,
-    marginBottom: 12,
-  },
-  itemFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  tags: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 6,
-    flex: 1,
-    marginRight: 12,
-  },
-  tag: {
-    backgroundColor: Colors.dark.surfaceSecondary,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: 'transparent',
-  },
-  tagText: {
-    fontSize: 12,
-    color: Colors.dark.text,
-    fontWeight: '500',
-  },
-  moreTagsText: {
-    fontSize: 12,
-    color: Colors.dark.placeholder,
-    fontStyle: 'italic',
-  },
-  savedAt: {
-    fontSize: 12,
-    color: Colors.dark.placeholder,
-  },
-  emptyState: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 40,
-  },
-  emptyTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: Colors.dark.text,
-    marginTop: 16,
-    marginBottom: 8,
-  },
-  emptySubtitle: {
-    fontSize: 14,
-    color: Colors.dark.icon,
-    textAlign: 'center',
-    lineHeight: 20,
   },
 });
