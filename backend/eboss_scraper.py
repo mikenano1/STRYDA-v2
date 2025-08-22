@@ -374,9 +374,15 @@ class EBOSSProductScraper:
                     }
                     
                     return product_data
+                else:
+                    logger.warning(f"⚠️ Product page returned HTTP {response.status}: {product_url}")
+                    return None
                     
+        except asyncio.TimeoutError:
+            logger.error(f"⏰ Timeout scraping product {product_href}")
+            return None
         except Exception as e:
-            logger.error(f"Error scraping product {product_href}: {e}")
+            logger.error(f"❌ Error scraping product {product_href}: {e}")
             return None
     
     def _categorize_product(self, title: str, description: str, specs: str) -> List[str]:
