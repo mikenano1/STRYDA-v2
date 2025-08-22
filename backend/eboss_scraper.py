@@ -238,12 +238,13 @@ class EBOSSProductScraper:
         
         logger.info(f"🎯 Scraping {len(priority_brands)} priority brands...")
         
-        for brand in priority_brands[:10]:  # Limit to top 10 priority brands for now
+        for i, brand in enumerate(priority_brands[:3]):  # Limit to top 3 priority brands for testing
             try:
+                logger.info(f"🏢 Processing priority brand {i+1}/3: {brand['name']}")
                 await self._scrape_brand_products(brand, stats)
-                await asyncio.sleep(1)  # Rate limiting
+                await asyncio.sleep(2)  # Increased rate limiting between brands
             except Exception as e:
-                logger.error(f"Error scraping priority brand {brand['name']}: {e}")
+                logger.error(f"❌ Error scraping priority brand {brand['name']}: {e}")
                 stats["processing_errors"].append(f"Priority brand error {brand['name']}: {str(e)}")
     
     async def _scrape_brand_products(self, brand: Dict[str, Any], stats: Dict[str, Any]):
