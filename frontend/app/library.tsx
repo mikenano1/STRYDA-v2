@@ -345,9 +345,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.dark.background,
   },
-  searchContainer: {
+  statsHeader: {
     paddingHorizontal: 20,
     paddingTop: 16,
+    paddingBottom: 8,
+  },
+  statsTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.dark.text,
+    marginBottom: 4,
+  },
+  statsSubtitle: {
+    fontSize: 14,
+    color: Colors.dark.icon,
+  },
+  searchContainer: {
+    paddingHorizontal: 20,
+    paddingTop: 8,
     paddingBottom: 12,
   },
   searchBar: {
@@ -364,6 +379,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.dark.text,
   },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 40,
+  },
+  loadingText: {
+    fontSize: 16,
+    color: Colors.dark.icon,
+    marginTop: 16,
+  },
   filtersContainer: {
     paddingLeft: 20,
     marginBottom: 20,
@@ -373,12 +399,15 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   filterTab: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
     backgroundColor: Colors.dark.surface,
     borderWidth: 1,
     borderColor: Colors.dark.border,
+    gap: 6,
   },
   filterTabActive: {
     backgroundColor: Colors.dark.tint,
@@ -390,6 +419,25 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   filterTextActive: {
+    color: Colors.dark.background,
+  },
+  countBadge: {
+    backgroundColor: Colors.dark.inputBackground,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 10,
+    minWidth: 20,
+    alignItems: 'center',
+  },
+  countBadgeActive: {
+    backgroundColor: Colors.dark.background + '40',
+  },
+  countText: {
+    fontSize: 11,
+    color: Colors.dark.text,
+    fontWeight: '600',
+  },
+  countTextActive: {
     color: Colors.dark.background,
   },
   libraryList: {
@@ -415,6 +463,18 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.dark.text,
     flex: 1,
+    lineHeight: 22,
+  },
+  scoreBadge: {
+    backgroundColor: Colors.dark.tint + '20',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  scoreText: {
+    fontSize: 12,
+    color: Colors.dark.tint,
+    fontWeight: '600',
   },
   itemSnippet: {
     fontSize: 14,
@@ -439,10 +499,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
+    borderWidth: 1,
+    borderColor: 'transparent',
   },
   tagText: {
     fontSize: 12,
     color: Colors.dark.text,
+    fontWeight: '500',
+  },
+  moreTagsText: {
+    fontSize: 12,
+    color: Colors.dark.placeholder,
+    fontStyle: 'italic',
   },
   savedAt: {
     fontSize: 12,
