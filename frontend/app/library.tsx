@@ -84,6 +84,7 @@ const buildingCodeColors = {
 };
 
 export default function LibraryScreen() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [knowledgeStats, setKnowledgeStats] = useState<KnowledgeStats | null>(null);
