@@ -128,7 +128,7 @@ export default function HomeScreen() {
               activeOpacity={0.8}
             >
               <View style={styles.scannerButtonContent}>
-                <IconSymbol name="camera.viewfinder" size={24} color={Colors.dark.background} />
+                <IconSymbol name="photo" size={24} color={Colors.dark.background} />
                 <View style={styles.scannerTextContainer}>
                   <Text style={styles.scannerButtonTitle}>Scan Product</Text>
                   <Text style={styles.scannerButtonSubtitle}>Use camera OCR to identify products instantly</Text>
