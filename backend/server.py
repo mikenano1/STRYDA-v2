@@ -543,6 +543,108 @@ async def get_scraping_targets():
         logger.error(f"Error getting scraping targets: {e}")
         raise HTTPException(status_code=500, detail="Error retrieving scraping targets")
 
+# PDF Processing Endpoints
+@api_router.post("/knowledge/process-pdf", response_model=PDFProcessingResponse)
+async def process_building_code_pdf(request: PDFProcessingRequest, background_tasks: BackgroundTasks):
+    """Process NZ Building Code PDF and integrate into knowledge base"""
+    try:
+        logger.info(f"Starting PDF processing for: {request.title}")
+        
+        # Start PDF processing in background
+        background_tasks.add_task(
+            _process_pdf_task,
+            request.pdf_url,
+            request.title,
+            request.document_type
+        )
+        
+        return PDFProcessingResponse(
+            success=True,
+            processing_stats={"status": "started", "pdf_url": request.pdf_url},
+            message=f"PDF processing started for '{request.title}'. This may take several minutes.",
+            chunks_created=0,
+            errors=[]
+        )
+        
+    except Exception as e:
+        logger.error(f"Error starting PDF processing: {e}")
+        return PDFProcessingResponse(
+            success=False,
+            processing_stats={"status": "failed"},
+            message=f"Failed to start PDF processing: {str(e)}",
+            chunks_created=0,
+            errors=[str(e)]
+        )
+
+@api_router.get("/knowledge/pdf-status")
+async def get_pdf_processing_status():
+    """Get status of PDF processing operations"""
+    try:
+        # Get recent PDF processing results from database
+        recent_docs = await db.processed_documents.find(
+            {"metadata.pdf_source": True}
+        ).sort("processed_at", -1).limit(10).to_list(10)
+        
+        # Get chunk count for PDF documents
+        pdf_chunk_count = await db.document_chunks.count_documents(
+            {"metadata.pdf_source": True}
+        )
+        
+        return {
+            "total_pdf_documents": len(recent_docs),
+            "total_pdf_chunks": pdf_chunk_count,
+            "recent_pdf_documents": [
+                {
+                    "title": doc["title"],
+                    "processed_at": doc["processed_at"],
+                    "total_chunks": doc["total_chunks"],
+                    "document_type": doc["document_type"]
+                }
+                for doc in recent_docs
+            ],
+            "last_updated": datetime.utcnow().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting PDF processing status: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving PDF processing status")
+
+async def _process_pdf_task(pdf_url: str, title: str, document_type: str):
+    """Background task to process PDF"""
+    try:
+        logger.info(f"Background PDF processing started: {title}")
+        
+        # Process the PDF
+        processing_result = await pdf_processor.download_and_process_pdf(
+            pdf_url=pdf_url,
+            title=title
+        )
+        
+        logger.info(f"PDF processing completed: {processing_result['chunks_created']} chunks created")
+        
+        # Store processing result in database for status tracking
+        await db.pdf_processing_results.insert_one({
+            "title": title,
+            "pdf_url": pdf_url,
+            "document_type": document_type,
+            "processing_result": processing_result,
+            "completed_at": datetime.utcnow(),
+            "success": True
+        })
+        
+    except Exception as e:
+        logger.error(f"Background PDF processing failed: {e}")
+        
+        # Store error result
+        await db.pdf_processing_results.insert_one({
+            "title": title,
+            "pdf_url": pdf_url,
+            "document_type": document_type,
+            "error": str(e),
+            "completed_at": datetime.utcnow(),
+            "success": False
+        })
+
 # Job Management (existing endpoints)
 @api_router.post("/jobs", response_model=Job)
 async def create_job(job_data: JobCreate):
