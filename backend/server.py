@@ -128,6 +128,18 @@ class ScrapingRequest(BaseModel):
     target_name: Optional[str] = None
     force_update: bool = False
 
+class PDFProcessingRequest(BaseModel):
+    pdf_url: str
+    title: Optional[str] = "NZ Building Code Handbook"
+    document_type: str = "nzbc"
+    
+class PDFProcessingResponse(BaseModel):
+    success: bool
+    processing_stats: Dict[str, Any]
+    message: str
+    chunks_created: int = 0
+    errors: List[str] = []
+
 # Enhanced AI Chat with Full Intelligence System
 def get_super_enhanced_ai_chat(session_id: str) -> LlmChat:
     system_message = """You are STRYDA.ai, New Zealand's most advanced AI assistant for building professionals and tradies.
