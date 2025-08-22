@@ -325,8 +325,11 @@ class EBOSSProductScraper:
         
         try:
             product_url = urljoin(self.base_url, product_href)
+            logger.info(f"🔍 Scraping product: {product_url}")
             
-            async with self.session.get(product_url) as response:
+            # Add specific timeout for individual requests
+            timeout = aiohttp.ClientTimeout(total=8, connect=3)
+            async with self.session.get(product_url, timeout=timeout) as response:
                 if response.status == 200:
                     html = await response.text()
                     soup = BeautifulSoup(html, 'html.parser')
