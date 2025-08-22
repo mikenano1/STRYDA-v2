@@ -25,6 +25,7 @@ from enhanced_knowledge_base import EnhancedKnowledgeBase
 from compliance_engine import ComplianceAlternativesEngine
 from query_processor import AdvancedQueryProcessor
 from auto_scraper import AutomatedScraper
+from pdf_processor import BuildingCodePDFProcessor
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
