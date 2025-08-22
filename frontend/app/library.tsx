@@ -610,7 +610,12 @@ export default function LibraryScreen() {
       {/* Library items */}
       <ScrollView style={styles.libraryList}>
         {displayItems.map((item, index) => (
-          <TouchableOpacity key={`${item.id}-${index}`} style={styles.productCard}>
+          <TouchableOpacity 
+            key={`${item.id}-${index}`} 
+            style={styles.productCard}
+            onPress={() => openProductDetails(item)}
+            activeOpacity={0.7}
+          >
             <View style={styles.productHeader}>
               <View style={styles.productTitleContainer}>
                 <Text style={styles.productTitle} numberOfLines={2}>{item.title}</Text>
