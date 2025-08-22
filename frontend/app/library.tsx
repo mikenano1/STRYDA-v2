@@ -12,6 +12,7 @@ import {
 import { Colors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import Constants from 'expo-constants';
+import { useRouter } from 'expo-router';
 
 // Types for our knowledge base
 interface KnowledgeDocument {
