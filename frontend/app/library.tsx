@@ -203,17 +203,28 @@ export default function LibraryScreen() {
 
   return (
     <View style={styles.container}>
+      {/* Header with stats */}
+      {knowledgeStats && (
+        <View style={styles.statsHeader}>
+          <Text style={styles.statsTitle}>Knowledge Base</Text>
+          <Text style={styles.statsSubtitle}>
+            {knowledgeStats.total_documents.toLocaleString()} documents • {knowledgeStats.total_chunks.toLocaleString()} sections
+          </Text>
+        </View>
+      )}
+
       {/* Search bar */}
       <View style={styles.searchContainer}>
         <View style={styles.searchBar}>
-          <IconSymbol name="info.circle.fill" size={16} color={Colors.dark.icon} />
+          <IconSymbol name="magnifyingglass" size={16} color={Colors.dark.icon} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search library..."
+            placeholder="Search Building Code, products, standards..."
             placeholderTextColor={Colors.dark.placeholder}
             value={searchQuery}
             onChangeText={setSearchQuery}
           />
+          {searching && <ActivityIndicator size="small" color={Colors.dark.tint} />}
         </View>
       </View>
 
@@ -239,32 +250,66 @@ export default function LibraryScreen() {
             ]}>
               {filter.label}
             </Text>
+            {filter.count > 0 && (
+              <View style={[
+                styles.countBadge,
+                selectedFilter === filter.id && styles.countBadgeActive
+              ]}>
+                <Text style={[
+                  styles.countText,
+                  selectedFilter === filter.id && styles.countTextActive
+                ]}>
+                  {filter.count > 999 ? '999+' : filter.count}
+                </Text>
+              </View>
+            )}
           </TouchableOpacity>
         ))}
       </ScrollView>
 
+      {/* Loading state */}
+      {loading && (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color={Colors.dark.tint} />
+          <Text style={styles.loadingText}>Loading knowledge base...</Text>
+        </View>
+      )}
+
       {/* Library items */}
       <ScrollView style={styles.libraryList}>
-        {filteredItems.map((item) => (
-          <TouchableOpacity key={item.id} style={styles.libraryItem}>
+        {displayItems.map((item, index) => (
+          <TouchableOpacity key={`${item.id}-${index}`} style={styles.libraryItem}>
             <View style={styles.itemHeader}>
               <IconSymbol 
-                name={typeIcons[item.type]} 
+                name={typeIcons[item.type] || typeIcons.nzbc} 
                 size={20} 
                 color={Colors.dark.tint} 
               />
-              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={styles.itemTitle} numberOfLines={2}>{item.title}</Text>
+              {item.score && (
+                <View style={styles.scoreBadge}>
+                  <Text style={styles.scoreText}>
+                    {Math.round(item.score * 100)}%
+                  </Text>
+                </View>
+              )}
             </View>
             
-            <Text style={styles.itemSnippet}>{item.snippet}</Text>
+            <Text style={styles.itemSnippet} numberOfLines={3}>{item.snippet}</Text>
             
             <View style={styles.itemFooter}>
               <View style={styles.tags}>
-                {item.tags.map((tag) => (
-                  <View key={tag} style={styles.tag}>
-                    <Text style={styles.tagText}>{tag}</Text>
-                  </View>
-                ))}
+                {item.tags.slice(0, 3).map((tag, tagIndex) => {
+                  const codeColor = buildingCodeColors[tag] || buildingCodeColors.default;
+                  return (
+                    <View key={`${tag}-${tagIndex}`} style={[styles.tag, { backgroundColor: codeColor + '20' }]}>
+                      <Text style={[styles.tagText, { color: codeColor }]}>{tag}</Text>
+                    </View>
+                  );
+                })}
+                {item.tags.length > 3 && (
+                  <Text style={styles.moreTagsText}>+{item.tags.length - 3} more</Text>
+                )}
               </View>
               <Text style={styles.savedAt}>{item.savedAt}</Text>
             </View>
@@ -273,16 +318,20 @@ export default function LibraryScreen() {
       </ScrollView>
 
       {/* Empty state */}
-      {filteredItems.length === 0 && (
+      {!loading && displayItems.length === 0 && (
         <View style={styles.emptyState}>
-          <IconSymbol name="books.vertical.fill" size={48} color={Colors.dark.icon} />
+          <IconSymbol 
+            name={searchQuery ? "magnifyingglass" : "books.vertical.fill"} 
+            size={48} 
+            color={Colors.dark.icon} 
+          />
           <Text style={styles.emptyTitle}>
-            {searchQuery ? 'No matches found' : 'Library is empty'}
+            {searchQuery ? 'No matches found' : 'Select a category above'}
           </Text>
           <Text style={styles.emptySubtitle}>
             {searchQuery 
-              ? 'Try adjusting your search or filter'
-              : 'Save answers, manuals, and job packs to build your library'
+              ? `No documents found for "${searchQuery}". Try different search terms.`
+              : 'Browse the complete NZ Building Code, manufacturer specs, and product database'
             }
           </Text>
         </View>
