@@ -38,6 +38,7 @@ enhanced_kb = EnhancedKnowledgeBase(document_processor)
 compliance_engine = ComplianceAlternativesEngine(document_processor)
 query_processor = AdvancedQueryProcessor(document_processor)
 auto_scraper = AutomatedScraper(document_processor)
+pdf_processor = BuildingCodePDFProcessor(document_processor)
 
 # Create the main app without a prefix
 app = FastAPI(title="STRYDA.ai Enhanced API", version="2.0.0")
