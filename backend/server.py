@@ -774,8 +774,7 @@ async def search_products(
         # Use the enhanced search from document processor
         search_results = await document_processor.search_documents(
             query=query,
-            limit=limit,
-            filters=search_filters
+            limit=limit
         )
         
         return {
