@@ -586,13 +586,27 @@ export default function LibraryScreen() {
                   <Text style={styles.productBrand}>{item.brand}</Text>
                 </View>
               </View>
-              {item.score && (
-                <View style={styles.scoreBadge}>
-                  <Text style={styles.scoreText}>
-                    {Math.round(Math.abs(item.score) * 100)}%
-                  </Text>
-                </View>
-              )}
+              <View style={styles.productActions}>
+                {/* Favorite Button */}
+                <TouchableOpacity
+                  style={styles.favoriteButton}
+                  onPress={() => toggleFavorite(item.id)}
+                  activeOpacity={0.7}
+                >
+                  <IconSymbol 
+                    name={favorites.has(item.id) ? "heart.fill" : "heart"} 
+                    size={20} 
+                    color={favorites.has(item.id) ? '#FF6B6B' : Colors.dark.icon} 
+                  />
+                </TouchableOpacity>
+                {item.score && (
+                  <View style={styles.scoreBadge}>
+                    <Text style={styles.scoreText}>
+                      {Math.round(Math.abs(item.score) * 100)}%
+                    </Text>
+                  </View>
+                )}
+              </View>
             </View>
             
             <Text style={styles.productCategory}>{item.category}</Text>
