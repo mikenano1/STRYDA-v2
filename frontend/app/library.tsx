@@ -44,34 +44,162 @@ interface SearchResult {
 const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL;
 
 const typeIcons = {
-  answer: 'message.fill',
-  manual: 'doc.text',
-  jobpack: 'folder.fill',
+  nzbc: 'doc.text.fill',
+  manufacturer: 'building.2.fill',
+  nzs: 'book.closed.fill',
+  lbp: 'checkmark.seal.fill',
+  eboss_product: 'cube.box.fill',
+};
+
+const buildingCodeColors = {
+  'G5': '#FF6B6B', // Fire safety - red
+  'H1': '#4ECDC4', // Energy - teal  
+  'E2': '#45B7D1', // Weathertightness - blue
+  'B1': '#96CEB4', // Structure - green
+  'F2': '#FECA57', // Fire materials - yellow
+  'C1': '#FF9FF3', // Fire - pink
+  'G1': '#DDA0DD', // Water - purple
+  'default': Colors.dark.tint
 };
 
 export default function LibraryScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
+  const [knowledgeStats, setKnowledgeStats] = useState<KnowledgeStats | null>(null);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [searching, setSearching] = useState(false);
 
   const filters = [
-    { id: 'all', label: 'All' },
-    { id: 'answers', label: 'Saved Answers' },
-    { id: 'manuals', label: 'Manuals' },
-    { id: 'jobpacks', label: 'Job Packs' },
+    { id: 'all', label: 'All', count: knowledgeStats?.total_documents || 0 },
+    { id: 'nzbc', label: 'Building Code', count: knowledgeStats?.documents_by_type?.nzbc || 0 },
+    { id: 'manufacturer', label: 'Manufacturers', count: knowledgeStats?.documents_by_type?.manufacturer || 0 },
+    { id: 'nzs', label: 'NZ Standards', count: knowledgeStats?.documents_by_type?.nzs || 0 },
+    { id: 'eboss_product', label: 'Products', count: knowledgeStats?.documents_by_type?.eboss_product || 0 },
   ];
 
-  const filteredItems = mockLibraryItems.filter(item => {
-    const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         item.snippet.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+  // Load knowledge base stats on component mount
+  useEffect(() => {
+    loadKnowledgeStats();
+  }, []);
+
+  // Search when query changes
+  useEffect(() => {
+    if (searchQuery.length > 2) {
+      performSearch();
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery, selectedFilter]);
+
+  const loadKnowledgeStats = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${BACKEND_URL}/api/knowledge/stats`);
+      if (response.ok) {
+        const stats = await response.json();
+        setKnowledgeStats(stats);
+      }
+    } catch (error) {
+      console.error('Error loading knowledge stats:', error);
+      Alert.alert('Error', 'Failed to load knowledge base statistics');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const performSearch = async () => {
+    try {
+      setSearching(true);
+      const searchPayload = {
+        query: searchQuery,
+        document_types: selectedFilter === 'all' ? undefined : [selectedFilter],
+        limit: 20,
+        enable_query_processing: true
+      };
+
+      const response = await fetch(`${BACKEND_URL}/api/knowledge/search`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(searchPayload)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setSearchResults(data.results || []);
+      } else {
+        throw new Error('Search request failed');
+      }
+    } catch (error) {
+      console.error('Error performing search:', error);
+      Alert.alert('Error', 'Failed to search knowledge base');
+    } finally {
+      setSearching(false);
+    }
+  };
+
+  const extractBuildingCodes = (content: string, metadata: any): string[] => {
+    const codes = [];
     
-    const matchesFilter = selectedFilter === 'all' || 
-                         (selectedFilter === 'answers' && item.type === 'answer') ||
-                         (selectedFilter === 'manuals' && item.type === 'manual') ||
-                         (selectedFilter === 'jobpacks' && item.type === 'jobpack');
-                         
-    return matchesSearch && matchesFilter;
-  });
+    // From metadata first
+    if (metadata.building_codes) {
+      codes.push(...metadata.building_codes);
+    }
+    
+    // Extract from content
+    const codeMatches = content.match(/\b([ABCDEFGH]\d+(?:\.\d+)*)\b/g);
+    if (codeMatches) {
+      codes.push(...codeMatches);
+    }
+    
+    return [...new Set(codes)]; // Remove duplicates
+  };
+
+  const formatTimeAgo = (dateString: string): string => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 0) return 'Today';
+    if (diffDays === 1) return '1 day ago';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+    return `${Math.floor(diffDays / 30)} months ago`;
+  };
+
+  const getDisplayData = () => {
+    if (searchQuery.length > 2) {
+      return searchResults.map(result => ({
+        id: result.chunk_id,
+        type: result.metadata.document_type,
+        title: result.metadata.section_title || result.title,
+        snippet: result.content.substring(0, 150) + '...',
+        tags: extractBuildingCodes(result.content, result.metadata),
+        score: result.similarity_score,
+        savedAt: 'Search result'
+      }));
+    }
+    
+    if (knowledgeStats?.recent_documents) {
+      return knowledgeStats.recent_documents
+        .filter(doc => selectedFilter === 'all' || doc.type === selectedFilter)
+        .map(doc => ({
+          id: doc.title,
+          type: doc.type,
+          title: doc.title,
+          snippet: 'Recent document from knowledge base',
+          tags: extractBuildingCodes(doc.title, {}),
+          savedAt: formatTimeAgo(doc.processed_at)
+        }));
+    }
+    
+    return [];
+  };
+
+  const displayItems = getDisplayData();
 
   return (
     <View style={styles.container}>
