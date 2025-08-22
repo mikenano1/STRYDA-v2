@@ -13,33 +13,35 @@ import { Colors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import Constants from 'expo-constants';
 
-// Mock library data
-const mockLibraryItems = [
-  {
-    id: '1',
-    type: 'answer',
-    title: 'Hearth clearances for Metrofires',
-    snippet: 'Minimum clearances: 200mm sides, 400mm front, 50mm rear to combustible materials...',
-    tags: ['fireplaces', 'clearances', 'NZBC'],
-    savedAt: '2 days ago',
-  },
-  {
-    id: '2',
-    type: 'manual',
-    title: 'E2/AS1 Weathertightness Guide',
-    snippet: 'Acceptable Solution for external moisture management in buildings...',
-    tags: ['weathertightness', 'E2', 'external walls'],
-    savedAt: '1 week ago',
-  },
-  {
-    id: '3',
-    type: 'jobpack',
-    title: 'Henderson House - Compliance Pack',
-    snippet: 'Generated pack with 8 Q&As, 3 photos, compliance notes for council submission',
-    tags: ['job-pack', 'henderson', 'council'],
-    savedAt: '3 days ago',
-  },
-];
+// Types for our knowledge base
+interface KnowledgeDocument {
+  title: string;
+  type: string;
+  processed_at: string;
+  snippet?: string;
+  tags?: string[];
+}
+
+interface KnowledgeStats {
+  total_documents: number;
+  total_chunks: number;
+  documents_by_type: Record<string, number>;
+  recent_documents: KnowledgeDocument[];
+}
+
+interface SearchResult {
+  title: string;
+  content: string;
+  similarity_score: number;
+  metadata: {
+    document_type: string;
+    section_title?: string;
+    building_codes?: string[];
+  };
+  chunk_id: string;
+}
+
+const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL;
 
 const typeIcons = {
   answer: 'message.fill',
