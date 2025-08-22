@@ -361,7 +361,15 @@ export default function LibraryScreen() {
     return categoryMap[type as keyof typeof categoryMap] || 'General';
   };
 
-  const extractBuildingCodes = (content: string, metadata: any): string[] => {
+  const openProductDetails = (product: ProductCard) => {
+    // Navigate to chat with product-specific query
+    const productQuery = `Tell me about ${product.brand} ${product.title} - specifications, installation requirements, and Building Code compliance`;
+    
+    router.push({
+      pathname: '/chat',
+      params: { message: productQuery }
+    });
+  };
     const codes = [];
     
     // From metadata first
