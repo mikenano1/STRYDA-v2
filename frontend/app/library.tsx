@@ -54,6 +54,54 @@ interface ProductDetails {
   description: string;
 }
 
+// Additional types for search functionality
+interface KnowledgeStats {
+  total_documents: number;
+  total_chunks: number;
+  documents_by_type: {
+    nzbc?: number;
+    manufacturer?: number;
+    nzs?: number;
+    lbp?: number;
+    eboss_product?: number;
+  };
+  recent_documents: Array<{
+    title: string;
+    type: string;
+    processed_at: string;
+  }>;
+}
+
+interface SearchResult {
+  chunk_id: string;
+  title: string;
+  content: string;
+  similarity_score: number;
+  metadata: {
+    section_title?: string;
+    manufacturer?: string;
+    tags?: string;
+    source_url?: string;
+    document_type: string;
+    building_codes?: string[];
+  };
+}
+
+interface ProductCard {
+  id: string;
+  title: string;
+  brand: string;
+  category: string;
+  description?: string;
+  sourceUrl?: string;
+  tags: string[];
+  buildingCodes: string[];
+  specifications: string[];
+  type: string;
+  score?: number;
+  savedAt?: string;
+}
+
 type ViewMode = 'trades' | 'brands' | 'brand-detail' | 'category-detail' | 'product-detail';
 
 interface NavigationState {
