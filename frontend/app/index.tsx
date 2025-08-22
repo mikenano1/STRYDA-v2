@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   scannerButton: {
-    backgroundColor: BrandColors.primary,
+    backgroundColor: '#ff9f40', // Use the construction orange directly
     borderRadius: 16,
     padding: 20,
     shadowColor: '#000',
