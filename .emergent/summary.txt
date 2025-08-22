@@ -1,0 +1,97 @@
+<analysis>
+This trajectory details the STRYDA.ai project's evolution, managed by an AI engineer. Initially, an MVP was built with a dark-mode Expo UI, tab navigation, and a FastAPI backend with MongoDB and a basic LLM integration. The project then shifted to enhancing the AI's brain with RAG via ChromaDB, intelligent chunking, and web scraping frameworks.
+
+The core recent work focused on integrating the **complete NZ Building Code**. The AI successfully processed a 1.57MB PDF, creating 2,126 new NZBC documents and 4,217 chunks, significantly expanding the knowledge base and enabling the AI to provide detailed, cited compliance answers. The system was declared production-ready for this functionality.
+
+Following this, the focus shifted to building a **comprehensive product database** by scraping EBOSS.co.nz, with a subsequent plan for OCR product scanning. The AI has completed an in-depth analysis of the EBOSS site structure and begun implementing the scraper, but encountered a timeout during the initial testing phase, which is the current state of work.
+</analysis>
+
+<product_requirements>
+STRYDA.ai is envisioned as an AI-powered mobile assistant for NZ builders, providing fast, reliable building code guidance with citations. The initial build required a dark-mode UI, tab navigation (Home/Work/Library), core chat, and AI integration using a Universal LLM Key, along with web scraping for NZ building documentation.
+
+Implemented features include a functional mobile app, FastAPI backend with MongoDB for chat/job management, initial AI chat with NZ-specific guidance (now with real NZBC data), and an Enhanced Document Processing system utilizing ChromaDB for RAG, intelligent chunking, and a web scraping framework.
+
+Current priorities, post initial MVP, are:
+-   **Complete NZ Building Code Integration**: Full NZBC text, NZS Standards, council requirements, and historical versions. (Achieved)
+-   **Comprehensive Product Database**: Integrate specifications, installation guides, and compliance data for thousands of NZ building products from manufacturers via web scraping (e.g., EBOSS.co.nz).
+-   **Advanced Product Intelligence**: Product finder via OCR scanning, compatibility checking, cost comparison.
+-   **Specialized Trade Focus**: Expand knowledge for electrical, plumbing, HVAC, and structural engineering standards.
+</product_requirements>
+
+<key_technical_concepts>
+-   **Mobile Frontend**: Expo, React Native, Expo Router, React Navigation.
+-   **Backend**: FastAPI, MongoDB, ChromaDB (vector database for RAG),  (LLM integration), ,  (web scraping),  (PDF processing).
+-   **AI/ML**: Retrieval Augmented Generation (RAG), Semantic Search, Document Chunking, AI-powered query processing, OCR (planned).
+-   **Development**: Docker, Kubernetes, Supervisor.
+</key_technical_concepts>
+
+<code_architecture>
+The application employs a full-stack architecture comprising an Expo React Native frontend, a FastAPI backend, and a MongoDB database, enhanced with a ChromaDB vector store for AI RAG capabilities.
+
+**Directory Structure:**
+
+
+**Key Files and Their Importance/Changes:**
+
+-   :
+    -   **Importance**: Stores backend environment variables.
+    -   **Changes**:  updated from  to .  added.
+-   :
+    -   **Importance**: Lists Python dependencies.
+    -   **Changes**: Updated to include , , , , , , , and  for web scraping.
+-   :
+    -   **Importance**: Main FastAPI application orchestrating all backend functionalities.
+    -   **Changes**: Initially provided chat/job endpoints. Integrated AI via , fixed MongoDB connection, and integrated , , . Recent changes include importing  and , and adding API endpoints for PDF processing () and EBOSS scraping (, ).
+-   :
+    -   **Importance**: Manages ChromaDB, document ingestion, chunking, and retrieval for RAG.
+    -   **Changes**: Core RAG functionality.
+-   :
+    -   **Importance**: Processes user queries for trade-specific classification.
+    -   **Changes**: Enables advanced query understanding.
+-   :
+    -   **Importance**: Handles configuration and execution of generic web scraping.
+    -   **Changes**: Manages scraping targets.
+-    (New file):
+    -   **Importance**: Dedicated module for processing PDF documents, specifically the NZ Building Code, including downloading, parsing, chunking, and adding to ChromaDB.
+    -   **Changes**: Created to robustly handle the NZBC PDF ingestion.
+-    (New file):
+    -   **Importance**: A standalone script to trigger the PDF processing endpoint on  for the NZ Building Code.
+    -   **Changes**: Created to automate the ingestion of the building-code.pdf.
+-    (New file):
+    -   **Importance**: Module to specifically scrape product data from EBOSS.co.nz, including detailed specifications, installation guides, and compliance data, with multi-level categorization.
+    -   **Changes**: Created to handle the EBOSS product database integration.
+-    (New file):
+    -   **Importance**: A script to test the EBOSS scraping endpoints.
+    -   **Changes**: Created to verify the functionality of .
+-   :
+    -   **Importance**: Defines the global tab-based navigation (Home, Work, Library).
+    -   **Changes**: Sets up core navigation.
+-   , , :
+    -   **Importance**: Core navigable screens,  features chat input and quick actions.
+    -   **Changes**: Populated with initial UI elements and dark mode styling.
+-   :
+    -   **Importance**: Custom component for haptic feedback on tab presses.
+    -   **Changes**: Created and fixed.
+-   :
+    -   **Importance**: Documents testing results, system state, and problem statements.
+    -   **Changes**: Regularly updated to reflect the successful integration of the NZ Building Code and other test outcomes.
+</code_architecture>
+
+<pending_tasks>
+-   **Comprehensive Product Database**: Troubleshoot and complete web scraping of eboss.co.nz to integrate thousands of NZ building products with comprehensive categorization.
+-   **Advanced Product Intelligence (OCR)**: Implement Optical Character Recognition for product scanning from photos/labels.
+-   **Specialized Trade Focus**: Expand knowledge for plumbing, electrical, HVAC, and structural engineering.
+-   **App Functionality Integration**: Integrate the newly acquired product knowledge into the main application.
+</pending_tasks>
+
+<current_work>
+The STRYDA.ai application currently boasts a fully functional Expo React Native frontend with a professional dark-mode UI and a 3-tab navigation (Home, Work, Library). The FastAPI backend is robust, integrated with an AI via the Emergent Universal LLM Key, and leverages a ChromaDB vector database for RAG.
+
+A significant recent achievement is the **complete integration of the NZ Building Code**. The AI successfully processed the , expanding the knowledge base to over 2,100 documents and 4,200 chunks, allowing the AI to provide expert-level, cited responses on various building code queries. This system was thoroughly tested and confirmed to be production-ready for Building Code inquiries.
+
+The immediate ongoing task is the **EBOSS Product Database Integration**. The AI has completed an extensive analysis of the EBOSS.co.nz site structure, identifying categories, brands, and pagination for efficient scraping. A new module, , has been created, and  has been updated with corresponding API endpoints (, ). Dependencies () were added to . A test script, , was created and executed, but it **timed out** after 2 minutes without providing a conclusive success or failure message. The current state is that the EBOSS scraping system has been set up, but its functionality is unconfirmed due to the timeout.
+</current_work>
+
+<optional_next_step>
+Troubleshoot the EBOSS scraping timeout to confirm its functionality and continue with product data integration.
+</optional_next_step>
