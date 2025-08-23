@@ -87,7 +87,7 @@ export default function HomeScreen() {
             <View style={styles.inputWrapper}>
               <TextInput
                 style={styles.textInput}
-                placeholder="Ask about building codes, clearances, compliance..."
+                placeholder="Type your building question... I'll give you instant, cited answers"
                 placeholderTextColor={Colors.dark.placeholder}
                 value={inputText}
                 onChangeText={setInputText}
