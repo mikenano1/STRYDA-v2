@@ -69,6 +69,7 @@ export default function ChatScreen() {
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isProcessingVoice, setIsProcessingVoice] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
