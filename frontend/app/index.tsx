@@ -164,24 +164,35 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 60,
+    position: 'relative',
+  },
+  backgroundLogoContainer: {
+    position: 'absolute',
+    top: 80,
+    right: -20,
+    width: 200,
+    height: 200,
+    zIndex: 0,
+  },
+  backgroundLogo: {
+    width: '100%',
+    height: '100%',
+    opacity: 0.08,
+    transform: [
+      { rotateX: '15deg' },
+      { rotateY: '25deg' },
+      { scale: 1.2 }
+    ],
   },
   header: {
     alignItems: 'center',
-    marginBottom: 60,
-  },
-  logoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-    gap: 12,
-  },
-  logoImage: {
-    width: 60,
-    height: 60,
+    marginBottom: 40,
+    zIndex: 1,
   },
   brandingContainer: {
     flexDirection: 'row',
     alignItems: 'baseline',
+    marginBottom: 12,
   },
   logoText: {
     fontSize: 48,
