@@ -349,32 +349,58 @@ const styles = StyleSheet.create({
     color: Colors.dark.background + '80',
     lineHeight: 18,
   },
-  quickActions: {
-    marginTop: 'auto',
-    paddingBottom: 40,
-  },
-  quickActionsTitle: {
-    fontSize: 14,
-    color: Colors.dark.icon,
-    marginBottom: 12,
-    textAlign: 'center',
-  },
-  quickActionButtons: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 8,
-  },
-  quickActionButton: {
-    backgroundColor: Colors.dark.surface,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 16,
+  // Expandable Quick Questions Styles
+  quickQuestionsToggle: {
+    marginTop: 16,
+    backgroundColor: Colors.dark.surface + '60',
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: Colors.dark.border,
+    borderColor: Colors.dark.border + '40',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
-  quickActionText: {
+  toggleContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  toggleText: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: '500',
+    color: Colors.dark.text,
+    marginLeft: 8,
+  },
+  quickQuestionsDropdown: {
+    backgroundColor: Colors.dark.surface + '40',
+    borderRadius: 12,
+    marginTop: 8,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: Colors.dark.border + '30',
+  },
+  quickQuestionItem: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.dark.border + '20',
+  },
+  quickQuestionText: {
     fontSize: 14,
     color: Colors.dark.text,
+    lineHeight: 20,
+  },
+  adaptiveLabel: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 12,
+    paddingHorizontal: 16,
+    gap: 6,
+  },
+  adaptiveLabelText: {
+    fontSize: 11,
+    color: Colors.dark.tint,
+    fontStyle: 'italic',
   },
 });
