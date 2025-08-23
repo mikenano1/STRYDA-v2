@@ -413,6 +413,63 @@ export default function LibraryScreen() {
     );
   };
 
+  const renderBrandDetailView = () => {
+    const selectedBrand = brands.find(b => b.id === navigation.selectedBrand);
+    if (!selectedBrand) return null;
+
+    return (
+      <View style={styles.content}>
+        {/* Brand Header */}
+        <View style={styles.brandHeader}>
+          <View style={styles.brandHeaderLogo}>
+            <View style={styles.brandLogoPlaceholder}>
+              <Text style={styles.brandLogoText}>
+                {selectedBrand.name.split(' ').map(word => word[0]).join('').toUpperCase()}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.brandHeaderInfo}>
+            <Text style={styles.brandHeaderName}>{selectedBrand.name}</Text>
+            <Text style={styles.brandHeaderCount}>
+              {selectedBrand.productCount} products in {selectedBrand.categories.length} categories
+            </Text>
+          </View>
+        </View>
+
+        {/* Product Categories */}
+        <ScrollView style={styles.brandCategoriesContainer} showsVerticalScrollIndicator={false}>
+          <Text style={styles.sectionTitle}>Product Categories</Text>
+          {selectedBrand.categories.map((category, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.productCategoryCard}
+              onPress={() => navigateTo({
+                ...navigation,
+                mode: 'category-detail',
+                selectedCategory: category
+              })}
+            >
+              <View style={styles.categoryIconContainer}>
+                <IconSymbol 
+                  name="folder.fill" 
+                  size={24} 
+                  color={Colors.dark.tint} 
+                />
+              </View>
+              <View style={styles.categoryInfo}>
+                <Text style={styles.categoryTitle}>{category}</Text>
+                <Text style={styles.categorySubtitle}>
+                  View all {selectedBrand.name} {category.toLowerCase()} products
+                </Text>
+              </View>
+              <IconSymbol name="chevron.right" size={20} color={Colors.dark.icon} />
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+    );
+  };
+
   const renderCategoryDetailView = () => {
     const selectedBrand = brands.find(b => b.id === navigation.selectedBrand);
     if (!selectedBrand || !navigation.selectedCategory) return null;
