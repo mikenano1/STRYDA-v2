@@ -29,7 +29,7 @@ export default function HomeScreen() {
     if (inputText.trim()) {
       // Navigate to chat with the message
       router.push({
-        pathname: '/chat',
+        pathname: '/screens/chat',
         params: { message: inputText.trim() }
       });
     }
