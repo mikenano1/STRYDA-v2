@@ -219,6 +219,83 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+@api_router.post("/chat/vision")
+async def chat_with_vision(
+    file: UploadFile = File(...),
+    message: str = "",
+    session_id: str = "vision_session"
+):
+    """
+    Analyze technical diagrams and installation guides using GPT-4V
+    Perfect for construction diagrams, installation details, and building plans
+    """
+    try:
+        # Validate file type
+        if not file.content_type.startswith('image/'):
+            raise HTTPException(status_code=400, detail="Only image files are supported")
+        
+        # Read and process the image
+        image_data = await file.read()
+        
+        # Convert to base64 for GPT-4V
+        image_base64 = base64.b64encode(image_data).decode('utf-8')
+        
+        # Initialize vision-capable chat with GPT-4O (best vision model)
+        chat = LlmChat(
+            api_key=os.getenv("EMERGENT_LLM_KEY"),
+            session_id=session_id,
+            system_message="""You are STRYDA, a New Zealand building expert specializing in technical diagram analysis.
+
+You excel at:
+- Reading installation diagrams and technical drawings
+- Explaining building construction details
+- Identifying compliance requirements from diagrams
+- Providing step-by-step installation guidance
+- Spotting potential issues in construction details
+
+When analyzing diagrams, always:
+1. Describe what you see clearly
+2. Point out key technical details
+3. Mention any NZ Building Code compliance aspects
+4. Provide practical installation tips
+5. Use authentic NZ building terminology
+
+Be concise but thorough. Use "mate" and "bro" occasionally for authentic NZ tradie communication."""
+        ).with_model("openai", "gpt-4o")  # Best vision model
+        
+        # Create image content
+        image_content = ImageContent(image_base64=image_base64)
+        
+        # Default message if none provided
+        if not message.strip():
+            message = "Please analyze this technical diagram. Explain what I'm looking at, key installation details, and any Building Code compliance points I should know about."
+        
+        # Create user message with image
+        user_message = UserMessage(
+            text=message,
+            file_contents=[image_content]
+        )
+        
+        # Get AI response
+        start_time = time.time()
+        response = await chat.send_message(user_message)
+        processing_time = (time.time() - start_time) * 1000
+        
+        logger.info(f"Vision AI analysis completed in {processing_time:.1f}ms")
+        
+        return {
+            "response": response,
+            "image_analyzed": True,
+            "processing_time_ms": processing_time,
+            "model_used": "gpt-4o",
+            "analysis_type": "technical_diagram"
+        }
+        
+    except Exception as e:
+        logger.error(f"Vision AI error: {e}")
+        raise HTTPException(status_code=500, detail=f"Vision analysis failed: {str(e)}")
+
+
 @api_router.post("/chat/enhanced", response_model=EnhancedChatResponse)
 async def enhanced_ai_chat(request: EnhancedChatRequest):
     """Enhanced chat with full intelligence: query processing, compliance analysis, alternatives"""
