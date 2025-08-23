@@ -1083,6 +1083,85 @@ async def get_job(job_id: str):
         logger.error(f"Error getting job: {e}")
         raise HTTPException(status_code=500, detail="Error retrieving job")
 
+# Analytics Endpoints
+class PopularQuestionsResponse(BaseModel):
+    questions: List[str]
+    generated_from: str  # 'user_analytics' or 'fallback'
+    total_queries_analyzed: int
+    last_updated: str
+
+@api_router.get("/analytics/popular-questions", response_model=PopularQuestionsResponse)
+async def get_popular_questions():
+    """Get dynamic quick questions based on user search analytics"""
+    try:
+        # Generate popular questions
+        questions = await analytics_engine.generate_popular_questions(limit=8)
+        
+        # Get analytics summary for metadata
+        analytics_summary = await analytics_engine.get_analytics_summary()
+        
+        return PopularQuestionsResponse(
+            questions=questions,
+            generated_from="user_analytics" if analytics_summary['data_sufficient_for_learning'] else "fallback",
+            total_queries_analyzed=analytics_summary['total_queries_30_days'],
+            last_updated=datetime.utcnow().isoformat()
+        )
+        
+    except Exception as e:
+        logger.error(f"Error getting popular questions: {e}")
+        # Return fallback questions in case of error
+        fallback_questions = [
+            'What size lintel do I need for this window?',
+            'What are the fire clearance rules for a fireplace?',
+            'Do I need a consent for a re-roof?',
+            'Is this timber compliant with NZS 3604?',
+            'What\'s the right way to install vinyl cladding?',
+            'How much waterproofing is needed for a bathroom?',
+            'What\'s the difference between a CCC and a CoC?',
+            'What are the rules for getting a Code Compliance Certificate?'
+        ]
+        
+        return PopularQuestionsResponse(
+            questions=fallback_questions,
+            generated_from="fallback",
+            total_queries_analyzed=0,
+            last_updated=datetime.utcnow().isoformat()
+        )
+
+@api_router.get("/analytics/summary")
+async def get_analytics_summary():
+    """Get comprehensive analytics summary for admin/development purposes"""
+    try:
+        summary = await analytics_engine.get_analytics_summary()
+        return summary
+        
+    except Exception as e:
+        logger.error(f"Error getting analytics summary: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving analytics summary")
+
+@api_router.post("/analytics/feedback")
+async def submit_query_feedback(
+    query: str, 
+    session_id: str, 
+    helpful: bool,
+    background_tasks: BackgroundTasks
+):
+    """Submit feedback on query usefulness (for learning improvement)"""
+    try:
+        # Update the analytics for this query in background
+        background_tasks.add_task(
+            analytics_engine.track_user_query,
+            query=query,
+            user_session=session_id,
+            response_useful=helpful
+        )
+        
+        return {"message": "Feedback recorded successfully", "status": "success"}
+        
+    except Exception as e:
+        logger.error(f"Error recording feedback: {e}")
+        raise HTTPException(status_code=500, detail="Error recording feedback")
+
 # Include the router in the main app
 app.include_router(api_router)
 
