@@ -673,7 +673,30 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: Colors.dark.border,
   },
-  inputWrapper: {
+  selectedImageContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.dark.surface,
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 12,
+    gap: 12,
+  },
+  selectedImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 8,
+  },
+  selectedImageText: {
+    flex: 1,
+    fontSize: 14,
+    color: Colors.dark.text,
+    fontWeight: '500',
+  },
+  removeImageButton: {
+    padding: 4,
+  },
+  inputRow: {
     flexDirection: 'row',
     alignItems: 'flex-end',
     backgroundColor: Colors.dark.inputBackground,
@@ -682,7 +705,15 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     gap: 8,
   },
-  textInput: {
+  uploadButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: Colors.dark.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
     flex: 1,
     fontSize: 16,
     color: Colors.dark.text,
@@ -698,5 +729,34 @@ const styles = StyleSheet.create({
   },
   sendButtonDisabled: {
     backgroundColor: Colors.dark.surface,
+  },
+  imageContainer: {
+    marginBottom: 8,
+    alignItems: 'center',
+  },
+  messageImage: {
+    width: 200,
+    height: 150,
+    borderRadius: 8,
+    marginBottom: 4,
+  },
+  imageLabel: {
+    fontSize: 12,
+    color: Colors.dark.icon,
+    fontStyle: 'italic',
+  },
+  visionIndicator: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: Colors.dark.border + '40',
+  },
+  visionText: {
+    fontSize: 11,
+    color: Colors.dark.tint,
+    fontWeight: '500',
   },
 });
