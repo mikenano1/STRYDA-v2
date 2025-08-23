@@ -413,58 +413,279 @@ export default function LibraryScreen() {
     );
   };
 
-  const renderBrandDetailView = () => {
+  const renderCategoryDetailView = () => {
     const selectedBrand = brands.find(b => b.id === navigation.selectedBrand);
-    if (!selectedBrand) return null;
+    if (!selectedBrand || !navigation.selectedCategory) return null;
+
+    // In a real app, this would fetch products from the category
+    // For now, we'll show a few sample products per category
+    const categoryProducts = [
+      {
+        id: 'axon-panel',
+        name: 'Axon Panel',
+        description: 'High-performance fibre cement cladding panel with distinctive linear texture',
+        specifications: ['15mm thickness', '2440mm length', 'R-value 0.5', 'Class 1 fire rating'],
+        warranty: '25 years structural, 15 years paint finish',
+        compliance: ['NZBC E2', 'NZBC B1', 'CodeMark certified'],
+        installGuide: 'Available as PDF download',
+        image: null,
+      },
+      {
+        id: 'linea-weatherboard',
+        name: 'Linea Weatherboard',
+        description: 'Traditional weatherboard profile with modern fibre cement durability',
+        specifications: ['18mm thickness', '3600mm length', 'Pre-primed finish', 'Impact resistant'],
+        warranty: '25 years structural, 15 years paint finish',
+        compliance: ['NZBC E2', 'NZBC B1', 'CodeMark certified'],
+        installGuide: 'Available as PDF download',
+        image: null,
+      },
+    ];
 
     return (
       <View style={styles.content}>
-        {/* Brand Header */}
-        <View style={styles.brandHeader}>
-          <View style={styles.brandHeaderLogo}>
-            <View style={styles.brandLogoPlaceholder}>
-              <Text style={styles.brandLogoText}>
-                {selectedBrand.name.split(' ').map(word => word[0]).join('').toUpperCase()}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.brandHeaderInfo}>
-            <Text style={styles.brandHeaderName}>{selectedBrand.name}</Text>
-            <Text style={styles.brandHeaderCount}>
-              {selectedBrand.productCount} products in {selectedBrand.categories.length} categories
-            </Text>
-          </View>
+        {/* Category Header */}
+        <View style={styles.categoryHeader}>
+          <Text style={styles.categoryHeaderTitle}>
+            {selectedBrand.name} {navigation.selectedCategory}
+          </Text>
+          <Text style={styles.categoryHeaderSubtitle}>
+            {categoryProducts.length} products available
+          </Text>
         </View>
 
-        {/* Product Categories */}
-        <ScrollView style={styles.brandCategoriesContainer} showsVerticalScrollIndicator={false}>
-          <Text style={styles.sectionTitle}>Product Categories</Text>
-          {selectedBrand.categories.map((category, index) => (
+        {/* Products List */}
+        <ScrollView style={styles.categoryProductsContainer} showsVerticalScrollIndicator={false}>
+          {categoryProducts.map((product) => (
             <TouchableOpacity
-              key={index}
-              style={styles.productCategoryCard}
+              key={product.id}
+              style={styles.categoryProductCard}
               onPress={() => navigateTo({
                 ...navigation,
-                mode: 'category-detail',
-                selectedCategory: category
+                mode: 'product-detail',
+                selectedProduct: product.id
               })}
             >
-              <View style={styles.categoryIconContainer}>
-                <IconSymbol 
-                  name="folder.fill" 
-                  size={24} 
-                  color={Colors.dark.tint} 
-                />
+              <View style={styles.productImagePlaceholder}>
+                <IconSymbol name="photo" size={32} color={Colors.dark.icon} />
               </View>
-              <View style={styles.categoryInfo}>
-                <Text style={styles.categoryTitle}>{category}</Text>
-                <Text style={styles.categorySubtitle}>
-                  View all {selectedBrand.name} {category.toLowerCase()} products
+              
+              <View style={styles.categoryProductInfo}>
+                <Text style={styles.categoryProductName}>{product.name}</Text>
+                <Text style={styles.categoryProductDescription} numberOfLines={2}>
+                  {product.description}
                 </Text>
+                
+                {/* Key Specifications */}
+                <View style={styles.categoryProductSpecs}>
+                  {product.specifications.slice(0, 2).map((spec, index) => (
+                    <View key={index} style={styles.specBadge}>
+                      <Text style={styles.specBadgeText}>{spec}</Text>
+                    </View>
+                  ))}
+                </View>
+                
+                {/* Compliance Badges */}
+                <View style={styles.categoryProductCompliance}>
+                  {product.compliance.slice(0, 2).map((code, index) => (
+                    <View key={index} style={styles.complianceBadge}>
+                      <Text style={styles.complianceBadgeText}>{code}</Text>
+                    </View>
+                  ))}
+                </View>
               </View>
+              
               <IconSymbol name="chevron.right" size={20} color={Colors.dark.icon} />
             </TouchableOpacity>
           ))}
+        </ScrollView>
+      </View>
+    );
+  };
+
+  const renderProductDetailView = () => {
+    const selectedBrand = brands.find(b => b.id === navigation.selectedBrand);
+    if (!selectedBrand || !navigation.selectedProduct) return null;
+
+    // Mock product data - in real app this would come from EBOSS database
+    const productData = {
+      id: 'axon-panel',
+      name: 'Axon Panel',
+      brand: selectedBrand.name,
+      category: navigation.selectedCategory || 'Cladding',
+      description: 'High-performance fibre cement cladding panel featuring a distinctive linear texture that creates striking shadow lines. Engineered for durability and weather resistance in New Zealand conditions.',
+      specifications: {
+        'Thickness': '15mm',
+        'Length': '2440mm',
+        'Width': '1200mm',
+        'Weight': '18.5 kg/m²',
+        'Fire Rating': 'Group 1-S, 1-SD',
+        'Impact Resistance': 'Severe duty',
+        'Thermal Rating': 'R-value 0.5',
+        'Moisture Movement': '<0.5%',
+      },
+      compliance: [
+        { code: 'NZBC E2', description: 'External moisture compliance', status: 'certified' },
+        { code: 'NZBC B1', description: 'Structural requirements', status: 'certified' },
+        { code: 'CodeMark', description: 'Building product certification', status: 'certified' },
+        { code: 'AS/NZS 2908.2', description: 'Cellulose-cement products', status: 'compliant' },
+      ],
+      warranty: {
+        structural: '25 years',
+        finish: '15 years paint system warranty',
+        conditions: 'Subject to correct installation and maintenance'
+      },
+      installation: {
+        guides: ['Installation Manual PDF', 'Fixing Schedule', 'Joint Details', 'Flashing Guide'],
+        requirements: ['Licensed installer recommended', 'Minimum 6mm gap from ground', 'Use stainless steel fixings'],
+        tools: ['Circular saw with fine-tooth blade', 'Drill', 'Measuring tools', 'Safety equipment']
+      },
+      sustainability: {
+        recycled: '15% recycled content',
+        carbon: 'Low embodied carbon',
+        disposal: 'Recyclable at end of life'
+      }
+    };
+
+    return (
+      <View style={styles.content}>
+        <ScrollView style={styles.productDetailContainer} showsVerticalScrollIndicator={false}>
+          {/* Product Header */}
+          <View style={styles.productDetailHeader}>
+            <View style={styles.productDetailImageContainer}>
+              <View style={styles.productDetailImagePlaceholder}>
+                <IconSymbol name="photo" size={48} color={Colors.dark.icon} />
+              </View>
+            </View>
+            
+            <View style={styles.productDetailHeaderInfo}>
+              <Text style={styles.productDetailName}>{productData.name}</Text>
+              <Text style={styles.productDetailBrand}>{productData.brand}</Text>
+              <Text style={styles.productDetailCategory}>{productData.category}</Text>
+            </View>
+            
+            {/* Action Buttons */}
+            <View style={styles.productDetailActions}>
+              <TouchableOpacity 
+                style={styles.chatWithAIButton}
+                onPress={() => {
+                  const aiQuery = `Tell me everything about ${productData.brand} ${productData.name} including installation requirements, Building Code compliance, and best practices for NZ conditions`;
+                  router.push({
+                    pathname: '/chat',
+                    params: { message: aiQuery }
+                  });
+                }}
+              >
+                <IconSymbol name="message.fill" size={16} color={Colors.dark.background} />
+                <Text style={styles.chatWithAIText}>Ask AI</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Description */}
+          <View style={styles.productSection}>
+            <Text style={styles.productSectionTitle}>Description</Text>
+            <Text style={styles.productDescription}>{productData.description}</Text>
+          </View>
+
+          {/* Specifications */}
+          <View style={styles.productSection}>
+            <Text style={styles.productSectionTitle}>Technical Specifications</Text>
+            <View style={styles.specificationsGrid}>
+              {Object.entries(productData.specifications).map(([key, value]) => (
+                <View key={key} style={styles.specificationRow}>
+                  <Text style={styles.specificationLabel}>{key}</Text>
+                  <Text style={styles.specificationValue}>{value}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* Building Code Compliance */}
+          <View style={styles.productSection}>
+            <Text style={styles.productSectionTitle}>Building Code Compliance</Text>
+            {productData.compliance.map((item, index) => (
+              <View key={index} style={styles.complianceRow}>
+                <View style={styles.complianceCodeContainer}>
+                  <Text style={styles.complianceCode}>{item.code}</Text>
+                  <View style={[styles.complianceStatus, 
+                    item.status === 'certified' && styles.complianceStatusCertified
+                  ]}>
+                    <Text style={styles.complianceStatusText}>
+                      {item.status.toUpperCase()}
+                    </Text>
+                  </View>
+                </View>
+                <Text style={styles.complianceDescription}>{item.description}</Text>
+              </View>
+            ))}
+          </View>
+
+          {/* Warranty Information */}
+          <View style={styles.productSection}>
+            <Text style={styles.productSectionTitle}>Warranty</Text>
+            <View style={styles.warrantyContainer}>
+              <View style={styles.warrantyRow}>
+                <Text style={styles.warrantyLabel}>Structural:</Text>
+                <Text style={styles.warrantyValue}>{productData.warranty.structural}</Text>
+              </View>
+              <View style={styles.warrantyRow}>
+                <Text style={styles.warrantyLabel}>Finish:</Text>
+                <Text style={styles.warrantyValue}>{productData.warranty.finish}</Text>
+              </View>
+              <Text style={styles.warrantyConditions}>{productData.warranty.conditions}</Text>
+            </View>
+          </View>
+
+          {/* Installation Information */}
+          <View style={styles.productSection}>
+            <Text style={styles.productSectionTitle}>Installation</Text>
+            
+            <View style={styles.installationSubsection}>
+              <Text style={styles.installationSubtitle}>Available Guides</Text>
+              {productData.installation.guides.map((guide, index) => (
+                <TouchableOpacity key={index} style={styles.installationGuideRow}>
+                  <IconSymbol name="doc.text" size={16} color={Colors.dark.tint} />
+                  <Text style={styles.installationGuideText}>{guide}</Text>
+                  <IconSymbol name="arrow.down.circle" size={16} color={Colors.dark.icon} />
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <View style={styles.installationSubsection}>
+              <Text style={styles.installationSubtitle}>Key Requirements</Text>
+              {productData.installation.requirements.map((req, index) => (
+                <View key={index} style={styles.requirementRow}>
+                  <IconSymbol name="checkmark.circle.fill" size={16} color={Colors.dark.tint} />
+                  <Text style={styles.requirementText}>{req}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* AI Guidance Section */}
+          <TouchableOpacity 
+            style={styles.aiGuidanceSection}
+            onPress={() => {
+              const aiQuery = `I need detailed installation guidance for ${productData.brand} ${productData.name}. Include step-by-step process, common mistakes to avoid, NZ Building Code requirements, and best practices for weather sealing`;
+              router.push({
+                pathname: '/chat',
+                params: { message: aiQuery }
+              });
+            }}
+          >
+            <View style={styles.aiGuidanceHeader}>
+              <IconSymbol name="message.badge.fill" size={24} color={Colors.dark.tint} />
+              <View style={styles.aiGuidanceHeaderText}>
+                <Text style={styles.aiGuidanceTitle}>Get AI Installation Guidance</Text>
+                <Text style={styles.aiGuidanceSubtitle}>
+                  Ask STRYDA AI for detailed installation steps, compliance tips, and troubleshooting
+                </Text>
+              </View>
+              <IconSymbol name="chevron.right" size={20} color={Colors.dark.icon} />
+            </View>
+          </TouchableOpacity>
+
         </ScrollView>
       </View>
     );
