@@ -429,6 +429,17 @@ export default function ChatScreen() {
               </TouchableOpacity>
             </View>
           )}
+
+          {/* Voice Controller for hands-free chat */}
+          <View style={styles.voiceControllerContainer}>
+            <VoiceController
+              onVoiceInput={handleVoiceInput}
+              isProcessing={isProcessingVoice || isLoading}
+              lastResponse={messages.length > 0 && messages[messages.length - 1].sender === 'bot' 
+                ? messages[messages.length - 1].text 
+                : ''}
+            />
+          </View>
           
           <View style={styles.inputRow}>
             {/* Diagram Upload Button */}
