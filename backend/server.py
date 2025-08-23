@@ -32,6 +32,7 @@ from auto_scraper import AutomatedScraper
 from pdf_processor import BuildingCodePDFProcessor
 from enhanced_pdf_processor import EnhancedPDFProcessor
 from visual_content_engine import VisualContentEngine, VisualContent
+from analytics_engine import AnalyticsEngine
 from eboss_scraper import scrape_eboss_products, get_eboss_scraping_stats
 
 # MongoDB connection
