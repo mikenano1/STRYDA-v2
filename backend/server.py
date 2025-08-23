@@ -739,6 +739,12 @@ async def process_pdf_batch(request: EnhancedPDFBatchRequest, background_tasks: 
         logger.info(f"Starting enhanced PDF batch processing: {len(request.pdf_sources)} PDFs")
         
         # Validate PDF sources
+        if not request.pdf_sources:
+            raise HTTPException(
+                status_code=400,
+                detail="PDF sources list cannot be empty"
+            )
+            
         for pdf_info in request.pdf_sources:
             required_fields = ['url', 'title']
             missing_fields = [field for field in required_fields if field not in pdf_info]
