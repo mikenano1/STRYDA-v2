@@ -27,6 +27,8 @@ interface Message {
   sources_used?: string[];
   compliance_issues?: ComplianceIssue[];
   processing_time_ms?: number;
+  image_uri?: string;  // For user uploaded images
+  is_vision_response?: boolean;  // For AI vision analysis
 }
 
 interface Citation {
@@ -51,6 +53,7 @@ export default function ChatScreen() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
