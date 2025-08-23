@@ -626,10 +626,9 @@ export default function LibraryScreen() {
               <TouchableOpacity 
                 style={styles.chatWithAIButton}
                 onPress={() => {
-                  const aiQuery = `Tell me everything about ${productData.brand} ${productData.name} including installation requirements, Building Code compliance, and best practices for NZ conditions`;
                   router.push({
                     pathname: '/chat',
-                    params: { message: aiQuery }
+                    params: { message: `I'm looking at ${productData.brand} ${productData.name}. Want me to source something specific for you for this product?` }
                   });
                 }}
               >
