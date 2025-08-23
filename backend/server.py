@@ -438,13 +438,36 @@ No specific documents found in enhanced knowledge base. Provide general NZ build
         )
         await db.chat_messages.insert_one(bot_message_doc.dict())
         
+        # PHASE 5: Visual Content Retrieval
+        visual_content = []
+        try:
+            relevant_visuals = await visual_engine.find_relevant_visuals(request.message, max_results=2)
+            for visual in relevant_visuals:
+                visual_content.append({
+                    "id": visual.id,
+                    "title": visual.title,
+                    "description": visual.description,
+                    "content_type": visual.content_type,
+                    "source_document": visual.source_document,
+                    "keywords": visual.keywords,
+                    "nz_building_codes": visual.nz_building_codes,
+                    "trade_categories": visual.trade_categories,
+                    "text_diagram": visual.description  # For MVP, using text descriptions
+                })
+            
+            if visual_content:
+                logger.info(f"Found {len(visual_content)} relevant visuals for query")
+                
+        except Exception as e:
+            logger.warning(f"Visual content retrieval error: {e}")
+        
         # Calculate processing time
         processing_time = (datetime.now() - start_time).total_seconds() * 1000
         
         # Count alternatives suggested
         alternatives_count = sum(len(issue.get("alternatives", [])) for issue in compliance_issues)
         
-        logger.info(f"Enhanced chat: {len(relevant_docs)} docs, {len(citations)} citations, {len(compliance_issues)} issues, {processing_time:.1f}ms")
+        logger.info(f"Enhanced chat: {len(relevant_docs)} docs, {len(citations)} citations, {len(compliance_issues)} issues, {len(visual_content)} visuals, {processing_time:.1f}ms")
         
         return EnhancedChatResponse(
             response=ai_response,
