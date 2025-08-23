@@ -11,6 +11,7 @@ import {
   Platform,
   ActivityIndicator,
   Image as RNImage,
+  Alert,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { router, useLocalSearchParams } from 'expo-router';
