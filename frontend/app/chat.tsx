@@ -17,6 +17,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Colors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { VoiceController } from '@/components/VoiceController';
 
 interface Message {
   id: string;
