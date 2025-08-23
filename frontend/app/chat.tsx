@@ -206,6 +206,7 @@ export default function ChatScreen() {
         sources_used: data.sources_used || [],
         compliance_issues: data.compliance_issues || [],
         processing_time_ms: data.processing_time_ms,
+        visual_content: data.visual_content || [],
       };
 
       setMessages(prev => [...prev, botMessage]);
