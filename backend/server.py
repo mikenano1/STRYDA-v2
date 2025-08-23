@@ -792,7 +792,7 @@ async def get_enhanced_pdf_processing_status():
                     "successful": batch.get("processed", []),
                     "failed": batch.get("failed", []),
                     "completed_at": batch["completed_at"],
-                    "success_rate": len(batch.get("processed", [])) / batch.get("total_pdfs", 1) * 100
+                    "success_rate": len(batch.get("processed", [])) / max(batch.get("total_pdfs", 1), 1) * 100
                 }
                 for batch in recent_batches
             ],
