@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
   Platform,
+  Image,
 } from 'react-native';
 import { Colors, BrandColors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
