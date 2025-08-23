@@ -872,4 +872,14 @@ const styles = StyleSheet.create({
     marginTop: 4,
     textAlign: 'center',
   },
+  // Voice Controller Container
+  voiceControllerContainer: {
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    backgroundColor: Colors.dark.surface + '20',
+    borderRadius: 12,
+    marginVertical: 12,
+    borderWidth: 1,
+    borderColor: Colors.dark.border + '30',
+  },
 });
