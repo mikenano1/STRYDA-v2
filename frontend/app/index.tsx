@@ -235,6 +235,17 @@ export default function HomeScreen() {
               </View>
             </View>
           )}
+
+          {/* Voice Controller for Hands-Free Operation */}
+          <View style={styles.voiceSection}>
+            <Text style={styles.voiceSectionTitle}>🎤 Hands-Free Voice Mode</Text>
+            <Text style={styles.voiceSectionSubtitle}>Perfect for on-site use when your hands are busy</Text>
+            <VoiceController
+              onVoiceInput={handleVoiceInput}
+              isProcessing={isProcessingVoice}
+              lastResponse={lastAIResponse}
+            />
+          </View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
