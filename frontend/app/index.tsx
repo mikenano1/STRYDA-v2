@@ -15,7 +15,7 @@ import {
 import { Colors, BrandColors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { router } from 'expo-router';
-import { VoiceController } from '@/components/VoiceController';
+
 
 export default function HomeScreen() {
   const [inputText, setInputText] = useState('');
