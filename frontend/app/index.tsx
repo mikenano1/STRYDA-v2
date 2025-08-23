@@ -158,21 +158,41 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
-          {/* Quick actions */}
-          <View style={styles.quickActions}>
-            <Text style={styles.quickActionsTitle}>Quick Questions</Text>
-            <View style={styles.quickActionButtons}>
+          {/* Expandable Quick Questions */}
+          <TouchableOpacity 
+            style={styles.quickQuestionsToggle}
+            onPress={() => setIsQuickQuestionsExpanded(!isQuickQuestionsExpanded)}
+            activeOpacity={0.8}
+          >
+            <View style={styles.toggleContent}>
+              <IconSymbol name="lightbulb.fill" size={16} color={Colors.dark.tint} />
+              <Text style={styles.toggleText}>Quick Questions</Text>
+              <IconSymbol 
+                name={isQuickQuestionsExpanded ? "chevron.up" : "chevron.down"} 
+                size={14} 
+                color={Colors.dark.icon} 
+              />
+            </View>
+          </TouchableOpacity>
+
+          {isQuickQuestionsExpanded && (
+            <View style={styles.quickQuestionsDropdown}>
               {quickQuestions.map((question, index) => (
                 <TouchableOpacity 
                   key={index}
-                  style={styles.quickActionButton}
+                  style={styles.quickQuestionItem}
                   onPress={() => handleQuickQuestion(question)}
+                  activeOpacity={0.7}
                 >
-                  <Text style={styles.quickActionText}>{question}</Text>
+                  <Text style={styles.quickQuestionText}>{question}</Text>
                 </TouchableOpacity>
               ))}
+              <View style={styles.adaptiveLabel}>
+                <IconSymbol name="brain.head.profile" size={12} color={Colors.dark.tint} />
+                <Text style={styles.adaptiveLabelText}>Questions adapt based on user searches</Text>
+              </View>
             </View>
-          </View>
+          )}
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
