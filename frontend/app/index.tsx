@@ -9,6 +9,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
+  Animated,
+  Easing,
 } from 'react-native';
 import { Colors, BrandColors } from '@/constants/Colors';
 import { IconSymbol } from '@/components/ui/IconSymbol';
