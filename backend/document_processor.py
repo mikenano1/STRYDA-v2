@@ -425,6 +425,72 @@ class DocumentProcessor:
         logger.info(f"Processed document '{title}' into {len(chunks)} chunks")
         return doc.id
     
+    async def get_knowledge_stats(self) -> Dict[str, Any]:
+        """Get comprehensive knowledge base statistics"""
+        try:
+            # Get document counts
+            total_documents = await self.db.processed_documents.count_documents({})
+            
+            # Get chunk counts  
+            total_chunks = await self.db.document_chunks.count_documents({})
+            
+            # Get documents by type
+            pipeline = [
+                {"$group": {"_id": "$document_type", "count": {"$sum": 1}}},
+                {"$sort": {"count": -1}}
+            ]
+            
+            docs_by_type_cursor = self.db.processed_documents.aggregate(pipeline)
+            docs_by_type = {doc["_id"]: doc["count"] async for doc in docs_by_type_cursor}
+            
+            # Get recent documents (last 30 days)
+            from datetime import datetime, timedelta
+            thirty_days_ago = datetime.utcnow() - timedelta(days=30)
+            
+            recent_documents = await self.db.processed_documents.count_documents({
+                "created_at": {"$gte": thirty_days_ago}
+            })
+            
+            # Get chunk statistics
+            chunk_stats_pipeline = [
+                {"$group": {
+                    "_id": None,
+                    "avg_chunk_size": {"$avg": {"$strLenCP": "$content"}},
+                    "total_content_length": {"$sum": {"$strLenCP": "$content"}}
+                }}
+            ]
+            
+            chunk_stats_cursor = self.db.document_chunks.aggregate(chunk_stats_pipeline)
+            chunk_stats = None
+            async for stat in chunk_stats_cursor:
+                chunk_stats = stat
+                break
+            
+            return {
+                "total_documents": total_documents,
+                "total_chunks": total_chunks,
+                "documents_by_type": docs_by_type,
+                "recent_documents_30_days": recent_documents,
+                "average_chunk_size": int(chunk_stats.get("avg_chunk_size", 0)) if chunk_stats else 0,
+                "total_content_length": chunk_stats.get("total_content_length", 0) if chunk_stats else 0,
+                "knowledge_base_ready": total_documents > 0 and total_chunks > 0,
+                "last_updated": datetime.utcnow().isoformat()
+            }
+            
+        except Exception as e:
+            logger.error(f"Error getting knowledge stats: {e}")
+            return {
+                "total_documents": 0,
+                "total_chunks": 0,
+                "documents_by_type": {},
+                "recent_documents_30_days": 0,
+                "average_chunk_size": 0,
+                "total_content_length": 0,
+                "knowledge_base_ready": False,
+                "error": str(e),
+                "last_updated": datetime.utcnow().isoformat()
+            }
+    
     async def _intelligent_chunk_document(self, content: str, title: str, 
                                         metadata: Dict[str, Any]) -> List[str]:
         """Intelligently chunk document preserving context"""
