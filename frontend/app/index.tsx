@@ -58,39 +58,6 @@ export default function HomeScreen() {
     }
   };
 
-  // Handle voice input from voice controller
-  const handleVoiceInput = async (voiceText: string) => {
-    setInputText(voiceText);
-    setIsProcessingVoice(true);
-    
-    try {
-      // Send voice query to AI
-      const backendUrl = process.env.EXPO_PUBLIC_BACKEND_URL || 'http://localhost:8001';
-      const response = await fetch(`${backendUrl}/api/chat/enhanced`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: voiceText,
-          session_id: 'voice-session-' + Date.now(),
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setLastAIResponse(data.response || "I couldn't process that question right now.");
-      } else {
-        setLastAIResponse("I'm having trouble connecting right now. Please try again.");
-      }
-    } catch (error) {
-      console.error('Voice query error:', error);
-      setLastAIResponse("I couldn't process your voice query. Please check your connection.");
-    } finally {
-      setIsProcessingVoice(false);
-    }
-  };
-
   // Load dynamic questions on component mount
   useEffect(() => {
     fetchDynamicQuestions();
