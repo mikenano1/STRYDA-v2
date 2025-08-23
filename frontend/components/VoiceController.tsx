@@ -124,7 +124,17 @@ export const VoiceController: React.FC<VoiceControllerProps> = ({
       setError('');
       setVoiceText('');
       
-      // Stop any current speech
+      if (isWebPlatform) {
+        // Web browser - show helpful message
+        Alert.alert(
+          'Voice Feature',
+          'Voice recognition works best on mobile devices with Expo Go app. For web testing, you can still type your questions in the chat.',
+          [{ text: 'OK' }]
+        );
+        return;
+      }
+      
+      // Native platform
       await Speech.stop();
       setIsSpeaking(false);
       
