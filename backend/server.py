@@ -30,6 +30,7 @@ from compliance_engine import ComplianceAlternativesEngine
 from query_processor import AdvancedQueryProcessor
 from auto_scraper import AutomatedScraper
 from pdf_processor import BuildingCodePDFProcessor
+from visual_content_engine import VisualContentEngine, VisualContent
 from eboss_scraper import scrape_eboss_products, get_eboss_scraping_stats
 
 # MongoDB connection
