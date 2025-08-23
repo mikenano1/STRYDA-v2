@@ -721,6 +721,118 @@ async def get_pdf_processing_status():
         logger.error(f"Error getting PDF processing status: {e}")
         raise HTTPException(status_code=500, detail="Error retrieving PDF processing status")
 
+# Enhanced PDF Processing Endpoints
+class EnhancedPDFBatchRequest(BaseModel):
+    pdf_sources: List[Dict[str, str]]  # Each with url, title, type, organization
+
+class EnhancedPDFBatchResponse(BaseModel):
+    message: str
+    batch_id: str
+    total_pdfs: int
+    processing_started: bool
+
+@api_router.post("/knowledge/process-pdf-batch", response_model=EnhancedPDFBatchResponse)
+async def process_pdf_batch(request: EnhancedPDFBatchRequest, background_tasks: BackgroundTasks):
+    """Process multiple PDFs in batch with enhanced classification"""
+    try:
+        batch_id = str(uuid.uuid4())
+        logger.info(f"Starting enhanced PDF batch processing: {len(request.pdf_sources)} PDFs")
+        
+        # Validate PDF sources
+        for pdf_info in request.pdf_sources:
+            required_fields = ['url', 'title']
+            missing_fields = [field for field in required_fields if field not in pdf_info]
+            if missing_fields:
+                raise HTTPException(
+                    status_code=400, 
+                    detail=f"Missing required fields in PDF source: {missing_fields}"
+                )
+        
+        # Start batch processing in background
+        background_tasks.add_task(
+            _process_enhanced_pdf_batch_task,
+            request.pdf_sources,
+            batch_id
+        )
+        
+        return EnhancedPDFBatchResponse(
+            message=f"Enhanced PDF batch processing started for {len(request.pdf_sources)} documents",
+            batch_id=batch_id,
+            total_pdfs=len(request.pdf_sources),
+            processing_started=True
+        )
+        
+    except Exception as e:
+        logger.error(f"Error starting enhanced PDF batch processing: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.get("/knowledge/enhanced-pdf-status")
+async def get_enhanced_pdf_processing_status():
+    """Get comprehensive status of enhanced PDF processing"""
+    try:
+        # Get processing stats from enhanced processor
+        status = await enhanced_pdf_processor.get_processing_status()
+        
+        # Get recent batch results
+        recent_batches = await db.enhanced_pdf_batch_results.find(
+        ).sort("completed_at", -1).limit(5).to_list(5)
+        
+        return {
+            **status,
+            "recent_batches": [
+                {
+                    "batch_id": batch["batch_id"],
+                    "total_pdfs": batch.get("total_pdfs", 0),
+                    "successful": batch.get("processed", []),
+                    "failed": batch.get("failed", []),
+                    "completed_at": batch["completed_at"],
+                    "success_rate": len(batch.get("processed", [])) / batch.get("total_pdfs", 1) * 100
+                }
+                for batch in recent_batches
+            ],
+            "last_updated": datetime.utcnow().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting enhanced PDF processing status: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving enhanced PDF processing status")
+
+async def _process_enhanced_pdf_batch_task(pdf_sources: List[Dict[str, str]], batch_id: str):
+    """Background task for enhanced PDF batch processing"""
+    try:
+        logger.info(f"Enhanced PDF batch processing started: {batch_id}")
+        
+        # Process the PDF batch
+        results = await enhanced_pdf_processor.process_pdf_batch(pdf_sources)
+        
+        logger.info(f"Enhanced PDF batch completed: {batch_id} - {results['total_documents']} documents, {results['total_chunks']} chunks")
+        
+        # Store batch result in database
+        await db.enhanced_pdf_batch_results.insert_one({
+            "batch_id": batch_id,
+            "total_pdfs": len(pdf_sources),
+            "processed": results['processed'],
+            "failed": results['failed'],
+            "total_documents": results['total_documents'],
+            "total_chunks": results['total_chunks'],
+            "completed_at": datetime.utcnow(),
+            "success": True
+        })
+        
+    except Exception as e:
+        logger.error(f"Enhanced PDF batch processing failed: {batch_id} - {e}")
+        
+        # Store error result
+        await db.enhanced_pdf_batch_results.insert_one({
+            "batch_id": batch_id,
+            "total_pdfs": len(pdf_sources),
+            "processed": [],
+            "failed": pdf_sources,
+            "error": str(e),
+            "completed_at": datetime.utcnow(),
+            "success": False
+        })
+
 async def _process_pdf_task(pdf_url: str, title: str, document_type: str):
     """Background task to process PDF"""
     try:
