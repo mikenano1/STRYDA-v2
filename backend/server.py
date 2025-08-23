@@ -13,6 +13,9 @@ import aiohttp
 import asyncio
 from bs4 import BeautifulSoup
 import re
+import base64
+from io import BytesIO
+from PIL import Image
 
 # Load environment variables first
 ROOT_DIR = Path(__file__).parent
