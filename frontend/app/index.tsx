@@ -173,8 +173,17 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     flexDirection: 'row',
-    alignItems: 'baseline',
+    alignItems: 'center',
     marginBottom: 16,
+    gap: 12,
+  },
+  logoImage: {
+    width: 60,
+    height: 60,
+  },
+  brandingContainer: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
   },
   logoText: {
     fontSize: 48,
