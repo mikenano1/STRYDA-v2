@@ -30,6 +30,7 @@ interface Message {
   processing_time_ms?: number;
   image_uri?: string;  // For user uploaded images
   is_vision_response?: boolean;  // For AI vision analysis
+  visual_content?: VisualContent[];  // AI-provided diagrams and charts
 }
 
 interface Citation {
@@ -45,6 +46,18 @@ interface ComplianceIssue {
   severity: string;
   code_reference: string;
   alternatives?: any[];
+}
+
+interface VisualContent {
+  id: string;
+  title: string;
+  description: string;
+  content_type: string;
+  source_document: string;
+  keywords: string[];
+  nz_building_codes: string[];
+  trade_categories: string[];
+  text_diagram?: string;
 }
 
 export default function ChatScreen() {
