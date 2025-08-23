@@ -32,6 +32,7 @@ export const VoiceController: React.FC<VoiceControllerProps> = ({
   const [voiceText, setVoiceText] = useState('');
   const [error, setError] = useState('');
   const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
+  const [isWebPlatform, setIsWebPlatform] = useState(Platform.OS === 'web');
   
   const pulseAnimation = useRef(new Animated.Value(1)).current;
   const glowAnimation = useRef(new Animated.Value(0)).current;
