@@ -40,7 +40,32 @@ export default function HomeScreen() {
     }
   };
 
+  // Fetch dynamic quick questions based on user analytics
+  const fetchDynamicQuestions = async () => {
+    try {
+      const backendUrl = process.env.EXPO_PUBLIC_BACKEND_URL || 'http://localhost:8001';
+      const response = await fetch(`${backendUrl}/api/analytics/popular-questions`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.questions && data.questions.length > 0) {
+          setQuickQuestions(data.questions);
+        }
+      }
+    } catch (error) {
+      console.log('Using fallback questions - analytics not ready yet');
+      // Keep current fallback questions
+    }
+  };
+
+  // Load dynamic questions on component mount
+  useEffect(() => {
+    fetchDynamicQuestions();
+  }, []);
+
   const handleQuickQuestion = (question: string) => {
+    setInputText(question);
+    setIsQuickQuestionsExpanded(false);
+    // Navigate to chat with the question
     router.push({
       pathname: '/chat',
       params: { message: `Tell me about ${question} in New Zealand building code` }
