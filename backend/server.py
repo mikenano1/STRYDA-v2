@@ -22,7 +22,7 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # Import all enhanced systems
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+from emergentintegrations.llm.chat import LlmChat, UserMessage, ImageContent
 from document_processor import DocumentProcessor
 from enhanced_knowledge_base import EnhancedKnowledgeBase
 from compliance_engine import ComplianceAlternativesEngine
