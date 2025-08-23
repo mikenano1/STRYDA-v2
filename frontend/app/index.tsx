@@ -15,12 +15,14 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import { router } from 'expo-router';
 
 const quickQuestions = [
-  'Hearth clearances',
-  'H1 insulation requirements',
-  'E2 weathertightness',
-  'Building consent process',
-  'Fire rating requirements',
-  'Metrofires installation',
+  'What size lintel do I need for this window?',
+  'What are the fire clearance rules for a fireplace?',
+  'Do I need a consent for a re-roof?',
+  'Is this timber compliant with NZS 3604?',
+  'What\'s the right way to install vinyl cladding?',
+  'How much waterproofing is needed for a bathroom?',
+  'What\'s the difference between a CCC and a CoC?',
+  'What are the rules for getting a Code Compliance Certificate?',
 ];
 
 export default function HomeScreen() {
