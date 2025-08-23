@@ -71,6 +71,87 @@ export default function ChatScreen() {
     }, 100);
   }, [messages]);
 
+  const pickImage = async () => {
+    try {
+      // Request permissions
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert('Permission Required', 'We need camera roll permissions to upload diagrams.');
+        return;
+      }
+
+      // Launch image picker
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 0.8,
+      });
+
+      if (!result.canceled && result.assets[0]) {
+        setSelectedImage(result.assets[0].uri);
+      }
+    } catch (error) {
+      console.error('Error picking image:', error);
+      Alert.alert('Error', 'Failed to select image');
+    }
+  };
+
+  const sendMessageWithVision = async (messageText: string, imageUri: string) => {
+    setIsLoading(true);
+
+    try {
+      // Create FormData for image upload
+      const formData = new FormData();
+      formData.append('file', {
+        uri: imageUri,
+        type: 'image/jpeg',
+        name: 'diagram.jpg',
+      } as any);
+      formData.append('message', messageText || 'Please analyze this technical diagram for installation guidance and Building Code compliance.');
+      formData.append('session_id', 'mobile_vision_session');
+
+      const response = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/chat/vision`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      const data = await response.json();
+
+      // Add user message with image
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        text: messageText || 'Analyze this diagram',
+        sender: 'user',
+        timestamp: new Date(),
+        image_uri: imageUri,
+      };
+
+      // Add AI vision response
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: data.response || "I couldn't analyze the diagram. Please try again.",
+        sender: 'bot',
+        timestamp: new Date(),
+        is_vision_response: true,
+        processing_time_ms: data.processing_time_ms,
+      };
+
+      setMessages(prev => [...prev, userMessage, botMessage]);
+      setSelectedImage(null);
+      setInputText('');
+
+    } catch (error) {
+      console.error('Vision API error:', error);
+      Alert.alert('Error', 'Failed to analyze diagram. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const sendMessage = async (messageText: string) => {
     if (!messageText.trim() && !initialMessage) return;
 
