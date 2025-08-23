@@ -226,6 +226,19 @@ export default function ChatScreen() {
     }
   };
 
+  // Handle voice input from voice controller
+  const handleVoiceInput = async (voiceText: string) => {
+    if (!voiceText || voiceText.trim() === '') return;
+    
+    setInputText(voiceText);
+    setIsProcessingVoice(true);
+    
+    // Send the voice text as a regular message
+    await sendMessage(voiceText);
+    
+    setIsProcessingVoice(false);
+  };
+
   const renderMessage = (message: Message) => {
     const isUser = message.sender === 'user';
     
