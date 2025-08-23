@@ -37,7 +37,7 @@ export default function HomeScreen() {
 
   const handleQuickQuestion = (question: string) => {
     router.push({
-      pathname: '/screens/chat',
+      pathname: '/chat',
       params: { message: `Tell me about ${question} in New Zealand building code` }
     });
   };
