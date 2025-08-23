@@ -46,6 +46,7 @@ compliance_engine = ComplianceAlternativesEngine(document_processor)
 query_processor = AdvancedQueryProcessor(document_processor)
 auto_scraper = AutomatedScraper(document_processor)
 pdf_processor = BuildingCodePDFProcessor(document_processor)
+enhanced_pdf_processor = EnhancedPDFProcessor(document_processor)
 visual_engine = VisualContentEngine(document_processor)
 
 # Create the main app without a prefix
