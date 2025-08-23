@@ -60,18 +60,20 @@ export default function HomeScreen() {
         style={styles.keyboardContainer}
       >
         <View style={styles.content}>
-          {/* Header with logo and greeting */}
+          {/* Background 3D Logo */}
+          <View style={styles.backgroundLogoContainer}>
+            <Image 
+              source={require('@/assets/images/stryda-logo.png')} 
+              style={styles.backgroundLogo}
+              resizeMode="contain"
+            />
+          </View>
+
+          {/* Header with branding */}
           <View style={styles.header}>
-            <View style={styles.logoContainer}>
-              <Image 
-                source={require('@/assets/images/stryda-logo.png')} 
-                style={styles.logoImage}
-                resizeMode="contain"
-              />
-              <View style={styles.brandingContainer}>
-                <Text style={styles.logoText}>STRYDA</Text>
-                <Text style={styles.logoSubtext}>ai</Text>
-              </View>
+            <View style={styles.brandingContainer}>
+              <Text style={styles.logoText}>STRYDA</Text>
+              <Text style={styles.logoSubtext}>ai</Text>
             </View>
             <Text style={styles.greeting}>
               Your on-site co-pilot for smarter, safer builds.
