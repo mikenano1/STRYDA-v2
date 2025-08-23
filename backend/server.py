@@ -1164,6 +1164,182 @@ async def submit_query_feedback(
         logger.error(f"Error recording feedback: {e}")
         raise HTTPException(status_code=500, detail="Error recording feedback")
 
+# Comprehensive Knowledge Expansion Endpoints
+class KnowledgeExpansionResponse(BaseModel):
+    expansion_started: bool
+    phase_name: str
+    total_sources: int
+    estimated_time_minutes: int
+    expansion_id: str
+
+class ExpansionProgressResponse(BaseModel):
+    current_phase: Optional[str]
+    completion_percentage: float
+    documents_processed: int
+    chunks_created: int
+    estimated_final_size: Dict[str, int]
+    processing_status: str
+
+@api_router.post("/knowledge/expand-critical", response_model=KnowledgeExpansionResponse)
+async def start_critical_expansion(background_tasks: BackgroundTasks):
+    """Start critical phase knowledge expansion (safety & compliance documents)"""
+    try:
+        expansion_id = str(uuid.uuid4())
+        
+        logger.info("🔥 Starting CRITICAL PHASE knowledge expansion")
+        logger.info("⚡ Focus: Essential safety, fire, structural, and compliance documents")
+        
+        # Start critical expansion in background
+        background_tasks.add_task(
+            _run_critical_expansion_task,
+            expansion_id
+        )
+        
+        return KnowledgeExpansionResponse(
+            expansion_started=True,
+            phase_name="Critical Building Safety & Compliance",
+            total_sources=23,  # Critical priority sources
+            estimated_time_minutes=15,  # Estimate 15 minutes for critical phase
+            expansion_id=expansion_id
+        )
+        
+    except Exception as e:
+        logger.error(f"Error starting critical expansion: {e}")
+        raise HTTPException(status_code=500, detail="Error starting critical knowledge expansion")
+
+@api_router.post("/knowledge/expand-full", response_model=KnowledgeExpansionResponse)
+async def start_full_expansion(background_tasks: BackgroundTasks):
+    """Start complete knowledge expansion (all 74 sources)"""
+    try:
+        expansion_id = str(uuid.uuid4())
+        
+        logger.info("🌟 Starting FULL COMPREHENSIVE knowledge expansion")
+        logger.info("🎯 Target: Transform STRYDA into ultimate NZ building assistant")
+        
+        # Start full expansion in background  
+        background_tasks.add_task(
+            _run_full_expansion_task,
+            expansion_id
+        )
+        
+        return KnowledgeExpansionResponse(
+            expansion_started=True,
+            phase_name="Complete NZ Building Knowledge",
+            total_sources=74,  # All comprehensive sources
+            estimated_time_minutes=60,  # Estimate 1 hour for full expansion
+            expansion_id=expansion_id
+        )
+        
+    except Exception as e:
+        logger.error(f"Error starting full expansion: {e}")
+        raise HTTPException(status_code=500, detail="Error starting comprehensive knowledge expansion")
+
+@api_router.get("/knowledge/expansion-progress", response_model=ExpansionProgressResponse)
+async def get_expansion_progress():
+    """Get current knowledge expansion progress"""
+    try:
+        progress = await knowledge_expander.get_expansion_progress()
+        
+        return ExpansionProgressResponse(
+            current_phase=progress.get('current_phase'),
+            completion_percentage=progress.get('completion_percentage', 0),
+            documents_processed=progress['expansion_stats']['processed'],
+            chunks_created=progress['expansion_stats']['chunks_created'],
+            estimated_final_size=progress.get('estimated_final_size', {}),
+            processing_status="active" if progress.get('current_phase') else "idle"
+        )
+        
+    except Exception as e:
+        logger.error(f"Error getting expansion progress: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving expansion progress")
+
+@api_router.get("/knowledge/expansion-summary")
+async def get_expansion_summary():
+    """Get detailed expansion summary and statistics"""
+    try:
+        progress = await knowledge_expander.get_expansion_progress()
+        current_stats = await document_processor.get_knowledge_stats()
+        
+        return {
+            "current_knowledge_base": current_stats,
+            "expansion_plan": {
+                "total_sources_available": 74,
+                "critical_sources": 23,
+                "high_priority_sources": 57,
+                "phases_available": 5
+            },
+            "expansion_progress": progress,
+            "last_updated": datetime.utcnow().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting expansion summary: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving expansion summary")
+
+async def _run_critical_expansion_task(expansion_id: str):
+    """Background task for critical phase expansion"""
+    try:
+        logger.info(f"🔥 Critical expansion started: {expansion_id}")
+        
+        # Run critical expansion
+        result = await knowledge_expander.run_critical_expansion_only()
+        
+        logger.info(f"✅ Critical expansion completed: {expansion_id}")
+        logger.info(f"📊 Results: {result['total_documents_created']} documents, {result['total_chunks_created']} chunks")
+        
+        # Store expansion result in database for tracking
+        await db.knowledge_expansion_results.insert_one({
+            "expansion_id": expansion_id,
+            "expansion_type": "critical",
+            "result": result,
+            "completed_at": datetime.utcnow(),
+            "success": True
+        })
+        
+    except Exception as e:
+        logger.error(f"❌ Critical expansion failed: {expansion_id} - {e}")
+        
+        # Store failure result
+        await db.knowledge_expansion_results.insert_one({
+            "expansion_id": expansion_id,
+            "expansion_type": "critical",
+            "error": str(e),
+            "completed_at": datetime.utcnow(),
+            "success": False
+        })
+
+async def _run_full_expansion_task(expansion_id: str):
+    """Background task for full comprehensive expansion"""
+    try:
+        logger.info(f"🌟 Full expansion started: {expansion_id}")
+        
+        # Run complete expansion
+        result = await knowledge_expander.run_full_expansion()
+        
+        logger.info(f"🎉 Full expansion completed: {expansion_id}")
+        logger.info(f"📊 Final results: {result['total_documents_created']} documents, {result['total_chunks_created']} chunks")
+        
+        # Store expansion result
+        await db.knowledge_expansion_results.insert_one({
+            "expansion_id": expansion_id,
+            "expansion_type": "full",
+            "result": result,
+            "completed_at": datetime.utcnow(),
+            "success": True
+        })
+        
+    except Exception as e:
+        logger.error(f"❌ Full expansion failed: {expansion_id} - {e}")
+        
+        # Store failure result
+        await db.knowledge_expansion_results.insert_one({
+            "expansion_id": expansion_id,
+            "expansion_type": "full",
+            "error": str(e),
+            "completed_at": datetime.utcnow(),
+            "success": False
+        })
+
 # Include the router in the main app
 app.include_router(api_router)
 
