@@ -94,6 +94,7 @@ class EnhancedChatResponse(BaseModel):
     compliance_issues: List[Dict[str, Any]] = []
     alternatives_suggested: int = 0
     processing_time_ms: float = 0
+    visual_content: List[Dict[str, Any]] = []  # Visual diagrams and charts
 
 class Job(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
