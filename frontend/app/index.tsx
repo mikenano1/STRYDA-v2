@@ -61,12 +61,24 @@ export default function HomeScreen() {
           {/* Header with logo and greeting */}
           <View style={styles.header}>
             <View style={styles.logoContainer}>
-              <Text style={styles.logoText}>STRYDA</Text>
-              <Text style={styles.logoSubtext}>ai</Text>
+              <Image 
+                source={require('@/assets/images/stryda-logo.png')} 
+                style={styles.logoImage}
+                resizeMode="contain"
+              />
+              <View style={styles.brandingContainer}>
+                <Text style={styles.logoText}>STRYDA</Text>
+                <Text style={styles.logoSubtext}>ai</Text>
+              </View>
             </View>
             <Text style={styles.greeting}>
-              G'day! Ask me anything about NZ building codes, products, or compliance. 
-              No faff, just straight answers with proper citations.
+              Your on-site co-pilot for smarter, safer builds.
+            </Text>
+            <Text style={styles.subGreeting}>
+              Ask me anything about the NZ Building Code, manufacturer specs, or site questions, and get instant, cited answers.
+            </Text>
+            <Text style={styles.tagline}>
+              I'm here to save you time, protect your projects, and keep you compliant, hands-free.
             </Text>
           </View>
 
