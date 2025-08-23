@@ -385,33 +385,58 @@ export default function ChatScreen() {
           )}
         </ScrollView>
 
-        {/* Input */}
+        {/* Input area */}
         <View style={styles.inputContainer}>
-          <View style={styles.inputWrapper}>
+          {/* Selected Image Preview */}
+          {selectedImage && (
+            <View style={styles.selectedImageContainer}>
+              <RNImage source={{ uri: selectedImage }} style={styles.selectedImage} />
+              <Text style={styles.selectedImageText}>📋 Ready to analyze diagram</Text>
+              <TouchableOpacity 
+                style={styles.removeImageButton}
+                onPress={() => setSelectedImage(null)}
+              >
+                <IconSymbol name="xmark.circle.fill" size={20} color={Colors.dark.icon} />
+              </TouchableOpacity>
+            </View>
+          )}
+          
+          <View style={styles.inputRow}>
+            {/* Diagram Upload Button */}
+            <TouchableOpacity
+              style={styles.uploadButton}
+              onPress={pickImage}
+              disabled={isLoading}
+            >
+              <IconSymbol name="photo" size={20} color={Colors.dark.tint} />
+            </TouchableOpacity>
+            
             <TextInput
-              style={styles.textInput}
-              placeholder="Ask about codes, clearances, compliance..."
-              placeholderTextColor={Colors.dark.placeholder}
+              style={styles.input}
               value={inputText}
               onChangeText={setInputText}
+              placeholder={selectedImage ? "Ask about this diagram..." : "Ask STRYDA about building codes, products, compliance..."}
+              placeholderTextColor={Colors.dark.placeholder}
               multiline
               maxLength={500}
-              returnKeyType="send"
-              onSubmitEditing={() => sendMessage(inputText)}
-              blurOnSubmit={false}
             />
             
-            <TouchableOpacity 
-              style={[styles.sendButton, !inputText.trim() && styles.sendButtonDisabled]}
-              onPress={() => sendMessage(inputText)}
-              disabled={!inputText.trim() || isLoading}
-              activeOpacity={0.8}
+            <TouchableOpacity
+              style={[styles.sendButton, (!inputText.trim() && !selectedImage) && styles.sendButtonDisabled]}
+              onPress={() => {
+                if (selectedImage) {
+                  sendMessageWithVision(inputText.trim(), selectedImage);
+                } else {
+                  sendMessage(inputText.trim());
+                }
+              }}
+              disabled={isLoading || (!inputText.trim() && !selectedImage)}
             >
-              <IconSymbol 
-                name="paperplane.fill" 
-                size={18} 
-                color={inputText.trim() && !isLoading ? Colors.dark.background : Colors.dark.placeholder} 
-              />
+              {isLoading ? (
+                <ActivityIndicator size="small" color={Colors.dark.background} />
+              ) : (
+                <IconSymbol name="paperplane.fill" size={18} color={Colors.dark.background} />
+              )}
             </TouchableOpacity>
           </View>
         </View>
