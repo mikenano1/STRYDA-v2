@@ -817,4 +817,77 @@ const styles = StyleSheet.create({
     color: Colors.dark.tint,
     fontWeight: '500',
   },
+  // Visual Content Styles
+  visualContentContainer: {
+    marginTop: 12,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: Colors.dark.border + '40',
+  },
+  visualContentHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 8,
+  },
+  visualContentTitle: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: Colors.dark.tint,
+  },
+  visualContentCard: {
+    backgroundColor: Colors.dark.surface + '40',
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 8,
+  },
+  visualContentInfo: {
+    flex: 1,
+  },
+  visualTitle: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: Colors.dark.text,
+    marginBottom: 4,
+  },
+  visualDescription: {
+    fontSize: 12,
+    color: Colors.dark.icon,
+    marginBottom: 6,
+    lineHeight: 16,
+  },
+  visualMetadata: {
+    marginBottom: 6,
+  },
+  visualSource: {
+    fontSize: 11,
+    color: Colors.dark.tint,
+    marginBottom: 2,
+  },
+  visualCodes: {
+    fontSize: 11,
+    color: Colors.dark.tint,
+    fontWeight: '500',
+  },
+  textDiagramContainer: {
+    backgroundColor: Colors.dark.background,
+    borderRadius: 6,
+    padding: 8,
+    marginTop: 6,
+    borderLeftWidth: 3,
+    borderLeftColor: Colors.dark.tint,
+  },
+  textDiagram: {
+    fontSize: 10,
+    color: Colors.dark.icon,
+    fontFamily: 'monospace',
+    lineHeight: 14,
+  },
+  moreVisualsText: {
+    fontSize: 11,
+    color: Colors.dark.tint,
+    fontStyle: 'italic',
+    marginTop: 4,
+    textAlign: 'center',
+  },
 });
