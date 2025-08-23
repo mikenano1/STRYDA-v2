@@ -56,6 +56,12 @@ export default function TabLayout() {
           headerTitle: 'Library',
         }}
       />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          href: null, // Hide from tab bar but keep navigable
+        }}
+      />
     </Tabs>
   );
 }
