@@ -216,9 +216,25 @@ export default function ChatScreen() {
     return (
       <View key={message.id} style={[styles.messageContainer, isUser && styles.userMessageContainer]}>
         <View style={[styles.messageBubble, isUser ? styles.userBubble : styles.botBubble]}>
+          {/* Show uploaded image for user messages */}
+          {message.image_uri && (
+            <View style={styles.imageContainer}>
+              <RNImage source={{ uri: message.image_uri }} style={styles.messageImage} />
+              <Text style={styles.imageLabel}>📋 Technical Diagram</Text>
+            </View>
+          )}
+          
           <Text style={[styles.messageText, isUser && styles.userMessageText]}>
             {message.text}
           </Text>
+          
+          {/* Vision AI indicator */}
+          {message.is_vision_response && (
+            <View style={styles.visionIndicator}>
+              <IconSymbol name="eye.fill" size={14} color={Colors.dark.tint} />
+              <Text style={styles.visionText}>Diagram Analysis</Text>
+            </View>
+          )}
           
           {/* Enhanced information for bot messages */}
           {!isUser && (
