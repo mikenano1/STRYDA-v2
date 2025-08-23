@@ -344,50 +344,6 @@ export default function ChatScreen() {
               )}
             </View>
           )}
-          
-          {/* Visual Content (AI-provided diagrams and charts) */}
-          {message.visual_content && message.visual_content.length > 0 && (
-            <View style={styles.visualContentContainer}>
-              <View style={styles.visualContentHeader}>
-                <IconSymbol name="photo.fill" size={14} color={Colors.dark.tint} />
-                <Text style={styles.visualContentTitle}>Related Diagrams</Text>
-              </View>
-              {message.visual_content.map((visual, index) => (
-                <TouchableOpacity key={visual.id} style={styles.visualContentCard}>
-                  <View style={styles.visualContentInfo}>
-                    <Text style={styles.visualTitle} numberOfLines={2}>
-                      {visual.title}
-                    </Text>
-                    <Text style={styles.visualDescription} numberOfLines={2}>
-                      {visual.description}
-                    </Text>
-                    <View style={styles.visualMetadata}>
-                      <Text style={styles.visualSource}>
-                        📋 {visual.source_document}
-                      </Text>
-                      {visual.nz_building_codes.length > 0 && (
-                        <Text style={styles.visualCodes}>
-                          🔗 {visual.nz_building_codes.join(', ')}
-                        </Text>
-                      )}
-                    </View>
-                    {visual.text_diagram && (
-                      <View style={styles.textDiagramContainer}>
-                        <Text style={styles.textDiagram}>
-                          {visual.text_diagram}
-                        </Text>
-                      </View>
-                    )}
-                  </View>
-                </TouchableOpacity>
-              ))}
-              {message.visual_content.length > 2 && (
-                <Text style={styles.moreVisualsText}>
-                  {message.visual_content.length - 2} more diagrams available in Library
-                </Text>
-              )}
-            </View>
-          )}
         </View>
         
         <Text style={styles.timestamp}>
