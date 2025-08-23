@@ -7,6 +7,7 @@ import {
   Alert,
   Animated,
   Vibration,
+  Platform,
 } from 'react-native';
 import * as Speech from 'expo-speech';
 import Voice from '@react-native-voice/voice';
