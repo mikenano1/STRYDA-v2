@@ -478,7 +478,8 @@ No specific documents found in enhanced knowledge base. Provide general NZ build
             query_analysis=query_analysis,
             compliance_issues=compliance_issues,
             alternatives_suggested=alternatives_count,
-            processing_time_ms=processing_time
+            processing_time_ms=processing_time,
+            visual_content=visual_content
         )
         
     except Exception as e:
