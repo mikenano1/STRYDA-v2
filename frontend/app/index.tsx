@@ -20,6 +20,8 @@ import { VoiceController } from '@/components/VoiceController';
 export default function HomeScreen() {
   const [inputText, setInputText] = useState('');
   const [isQuickQuestionsExpanded, setIsQuickQuestionsExpanded] = useState(false);
+  const [isProcessingVoice, setIsProcessingVoice] = useState(false);
+  const [lastAIResponse, setLastAIResponse] = useState('');
   const [quickQuestions, setQuickQuestions] = useState([
     'What size lintel do I need for this window?',
     'What are the fire clearance rules for a fireplace?',
