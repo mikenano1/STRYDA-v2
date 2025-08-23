@@ -427,30 +427,4 @@ const styles = StyleSheet.create({
     color: Colors.dark.tint,
     fontStyle: 'italic',
   },
-  // Voice Section Styles
-  voiceSection: {
-    marginTop: 32,
-    alignItems: 'center',
-    paddingVertical: 24,
-    paddingHorizontal: 20,
-    backgroundColor: Colors.dark.surface + '30',
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: Colors.dark.border + '40',
-  },
-  voiceSectionTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: Colors.dark.text,
-    textAlign: 'center',
-    marginBottom: 6,
-  },
-  voiceSectionSubtitle: {
-    fontSize: 14,
-    color: Colors.dark.icon,
-    textAlign: 'center',
-    marginBottom: 20,
-    maxWidth: 280,
-    lineHeight: 20,
-  },
 });
