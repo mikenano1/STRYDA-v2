@@ -49,6 +49,7 @@ auto_scraper = AutomatedScraper(document_processor)
 pdf_processor = BuildingCodePDFProcessor(document_processor)
 enhanced_pdf_processor = EnhancedPDFProcessor(document_processor)
 visual_engine = VisualContentEngine(document_processor)
+analytics_engine = AnalyticsEngine(document_processor)
 
 # Create the main app without a prefix
 app = FastAPI(title="STRYDA.ai Enhanced API", version="2.0.0")
