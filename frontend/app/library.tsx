@@ -723,19 +723,18 @@ export default function LibraryScreen() {
           <TouchableOpacity 
             style={styles.aiGuidanceSection}
             onPress={() => {
-              const aiQuery = `I need detailed installation guidance for ${productData.brand} ${productData.name}. Include step-by-step process, common mistakes to avoid, NZ Building Code requirements, and best practices for weather sealing`;
               router.push({
                 pathname: '/chat',
-                params: { message: aiQuery }
+                params: { message: `I'm looking at ${productData.brand} ${productData.name}. Want me to source something specific for you for this product?` }
               });
             }}
           >
             <View style={styles.aiGuidanceHeader}>
               <IconSymbol name="message.badge.fill" size={24} color={Colors.dark.tint} />
               <View style={styles.aiGuidanceHeaderText}>
-                <Text style={styles.aiGuidanceTitle}>Get AI Installation Guidance</Text>
+                <Text style={styles.aiGuidanceTitle}>Ask STRYDA Anything</Text>
                 <Text style={styles.aiGuidanceSubtitle}>
-                  Ask STRYDA AI for detailed installation steps, compliance tips, and troubleshooting
+                  Need help with this product? Ask me anything specific
                 </Text>
               </View>
               <IconSymbol name="chevron.right" size={20} color={Colors.dark.icon} />
