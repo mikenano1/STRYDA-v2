@@ -76,12 +76,6 @@ export default function HomeScreen() {
             <Text style={styles.greeting}>
               Your on-site co-pilot for smarter, safer builds.
             </Text>
-            <Text style={styles.subGreeting}>
-              Ask me anything about the NZ Building Code, manufacturer specs, or site questions, and get instant, cited answers.
-            </Text>
-            <Text style={styles.tagline}>
-              I'm here to save you time, protect your projects, and keep you compliant, hands-free.
-            </Text>
           </View>
 
           {/* Main input area */}
