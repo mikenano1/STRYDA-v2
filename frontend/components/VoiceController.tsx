@@ -157,7 +157,13 @@ export const VoiceController: React.FC<VoiceControllerProps> = ({
 
   const speakResponse = async (text: string) => {
     try {
-      // Stop any current speech
+      if (isWebPlatform) {
+        // Web platform - show message about mobile functionality
+        console.log('Text-to-speech available on mobile devices');
+        return;
+      }
+
+      // Native platform
       await Speech.stop();
       
       setIsSpeaking(true);
