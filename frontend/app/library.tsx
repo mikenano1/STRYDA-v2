@@ -698,8 +698,8 @@ export default function LibraryScreen() {
       {navigation.mode === 'trades' && renderTradesView()}
       {navigation.mode === 'brands' && renderBrandsView()}
       {navigation.mode === 'brand-detail' && renderBrandDetailView()}
-      
-      {/* TODO: Add category-detail and product-detail views */}
+      {navigation.mode === 'category-detail' && renderCategoryDetailView()}
+      {navigation.mode === 'product-detail' && renderProductDetailView()}
     </View>
   );
 }
