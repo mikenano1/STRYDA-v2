@@ -438,28 +438,14 @@ No specific documents found in enhanced knowledge base. Provide general NZ build
         )
         await db.chat_messages.insert_one(bot_message_doc.dict())
         
-        # PHASE 5: Visual Content Retrieval
-        visual_content = []
-        try:
-            relevant_visuals = await visual_engine.find_relevant_visuals(request.message, max_results=2)
-            for visual in relevant_visuals:
-                visual_content.append({
-                    "id": visual.id,
-                    "title": visual.title,
-                    "description": visual.description,
-                    "content_type": visual.content_type,
-                    "source_document": visual.source_document,
-                    "keywords": visual.keywords,
-                    "nz_building_codes": visual.nz_building_codes,
-                    "trade_categories": visual.trade_categories,
-                    "text_diagram": visual.description  # For MVP, using text descriptions
-                })
+        # Add suggestion for documentation if needed
+        documentation_suggestion = ""
+        if not any(keyword in request.message.lower() for keyword in ["show", "diagram", "visual", "documentation", "document"]):
+            documentation_suggestion = "\n\nWould you like me to show you the relevant documentation or diagram from the Building Code for this?"
             
-            if visual_content:
-                logger.info(f"Found {len(visual_content)} relevant visuals for query")
-                
-        except Exception as e:
-            logger.warning(f"Visual content retrieval error: {e}")
+        # Append suggestion to AI response
+        if documentation_suggestion and ai_response:
+            ai_response += documentation_suggestion
         
         # Calculate processing time
         processing_time = (datetime.now() - start_time).total_seconds() * 1000
@@ -467,7 +453,10 @@ No specific documents found in enhanced knowledge base. Provide general NZ build
         # Count alternatives suggested
         alternatives_count = sum(len(issue.get("alternatives", [])) for issue in compliance_issues)
         
-        logger.info(f"Enhanced chat: {len(relevant_docs)} docs, {len(citations)} citations, {len(compliance_issues)} issues, {len(visual_content)} visuals, {processing_time:.1f}ms")
+        # Initialize empty visual content for response compatibility
+        visual_content = []
+        
+        logger.info(f"Enhanced chat: {len(relevant_docs)} docs, {len(citations)} citations, {len(compliance_issues)} issues, {processing_time:.1f}ms")
         
         return EnhancedChatResponse(
             response=ai_response,
