@@ -442,6 +442,13 @@ No specific documents found in enhanced knowledge base. Provide general NZ build
         )
         await db.chat_messages.insert_one(bot_message_doc.dict())
         
+        # Track user query for analytics and learning
+        await analytics_engine.track_user_query(
+            query=request.message,
+            user_session=session_id,
+            response_useful=None  # Will be updated based on user feedback later
+        )
+        
         # Add suggestion for documentation if needed
         documentation_suggestion = ""
         if not any(keyword in request.message.lower() for keyword in ["show", "diagram", "visual", "documentation", "document"]):
