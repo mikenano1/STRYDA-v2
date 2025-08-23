@@ -354,13 +354,26 @@ class EnhancedPDFProcessor:
     async def get_processing_status(self) -> Dict[str, Any]:
         """Get current PDF processing status"""
         try:
-            # Get document counts by type
-            stats = await self.document_processor.get_knowledge_stats()
+            # Get document counts from MongoDB directly
+            db = self.document_processor.db
+            
+            # Get total document count
+            total_documents = await db.processed_documents.count_documents({})
+            
+            # Get total chunk count
+            total_chunks = await db.document_chunks.count_documents({})
+            
+            # Get documents by type
+            pipeline = [
+                {"$group": {"_id": "$document_type", "count": {"$sum": 1}}}
+            ]
+            doc_counts = await db.processed_documents.aggregate(pipeline).to_list(100)
+            documents_by_type = {item["_id"]: item["count"] for item in doc_counts}
             
             return {
-                'total_documents': stats.get('total_documents', 0),
-                'total_chunks': stats.get('total_chunks', 0),
-                'documents_by_type': stats.get('documents_by_type', {}),
+                'total_documents': total_documents,
+                'total_chunks': total_chunks,
+                'documents_by_type': documents_by_type,
                 'temp_files': len(list(self.temp_dir.glob('*.pdf'))),
                 'processing_ready': True
             }
