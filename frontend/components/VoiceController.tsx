@@ -53,6 +53,17 @@ export const VoiceController: React.FC<VoiceControllerProps> = ({
   }, [lastResponse, isVoiceEnabled, isProcessing]);
 
   const initializeVoice = async () => {
+    if (isWebPlatform) {
+      // Web platform - use Web Speech API if available
+      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        console.log('Web Speech API available');
+      } else {
+        setError('Voice recognition not available in this browser');
+      }
+      return;
+    }
+
+    // Native platform - use React Native Voice
     try {
       Voice.onSpeechStart = onSpeechStart;
       Voice.onSpeechRecognized = onSpeechRecognized;
