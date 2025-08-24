@@ -447,6 +447,8 @@ No specific documents found in enhanced knowledge base. Provide general NZ build
                 doc_title = doc["metadata"].get("title", "").lower()
                 if "metal roof" in doc_title or "cladding code" in doc_title:
                     recent_pdf_boost = 0.4  # 40% boost for metal roofing questions
+                elif "structural guide" in doc_title or "mc structural" in doc_title:
+                    recent_pdf_boost = 0.4  # 40% boost for structural engineering questions
                 elif "plywood" in doc_title or any(term in doc["content"].lower() for term in ["interior lining", "interior wall", "interior use"]):
                     recent_pdf_boost = 0.3  # 30% boost for plywood interior use
             
