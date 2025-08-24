@@ -313,6 +313,10 @@ async def enhanced_ai_chat(request: EnhancedChatRequest):
     start_time = datetime.now()
     
     try:
+        # PHASE 0: NZ Language Understanding Enhancement
+        language_context = await nz_language_engine.enhance_query_understanding(request.message)
+        logger.info(f"NZ Language context: {language_context.get('enhanced_understanding', 'standard')}")
+        
         # Generate session ID if not provided
         session_id = request.session_id or str(uuid.uuid4())
         
