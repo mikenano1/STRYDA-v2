@@ -1035,13 +1035,22 @@ async def list_documents_by_source():
     try:
         # Get all documents with metadata
         all_docs = pdf_processor.document_processor.collection.get(
-            include=['metadatas']
+            include=['metadatas', 'documents']
         )
+        
+        if not all_docs or not all_docs.get('metadatas'):
+            return {
+                "total_source_documents": 0,
+                "documents": []
+            }
         
         # Group by source document
         grouped_docs = defaultdict(list)
         
         for i, metadata in enumerate(all_docs['metadatas']):
+            if not metadata:
+                continue
+                
             title = metadata.get('title', 'Unknown')
             base_title = re.sub(r'\s*-\s*.*$', '', title).strip()  # Remove section suffixes
             
@@ -1052,7 +1061,7 @@ async def list_documents_by_source():
                 "document_type": metadata.get('document_type', 'unknown'),
                 "source_url": metadata.get('source_url', ''),
                 "processed_at": metadata.get('processed_at', ''),
-                "chunk_size": len(all_docs['documents'][i]) if 'documents' in all_docs else 0
+                "chunk_size": len(all_docs['documents'][i]) if all_docs.get('documents') and i < len(all_docs['documents']) else 0
             }
             
             grouped_docs[base_title].append(doc_info)
@@ -1068,8 +1077,8 @@ async def list_documents_by_source():
                 document_list.append({
                     "base_title": base_title,
                     "total_sections": len(sections),
-                    "document_type": sections[0]['document_type'],
-                    "source_url": sections[0]['source_url'],
+                    "document_type": sections[0]['document_type'] if sections else 'unknown',
+                    "source_url": sections[0]['source_url'] if sections else '',
                     "sections": sections[:10],  # Limit to first 10 sections for API response
                     "has_more_sections": len(sections) > 10
                 })
