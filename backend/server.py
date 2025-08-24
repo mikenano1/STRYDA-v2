@@ -1348,6 +1348,83 @@ async def _run_full_expansion_task(expansion_id: str):
             "success": False
         })
 
+# NZ Building Language Intelligence Endpoints
+@api_router.get("/language/terminology-stats")
+async def get_terminology_stats():
+    """Get statistics about NZ building terminology database"""
+    try:
+        stats = nz_language_engine.get_terminology_stats()
+        return stats
+    except Exception as e:
+        logger.error(f"Error getting terminology stats: {e}")
+        raise HTTPException(status_code=500, detail="Error retrieving terminology statistics")
+
+@api_router.get("/language/search-terminology")
+async def search_terminology(q: str, limit: int = 10):
+    """Search NZ building terminology database"""
+    try:
+        results = nz_language_engine.search_terminology(q, limit)
+        return {
+            "query": q,
+            "results": results,
+            "total_found": len(results)
+        }
+    except Exception as e:
+        logger.error(f"Error searching terminology: {e}")
+        raise HTTPException(status_code=500, detail="Error searching terminology")
+
+@api_router.post("/language/scrape-professional-sources")
+async def scrape_professional_sources(background_tasks: BackgroundTasks):
+    """Scrape professional NZ building sources for terminology updates"""
+    try:
+        # Run scraping in background
+        background_tasks.add_task(_run_terminology_scraping_task)
+        
+        return {
+            "message": "Professional source scraping started",
+            "sources_targeted": len(nz_language_engine.professional_sources),
+            "status": "processing"
+        }
+    except Exception as e:
+        logger.error(f"Error starting terminology scraping: {e}")
+        raise HTTPException(status_code=500, detail="Error starting terminology scraping")
+
+@api_router.post("/language/enhance-query")
+async def enhance_query_understanding(query: str):
+    """Test query enhancement with NZ building language context"""
+    try:
+        enhancement = await nz_language_engine.enhance_query_understanding(query)
+        return enhancement
+    except Exception as e:
+        logger.error(f"Error enhancing query: {e}")
+        raise HTTPException(status_code=500, detail="Error enhancing query understanding")
+
+async def _run_terminology_scraping_task():
+    """Background task for terminology scraping"""
+    try:
+        logger.info("🔍 Starting professional terminology scraping task")
+        
+        results = await nz_language_engine.scrape_professional_sources(max_concurrent=2)
+        
+        logger.info(f"✅ Terminology scraping completed: {results}")
+        
+        # Store scraping result in database
+        await db.terminology_scraping_results.insert_one({
+            "results": results,
+            "completed_at": datetime.utcnow(),
+            "success": True
+        })
+        
+    except Exception as e:
+        logger.error(f"❌ Terminology scraping failed: {e}")
+        
+        # Store error result
+        await db.terminology_scraping_results.insert_one({
+            "error": str(e),
+            "completed_at": datetime.utcnow(),
+            "success": False
+        })
+
 # Include the router in the main app
 app.include_router(api_router)
 
