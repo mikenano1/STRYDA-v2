@@ -320,6 +320,86 @@ async def enhanced_ai_chat(request: EnhancedChatRequest):
         # Generate session ID if not provided
         session_id = request.session_id or str(uuid.uuid4())
         
+        # Check if user is asking for documentation/diagrams from previous response
+        if any(phrase in request.message.lower() for phrase in [
+            "yes please", "yes show me", "show me the documentation", 
+            "show me the diagram", "yes", "show documentation", "show diagrams"
+        ]) and len(request.message.split()) <= 5:
+            # User is requesting documentation from previous response
+            # Trigger visual content retrieval for their last query
+            logger.info("User requesting documentation/diagrams from previous response")
+            
+            # Get the last user query from session to find relevant visual content
+            try:
+                last_user_message = await db.chat_messages.find_one(
+                    {"session_id": session_id, "sender": "user"},
+                    sort=[("timestamp", -1)]
+                )
+                
+                if last_user_message:
+                    # Search for visual content related to their last query
+                    visual_content = visual_engine.get_visual_content(
+                        last_user_message.get("message", ""), 
+                        []  # Empty list for relevant_docs since it's not available yet
+                    )
+                    
+                    if visual_content:
+                        ai_response = f"Here are the relevant diagrams and documentation for your question:\n\n"
+                        for content in visual_content[:2]:  # Limit to 2 visuals
+                            ai_response += f"📋 **{content['title']}**\n"
+                            ai_response += f"Source: {content['source']}\n"
+                            if content.get('description'):
+                                ai_response += f"Description: {content['description']}\n\n"
+                        
+                        # Store enhanced response
+                        bot_msg = ChatMessage(
+                            session_id=session_id,
+                            message=ai_response,
+                            sender="bot",
+                            timestamp=datetime.utcnow()
+                        )
+                        await db.chat_messages.insert_one(bot_msg.dict())
+                        
+                        return EnhancedChatResponse(
+                            response=ai_response,
+                            citations=[],
+                            session_id=session_id,
+                            confidence_score=0.95,
+                            sources_used=[content['source'] for content in visual_content],
+                            visual_content=visual_content,
+                            query_analysis={"type": "documentation_request"},
+                            compliance_issues=[],
+                            alternatives_suggested=0,
+                            processing_time_ms=500
+                        )
+                    else:
+                        ai_response = "I don't have specific diagrams available for your previous question, but I can provide detailed text-based guidance. Would you like me to elaborate on any specific aspect?"
+            except Exception as e:
+                logger.error(f"Error retrieving documentation: {e}")
+                ai_response = "I'd be happy to show you documentation, but I'm having trouble accessing the visual content right now. Let me provide you with detailed text guidance instead."
+            
+            # Store the response
+            bot_msg = ChatMessage(
+                session_id=session_id,
+                message=ai_response,
+                sender="bot",
+                timestamp=datetime.utcnow()
+            )
+            await db.chat_messages.insert_one(bot_msg.dict())
+            
+            return EnhancedChatResponse(
+                response=ai_response,
+                citations=[],
+                session_id=session_id,
+                confidence_score=0.85,
+                sources_used=[],
+                visual_content=[],
+                query_analysis={"type": "documentation_request"},
+                compliance_issues=[],
+                alternatives_suggested=0,
+                processing_time_ms=500
+            )
+        
         # Store user message
         user_message_doc = ChatMessage(
             session_id=session_id,
