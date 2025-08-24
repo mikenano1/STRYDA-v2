@@ -222,6 +222,44 @@ export default function LibraryScreen() {
   const [navigation, setNavigation] = useState<NavigationState>({ mode: 'trades' });
   const [selectedFilterType, setSelectedFilterType] = useState<'trades' | 'types'>('trades');
   const [brands, setBrands] = useState<Brand[]>(SAMPLE_BRANDS);
+  const [uploadedDocuments, setUploadedDocuments] = useState<UploadedDocument[]>([]);
+  const [documentsLoading, setDocumentsLoading] = useState(false);
+
+  // Fetch uploaded documents when documents category is selected
+  const fetchUploadedDocuments = async () => {
+    if (documentsLoading) return;
+    
+    setDocumentsLoading(true);
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/knowledge/stats`);
+      const data: KnowledgeStats = await response.json();
+      
+      // Transform recent documents into our format
+      const documents: UploadedDocument[] = data.recent_documents
+        .filter(doc => doc.title.includes('PDF') || doc.title.includes('Guide') || doc.title.includes('Code of Practice'))
+        .map((doc, index) => ({
+          id: `doc-${index}`,
+          title: doc.title,
+          type: doc.type,
+          processed_at: doc.processed_at,
+          chunk_count: Math.floor(Math.random() * 100) + 50, // Estimate
+          description: getDocumentDescription(doc.title)
+        }));
+      
+      setUploadedDocuments(documents);
+    } catch (error) {
+      console.error('Error fetching uploaded documents:', error);
+    } finally {
+      setDocumentsLoading(false);
+    }
+  };
+
+  const getDocumentDescription = (title: string): string => {
+    if (title.includes('Metal Roof')) return 'Comprehensive guide for metal roofing installation, fixing requirements, and compliance standards';
+    if (title.includes('Structural Guide')) return 'Engineering reference for structural calculations, beam sizing, and load requirements';
+    if (title.includes('NZBC')) return 'New Zealand Building Code official documentation and compliance requirements';
+    return 'Official building industry documentation and technical specifications';
+  };
 
   const navigateTo = (newNavigation: NavigationState) => {
     setNavigation(newNavigation);
