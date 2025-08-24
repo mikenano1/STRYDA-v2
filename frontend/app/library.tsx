@@ -405,6 +405,11 @@ export default function LibraryScreen() {
   );
 
   const renderBrandsView = () => {
+    // Special handling for documents view
+    if (navigation.selectedTrade === 'documents') {
+      return renderDocumentsView();
+    }
+    
     // Filter brands based on selected trade or category
     let filteredBrands = brands;
     
