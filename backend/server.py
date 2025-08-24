@@ -34,6 +34,7 @@ from enhanced_pdf_processor import EnhancedPDFProcessor
 from visual_content_engine import VisualContentEngine, VisualContent
 from analytics_engine import AnalyticsEngine
 from comprehensive_knowledge_expander import ComprehensiveKnowledgeExpander
+from nz_building_language_engine import nz_language_engine
 from eboss_scraper import scrape_eboss_products, get_eboss_scraping_stats
 
 # MongoDB connection
