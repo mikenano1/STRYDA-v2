@@ -1533,6 +1533,118 @@ async def _run_terminology_scraping_task():
             "success": False
         })
 
+# Professional Document Processing Endpoints
+@api_router.post("/knowledge/reprocess-with-professional")
+async def reprocess_with_professional_chunking(background_tasks: BackgroundTasks):
+    """Re-process existing PDFs with professional document processor"""
+    try:
+        professional_processor = get_professional_processor(pdf_processor.document_processor)
+        
+        # Get existing PDF URLs from knowledge base
+        existing_pdfs = [
+            {
+                "url": "https://customer-assets.emergentagent.com/job_nzbuilder-ai/artifacts/4q8hozkh_MC%20Structual%20Guide.pdf",
+                "title": "MC Structural Guide - Professional Engineering Reference",
+                "type": "building_document"
+            },
+            {
+                "url": "https://customer-assets.emergentagent.com/job_nzbuilder-ai/artifacts/smn87z0d_nz_metal_roofing.pdf", 
+                "title": "NZ Metal Roof and Wall Cladding Code of Practice",
+                "type": "building_document"
+            }
+        ]
+        
+        # Start background reprocessing
+        background_tasks.add_task(_reprocess_pdfs_professionally, existing_pdfs)
+        
+        return {
+            "message": "Professional PDF reprocessing started",
+            "pdfs_queued": len(existing_pdfs),
+            "processing_method": "professional_intelligent_chunking",
+            "expected_improvements": [
+                "Larger, more comprehensive chunks",
+                "Better section organization", 
+                "Improved context preservation",
+                "Enhanced technical detail retention"
+            ]
+        }
+        
+    except Exception as e:
+        logger.error(f"Error starting professional reprocessing: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/knowledge/enhanced-search")
+async def enhanced_document_search(query: str, limit: int = 10):
+    """Enhanced search with multi-section combination"""
+    try:
+        enhanced_search = get_enhanced_search_engine(pdf_processor.document_processor)
+        
+        results = await enhanced_search.enhanced_search(query, limit)
+        
+        return {
+            "query": query,
+            "results": results["results"],
+            "total_found": results["total_found"],
+            "search_method": results["search_method"],
+            "concepts_detected": results.get("concepts_detected", []),
+            "sections_combined": results.get("sections_combined", 0),
+            "search_time_ms": 0  # Would be measured in real implementation
+        }
+        
+    except Exception as e:
+        logger.error(f"Error in enhanced search: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+async def _reprocess_pdfs_professionally(pdf_list: List[Dict]):
+    """Background task for professional PDF reprocessing"""
+    try:
+        logger.info("🔄 Starting professional PDF reprocessing")
+        
+        professional_processor = get_professional_processor(pdf_processor.document_processor)
+        
+        results = []
+        for pdf_info in pdf_list:
+            try:
+                logger.info(f"📋 Reprocessing: {pdf_info['title']}")
+                
+                result = await professional_processor.process_pdf_with_intelligent_chunking(
+                    pdf_url=pdf_info["url"],
+                    title=pdf_info["title"],
+                    document_type=pdf_info["type"]
+                )
+                
+                result["pdf_title"] = pdf_info["title"]
+                results.append(result)
+                
+                logger.info(f"✅ Completed: {pdf_info['title']} - {result.get('chunks_created', 0)} chunks")
+                
+            except Exception as e:
+                logger.error(f"❌ Error reprocessing {pdf_info['title']}: {e}")
+                results.append({
+                    "pdf_title": pdf_info["title"],
+                    "success": False,
+                    "error": str(e)
+                })
+        
+        # Store results
+        await db.professional_reprocessing_results.insert_one({
+            "results": results,
+            "completed_at": datetime.utcnow(),
+            "total_pdfs": len(pdf_list),
+            "successful_pdfs": sum(1 for r in results if r.get("success", False))
+        })
+        
+        logger.info(f"🎉 Professional reprocessing completed: {len(results)} PDFs processed")
+        
+    except Exception as e:
+        logger.error(f"💥 Professional reprocessing failed: {e}")
+        
+        await db.professional_reprocessing_results.insert_one({
+            "error": str(e),
+            "completed_at": datetime.utcnow(),
+            "success": False
+        })
+
 # Include the router in the main app
 app.include_router(api_router)
 
