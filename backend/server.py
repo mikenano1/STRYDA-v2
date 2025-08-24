@@ -1064,7 +1064,7 @@ async def list_documents_by_source():
         # Convert to list format
         document_list = []
         for base_title, sections in grouped_docs.items():
-            if any('MC Structural Guide' in base_title, 'Metal Roof' in base_title, 'Cladding Code' in base_title):
+            if any(term in base_title for term in ['MC Structural Guide', 'Metal Roof', 'Cladding Code']):
                 document_list.append({
                     "base_title": base_title,
                     "total_sections": len(sections),
