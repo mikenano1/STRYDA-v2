@@ -17,6 +17,7 @@ import re
 import base64
 from io import BytesIO
 from PIL import Image
+from collections import defaultdict
 
 # Load environment variables first
 ROOT_DIR = Path(__file__).parent
