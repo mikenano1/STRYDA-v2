@@ -141,6 +141,7 @@ const buildingCodeColors = {
 // Trade categories for filtering
 const TRADES: Trade[] = [
   { id: 'all', name: 'All Products', icon: 'square.grid.2x2', color: '#6B7280', brands: [] },
+  { id: 'documents', name: 'Building Documents', icon: 'doc.text.fill', color: '#3B82F6', brands: [] },
   { id: 'carpentry', name: 'Carpentry', icon: 'hammer.fill', color: '#8B4513', brands: ['James Hardie', 'Carter Holt Harvey'] },
   { id: 'roofing', name: 'Roofing', icon: 'house.fill', color: '#DC2626', brands: ['Dimond', 'Metalcraft', 'Nuralite'] },
   { id: 'plumbing', name: 'Plumbing', icon: 'drop.fill', color: '#2563EB', brands: ['Rehau', 'Metabronze'] },
