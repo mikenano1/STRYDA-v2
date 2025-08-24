@@ -365,10 +365,19 @@ export default function LibraryScreen() {
               style={[styles.categoryCard, { borderLeftColor: 'color' in category ? category.color : Colors.dark.tint }]}
               onPress={() => {
                 if (selectedFilterType === 'trades') {
-                  navigateTo({ 
-                    mode: 'brands', 
-                    selectedTrade: category.id 
-                  });
+                  if (category.id === 'documents') {
+                    // Special handling for documents
+                    fetchUploadedDocuments();
+                    navigateTo({ 
+                      mode: 'brands', 
+                      selectedTrade: category.id 
+                    });
+                  } else {
+                    navigateTo({ 
+                      mode: 'brands', 
+                      selectedTrade: category.id 
+                    });
+                  }
                 } else {
                   navigateTo({ 
                     mode: 'brands', 
