@@ -425,6 +425,9 @@ No specific documents found in enhanced knowledge base. Provide general NZ build
         user_msg = UserMessage(text=ai_prompt)
         ai_response = await chat.send_message(user_msg)
         
+        # PHASE 7: Adapt AI Response with NZ Language Context
+        ai_response = nz_language_engine.adapt_response_tone(ai_response, language_context)
+        
         # PHASE 6: Generate Enhanced Citations
         citations = []
         if citation_candidates:
