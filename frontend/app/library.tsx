@@ -72,6 +72,16 @@ interface KnowledgeStats {
   }>;
 }
 
+interface UploadedDocument {
+  id: string;
+  title: string;
+  type: string;
+  source_url?: string;
+  processed_at: string;
+  chunk_count: number;
+  description?: string;
+}
+
 interface SearchResult {
   chunk_id: string;
   title: string;
