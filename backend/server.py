@@ -1003,6 +1003,86 @@ async def _process_pdf_task(pdf_url: str, title: str, document_type: str):
             "success": False
         })
 
+# PDF Viewing and Document Access Endpoints
+@api_router.get("/documents/view/{document_id}")
+async def view_document_content(document_id: str):
+    """View processed document content by ID"""
+    try:
+        # Get document from ChromaDB
+        result = pdf_processor.document_processor.collection.get(ids=[document_id])
+        
+        if not result['documents']:
+            raise HTTPException(status_code=404, detail="Document not found")
+        
+        document = {
+            "id": document_id,
+            "title": result['metadatas'][0].get('title', 'Unknown Document'),
+            "content": result['documents'][0],
+            "metadata": result['metadatas'][0],
+            "source_url": result['metadatas'][0].get('source_url', ''),
+            "document_type": result['metadatas'][0].get('document_type', 'unknown')
+        }
+        
+        return document
+        
+    except Exception as e:
+        logger.error(f"Error viewing document {document_id}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.get("/documents/list-by-source")
+async def list_documents_by_source():
+    """List all documents grouped by source/title"""
+    try:
+        # Get all documents with metadata
+        all_docs = pdf_processor.document_processor.collection.get(
+            include=['metadatas']
+        )
+        
+        # Group by source document
+        grouped_docs = defaultdict(list)
+        
+        for i, metadata in enumerate(all_docs['metadatas']):
+            title = metadata.get('title', 'Unknown')
+            base_title = re.sub(r'\s*-\s*.*$', '', title).strip()  # Remove section suffixes
+            
+            doc_info = {
+                "id": all_docs['ids'][i],
+                "full_title": title,
+                "section": title.replace(base_title, '').strip(' -'),
+                "document_type": metadata.get('document_type', 'unknown'),
+                "source_url": metadata.get('source_url', ''),
+                "processed_at": metadata.get('processed_at', ''),
+                "chunk_size": len(all_docs['documents'][i]) if 'documents' in all_docs else 0
+            }
+            
+            grouped_docs[base_title].append(doc_info)
+        
+        # Sort sections within each document
+        for base_title in grouped_docs:
+            grouped_docs[base_title].sort(key=lambda x: x['full_title'])
+        
+        # Convert to list format
+        document_list = []
+        for base_title, sections in grouped_docs.items():
+            if any('MC Structural Guide' in base_title, 'Metal Roof' in base_title, 'Cladding Code' in base_title):
+                document_list.append({
+                    "base_title": base_title,
+                    "total_sections": len(sections),
+                    "document_type": sections[0]['document_type'],
+                    "source_url": sections[0]['source_url'],
+                    "sections": sections[:10],  # Limit to first 10 sections for API response
+                    "has_more_sections": len(sections) > 10
+                })
+        
+        return {
+            "total_source_documents": len(document_list),
+            "documents": document_list
+        }
+        
+    except Exception as e:
+        logger.error(f"Error listing documents by source: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # EBOSS Product Database Endpoints
 @api_router.post("/products/scrape-eboss", response_model=EBOSSScrapingResponse)
 async def scrape_eboss_product_database(request: EBOSSScrapingRequest, background_tasks: BackgroundTasks):
