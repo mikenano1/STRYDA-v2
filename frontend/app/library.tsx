@@ -404,6 +404,123 @@ export default function LibraryScreen() {
     </View>
   );
 
+  const renderDocumentsView = () => {
+    return (
+      <View style={styles.content}>
+        {/* Documents Header */}
+        <View style={styles.documentsHeader}>
+          <Text style={styles.documentsHeaderTitle}>Building Documents</Text>
+          <Text style={styles.documentsHeaderSubtitle}>
+            {uploadedDocuments.length} documents in knowledge base
+          </Text>
+        </View>
+
+        {documentsLoading ? (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color={Colors.dark.tint} />
+            <Text style={styles.loadingText}>Loading documents...</Text>
+          </View>
+        ) : (
+          <ScrollView style={styles.documentsContainer} showsVerticalScrollIndicator={false}>
+            <View style={styles.documentsGrid}>
+              {uploadedDocuments.map((document) => (
+                <TouchableOpacity
+                  key={document.id}
+                  style={styles.documentCard}
+                  onPress={() => {
+                    // Navigate to chat with document-specific query
+                    router.push({
+                      pathname: '/chat',
+                      params: { 
+                        message: `Tell me about the ${document.title}. What key information does it contain?` 
+                      }
+                    });
+                  }}
+                >
+                  <View style={styles.documentIconContainer}>
+                    <IconSymbol 
+                      name={typeIcons[document.type as keyof typeof typeIcons] || 'doc.text.fill'} 
+                      size={32} 
+                      color={Colors.dark.tint} 
+                    />
+                  </View>
+                  
+                  <View style={styles.documentInfo}>
+                    <Text style={styles.documentTitle} numberOfLines={2}>
+                      {document.title}
+                    </Text>
+                    <Text style={styles.documentDescription} numberOfLines={2}>
+                      {document.description}
+                    </Text>
+                    
+                    <View style={styles.documentMeta}>
+                      <View style={styles.documentTypeChip}>
+                        <Text style={styles.documentTypeText}>
+                          {document.type.toUpperCase()}
+                        </Text>
+                      </View>
+                      <Text style={styles.documentChunkCount}>
+                        {document.chunk_count} sections
+                      </Text>
+                    </View>
+                    
+                    <Text style={styles.documentProcessedDate}>
+                      Added {new Date(document.processed_at).toLocaleDateString()}
+                    </Text>
+                  </View>
+                  
+                  <View style={styles.documentActions}>
+                    <TouchableOpacity 
+                      style={styles.chatAboutDocButton}
+                      onPress={(e) => {
+                        e.stopPropagation();
+                        router.push({
+                          pathname: '/chat',
+                          params: { 
+                            message: `I want to ask questions about ${document.title}` 
+                          }
+                        });
+                      }}
+                    >
+                      <IconSymbol name="message.fill" size={16} color={Colors.dark.background} />
+                    </TouchableOpacity>
+                    
+                    {document.source_url && (
+                      <TouchableOpacity 
+                        style={styles.viewDocButton}
+                        onPress={(e) => {
+                          e.stopPropagation();
+                          // In a real app, this would open the PDF
+                          Alert.alert(
+                            'View Document',
+                            'PDF viewing functionality coming soon. For now, you can ask STRYDA questions about this document.',
+                            [{ text: 'OK' }]
+                          );
+                        }}
+                      >
+                        <IconSymbol name="eye.fill" size={16} color={Colors.dark.icon} />
+                      </TouchableOpacity>
+                    )}
+                  </View>
+                </TouchableOpacity>
+              ))}
+              
+              {uploadedDocuments.length === 0 && !documentsLoading && (
+                <View style={styles.emptyDocumentsContainer}>
+                  <IconSymbol name="doc.text" size={48} color={Colors.dark.icon} />
+                  <Text style={styles.emptyDocumentsTitle}>No Documents Found</Text>
+                  <Text style={styles.emptyDocumentsSubtitle}>
+                    Upload building documents to see them here
+                  </Text>
+                </View>
+              )}
+            </View>
+          </ScrollView>
+        )}
+      </View>
+    );
+  };
+
   const renderBrandsView = () => {
     // Special handling for documents view
     if (navigation.selectedTrade === 'documents') {
