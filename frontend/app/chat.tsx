@@ -333,8 +333,8 @@ export default function ChatScreen() {
           {message.citations && message.citations.length > 0 && (
             <View style={styles.citationsContainer}>
               <Text style={styles.citationsTitle}>References:</Text>
-              {message.citations.slice(0, 2).map((citation) => (
-                <TouchableOpacity key={citation.chunk_id} style={styles.citation}>
+              {message.citations.slice(0, 2).map((citation, index) => (
+                <TouchableOpacity key={citation.id || citation.chunk_id || index} style={styles.citation}>
                   <IconSymbol 
                     name={citation.document_type === 'nzbc' ? 'doc.text.fill' : 'building.2.fill'} 
                     size={14} 
