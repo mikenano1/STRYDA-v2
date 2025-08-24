@@ -423,13 +423,13 @@ async def enhanced_ai_chat(request: EnhancedChatRequest):
             enhanced_query = processed_query.enhanced_query
             search_keywords = processed_query.search_keywords
         
-        # PHASE 2: Knowledge Base Search with Enhanced Context
-        search_start = datetime.now()
-        relevant_docs = await document_processor.search_documents(
-            query=enhanced_query,
-            limit=7
-        )
-        search_time = (datetime.now() - search_start).total_seconds() * 1000
+        # PHASE 2: Enhanced Document Search with Multi-Section Combination
+        enhanced_search = get_enhanced_search_engine(document_processor)
+        search_results = await enhanced_search.enhanced_search(enhanced_query, limit=8)
+        relevant_docs = search_results["results"]
+        
+        logger.info(f"Enhanced search: {len(relevant_docs)} docs, concepts: {search_results.get('concepts_detected', [])}, combined: {search_results.get('sections_combined', 0)}")
+        search_time = search_results.get("search_time_ms", 0)
         
         # PHASE 3: Compliance Analysis and Alternatives
         compliance_issues = []
