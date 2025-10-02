@@ -40,7 +40,7 @@ def retrieve_and_answer(
     
     Args:
         query: User's question
-        history: Optional conversation history
+        history: Optional conversation history (currently ignored)
         top_k: Number of documents to retrieve
         
     Returns:
@@ -55,9 +55,8 @@ def retrieve_and_answer(
         print("⚠️ No documents found, returning stub")
         return _stub_response()
     
-    # Build context and messages
-    context = build_context(docs)
-    messages = build_messages(query, context, history)
+    # Build messages directly with docs (no separate context step)
+    messages = build_messages(query, docs, history)
     
     # Generate answer
     answer = chat_completion(messages)
