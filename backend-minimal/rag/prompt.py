@@ -1,18 +1,11 @@
 from typing import List, Dict, Any
 
-SYSTEM_PROMPT = """You are STRYDA, an AI assistant specialized in New Zealand building codes and construction standards. 
-
-Your role is to:
-- Provide accurate, cited answers from official NZ building codes and manufacturer specifications
-- Always cite the specific document, section, and page when referencing information
-- Be concise and practical for on-site use
-- If you don't have relevant information in the context, say so clearly
-
-Guidelines:
-- Use clear, professional language
-- Break down complex requirements into actionable steps
-- Highlight safety-critical information
-- Cite document sources with page numbers"""
+SYSTEM_PROMPT = """You are STRYDA, a NZ construction compliance assistant.
+- Answer with short, direct sentences.
+- Cite sources with document name and page numbers.
+- If uncertain, say so and point to the exact doc/section.
+- Never invent citations.
+- Use NZ spelling and terminology."""
 
 def build_context(docs: List[Dict[str, Any]]) -> str:
     """
@@ -40,43 +33,26 @@ def build_context(docs: List[Dict[str, Any]]) -> str:
     
     return "\n---\n".join(context_parts)
 
-def build_messages(
-    query: str, 
-    context: str, 
-    history: List[Dict[str, str]] = None
-) -> List[Dict[str, str]]:
+def build_messages(query: str, context_chunks: list, history=None):
     """
     Build chat messages for LLM
     
     Args:
         query: User's question
-        context: Retrieved document context
-        history: Optional conversation history
+        context_chunks: List of retrieved document dicts
+        history: Optional (ignored for simplicity)
         
     Returns:
         List of message dicts for chat completion
     """
+    context_text = "\n\n".join(
+        [f"[{i+1}] ({c.get('source','?')} p.{c.get('page','?')}, score={round(c.get('score',0),2)}): {c.get('content','').strip()}"
+         for i, c in enumerate(context_chunks)]
+    )
+    
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT}
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": f"Question: {query}\n\nContext:\n{context_text}\n\nAnswer succinctly with citations [source p.page]."}
     ]
-    
-    # Add conversation history if provided
-    if history:
-        for msg in history[-4:]:  # Keep last 4 messages for context
-            messages.append({
-                "role": msg.get("role", "user"),
-                "content": msg.get("content", "")
-            })
-    
-    # Add current query with context
-    user_message = f"""Context from NZ building codes and specifications:
-
-{context}
-
-Question: {query}
-
-Please provide a clear, cited answer based on the context above. Include specific document references and page numbers."""
-    
-    messages.append({"role": "user", "content": user_message})
     
     return messages
