@@ -30,7 +30,12 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.centerWrap}>
-        <Text style={styles.logo}>STRYDA<Text style={styles.ai}>ai</Text></Text>
+        <View style={styles.logoContainer}>
+          <View style={styles.logoBox}>
+            <Text style={styles.logoLetter}>S</Text>
+          </View>
+          <Text style={styles.logoText}>STRYDA</Text>
+        </View>
         <Text style={styles.tagline}>Your on-site co-pilot for smarter, safer builds.</Text>
         <View style={styles.spacer} />
         <View style={styles.chatBox}>
