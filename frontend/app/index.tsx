@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,9 +11,51 @@ const theme = {
   inputBg: '#1A1A1A' 
 };
 
+// Web Speech Recognition types
+declare global {
+  interface Window {
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
+  }
+}
+
 export default function HomeScreen() {
   const [text, setText] = useState('');
   const [sending, setSending] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [voiceAvailable, setVoiceAvailable] = useState(false);
+  const [recognition, setRecognition] = useState<any>(null);
+
+  useEffect(() => {
+    // Check for Web Speech API availability
+    if (Platform.OS === 'web') {
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        const recognitionInstance = new SpeechRecognition();
+        recognitionInstance.continuous = false;
+        recognitionInstance.interimResults = true;
+        
+        recognitionInstance.onresult = (event: any) => {
+          const transcript = Array.from(event.results)
+            .map((result: any) => result[0])
+            .map((result: any) => result.transcript)
+            .join('');
+          setText(transcript);
+        };
+        
+        recognitionInstance.onend = () => {
+          setIsListening(false);
+        };
+        
+        recognitionInstance.onerror = () => {
+          setIsListening(false);
+        };
+        
+        setRecognition(recognitionInstance);
+        setVoiceAvailable(true);
+      }
+    }
+  }, []);
 
   const onSend = async () => {
     if (!text.trim() || sending) return;
@@ -24,6 +66,18 @@ export default function HomeScreen() {
     } finally {
       setSending(false);
       setText('');
+    }
+  };
+
+  const toggleVoice = () => {
+    if (!voiceAvailable) return;
+    
+    if (isListening && recognition) {
+      recognition.stop();
+      setIsListening(false);
+    } else if (recognition) {
+      recognition.start();
+      setIsListening(true);
     }
   };
 
@@ -48,10 +102,30 @@ export default function HomeScreen() {
             returnKeyType="send"
             onSubmitEditing={onSend}
           />
+          <TouchableOpacity 
+            style={[
+              styles.micButton,
+              !voiceAvailable && styles.micButtonDisabled,
+              isListening && styles.micButtonActive
+            ]} 
+            onPress={toggleVoice}
+            disabled={!voiceAvailable}
+            accessibilityLabel={voiceAvailable ? "Voice input" : "Voice coming soon"}
+            accessibilityHint={voiceAvailable ? "Tap to start voice input" : "Voice input not available"}
+          >
+            <Ionicons 
+              name={isListening ? "mic" : "mic-outline"} 
+              size={22} 
+              color="#fff" 
+            />
+          </TouchableOpacity>
           <TouchableOpacity style={styles.send} onPress={onSend} disabled={sending}>
             <Ionicons name="send" size={22} color="#fff" />
           </TouchableOpacity>
         </View>
+        {!voiceAvailable && (
+          <Text style={styles.voiceHint}>Voice coming soon</Text>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -83,7 +157,35 @@ const styles = StyleSheet.create({
   },
   tagline: { color: theme.text, textAlign: 'center', fontSize: 16, marginTop: 8 },
   spacer: { height: 36 },
-  chatBox: { flexDirection: 'row', alignItems: 'center', backgroundColor: theme.inputBg, borderRadius: 28, paddingHorizontal: 14, paddingVertical: Platform.select({ ios: 12, android: 8, default: 10 }), width: '100%' },
+  chatBox: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    backgroundColor: theme.inputBg, 
+    borderRadius: 28, 
+    paddingHorizontal: 14, 
+    paddingVertical: Platform.select({ ios: 12, android: 8, default: 10 }), 
+    width: '100%' 
+  },
   input: { flex: 1, color: theme.text, fontSize: 16 },
-  send: { marginLeft: 10, backgroundColor: theme.accent, borderRadius: 20, padding: 10 }
+  micButton: { 
+    marginLeft: 10, 
+    backgroundColor: theme.accent, 
+    borderRadius: 20, 
+    padding: 10,
+    opacity: 1,
+  },
+  micButtonDisabled: {
+    backgroundColor: '#333333',
+    opacity: 0.5,
+  },
+  micButtonActive: {
+    backgroundColor: '#FF0000',
+  },
+  send: { marginLeft: 10, backgroundColor: theme.accent, borderRadius: 20, padding: 10 },
+  voiceHint: {
+    color: theme.muted,
+    fontSize: 12,
+    marginTop: 8,
+    fontStyle: 'italic',
+  },
 });
