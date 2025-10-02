@@ -1,12 +1,39 @@
 from typing import List, Dict, Any, Optional
 from .db import get_conn, search_embeddings
-from .llm import get_embedding, chat_completion
+from .llm import embed_text, chat_completion
 from .prompt import build_context, build_messages
+
+DEFAULT_TOP_K = 6
+
+def retrieve(query: str, top_k: int = DEFAULT_TOP_K, filters=None):
+    """
+    Retrieve relevant documents for a query
+    
+    Args:
+        query: Search query
+        top_k: Number of results
+        filters: Optional filters dict
+        
+    Returns:
+        List of document dicts
+    """
+    conn = get_conn()
+    if not conn:
+        return []
+    
+    q_vec = embed_text(query)
+    if not q_vec:
+        conn.close()
+        return []
+    
+    hits = search_embeddings(conn, q_vec, top_k=top_k, filters=filters or {})
+    conn.close()
+    return hits
 
 def retrieve_and_answer(
     query: str,
     history: Optional[List[Dict[str, str]]] = None,
-    top_k: int = 6
+    top_k: int = DEFAULT_TOP_K
 ) -> Dict[str, Any]:
     """
     Retrieve relevant documents and generate answer using RAG
@@ -21,38 +48,24 @@ def retrieve_and_answer(
     """
     print(f"\n🔍 Processing query: {query[:100]}...")
     
-    # 1. Get database connection
-    conn = get_conn()
-    if not conn:
-        print("⚠️ Database unavailable, returning stub")
-        return _stub_response()
-    
-    # 2. Generate query embedding
-    query_embedding = get_embedding(query)
-    if not query_embedding:
-        print("⚠️ Embedding unavailable, returning stub")
-        conn.close()
-        return _stub_response()
-    
-    # 3. Search for relevant documents
-    docs = search_embeddings(conn, query_embedding, top_k=top_k)
-    conn.close()
+    # Retrieve documents
+    docs = retrieve(query, top_k=top_k)
     
     if not docs:
         print("⚠️ No documents found, returning stub")
         return _stub_response()
     
-    # 4. Build context and messages
+    # Build context and messages
     context = build_context(docs)
     messages = build_messages(query, context, history)
     
-    # 5. Generate answer
+    # Generate answer
     answer = chat_completion(messages)
     if not answer:
         print("⚠️ LLM unavailable, returning context only")
         answer = "Based on the retrieved documents, please refer to the citations below for detailed information."
     
-    # 6. Format citations
+    # Format citations
     citations = [
         {
             "doc_id": str(doc.get("id", "")),
