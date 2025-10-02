@@ -39,8 +39,8 @@
       "typedRoutes": true
     },
     "extra": {
-      "apiBase": process.env.EXPO_PUBLIC_API_BASE || "http://localhost:8000",
-      "useBackend": process.env.EXPO_PUBLIC_USE_BACKEND || "true"
+      "apiBase": "http://localhost:8000",
+      "useBackend": "true"
     }
   }
 }
