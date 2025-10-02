@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
+from typing import List, Optional, Dict, Any
+from rag.retriever import retrieve_and_answer
 
 app = FastAPI(title="STRYDA Backend", version="0.1.0")
 
@@ -14,13 +16,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class Message(BaseModel):
+    role: str
+    content: str
+
 class AskRequest(BaseModel):
     query: str
+    history: Optional[List[Message]] = None
+
+class Citation(BaseModel):
+    doc_id: str
+    source: str
+    page: str | int
+    score: float
 
 class AskResponse(BaseModel):
     answer: str
-    notes: list[str]
-    citation: str
+    notes: List[str]
+    citations: List[Citation]
 
 @app.get("/health")
 def health():
@@ -34,11 +47,15 @@ def health():
 @app.post("/api/ask", response_model=AskResponse)
 def ask(req: AskRequest):
     """
-    Stub endpoint - returns canned response.
-    Future: will query RAG system with building code context.
+    Ask a question using RAG pipeline.
+    Falls back to stub if RAG is unavailable.
     """
-    return AskResponse(
-        answer="Coming soon - this is a backend stub response for your query.",
-        notes=["demo", "backend"],
-        citation="NZMRM COP X.Y"
-    )
+    # Convert history to dict format if provided
+    history_dicts = None
+    if req.history:
+        history_dicts = [{"role": msg.role, "content": msg.content} for msg in req.history]
+    
+    # Use RAG pipeline
+    result = retrieve_and_answer(req.query, history=history_dicts)
+    
+    return AskResponse(**result)
