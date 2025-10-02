@@ -59,6 +59,51 @@ class STRYDABackendTester:
             self.log_test("Root Endpoint", False, f"Connection error: {str(e)}")
             return False
     
+    def test_health_endpoint(self):
+        """Test GET /health endpoint as requested by user"""
+        try:
+            response = self.session.get(f"{BACKEND_URL}/health")
+            if response.status_code == 200:
+                data = response.json()
+                expected = {"ok": True, "version": "v0.2"}
+                if data == expected:
+                    self.log_test("Health Endpoint", True, f"Health endpoint returned expected response: {data}")
+                    return True
+                else:
+                    self.log_test("Health Endpoint", False, f"Health endpoint returned unexpected response. Expected: {expected}, Got: {data}", data)
+                    return False
+            else:
+                self.log_test("Health Endpoint", False, f"Health endpoint returned status {response.status_code}", response.text[:200])
+                return False
+        except Exception as e:
+            self.log_test("Health Endpoint", False, f"Health endpoint request failed: {str(e)}")
+            return False
+    
+    def test_ask_endpoint(self):
+        """Test POST /api/ask endpoint as requested by user"""
+        try:
+            payload = {"query": "test question"}
+            response = self.session.post(f"{API_BASE}/ask", json=payload)
+            
+            if response.status_code == 200:
+                data = response.json()
+                # Check if response has expected fallback structure
+                required_fields = ['answer', 'notes', 'citation']
+                missing_fields = [field for field in required_fields if field not in data]
+                
+                if not missing_fields:
+                    self.log_test("Ask Endpoint", True, f"Ask endpoint returned fallback response with required fields: {list(data.keys())}")
+                    return True
+                else:
+                    self.log_test("Ask Endpoint", False, f"Ask endpoint missing required fields: {missing_fields}. Got fields: {list(data.keys())}", data)
+                    return False
+            else:
+                self.log_test("Ask Endpoint", False, f"Ask endpoint returned status {response.status_code}", response.text[:200])
+                return False
+        except Exception as e:
+            self.log_test("Ask Endpoint", False, f"Ask endpoint request failed: {str(e)}")
+            return False
+    
     def test_status_endpoints(self):
         """Test status check endpoints"""
         try:
