@@ -1,7 +1,6 @@
-/**
- * Stub chat client for STRYDA-v2
- * Returns canned responses with fake citations
- */
+import { config } from './config';
+import { postJSON, HttpError } from './httpClient';
+import { Alert, Platform } from 'react-native';
 
 export interface ChatResponse {
   answer: string;
@@ -9,25 +8,63 @@ export interface ChatResponse {
   citation: string;
 }
 
-export class ChatClient {
-  /**
-   * Stub ask method - returns canned response after delay
-   */
-  async ask(text: string): Promise<ChatResponse> {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    return {
-      answer: 'Coming soon - this is a placeholder response for your query.',
-      notes: ['demo', 'stub'],
-      citation: 'NZMRM COP X.Y'
-    };
+/**
+ * Stub response - used as fallback when backend is unavailable
+ */
+function getStubResponse(): ChatResponse {
+  return {
+    answer: 'Coming soon - this is a placeholder response (fallback mode).',
+    notes: ['demo', 'stub', 'fallback'],
+    citation: 'NZMRM COP X.Y'
+  };
+}
+
+/**
+ * Show toast/alert for fallback
+ */
+function showFallbackMessage() {
+  if (Platform.OS === 'web') {
+    // Simple notification for web
+    console.warn('⚠️ Backend unavailable, using fallback');
+  } else {
+    Alert.alert(
+      'Temporary Issue',
+      'Using fallback mode. Backend is temporarily unavailable.',
+      [{ text: 'OK' }]
+    );
   }
 }
 
-export const chatClient = new ChatClient();
+/**
+ * Ask a question - tries backend first, falls back to stub
+ */
+export async function ask(query: string): Promise<ChatResponse> {
+  // If backend is disabled, use stub immediately
+  if (!config.USE_BACKEND) {
+    console.log('📍 Using stub client (backend disabled)');
+    await new Promise(resolve => setTimeout(resolve, 300)); // Simulate delay
+    return getStubResponse();
+  }
 
-// Export ask function directly for convenience
-export async function ask(text: string): Promise<ChatResponse> {
-  return chatClient.ask(text);
+  // Try backend
+  try {
+    console.log('🚀 Calling backend:', `${config.API_BASE}/api/ask`);
+    const response = await postJSON<ChatResponse>(
+      `${config.API_BASE}/api/ask`,
+      { query },
+      10000 // 10s timeout
+    );
+    console.log('✅ Backend response received');
+    return response;
+  } catch (error) {
+    const httpError = error as HttpError;
+    console.error('❌ Backend error:', httpError.message);
+
+    // Show user-friendly message
+    showFallbackMessage();
+
+    // Use stub as fallback
+    await new Promise(resolve => setTimeout(resolve, 300));
+    return getStubResponse();
+  }
 }
