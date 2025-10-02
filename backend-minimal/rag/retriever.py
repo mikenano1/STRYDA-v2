@@ -1,7 +1,7 @@
 from typing import List, Dict, Any, Optional
 from .db import get_conn, search_embeddings
 from .llm import embed_text, chat_completion
-from .prompt import build_context, build_messages
+from .prompt import build_messages
 
 DEFAULT_TOP_K = 6
 
