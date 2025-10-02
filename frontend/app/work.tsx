@@ -1,194 +1,110 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
-import { Colors } from '@/constants/Colors';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-// Mock job data for UI demonstration
-const mockJobs = [
-  {
-    id: '1',
-    name: 'Henderson House Extension',
-    address: '45 Scenic Drive, Henderson',
-    status: 'active',
-    lastActivity: '2 hours ago',
-    questionsCount: 5,
-  },
-  {
-    id: '2', 
-    name: 'Auckland CBD Apartment Fit-out',
-    address: '123 Queen Street, Auckland',
-    status: 'pending',
-    lastActivity: '1 day ago',
-    questionsCount: 12,
-  },
-  {
-    id: '3',
-    name: 'Tauranga Deck Installation',
-    address: '67 Marine Parade, Tauranga',
-    status: 'complete',
-    lastActivity: '3 days ago',
-    questionsCount: 8,
-  },
-];
-
-const statusColors = {
-  active: Colors.dark.statusActive,
-  pending: Colors.dark.statusPending,
-  complete: Colors.dark.statusComplete,
+const theme = { 
+  bg: '#000000', 
+  text: '#FFFFFF', 
+  muted: '#A7A7A7', 
+  accent: '#FF7A00', 
+  inputBg: '#1A1A1A' 
 };
 
-export default function WorkScreen() {
+export default function ToolsScreen() {
+  const tools = [
+    { name: 'Pitch Calculator', description: 'Calculate roof pitch angles' },
+    { name: 'Scupper Sizing', description: 'Determine proper scupper dimensions' },
+    { name: 'Fastener Selector', description: 'Choose the right fasteners' },
+  ];
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
-        {/* Add new job button */}
-        <TouchableOpacity style={styles.addJobButton}>
-          <IconSymbol name="plus" size={20} color={Colors.dark.background} />
-          <Text style={styles.addJobText}>New Job</Text>
-        </TouchableOpacity>
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.title}>Construction Tools</Text>
+        <Text style={styles.subtitle}>(coming soon)</Text>
 
-        {/* Jobs list */}
-        <View style={styles.jobsList}>
-          {mockJobs.map((job) => (
-            <TouchableOpacity key={job.id} style={styles.jobCard}>
-              <View style={styles.jobHeader}>
-                <Text style={styles.jobName}>{job.name}</Text>
-                <View style={[styles.statusBadge, { backgroundColor: statusColors[job.status] }]}>
-                  <Text style={styles.statusText}>{job.status}</Text>
-                </View>
-              </View>
-              
-              <Text style={styles.jobAddress}>{job.address}</Text>
-              
-              <View style={styles.jobFooter}>
-                <Text style={styles.lastActivity}>Last activity: {job.lastActivity}</Text>
-                <View style={styles.questionsCount}>
-                  <IconSymbol name="message.fill" size={14} color={Colors.dark.icon} />
-                  <Text style={styles.questionsText}>{job.questionsCount}</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        {/* Empty state message */}
-        {mockJobs.length === 0 && (
-          <View style={styles.emptyState}>
-            <IconSymbol name="briefcase.fill" size={48} color={Colors.dark.icon} />
-            <Text style={styles.emptyTitle}>No jobs yet</Text>
-            <Text style={styles.emptySubtitle}>
-              Create your first job to start tracking questions and compliance notes
-            </Text>
+        {tools.map((tool, index) => (
+          <View key={index} style={styles.toolCard}>
+            <View style={styles.toolIconContainer}>
+              <Text style={styles.toolIcon}>🔧</Text>
+            </View>
+            <View style={styles.toolInfo}>
+              <Text style={styles.toolName}>{tool.name}</Text>
+              <Text style={styles.toolDescription}>{tool.description}</Text>
+            </View>
+            <View style={styles.disabledBadge}>
+              <Text style={styles.disabledText}>Soon</Text>
+            </View>
           </View>
-        )}
-      </View>
-    </ScrollView>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.dark.background,
+    backgroundColor: theme.bg,
   },
   content: {
-    padding: 20,
+    padding: 24,
   },
-  addJobButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.dark.tint,
-    paddingVertical: 14,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    marginBottom: 24,
-    gap: 8,
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: theme.text,
+    marginBottom: 8,
   },
-  addJobText: {
+  subtitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: Colors.dark.background,
+    color: theme.muted,
+    marginBottom: 24,
   },
-  jobsList: {
+  toolCard: {
+    flexDirection: 'row',
+    backgroundColor: theme.inputBg,
+    padding: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#333333',
+    marginBottom: 12,
+    alignItems: 'center',
     gap: 16,
   },
-  jobCard: {
-    backgroundColor: Colors.dark.surface,
-    borderRadius: 12,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: Colors.dark.border,
-  },
-  jobHeader: {
-    flexDirection: 'row',
+  toolIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: theme.bg,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 8,
   },
-  jobName: {
+  toolIcon: {
+    fontSize: 24,
+  },
+  toolInfo: {
+    flex: 1,
+  },
+  toolName: {
     fontSize: 16,
     fontWeight: '600',
-    color: Colors.dark.text,
-    flex: 1,
-    marginRight: 12,
+    color: theme.text,
+    marginBottom: 4,
   },
-  statusBadge: {
-    paddingHorizontal: 8,
+  toolDescription: {
+    fontSize: 14,
+    color: theme.muted,
+  },
+  disabledBadge: {
+    paddingHorizontal: 12,
     paddingVertical: 4,
-    borderRadius: 8,
+    borderRadius: 12,
+    backgroundColor: '#333333',
   },
-  statusText: {
+  disabledText: {
     fontSize: 12,
+    color: theme.muted,
     fontWeight: '600',
-    color: Colors.dark.background,
-    textTransform: 'uppercase',
-  },
-  jobAddress: {
-    fontSize: 14,
-    color: Colors.dark.icon,
-    marginBottom: 12,
-  },
-  jobFooter: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  lastActivity: {
-    fontSize: 12,
-    color: Colors.dark.placeholder,
-  },
-  questionsCount: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  questionsText: {
-    fontSize: 12,
-    color: Colors.dark.icon,
-  },
-  emptyState: {
-    alignItems: 'center',
-    paddingVertical: 60,
-    paddingHorizontal: 40,
-  },
-  emptyTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: Colors.dark.text,
-    marginTop: 16,
-    marginBottom: 8,
-  },
-  emptySubtitle: {
-    fontSize: 14,
-    color: Colors.dark.icon,
-    textAlign: 'center',
-    lineHeight: 20,
   },
 });
