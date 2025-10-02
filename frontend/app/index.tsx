@@ -62,11 +62,13 @@ export default function HomeScreen() {
     if (!text.trim() || sending) return;
     setSending(true);
     try {
-      // Stub - just clear input after delay
-      await new Promise(resolve => setTimeout(resolve, 300));
+      // Call backend or fallback
+      await ask(text.trim());
+      setText('');
+    } catch (error) {
+      console.error('Error sending message:', error);
     } finally {
       setSending(false);
-      setText('');
     }
   };
 
