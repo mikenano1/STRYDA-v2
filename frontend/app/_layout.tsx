@@ -1,65 +1,64 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Ionicons } from '@expo/vector-icons';
+
+const theme = { 
+  bg: '#000000', 
+  text: '#FFFFFF', 
+  muted: '#A7A7A7', 
+  accent: '#FF7A00', 
+  inputBg: '#1A1A1A' 
+};
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.dark.tint,
-        tabBarInactiveTintColor: Colors.dark.tabIconDefault,
-        tabBarBackground: TabBarBackground,
+        tabBarActiveTintColor: theme.accent,
+        tabBarInactiveTintColor: '#777',
         tabBarStyle: {
-          backgroundColor: Colors.dark.background,
-          borderTopColor: Colors.dark.border,
-          height: Platform.OS === 'ios' ? 90 : 60,
+          backgroundColor: '#0B0B0B',
+          borderTopColor: '#161616',
+          height: Platform.OS === 'ios' ? 85 : 60,
+          paddingBottom: Platform.OS === 'ios' ? 25 : 8,
           paddingTop: 8,
         },
         headerStyle: {
-          backgroundColor: Colors.dark.background,
+          backgroundColor: theme.bg,
         },
-        headerTintColor: Colors.dark.text,
+        headerTintColor: theme.text,
         headerTitleStyle: {
-          fontWeight: '600',
-          fontSize: 18,
+          fontWeight: 'bold',
+          fontSize: 20,
         },
-        tabBarButton: HapticTab,
+        headerTitle: 'STRYDA.ai',
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-          headerShown: false,
-        }}
-      />
-      <Tabs.Screen
-        name="work"
-        options={{
-          title: 'Work',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="briefcase.fill" color={color} />,
-          headerTitle: 'Jobs',
+          title: 'Chat',
+          tabBarIcon: ({ color, size }) => <Ionicons name="chatbubble-ellipses" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name="library"
         options={{
           title: 'Library',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="books.vertical.fill" color={color} />,
-          headerTitle: 'Library',
+          tabBarIcon: ({ color, size }) => <Ionicons name="library" size={size} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="work"
+        options={{
+          title: 'Tools',
+          tabBarIcon: ({ color, size }) => <Ionicons name="construct" size={size} color={color} />,
         }}
       />
       <Tabs.Screen
         name="chat"
         options={{
-          href: null, // Hide from tab bar but keep navigable
+          href: null, // Hidden from tabs
         }}
       />
     </Tabs>
