@@ -77,3 +77,6 @@ def chat_completion(
     except Exception as e:
         print(f"❌ Chat completion failed: {e}")
         return None
+
+# Alias for simpler naming
+chat = chat_completion
