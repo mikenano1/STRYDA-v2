@@ -12,7 +12,7 @@ if _api_key:
 else:
     print("⚠️ No LLM API key configured (OPENAI_API_KEY or EMERGENT_LLM_KEY)")
 
-def get_embedding(text: str, model: str = "text-embedding-3-small") -> Optional[List[float]]:
+def embed_text(text: str, model: str = "text-embedding-3-small") -> Optional[List[float]]:
     """
     Generate embedding for text using OpenAI
     
@@ -38,6 +38,9 @@ def get_embedding(text: str, model: str = "text-embedding-3-small") -> Optional[
     except Exception as e:
         print(f"❌ Embedding generation failed: {e}")
         return None
+
+# Alias for backwards compatibility
+get_embedding = embed_text
 
 def chat_completion(
     messages: List[dict], 
