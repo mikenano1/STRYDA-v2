@@ -346,8 +346,10 @@ class STRYDABackendTester:
         print(f"Session ID: {self.session_id}")
         print("=" * 60)
         
-        # Run tests in order
+        # Run tests in order - starting with user-requested endpoints
         tests = [
+            ("Health Endpoint (User Request)", self.test_health_endpoint),
+            ("Ask Endpoint (User Request)", self.test_ask_endpoint),
             ("Backend Connectivity", self.test_root_endpoint),
             ("Status Management", self.test_status_endpoints),
             ("Job Management", self.test_job_management),
