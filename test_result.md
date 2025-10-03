@@ -456,16 +456,17 @@ metadata:
 
 test_plan:
   current_focus:
-    - "USER-REQUESTED ENDPOINT TESTING COMPLETED"
-    - "GET /health endpoint working in fallback mode with exact expected response"
-    - "POST /api/ask endpoint working with proper fallback response structure"
-    - "Frontend accessibility confirmed at localhost:3000"
-    - "Production system diagnosis completed - dependency issues identified"
-    - "Fallback system created and tested successfully"
+    - "RAG Backend Database Connection Testing Completed"
+    - "Supabase database connection failing with 'Tenant or user not found' error"
+    - "Health endpoint working correctly - returns {'ok': True, 'version': 'v0.2'}"
+    - "Fallback functionality operational - graceful error handling confirmed"
+    - "RAG pipeline not functional due to database connection failure"
+    - "Documents table schema verification impossible due to connection issues"
   stuck_tasks:
     - "Main backend system startup - missing emergentintegrations module"
+    - "RAG Backend Database Connection - Supabase credentials expired or invalid"
   test_all: false
-  test_priority: "user_requested_first"
+  test_priority: "database_connection_first"
 
 agent_communication:
     - agent: "testing"
