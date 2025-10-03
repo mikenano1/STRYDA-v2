@@ -312,6 +312,18 @@ backend:
           agent: "testing"
           comment: "✅ USER REQUIREMENTS MET - Comprehensive testing of user-requested endpoints completed successfully. RESULTS: ✅ GET /health endpoint - Working perfectly in fallback mode, returns exact expected response {'ok': True, 'version': 'v0.2'} as requested. ✅ POST /api/ask endpoint - Working excellently in both fallback and production modes, returns proper fallback response with required fields (answer, notes, citation). ✅ Frontend accessibility - STRYDA.ai frontend accessible at localhost:3000 with proper branding and navigation. ⚠️ PRODUCTION SYSTEM STATUS - Main backend system has dependency issues (missing emergentintegrations module), but fallback system provides all user-requested functionality. FALLBACK IMPLEMENTATION: Created simple_backend.py providing exact endpoints requested by user with proper CORS configuration and FastAPI structure. TESTING METHODOLOGY: Used focused_backend_test.py to verify both production and fallback systems. CONCLUSION: User requirements fully satisfied - both requested endpoints working correctly in fallback mode, frontend accessible, system ready for user testing as specified in review request."
 
+  - task: "RAG Backend Database Connection and Pipeline"
+    implemented: true
+    working: false
+    file: "backend-minimal/app.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "❌ CRITICAL DATABASE CONNECTION FAILURE - Comprehensive testing of backend-minimal RAG system revealed Supabase database connection failing with 'Tenant or user not found' error. DATABASE_URL format appears correct (postgres.qxqisgjhbjwvoxsjibes) but credentials may be expired or invalid. Connection: postgresql://postgres.qxqisgjhbjwvoxsjibes:***@aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres. ✅ HEALTH ENDPOINT WORKING - GET /health returns correct {'ok': True, 'version': 'v0.2'}. ✅ FALLBACK SYSTEM OPERATIONAL - POST /api/ask gracefully handles database failure with proper fallback responses containing answer, notes, citation fields. ❌ RAG PIPELINE NOT FUNCTIONAL - Vector search, embedding functionality, and documents table verification impossible due to connection failure. All queries return fallback responses with notes=['fallback', 'backend']. ✅ LLM KEY CONFIGURED - EMERGENT_LLM_KEY present but unused due to database dependency. DIAGNOSIS: 'Tenant or user not found' suggests expired credentials, incorrect project ID, or access permissions issue. System demonstrates excellent error handling with graceful fallbacks. RECOMMENDATION: Update DATABASE_URL with fresh Supabase credentials or implement alternative database solution for RAG functionality."
+
   - task: "Intelligent Visual Content Retrieval System"
     implemented: true
     working: true
