@@ -38,7 +38,7 @@
 
 **Local URL:** http://localhost:3000  
 **Tunnel Subdomain:** nzbuilder-ai  
-**Preview URL:** https://stryda-chat-shell.preview.emergentagent.com  
+**Preview URL:** https://onsite-copilot.preview.emergentagent.com  
 
 **QR Code:** Generate from Expo Dev Tools at http://localhost:3000
 
