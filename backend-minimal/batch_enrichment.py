@@ -87,11 +87,11 @@ def process_batch():
                 print("\n🎉 NO DOCUMENTS REMAINING - 100% COMPLETE!")
                 return True
             
-            # Get next batch
+            # Get next batch (documents that haven't been processed yet)
             cur.execute("""
                 SELECT id, source, page, content 
                 FROM documents 
-                WHERE section IS NULL 
+                WHERE section IS NULL AND clause IS NULL
                 ORDER BY source, page
                 LIMIT %s;
             """, (BATCH_SIZE,))
