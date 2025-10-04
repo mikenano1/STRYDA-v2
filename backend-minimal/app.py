@@ -67,3 +67,43 @@ def api_ask(req: AskRequest):
             "citation": []
         }
 
+@app.post("/api/chat")
+def api_chat(req: ChatRequest):
+    """
+    Multi-turn chat conversation with RAG context and history
+    """
+    try:
+        # Convert chat history to the format expected by retrieve_and_answer
+        history = []
+        if req.conversation_history:
+            for msg in req.conversation_history[-5:]:  # Keep last 5 messages for context
+                history.append({
+                    "role": msg.role,
+                    "content": msg.content
+                })
+        
+        # Process the message using RAG
+        result = retrieve_and_answer(req.message, history=history)
+        
+        # Format response for chat interface
+        response = {
+            "message": result.get("answer", "Unable to process message"),
+            "role": "assistant",
+            "citations": result.get("citations", []),
+            "session_id": req.session_id or "default",
+            "notes": result.get("notes", ["backend", "chat"]),
+            "timestamp": int(time.time())
+        }
+        
+        return response
+        
+    except Exception as e:
+        return {
+            "message": "I'm temporarily unable to process your message. Please try again.",
+            "role": "assistant", 
+            "citations": [],
+            "session_id": req.session_id or "default",
+            "notes": ["fallback", "chat", str(e)],
+            "timestamp": int(time.time())
+        }
+
