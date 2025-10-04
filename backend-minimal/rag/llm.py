@@ -5,29 +5,30 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# Global client variable
-client = None
+# Global variables
 _api_key = os.getenv("OPENAI_API_KEY")
+client_initialized = False
 
 def init_openai_client():
     """Initialize OpenAI client with error handling"""
-    global client
+    global client_initialized
     if not _api_key:
         print("⚠️ No OpenAI API key configured")
-        return
+        return False
     
     try:
-        # Import OpenAI and create client
+        # Import OpenAI and set API key
         import openai
-        client = openai.OpenAI(api_key=_api_key)
+        openai.api_key = _api_key
         
         # Test the client with a simple call
-        test_response = client.models.list()
+        models = openai.Model.list()
         print("✅ OpenAI LLM client initialized and tested")
+        client_initialized = True
         return True
     except Exception as e:
         print(f"❌ OpenAI client initialization failed: {e}")
-        client = None
+        client_initialized = False
         return False
 
 # Initialize on import
@@ -37,17 +38,18 @@ def embed_text(text: str, model: str = "text-embedding-3-small") -> Optional[Lis
     """
     Generate embedding for text using OpenAI
     """
-    if not client:
+    if not client_initialized:
         print("❌ OpenAI client not available - trying to reinitialize...")
         if not init_openai_client():
             return None
     
     try:
-        response = client.embeddings.create(
+        import openai
+        response = openai.Embedding.create(
             input=text,
             model=model
         )
-        embedding = response.data[0].embedding
+        embedding = response['data'][0]['embedding']
         print(f"✅ Generated embedding ({len(embedding)} dimensions)")
         return embedding
     except Exception as e:
@@ -66,19 +68,20 @@ def chat_completion(
     """
     Generate chat completion using OpenAI
     """
-    if not client:
+    if not client_initialized:
         print("❌ OpenAI client not available - trying to reinitialize...")
         if not init_openai_client():
             return None
     
     try:
-        response = client.chat.completions.create(
+        import openai
+        response = openai.ChatCompletion.create(
             model=model,
             messages=messages,
             temperature=temperature,
             max_tokens=max_tokens
         )
-        answer = response.choices[0].message.content
+        answer = response['choices'][0]['message']['content']
         print(f"✅ Generated completion ({len(answer)} chars)")
         return answer
     except Exception as e:
