@@ -1,40 +1,46 @@
 import os
 from typing import List, Optional, Dict, Any
 from dotenv import load_dotenv
-from openai import OpenAI
 
 # Load environment variables
 load_dotenv()
 
-# Initialize OpenAI client
+# Global client variable
 client = None
 _api_key = os.getenv("OPENAI_API_KEY")
 
-if _api_key:
+def init_openai_client():
+    """Initialize OpenAI client with error handling"""
+    global client
+    if not _api_key:
+        print("⚠️ No OpenAI API key configured")
+        return
+    
     try:
+        # Import OpenAI and create client
         import openai
         client = openai.OpenAI(api_key=_api_key)
-        print("✅ OpenAI LLM client initialized")
+        
+        # Test the client with a simple call
+        test_response = client.models.list()
+        print("✅ OpenAI LLM client initialized and tested")
+        return True
     except Exception as e:
         print(f"❌ OpenAI client initialization failed: {e}")
         client = None
-else:
-    print("⚠️ No OpenAI API key configured")
+        return False
+
+# Initialize on import
+init_openai_client()
 
 def embed_text(text: str, model: str = "text-embedding-3-small") -> Optional[List[float]]:
     """
     Generate embedding for text using OpenAI
-    
-    Args:
-        text: Text to embed
-        model: Embedding model to use
-        
-    Returns:
-        Embedding vector or None if unavailable
     """
     if not client:
-        print("❌ OpenAI client not available")
-        return None
+        print("❌ OpenAI client not available - trying to reinitialize...")
+        if not init_openai_client():
+            return None
     
     try:
         response = client.embeddings.create(
@@ -59,19 +65,11 @@ def chat_completion(
 ) -> Optional[str]:
     """
     Generate chat completion using OpenAI
-    
-    Args:
-        messages: List of message dicts with 'role' and 'content'
-        model: Model to use for completion
-        temperature: Sampling temperature
-        max_tokens: Maximum tokens to generate
-        
-    Returns:
-        Generated text or None if unavailable
     """
     if not client:
-        print("❌ OpenAI client not available")
-        return None
+        print("❌ OpenAI client not available - trying to reinitialize...")
+        if not init_openai_client():
+            return None
     
     try:
         response = client.chat.completions.create(
