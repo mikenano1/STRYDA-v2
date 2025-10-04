@@ -3,6 +3,7 @@ from .db import get_conn, search_embeddings
 from .llm import embed_text, chat_completion
 from .prompt import build_messages
 import random
+import psycopg2.extras
 
 DEFAULT_TOP_K = 6
 
