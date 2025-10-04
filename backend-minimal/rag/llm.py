@@ -12,19 +12,12 @@ _api_key = os.getenv("OPENAI_API_KEY")
 
 if _api_key:
     try:
-        client = OpenAI(api_key=_api_key)
+        import openai
+        client = openai.OpenAI(api_key=_api_key)
         print("✅ OpenAI LLM client initialized")
     except Exception as e:
-        # Handle version compatibility issues
-        print(f"⚠️ OpenAI client initialization issue: {e}")
-        try:
-            # Try without additional parameters
-            import openai
-            client = openai.OpenAI(api_key=_api_key)
-            print("✅ OpenAI LLM client initialized (fallback)")
-        except Exception as e2:
-            print(f"❌ OpenAI client failed: {e2}")
-            client = None
+        print(f"❌ OpenAI client initialization failed: {e}")
+        client = None
 else:
     print("⚠️ No OpenAI API key configured")
 
