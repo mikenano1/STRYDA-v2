@@ -29,6 +29,15 @@ class AskRequest(BaseModel):
     query: str
     history: Optional[List[HistoryItem]] = None
 
+class ChatMessage(BaseModel):
+    role: str  # "user" or "assistant" 
+    content: str
+
+class ChatRequest(BaseModel):
+    message: str
+    conversation_history: Optional[List[ChatMessage]] = None
+    session_id: Optional[str] = None
+
 @app.get("/health")
 def health():
     return {"ok": True, "version": "v0.2"}
