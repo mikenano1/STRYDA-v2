@@ -8,9 +8,7 @@ import os
 # Load environment variables from .env file
 load_dotenv()
 
-from rag.retriever import retrieve
-from rag.prompt import build_messages
-from rag.llm import chat
+from rag.retriever import retrieve_and_answer
 
 app = FastAPI(title="STRYDA Backend", version="0.2.0")
 
@@ -37,28 +35,22 @@ def health():
 
 @app.post("/api/ask")
 def api_ask(req: AskRequest):
+    """
+    Process a query using the RAG pipeline
+    """
     try:
-        ctx = retrieve(req.query, top_k=6)
-        if not ctx:
-            return {
-                "answer": "Temporary fallback: no retrieval context found.",
-                "notes": ["fallback", "backend"],
-                "citation": []
-            }
-        messages = build_messages(req.query, ctx, history=req.history)
-        answer = chat(messages)
-        if not answer:
-            answer = "Temporary fallback: LLM unavailable."
-        cites = [
-            {
-                "doc_id": str(c.get("id")),
-                "source": c.get("source"),
-                "page": c.get("page"),
-                "score": float(c.get("score", 0))
-            }
-            for c in ctx
-        ]
-        return {"answer": answer, "notes": ["retrieval", "backend"], "citation": cites}
+        # Use the improved retrieve_and_answer function
+        result = retrieve_and_answer(req.query, history=req.history)
+        
+        # Ensure we return the expected format
+        response = {
+            "answer": result.get("answer", "Unable to process query"),
+            "notes": result.get("notes", ["backend"]),
+            "citation": result.get("citations", [])  # Note: citations vs citation
+        }
+        
+        return response
+        
     except Exception as e:
         return {
             "answer": "Temporary fallback: backend issue.",
