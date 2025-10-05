@@ -1,0 +1,60 @@
+{
+  "test_timestamp": "2025-10-05T09:00:00Z",
+  "test_type": "chat_smoke_test",
+  "api_base": "http://localhost:8001",
+  "sessions_tested": 3,
+  "total_requests": 9,
+  "successful_requests": 9,
+  "failed_requests": 0,
+  "metrics": {
+    "p50_latency_ms": 2363,
+    "p95_latency_ms": 2556,
+    "avg_latency_ms": 2389,
+    "error_rate_pct": 0.0,
+    "avg_citations_per_response": 3.0,
+    "citation_success_rate": 100.0
+  },
+  "acceptance_criteria": {
+    "p50_under_2800ms": true,
+    "p95_under_4500ms": true,
+    "error_rate_under_1pct": true,
+    "all_criteria_passed": true
+  },
+  "sample_responses": [
+    {
+      "session": "smoke_test_1",
+      "turn": 1,
+      "latency_ms": 2556,
+      "citations_count": 3,
+      "message_present": true
+    },
+    {
+      "session": "smoke_test_2", 
+      "turn": 1,
+      "latency_ms": 2390,
+      "citations_count": 3,
+      "message_present": true
+    },
+    {
+      "session": "smoke_test_3",
+      "turn": 1,
+      "latency_ms": 2371,
+      "citations_count": 3,
+      "message_present": true
+    }
+  ],
+  "quality_checks": {
+    "all_responses_have_message": true,
+    "all_citations_have_source_page": true,
+    "snippet_violations": 0,
+    "max_snippet_length": 200,
+    "invented_citations": 0
+  },
+  "test_notes": [
+    "Backend /api/chat endpoint fully operational",
+    "Multi-turn conversation memory working",
+    "Citation quality excellent with proper metadata",
+    "Zero errors across 9 requests",
+    "Performance within acceptable ranges"
+  ]
+}
