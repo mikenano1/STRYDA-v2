@@ -1,0 +1,758 @@
+{
+  "validation_timestamp": "2025-10-05T08:49:51.483898",
+  "latency": {
+    "single_turn": [
+      2972.4600315093994,
+      2380.476236343384,
+      2380.0477981567383,
+      2362.3273372650146,
+      2359.7207069396973,
+      2340.3899669647217,
+      2321.644067764282,
+      2362.741231918335,
+      2359.525680541992,
+      2368.116855621338
+    ],
+    "multi_turn": [
+      2367.166519165039,
+      2345.5145359039307,
+      2345.55983543396,
+      2404.0257930755615,
+      2366.758108139038,
+      2318.0763721466064,
+      2367.360830307007,
+      2376.654624938965,
+      2334.754467010498
+    ]
+  },
+  "citations": {
+    "valid": 57,
+    "invalid": 0,
+    "snippet_violations": 0
+  },
+  "errors": [],
+  "test_results": {
+    "single_turn": [
+      {
+        "query": "What are apron flashing cover requirements?",
+        "latency_ms": 2972.4600315093994,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 191
+      },
+      {
+        "query": "Building code requirements for metal roofing",
+        "latency_ms": 2380.476236343384,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Fire safety clearances for solid fuel appliances",
+        "latency_ms": 2380.0477981567383,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Weatherproofing standards for external walls",
+        "latency_ms": 2362.3273372650146,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Fastener requirements for steel cladding",
+        "latency_ms": 2359.7207069396973,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Minimum insulation R-values for Auckland",
+        "latency_ms": 2340.3899669647217,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Wind load requirements for roof structures",
+        "latency_ms": 2321.644067764282,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Corrosion resistance for coastal areas",
+        "latency_ms": 2362.741231918335,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Ventilation requirements for roof cavities",
+        "latency_ms": 2359.525680541992,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      },
+      {
+        "query": "Installation standards for membrane roofing",
+        "latency_ms": 2368.116855621338,
+        "citations_count": 3,
+        "citations_valid": 3,
+        "response_length": 179
+      }
+    ],
+    "multi_turn": [
+      {
+        "session_id": "multi_test_1",
+        "turns": [
+          {
+            "turn": 1,
+            "user_message": "What are the apron flashing requirements?",
+            "assistant_response": "Apron flashing requirements vary by conditions. Standard coverage is 150mm, with increased requirements for high wind zones. Check your local wind zone requirements. [Documentation available]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 321,
+                "score": 1.0,
+                "snippet": "...of water per volume of air (grams per cubic metre [g/m\n]). It is not\ntemperature dependent and in the example above the absolute humidity would remain unchanged at around 6.4\ng/m\n, regardless of...",
+                "section": "Absolute Humidity"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 118,
+                "score": 1.0,
+                "snippet": "4.9 \nCompatibility \nMaterials comprising the building envelope should not be considered in isolation, as their performance can be\naffected...",
+                "section": "Compatibility"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 135,
+                "score": 1.0,
+                "snippet": "...can cause white rust to occur throughout a length of cladding\n \n \n4 \nDURABILITY\n \n4 \n \n4.\n10 \nOTHER CAUSES OF CORROSION\n \n10  4 \n \n4.\n10 \n135\nNZ Metal Roof And Wall Cladding Code Of Practice...",
+                "section": "OTHER CAUSES OF CORROSION"
+              }
+            ],
+            "latency_ms": 2367.166519165039
+          },
+          {
+            "turn": 2,
+            "user_message": "What about in high wind zones?",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 186,
+                "score": 0.999,
+                "snippet": "...and valley shapes refer to the \n5.5.7\n Valley Capacity Calculator\n tool.\nFor information about internal corners, refer to \n5.4.3\n Internal Corners\n.\n5.5.3 \nBifurcated Valleys \nThe maximum...",
+                "section": "Roof Pitch"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 6,
+                "score": 0.999,
+                "snippet": "482\n485\n487\n490\n492\n496\n500\n501\n502\n504\n506\n510\n512\n517\n522\n529\n531\n534\n539\n541\n543\n545\n550\n553\n555\n557\n560\n561\n565\n572\n581\n583\n591\n18.3  Material Density, Melting Point, Expansion And Modulus\n18.4  D"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 87,
+                "score": 0.999,
+                "snippet": "...deflection criteria used in this table is span/120 + P/30, where P = the space between\nfasteners. Higher deflection limits may be acceptable in certain circumstances.\nWind Zone\nLoad (kPa)*\nMaximum.",
+                "section": "0.40 mm",
+                "clause": "G550"
+              }
+            ],
+            "latency_ms": 2345.5145359039307
+          },
+          {
+            "turn": 3,
+            "user_message": "Are there specific fastener requirements?",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 73,
+                "score": 0.999,
+                "snippet": "...(G300) steel or non-ferrous metals can progressively yield under repeated heavy foot traffic, and are\nmore prone to point load damage. This should be considered at the design stage. Machine...",
+                "clause": "G300"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 186,
+                "score": 0.999,
+                "snippet": "...sump, or an eaves gutter. The discharge point must\nbe within 2 m of a downpipe if the catchment area exceeds 50 m\u00b2.\nWhen the roof pitch is less than 12\u00b0, the valley should be made in one piece or..",
+                "section": "Roof Pitch"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 6,
+                "score": 0.999,
+                "snippet": "482\n485\n487\n490\n492\n496\n500\n501\n502\n504\n506\n510\n512\n517\n522\n529\n531\n534\n539\n541\n543\n545\n550\n553\n555\n557\n560\n561\n565\n572\n581\n583\n591\n18.3  Material Density, Melting Point, Expansion And Modulus\n18.4  D"
+              }
+            ],
+            "latency_ms": 2345.55983543396
+          }
+        ]
+      },
+      {
+        "session_id": "multi_test_2",
+        "turns": [
+          {
+            "turn": 1,
+            "user_message": "Tell me about metal roofing installation",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 491,
+                "score": 1.0,
+                "snippet": "...Scale\n \n18 \nUSEFUL INFORMATION\n \n18 \n \n18.\n6 \nVELOCITIES\n \n6  18 \n \n18.\n6 \n491\nNZ Metal Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc...",
+                "clause": "NZS 3604"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 321,
+                "score": 1.0,
+                "snippet": "...\n3\n3\n \n10 \nINTERNAL MOISTURE\n \n10 \n \n10.\n12 \nADDITIONAL INFORMATION\n \n12  10 \n \n10.\n12 \n321\nNZ Metal Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc...",
+                "section": "Absolute Humidity"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 38,
+                "score": 1.0,
+                "snippet": "...a MUCH lower R-value than a properly\ninsulated wall.\nU-Value\nSaddle\n \n(a) A shaped piece of metal used to weather the\njunction between a horizontal and vertical surface.\n(b) A small metal...",
+                "section": "how much heat can pass through a window"
+              }
+            ],
+            "latency_ms": 2404.0257930755615
+          },
+          {
+            "turn": 2,
+            "user_message": "What are the corrosion resistance requirements?",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 574,
+                "score": 0.999,
+                "snippet": "...for clarity.\n0 - Clause\nRemoved\n10.8\n10.8\n Wall Underlay\nClause removed and content discussed i\nother relevant clauses.\n4 - Clause\nInserted\n10.8.1\n10.7.1\n Humidity\nRelative humidity (RH, given in..",
+                "section": "0 - Clause"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 581,
+                "score": 0.999,
+                "snippet": "19.23 \n2019 \u2013 February \nThe following updates to the NZ Metal Roof and Wall Cladding Code Practice (COP), is effective 1...",
+                "section": "2019 \u2013 February"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 354,
+                "score": 0.999,
+                "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of...",
+                "section": "Working on Roofs"
+              }
+            ],
+            "latency_ms": 2366.758108139038
+          },
+          {
+            "turn": 3,
+            "user_message": "How does this apply to coastal environments?",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 474,
+                "score": 0.998,
+                "snippet": "...and accessories, for use on Residential, Commercial and Industrial buildings, shall comply with\nthis standard.\n17.4.1 \nPart1: ASNZS/2728:2013 \nCompliance with the following sections of...",
+                "clause": "AS/NZS 2728:2013"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 200,
+                "score": 0.998,
+                "snippet": "6.1 \nNZBC Clause E2 External Moisture (Extract) \n6.1.1 \nE2 Objective \nThe objective of this provision is to safeguard people from illness or injury which could result\nfrom external..."
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 548,
+                "score": 0.998,
+                "snippet": "4 - Clause\nInserted\n14.15\n14.16\n Stop-ends\nThis clause has been reviewed as part\nof a substantial revision of COP Clause\n14. Installation.\n1 -...",
+                "section": "4 - Clause"
+              }
+            ],
+            "latency_ms": 2318.0763721466064
+          }
+        ]
+      },
+      {
+        "session_id": "multi_test_3",
+        "turns": [
+          {
+            "turn": 1,
+            "user_message": "Building code requirements for fire safety",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 576,
+                "score": 0.998,
+                "snippet": "...combined with \n14.3.1\n Unloading\n2 - Editing and\nrearrangement\n14\n14\n Installation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n14.1\n14.1\n Pre- Installation\nClause revised for...",
+                "section": "0 - Clause"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 172,
+                "score": 0.998,
+                "snippet": "...to the roof plane.\n \n5.3.2 \nRainfall Intensity \nRainfall intensity can be taken off the maps for 50-year average return intervals (ARI). When the co-ordinates of a\nsite are known,..."
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 302,
+                "score": 0.998,
+                "snippet": "...activities all contribute to indoor\nmoisture.\n \n10.8.1 \nOccupant Behaviour \nThe occupants of the building create a significant amount of water vapour. Therefore, the air inside in a..."
+              }
+            ],
+            "latency_ms": 2367.360830307007
+          },
+          {
+            "turn": 2,
+            "user_message": "What clearances are needed for fireplaces?",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 421,
+                "score": 0.998,
+                "snippet": "Traditional standing seam shapes are angle-seamed, double-seamed, or roll cap. The angle seam is the most\npopular and the double...",
+                "section": "Angle Seam"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 328,
+                "score": 0.998,
+                "snippet": "...mesh\nFold underlay back\nLongun corrugate\nMetal roofing\n \n \n11 \nNATURAL LIGHT\n \n11 \n \n11.\n3 \nPERFORMANCE \u2013 STRUCTURE\n \n3  11 \n \n11.\n3 \n328\nNZ Metal Roof And Wall Cladding Code Of Practice...",
+                "section": "NATURAL LIGHT"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 132,
+                "score": 0.998,
+                "snippet": "...\nOnly aluminium, stainless steel, inert plastic, or hot-dipped galvanized steel framing members are\nacceptable for support structures above steel cladding and must be supported by the...",
+                "section": "Walkways"
+              }
+            ],
+            "latency_ms": 2376.654624938965
+          },
+          {
+            "turn": 3,
+            "user_message": "Any specific requirements for timber floors?",
+            "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+            "citations": [
+              {
+                "source": "NZ Metal Roofing",
+                "page": 1,
+                "score": 0.998,
+                "snippet": "...Deflection\nAdded the statement: \"Temporary deflection under load is not considered for roof load tables as\nit has not been found to affect weathertightness. Temporary deflection...",
+                "section": "Aluminium Cladding Wind Load Span Graphs"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 368,
+                "score": 0.998,
+                "snippet": "...to some roofing products to\nassist in protecting the surface from damage and scratching during forming, transportation, handling, storage,\nand erection.\nStrippable film is designed to provide...",
+                "section": "Strippable Films"
+              },
+              {
+                "source": "NZ Metal Roofing",
+                "page": 376,
+                "score": 0.998,
+                "snippet": "...their length, gauge pitch (threads per inch) and their drill point. The drill point\nmay be type 17 for driving into timber or drill point for driving into steel. Reduced diameter drill points, whic",
+                "section": "Screw Gauge"
+              }
+            ],
+            "latency_ms": 2334.754467010498
+          }
+        ]
+      }
+    ],
+    "concurrent_load": {
+      "total_requests": 60,
+      "total_errors": 0,
+      "error_rate_pct": 0.0,
+      "latencies_ms": [
+        2390.775442123413,
+        2179.8667907714844,
+        2336.7021083831787,
+        3082.6706886291504,
+        2162.8975868225098,
+        2354.417324066162,
+        3069.3652629852295,
+        2189.55135345459,
+        2356.42671585083,
+        3115.312099456787,
+        2154.6170711517334,
+        2348.6804962158203,
+        3138.2720470428467,
+        2146.803379058838,
+        2356.786012649536,
+        3050.022840499878,
+        2235.9652519226074,
+        2448.850631713867,
+        3094.5732593536377,
+        2330.6972980499268,
+        2370.842456817627,
+        3101.8755435943604,
+        2354.4530868530273,
+        2369.1563606262207,
+        3093.353509902954,
+        2364.9044036865234,
+        2385.1611614227295,
+        3310.680389404297,
+        2186.361789703369,
+        2501.1093616485596,
+        2363.1086349487305,
+        2139.137029647827,
+        2375.093460083008,
+        2343.658447265625,
+        2123.0812072753906,
+        2328.907012939453,
+        2364.093065261841,
+        2136.451005935669,
+        2324.5151042938232,
+        2361.076831817627,
+        2128.873348236084,
+        2373.575210571289,
+        2355.0238609313965,
+        2202.383041381836,
+        2347.951650619507,
+        2357.691526412964,
+        2183.070421218872,
+        2373.039484024048,
+        2314.7053718566895,
+        2159.8973274230957,
+        2351.2439727783203,
+        2365.5033111572266,
+        2141.566514968872,
+        2332.4010372161865,
+        2338.7434482574463,
+        2326.0176181793213,
+        2341.268539428711,
+        2248.394250869751,
+        2369.36354637146,
+        2472.2931385040283
+      ]
+    },
+    "negative_cases": [
+      {
+        "test": "empty_retrieval",
+        "message": "What is the quantum flux capacitor rating?",
+        "citations_count": 3,
+        "has_uncertainty": false,
+        "response_appropriate": false
+      },
+      {
+        "test": "very_short",
+        "message": "hi",
+        "citations_count": 3,
+        "has_uncertainty": false,
+        "response_appropriate": false
+      },
+      {
+        "test": "very_long",
+        "message": "What are the detailed detailed detailed detailed d...",
+        "citations_count": 3,
+        "has_uncertainty": false,
+        "response_appropriate": false
+      }
+    ]
+  },
+  "example_transcripts": [
+    {
+      "session_id": "multi_test_1",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "What are the apron flashing requirements?",
+          "assistant_response": "Apron flashing requirements vary by conditions. Standard coverage is 150mm, with increased requirements for high wind zones. Check your local wind zone requirements. [Documentation available]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 321,
+              "score": 1.0,
+              "snippet": "...of water per volume of air (grams per cubic metre [g/m\n]). It is not\ntemperature dependent and in the example above the absolute humidity would remain unchanged at around 6.4\ng/m\n, regardless of...",
+              "section": "Absolute Humidity"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 118,
+              "score": 1.0,
+              "snippet": "4.9 \nCompatibility \nMaterials comprising the building envelope should not be considered in isolation, as their performance can be\naffected...",
+              "section": "Compatibility"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 135,
+              "score": 1.0,
+              "snippet": "...can cause white rust to occur throughout a length of cladding\n \n \n4 \nDURABILITY\n \n4 \n \n4.\n10 \nOTHER CAUSES OF CORROSION\n \n10  4 \n \n4.\n10 \n135\nNZ Metal Roof And Wall Cladding Code Of Practice...",
+              "section": "OTHER CAUSES OF CORROSION"
+            }
+          ],
+          "latency_ms": 2367.166519165039
+        },
+        {
+          "turn": 2,
+          "user_message": "What about in high wind zones?",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 186,
+              "score": 0.999,
+              "snippet": "...and valley shapes refer to the \n5.5.7\n Valley Capacity Calculator\n tool.\nFor information about internal corners, refer to \n5.4.3\n Internal Corners\n.\n5.5.3 \nBifurcated Valleys \nThe maximum...",
+              "section": "Roof Pitch"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 6,
+              "score": 0.999,
+              "snippet": "482\n485\n487\n490\n492\n496\n500\n501\n502\n504\n506\n510\n512\n517\n522\n529\n531\n534\n539\n541\n543\n545\n550\n553\n555\n557\n560\n561\n565\n572\n581\n583\n591\n18.3  Material Density, Melting Point, Expansion And Modulus\n18.4  D"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 87,
+              "score": 0.999,
+              "snippet": "...deflection criteria used in this table is span/120 + P/30, where P = the space between\nfasteners. Higher deflection limits may be acceptable in certain circumstances.\nWind Zone\nLoad (kPa)*\nMaximum.",
+              "section": "0.40 mm",
+              "clause": "G550"
+            }
+          ],
+          "latency_ms": 2345.5145359039307
+        },
+        {
+          "turn": 3,
+          "user_message": "Are there specific fastener requirements?",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 73,
+              "score": 0.999,
+              "snippet": "...(G300) steel or non-ferrous metals can progressively yield under repeated heavy foot traffic, and are\nmore prone to point load damage. This should be considered at the design stage. Machine...",
+              "clause": "G300"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 186,
+              "score": 0.999,
+              "snippet": "...sump, or an eaves gutter. The discharge point must\nbe within 2 m of a downpipe if the catchment area exceeds 50 m\u00b2.\nWhen the roof pitch is less than 12\u00b0, the valley should be made in one piece or..",
+              "section": "Roof Pitch"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 6,
+              "score": 0.999,
+              "snippet": "482\n485\n487\n490\n492\n496\n500\n501\n502\n504\n506\n510\n512\n517\n522\n529\n531\n534\n539\n541\n543\n545\n550\n553\n555\n557\n560\n561\n565\n572\n581\n583\n591\n18.3  Material Density, Melting Point, Expansion And Modulus\n18.4  D"
+            }
+          ],
+          "latency_ms": 2345.55983543396
+        }
+      ]
+    },
+    {
+      "session_id": "multi_test_2",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "Tell me about metal roofing installation",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 491,
+              "score": 1.0,
+              "snippet": "...Scale\n \n18 \nUSEFUL INFORMATION\n \n18 \n \n18.\n6 \nVELOCITIES\n \n6  18 \n \n18.\n6 \n491\nNZ Metal Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc...",
+              "clause": "NZS 3604"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 321,
+              "score": 1.0,
+              "snippet": "...\n3\n3\n \n10 \nINTERNAL MOISTURE\n \n10 \n \n10.\n12 \nADDITIONAL INFORMATION\n \n12  10 \n \n10.\n12 \n321\nNZ Metal Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc...",
+              "section": "Absolute Humidity"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 38,
+              "score": 1.0,
+              "snippet": "...a MUCH lower R-value than a properly\ninsulated wall.\nU-Value\nSaddle\n \n(a) A shaped piece of metal used to weather the\njunction between a horizontal and vertical surface.\n(b) A small metal...",
+              "section": "how much heat can pass through a window"
+            }
+          ],
+          "latency_ms": 2404.0257930755615
+        },
+        {
+          "turn": 2,
+          "user_message": "What are the corrosion resistance requirements?",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 574,
+              "score": 0.999,
+              "snippet": "...for clarity.\n0 - Clause\nRemoved\n10.8\n10.8\n Wall Underlay\nClause removed and content discussed i\nother relevant clauses.\n4 - Clause\nInserted\n10.8.1\n10.7.1\n Humidity\nRelative humidity (RH, given in..",
+              "section": "0 - Clause"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 581,
+              "score": 0.999,
+              "snippet": "19.23 \n2019 \u2013 February \nThe following updates to the NZ Metal Roof and Wall Cladding Code Practice (COP), is effective 1...",
+              "section": "2019 \u2013 February"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 354,
+              "score": 0.999,
+              "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of...",
+              "section": "Working on Roofs"
+            }
+          ],
+          "latency_ms": 2366.758108139038
+        },
+        {
+          "turn": 3,
+          "user_message": "How does this apply to coastal environments?",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 474,
+              "score": 0.998,
+              "snippet": "...and accessories, for use on Residential, Commercial and Industrial buildings, shall comply with\nthis standard.\n17.4.1 \nPart1: ASNZS/2728:2013 \nCompliance with the following sections of...",
+              "clause": "AS/NZS 2728:2013"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 200,
+              "score": 0.998,
+              "snippet": "6.1 \nNZBC Clause E2 External Moisture (Extract) \n6.1.1 \nE2 Objective \nThe objective of this provision is to safeguard people from illness or injury which could result\nfrom external..."
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 548,
+              "score": 0.998,
+              "snippet": "4 - Clause\nInserted\n14.15\n14.16\n Stop-ends\nThis clause has been reviewed as part\nof a substantial revision of COP Clause\n14. Installation.\n1 -...",
+              "section": "4 - Clause"
+            }
+          ],
+          "latency_ms": 2318.0763721466064
+        }
+      ]
+    },
+    {
+      "session_id": "multi_test_3",
+      "turns": [
+        {
+          "turn": 1,
+          "user_message": "Building code requirements for fire safety",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 576,
+              "score": 0.998,
+              "snippet": "...combined with \n14.3.1\n Unloading\n2 - Editing and\nrearrangement\n14\n14\n Installation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n14.1\n14.1\n Pre- Installation\nClause revised for...",
+              "section": "0 - Clause"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 172,
+              "score": 0.998,
+              "snippet": "...to the roof plane.\n \n5.3.2 \nRainfall Intensity \nRainfall intensity can be taken off the maps for 50-year average return intervals (ARI). When the co-ordinates of a\nsite are known,..."
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 302,
+              "score": 0.998,
+              "snippet": "...activities all contribute to indoor\nmoisture.\n \n10.8.1 \nOccupant Behaviour \nThe occupants of the building create a significant amount of water vapour. Therefore, the air inside in a..."
+            }
+          ],
+          "latency_ms": 2367.360830307007
+        },
+        {
+          "turn": 2,
+          "user_message": "What clearances are needed for fireplaces?",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 421,
+              "score": 0.998,
+              "snippet": "Traditional standing seam shapes are angle-seamed, double-seamed, or roll cap. The angle seam is the most\npopular and the double...",
+              "section": "Angle Seam"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 328,
+              "score": 0.998,
+              "snippet": "...mesh\nFold underlay back\nLongun corrugate\nMetal roofing\n \n \n11 \nNATURAL LIGHT\n \n11 \n \n11.\n3 \nPERFORMANCE \u2013 STRUCTURE\n \n3  11 \n \n11.\n3 \n328\nNZ Metal Roof And Wall Cladding Code Of Practice...",
+              "section": "NATURAL LIGHT"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 132,
+              "score": 0.998,
+              "snippet": "...\nOnly aluminium, stainless steel, inert plastic, or hot-dipped galvanized steel framing members are\nacceptable for support structures above steel cladding and must be supported by the...",
+              "section": "Walkways"
+            }
+          ],
+          "latency_ms": 2376.654624938965
+        },
+        {
+          "turn": 3,
+          "user_message": "Any specific requirements for timber floors?",
+          "assistant_response": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+          "citations": [
+            {
+              "source": "NZ Metal Roofing",
+              "page": 1,
+              "score": 0.998,
+              "snippet": "...Deflection\nAdded the statement: \"Temporary deflection under load is not considered for roof load tables as\nit has not been found to affect weathertightness. Temporary deflection...",
+              "section": "Aluminium Cladding Wind Load Span Graphs"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 368,
+              "score": 0.998,
+              "snippet": "...to some roofing products to\nassist in protecting the surface from damage and scratching during forming, transportation, handling, storage,\nand erection.\nStrippable film is designed to provide...",
+              "section": "Strippable Films"
+            },
+            {
+              "source": "NZ Metal Roofing",
+              "page": 376,
+              "score": 0.998,
+              "snippet": "...their length, gauge pitch (threads per inch) and their drill point. The drill point\nmay be type 17 for driving into timber or drill point for driving into steel. Reduced diameter drill points, whic",
+              "section": "Screw Gauge"
+            }
+          ],
+          "latency_ms": 2334.754467010498
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "p50_latency_ms": 2356.786012649536,
+    "p95_latency_ms": 3101.8755435943604,
+    "avg_latency_ms": 2417.1721663656112,
+    "total_requests": 79
+  },
+  "citation_metrics": {
+    "total_citations": 57,
+    "valid_citations": 57,
+    "citation_success_rate": 100.0,
+    "avg_citations_per_turn": 0.7215189873417721
+  }
+}
