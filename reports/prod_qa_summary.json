@@ -1,61 +1,27 @@
 {
-  "test_timestamp": "2025-10-05T19:35:24.258679",
-  "api_base": "http://localhost:8001",
-  "test_results": {
-    "soak_test": {
-      "total_requests": 30,
-      "successful_requests": 30,
-      "failed_requests": 0,
-      "error_rate_pct": 0.0,
-      "p50_latency_ms": 2402.1695852279663,
-      "p95_latency_ms": 3410.1399898529053,
-      "avg_latency_ms": 2703.9419492085776,
-      "avg_citations_per_turn": 3,
-      "passed": true
-    },
-    "citation_integrity": {
-      "sample_citations": 3,
-      "valid_citations": 3,
-      "invalid_citations": 0,
-      "snippet_violations": 0,
-      "database_verified": 3,
-      "examples": [],
-      "success_rate_pct": 100.0,
-      "passed": true
-    },
-    "session_persistence": {
-      "sessions_tested": 5,
-      "persistence_verified": 5,
-      "session_continuity": 5,
-      "passed": true,
-      "success_rate_pct": 100.0
-    },
-    "network_resilience": {
-      "timeout_tests": 1,
-      "graceful_failures": 1,
-      "recovery_tests": 1,
-      "successful_recoveries": 1,
-      "passed": true
-    },
-    "telemetry": {
-      "expected_events": [
-        "chat_send",
-        "chat_response",
-        "chat_error"
-      ],
-      "session_id_truncation": true,
-      "timing_inclusion": true,
-      "no_secrets_logged": true,
-      "passed": true
-    },
-    "accessibility": {
-      "tap_targets_44px": true,
-      "screen_reader_support": true,
-      "loading_announcements": true,
-      "citation_accessibility": true,
-      "keyboard_navigation": true,
-      "passed": true
-    }
+  "test_timestamp": "2025-10-05T19:37:58.511509",
+  "metrics": {
+    "p50_latency_ms": 2370.8655834198,
+    "p95_latency_ms": 2440.058946609497,
+    "error_rate_pct": 0.0,
+    "avg_citations": 3,
+    "success_rate_pct": 100.0
   },
-  "overall_status": "PASSED"
+  "citation_integrity": {
+    "valid": 90,
+    "total": 90,
+    "violations": 0
+  },
+  "acceptance_criteria": {
+    "p50_passed": true,
+    "p95_passed": true,
+    "error_rate_passed": true,
+    "citation_quality_passed": true,
+    "overall_passed": true
+  },
+  "recommendations": [
+    "Error rate acceptable",
+    "Latency targets met",
+    "Citation quality excellent"
+  ]
 }
