@@ -115,73 +115,38 @@ def retrieve_with_enhanced_citations(query: str, top_k: int = RAG_TOP_K) -> Tupl
     start_time = time.time()
     
     try:
-        # Import from existing RAG system
-        from rag.retriever import retrieve_with_enhanced_citations
-        from rag.llm import embed_text
-        
-        embed_start = time.time()
-        
-        # Get embeddings for the query
-        query_embedding = embed_text(query)
-        embed_time = (time.time() - embed_start) * 1000
+        # Import from existing RAG system that we know works
+        from rag.retriever import retrieve
         
         search_start = time.time()
         
-        if not query_embedding:
-            # Fallback to content search if no embedding
-            conn = psycopg2.connect(DATABASE_URL, sslmode="require")
-            with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-                # Simple content-based search
-                search_terms = query.split()[:5]  # First 5 words
-                conditions = " OR ".join([f"LOWER(content) LIKE '%{term.lower()}%'" for term in search_terms])
-                
-                if conditions:
-                    cur.execute(f"""
-                        SELECT id, source, page, content, section, clause, snippet,
-                               0.8 as score
-                        FROM documents 
-                        WHERE {conditions}
-                        ORDER BY 
-                            CASE source 
-                                WHEN 'NZ Building Code' THEN 1 
-                                WHEN 'NZ Metal Roofing' THEN 2 
-                                ELSE 3 
-                            END,
-                            page
-                        LIMIT %s;
-                    """, (top_k,))
-                    
-                    docs = [dict(row) for row in cur.fetchall()]
-                else:
-                    docs = []
-            
-            conn.close()
-        else:
-            # Use vector search
-            docs = retrieve_with_enhanced_citations(query, top_k)
+        # Use the working retrieve function
+        docs = retrieve(query, top_k)
         
         search_time = (time.time() - search_start) * 1000
-        total_time = (time.time() - start_time) * 1000
         
-        print(f"🔍 Retrieval timing: embed={embed_time:.0f}ms, search={search_time:.0f}ms, total={total_time:.0f}ms")
-        
-        # Format citations
+        # Format citations with enhanced metadata
         citations = []
         for doc in docs:
             citation = {
                 "source": doc.get("source", "Unknown"),
-                "page": doc.get("page", 0),
+                "page": doc.get("page", 0), 
                 "score": round(float(doc.get("score", 0)), 3),
-                "snippet": doc.get("snippet", "")[:200] or doc.get("content", "")[:200]
+                "snippet": doc.get("snippet", "") or doc.get("content", "")[:200]
             }
             
-            # Add provenance if available
+            # Add metadata if available
             if doc.get("section"):
                 citation["section"] = doc["section"]
             if doc.get("clause"):
                 citation["clause"] = doc["clause"]
                 
             citations.append(citation)
+        
+        total_time = (time.time() - start_time) * 1000
+        
+        print(f"🔍 Retrieval timing: search={search_time:.0f}ms, total={total_time:.0f}ms")
+        print(f"📄 Retrieved {len(citations)} documents")
         
         return citations, total_time
         
