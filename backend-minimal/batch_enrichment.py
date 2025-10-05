@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-BATCH_SIZE = 50
+BATCH_SIZE = 100
 
 def extract_section(content: str, source: str) -> str:
     """Extract section heading from document content"""
