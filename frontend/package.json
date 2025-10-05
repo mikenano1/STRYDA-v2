@@ -19,6 +19,7 @@
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
+    "@types/uuid": "^11.0.0",
     "expo": "^54.0.12",
     "expo-av": "^15.1.7",
     "expo-barcode-scanner": "^13.0.1",
@@ -38,6 +39,8 @@
     "expo-symbols": "~0.4.5",
     "expo-system-ui": "~5.0.10",
     "expo-web-browser": "~14.2.0",
+    "mobx": "^6.15.0",
+    "mobx-react-lite": "^4.1.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.5",
@@ -51,6 +54,7 @@
     "react-native-webview": "13.13.5",
     "react-native-worklets": "^0.6.0",
     "tesseract.js": "^6.0.1",
+    "uuid": "^13.0.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
