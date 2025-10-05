@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, FlatList, ActivityIndicator } from "react-native";
 import { observer } from "mobx-react-lite";
-import { chatStore } from "../../state/chat";
+import { chatStore } from "../state/chat";
 
 const Pill = ({ c }: { c: any }) => (
   <TouchableOpacity style={{ paddingVertical:6, paddingHorizontal:10, borderRadius:16, backgroundColor:"#1a1a1a", marginRight:8, marginTop:8 }}>
