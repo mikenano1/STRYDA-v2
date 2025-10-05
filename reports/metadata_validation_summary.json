@@ -1,0 +1,108 @@
+{
+  "validation_timestamp": "2025-10-05T08:15:00Z",
+  "validation_status": "FAILED",
+  "critical_issues_found": [
+    "100% clause coverage unrealistic for Metal Roofing manual",
+    "24.5% regex mismatch rate exceeds 5% threshold", 
+    "139 documents with empty string sections",
+    "All clauses missing provenance tracking (NULL clause_source)",
+    "Process artifacts detected as clauses ('0 - Clause Removed', '2 - Editing')"
+  ],
+  "totals": {
+    "total_documents": 819,
+    "section_coverage": 819,
+    "clause_coverage": 819,
+    "section_pct": 100.0,
+    "clause_pct": 100.0
+  },
+  "by_source": [
+    {
+      "source": "NZ Building Code",
+      "total": 224,
+      "section_docs": 224,
+      "clause_docs": 224,
+      "section_pct": 100.0,
+      "clause_pct": 100.0
+    },
+    {
+      "source": "NZ Metal Roofing", 
+      "total": 593,
+      "section_docs": 593,
+      "clause_docs": 593,
+      "section_pct": 100.0,
+      "clause_pct": 100.0
+    },
+    {
+      "source": "TEST_GUIDE",
+      "total": 1,
+      "section_docs": 1, 
+      "clause_docs": 1,
+      "section_pct": 100.0,
+      "clause_pct": 100.0
+    },
+    {
+      "source": "TEST_WIND",
+      "total": 1,
+      "section_docs": 1,
+      "clause_docs": 1, 
+      "section_pct": 100.0,
+      "clause_pct": 100.0
+    }
+  ],
+  "provenance": {
+    "section": {
+      "NULL": 511,
+      "on_page": 308
+    },
+    "clause": {
+      "NULL": 819
+    }
+  },
+  "regex_recheck": {
+    "sample_size": 200,
+    "clause_mismatch_rate_pct": 24.5,
+    "threshold_exceeded": true,
+    "threshold": 5.0
+  },
+  "section_containment": {
+    "sample_size": 200,
+    "non_contained_pct": 0.0,
+    "threshold_passed": true,
+    "threshold": 5.0
+  },
+  "duplicated_sections": [
+    {
+      "section": "",
+      "count": 139,
+      "samples": [
+        {"id": "multiple", "page": "various", "snippet": "Empty string sections indicating over-processing"}
+      ]
+    },
+    {
+      "section": "OBJECTIVE...",
+      "count": 28,
+      "samples": [
+        {"id": "building_code", "page": "multiple", "snippet": "Document headers repeated across pages"}
+      ]
+    }
+  ],
+  "roofing_clause_sampling": [
+    {"id": "sample1", "page": 76, "clause": "", "snippet": "Empty clause with content about structure"},
+    {"id": "sample2", "page": 551, "clause": "E2/AS1", "snippet": "Removed clause reference in revision notes"},
+    {"id": "sample3", "page": 179, "clause": "Z450", "snippet": "Legitimate coating specification"}
+  ],
+  "flags": [
+    "CRITICAL: 100% coverage indicates systematic over-filling",
+    "CRITICAL: Empty string sections in 139 documents", 
+    "CRITICAL: All clauses missing provenance (NULL clause_source)",
+    "CRITICAL: 24.5% regex mismatch rate indicates unreliable extraction",
+    "WARNING: Document headers extracted as sections instead of content sections",
+    "WARNING: Process artifacts ('0 - Clause Removed') extracted as legitimate clauses"
+  ],
+  "recommendation": "REVERT_REQUIRED",
+  "revert_plan": {
+    "action": "Reset metadata to safe state",
+    "scope": "Clear problematic section/clause values and re-extract conservatively",
+    "safety": "Preserve full content and embeddings"
+  }
+}
