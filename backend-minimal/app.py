@@ -71,37 +71,34 @@ def api_ask(req: AskRequest):
 @app.post("/api/chat")
 def api_chat(req: ChatRequest):
     """
-    Multi-turn chat conversation with RAG context and history
+    Multi-turn chat conversation with memory and enhanced citations
     """
     try:
-        # Convert chat history to the format expected by retrieve_and_answer
-        history = []
-        if req.conversation_history:
-            for msg in req.conversation_history[-5:]:  # Keep last 5 messages for context
-                history.append({
-                    "role": msg.role,
-                    "content": msg.content
-                })
+        import sys
+        sys.path.insert(0, '/app/backend-minimal')
+        from multi_turn_chat import generate_chat_response
         
-        # Process the message using RAG
-        result = retrieve_and_answer(req.message, history=history)
+        # Generate response with multi-turn awareness
+        response = generate_chat_response(
+            session_id=req.session_id or "default",
+            user_message=req.message
+        )
         
-        # Format response for chat interface
-        response = {
-            "message": result.get("answer", "Unable to process message"),
-            "role": "assistant",
-            "citations": result.get("citations", []),
-            "session_id": req.session_id or "default",
-            "notes": result.get("notes", ["backend", "chat"]),
+        # Ensure backward compatibility - remove timing from client response
+        client_response = {
+            "message": response.get("message", "Unable to process message"),
+            "citations": response.get("citations", []),
+            "session_id": response.get("session_id", "default"),
+            "notes": response.get("notes", ["backend", "chat"]),
             "timestamp": int(time.time())
         }
         
-        return response
+        return client_response
         
     except Exception as e:
+        print(f"❌ Multi-turn chat error: {e}")
         return {
             "message": "I'm temporarily unable to process your message. Please try again.",
-            "role": "assistant", 
             "citations": [],
             "session_id": req.session_id or "default",
             "notes": ["fallback", "chat", str(e)],
