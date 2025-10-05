@@ -1,0 +1,56 @@
+{
+  "revert_timestamp": "2025-10-05T08:30:00Z",
+  "revert_status": "SUCCESS",
+  "actions_taken": [
+    "Cleared 139 junk sections",
+    "Cleared 522 risky clauses",
+    "Normalized provenance for 89 trusted clauses",
+    "Added guardrail indexes"
+  ],
+  "final_coverage": {
+    "total": 819,
+    "sections": 680,
+    "clauses": 297,
+    "snippets": 819,
+    "section_pct": 83.0,
+    "clause_pct": 36.3,
+    "snippet_pct": 100.0
+  },
+  "by_source": [
+    {
+      "source": "NZ Building Code",
+      "total": 224,
+      "sections": 176,
+      "clauses": 221
+    },
+    {
+      "source": "NZ Metal Roofing",
+      "total": 593,
+      "sections": 504,
+      "clauses": 74
+    },
+    {
+      "source": "TEST_GUIDE",
+      "total": 1,
+      "sections": 0,
+      "clauses": 1
+    },
+    {
+      "source": "TEST_WIND",
+      "total": 1,
+      "sections": 0,
+      "clauses": 1
+    }
+  ],
+  "content_integrity": {
+    "full_content_preserved": true,
+    "embeddings_preserved": true,
+    "no_content_modifications": true
+  },
+  "quality_improvements": [
+    "Removed 139 empty string sections",
+    "Cleared 522 unrealistic clauses from Metal Roofing",
+    "Retained only verified standards and building codes",
+    "Established proper provenance tracking"
+  ]
+}

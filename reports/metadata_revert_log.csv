@@ -1,0 +1,662 @@
+doc_id,action,before_section,before_clause,after_section,after_clause,reason,logged_at
+95c042c1-014f-4640-941a-6783f5ebfb44,CLEAR_SECTION,,F1,,F1,junk_heading,2025-10-05 08:09:16.585278
+e994c386-2597-454c-b205-5e752ee9b49c,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+7de8224e-46b8-427d-9668-28a5b9b658d8,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+463e3dd8-9b67-4ba3-b3fe-23f53f4c96dd,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+2d34416c-07bf-4f46-aea5-a28096f95e8a,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+dc4a86c8-933a-41c5-a9fd-2ad4761c9e57,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+25a4632a-892b-4049-804d-2837a3c9c581,CLEAR_SECTION,,A3,,A3,junk_heading,2025-10-05 08:09:16.585278
+9c6d0d3c-f37e-4517-9c2e-d6b13a728ce7,CLEAR_SECTION,,A3,,A3,junk_heading,2025-10-05 08:09:16.585278
+6f75e4af-d7f8-42d1-bedc-142c33a2eaa2,CLEAR_SECTION,,E3,,E3,junk_heading,2025-10-05 08:09:16.585278
+b5752499-e977-4e1c-a4cf-b38d228f243d,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+de493307-5fac-46e3-a8fb-83c33346dc37,CLEAR_SECTION,,G6/VM1,,G6/VM1,junk_heading,2025-10-05 08:09:16.585278
+ab0a2177-2b30-403f-b031-c6f50b17ac38,CLEAR_SECTION,,B1,,B1,junk_heading,2025-10-05 08:09:16.585278
+6f9e9f01-9802-4e15-86a9-bcef9fffba60,CLEAR_SECTION,,A2,,A2,junk_heading,2025-10-05 08:09:16.585278
+b20cfce9-7f37-45e9-a7c9-3c7bc50d994f,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+729a92c2-566c-431a-a851-c6caef1f7c5d,CLEAR_SECTION,,B1,,B1,junk_heading,2025-10-05 08:09:16.585278
+6f9d183d-f36b-4d48-a7ac-c2be665b7fb5,CLEAR_SECTION,,B1,,B1,junk_heading,2025-10-05 08:09:16.585278
+770619a5-3c7a-475c-b72c-536c61643b72,CLEAR_SECTION,,B1,,B1,junk_heading,2025-10-05 08:09:16.585278
+7b326c82-9dac-40a8-b02a-f5fa173da03d,CLEAR_SECTION,,AS/NZS 4389,,AS/NZS 4389,junk_heading,2025-10-05 08:09:16.585278
+c0990ba0-4416-4b81-8de6-dd50c0c37c6a,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+faf28cfa-d316-4e32-86f6-27131fde51e9,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+3b21bf06-7a03-4b54-8647-d5116454d048,CLEAR_SECTION,,AS/NZS 1397,,AS/NZS 1397,junk_heading,2025-10-05 08:09:16.585278
+e291b12b-995d-4c00-ae4a-b62b3b1648e5,CLEAR_SECTION,,H12,,H12,junk_heading,2025-10-05 08:09:16.585278
+1b96916f-734c-454c-bc8f-32e56a166a35,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+8125d948-3113-459a-a374-2eb37c751407,CLEAR_SECTION,,G12AS1,,G12AS1,junk_heading,2025-10-05 08:09:16.585278
+9ec8e190-1fdc-4df9-9948-22a722c3138b,CLEAR_SECTION,,AS/NZS 2728,,AS/NZS 2728,junk_heading,2025-10-05 08:09:16.585278
+eb4872de-a12a-4ce5-8424-0a762de99470,CLEAR_SECTION,,B2,,B2,junk_heading,2025-10-05 08:09:16.585278
+789d9911-7a5e-49ba-963c-b16771a183c4,CLEAR_SECTION,,E1,,E1,junk_heading,2025-10-05 08:09:16.585278
+ae6ebeff-e360-4ffb-a6b1-45c5409eb90e,CLEAR_SECTION,,G300,,G300,junk_heading,2025-10-05 08:09:16.585278
+de2229e2-01d6-4474-b50b-496767132447,CLEAR_SECTION,,G300,,G300,junk_heading,2025-10-05 08:09:16.585278
+68f1426b-5009-42c9-b483-d3616e021245,CLEAR_SECTION,,H1,,H1,junk_heading,2025-10-05 08:09:16.585278
+07754118-084b-4de7-959c-32904c4b194f,CLEAR_SECTION,,E1,,E1,junk_heading,2025-10-05 08:09:16.585278
+57829eff-a6e7-49bc-967a-ee775f55eee3,CLEAR_SECTION,,E2/AS1,,E2/AS1,junk_heading,2025-10-05 08:09:16.585278
+37265ce5-9f5a-4132-8359-5891f73993f2,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+d8d25ee3-9ae0-4f40-ad06-b2a175043b9e,CLEAR_SECTION,,G300,,G300,junk_heading,2025-10-05 08:09:16.585278
+e4e41ffe-ecb4-413d-b15f-53f864849408,CLEAR_SECTION,,G300,,G300,junk_heading,2025-10-05 08:09:16.585278
+ae7f86e5-3f4e-42ce-a137-9ea05cbb78e1,CLEAR_SECTION,,NZS 3604:2011,,NZS 3604:2011,junk_heading,2025-10-05 08:09:16.585278
+9fa69ed7-b94f-497f-9e94-e2c64b5b95d2,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+990bc15a-e7af-483e-859a-60795a558926,CLEAR_SECTION,,C1,,C1,junk_heading,2025-10-05 08:09:16.585278
+724a3801-b45a-49dd-bd75-cdd419a0ce48,CLEAR_SECTION,,G92,,G92,junk_heading,2025-10-05 08:09:16.585278
+f7797562-4c72-4444-81b1-21764b156805,CLEAR_SECTION,,G13,,G13,junk_heading,2025-10-05 08:09:16.585278
+d14100bd-52d3-4455-a977-9b5c5ba01f70,CLEAR_SECTION,,C3,,C3,junk_heading,2025-10-05 08:09:16.585278
+944ef892-f3d2-4f5a-baea-99dd7a3a33ee,CLEAR_SECTION,,D0,,D0,junk_heading,2025-10-05 08:09:16.585278
+30afccbc-6085-43e4-ae63-07d17464315a,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+adb20741-de65-4a9c-b2bd-355493ee850f,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+91bc2450-1d76-4914-80bb-429ce3547e48,CLEAR_SECTION,,D1,,D1,junk_heading,2025-10-05 08:09:16.585278
+ea1de228-36dd-4185-80e0-ce8a03d80233,CLEAR_SECTION,,A2,,A2,junk_heading,2025-10-05 08:09:16.585278
+9d8dcbef-d166-4ce3-a989-5636867d9b76,CLEAR_SECTION,,A2,,A2,junk_heading,2025-10-05 08:09:16.585278
+44346935-aeb4-4dcd-9139-6db8e899fc8f,CLEAR_SECTION,,G250,,G250,junk_heading,2025-10-05 08:09:16.585278
+d47a9aa8-91e1-4b20-bec6-58687e4b6252,CLEAR_SECTION,,G10/AS1,,G10/AS1,junk_heading,2025-10-05 08:09:16.585278
+fada457b-2882-4277-ae17-8d472d81a649,CLEAR_SECTION,,Z275,,Z275,junk_heading,2025-10-05 08:09:16.585278
+27d94b9a-4d36-4f26-a112-63ee84f9c634,CLEAR_SECTION,,E3,,E3,junk_heading,2025-10-05 08:09:16.585278
+66b30811-75eb-4612-85ba-244343a81e10,CLEAR_SECTION,,C4,,C4,junk_heading,2025-10-05 08:09:16.585278
+c906d5fc-c50b-4d71-ac97-79e37c3388bc,CLEAR_SECTION,,B1/VM1,,B1/VM1,junk_heading,2025-10-05 08:09:16.585278
+3ee37872-2bc1-488c-aee6-dd63323cc893,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+c6ee3c9b-9862-4352-94d7-86bd2166ca6d,CLEAR_SECTION,,C1,,C1,junk_heading,2025-10-05 08:09:16.585278
+22412697-bd63-48a3-b8df-63a676ea97eb,CLEAR_SECTION,,G13,,G13,junk_heading,2025-10-05 08:09:16.585278
+e8cada6d-f0f3-43ff-a7f3-7633f6ea89a5,CLEAR_SECTION,,AS/NZS 2728:2013,,AS/NZS 2728:2013,junk_heading,2025-10-05 08:09:16.585278
+f6a447df-e59a-471b-bc2d-95cd398aa400,CLEAR_SECTION,,AS/NZS 2728:2013,,AS/NZS 2728:2013,junk_heading,2025-10-05 08:09:16.585278
+022739e2-4a0d-4fb8-a133-1931adab6f22,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+2653b808-e46e-46bd-a341-c67d310e675f,CLEAR_SECTION,,G4/AS1,,G4/AS1,junk_heading,2025-10-05 08:09:16.585278
+b304570b-cd49-48b7-91e7-ae5928b645a4,CLEAR_SECTION,,AS/NZS 4256.3,,AS/NZS 4256.3,junk_heading,2025-10-05 08:09:16.585278
+0f9d699f-e987-4832-b9dd-8cb146c06cca,CLEAR_SECTION,,E2/AS1,,E2/AS1,junk_heading,2025-10-05 08:09:16.585278
+11dac3dd-769a-4d11-b78f-755006ab9994,CLEAR_SECTION,,G12/AS2,,G12/AS2,junk_heading,2025-10-05 08:09:16.585278
+3a6e05b6-6952-4fd9-b7f4-0697072b86d4,CLEAR_SECTION,,NZS 1170,,NZS 1170,junk_heading,2025-10-05 08:09:16.585278
+38df3d17-317b-4a35-aa50-73826b72ca32,CLEAR_SECTION,,AS/NZS 3566,,AS/NZS 3566,junk_heading,2025-10-05 08:09:16.585278
+4a0b28d2-fd01-4f10-a6e8-70bd5abcab72,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+ad3992fb-e786-4f8b-a34e-95c6b3ab6490,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+1754d5c6-7450-4cf9-97b7-019993e7836d,CLEAR_SECTION,,G15/AS1,,G15/AS1,junk_heading,2025-10-05 08:09:16.585278
+4ed993ee-a954-457b-a326-5938d8288802,CLEAR_SECTION,,B2/AS1,,B2/AS1,junk_heading,2025-10-05 08:09:16.585278
+f9e92f91-4966-4215-bc60-6b4326607f8f,CLEAR_SECTION,,G14/VM1,,G14/VM1,junk_heading,2025-10-05 08:09:16.585278
+101c420d-44c7-44ab-b193-ce7444a45d2a,CLEAR_SECTION,,H1/DEFS,,H1/DEFS,junk_heading,2025-10-05 08:09:16.585278
+3ed29346-b2b4-4b2d-9913-2bad39c573f0,CLEAR_SECTION,,F1/VM1,,F1/VM1,junk_heading,2025-10-05 08:09:16.585278
+19ed3ddd-cdc4-43a3-9a26-06a9b5c0440f,CLEAR_SECTION,,AS/NZS 2728,,AS/NZS 2728,junk_heading,2025-10-05 08:09:16.585278
+92058306-4135-411a-bfb8-6bc605a5075f,CLEAR_SECTION,,G12,,G12,junk_heading,2025-10-05 08:09:16.585278
+0a08755c-6940-4069-bf60-55552bec4b04,CLEAR_SECTION,,G12,,G12,junk_heading,2025-10-05 08:09:16.585278
+adc5dbf6-9546-4763-9c89-d6a4077d3bc6,CLEAR_SECTION,,NZS 2295,,NZS 2295,junk_heading,2025-10-05 08:09:16.585278
+8e32c84b-2d17-4131-a908-17a000bce76d,CLEAR_SECTION,,NZS 4223,,NZS 4223,junk_heading,2025-10-05 08:09:16.585278
+62239ad0-da62-4739-9cfa-d24efb701aea,CLEAR_SECTION,,G10/AS1,,G10/AS1,junk_heading,2025-10-05 08:09:16.585278
+2edadb2f-914f-49be-8b8b-be3d58c7b1b5,CLEAR_SECTION,,G14VM1,,G14VM1,junk_heading,2025-10-05 08:09:16.585278
+4a675133-3642-440b-aa4c-239d2372757b,CLEAR_SECTION,,E2AS1,,E2AS1,junk_heading,2025-10-05 08:09:16.585278
+83a0b69f-2e59-42ce-a18f-5acbdd51ea0e,CLEAR_SECTION,,E2AS1,,E2AS1,junk_heading,2025-10-05 08:09:16.585278
+55bfa200-e4a0-41e5-b6de-af3525d3a994,CLEAR_SECTION,,G13AS1,,G13AS1,junk_heading,2025-10-05 08:09:16.585278
+239e0cc1-1ee8-4fae-81a2-9c566611919a,CLEAR_SECTION,,G12AS1,,G12AS1,junk_heading,2025-10-05 08:09:16.585278
+2377ead8-167b-4492-98d8-2e01c788bac7,CLEAR_SECTION,,G13AS2,,G13AS2,junk_heading,2025-10-05 08:09:16.585278
+04648075-c40a-420b-bbc3-7a9efaac4a20,CLEAR_SECTION,,AS/NZS 4200,,AS/NZS 4200,junk_heading,2025-10-05 08:09:16.585278
+2d36a536-45bb-4bdf-9b3c-f8828895f973,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+41cdaf1b-d573-4e7d-9ace-4946d5537da4,CLEAR_SECTION,,G11AS1,,G11AS1,junk_heading,2025-10-05 08:09:16.585278
+5ac6687e-010d-4574-aee1-27932dbcc948,CLEAR_SECTION,,G11AS1,,G11AS1,junk_heading,2025-10-05 08:09:16.585278
+a23cbeb9-99ba-47a6-b3d2-397da49b19a5,CLEAR_SECTION,,E1,,E1,junk_heading,2025-10-05 08:09:16.585278
+8c342dbd-4f3b-4561-8b63-b9c767c393e8,CLEAR_SECTION,,B1,,B1,junk_heading,2025-10-05 08:09:16.585278
+bc48b6e9-131c-4e10-aee5-3c4d49fb9501,CLEAR_SECTION,,G300,,G300,junk_heading,2025-10-05 08:09:16.585278
+58207bc9-9412-41ac-877f-1ce6e20f8ca9,CLEAR_SECTION,,AS/NZS 1397,,AS/NZS 1397,junk_heading,2025-10-05 08:09:16.585278
+6006dd08-6c43-4d47-b9d4-d03a1181c8d3,CLEAR_SECTION,,G250,,G250,junk_heading,2025-10-05 08:09:16.585278
+741d6c20-1a51-4e23-bf66-97697a0b1392,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+fb13559d-214d-43a8-b9bd-04602091210a,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+3b2d6cf9-f4f7-4e6a-844f-5b4637549edd,CLEAR_SECTION,,G300,,G300,junk_heading,2025-10-05 08:09:16.585278
+a84ce4ef-7255-4479-92f0-1ae86ab391e8,CLEAR_SECTION,,G300,,G300,junk_heading,2025-10-05 08:09:16.585278
+9b208e67-2bc2-4f3e-a1d0-ce375780e4fa,CLEAR_SECTION,,NZS 1170.2,,NZS 1170.2,junk_heading,2025-10-05 08:09:16.585278
+fea38c61-41eb-4630-a280-ffb3127df3c7,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+19eae231-1de0-48ae-97bb-2b249c41e357,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+c86fbd61-e050-443a-9183-16f1fb289fc8,CLEAR_SECTION,,C5,,C5,junk_heading,2025-10-05 08:09:16.585278
+afd88323-cc21-451a-aa59-7bc9d1413022,CLEAR_SECTION,,C2,,C2,junk_heading,2025-10-05 08:09:16.585278
+686b008e-7de8-4dba-9031-8fc35d8d25d1,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+0d0dca7a-abe3-490e-a6ec-af2ef6a23527,CLEAR_SECTION,,E2/AS1,,E2/AS1,junk_heading,2025-10-05 08:09:16.585278
+7b72cb11-9c9c-4ffe-8fb7-fd25499f8216,CLEAR_SECTION,,H36,,H36,junk_heading,2025-10-05 08:09:16.585278
+c185a1ce-a613-4ea1-8b59-a314936fc71d,CLEAR_SECTION,,E1/AS1,,E1/AS1,junk_heading,2025-10-05 08:09:16.585278
+1cf58981-ec28-43fa-b596-be3e4871014b,CLEAR_SECTION,,B2/AS1,,B2/AS1,junk_heading,2025-10-05 08:09:16.585278
+3ec57795-fc8b-4f53-b742-c11a82e98898,CLEAR_SECTION,,B2,,B2,junk_heading,2025-10-05 08:09:16.585278
+906f1ed2-a40b-40f0-9839-0cc4a8d606da,CLEAR_SECTION,,C4,,C4,junk_heading,2025-10-05 08:09:16.585278
+f48ee588-03f4-4183-ac01-a3ba7e1a46af,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+0d095e4a-f026-42f9-95bf-5943e4896fb5,CLEAR_SECTION,,E2,,E2,junk_heading,2025-10-05 08:09:16.585278
+3cc60898-b81e-4da9-9b8a-0c93092bce04,CLEAR_SECTION,,E1,,E1,junk_heading,2025-10-05 08:09:16.585278
+20f6ade9-7687-4ded-bd26-63c7782ef1e4,CLEAR_SECTION,,E2/AS1,,E2/AS1,junk_heading,2025-10-05 08:09:16.585278
+3ba386c1-b0dc-455a-962f-f96657c1e65b,CLEAR_SECTION,,C2,,C2,junk_heading,2025-10-05 08:09:16.585278
+5e074bc0-b941-4159-bb09-9a4c97bdefcb,CLEAR_SECTION,,B2/AS1,,B2/AS1,junk_heading,2025-10-05 08:09:16.585278
+2b2113e2-8388-4a29-8794-32ffe8c4f167,CLEAR_SECTION,,E2/AS1,,E2/AS1,junk_heading,2025-10-05 08:09:16.585278
+11ea4a87-6316-4c28-8f71-87944061fd47,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+84d259e8-6506-429c-a642-085a9486e2c9,CLEAR_SECTION,,E2AS1,,E2AS1,junk_heading,2025-10-05 08:09:16.585278
+0b8bd2e3-b6b6-4f76-9425-90804ad51f8a,CLEAR_SECTION,,E2/AS1,,E2/AS1,junk_heading,2025-10-05 08:09:16.585278
+833d7b11-522c-499b-8ffe-94894079dacb,CLEAR_SECTION,,G12AS1,,G12AS1,junk_heading,2025-10-05 08:09:16.585278
+63a8104c-fb8d-4f31-b665-ad28b6450231,CLEAR_SECTION,,G10,,G10,junk_heading,2025-10-05 08:09:16.585278
+961a2576-1488-4dc0-92c3-759dc1235c6c,CLEAR_SECTION,,E2/AS1,,E2/AS1,junk_heading,2025-10-05 08:09:16.585278
+9259b377-2238-4123-9cd1-532e312638cc,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+3ba96ad7-3738-4921-a686-05418821bf23,CLEAR_SECTION,,G12,,G12,junk_heading,2025-10-05 08:09:16.585278
+f42245fa-6c08-4f3c-ba64-61b2e8efaa8c,CLEAR_SECTION,,E2,,E2,junk_heading,2025-10-05 08:09:16.585278
+31b70ac8-653d-4ef8-8787-c5732b7d6596,CLEAR_SECTION,,NZS 3604,,NZS 3604,junk_heading,2025-10-05 08:09:16.585278
+451fa654-ac80-4d4d-a4c3-2d132abc8c66,CLEAR_SECTION,,AS/NZS 4256.2,,AS/NZS 4256.2,junk_heading,2025-10-05 08:09:16.585278
+27026718-83e9-4e80-8f96-d8facc1502fa,CLEAR_SECTION,,C5,,C5,junk_heading,2025-10-05 08:09:16.585278
+84640db0-5503-42fd-bdf4-fa01a7246adb,CLEAR_SECTION,,AS/NZS 4257,,AS/NZS 4257,junk_heading,2025-10-05 08:09:16.585278
+93b8acf4-f569-4da9-8300-f613dd5be539,CLEAR_SECTION,,G1AS1,,G1AS1,junk_heading,2025-10-05 08:09:16.585278
+540275a7-41a4-4b79-b36a-9af114255f05,CLEAR_SECTION,,G6AS1,,G6AS1,junk_heading,2025-10-05 08:09:16.585278
+df470607-5425-4424-98b6-2f3beab10570,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+43d2f197-32f4-4e88-b3e2-4c03f7577a3f,CLEAR_SECTION,,G550,,G550,junk_heading,2025-10-05 08:09:16.585278
+373e3df1-df9f-4d2b-a9bd-6eb760bbda84,CLEAR_SECTION,,A3,,A3,junk_heading,2025-10-05 08:09:16.585278
+c554a0a1-ff5b-4253-a54e-afa6b5729c47,CLEAR_SECTION,,G6AS1,,G6AS1,junk_heading,2025-10-05 08:09:16.585278
+2794d0f1-6aad-4862-b1dc-a74b1409b01e,CLEAR_SECTION,,G12VM1,,G12VM1,junk_heading,2025-10-05 08:09:16.585278
+317c6782-9111-408a-8993-c2dc12408b3f,CLEAR_SECTION,,G12AS2,,G12AS2,junk_heading,2025-10-05 08:09:16.585278
+c8acb229-5232-43d2-9bdd-1c17db595134,CLEAR_SECTION,,,,,junk_heading,2025-10-05 08:09:16.585278
+6e4838ca-36b4-4320-9e26-4f11c04dbc54,CLEAR_SECTION,,G13AS1,,G13AS1,junk_heading,2025-10-05 08:09:16.585278
+a7f7c52b-44df-4ec3-a39c-90088e02113f,CLEAR_CLAUSE,"12 parts may be done by bisecting one part, and again stepping off with the radi",C1,"12 parts may be done by bisecting one part, and again stepping off with the radi",,metal_roofing_clause,2025-10-05 08:09:16.585278
+00ea3280-ef65-400a-99bb-613a4495e0f9,CLEAR_CLAUSE,REVISION HISTORY,,REVISION HISTORY,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e3761a39-9d95-446c-93f7-548ea48258e2,CLEAR_CLAUSE,1 - Minor Errata,,1 - Minor Errata,,metal_roofing_clause,2025-10-05 08:09:16.585278
+45bd09ed-d348-4f57-b832-07ab3dffbe7e,CLEAR_CLAUSE,1 - Minor Errata,,1 - Minor Errata,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a1609be5-31dc-44e6-8e46-0c307a5a7659,CLEAR_CLAUSE,Aluminium Cladding Wind Load Span Graphs,,Aluminium Cladding Wind Load Span Graphs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+11554071-de82-4c30-b726-cbb7a0473812,CLEAR_CLAUSE,1 - Minor Errata,,1 - Minor Errata,,metal_roofing_clause,2025-10-05 08:09:16.585278
+900c6191-5a8c-4238-8bc4-e074b1086f7f,CLEAR_CLAUSE,1 - Minor Errata,,1 - Minor Errata,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f5f557fc-350c-44f9-b5a2-37d0b7a6d976,CLEAR_CLAUSE,Coating mass,,Coating mass,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ea4d27ce-9910-440e-9cd6-80e29e74b3c2,CLEAR_CLAUSE,1 - Minor,,1 - Minor,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5ab6e17f-9451-407f-a502-bcf5439ce8c3,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+34fede60-ae76-4dbf-a657-873bb363d5f0,CLEAR_CLAUSE,NATURAL LIGHT,,NATURAL LIGHT,,metal_roofing_clause,2025-10-05 08:09:16.585278
+044ba565-22b6-4eb5-a911-4a6cbaf95a84,CLEAR_CLAUSE,3 - Substantial,E3,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+cda86103-9b86-4d0c-bc59-0f94c1eba9d1,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ce17d35f-0951-4f3c-a0b8-9b4bd0144344,CLEAR_CLAUSE,1 - Minor Errata,,1 - Minor Errata,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7fe88db9-ed62-4696-9b9d-0fbe5bbed3e7,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+675d1cd5-85e8-42cd-ba2e-1e6f35c5625a,CLEAR_CLAUSE,"general, load-spreading washers should have a",,"general, load-spreading washers should have a",,metal_roofing_clause,2025-10-05 08:09:16.585278
+0c4ae988-f9ff-49cb-9370-2cc50e1f2592,CLEAR_CLAUSE,USEFUL INFORMATION,,USEFUL INFORMATION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ef5a5cc4-d5bc-4e1d-b571-430a339a6762,CLEAR_CLAUSE,3 - Substantial,,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d1059195-27a4-4822-84f3-359208275d5f,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+999d41ce-58df-41ad-bd1d-96c4ad35b0c8,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+38f3755c-d086-4190-87e3-1e542539b2b5,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7ed7a560-9ceb-4e20-b855-a48a49ea2b3f,CLEAR_CLAUSE,2022 – November,E1,2022 – November,,metal_roofing_clause,2025-10-05 08:09:16.585278
+43d95409-5569-4569-94ec-02dd51240118,CLEAR_CLAUSE,3 - Substantial,,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e7ff7b00-fe36-4a74-b881-98133eeb61c7,CLEAR_CLAUSE,2023 – March,E1/AS1,2023 – March,,metal_roofing_clause,2025-10-05 08:09:16.585278
+eea6d19f-b068-47c0-bb77-85380aa2bb39,CLEAR_CLAUSE,OTHER PRODUCTS,,OTHER PRODUCTS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+20d1174a-fb32-4e7c-95e4-73e59e382e8c,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2c7e6287-1304-4a6e-a013-ae4f65e2d452,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+39eea4ef-0e15-415e-8769-cc61c22acbdb,CLEAR_CLAUSE,Roof Noise,,Roof Noise,,metal_roofing_clause,2025-10-05 08:09:16.585278
+1f4a266b-0c1b-4bf4-b178-f646373fb086,CLEAR_CLAUSE,astragals,,astragals,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6fbce969-3765-49c7-99e9-a0b6d16516ad,CLEAR_CLAUSE,how much heat can pass through a window,,how much heat can pass through a window,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3ba7f43f-6b14-4d9f-8107-8b98d9c4f2ca,CLEAR_CLAUSE,Tensile Testing,,Tensile Testing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d8de3982-fc22-4079-9bae-4fcc52b0c935,CLEAR_CLAUSE,Other Causes of Thermal Noise,,Other Causes of Thermal Noise,,metal_roofing_clause,2025-10-05 08:09:16.585278
+79272caf-0e85-4189-9809-3c6a129c9aca,CLEAR_CLAUSE,Flashing Buckling,,Flashing Buckling,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2bc3db1e-5f0f-493a-8018-a33c288d5f6e,CLEAR_CLAUSE,Colour Differential,,Colour Differential,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7f6d3178-52e5-4148-9c0b-6f8e0e875eef,CLEAR_CLAUSE,Drinking Water,,Drinking Water,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b96f5e7e-50f7-46a1-bbe8-a93c656648fc,CLEAR_CLAUSE,Responsibilities,,Responsibilities,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c7e1d1e6-fbaa-42ec-80d2-764470e9c53c,CLEAR_CLAUSE,Mechanical Access Plant,,Mechanical Access Plant,,metal_roofing_clause,2025-10-05 08:09:16.585278
+009fdc3f-e04a-4496-9ef9-1a97de5b1be1,CLEAR_CLAUSE,Objective,G7,Objective,,metal_roofing_clause,2025-10-05 08:09:16.585278
+724f2cbb-a847-4603-b36b-e4768b0f5527,CLEAR_CLAUSE,HSW Act,,HSW Act,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2d8ab0b9-0702-4ecc-9828-4f4ece98b82f,CLEAR_CLAUSE,External Moisture Penetrations,,External Moisture Penetrations,,metal_roofing_clause,2025-10-05 08:09:16.585278
+1e6056c0-06d8-42f9-8fe8-bbe3a937e466,CLEAR_CLAUSE,Astragal,,Astragal,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8bb6cb96-4f85-405b-8e1a-e543d4c43c45,CLEAR_CLAUSE,Special Climates,,Special Climates,,metal_roofing_clause,2025-10-05 08:09:16.585278
+17e81b1c-e8c6-4741-b1c8-22b666a383c2,CLEAR_CLAUSE,Maintenance,,Maintenance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b20cfce9-7f37-45e9-a7c9-3c7bc50d994f,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+21eac13a-0a6a-46a0-8d73-8abd581a24af,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+abd80b2e-b7fc-480d-9640-38c3675a1b5c,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+07757625-7693-44df-8b4d-b65e87e236fe,CLEAR_CLAUSE,WORKING ON ROOFS,,WORKING ON ROOFS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7518145b-43d7-4acf-8af5-0cf8db0c85bb,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+72cd9713-be1c-4b5d-9454-7f25015ac123,CLEAR_CLAUSE,2022 – April,,2022 – April,,metal_roofing_clause,2025-10-05 08:09:16.585278
+dfb922e0-6a3b-4aa3-8ffe-f12e521cd9c4,CLEAR_CLAUSE,Product Selection,,Product Selection,,metal_roofing_clause,2025-10-05 08:09:16.585278
+95a61e33-d4e7-455e-8fd6-384eebb7e91a,CLEAR_CLAUSE,Acknowledgements,,Acknowledgements,,metal_roofing_clause,2025-10-05 08:09:16.585278
+65f8bd27-a3e8-47dc-9e41-e8a83438aee5,CLEAR_CLAUSE,Disputes,,Disputes,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f77dffff-2c26-4a0b-9015-98abc9d5db5e,CLEAR_CLAUSE,2021 – June,G7,2021 – June,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0b995020-6746-4fdb-bcef-42b6112d5cf7,CLEAR_CLAUSE,Material,,Material,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9d5565cc-6fec-4c5e-accf-563e4f62a9ea,CLEAR_CLAUSE,Installation,,Installation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7d2ea6bf-6c37-4465-9c4a-f3a906dafa33,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ec067fb8-5aa6-4210-b736-7c18d324022c,CLEAR_CLAUSE,PRODUCT SELECTION,,PRODUCT SELECTION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+027f7e7b-a07c-4c6f-a9e9-20bf79344184,CLEAR_CLAUSE,3 - Substantial,,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c0643b4a-bc29-4d05-9032-0080a666d36e,CLEAR_CLAUSE,Scheduled Maintenance,,Scheduled Maintenance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8b6ba15f-61ab-4370-b183-13fd64c75368,CLEAR_CLAUSE,Accepting Delivery,,Accepting Delivery,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2bf38f28-0bfb-448c-acdf-3ff025587ce9,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a96174e1-a4a9-4ac7-8435-2ddcd61c1155,CLEAR_CLAUSE,Wet Storage Damage,,Wet Storage Damage,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7acee23d-35ad-452d-94ee-af388aba09e9,CLEAR_CLAUSE,Pullover,,Pullover,,metal_roofing_clause,2025-10-05 08:09:16.585278
+23b61d70-60bc-4d02-97bc-01271b62b2a7,CLEAR_CLAUSE,Handling,,Handling,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4549ca81-0184-464e-8144-548754845deb,CLEAR_CLAUSE,Table of polygons,,Table of polygons,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7dcf4ba6-365b-4402-a911-13d967532ed0,CLEAR_CLAUSE,2021 – March,,2021 – March,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b0ece201-cca0-4cfc-867a-0914df68c21a,CLEAR_CLAUSE,Footwear,,Footwear,,metal_roofing_clause,2025-10-05 08:09:16.585278
+1f60c9a8-0cd3-4335-a2f9-f1181474bac0,CLEAR_CLAUSE,9 mm diameter pre-drilled hole in the roof sheeting.,,9 mm diameter pre-drilled hole in the roof sheeting.,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e703cf19-29f7-4079-bd45-e81770f064cf,CLEAR_CLAUSE,Objective,B1,Objective,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d21cde82-ad77-48bd-8a61-298cd05da789,CLEAR_CLAUSE,AS/AZS 1170.2:2011,B1,AS/AZS 1170.2:2011,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4c179967-1f4a-49d3-938d-9680c8d266bd,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8f16fdc6-ae63-419c-9fd6-c7faac6ccebc,CLEAR_CLAUSE,Turn Up and Turn Down Tools,,Turn Up and Turn Down Tools,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c4b98e5b-524b-4ad8-abb9-4a6d6c366e70,CLEAR_CLAUSE,2020 – December,,2020 – December,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3e3ceb52-1d59-4638-a935-edb6e303df89,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2cbe4fab-a266-40c7-9856-29139da241a2,CLEAR_CLAUSE,NZBC CLAUSE B2 (EXTRACT),B2,NZBC CLAUSE B2 (EXTRACT),,metal_roofing_clause,2025-10-05 08:09:16.585278
+76705b37-5b5d-4533-8b05-a3b9e671941d,CLEAR_CLAUSE,"250 mm/hr intensity and 3 degrees pitch, rain will take 2 minutes to travel 15 m",,"250 mm/hr intensity and 3 degrees pitch, rain will take 2 minutes to travel 15 m",,metal_roofing_clause,2025-10-05 08:09:16.585278
+e83390d8-da3e-464a-944b-d1025871cbc5,CLEAR_CLAUSE,2020 – September,,2020 – September,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9e2cde8a-3f21-4c59-bb41-3872292464ff,CLEAR_CLAUSE,Strippable Films,,Strippable Films,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b67e8cb0-3291-42f8-b4ee-b0e6ee779be0,CLEAR_CLAUSE,Double Lapping,,Double Lapping,,metal_roofing_clause,2025-10-05 08:09:16.585278
+aa939604-f6a8-4c1c-8efb-c3919483d8f5,CLEAR_CLAUSE,0.40 HS,,0.40 HS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d8f756f0-e816-4027-80be-cf65481c0d61,CLEAR_CLAUSE,OTHER PRODUCTS,,OTHER PRODUCTS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+693daad5-1c04-4361-97f4-4a1ca77bf078,CLEAR_CLAUSE,Roof Pitch,,Roof Pitch,,metal_roofing_clause,2025-10-05 08:09:16.585278
+66fb1ec6-380e-4fac-bd11-0466ab23613d,CLEAR_CLAUSE,Valley Installation,,Valley Installation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+57829eff-a6e7-49bc-967a-ee775f55eee3,CLEAR_CLAUSE,,E2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+afb6e144-e7b9-4d09-a0b9-813f4a41afb1,CLEAR_CLAUSE,V = √2 = 1.42,,V = √2 = 1.42,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7896fc42-4af8-49bb-bbdd-f49b63a0c9ca,CLEAR_CLAUSE,2020 – June,,2020 – June,,metal_roofing_clause,2025-10-05 08:09:16.585278
+53e1e035-c7eb-493d-af41-df975e50c4a5,CLEAR_CLAUSE,Setting Out,,Setting Out,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4e0b4910-605e-40f0-ba66-ab7f7cf13631,CLEAR_CLAUSE,25 mm Min air gap,,25 mm Min air gap,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a056416a-ab6f-4a21-a927-88fef0212b4c,CLEAR_CLAUSE,EXTERNAL MOISTURE ROOFING,,EXTERNAL MOISTURE ROOFING,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3e2c897d-ea25-4109-8ac7-3b49dfd15466,CLEAR_CLAUSE,OTHER PRODUCTS,,OTHER PRODUCTS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+62630b97-c18e-452f-a20a-0a1774058512,CLEAR_CLAUSE,21.6 mm.,,21.6 mm.,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ad6b3619-785a-4922-bf86-5ca125df8c4a,CLEAR_CLAUSE,End Laps,,End Laps,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3a9772e0-d718-4d08-9551-f02a8c745d67,CLEAR_CLAUSE,Insulated Panel Acoustics,,Insulated Panel Acoustics,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5991a018-77be-489e-ad7c-46ab1c181ece,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7e9ffb3c-a131-4901-bf45-ebe8a9174919,CLEAR_CLAUSE,EXTERNAL MOISTURE ROOFING,,EXTERNAL MOISTURE ROOFING,,metal_roofing_clause,2025-10-05 08:09:16.585278
+38a39ee1-fdac-4f8f-a961-d73f943195d0,CLEAR_CLAUSE,150 mm cutback,,150 mm cutback,,metal_roofing_clause,2025-10-05 08:09:16.585278
+576b72e7-038a-44fe-8797-0944e99248fb,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7dde117d-20dd-494c-b717-fb607f14d6f3,CLEAR_CLAUSE,Marking and Cutting,,Marking and Cutting,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ca39e530-8c54-4ff3-baad-4ae562bdd67f,CLEAR_CLAUSE,Washing,,Washing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a8de3f83-d02a-4b57-bf39-b7b53d432124,CLEAR_CLAUSE,2 parts of water. (4 - 2 = 2).,,2 parts of water. (4 - 2 = 2).,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d6b7ecaa-82fc-48b8-b355-d15f3fac7184,CLEAR_CLAUSE,Flashing Materials,,Flashing Materials,,metal_roofing_clause,2025-10-05 08:09:16.585278
+957a9043-3c68-41aa-aba2-b38800ece5a1,CLEAR_CLAUSE,"20 MPa. When cleaning the profile to remove dirt, lichen, mould, or algae, care ",,"20 MPa. When cleaning the profile to remove dirt, lichen, mould, or algae, care ",,metal_roofing_clause,2025-10-05 08:09:16.585278
+82dec68b-2836-4c42-9631-de9da8b8bceb,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5330765a-d2ce-4f87-b2ab-cafac108d917,CLEAR_CLAUSE,45 km,B2,45 km,,metal_roofing_clause,2025-10-05 08:09:16.585278
+be82c4d6-82f1-4732-9d71-5ce1e0b156a6,CLEAR_CLAUSE,TESTING AND MRM STANDARDS,B1,TESTING AND MRM STANDARDS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+27ded3b6-a0f5-4397-aa7a-1645540a268d,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a86d37dc-9d51-4b30-af8d-20baa92e43b4,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9fa69ed7-b94f-497f-9e94-e2c64b5b95d2,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5b67580c-0ddd-4aed-a8b3-b6b3c199cb6b,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+990bc15a-e7af-483e-859a-60795a558926,CLEAR_CLAUSE,,C1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ea6a8039-4afa-4a7d-91f7-3263eaec2549,CLEAR_CLAUSE,2020 – March,,2020 – March,,metal_roofing_clause,2025-10-05 08:09:16.585278
+03cd9adb-5c83-4435-aded-33a06da7fa2f,CLEAR_CLAUSE,OTHER CAUSES OF CORROSION,,OTHER CAUSES OF CORROSION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f441acc2-fa4f-4550-811e-5c258015888d,CLEAR_CLAUSE,Overhang,,Overhang,,metal_roofing_clause,2025-10-05 08:09:16.585278
+83605382-46d9-4a17-858b-655ffe6eb8a8,CLEAR_CLAUSE,Sealing and Joining,,Sealing and Joining,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e15dec4e-f632-4f54-8f02-9a57afeb3752,CLEAR_CLAUSE,Fasteners,,Fasteners,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f5f6da76-96ad-47a4-8033-15931ed256cf,CLEAR_CLAUSE,Screw Gauge and Thread,,Screw Gauge and Thread,,metal_roofing_clause,2025-10-05 08:09:16.585278
+98bbbd7c-7523-44d4-bf38-a7210192bfef,CLEAR_CLAUSE,DURABILITY,,DURABILITY,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a8566c52-add0-47f0-b229-933050edd12b,CLEAR_CLAUSE,Screw Gauge,,Screw Gauge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d14100bd-52d3-4455-a977-9b5c5ba01f70,CLEAR_CLAUSE,,C3,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e1232253-5c26-438e-84c7-7ef023baba31,CLEAR_CLAUSE,Flashing,,Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4d796575-81e7-4d35-a584-0f3a7134fc95,CLEAR_CLAUSE,ASTM D2240,D2240,ASTM D2240,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0fb0061f-1f09-4664-ba5d-9be24fe661cd,CLEAR_CLAUSE,Rivets,,Rivets,,metal_roofing_clause,2025-10-05 08:09:16.585278
+944ef892-f3d2-4f5a-baea-99dd7a3a33ee,CLEAR_CLAUSE,,D0,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+02971adc-8358-4740-95b4-e1e17a76ad97,CLEAR_CLAUSE,pound force foot,,pound force foot,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ea5f8cb2-cb66-4f0f-875a-cdc38f0fe638,CLEAR_CLAUSE,2019 – December,E1,2019 – December,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f44853cc-a68f-480e-9fb8-89cf400d2f75,CLEAR_CLAUSE,Modes Of Fastener Failure,,Modes Of Fastener Failure,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f84f832a-d2a1-4e4c-a9b2-48de588891cf,CLEAR_CLAUSE,and at the lower edge of penetrations,,and at the lower edge of penetrations,,metal_roofing_clause,2025-10-05 08:09:16.585278
+adb20741-de65-4a9c-b2bd-355493ee850f,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9d13b244-de45-441a-8cb1-2b5f45370b7a,CLEAR_CLAUSE,USEFUL INFORMATION,,USEFUL INFORMATION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3bb65c18-d5f7-4770-8b79-08f2a161247b,CLEAR_CLAUSE,Profile Closures,,Profile Closures,,metal_roofing_clause,2025-10-05 08:09:16.585278
+522c9fe7-f8b0-481e-ad4e-027f5be01aff,CLEAR_CLAUSE,Sealants,,Sealants,,metal_roofing_clause,2025-10-05 08:09:16.585278
+42a7b2b6-fecd-4c38-8c94-7a6cee9ba70b,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6a1c8e32-b84a-4e22-86aa-e58a5401368d,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b74f7369-dbef-4885-8673-4dadd2bbf4d9,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d6d7d623-d4b5-47ba-a0a9-9554723cc91b,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9d8dcbef-d166-4ce3-a989-5636867d9b76,CLEAR_CLAUSE,,A2,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+10095a3a-2dd6-4cf1-bdb7-dd3e63f530c2,CLEAR_CLAUSE,FITNESS FOR PURPOSE,B2,FITNESS FOR PURPOSE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c625129e-c538-466e-84d9-d6dea57e10f3,CLEAR_CLAUSE,3 - Substantial,,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+008951b6-ba21-4bab-b5c3-22cff3af6657,CLEAR_CLAUSE,Eaves Flashing,,Eaves Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+20688f7d-8387-4724-8872-72a47c70e535,CLEAR_CLAUSE,registered trademark owned by Stanley,,registered trademark owned by Stanley,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2a5f3894-1112-4835-897c-eee7306eab83,CLEAR_CLAUSE,Soldering,,Soldering,,metal_roofing_clause,2025-10-05 08:09:16.585278
+68355415-3aee-4db2-9e97-c736bea790b5,CLEAR_CLAUSE,Soft edging and Flashing,,Soft edging and Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7d2d47cd-90a6-4d37-badd-0fe6cd29bfad,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+88bdbae8-41dd-4c5a-a709-0e5d7b591a8b,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d84062a7-1823-4d2c-880e-d0b8d32b66c8,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6bd0f059-4075-4efc-b74f-732dbab8cfb7,CLEAR_CLAUSE,1 - Minor Errata,,1 - Minor Errata,,metal_roofing_clause,2025-10-05 08:09:16.585278
+261bfb0d-662b-4a2c-9c3f-954e46162410,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0b5c4df4-5468-437d-81d0-2f68a1111d9a,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b567e119-edda-4236-9d89-917bb459dbb5,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+877210e7-40dc-4f3a-8640-72a105f83e21,CLEAR_CLAUSE,Back Flashings,,Back Flashings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e758adbe-5e89-476f-a435-02b2e6b635de,CLEAR_CLAUSE,Avoiding Problems,,Avoiding Problems,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ad11a470-07f9-448c-a14b-1c5f005de538,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+1e48def6-9235-4a68-80e7-7cc99c9ed838,CLEAR_CLAUSE,Correctly Installed Gutters,,Correctly Installed Gutters,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e77d080f-b98c-49fb-a6c6-67b04d0b9a7b,CLEAR_CLAUSE,2019 – May,B2,2019 – May,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d93b2411-b3b9-4566-9c28-30404c7a83be,CLEAR_CLAUSE,maintenance.,,maintenance.,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ebb747e0-f840-4e98-8329-c9fb29928fd3,CLEAR_CLAUSE,Visual Impact of Mismatched Paint,,Visual Impact of Mismatched Paint,,metal_roofing_clause,2025-10-05 08:09:16.585278
+85abbac5-202e-412d-86a8-920189c06742,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+40985f79-3db2-498e-849e-83face0d2a4d,CLEAR_CLAUSE,Sunscreen,,Sunscreen,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ee5dbd98-cf4e-4ec0-b583-2cb826ea64c9,CLEAR_CLAUSE,Fixing Aluminium Sheeting,,Fixing Aluminium Sheeting,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ac683dcc-fd84-4add-9416-10d464b77624,CLEAR_CLAUSE,Internal Moisture,,Internal Moisture,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e2adf6b3-c93c-41a0-b63b-b6cc71014af4,CLEAR_CLAUSE,Completion,,Completion,,metal_roofing_clause,2025-10-05 08:09:16.585278
+00a44f09-4423-438a-bc49-e1e7ec921976,CLEAR_CLAUSE,Tools Of The Trade,,Tools Of The Trade,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0ffd93ed-cf9e-4fc0-8026-137fe11136dc,CLEAR_CLAUSE,Spouting Support Systems,,Spouting Support Systems,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6bfca84a-585d-4d93-8a75-2323fbabd62a,CLEAR_CLAUSE,Product Geometry,,Product Geometry,,metal_roofing_clause,2025-10-05 08:09:16.585278
+50929094-339f-443e-bf1d-f6cbc4dac3b2,CLEAR_CLAUSE,1 - Minor,E3,1 - Minor,,metal_roofing_clause,2025-10-05 08:09:16.585278
+320d74f2-d54c-4a4b-ad0a-30290756cc5b,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6fe128ab-ccc8-4e25-9abc-05632007d751,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a433fcd0-340a-4cb3-aa4a-3d72ec331002,CLEAR_CLAUSE,Roller Bender,,Roller Bender,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fc0f59d8-e08d-4ad4-842f-a8f745c8e82e,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6823233f-4d79-40c0-a9e9-5a1eab9891b6,CLEAR_CLAUSE,Boot Flashings,,Boot Flashings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+14393d5b-d39b-4d2a-832c-2c65e1a5f1a6,CLEAR_CLAUSE,Curved Roofs,,Curved Roofs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4e45fe1d-5b15-49f4-876e-8b8cb4ad41c1,CLEAR_CLAUSE,Spring Curving Calculator,,Spring Curving Calculator,,metal_roofing_clause,2025-10-05 08:09:16.585278
+42d532a6-0b17-43c6-8a98-a9590e5a77ae,CLEAR_CLAUSE,Profile,,Profile,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fb848138-81b1-4e68-8637-e31614a26a5a,CLEAR_CLAUSE,Durability,,Durability,,metal_roofing_clause,2025-10-05 08:09:16.585278
+15d96784-b866-461d-a3b1-7752e2476dbc,CLEAR_CLAUSE,3 - Substantial,,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fdcd4b67-c775-40c6-bc0d-2dc013bdf822,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6f24f607-0cae-41d8-b78d-66045b1aaefe,CLEAR_CLAUSE,Fit over flashing,,Fit over flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d07c6d02-9591-4562-bc5c-bd27c24cbc19,CLEAR_CLAUSE,Bullnose,,Bullnose,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ce79cb63-3a6e-417b-85fb-95e63fd68f34,CLEAR_CLAUSE,Structure,,Structure,,metal_roofing_clause,2025-10-05 08:09:16.585278
+23c71692-00d9-438f-b2df-85b92504de8d,CLEAR_CLAUSE,Batten Installation,,Batten Installation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b9492fca-2368-4534-bb50-27e2f1813786,CLEAR_CLAUSE,ceilings,,ceilings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f8050c4a-e5bd-4c26-a400-cae2d89cff47,CLEAR_CLAUSE,with a dominant,,with a dominant,,metal_roofing_clause,2025-10-05 08:09:16.585278
+067781ba-9eb5-41cc-8db9-00cde6c42523,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d93b57b0-96b0-4814-842d-00f3798510a2,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8fc70fbb-c038-4da3-8c1a-9dd1d86bf262,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+211c302e-af04-472e-b1a2-a539f0bcbe8e,CLEAR_CLAUSE,1 - Minor,,1 - Minor,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0d504e35-b8e0-416f-bfbb-e67068e7b8c6,CLEAR_CLAUSE,2019 – February,,2019 – February,,metal_roofing_clause,2025-10-05 08:09:16.585278
+73a87ce8-5719-4e03-8c4f-14661bbcbdee,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+414dbcbb-666c-4873-b29b-a02c070de763,CLEAR_CLAUSE,INTERNAL MOISTURE,,INTERNAL MOISTURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+48de622d-7bf6-4d01-a27f-713d3b473556,CLEAR_CLAUSE,Ridge and,,Ridge and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+273e4e2f-4c22-445c-be9d-a1c19f9c2074,CLEAR_CLAUSE,Barrel Trim,,Barrel Trim,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fa4d6a38-2422-43b0-8735-524260bf8703,CLEAR_CLAUSE,3 - Substantial,,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+04bc574c-3f3f-4f92-820a-4c909d1a36a1,CLEAR_CLAUSE,OTHER PRODUCTS,,OTHER PRODUCTS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+15969d59-9ef1-411c-bc71-7750ce22b561,CLEAR_CLAUSE,Wall To Roof Junctions,,Wall To Roof Junctions,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6ab530f0-7e9d-47b5-b4a7-83c8d43b15c7,CLEAR_CLAUSE,Rib cap,,Rib cap,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6c79bf81-90ab-4a6e-afbf-a15eabe99e3a,CLEAR_CLAUSE,2018 – November,E2,2018 – November,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b68870a6-f38a-47b1-b734-3525755f4754,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+75587d0a-78c3-40a4-915a-15a1fac17d45,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ca4f26ec-9335-47c6-bc51-e5f5035a5d2e,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e691d9a8-2d8b-4681-bd42-1b5dbe9b73db,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8233325e-cb8f-4ff9-8b43-dbc263ba5c21,CLEAR_CLAUSE,Workmanship,,Workmanship,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0e800bea-986e-4a64-ae99-0ab79cc2404f,CLEAR_CLAUSE,Angle Seam,,Angle Seam,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4c059828-a05f-44d0-bae4-0302d886a2d7,CLEAR_CLAUSE,Standing Seam Cladding on a,,Standing Seam Cladding on a,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e82e0743-369a-438a-b5d1-f9ffd166aa0a,CLEAR_CLAUSE,Tray Fixings,,Tray Fixings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d7d9ebc6-63ec-429b-af40-ac1650382ac2,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6686ac5f-a0b3-4281-8879-3c19c1340839,CLEAR_CLAUSE,Staggered End Laps,,Staggered End Laps,,metal_roofing_clause,2025-10-05 08:09:16.585278
+83a8dd09-bbd7-4e66-907c-7a8937611dfb,CLEAR_CLAUSE,2 - Editing and,,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c5ac459a-77f7-49bb-882e-dcb956de43c9,CLEAR_CLAUSE,4 - Clause,,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+efe3ad21-9629-4282-905d-e8bdd3f9b2d3,CLEAR_CLAUSE,1 - Minor,G7,1 - Minor,,metal_roofing_clause,2025-10-05 08:09:16.585278
+bbe52a06-8a90-43e8-8d08-0cafe5dcf3e2,CLEAR_CLAUSE,Tray Roof Flashing,,Tray Roof Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+cefd58d7-ddf6-4a5e-bd58-298b6e8c519b,CLEAR_CLAUSE,Tray Window Head,,Tray Window Head,,metal_roofing_clause,2025-10-05 08:09:16.585278
+288b9ac3-c853-48f7-9b4b-c9128080a827,CLEAR_CLAUSE,OTHER PRODUCTS,,OTHER PRODUCTS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b4e2c5d6-9f74-4101-98fe-95519c98c12f,CLEAR_CLAUSE,Warm Roofs,,Warm Roofs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+edee7d6a-1771-43ee-bd44-0eb159c967be,CLEAR_CLAUSE,Mineral Fibre,,Mineral Fibre,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0b8bd2e3-b6b6-4f76-9425-90804ad51f8a,CLEAR_CLAUSE,,E2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+cb0d0abd-cc58-4700-a931-8532e87f6604,CLEAR_CLAUSE,Insulated Panel Flashings,,Insulated Panel Flashings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+19375f6c-1f93-4bb5-9d25-2842fcb43917,CLEAR_CLAUSE,Insulated Panels Barge Flashing,,Insulated Panels Barge Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3f5047c1-030c-4b28-a593-92d086e197e1,CLEAR_CLAUSE,Transition Flashings,,Transition Flashings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e81f1748-ad48-4387-a2d9-f0b6a6ee5bf4,CLEAR_CLAUSE,Composite System Installation,,Composite System Installation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+823df2d3-5fb7-464b-b536-c11202c1b3d5,CLEAR_CLAUSE,Roof,,Roof,,metal_roofing_clause,2025-10-05 08:09:16.585278
+cd78a9b2-ed9d-4f57-91f1-71b3c05a6e11,CLEAR_CLAUSE,Roof cladding,,Roof cladding,,metal_roofing_clause,2025-10-05 08:09:16.585278
+43bf9a2e-91a2-4e2d-bd36-30d668ee102a,CLEAR_CLAUSE,Inspection,,Inspection,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ec84324a-fc64-40a7-b116-fce98f1fcc2d,CLEAR_CLAUSE,Reactive Maintenance,,Reactive Maintenance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e934d328-bb8d-483b-9400-4562ac1161c1,CLEAR_CLAUSE,Preventative Maintenance,,Preventative Maintenance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d322abd5-8dce-4b80-b5af-5b60dbb231cb,CLEAR_CLAUSE,MAINTENANCE,,MAINTENANCE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0defa6ea-9d25-4e02-92cc-31dee4f9af52,CLEAR_CLAUSE,Total coated,,Total coated,,metal_roofing_clause,2025-10-05 08:09:16.585278
+bb9e9199-3d3a-4694-a95e-094264331b70,CLEAR_CLAUSE,Climate,,Climate,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e81d83f6-35fb-4647-b46e-12f80c646d51,CLEAR_CLAUSE,UDL Load Testing Standard,,UDL Load Testing Standard,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e91ed510-1fee-4faa-8678-e4e50a0de8bd,CLEAR_CLAUSE,Deflection Around a Fastener Under Load,,Deflection Around a Fastener Under Load,,metal_roofing_clause,2025-10-05 08:09:16.585278
+af494f55-6d41-4300-b1a7-8290f557c166,CLEAR_CLAUSE,Number of Specimens,,Number of Specimens,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3c1b8ab8-87d4-4f9c-904b-860cca6ba0f3,CLEAR_CLAUSE,Test Report,,Test Report,,metal_roofing_clause,2025-10-05 08:09:16.585278
+49185dfe-c8e7-4681-8ac9-49841bb3bfe8,CLEAR_CLAUSE,Preparation of Test Panel,,Preparation of Test Panel,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b962acdd-0cfc-41d2-b279-4b86cdb1e5f3,CLEAR_CLAUSE,MRM Soft Edge Standard,,MRM Soft Edge Standard,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9ad0affb-60d8-4290-89d0-ffb1becd0b46,CLEAR_CLAUSE,Ventilation Pathways,,Ventilation Pathways,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f0948dd3-bd25-4870-92d7-2db4fe6a6c90,CLEAR_CLAUSE,To convert from this,,To convert from this,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6d9549d9-4f06-4eed-9a66-0fbac68a38e6,CLEAR_CLAUSE,5.5  Notices to fix,42,5.5  Notices to fix,,non_standard_clause,2025-10-05 08:09:16.585278
+0e87f383-7524-427e-b6f8-f1d34d62c317,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+40912b77-14b4-4fac-85aa-7b1198253f84,CLEAR_CLAUSE,Thermal Conductivity K,,Thermal Conductivity K,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0d762e0b-4376-40c0-9000-73641e361e37,CLEAR_CLAUSE,Decadic Number System,,Decadic Number System,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c4faf5ef-5f67-4050-b9a6-752383d7f557,CLEAR_CLAUSE,The Greek Alphabet,,The Greek Alphabet,,metal_roofing_clause,2025-10-05 08:09:16.585278
+df666240-1b2a-42b2-9d98-21f3ac727082,CLEAR_CLAUSE,Area,,Area,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d1c90a7e-be19-4361-b14a-840a050f50b8,CLEAR_CLAUSE,NEW ZEALAND BUILDING CODE HANDBOOK,53,NEW ZEALAND BUILDING CODE HANDBOOK,,non_standard_clause,2025-10-05 08:09:16.585278
+5adab507-0cf6-4318-8976-e015be395aa8,CLEAR_CLAUSE,Draw a line as a tangent to the two arcs,,Draw a line as a tangent to the two arcs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+475fa73e-e928-47b4-b76c-fc0f2ffb43ba,CLEAR_CLAUSE,Parallel Lines,,Parallel Lines,,metal_roofing_clause,2025-10-05 08:09:16.585278
+cafb85f6-d3f6-42d5-affa-3ee1292896eb,CLEAR_CLAUSE,Dividing a line into equal parts,,Dividing a line into equal parts,,metal_roofing_clause,2025-10-05 08:09:16.585278
+33760b03-c7db-4efe-9402-5871d928cf4e,CLEAR_CLAUSE,Underlay,,Underlay,,metal_roofing_clause,2025-10-05 08:09:16.585278
+43bbeb52-e5f3-4176-af67-00a00dcdc45f,CLEAR_CLAUSE,Revision Categories,,Revision Categories,,metal_roofing_clause,2025-10-05 08:09:16.585278
+86fa8ce9-ea6c-4aad-b4dc-d597f33b7946,CLEAR_CLAUSE,Ridge and Hip Intersections,,Ridge and Hip Intersections,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c1c9e318-3c94-414d-ac79-2340a56b5a1a,CLEAR_CLAUSE,Special Maintenance,,Special Maintenance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7dd6bd53-4a81-4d1c-8524-b91321703bcc,CLEAR_CLAUSE,Sweat,,Sweat,,metal_roofing_clause,2025-10-05 08:09:16.585278
+df2571ff-2f67-4ab7-8e38-5ed0d9dae170,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f3922514-465d-4687-8c10-8ca90a3b7c19,CLEAR_CLAUSE,3 - Substantial,B2/AS1,3 - Substantial,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c8505d52-0b45-483c-af30-d842f3d4a577,CLEAR_CLAUSE,Micrometre,,Micrometre,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6a5a3248-ec93-46b7-814b-a1f161fc3b14,CLEAR_CLAUSE,how much heat can pass through a window,,how much heat can pass through a window,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a1819a12-efcc-4ef3-bfdf-eb6491f1d6d7,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6975489d-9f08-492a-a89f-d0c8dd67c732,CLEAR_CLAUSE,2019 – August,,2019 – August,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5c4d4d47-4c3d-46bd-896a-5b5839983485,CLEAR_CLAUSE,0 - Clause,,0 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+dc71d225-fc2b-4c78-b7cc-fc551842f44c,CLEAR_CLAUSE,2 - Editing and,E1/AS1,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f3916705-a689-48fd-b8e6-a6ad396fe59d,CLEAR_CLAUSE,2021 – September,E1/AS1,2021 – September,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4c3e5db6-e2d3-4f81-8ec9-c6dcad822556,CLEAR_CLAUSE,Timber Purlins,,Timber Purlins,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6d468590-c70c-4b11-ac6b-d15edc61f0d7,CLEAR_CLAUSE,2 - Editing and,E1/AS1,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fffdf003-3103-4117-a2d5-b301bd751d95,CLEAR_CLAUSE,2 - Editing and,E2/AS1,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+49a088f2-6dc6-406c-bf0e-3078ad316723,CLEAR_CLAUSE,Correctly Installed Permanent Load,,Correctly Installed Permanent Load,,metal_roofing_clause,2025-10-05 08:09:16.585278
+644617aa-0785-463c-8001-d2dcbdf34b01,CLEAR_CLAUSE,Point Load Test at the MRM,,Point Load Test at the MRM,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f22d1c0e-33a3-409b-90e1-2749a30fd552,CLEAR_CLAUSE,1 - Minor,,1 - Minor,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4ed993ee-a954-457b-a326-5938d8288802,CLEAR_CLAUSE,,B2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+907e83f7-add0-4e42-8859-5ecf32fe3c96,CLEAR_CLAUSE,ROOF DRAINAGE,,ROOF DRAINAGE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+96393e75-3892-4a1f-b59a-4d7088c8ebbf,CLEAR_CLAUSE,30 September 2010 DEPARTMENT OF BUILDING AND HOUSINGNEW ZEALAND BUILDING CODE HA,222,30 September 2010 DEPARTMENT OF BUILDING AND HOUSINGNEW ZEALAND BUILDING CODE HA,,non_standard_clause,2025-10-05 08:09:16.585278
+df0020ef-2915-42ab-bc6a-c156a0252888,CLEAR_CLAUSE,Hot Water Runoff Corrosion,,Hot Water Runoff Corrosion,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8ed8ab08-6273-427c-bfcb-a7c303753640,CLEAR_CLAUSE,Workers,,Workers,,metal_roofing_clause,2025-10-05 08:09:16.585278
+00e20f79-140a-4520-8f67-234c9c70d302,CLEAR_CLAUSE,2 - Editing and,E2/AS1,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e9467739-bf6e-462d-a72a-58e70dc446ba,CLEAR_CLAUSE,1 December 2024,,1 December 2024,,metal_roofing_clause,2025-10-05 08:09:16.585278
+97d14c43-5297-4880-925c-df030da1645b,CLEAR_CLAUSE,4 - Clause,E2/AS1,4 - Clause,,metal_roofing_clause,2025-10-05 08:09:16.585278
+da1a10d6-9077-49c0-9234-c3615ce4d5d7,CLEAR_CLAUSE,Underlay Standards,,Underlay Standards,,metal_roofing_clause,2025-10-05 08:09:16.585278
+36a2edcd-0850-49aa-a34b-86a31a1a6bb6,CLEAR_CLAUSE,1 December 2024,,1 December 2024,,metal_roofing_clause,2025-10-05 08:09:16.585278
+de5b87dc-fa24-43da-bd0e-597b7d1d4acc,CLEAR_CLAUSE,Tray Transverse Apron,,Tray Transverse Apron,,metal_roofing_clause,2025-10-05 08:09:16.585278
+def3305f-81ff-4cf1-8680-1c84842d5db5,CLEAR_CLAUSE,AS/AZS 1170.2:2011,B1/AS1,AS/AZS 1170.2:2011,,metal_roofing_clause,2025-10-05 08:09:16.585278
+54a8e72f-ed5b-4dfd-9df8-d6e71dd178af,CLEAR_CLAUSE,Design wind load,,Design wind load,,metal_roofing_clause,2025-10-05 08:09:16.585278
+aa61a6c5-7def-487b-9da5-daa0d86a1d2d,CLEAR_CLAUSE,Eutectic point,,Eutectic point,,metal_roofing_clause,2025-10-05 08:09:16.585278
+23f953cb-0626-457c-8647-8b427a43595c,CLEAR_CLAUSE,1 2 34 567 8 9 10,,1 2 34 567 8 9 10,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f7c158c8-3a52-435c-95d4-2ce41abc9a22,CLEAR_CLAUSE,"generally gives improved performance, but lowers the effective coverage of the s",,"generally gives improved performance, but lowers the effective coverage of the s",,metal_roofing_clause,2025-10-05 08:09:16.585278
+064396ff-5838-43e0-bd6b-0e5edf55ef3c,CLEAR_CLAUSE,Industrial Cladding Terminology,,Industrial Cladding Terminology,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4e8a1554-863e-4fea-ac7e-55b0653d3d4f,CLEAR_CLAUSE,Modes of Failure,,Modes of Failure,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ecdd37fd-5d18-4f8f-b7b8-99ac2b5eddf9,CLEAR_CLAUSE,MODES OF FAILURE,,MODES OF FAILURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d784891d-c354-4202-a97f-e089ea33aee0,CLEAR_CLAUSE,Fixing Patterns for 6 Rib Sheeting,,Fixing Patterns for 6 Rib Sheeting,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ac666670-28df-4bf9-83d8-d55f4b75f914,CLEAR_CLAUSE,Metal Performance,,Metal Performance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+04fe97af-ed53-440d-a89f-ed5d1d4415e3,CLEAR_CLAUSE,Environmental Categories,,Environmental Categories,,metal_roofing_clause,2025-10-05 08:09:16.585278
+35f0244a-93ab-4f78-aa22-e9d096559ba9,CLEAR_CLAUSE,Precipitation Noise,,Precipitation Noise,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5de8bfbe-3669-4dbf-903d-574026f746f5,CLEAR_CLAUSE,generally difficult to remove graffiti without compromising an existing organic ,,generally difficult to remove graffiti without compromising an existing organic ,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3193b3bf-c8d8-409c-a61e-82ba964b9e49,CLEAR_CLAUSE,Tool Design,,Tool Design,,metal_roofing_clause,2025-10-05 08:09:16.585278
+741900ae-544a-42fa-915d-574b27898266,CLEAR_CLAUSE,Material Compatibility Table,,Material Compatibility Table,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c7c019ee-1814-42eb-a40d-491d5e502782,CLEAR_CLAUSE,DETAIL VIEW,,DETAIL VIEW,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8172c45f-575a-4522-9f7a-bf1902c619de,CLEAR_CLAUSE,PITTING CORROSION,,PITTING CORROSION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a38b24ba-3381-46a0-8d35-eab8983276b6,CLEAR_CLAUSE,SWARF STAINING AND CUT EDGE CORROSION,,SWARF STAINING AND CUT EDGE CORROSION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7f6d7d14-dc40-4ecd-b178-e1c8d5dc877f,CLEAR_CLAUSE,Sheeting,,Sheeting,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4e32de07-c695-4234-b050-24f42218c7e7,CLEAR_CLAUSE,Fasteners,,Fasteners,,metal_roofing_clause,2025-10-05 08:09:16.585278
+28c52b39-8b13-4fea-803e-ca9585a76d4c,CLEAR_CLAUSE,Working on Roofs,,Working on Roofs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b545445a-c0a2-43a9-b7eb-990ad7b34d74,CLEAR_CLAUSE,Design,,Design,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d245e6f6-70d4-49c5-baa4-524a637ffc4b,CLEAR_CLAUSE,Zone,,Zone,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d120191c-79fe-4166-87ab-eecbb8cde2dc,CLEAR_CLAUSE,Performance,,Performance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4835d36f-7555-46d7-81ce-b5a32587c659,CLEAR_CLAUSE,"1.5 kPa over the entire structure, rather than varying factors according to the ",B1/AS1,"1.5 kPa over the entire structure, rather than varying factors according to the ",,metal_roofing_clause,2025-10-05 08:09:16.585278
+bb67adc5-0a8c-4772-893b-37c721cb5645,CLEAR_CLAUSE,DURABILITY,,DURABILITY,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9401be68-426c-48ec-85f4-bd74f1a9f88e,CLEAR_CLAUSE,MODES OF FAILURE,,MODES OF FAILURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+bdf963f9-b753-425e-9749-d17104eda3db,CLEAR_CLAUSE,Flashing,,Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+de0aabdd-9077-4336-a571-2167acd47e58,CLEAR_CLAUSE,Test Requirements,,Test Requirements,,metal_roofing_clause,2025-10-05 08:09:16.585278
+87b400d9-2d70-4f6a-8a34-446fce58e096,CLEAR_CLAUSE,Aluminium Cladding Wind Load Span Graphs,,Aluminium Cladding Wind Load Span Graphs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6e6b3d23-4c18-42dd-a5d6-8931bc6a54bb,CLEAR_CLAUSE,Convection,,Convection,,metal_roofing_clause,2025-10-05 08:09:16.585278
+1dba1e4b-777d-4c84-9da5-e1147267ad18,CLEAR_CLAUSE,Maintenance,,Maintenance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a19a35a4-1504-48f9-82e8-f751097dfc71,CLEAR_CLAUSE,Material Compatibility Key,,Material Compatibility Key,,metal_roofing_clause,2025-10-05 08:09:16.585278
+afd88323-cc21-451a-aa59-7bc9d1413022,CLEAR_CLAUSE,,C2,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0e5c3d1c-defa-4b6e-8ddb-abcc089c4cde,CLEAR_CLAUSE,Oil canning,,Oil canning,,metal_roofing_clause,2025-10-05 08:09:16.585278
+55e17878-daf8-43e4-8757-e8d009cafea6,CLEAR_CLAUSE,Unwashed Wall,,Unwashed Wall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7f55c600-f76a-4949-9c01-6d051a9d2d15,CLEAR_CLAUSE,imposed on the initial failure point,,imposed on the initial failure point,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5ae784c3-75aa-407f-afb2-393b6e921bc1,CLEAR_CLAUSE,Introduction,,Introduction,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3ec57795-fc8b-4f53-b742-c11a82e98898,CLEAR_CLAUSE,,B2,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f0bb4651-dadc-4f84-ba76-a35fdea6f22c,CLEAR_CLAUSE,OTHER CAUSES OF CORROSION,,OTHER CAUSES OF CORROSION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5345e01f-254c-41aa-889d-1b16421e1206,CLEAR_CLAUSE,ORGANIC COATING,,ORGANIC COATING,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9a667568-b33a-420a-a803-ee85fb8b5f27,CLEAR_CLAUSE,Objective,E1,Objective,,metal_roofing_clause,2025-10-05 08:09:16.585278
+14db8bfd-0b4d-440d-a16f-e5acd6af495f,CLEAR_CLAUSE,"300 mm wide, be able to support foot traffic.",,"300 mm wide, be able to support foot traffic.",,metal_roofing_clause,2025-10-05 08:09:16.585278
+95c042c1-014f-4640-941a-6783f5ebfb44,CLEAR_CLAUSE,,F1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a674cbc9-99e1-4a82-bd52-7e4d2d324a91,CLEAR_CLAUSE,ROOF DRAINAGE,,ROOF DRAINAGE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6f75e4af-d7f8-42d1-bedc-142c33a2eaa2,CLEAR_CLAUSE,,E3,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+acbf0a5f-a922-475a-b71c-82186fd474a8,CLEAR_CLAUSE,2018 – October,,2018 – October,,metal_roofing_clause,2025-10-05 08:09:16.585278
+cfa7967c-3d6e-4c60-98e8-a9f09e49b11b,CLEAR_CLAUSE,Downpipe Draining into an Oversized Pipe,,Downpipe Draining into an Oversized Pipe,,metal_roofing_clause,2025-10-05 08:09:16.585278
+75eb9dd6-2600-4555-a898-381a0058eb84,CLEAR_CLAUSE,Downpipe Capacity Table,,Downpipe Capacity Table,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d10969a5-7376-4e61-8b1b-3ba15ab7eb8f,CLEAR_CLAUSE,300 mm Fall,,300 mm Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f48ee588-03f4-4183-ac01-a3ba7e1a46af,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2dc53fa3-83b9-4a2f-b6b8-763e60ec0673,CLEAR_CLAUSE,Walking On Roofs,,Walking On Roofs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ab0a2177-2b30-403f-b031-c6f50b17ac38,CLEAR_CLAUSE,,B1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a44306bd-0f3d-4f6a-be41-b890d29bc994,CLEAR_CLAUSE,Adjudication,,Adjudication,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4e2d8aab-d80a-4ab3-a05d-7c82148fcc96,CLEAR_CLAUSE,The Electrochemical or Galvanic Series,,The Electrochemical or Galvanic Series,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f0a7b569-8b4f-4ee1-a427-516b8d5025fc,CLEAR_CLAUSE,ROOF DRAINAGE,,ROOF DRAINAGE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7bf4240c-6f2e-4462-9ede-049c8acff6bb,CLEAR_CLAUSE,Capillary,,Capillary,,metal_roofing_clause,2025-10-05 08:09:16.585278
+706b5dfa-141b-4855-8132-23d44410ff42,CLEAR_CLAUSE,Geothermal,,Geothermal,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5ae8f1af-2782-4bae-a162-4ae5d88536a0,CLEAR_CLAUSE,Curved Roofs,,Curved Roofs,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7520e729-3d8c-4a37-97e7-a5b8d843e5f9,CLEAR_CLAUSE,EXTERNAL MOISTURE ROOFING,,EXTERNAL MOISTURE ROOFING,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b58b1d74-c937-4511-800e-32f425c44a4a,CLEAR_CLAUSE,Light Steel,,Light Steel,,metal_roofing_clause,2025-10-05 08:09:16.585278
+eb4872de-a12a-4ce5-8424-0a762de99470,CLEAR_CLAUSE,,B2,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+585c9f16-26c5-474c-a961-5f99eb3e9e7d,CLEAR_CLAUSE,"5 mm for steel flashings, and 10 mm for aluminium.",,"5 mm for steel flashings, and 10 mm for aluminium.",,metal_roofing_clause,2025-10-05 08:09:16.585278
+789d9911-7a5e-49ba-963c-b16771a183c4,CLEAR_CLAUSE,,E1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+685de8a0-d8a2-444f-be6a-93536e3be3c1,CLEAR_CLAUSE,5 - 10 mm,C2,5 - 10 mm,,metal_roofing_clause,2025-10-05 08:09:16.585278
+68f1426b-5009-42c9-b483-d3616e021245,CLEAR_CLAUSE,,H1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+30afccbc-6085-43e4-ae63-07d17464315a,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+91bc2450-1d76-4914-80bb-429ce3547e48,CLEAR_CLAUSE,,D1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+aa982df0-c291-4e78-98b7-926d6468014d,CLEAR_CLAUSE,INTRODUCTION,,INTRODUCTION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ea1de228-36dd-4185-80e0-ce8a03d80233,CLEAR_CLAUSE,,A2,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+27d94b9a-4d36-4f26-a112-63ee84f9c634,CLEAR_CLAUSE,,E3,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+151301f6-9b2a-463f-9c6c-7ab8495f8711,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+66b30811-75eb-4612-85ba-244343a81e10,CLEAR_CLAUSE,,C4,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+feeae23c-a062-4a76-b352-33955f155860,CLEAR_CLAUSE,2 - Editing and,G7,2 - Editing and,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3ee37872-2bc1-488c-aee6-dd63323cc893,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c6ee3c9b-9862-4352-94d7-86bd2166ca6d,CLEAR_CLAUSE,,C1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e4828874-465d-4354-9e07-ebbb417b1ef9,CLEAR_CLAUSE,Clamp Style Fixing Bracket,,Clamp Style Fixing Bracket,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ca0125a2-17b6-4d04-a774-613339c92e73,CLEAR_CLAUSE,Electrochemical table,,Electrochemical table,,metal_roofing_clause,2025-10-05 08:09:16.585278
+022739e2-4a0d-4fb8-a133-1931adab6f22,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b3869bbd-118e-469c-b7c7-c371c5862f2b,CLEAR_CLAUSE,Butyl Rubber in Wet Contact with Cladding,,Butyl Rubber in Wet Contact with Cladding,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2653b808-e46e-46bd-a341-c67d310e675f,CLEAR_CLAUSE,,G4/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0f9d699f-e987-4832-b9dd-8cb146c06cca,CLEAR_CLAUSE,,E2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9511bdf2-1ce7-4fff-9204-d8f84c6a8901,CLEAR_CLAUSE,Fit apex ridge over,,Fit apex ridge over,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f281b8d0-5912-4b2c-afeb-b39da75ca292,CLEAR_CLAUSE,Head Barge,,Head Barge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e988268f-37b1-46c4-aedc-11cdedb6dd6f,CLEAR_CLAUSE,Head Barge,,Head Barge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9f69e118-a935-49fc-8366-cb050d542f5e,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c4faf7ec-b3d5-4acf-9fae-4f72bc8da224,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+feba7fb7-737d-4002-a1a3-efb012497026,CLEAR_CLAUSE,Bossing,,Bossing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+94da391f-943e-41b1-a9ef-a347d003b157,CLEAR_CLAUSE,Humidity,,Humidity,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fa942266-1757-4846-baab-0b467be17212,CLEAR_CLAUSE,Corner Abutment,,Corner Abutment,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b3ffb588-8a11-4d37-aabc-7be62e084ca8,CLEAR_CLAUSE,with the requirements of the NZBC.,,with the requirements of the NZBC.,,metal_roofing_clause,2025-10-05 08:09:16.585278
+11ea4a87-6316-4c28-8f71-87944061fd47,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+bc814e9b-47f7-4ab9-b242-5abb41fa413a,CLEAR_CLAUSE,Underlay,,Underlay,,metal_roofing_clause,2025-10-05 08:09:16.585278
+79ee4192-39b6-4232-b3c3-a077534ac065,CLEAR_CLAUSE,Change Of Pitch,,Change Of Pitch,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3a0ea2a0-4f91-4219-810d-ee6b4e580f22,CLEAR_CLAUSE,OTHER CAUSES OF CORROSION,,OTHER CAUSES OF CORROSION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+21607e31-85ac-4fb9-ae14-46f2f7f9ef24,CLEAR_CLAUSE,INTERNAL MOISTURE,,INTERNAL MOISTURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a23cbeb9-99ba-47a6-b3d2-397da49b19a5,CLEAR_CLAUSE,,E1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8c342dbd-4f3b-4561-8b63-b9c767c393e8,CLEAR_CLAUSE,,B1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+add11a7b-4540-431a-bcc3-71d914cf8783,CLEAR_CLAUSE,Shower Condensation,,Shower Condensation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c86fbd61-e050-443a-9183-16f1fb289fc8,CLEAR_CLAUSE,,C5,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+27372b50-125a-4c42-aa6b-42997ee8c9f0,CLEAR_CLAUSE,Deflection and the Square of Depth,,Deflection and the Square of Depth,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0d0dca7a-abe3-490e-a6ec-af2ef6a23527,CLEAR_CLAUSE,,E2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c185a1ce-a613-4ea1-8b59-a314936fc71d,CLEAR_CLAUSE,,E1/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8f91c9ec-057b-4943-8632-6e77a86ad20c,CLEAR_CLAUSE,Natural Light,,Natural Light,,metal_roofing_clause,2025-10-05 08:09:16.585278
+1cf58981-ec28-43fa-b596-be3e4871014b,CLEAR_CLAUSE,,B2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+29df7e0e-b065-458d-a202-b5626032b82a,CLEAR_CLAUSE,Paint Durability,,Paint Durability,,metal_roofing_clause,2025-10-05 08:09:16.585278
+906f1ed2-a40b-40f0-9839-0cc4a8d606da,CLEAR_CLAUSE,,C4,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+658fbd01-39a9-435a-a64d-46e242399afd,CLEAR_CLAUSE,Curved Flashings,,Curved Flashings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+961a2576-1488-4dc0-92c3-759dc1235c6c,CLEAR_CLAUSE,,E2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0d095e4a-f026-42f9-95bf-5943e4896fb5,CLEAR_CLAUSE,,E2,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3cc60898-b81e-4da9-9b8a-0c93092bce04,CLEAR_CLAUSE,,E1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fa5f6e6e-3c30-426f-863f-9ab1e40c109f,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+74857b24-e8a7-4eff-ac1e-9038bbe53426,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+11a90306-d584-4e25-9091-98ba060fc565,CLEAR_CLAUSE,Profile Closures,,Profile Closures,,metal_roofing_clause,2025-10-05 08:09:16.585278
+20f6ade9-7687-4ded-bd26-63c7782ef1e4,CLEAR_CLAUSE,,E2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3ba386c1-b0dc-455a-962f-f96657c1e65b,CLEAR_CLAUSE,,C2,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5e074bc0-b941-4159-bb09-9a4c97bdefcb,CLEAR_CLAUSE,,B2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2b2113e2-8388-4a29-8794-32ffe8c4f167,CLEAR_CLAUSE,,E2/AS1,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+df470607-5425-4424-98b6-2f3beab10570,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+48a58667-ab7c-4739-b0ca-ccf0f31699ff,CLEAR_CLAUSE,Eaves Comb,,Eaves Comb,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9c5780a7-c903-4f27-b4a5-41d1f5e25a3b,CLEAR_CLAUSE,Safety equipment that is personal to the employee,,Safety equipment that is personal to the employee,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4e2cf203-0fb2-497f-bf43-798a8aad73aa,CLEAR_CLAUSE,EXTERNAL MOISTURE FLASHINGS,,EXTERNAL MOISTURE FLASHINGS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+18170e83-d5d9-4f0f-bc14-41f6a2864858,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+846335f6-fcea-4a74-8fc9-d7e588400dab,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e296a9c0-e075-41b3-92af-2319597ea34a,CLEAR_CLAUSE,Weatherproof,,Weatherproof,,metal_roofing_clause,2025-10-05 08:09:16.585278
+456f8ac2-0b9a-4ee1-b639-702b1408609d,CLEAR_CLAUSE,EXTERNAL MOISTURE PENETRATIONS,,EXTERNAL MOISTURE PENETRATIONS,,metal_roofing_clause,2025-10-05 08:09:16.585278
+65beeab2-08cd-484f-90ae-c0e2f7ec4217,CLEAR_CLAUSE,Penetration Design,,Penetration Design,,metal_roofing_clause,2025-10-05 08:09:16.585278
+bb1ce943-caf4-4da0-b8e6-f42e2d7a133f,CLEAR_CLAUSE,NATURAL LIGHT,,NATURAL LIGHT,,metal_roofing_clause,2025-10-05 08:09:16.585278
+74cce73c-d299-48d6-a5bb-052387687f1c,CLEAR_CLAUSE,NATURAL LIGHT,,NATURAL LIGHT,,metal_roofing_clause,2025-10-05 08:09:16.585278
+360fdaf2-6a24-4c70-b838-5013e95ba618,CLEAR_CLAUSE,NATURAL LIGHT,,NATURAL LIGHT,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ea82789f-dee2-4ac1-8d41-a5cedac75b0d,CLEAR_CLAUSE,NATURAL LIGHT,,NATURAL LIGHT,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f7ad7f58-dad3-47c5-84ae-d6c8de8b9528,CLEAR_CLAUSE,Dead Loads,,Dead Loads,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f07b09c3-cf7b-4490-a126-85830d3c11e7,CLEAR_CLAUSE,Translucent Sheet Stop End,,Translucent Sheet Stop End,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a2e5ff43-4796-4c86-a45b-3b7b55f369b2,CLEAR_CLAUSE,Sacrificial and Barrier Protection,,Sacrificial and Barrier Protection,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c95da5e9-8522-4c4f-8bcc-fb5e75ce5849,CLEAR_CLAUSE,Load Spreading Washers,,Load Spreading Washers,,metal_roofing_clause,2025-10-05 08:09:16.585278
+95bcd6f9-1f1a-49f2-9f56-990a6862c624,CLEAR_CLAUSE,Purlin Creasing,,Purlin Creasing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c151fbd6-2e29-4e53-878f-14235b736f44,CLEAR_CLAUSE,Oil Canning,,Oil Canning,,metal_roofing_clause,2025-10-05 08:09:16.585278
+32f07f79-b2b2-49a4-b712-0eedb79c8812,CLEAR_CLAUSE,INTERNAL MOISTURE,E3,INTERNAL MOISTURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+38dcd134-b77d-4c9a-a191-8106fe05edb1,CLEAR_CLAUSE,Barge,,Barge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+27eb75d1-cea0-407f-ab6b-20a16f6f016d,CLEAR_CLAUSE,Minimising Oil Canning,,Minimising Oil Canning,,metal_roofing_clause,2025-10-05 08:09:16.585278
+4b689e34-eaaf-499c-b71e-a026c9f3fce9,CLEAR_CLAUSE,Maintenance,,Maintenance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f3e2f3b1-fbb7-4fab-a7ac-e80f88efab48,CLEAR_CLAUSE,Safety,,Safety,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6e2961fd-322e-44ef-af93-39208ccc4cf2,CLEAR_CLAUSE,Types of Load,,Types of Load,,metal_roofing_clause,2025-10-05 08:09:16.585278
+75a94325-27aa-4dbc-9957-52876f04c328,CLEAR_CLAUSE,HSWA 2015: OBJECTIVE,,HSWA 2015: OBJECTIVE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b843498e-158d-4c2b-9ec9-51fb9198daa1,CLEAR_CLAUSE,Compatibility,,Compatibility,,metal_roofing_clause,2025-10-05 08:09:16.585278
+85091f97-93cf-4423-9237-638d6934a3b7,CLEAR_CLAUSE,Interactive Material Compatibility Tool,,Interactive Material Compatibility Tool,,metal_roofing_clause,2025-10-05 08:09:16.585278
+27a1d394-9616-419e-8216-680a916dc976,CLEAR_CLAUSE,Other Causes of Corrosion,,Other Causes of Corrosion,,metal_roofing_clause,2025-10-05 08:09:16.585278
+86ecb1a4-12d7-4254-bb88-4559828238d2,CLEAR_CLAUSE,Unwashed Wall Below Soffit,,Unwashed Wall Below Soffit,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b32922f3-be32-4a14-a63f-ca6a4d036f0a,CLEAR_CLAUSE,Walkways,,Walkways,,metal_roofing_clause,2025-10-05 08:09:16.585278
+31b377fc-204d-4f07-bfea-11a207a2f550,CLEAR_CLAUSE,Performance,B1,Performance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+412783cd-6ae3-4cd6-a002-3ad403c39b79,CLEAR_CLAUSE,The Environment,,The Environment,,metal_roofing_clause,2025-10-05 08:09:16.585278
+62505113-5dc5-4535-9e3f-becf080751e2,CLEAR_CLAUSE,Bulky Deposits of White Rust,,Bulky Deposits of White Rust,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ad36fa8b-ea85-45b5-83a8-4b10e903c691,CLEAR_CLAUSE,Gutter Leaf Guard,,Gutter Leaf Guard,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f560ab4d-7a71-4a58-999f-3484a46e37c8,CLEAR_CLAUSE,INTERNAL MOISTURE,,INTERNAL MOISTURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ab6f334d-0d77-42c4-bb53-303455e2f3f1,CLEAR_CLAUSE,INTERNAL MOISTURE,,INTERNAL MOISTURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+17b17d7d-b235-4642-a8ad-9bb0d380ca7b,CLEAR_CLAUSE,Lead in Contact with AZ,,Lead in Contact with AZ,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d2b6e31e-b168-4c62-a974-87a96077b2fb,CLEAR_CLAUSE,Inert Catchment,,Inert Catchment,,metal_roofing_clause,2025-10-05 08:09:16.585278
+39e6cd4d-fbf5-4405-8b00-0c73dac0e2bf,CLEAR_CLAUSE,Continuity,,Continuity,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7459dc62-95dc-4789-b735-79eb244ba46b,CLEAR_CLAUSE,Ponding,,Ponding,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a39e1e9b-da0e-406f-879e-526dbbd9392f,CLEAR_CLAUSE,Swarf Staining and Cut Edge Corrosion,,Swarf Staining and Cut Edge Corrosion,,metal_roofing_clause,2025-10-05 08:09:16.585278
+da1042a8-f7cb-4182-bd8e-17086fb32f1e,CLEAR_CLAUSE,Friction Cut Edge,,Friction Cut Edge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a2f63108-a582-46d6-b0b0-aa01985eccdd,CLEAR_CLAUSE,Materials,,Materials,,metal_roofing_clause,2025-10-05 08:09:16.585278
+26a7784d-c344-42df-be35-2cc69e2c425d,CLEAR_CLAUSE,The Paintline Process,,The Paintline Process,,metal_roofing_clause,2025-10-05 08:09:16.585278
+17400565-73b0-4ebe-bb7f-69fabd7e8e71,CLEAR_CLAUSE,Lead,,Lead,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e0f39e9e-002e-47cd-9bfa-ec88eea71ef0,CLEAR_CLAUSE,INTERNAL MOISTURE,,INTERNAL MOISTURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+982a63f1-5c2f-4ae8-aea8-b7e1b17e5b72,CLEAR_CLAUSE,OTHER CAUSES OF CORROSION,,OTHER CAUSES OF CORROSION,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e8a5c514-e659-4a0c-9497-40f157a068c3,CLEAR_CLAUSE,DURABILITY,,DURABILITY,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8dd645d3-cd86-456a-ae3c-419db2cf99b4,CLEAR_CLAUSE,Environments,,Environments,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e7280300-9205-4691-b133-2164c5c92dbf,CLEAR_CLAUSE,Organic Coating,,Organic Coating,,metal_roofing_clause,2025-10-05 08:09:16.585278
+19c1853a-28e6-465d-be87-6e6750e87fdd,CLEAR_CLAUSE,Powder Coating,,Powder Coating,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d0ed00ed-d1cb-40d6-bc1a-14f592694750,CLEAR_CLAUSE,Accessories,,Accessories,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c9f35370-0d37-4597-8260-dd69eda2483d,CLEAR_CLAUSE,Underlay Support,,Underlay Support,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d5b15ab3-f887-4111-bfc7-415ac86837f5,CLEAR_CLAUSE,Roof Drainage Terminology,,Roof Drainage Terminology,,metal_roofing_clause,2025-10-05 08:09:16.585278
+51a4c3e3-2381-4098-9c08-1e109114fabb,CLEAR_CLAUSE,Site Safety,,Site Safety,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c8acb229-5232-43d2-9bdd-1c17db595134,CLEAR_CLAUSE,,,,,metal_roofing_clause,2025-10-05 08:09:16.585278
+03c50f85-82b4-4f03-b3cd-95292e071dfb,CLEAR_CLAUSE,Topographical Influences,,Topographical Influences,,metal_roofing_clause,2025-10-05 08:09:16.585278
+222219a0-7612-4ce9-96fc-59bd5ce009f1,CLEAR_CLAUSE,Loads,,Loads,,metal_roofing_clause,2025-10-05 08:09:16.585278
+20b2cd0e-d902-4b11-bd8b-b210ee34a497,CLEAR_CLAUSE,Roof Drainage Design,,Roof Drainage Design,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7aff5f07-44ae-49f0-b0c4-789c6be53ea3,CLEAR_CLAUSE,RCP Level Descriptions,,RCP Level Descriptions,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c8f385d1-dd5d-4b59-bf74-d5b086ab962e,CLEAR_CLAUSE,Minute Intensities,,Minute Intensities,,metal_roofing_clause,2025-10-05 08:09:16.585278
+dde040ec-cda4-4034-a19a-2785b75be328,CLEAR_CLAUSE,Spouting Support System Durability,,Spouting Support System Durability,,metal_roofing_clause,2025-10-05 08:09:16.585278
+98b64c00-e440-4623-aba4-3990111516bb,CLEAR_CLAUSE,Overflows,,Overflows,,metal_roofing_clause,2025-10-05 08:09:16.585278
+f40074df-00b1-4506-9ace-ce5362c6c1b4,CLEAR_CLAUSE,Secret Gutters,,Secret Gutters,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a356ca1a-a502-48f1-a3d3-83923b3c54ee,CLEAR_CLAUSE,Valleys,,Valleys,,metal_roofing_clause,2025-10-05 08:09:16.585278
+dc22f615-1e5f-4a68-8560-965f046a92a3,CLEAR_CLAUSE,Cut and fold ridge,,Cut and fold ridge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c3e7566d-d3dc-4af1-8c48-20d485f03b66,CLEAR_CLAUSE,Intersecting Valleys,,Intersecting Valleys,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9c2028f2-d8de-4f40-99b9-4091792833f1,CLEAR_CLAUSE,erence in roof pitch,,erence in roof pitch,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7d4b608a-1f5c-4179-a906-54e0c9fae076,CLEAR_CLAUSE,Line of gutter sole,,Line of gutter sole,,metal_roofing_clause,2025-10-05 08:09:16.585278
+362a9e28-bb1a-4835-9972-0fee002ac965,CLEAR_CLAUSE,Rainwater Heads,,Rainwater Heads,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a7ec30f7-eed0-4f7b-9a56-b96699154967,CLEAR_CLAUSE,Sump with Obvious Overflow,,Sump with Obvious Overflow,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7600311a-a5c8-4f08-9f40-60fb5c4f0ea6,CLEAR_CLAUSE,Swarf Staining and Cut Edge Corrosion,,Swarf Staining and Cut Edge Corrosion,,metal_roofing_clause,2025-10-05 08:09:16.585278
+585d5198-7aa1-4558-909d-e448021ff24b,CLEAR_CLAUSE,Outlets and Downpipes,,Outlets and Downpipes,,metal_roofing_clause,2025-10-05 08:09:16.585278
+64920773-da20-4999-9dd1-f783156ecae6,CLEAR_CLAUSE,Downpipe Spreaders,,Downpipe Spreaders,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c6400e40-552c-493f-9e32-4500a328f083,CLEAR_CLAUSE,Roof Pitch,,Roof Pitch,,metal_roofing_clause,2025-10-05 08:09:16.585278
+bd11da54-65cb-4277-b2b3-229b2d2dd283,CLEAR_CLAUSE,Penetration Gutters,,Penetration Gutters,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b84af6d1-444d-4df3-bd66-a24c4ec0cab2,CLEAR_CLAUSE,Thermal Expansion And Contraction,,Thermal Expansion And Contraction,,metal_roofing_clause,2025-10-05 08:09:16.585278
+316fcd82-0c6f-436e-a255-0d140d8394ce,CLEAR_CLAUSE,External Moisture,,External Moisture,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7b21b841-5015-4030-9015-26f7d99d1b7a,CLEAR_CLAUSE,Flashing Design,,Flashing Design,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3505f2fd-d51e-4565-ae66-5629eebce923,CLEAR_CLAUSE,Flashing Edges,,Flashing Edges,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a33fdd80-d10d-4b9a-8c21-5546717ec5ea,CLEAR_CLAUSE,Flashing Cover,,Flashing Cover,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a58a4ed1-f0f6-45b0-8748-ba4778eb0fa9,CLEAR_CLAUSE,Undertray for an Aditional Upstand,,Undertray for an Aditional Upstand,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c0c92d56-ee80-4921-921f-ec792ae32a1f,CLEAR_CLAUSE,Flashing Types,,Flashing Types,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fbf76526-152c-46fc-b532-88f19e07a289,CLEAR_CLAUSE,Stepped Fascia Corrugate Over Barge,,Stepped Fascia Corrugate Over Barge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b594801b-1a29-4dfa-bf23-5835e5d59788,CLEAR_CLAUSE,Stepped Fascia Trapezoidal Over Barge,,Stepped Fascia Trapezoidal Over Barge,,metal_roofing_clause,2025-10-05 08:09:16.585278
+528de51d-535a-463c-abb3-4f0f47be1728,CLEAR_CLAUSE,Parapcap Expansion Provisions,,Parapcap Expansion Provisions,,metal_roofing_clause,2025-10-05 08:09:16.585278
+77466cbe-9e42-47f2-99e6-29bfa550651f,CLEAR_CLAUSE,Set to string line,,Set to string line,,metal_roofing_clause,2025-10-05 08:09:16.585278
+13749cf5-c37b-489e-a714-7f87cba56412,CLEAR_CLAUSE,Underlay,,Underlay,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a23ede56-1651-4916-aa59-a4a56717b5cb,CLEAR_CLAUSE,Chased Apron,,Chased Apron,,metal_roofing_clause,2025-10-05 08:09:16.585278
+00092884-0d14-404b-8b1f-e08433ec424b,CLEAR_CLAUSE,Detail of Sealing Flashing,,Detail of Sealing Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+81d804ef-d036-495e-b463-4a0ee83cc33a,CLEAR_CLAUSE,Close d  c e l l  s e l f,,Close d  c e l l  s e l f,,metal_roofing_clause,2025-10-05 08:09:16.585278
+b2c98110-cbd2-4ae0-b30a-b4b1196d4ea0,CLEAR_CLAUSE,Step Apron,,Step Apron,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c9a4e94c-6a87-40e6-b5c6-0a1edee084ae,CLEAR_CLAUSE,Lockseamed Curved Flashing,,Lockseamed Curved Flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+da39068a-4169-449a-9090-a3d19e435f27,CLEAR_CLAUSE,Fastening Flashings,,Fastening Flashings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+55d999ac-1dc9-4c05-b3eb-4bf96cf1231f,CLEAR_CLAUSE,Flashing Secured to a Cleat,,Flashing Secured to a Cleat,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0dbc862a-db00-47e7-b1c5-933b76014092,CLEAR_CLAUSE,Applying Sealant,,Applying Sealant,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c16d8565-e267-41b6-ab0a-9a6804340d6e,CLEAR_CLAUSE,Flashing Expansion Details,,Flashing Expansion Details,,metal_roofing_clause,2025-10-05 08:09:16.585278
+80dd7bec-caf8-4ab4-8e63-c4179f39735b,CLEAR_CLAUSE,always comply as specified in,,always comply as specified in,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0b90dbfd-08c2-444c-84bc-e2563d20ac60,CLEAR_CLAUSE,Parapet Cappings,,Parapet Cappings,,metal_roofing_clause,2025-10-05 08:09:16.585278
+7b2e8d2a-5b3d-452e-b8f5-64813aba9da3,CLEAR_CLAUSE,External Moisture,,External Moisture,,metal_roofing_clause,2025-10-05 08:09:16.585278
+00ba5760-93ce-4892-a77c-aba313deb6a5,CLEAR_CLAUSE,Additional Support,,Additional Support,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2c1a6de3-1631-4aa6-a141-3d09b82641e3,CLEAR_CLAUSE,Level,,Level,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c66f2442-76ff-4b01-bbaa-f9db57073469,CLEAR_CLAUSE,Tray Cladding Set Out,,Tray Cladding Set Out,,metal_roofing_clause,2025-10-05 08:09:16.585278
+ba7f666c-d75e-467e-9b7c-3ef6fc02ff40,CLEAR_CLAUSE,Cricket,,Cricket,,metal_roofing_clause,2025-10-05 08:09:16.585278
+fb93002e-660a-437a-8983-d44bd38cc552,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+07cf4790-c0b9-450d-bb39-412f01c92228,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5b749694-faa3-43d8-af8c-0614cf800a85,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+d32cb4f1-7cb1-4178-ad04-8c0040c10483,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+9cf8c375-1a12-414e-9fe8-deb5c162352d,CLEAR_CLAUSE,Fit EPDM boot flashing,,Fit EPDM boot flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+1b08acf1-2623-4f0d-af5f-173e83efc421,CLEAR_CLAUSE,Fall,,Fall,,metal_roofing_clause,2025-10-05 08:09:16.585278
+0e0259a1-d4e9-430d-93c4-c08febe54c42,CLEAR_CLAUSE,Mechanical Services,,Mechanical Services,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8c905e9a-6aff-48ce-8277-7664c934ebcd,CLEAR_CLAUSE,Condensation,,Condensation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3a1e17c1-4dc6-46f5-8b8a-a53f08b745ab,CLEAR_CLAUSE,parapet cap flashing,,parapet cap flashing,,metal_roofing_clause,2025-10-05 08:09:16.585278
+6e88da63-5ab2-4650-a7d9-33866b0ea72f,CLEAR_CLAUSE,spray,,spray,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3112b148-6786-4ee8-a64b-e9ec10791390,CLEAR_CLAUSE,Insulation,,Insulation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8a52c589-a004-40fe-87cb-c24ef271c2f3,CLEAR_CLAUSE,Heating,,Heating,,metal_roofing_clause,2025-10-05 08:09:16.585278
+982bed17-9535-431a-851c-d595be14e4ab,CLEAR_CLAUSE,Mould Damage,,Mould Damage,,metal_roofing_clause,2025-10-05 08:09:16.585278
+c824c73a-33de-4ee9-beb5-cd46ccac7cc5,CLEAR_CLAUSE,INTERNAL MOISTURE,,INTERNAL MOISTURE,,metal_roofing_clause,2025-10-05 08:09:16.585278
+eb06f15c-2a0f-409a-9b10-644eec169a50,CLEAR_CLAUSE,Vented Batten,,Vented Batten,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8be3c12d-3c3c-49b7-80c1-695a0a3342d9,CLEAR_CLAUSE,Sarked Roof to Ridge Vent,,Sarked Roof to Ridge Vent,,metal_roofing_clause,2025-10-05 08:09:16.585278
+e1abee3c-dd18-4eb6-97fa-33f669c6195f,CLEAR_CLAUSE,Vented Soft Edge with PIB Backer,,Vented Soft Edge with PIB Backer,,metal_roofing_clause,2025-10-05 08:09:16.585278
+2bf329d3-8bbe-4704-b897-1e5907849fb6,CLEAR_CLAUSE,Thermal Break,,Thermal Break,,metal_roofing_clause,2025-10-05 08:09:16.585278
+3a526bed-b6c8-4296-bc61-5847df18d3e7,CLEAR_CLAUSE,Additional Information,,Additional Information,,metal_roofing_clause,2025-10-05 08:09:16.585278
+8b74d95c-79f1-4042-9609-e692adbcf58b,CLEAR_CLAUSE,Absolute Humidity,,Absolute Humidity,,metal_roofing_clause,2025-10-05 08:09:16.585278
+019a6fda-f67e-4020-96b3-13d547eb8e68,CLEAR_CLAUSE,Thermal Resistance,,Thermal Resistance,,metal_roofing_clause,2025-10-05 08:09:16.585278
+a103e674-754a-4baf-9159-ddec2d896f7a,CLEAR_CLAUSE,Allowance for Variation,,Allowance for Variation,,metal_roofing_clause,2025-10-05 08:09:16.585278
+5b2f4927-8b8b-402f-b0b7-a3f577d84189,CLEAR_CLAUSE,Installing Translucent Sheets,,Installing Translucent Sheets,,metal_roofing_clause,2025-10-05 08:09:16.585278
