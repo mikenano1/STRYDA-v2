@@ -1,0 +1,26 @@
+{
+  "test_timestamp": "2025-10-05T18:10:00Z",
+  "latencies": [
+    2551.5313148498535,
+    2362.0667457580566,
+    2346.3542461395264
+  ],
+  "citations_per_response": [
+    3,
+    3,
+    3
+  ],
+  "errors": [],
+  "citation_integrity": {
+    "valid": 9,
+    "invalid": 0
+  },
+  "overall_status": "PASSED",
+  "metrics": {
+    "p50_ms": 2362.0667457580566,
+    "p95_ms": 2551.5313148498535,
+    "avg_ms": 2419.9841022491455,
+    "error_rate_pct": 0.0,
+    "avg_citations": 3
+  }
+}
