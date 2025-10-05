@@ -71,29 +71,98 @@ def api_ask(req: AskRequest):
 @app.post("/api/chat")
 def api_chat(req: ChatRequest):
     """
-    Multi-turn chat conversation with memory and enhanced citations
+    Enhanced multi-turn chat with memory and citations
     """
     try:
-        import sys
-        sys.path.insert(0, '/app/backend-minimal')
-        from multi_turn_chat import generate_chat_response
+        # Step 1: Save user message to memory
+        session_id = req.session_id or "default"
+        user_message = req.message
         
-        # Generate response with multi-turn awareness
-        response = generate_chat_response(
-            session_id=req.session_id or "default",
-            user_message=req.message
-        )
+        # Save to chat history
+        try:
+            conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO chat_messages (session_id, role, content)
+                    VALUES (%s, %s, %s);
+                """, (session_id, "user", user_message))
+                conn.commit()
+            conn.close()
+        except Exception as e:
+            print(f"⚠️ Chat memory save failed: {e}")
         
-        # Ensure backward compatibility - remove timing from client response
-        client_response = {
-            "message": response.get("message", "Unable to process message"),
-            "citations": response.get("citations", []),
-            "session_id": response.get("session_id", "default"),
-            "notes": response.get("notes", ["backend", "chat"]),
-            "timestamp": int(time.time())
+        # Step 2: Get conversation context
+        conversation_history = []
+        try:
+            conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+            with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+                cur.execute("""
+                    SELECT role, content 
+                    FROM chat_messages 
+                    WHERE session_id = %s
+                    ORDER BY created_at DESC
+                    LIMIT %s;
+                """, (session_id, 10))  # Last 10 messages
+                
+                messages = cur.fetchall()
+                conversation_history = [dict(msg) for msg in reversed(messages[:-1])]  # Exclude current message
+            conn.close()
+        except Exception as e:
+            print(f"⚠️ Chat history retrieval failed: {e}")
+        
+        # Step 3: Use existing RAG system for retrieval
+        rag_start = time.time()
+        result = retrieve_and_answer(user_message, history=conversation_history)
+        rag_time = (time.time() - rag_start) * 1000
+        
+        # Step 4: Format response with enhanced citations
+        answer = result.get("answer", "I don't have specific information about that in my current knowledge base.")
+        raw_citations = result.get("citations", [])
+        
+        # Format citations for multi-turn chat
+        enhanced_citations = []
+        for cite in raw_citations:
+            citation = {
+                "source": cite.get("source", "Unknown"),
+                "page": cite.get("page", 0),
+                "score": cite.get("score", 0.0),
+                "snippet": cite.get("snippet", "")[:200]
+            }
+            
+            # Add metadata if available
+            if cite.get("section"):
+                citation["section"] = cite["section"]
+            if cite.get("clause"):
+                citation["clause"] = cite["clause"]
+                
+            enhanced_citations.append(citation)
+        
+        # Step 5: Save assistant response
+        try:
+            conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+            with conn.cursor() as cur:
+                cur.execute("""
+                    INSERT INTO chat_messages (session_id, role, content)
+                    VALUES (%s, %s, %s);
+                """, (session_id, "assistant", answer))
+                conn.commit()
+            conn.close()
+        except Exception as e:
+            print(f"⚠️ Assistant message save failed: {e}")
+        
+        # Step 6: Format final response
+        response = {
+            "message": answer,
+            "citations": enhanced_citations,
+            "session_id": session_id,
+            "notes": ["rag", "multi_turn", "enhanced"],
+            "timestamp": int(time.time()),
+            "timing_ms": round(rag_time)
         }
         
-        return client_response
+        print(f"✅ Multi-turn chat: {len(enhanced_citations)} citations, {rag_time:.0f}ms")
+        
+        return response
         
     except Exception as e:
         print(f"❌ Multi-turn chat error: {e}")
