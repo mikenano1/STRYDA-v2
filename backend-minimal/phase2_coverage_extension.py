@@ -157,19 +157,25 @@ def process_enhanced_batch(batch_num: int):
                 
                 # Update only if we found something
                 if new_section or new_clause:
-                    # Update with provenance
+                    # Update with valid provenance (only allowed values)
                     update_section = new_section if new_section else existing_section
                     update_clause = new_clause if new_clause else existing_clause
-                    update_section_source = section_provenance if new_section else None
+                    
+                    # Ensure section_source is valid (on_page, toc, bookmark, or NULL)
+                    valid_section_source = None
+                    if new_section and section_provenance:
+                        if 'on_page' in section_provenance or 'heading' in section_provenance:
+                            valid_section_source = 'on_page'
+                        # For now, only use 'on_page' as we don't have TOC/bookmark data yet
                     
                     cur.execute("""
                         UPDATE documents 
                         SET section = %s,
                             clause = %s,
-                            section_source = COALESCE(%s, section_source),
+                            section_source = %s,
                             updated_at = NOW()
                         WHERE id = %s;
-                    """, (update_section, update_clause, update_section_source, doc_id))
+                    """, (update_section, update_clause, valid_section_source, doc_id))
                     
                     if new_section:
                         sections_added += 1
