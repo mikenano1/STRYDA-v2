@@ -1,0 +1,11 @@
+id,source,page,section,clause,section_source,clause_source,section_contained,clause_regex_confirmed,snippet
+sample1,NZ Metal Roofing,76,"","",NULL,NULL,FALSE,FALSE,"Structure and modes of failure content"
+sample2,NZ Metal Roofing,551,"","E2/AS1",NULL,NULL,FALSE,TRUE,"Clause removal reference in revision notes"
+sample3,NZ Building Code,167,"This is a complete index...","G1AS1",on_page,NULL,TRUE,TRUE,"Building code index page"
+sample4,NZ Metal Roofing,179,"","Z450",NULL,NULL,FALSE,TRUE,"Coating specification reference"
+sample5,NZ Building Code,125,"NEW ZEALAND BUILDING CODE...","G12",NULL,NULL,TRUE,TRUE,"Definitions page header"
+sample6,NZ Metal Roofing,468,"","G92",NULL,NULL,FALSE,TRUE,"ASTM standard reference"
+sample7,NZ Metal Roofing,247,"","",NULL,NULL,FALSE,FALSE,"Flashing installation content"
+sample8,NZ Metal Roofing,198,"","",NULL,NULL,FALSE,FALSE,"Roof drainage content"
+sample9,NZ Metal Roofing,261,"","",NULL,NULL,FALSE,FALSE,"Timber compression information"
+sample10,TEST_GUIDE,1,"","",NULL,NULL,FALSE,FALSE,"Apron flashing cover requirements"
