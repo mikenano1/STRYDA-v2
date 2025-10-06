@@ -1,395 +1,423 @@
-/**
- * Main Chat Screen with Multi-Turn Conversations
- * Features: Session memory, citations, loading states, error handling
- */
-
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  TextInput,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-  Alert,
-  ActivityIndicator,
-} from 'react-native';
+import { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import BottomSheet, { BottomSheetModalProvider, BottomSheetModal } from '@gorhom/bottom-sheet';
-import { useChatMessages, useSessionId, useIsInitialized, useChatActions } from '../state/chatStore';
-import { postChat, APIError } from '../lib/api';
-import ChatMessageComponent from '../components/ChatMessage';
-import { ChatMessage, Citation } from '../types/chat';
+
+const theme = { 
+  bg: '#111111', 
+  text: '#FFFFFF', 
+  muted: '#A7A7A7', 
+  accent: '#FF7A00', 
+  inputBg: '#1A1A1A' 
+};
+
+interface Citation {
+  source: string;
+  page: number;
+  score?: number;
+  snippet?: string;
+  section?: string;
+  clause?: string;
+}
+
+interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  text: string;
+  citations?: Citation[];
+  timestamp: number;
+}
 
 export default function ChatScreen() {
-  // Store state
-  const messages = useChatMessages();
-  const sessionId = useSessionId();
-  const isInitialized = useIsInitialized();
-  const { addMessage, updateMessage, markFailed, initialize, createNewSession } = useChatActions();
-  
-  // Local state
   const [inputText, setInputText] = useState('');
   const [isSending, setIsSending] = useState(false);
-  const [selectedCitation, setSelectedCitation] = useState<Citation | null>(null);
-  
-  // Refs
-  const flatListRef = useRef<FlatList>(null);
-  const bottomSheetRef = useRef<BottomSheetModal>(null);
-  const snapPoints = ['25%', '60%'];
-  
-  // Initialize store on mount
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [sessionId, setSessionId] = useState('');
+  const [expandedCitation, setExpandedCitation] = useState<Citation | null>(null);
+
+  // Initialize session and diagnostic logs
   useEffect(() => {
-    if (!isInitialized) {
-      initialize();
-    }
-  }, [isInitialized, initialize]);
-  
-  // Auto-scroll to bottom on new messages
-  useEffect(() => {
-    if (messages.length > 0) {
-      setTimeout(() => {
-        flatListRef.current?.scrollToEnd({ animated: true });
-      }, 100);
-    }
-  }, [messages.length]);
-  
-  const sendMessage = useCallback(async () => {
-    if (!inputText.trim() || isSending || !sessionId) return;
-    
-    const messageId = `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    const userMessage: ChatMessage = {
-      id: messageId,
-      role: 'user',
-      text: inputText.trim(),
-      ts: Date.now(),
-    };
-    
-    // Clear input and add user message
-    const messageToSend = inputText.trim();
-    setInputText('');
-    addMessage(userMessage);
-    
-    // Add loading assistant message
-    const assistantMessageId = `msg_${Date.now()}_assistant`;
-    const loadingMessage: ChatMessage = {
-      id: assistantMessageId,
-      role: 'assistant',
-      text: '',
-      ts: Date.now(),
-      loading: true,
-    };
-    
-    addMessage(loadingMessage);
-    setIsSending(true);
-    
-    try {
-      // Call chat API
-      const response = await postChat({
-        session_id: sessionId,
-        message: messageToSend,
-      });
+    const initializeApp = async () => {
+      // 1) Log API_BASE
+      const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
+      console.log('🔧 EXPO_PUBLIC_API_BASE:', apiBase);
       
-      // Update assistant message with response
-      updateMessage(assistantMessageId, {
-        text: response.message,
-        citations: response.citations || [],
-        loading: false,
-        timing_ms: response.timing_ms,
-      });
-      
-    } catch (error) {
-      console.error('❌ Chat request failed:', error);
-      
-      // Mark assistant message as failed
-      updateMessage(assistantMessageId, {
-        text: error instanceof APIError 
-          ? `Sorry, I encountered an error: ${error.message}` 
-          : 'Sorry, I had trouble connecting. Please try again.',
-        loading: false,
-        error: true,
-      });
-      
-      // Show toast error
-      if (error instanceof APIError && error.status === 0) {
-        Alert.alert('Connection Error', "Couldn't reach STRYDA. Check your connection and try again.");
+      // 2) Health check
+      try {
+        const healthResponse = await fetch(`${apiBase}/health`);
+        const healthData = await healthResponse.json();
+        console.log('✅ Health check result:', healthData);
+      } catch (error) {
+        console.error('❌ Health check failed:', error);
       }
       
-    } finally {
-      setIsSending(false);
-    }
-  }, [inputText, isSending, sessionId, addMessage, updateMessage]);
-  
-  const handleCitationPress = useCallback((citation: Citation) => {
-    console.log('📄 Opening citation details:', citation);
-    setSelectedCitation(citation);
-    bottomSheetRef.current?.present();
+      // 3) Generate session ID
+      const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      setSessionId(newSessionId);
+      console.log('🔄 Chat session initialized:', newSessionId.substring(0, 15) + '...');
+    };
+    
+    initializeApp();
   }, []);
-  
-  const handleRetry = useCallback(async (messageId: string) => {
-    // Find the message to retry
-    const messageIndex = messages.findIndex(msg => msg.id === messageId);
-    if (messageIndex === -1) return;
-    
-    const message = messages[messageIndex];
-    if (message.role !== 'assistant') return;
-    
-    // Find the user message that prompted this
-    const userMessage = messages[messageIndex - 1];
-    if (!userMessage || userMessage.role !== 'user') return;
-    
-    // Reset the assistant message to loading
-    updateMessage(messageId, {
-      loading: true,
-      error: false,
-      text: '',
+
+  const sendMessage = async () => {
+    // Diagnostic log
+    console.log('🎯 Send button pressed:', {
+      inputLength: inputText.trim().length,
+      sessionId: sessionId.substring(0, 10) + '...',
+      isSending
     });
     
+    // Guard clauses
+    if (isSending) {
+      console.log('⚠️ Already sending, ignoring press');
+      return;
+    }
+    
+    if (inputText.trim().length === 0) {
+      console.log('⚠️ Empty input, ignoring press');
+      return;
+    }
+    
+    if (!sessionId) {
+      console.log('❌ No session ID available');
+      return;
+    }
+    
+    const messageText = inputText.trim();
+    const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
+    
+    // Clear input and add user message (optimistic)
+    setInputText('');
+    const userMessage: ChatMessage = {
+      id: `user_${Date.now()}`,
+      role: 'user',
+      text: messageText,
+      timestamp: Date.now()
+    };
+    
+    setMessages(prev => [...prev, userMessage]);
     setIsSending(true);
     
+    // Telemetry: chat_send
+    console.log(`[telemetry] chat_send session_id=${sessionId.substring(0, 8)}... input_length=${messageText.length}`);
+    
+    const startTime = Date.now();
+    
     try {
-      const response = await postChat({
-        session_id: sessionId,
-        message: userMessage.text,
+      console.log('📡 Making API request to:', `${apiBase}/api/chat`);
+      
+      const response = await fetch(`${apiBase}/api/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          session_id: sessionId,
+          message: messageText
+        })
       });
       
-      updateMessage(messageId, {
-        text: response.message,
-        citations: response.citations || [],
-        loading: false,
-        error: false,
+      const endTime = Date.now();
+      const duration = endTime - startTime;
+      
+      console.log('📡 API response:', {
+        status: response.status,
+        statusText: response.statusText,
+        duration: `${duration}ms`
       });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText.substring(0, 120)}`);
+      }
+      
+      const data = await response.json();
+      
+      console.log('✅ Chat response received:', { 
+        messageLength: data.message?.length,
+        citationCount: data.citations?.length,
+        timingMs: data.timing_ms,
+        sessionId: data.session_id?.substring(0, 10) + '...'
+      });
+      
+      // Telemetry: chat_response
+      console.log(`[telemetry] chat_response timing_ms=${duration} citations_count=${data.citations?.length || 0}`);
+      
+      // Add assistant message
+      const assistantMessage: ChatMessage = {
+        id: `assistant_${Date.now()}`,
+        role: 'assistant',
+        text: data.message || 'No response received',
+        citations: data.citations || [],
+        timestamp: Date.now()
+      };
+      
+      setMessages(prev => [...prev, assistantMessage]);
       
     } catch (error) {
-      console.error('❌ Retry failed:', error);
-      updateMessage(messageId, {
-        text: 'Retry failed. Please try asking again.',
-        loading: false,
-        error: true,
-      });
+      const endTime = Date.now();
+      const duration = endTime - startTime;
+      
+      console.error('❌ Chat request failed:', error);
+      
+      // Telemetry: chat_error
+      console.log(`[telemetry] chat_error timing_ms=${duration} error=${error.message.substring(0, 50)}`);
+      
+      // Add error message with retry
+      const errorMessage: ChatMessage = {
+        id: `error_${Date.now()}`,
+        role: 'assistant',
+        text: `Couldn't reach server. ${error.message}`,
+        timestamp: Date.now()
+      };
+      
+      setMessages(prev => [...prev, errorMessage]);
+      
+      Alert.alert(
+        'Connection Error',
+        `Failed to get response from STRYDA: ${error.message}`,
+        [
+          { text: 'OK' },
+          { text: 'Retry', onPress: () => sendMessage() }
+        ]
+      );
       
     } finally {
       setIsSending(false);
     }
-  }, [messages, sessionId, updateMessage]);
-  
-  const handleNewChat = useCallback(async () => {
+  };
+
+  const handleCitationPress = (citation: Citation) => {
+    console.log('[telemetry] citation_pill_opened', {
+      source: citation.source,
+      page: citation.page,
+      score: citation.score
+    });
+    
+    setExpandedCitation(expandedCitation?.page === citation.page ? null : citation);
+  };
+
+  const handleNewChat = () => {
     Alert.alert(
-      'New Chat', 
-      'Start a new conversation? Current chat will be saved.',
+      'New Chat',
+      'Start a new conversation? Current chat will be cleared.',
       [
         { text: 'Cancel', style: 'cancel' },
         { 
           text: 'New Chat', 
-          style: 'default',
-          onPress: async () => {
-            await createNewSession();
-            console.log('🆕 Started new chat session');
+          onPress: () => {
+            setMessages([]);
+            const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            setSessionId(newSessionId);
+            console.log('🆕 New chat session started:', newSessionId.substring(0, 15) + '...');
           }
         }
       ]
     );
-  }, [createNewSession]);
-  
-  const renderMessage = useCallback(({ item }: { item: ChatMessage }) => (
-    <ChatMessageComponent
-      message={item}
-      onCitationPress={handleCitationPress}
-      onRetry={handleRetry}
-    />
-  ), [handleCitationPress, handleRetry]);
-  
-  const keyExtractor = useCallback((item: ChatMessage) => item.id, []);
-  
-  if (!isInitialized) {
-    return (
-      <SafeAreaView style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#FF7A00" />
-        <Text style={styles.loadingText}>Loading chat...</Text>
-      </SafeAreaView>
-    );
-  }
-  
+  };
+
   return (
-    <BottomSheetModalProvider>
-      <SafeAreaView style={styles.container}>
-        {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>STRYDA.ai</Text>
-          <TouchableOpacity 
-            style={styles.newChatButton}
-            onPress={handleNewChat}
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-          >
-            <Text style={styles.newChatText}>New Chat</Text>
-          </TouchableOpacity>
-        </View>
-        
-        {/* Chat area */}
-        <KeyboardAvoidingView 
-          style={styles.chatContainer}
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <SafeAreaView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>STRYDA.ai</Text>
+        <TouchableOpacity 
+          style={styles.newChatButton}
+          onPress={handleNewChat}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >
-          {/* Messages */}
-          {messages.length === 0 ? (
-            <View style={styles.emptyState}>
-              <Text style={styles.emptyTitle}>Ask STRYDA about:</Text>
-              <Text style={styles.emptyHint}>• Flashing cover requirements</Text>
-              <Text style={styles.emptyHint}>• High wind zone standards</Text>
-              <Text style={styles.emptyHint}>• Metal roofing fixings</Text>
-              <Text style={styles.emptyHint}>• Building code compliance</Text>
-            </View>
-          ) : (
-            <FlatList
-              ref={flatListRef}
-              data={messages}
-              renderItem={renderMessage}
-              keyExtractor={keyExtractor}
-              style={styles.messagesList}
-              contentContainerStyle={styles.messagesContent}
-              showsVerticalScrollIndicator={false}
-              removeClippedSubviews={false} // Better for citations
-            />
-          )}
-          
-          {/* Input bar */}
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.textInput}
-              value={inputText}
-              onChangeText={setInputText}
-              placeholder="Ask STRYDA..."
-              placeholderTextColor="#888888"
-              multiline
-              maxLength={1000}
-              editable={!isSending}
-              returnKeyType="send"
-              onSubmitEditing={sendMessage}
-            />
-            <TouchableOpacity
-              style={[
-                styles.sendButton,
-                (!inputText.trim() || isSending) && styles.sendButtonDisabled
-              ]}
-              onPress={sendMessage}
-              disabled={!inputText.trim() || isSending}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            >
-              {isSending ? (
-                <ActivityIndicator size="small" color="#000000" />
-              ) : (
-                <Text style={styles.sendButtonText}>Send</Text>
-              )}
-            </TouchableOpacity>
+          <Text style={styles.newChatText}>New Chat</Text>
+        </TouchableOpacity>
+      </View>
+      
+      {/* Messages Area */}
+      <View style={styles.messagesContainer}>
+        {messages.length === 0 ? (
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyTitle}>Ask STRYDA about:</Text>
+            <Text style={styles.emptyHint}>• Flashing cover requirements</Text>
+            <Text style={styles.emptyHint}>• High wind zone standards</Text>
+            <Text style={styles.emptyHint}>• Metal roofing fixings</Text>
+            <Text style={styles.emptyHint}>• Building code compliance</Text>
           </View>
-        </KeyboardAvoidingView>
-        
-        {/* Citation Bottom Sheet */}
-        <BottomSheetModal
-          ref={bottomSheetRef}
-          snapPoints={snapPoints}
-          enablePanDownToClose
-          backgroundStyle={styles.bottomSheetBackground}
-          handleIndicatorStyle={styles.bottomSheetIndicator}
-        >
-          {selectedCitation && (
-            <View style={styles.citationDetails}>
-              <Text style={styles.citationTitle}>
-                {selectedCitation.source} • Page {selectedCitation.page}
-              </Text>
-              
-              {selectedCitation.snippet && (
-                <Text style={styles.citationSnippet}>
-                  {selectedCitation.snippet}
-                </Text>
-              )}
-              
-              <View style={styles.citationMeta}>
-                <Text style={styles.citationMetaText}>
-                  Relevance: {(selectedCitation.score * 100).toFixed(0)}%
-                </Text>
-                
-                {selectedCitation.section && (
-                  <Text style={styles.citationMetaText}>
-                    Section: {selectedCitation.section}
+        ) : (
+          <ScrollView 
+            style={styles.messagesList}
+            contentContainerStyle={styles.messagesContent}
+            showsVerticalScrollIndicator={false}
+          >
+            {messages.map((message) => (
+              <View 
+                key={message.id} 
+                style={[
+                  styles.messageContainer,
+                  message.role === 'user' ? styles.userMessage : styles.assistantMessage
+                ]}
+              >
+                <View style={[
+                  styles.messageBubble,
+                  message.role === 'user' ? styles.userBubble : styles.assistantBubble
+                ]}>
+                  <Text style={[
+                    styles.messageText,
+                    message.role === 'user' ? styles.userText : styles.assistantText
+                  ]}>
+                    {message.text}
                   </Text>
+                </View>
+                
+                {/* Citations */}
+                {message.role === 'assistant' && message.citations && message.citations.length > 0 && (
+                  <View style={styles.citationsContainer}>
+                    {message.citations.map((citation, index) => (
+                      <TouchableOpacity
+                        key={`${citation.source}-${citation.page}-${index}`}
+                        style={styles.citationPill}
+                        onPress={() => handleCitationPress(citation)}
+                        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                      >
+                        <Text style={styles.citationText}>
+                          {citation.source} p.{citation.page}
+                        </Text>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
                 )}
                 
-                {selectedCitation.clause && (
-                  <Text style={styles.citationMetaText}>
-                    Clause: {selectedCitation.clause}
-                  </Text>
+                {/* Expanded Citation */}
+                {expandedCitation && expandedCitation.source && 
+                 message.citations?.some(c => c.page === expandedCitation.page) && (
+                  <View style={styles.expandedCitation}>
+                    <Text style={styles.expandedCitationTitle}>
+                      {expandedCitation.source} • Page {expandedCitation.page}
+                    </Text>
+                    
+                    {expandedCitation.snippet && (
+                      <Text style={styles.expandedCitationSnippet}>
+                        {expandedCitation.snippet}
+                      </Text>
+                    )}
+                    
+                    <View style={styles.citationMeta}>
+                      {expandedCitation.score && (
+                        <Text style={styles.metaText}>
+                          Relevance: {(expandedCitation.score * 100).toFixed(0)}%
+                        </Text>
+                      )}
+                      {expandedCitation.section && (
+                        <Text style={styles.metaText}>
+                          Section: {expandedCitation.section.substring(0, 30)}...
+                        </Text>
+                      )}
+                      {expandedCitation.clause && (
+                        <Text style={styles.metaText}>
+                          Clause: {expandedCitation.clause}
+                        </Text>
+                      )}
+                    </View>
+                  </View>
                 )}
               </View>
+            ))}
+          </ScrollView>
+        )}
+        
+        {/* Loading indicator */}
+        {isSending && (
+          <View style={styles.loadingContainer}>
+            <View style={styles.loadingBubble}>
+              <ActivityIndicator size="small" color={theme.muted} />
+              <Text style={styles.loadingText}>STRYDA is thinking...</Text>
             </View>
+          </View>
+        )}
+      </View>
+      
+      {/* Input Area */}
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Ask STRYDA…"
+          placeholderTextColor={theme.muted}
+          value={inputText}
+          onChangeText={setInputText}
+          multiline
+          maxLength={1000}
+          editable={!isSending}
+          returnKeyType="send"
+          onSubmitEditing={sendMessage}
+        />
+        <TouchableOpacity
+          style={[
+            styles.sendButton,
+            (!inputText.trim() || isSending) && styles.sendButtonDisabled
+          ]}
+          onPress={() => {
+            console.log('🎯 CHAT TAB - Send button onPress triggered');
+            sendMessage();
+          }}
+          disabled={!inputText.trim() || isSending}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+          {isSending ? (
+            <ActivityIndicator size="small" color="#000000" />
+          ) : (
+            <Text style={styles.sendButtonText}>Send</Text>
           )}
-        </BottomSheetModal>
-      </SafeAreaView>
-    </BottomSheetModalProvider>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#111111', // Dark background
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#111111',
-  },
-  loadingText: {
-    color: '#FFFFFF',
-    marginTop: 12,
-    fontSize: 16,
+    backgroundColor: theme.bg,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#333333',
   },
   headerTitle: {
-    color: '#FFFFFF',
-    fontSize: 20,
+    color: theme.text,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   newChatButton: {
-    backgroundColor: '#FF7A00',
-    borderRadius: 16,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    backgroundColor: theme.accent,
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
   newChatText: {
     color: '#000000',
     fontSize: 14,
     fontWeight: '600',
   },
-  chatContainer: {
+  messagesContainer: {
     flex: 1,
   },
   emptyState: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 32,
+    paddingHorizontal: 40,
   },
   emptyTitle: {
-    color: '#FFFFFF',
-    fontSize: 18,
+    color: theme.text,
+    fontSize: 20,
     fontWeight: '600',
-    marginBottom: 16,
+    marginBottom: 20,
     textAlign: 'center',
   },
   emptyHint: {
-    color: '#CCCCCC',
+    color: theme.muted,
     fontSize: 16,
     marginBottom: 8,
     textAlign: 'center',
@@ -398,35 +426,137 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   messagesContent: {
-    paddingTop: 16,
-    paddingBottom: 8,
+    padding: 16,
+  },
+  messageContainer: {
+    marginBottom: 16,
+  },
+  userMessage: {
+    alignItems: 'flex-end',
+  },
+  assistantMessage: {
+    alignItems: 'flex-start',
+  },
+  messageBubble: {
+    maxWidth: '80%',
+    padding: 16,
+    borderRadius: 16,
+  },
+  userBubble: {
+    backgroundColor: theme.accent,
+    borderBottomRightRadius: 4,
+  },
+  assistantBubble: {
+    backgroundColor: '#2A2A2A',
+    borderBottomLeftRadius: 4,
+  },
+  messageText: {
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  userText: {
+    color: '#000000',
+    fontWeight: '500',
+  },
+  assistantText: {
+    color: theme.text,
+  },
+  citationsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 12,
+    maxWidth: '80%',
+  },
+  citationPill: {
+    backgroundColor: theme.accent,
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    marginRight: 8,
+    marginBottom: 6,
+    minHeight: 44,
+  },
+  citationText: {
+    color: '#000000',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  expandedCitation: {
+    backgroundColor: '#1A1A1A',
+    borderRadius: 12,
+    padding: 16,
+    marginTop: 12,
+    maxWidth: '80%',
+  },
+  expandedCitationTitle: {
+    color: theme.accent,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 12,
+  },
+  expandedCitationSnippet: {
+    color: theme.muted,
+    fontSize: 14,
+    lineHeight: 20,
+    marginBottom: 12,
+  },
+  citationMeta: {
+    backgroundColor: '#0A0A0A',
+    borderRadius: 8,
+    padding: 12,
+  },
+  metaText: {
+    color: '#888888',
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  loadingContainer: {
+    alignItems: 'flex-start',
+    padding: 16,
+  },
+  loadingBubble: {
+    backgroundColor: '#2A2A2A',
+    borderRadius: 16,
+    borderBottomLeftRadius: 4,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    maxWidth: '80%',
+  },
+  loadingText: {
+    color: theme.muted,
+    fontSize: 14,
+    marginLeft: 8,
+    fontStyle: 'italic',
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    padding: 16,
-    backgroundColor: '#1A1A1A',
+    padding: 20,
+    backgroundColor: '#0A0A0A',
     borderTopWidth: 1,
     borderTopColor: '#333333',
   },
   textInput: {
     flex: 1,
-    backgroundColor: '#2A2A2A',
+    backgroundColor: theme.inputBg,
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    color: '#FFFFFF',
     fontSize: 16,
-    maxHeight: 100,
+    color: theme.text,
     marginRight: 12,
+    maxHeight: 100,
+    minHeight: 44,
   },
   sendButton: {
-    backgroundColor: '#FF7A00',
+    backgroundColor: theme.accent,
     borderRadius: 20,
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     paddingVertical: 12,
     justifyContent: 'center',
     alignItems: 'center',
+    minHeight: 44,
     minWidth: 60,
   },
   sendButtonDisabled: {
@@ -434,41 +564,7 @@ const styles = StyleSheet.create({
   },
   sendButtonText: {
     color: '#000000',
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  // Bottom sheet styles
-  bottomSheetBackground: {
-    backgroundColor: '#2A2A2A',
-  },
-  bottomSheetIndicator: {
-    backgroundColor: '#666666',
-  },
-  citationDetails: {
-    padding: 20,
-  },
-  citationTitle: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 12,
-  },
-  citationSnippet: {
-    color: '#CCCCCC',
     fontSize: 16,
-    lineHeight: 22,
-    marginBottom: 16,
-  },
-  citationMeta: {
-    backgroundColor: '#1A1A1A',
-    borderRadius: 8,
-    padding: 12,
-  },
-  citationMetaText: {
-    color: '#888888',
-    fontSize: 14,
-    marginBottom: 4,
+    fontWeight: 'bold',
   },
 });
-
-export { ChatScreen };
