@@ -76,12 +76,19 @@ def api_ask(req: AskRequest):
 @app.post("/api/chat")
 def api_chat(req: ChatRequest):
     """
-    Enhanced multi-turn chat with memory and citations
+    Enhanced multi-turn chat with memory, citations, and preferences
     """
     try:
+        # Log request for monitoring
+        start_time = time.time()
+        
         # Step 1: Save user message to memory
         session_id = req.session_id or "default"
         user_message = req.message
+        
+        # Production telemetry
+        if os.getenv("ENABLE_TELEMETRY") == "true":
+            print(f"[telemetry] chat_request session_id={session_id[:8]}... message_length={len(user_message)}")
         
         # Save to chat history
         try:
@@ -155,6 +162,12 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Assistant message save failed: {e}")
         
+        total_time = (time.time() - start_time) * 1000
+        
+        # Production telemetry
+        if os.getenv("ENABLE_TELEMETRY") == "true":
+            print(f"[telemetry] chat_response timing_ms={total_time:.0f} citations_count={len(enhanced_citations)} rag_time_ms={rag_time:.0f}")
+        
         # Step 6: Format final response
         response = {
             "message": answer,
@@ -162,14 +175,18 @@ def api_chat(req: ChatRequest):
             "session_id": session_id,
             "notes": ["rag", "multi_turn", "enhanced"],
             "timestamp": int(time.time()),
-            "timing_ms": round(rag_time)
+            "timing_ms": round(total_time)
         }
         
-        print(f"✅ Multi-turn chat: {len(enhanced_citations)} citations, {rag_time:.0f}ms")
+        print(f"✅ Multi-turn chat: {len(enhanced_citations)} citations, {total_time:.0f}ms")
         
         return response
         
     except Exception as e:
+        # Production error telemetry
+        if os.getenv("ENABLE_TELEMETRY") == "true":
+            print(f"[telemetry] chat_error error={str(e)[:50]} session_id={req.session_id or 'default'}")
+        
         print(f"❌ Multi-turn chat error: {e}")
         return {
             "message": "I'm temporarily unable to process your message. Please try again.",
