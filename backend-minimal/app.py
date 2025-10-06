@@ -5,11 +5,16 @@ from typing import List, Optional
 from dotenv import load_dotenv
 import os
 import time
+import psycopg2
+import psycopg2.extras
 
 # Load environment variables from .env file
 load_dotenv()
 
 from rag.retriever import retrieve_and_answer
+
+# Database configuration
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 app = FastAPI(title="STRYDA Backend", version="0.2.0")
 
