@@ -27,6 +27,35 @@ interface ChatMessage {
   timestamp: number;
 }
 
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, ActivityIndicator } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+const theme = { 
+  bg: '#111111', 
+  text: '#FFFFFF', 
+  muted: '#A7A7A7', 
+  accent: '#FF7A00', 
+  inputBg: '#1A1A1A' 
+};
+
+interface Citation {
+  source: string;
+  page: number;
+  score?: number;
+  snippet?: string;
+  section?: string;
+  clause?: string;
+}
+
+interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  text: string;
+  citations?: Citation[];
+  timestamp: number;
+}
+
 export default function HomeScreen() {
   const [inputText, setInputText] = useState('');
   const [isSending, setIsSending] = useState(false);
@@ -34,23 +63,64 @@ export default function HomeScreen() {
   const [sessionId, setSessionId] = useState('');
   const [expandedCitation, setExpandedCitation] = useState<Citation | null>(null);
 
-  // Initialize session
+  // Initialize session and diagnostic logs
   useEffect(() => {
-    const generateSessionId = () => {
-      return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const initializeApp = async () => {
+      // 1) Log API_BASE
+      const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
+      console.log('🔧 EXPO_PUBLIC_API_BASE:', apiBase);
+      
+      // 2) Health check
+      try {
+        const healthResponse = await fetch(`${apiBase}/health`, { timeout: 10000 });
+        const healthData = await healthResponse.json();
+        console.log('✅ Health check result:', healthData);
+      } catch (error) {
+        console.error('❌ Health check failed:', error);
+      }
+      
+      // 3) Generate session ID
+      const generateSessionId = () => {
+        return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      };
+      
+      const newSessionId = generateSessionId();
+      setSessionId(newSessionId);
+      console.log('🔄 Chat session initialized:', newSessionId.substring(0, 15) + '...');
     };
     
-    setSessionId(generateSessionId());
-    console.log('🔄 Chat session initialized');
+    initializeApp();
   }, []);
 
-  const handleSend = async () => {
-    if (!inputText.trim() || isSending || !sessionId) return;
+  const sendMessage = async () => {
+    // 3) Log Send button press
+    console.log('🚀 Send button pressed:', {
+      inputLength: inputText.trim().length,
+      sessionId: sessionId.substring(0, 10) + '...',
+      isSending
+    });
+    
+    // Guard clauses
+    if (isSending) {
+      console.log('⚠️ Already sending, ignoring press');
+      return;
+    }
+    
+    if (inputText.trim().length === 0) {
+      console.log('⚠️ Empty input, ignoring press');
+      return;
+    }
+    
+    if (!sessionId) {
+      console.log('❌ No session ID available');
+      return;
+    }
     
     const messageText = inputText.trim();
-    setInputText('');
+    const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
     
-    // Add user message
+    // Clear input and add user message (optimistic)
+    setInputText('');
     const userMessage: ChatMessage = {
       id: `user_${Date.now()}`,
       role: 'user',
@@ -61,10 +131,15 @@ export default function HomeScreen() {
     setMessages(prev => [...prev, userMessage]);
     setIsSending(true);
     
+    // Telemetry: chat_send
+    console.log(`[telemetry] chat_send session_id=${sessionId.substring(0, 8)}... input_length=${messageText.length}`);
+    
+    const startTime = Date.now();
+    
     try {
-      console.log('🚀 Sending chat request:', { sessionId: sessionId.substring(0, 10) + '...', messageLength: messageText.length });
+      console.log('📡 Making API request to:', `${apiBase}/api/chat`);
       
-      const response = await fetch('http://localhost:8001/api/chat', {
+      const response = await fetch(`${apiBase}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,8 +150,18 @@ export default function HomeScreen() {
         })
       });
       
+      const endTime = Date.now();
+      const duration = endTime - startTime;
+      
+      console.log('📡 API response:', {
+        status: response.status,
+        statusText: response.statusText,
+        duration: `${duration}ms`
+      });
+      
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText.substring(0, 120)}`);
       }
       
       const data = await response.json();
@@ -84,8 +169,12 @@ export default function HomeScreen() {
       console.log('✅ Chat response received:', { 
         messageLength: data.message?.length,
         citationCount: data.citations?.length,
-        timing: data.timing_ms
+        timingMs: data.timing_ms,
+        sessionId: data.session_id?.substring(0, 10) + '...'
       });
+      
+      // Telemetry: chat_response
+      console.log(`[telemetry] chat_response timing_ms=${duration} citations_count=${data.citations?.length || 0}`);
       
       // Add assistant message
       const assistantMessage: ChatMessage = {
@@ -99,23 +188,226 @@ export default function HomeScreen() {
       setMessages(prev => [...prev, assistantMessage]);
       
     } catch (error) {
+      const endTime = Date.now();
+      const duration = endTime - startTime;
+      
       console.error('❌ Chat request failed:', error);
       
-      // Add error message
+      // Telemetry: chat_error
+      console.log(`[telemetry] chat_error timing_ms=${duration} error=${error.message.substring(0, 50)}`);
+      
+      // Add error message with retry
       const errorMessage: ChatMessage = {
         id: `error_${Date.now()}`,
         role: 'assistant',
-        text: `Sorry, I encountered an error: ${error.message}. Please try again.`,
+        text: `Couldn't reach server. ${error.message}`,
         timestamp: Date.now()
       };
       
       setMessages(prev => [...prev, errorMessage]);
       
-      Alert.alert('Error', 'Failed to get response from STRYDA. Please try again.');
+      Alert.alert(
+        'Connection Error',
+        `Failed to get response from STRYDA: ${error.message}`,
+        [
+          { text: 'OK' },
+          { text: 'Retry', onPress: () => sendMessage() }
+        ]
+      );
+      
     } finally {
       setIsSending(false);
+      
+      // Auto-scroll to bottom after state update
+      setTimeout(() => {
+        // Scroll logic would be implemented here
+        console.log('📜 Auto-scroll to bottom triggered');
+      }, 100);
     }
   };
+
+  const handleCitationPress = (citation: Citation) => {
+    console.log('[telemetry] citation_pill_opened', {
+      source: citation.source,
+      page: citation.page,
+      score: citation.score
+    });
+    
+    setExpandedCitation(expandedCitation?.page === citation.page ? null : citation);
+  };
+
+  const handleNewChat = () => {
+    Alert.alert(
+      'New Chat',
+      'Start a new conversation? Current chat will be cleared.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { 
+          text: 'New Chat', 
+          onPress: () => {
+            setMessages([]);
+            const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            setSessionId(newSessionId);
+            console.log('🆕 New chat session started:', newSessionId.substring(0, 15) + '...');
+          }
+        }
+      ]
+    );
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>STRYDA.ai</Text>
+        <TouchableOpacity 
+          style={styles.newChatButton}
+          onPress={handleNewChat}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+          <Text style={styles.newChatText}>New Chat</Text>
+        </TouchableOpacity>
+      </View>
+      
+      {/* Messages Area */}
+      <View style={styles.messagesContainer}>
+        {messages.length === 0 ? (
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyTitle}>Ask STRYDA about:</Text>
+            <Text style={styles.emptyHint}>• Flashing cover requirements</Text>
+            <Text style={styles.emptyHint}>• High wind zone standards</Text>
+            <Text style={styles.emptyHint}>• Metal roofing fixings</Text>
+            <Text style={styles.emptyHint}>• Building code compliance</Text>
+          </View>
+        ) : (
+          <ScrollView 
+            style={styles.messagesList}
+            contentContainerStyle={styles.messagesContent}
+            showsVerticalScrollIndicator={false}
+          >
+            {messages.map((message) => (
+              <View 
+                key={message.id} 
+                style={[
+                  styles.messageContainer,
+                  message.role === 'user' ? styles.userMessage : styles.assistantMessage
+                ]}
+              >
+                <View style={[
+                  styles.messageBubble,
+                  message.role === 'user' ? styles.userBubble : styles.assistantBubble
+                ]}>
+                  <Text style={[
+                    styles.messageText,
+                    message.role === 'user' ? styles.userText : styles.assistantText
+                  ]}>
+                    {message.text}
+                  </Text>
+                </View>
+                
+                {/* Citations */}
+                {message.role === 'assistant' && message.citations && message.citations.length > 0 && (
+                  <View style={styles.citationsContainer}>
+                    {message.citations.map((citation, index) => (
+                      <TouchableOpacity
+                        key={`${citation.source}-${citation.page}-${index}`}
+                        style={styles.citationPill}
+                        onPress={() => handleCitationPress(citation)}
+                        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                      >
+                        <Text style={styles.citationText}>
+                          {citation.source} p.{citation.page}
+                        </Text>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                )}
+                
+                {/* Expanded Citation */}
+                {expandedCitation && expandedCitation.source && 
+                 message.citations?.some(c => c.page === expandedCitation.page) && (
+                  <View style={styles.expandedCitation}>
+                    <Text style={styles.expandedCitationTitle}>
+                      {expandedCitation.source} • Page {expandedCitation.page}
+                    </Text>
+                    
+                    {expandedCitation.snippet && (
+                      <Text style={styles.expandedCitationSnippet}>
+                        {expandedCitation.snippet}
+                      </Text>
+                    )}
+                    
+                    <View style={styles.citationMeta}>
+                      {expandedCitation.score && (
+                        <Text style={styles.metaText}>
+                          Relevance: {(expandedCitation.score * 100).toFixed(0)}%
+                        </Text>
+                      )}
+                      {expandedCitation.section && (
+                        <Text style={styles.metaText}>
+                          Section: {expandedCitation.section.substring(0, 30)}...
+                        </Text>
+                      )}
+                      {expandedCitation.clause && (
+                        <Text style={styles.metaText}>
+                          Clause: {expandedCitation.clause}
+                        </Text>
+                      )}
+                    </View>
+                  </View>
+                )}
+              </View>
+            ))}
+          </ScrollView>
+        )}
+        
+        {/* Loading indicator */}
+        {isSending && (
+          <View style={styles.loadingContainer}>
+            <View style={styles.loadingBubble}>
+              <ActivityIndicator size="small" color={theme.muted} />
+              <Text style={styles.loadingText}>STRYDA is thinking...</Text>
+            </View>
+          </View>
+        )}
+      </View>
+      
+      {/* Input Area */}
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Ask STRYDA…"
+          placeholderTextColor={theme.muted}
+          value={inputText}
+          onChangeText={setInputText}
+          multiline
+          maxLength={1000}
+          editable={!isSending}
+          returnKeyType="send"
+          onSubmitEditing={sendMessage}
+        />
+        <TouchableOpacity
+          style={[
+            styles.sendButton,
+            (!inputText.trim() || isSending) && styles.sendButtonDisabled
+          ]}
+          onPress={() => {
+            console.log('🎯 Send button onPress triggered');
+            sendMessage();
+          }}
+          disabled={!inputText.trim() || isSending}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+          {isSending ? (
+            <ActivityIndicator size="small" color="#000000" />
+          ) : (
+            <Text style={styles.sendButtonText}>Send</Text>
+          )}
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+}
 
   const handleCitationPress = (citation: Citation) => {
     console.log('[telemetry] citation_pill_opened', {
