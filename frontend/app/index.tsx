@@ -218,7 +218,12 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>STRYDA.ai</Text>
+        <View>
+          <Text style={styles.headerTitle}>STRYDA.ai</Text>
+          <Text style={styles.apiDisplay}>
+            API: {process.env.EXPO_PUBLIC_API_BASE || 'localhost:8001'}
+          </Text>
+        </View>
         <TouchableOpacity 
           style={styles.newChatButton}
           onPress={handleNewChat}
