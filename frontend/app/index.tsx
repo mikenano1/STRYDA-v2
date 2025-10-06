@@ -60,8 +60,9 @@ export default function HomeScreen() {
   }, []);
 
   const sendMessage = async () => {
-    // Diagnostic log
-    console.log('🎯 Send button pressed:', {
+    // Critical diagnostic logs
+    console.log('🎯 Send pressed');
+    console.log('🎯 sendMessage called with:', {
       inputLength: inputText.trim().length,
       sessionId: sessionId.substring(0, 10) + '...',
       isSending
@@ -95,16 +96,17 @@ export default function HomeScreen() {
       timestamp: Date.now()
     };
     
+    console.log('🎯 Adding user message to state');
     setMessages(prev => [...prev, userMessage]);
     setIsSending(true);
-    
-    // Telemetry: chat_send
-    console.log(`[telemetry] chat_send session_id=${sessionId.substring(0, 8)}... input_length=${messageText.length}`);
     
     const startTime = Date.now();
     
     try {
-      console.log('📡 Making API request to:', `${apiBase}/api/chat`);
+      console.log('🎯 POST /api/chat to:', `${apiBase}/api/chat`, { 
+        session_id: sessionId, 
+        message_len: messageText.length 
+      });
       
       const response = await fetch(`${apiBase}/api/chat`, {
         method: 'POST',
@@ -133,15 +135,11 @@ export default function HomeScreen() {
       
       const data = await response.json();
       
-      console.log('✅ Chat response received:', { 
+      console.log('🎯 Response OK:', { 
         messageLength: data.message?.length,
-        citationCount: data.citations?.length,
-        timingMs: data.timing_ms,
-        sessionId: data.session_id?.substring(0, 10) + '...'
+        citationsCount: data.citations?.length,
+        timingMs: data.timing_ms
       });
-      
-      // Telemetry: chat_response
-      console.log(`[telemetry] chat_response timing_ms=${duration} citations_count=${data.citations?.length || 0}`);
       
       // Add assistant message
       const assistantMessage: ChatMessage = {
@@ -152,6 +150,7 @@ export default function HomeScreen() {
         timestamp: Date.now()
       };
       
+      console.log('🎯 Adding assistant message to state');
       setMessages(prev => [...prev, assistantMessage]);
       
     } catch (error) {
@@ -159,9 +158,7 @@ export default function HomeScreen() {
       const duration = endTime - startTime;
       
       console.error('❌ Chat request failed:', error);
-      
-      // Telemetry: chat_error
-      console.log(`[telemetry] chat_error timing_ms=${duration} error=${error.message.substring(0, 50)}`);
+      console.log('🎯 Adding error message to state');
       
       // Add error message with retry
       const errorMessage: ChatMessage = {
@@ -184,6 +181,7 @@ export default function HomeScreen() {
       
     } finally {
       setIsSending(false);
+      console.log('🎯 sendMessage completed, isSending set to false');
     }
   };
 
