@@ -83,21 +83,26 @@ def api_ask(req: AskRequest):
 @app.post("/api/chat")
 def api_chat(req: ChatRequest):
     """
-    Enhanced multi-turn chat with memory, citations, and preferences
+    Conversational multi-turn chat with intent routing
     """
     try:
-        # Log request for monitoring
         start_time = time.time()
-        
-        # Step 1: Save user message to memory
         session_id = req.session_id or "default"
         user_message = req.message
         
-        # Production telemetry
-        if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_request session_id={session_id[:8]}... message_length={len(user_message)}")
+        # Import intent router
+        from intent_router import intent_router
         
-        # Save to chat history
+        # Step 1: Classify intent
+        intent = intent_router.classify_intent(user_message)
+        retrieval_params = intent_router.get_retrieval_params(intent)
+        system_prompt = intent_router.get_system_prompt(intent)
+        
+        # Telemetry with intent
+        if os.getenv("ENABLE_TELEMETRY") == "true":
+            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent={intent} message_length={len(user_message)}")
+        
+        # Step 2: Save user message
         try:
             conn = psycopg2.connect(DATABASE_URL, sslmode="require")
             with conn.cursor() as cur:
@@ -110,7 +115,7 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Chat memory save failed: {e}")
         
-        # Step 2: Get conversation context
+        # Step 3: Get conversation history for context
         conversation_history = []
         try:
             conn = psycopg2.connect(DATABASE_URL, sslmode="require")
@@ -121,40 +126,51 @@ def api_chat(req: ChatRequest):
                     WHERE session_id = %s
                     ORDER BY created_at DESC
                     LIMIT %s;
-                """, (session_id, 10))  # Last 10 messages
+                """, (session_id, 10))
                 
                 messages = cur.fetchall()
-                conversation_history = [dict(msg) for msg in reversed(messages[:-1])]  # Exclude current message
+                conversation_history = [dict(msg) for msg in reversed(messages[:-1])]
             conn.close()
         except Exception as e:
             print(f"⚠️ Chat history retrieval failed: {e}")
         
-        # Step 3: Use existing RAG system for retrieval
-        rag_start = time.time()
-        result = retrieve_and_answer(user_message, history=conversation_history)
-        rag_time = (time.time() - rag_start) * 1000
-        
-        # Step 4: Format response with enhanced citations
-        answer = result.get("answer", "I don't have specific information about that in my current knowledge base.")
-        raw_citations = result.get("citations", [])
-        
-        # Format citations for multi-turn chat
+        # Step 4: Handle based on intent
         enhanced_citations = []
-        for cite in raw_citations:
-            citation = {
-                "source": cite.get("source", "Unknown"),
-                "page": cite.get("page", 0),
-                "score": cite.get("score", 0.0),
-                "snippet": cite.get("snippet", "")[:200]
-            }
+        used_retrieval = False
+        
+        if intent == "chitchat":
+            # Direct friendly response, no retrieval
+            answer = "Hey! I'm here to help with NZ building codes. Ask me anything about flashing, roofing, or building requirements!"
             
-            # Add metadata if available
-            if cite.get("section"):
-                citation["section"] = cite["section"]
-            if cite.get("clause"):
-                citation["clause"] = cite["clause"]
-                
-            enhanced_citations.append(citation)
+        elif intent == "clarify":
+            # Educational response with optional light retrieval
+            answer = "I can help with NZ building standards! Are you looking for:\n• Specific building code requirements?\n• Metal roofing installation guides?\n• Weatherproofing standards?\n\nWhat's your specific project or question?"
+            
+        else:
+            # general_building or compliance_strict - do full RAG
+            used_retrieval = True
+            rag_start = time.time()
+            result = retrieve_and_answer(user_message, history=conversation_history)
+            rag_time = (time.time() - rag_start) * 1000
+            
+            answer = result.get("answer", "I don't have specific information about that in my current knowledge base.")
+            raw_citations = result.get("citations", [])
+            
+            # Apply citation threshold based on intent
+            citation_threshold = retrieval_params["citation_threshold"]
+            
+            for cite in raw_citations:
+                if cite.get("score", 0) >= citation_threshold:
+                    citation = {
+                        "id": f"cite_{cite.get('doc_id', '')[:8]}",
+                        "source": cite.get("source", "Unknown"),
+                        "page": cite.get("page", 0),
+                        "score": cite.get("score", 0.0),
+                        "snippet": cite.get("snippet", "")[:200],
+                        "section": cite.get("section"),
+                        "clause": cite.get("clause")
+                    }
+                    enhanced_citations.append(citation)
         
         # Step 5: Save assistant response
         try:
@@ -171,34 +187,35 @@ def api_chat(req: ChatRequest):
         
         total_time = (time.time() - start_time) * 1000
         
-        # Production telemetry
+        # Enhanced telemetry
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_response timing_ms={total_time:.0f} citations_count={len(enhanced_citations)} rag_time_ms={rag_time:.0f}")
+            print(f"[telemetry] chat_response intent={intent} timing_ms={total_time:.0f} citations_count={len(enhanced_citations)} used_retrieval={used_retrieval}")
         
-        # Step 6: Format final response
+        # Step 6: Format response
         response = {
             "message": answer,
             "citations": enhanced_citations,
             "session_id": session_id,
-            "notes": ["rag", "multi_turn", "enhanced"],
+            "intent": intent,
+            "notes": ["rag", "multi_turn", "conversational"],
             "timestamp": int(time.time()),
             "timing_ms": round(total_time)
         }
         
-        print(f"✅ Multi-turn chat: {len(enhanced_citations)} citations, {total_time:.0f}ms")
+        print(f"✅ Conversational chat ({intent}): {len(enhanced_citations)} citations, {total_time:.0f}ms")
         
         return response
         
     except Exception as e:
-        # Production error telemetry
         if os.getenv("ENABLE_TELEMETRY") == "true":
             print(f"[telemetry] chat_error error={str(e)[:50]} session_id={req.session_id or 'default'}")
         
-        print(f"❌ Multi-turn chat error: {e}")
+        print(f"❌ Conversational chat error: {e}")
         return {
             "message": "I'm temporarily unable to process your message. Please try again.",
             "citations": [],
             "session_id": req.session_id or "default",
+            "intent": "error",
             "notes": ["fallback", "chat", str(e)],
             "timestamp": int(time.time())
         }
