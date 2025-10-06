@@ -1,0 +1,856 @@
+session_id,turn,citation_index,source,page,snippet_len,snippet,score,section,clause,snippet_violation,exists_in_db
+soak_session_24_1759710847,1,0,NZ Metal Roofing,354,196,"...on Roofs 
+Falling from height is the most obvious hazard associated with installing roof and wall...",0.999,Working on Roofs,,False,True
+soak_session_25_1759710847,1,0,NZ Metal Roofing,376,200,"...their length, gauge pitch (threads per inch) and their drill point. The drill point
+may be type 1...",1.0,Screw Gauge,,False,True
+soak_session_20_1759710847,1,0,NZ Metal Roofing,444,145,"15.5.2.2C
+ Typical Built-Up Roof
+20 mm
+Roof
+Insulation
+Underlay
+Netting
+Foil
+Safety mesh
+Packer
+Purl...",0.998,Roof,,False,True
+soak_session_16_1759710847,1,0,NZ Building Code,210,200,"NEW ZEALAND BUILDING CODE HANDBOOK  Index
+14 February 2014 MINISTRY OF BUSINESS, INNOVATION AND EMPL...",0.999,"................................................................. C/AS4 3.9.4, 3",G12AS1,False,True
+soak_session_23_1759710847,1,0,NZ Metal Roofing,547,187,"...clause has been removed as part
+of a substantial revision of COP Clause
+14. Installation. For han...",0.998,3 - Substantial,,False,True
+soak_session_18_1759710847,1,0,NZ Metal Roofing,444,145,"15.5.2.2C
+ Typical Built-Up Roof
+20 mm
+Roof
+Insulation
+Underlay
+Netting
+Foil
+Safety mesh
+Packer
+Purl...",0.998,Roof,,False,True
+soak_session_22_1759710847,1,0,NZ Metal Roofing,562,192,"...clause.
+3 - Substantial
+change to
+recommendation
+5.5.7
+5.4.6
+ Secret Gutters
+Clause revised, for ...",1.0,4 - Clause,,False,True
+soak_session_17_1759710847,1,0,NZ Metal Roofing,354,192,"...with installing roof and wall cladding.  There is a
+hierarchy of techniques and mechanisms for en...",0.998,Working on Roofs,,False,True
+soak_session_19_1759710847,1,0,NZ Metal Roofing,562,192,"...clause.
+3 - Substantial
+change to
+recommendation
+5.5.7
+5.4.6
+ Secret Gutters
+Clause revised, for ...",1.0,4 - Clause,,False,True
+soak_session_21_1759710847,1,0,NZ Metal Roofing,547,187,"...clause has been removed as part
+of a substantial revision of COP Clause
+14. Installation. For han...",0.998,3 - Substantial,,False,True
+soak_session_24_1759710847,1,1,NZ Metal Roofing,6,188,"...And Measurement
+18.6  Velocities
+18.7  Cricket Penetration Patterns
+18.8  Sheet Metal Work For Ro...",0.999,,,False,True
+soak_session_25_1759710847,1,1,NZ Metal Roofing,183,105,A scupper is formed where an internal gutter discharges horizontally through the side or end wall of...,1.0,Secret Gutters,,False,True
+soak_session_20_1759710847,1,1,NZ Metal Roofing,576,194,"...combined with 
+14.3.1
+ Unloading
+2 - Editing and
+rearrangement
+14
+14
+ Installation
+Clause revised...",0.998,0 - Clause,,False,True
+soak_session_16_1759710847,1,1,NZ Building Code,171,200,"MINISTRY OF BUSINESS, INNOVATION AND EMPLOYMENT 14 February 2014NEW ZEALAND BUILDING CODE HANDBOOK I...",0.999,Car park ventilation ...........................................................,F7AS1,False,True
+soak_session_23_1759710847,1,1,NZ Metal Roofing,386,200,"...a way that they do not cause ponding. See External
+Moisture: Penetrations.
+On low pitched roofs, ...",0.998,Correctly Installed Gutters,,False,True
+soak_session_18_1759710847,1,1,NZ Metal Roofing,576,194,"...combined with 
+14.3.1
+ Unloading
+2 - Editing and
+rearrangement
+14
+14
+ Installation
+Clause revised...",0.998,0 - Clause,,False,True
+soak_session_22_1759710847,1,1,NZ Metal Roofing,17,178,The final and most expensive alternative is litigation. That usually involves suing for breach of co...,1.0,INTRODUCTION,,False,True
+soak_session_17_1759710847,1,1,NZ Metal Roofing,183,105,A scupper is formed where an internal gutter discharges horizontally through the side or end wall of...,0.998,Secret Gutters,,False,True
+soak_session_19_1759710847,1,1,NZ Metal Roofing,17,178,The final and most expensive alternative is litigation. That usually involves suing for breach of co...,1.0,INTRODUCTION,,False,True
+soak_session_21_1759710847,1,1,NZ Metal Roofing,386,200,"...a way that they do not cause ponding. See External
+Moisture: Penetrations.
+On low pitched roofs, ...",0.998,Correctly Installed Gutters,,False,True
+soak_session_24_1759710847,1,2,NZ Metal Roofing,183,105,A scupper is formed where an internal gutter discharges horizontally through the side or end wall of...,0.999,Secret Gutters,,False,True
+soak_session_25_1759710847,1,2,NZ Metal Roofing,6,188,"...And Measurement
+18.6  Velocities
+18.7  Cricket Penetration Patterns
+18.8  Sheet Metal Work For Ro...",1.0,,,False,True
+soak_session_20_1759710847,1,2,NZ Metal Roofing,118,198,"...
+Materials comprising the building envelope should not be considered in isolation, as their perfo...",0.998,Compatibility,,False,True
+soak_session_16_1759710847,1,2,NZ Building Code,185,200,"MINISTRY OF BUSINESS, INNOVATION AND EMPLOYMENT 14 February 2014NEW ZEALAND BUILDING CODE HANDBOOK I...",0.999,,E2AS1,False,True
+soak_session_23_1759710847,1,2,NZ Metal Roofing,592,200,"...""enough""
+1 - Minor
+Errata
+10.2
+11.2
+ Natural
+Light
+Materials
+Fixed typos: ""a varying mass"" and ""s...",0.998,1 - Minor,,False,True
+soak_session_18_1759710847,1,2,NZ Metal Roofing,118,198,"...
+Materials comprising the building envelope should not be considered in isolation, as their perfo...",0.998,Compatibility,,False,True
+soak_session_22_1759710847,1,2,NZ Metal Roofing,195,196,"...25%
+ 
+Downpipe Catchment 50%
+50%
+50%
+50%
+50%100%
+25%
+25%
+25%
+25%
+50%
+50%
+ 
+5.7.2 
+Capacity Table ...",1.0,300 mm Fall,,False,True
+soak_session_17_1759710847,1,2,NZ Metal Roofing,385,166,"14.19 
+Avoiding Problems 
+14.19.1 
+Roof Cladding Damage 
+Excessive downforce on a rib or corrugate c...",0.998,Avoiding Problems,,False,True
+soak_session_19_1759710847,1,2,NZ Metal Roofing,195,196,"...25%
+ 
+Downpipe Catchment 50%
+50%
+50%
+50%
+50%100%
+25%
+25%
+25%
+25%
+50%
+50%
+ 
+5.7.2 
+Capacity Table ...",1.0,300 mm Fall,,False,True
+soak_session_21_1759710847,1,2,NZ Metal Roofing,592,200,"...""enough""
+1 - Minor
+Errata
+10.2
+11.2
+ Natural
+Light
+Materials
+Fixed typos: ""a varying mass"" and ""s...",0.998,1 - Minor,,False,True
+soak_session_24_1759710847,2,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_25_1759710847,2,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_23_1759710847,2,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_16_1759710847,2,0,NZ Metal Roofing,579,200,"4 - Clause
+Inserted
+14.18.4.1
+14.18.4.1
+ Identifying Swarf
+Stains
+Newly created clause
+4 - Clause
+In...",0.999,4 - Clause,,False,True
+soak_session_22_1759710847,2,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_17_1759710847,2,0,NZ Metal Roofing,579,200,"4 - Clause
+Inserted
+14.18.4.1
+14.18.4.1
+ Identifying Swarf
+Stains
+Newly created clause
+4 - Clause
+In...",0.999,4 - Clause,,False,True
+soak_session_20_1759710847,2,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_18_1759710847,2,0,NZ Metal Roofing,579,200,"4 - Clause
+Inserted
+14.18.4.1
+14.18.4.1
+ Identifying Swarf
+Stains
+Newly created clause
+4 - Clause
+In...",0.999,4 - Clause,,False,True
+soak_session_21_1759710847,2,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_19_1759710847,2,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_24_1759710847,2,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_25_1759710847,2,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_23_1759710847,2,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_22_1759710847,2,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_16_1759710847,2,1,NZ Metal Roofing,479,200,"18.2 
+Pitch & Rise Calculator 
+ 
+The relationship between the pitch, fall or rise and the horizontal...",0.999,Fall,,False,True
+soak_session_17_1759710847,2,1,NZ Metal Roofing,479,200,"18.2 
+Pitch & Rise Calculator 
+ 
+The relationship between the pitch, fall or rise and the horizontal...",0.999,Fall,,False,True
+soak_session_20_1759710847,2,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_18_1759710847,2,1,NZ Metal Roofing,479,200,"18.2 
+Pitch & Rise Calculator 
+ 
+The relationship between the pitch, fall or rise and the horizontal...",0.999,Fall,,False,True
+soak_session_21_1759710847,2,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_19_1759710847,2,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_24_1759710847,2,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True
+soak_session_25_1759710847,2,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_23_1759710847,2,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_16_1759710847,2,2,NZ Metal Roofing,465,200,"17.1.3.2A
+ Point Load Testing: Various Profiles
+Loads are imposed on a single rib to represent uncon...",0.999,Test Report,,False,True
+soak_session_22_1759710847,2,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_20_1759710847,2,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_17_1759710847,2,2,NZ Metal Roofing,465,200,"17.1.3.2A
+ Point Load Testing: Various Profiles
+Loads are imposed on a single rib to represent uncon...",0.999,Test Report,,False,True
+soak_session_18_1759710847,2,2,NZ Metal Roofing,465,200,"17.1.3.2A
+ Point Load Testing: Various Profiles
+Loads are imposed on a single rib to represent uncon...",0.999,Test Report,,False,True
+soak_session_21_1759710847,2,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_19_1759710847,2,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_24_1759710847,3,0,NZ Metal Roofing,326,200,"...It has a service temperature
+of 60°C and a tensile strength of 52 MPa at 20°C.
+PVC may not satisf...",1.0,NATURAL LIGHT,,False,True
+soak_session_23_1759710847,3,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_25_1759710847,3,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_16_1759710847,3,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_20_1759710847,3,0,NZ Metal Roofing,406,200,"...is most suited to trapezoidal profiles.
+Crimp curving is produced by pressing a small crimp in ei...",1.0,OTHER PRODUCTS,G300,False,True
+soak_session_18_1759710847,3,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_17_1759710847,3,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_19_1759710847,3,0,NZ Metal Roofing,579,200,"4 - Clause
+Inserted
+14.18.4.1
+14.18.4.1
+ Identifying Swarf
+Stains
+Newly created clause
+4 - Clause
+In...",0.999,4 - Clause,,False,True
+soak_session_21_1759710847,3,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_22_1759710847,3,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_24_1759710847,3,1,NZ Metal Roofing,155,102,The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line....,1.0,,AS/NZS 1397,False,True
+soak_session_25_1759710847,3,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_23_1759710847,3,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_16_1759710847,3,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_20_1759710847,3,1,NZ Metal Roofing,70,200,"...or
+0.1 x Building length
+Kl 1.5
+Kl 
+2.0
+Kl 3.0
+Y
+X
+Pitch >10°
+Ridge
+a
+a
+a
+a
+a
+a
+On smaller roofs ...",1.0,"0.5 x Building Height, or",AS/NZS 1170:2011,False,True
+soak_session_17_1759710847,3,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_18_1759710847,3,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_19_1759710847,3,1,NZ Metal Roofing,479,200,"18.2 
+Pitch & Rise Calculator 
+ 
+The relationship between the pitch, fall or rise and the horizontal...",0.999,Fall,,False,True
+soak_session_21_1759710847,3,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_22_1759710847,3,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_24_1759710847,3,2,NZ Metal Roofing,124,146,"4.9.4A
+ Interactive Material Compatibility Tool
+The Code of Practice Online provides an interactive ...",1.0,Interactive Material Compatibility Tool,,False,True
+soak_session_16_1759710847,3,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_25_1759710847,3,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_23_1759710847,3,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_20_1759710847,3,2,NZ Metal Roofing,424,197,"15.4.6A
+ Staggered End Laps
+ 
+Source: UK Guide to Good Practice in Fully Supported Metal Roofing and...",1.0,Staggered End Laps,,False,True
+soak_session_17_1759710847,3,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_18_1759710847,3,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_19_1759710847,3,2,NZ Metal Roofing,465,200,"17.1.3.2A
+ Point Load Testing: Various Profiles
+Loads are imposed on a single rib to represent uncon...",0.999,Test Report,,False,True
+soak_session_21_1759710847,3,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_22_1759710847,3,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_27_1759710871,1,0,NZ Metal Roofing,354,196,"...on Roofs 
+Falling from height is the most obvious hazard associated with installing roof and wall...",0.999,Working on Roofs,,False,True
+soak_session_24_1759710847,4,0,NZ Metal Roofing,326,200,"...It has a service temperature
+of 60°C and a tensile strength of 52 MPa at 20°C.
+PVC may not satisf...",1.0,NATURAL LIGHT,,False,True
+soak_session_17_1759710847,4,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_26_1759710871,1,0,NZ Metal Roofing,354,196,"...on Roofs 
+Falling from height is the most obvious hazard associated with installing roof and wall...",0.999,Working on Roofs,,False,True
+soak_session_23_1759710847,4,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_16_1759710847,4,0,NZ Metal Roofing,326,200,"...It has a service temperature
+of 60°C and a tensile strength of 52 MPa at 20°C.
+PVC may not satisf...",1.0,NATURAL LIGHT,,False,True
+soak_session_20_1759710847,4,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_18_1759710847,4,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_21_1759710847,4,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_25_1759710847,4,0,NZ Metal Roofing,326,200,"...It has a service temperature
+of 60°C and a tensile strength of 52 MPa at 20°C.
+PVC may not satisf...",1.0,NATURAL LIGHT,,False,True
+soak_session_27_1759710871,1,1,NZ Metal Roofing,6,188,"...And Measurement
+18.6  Velocities
+18.7  Cricket Penetration Patterns
+18.8  Sheet Metal Work For Ro...",0.999,,,False,True
+soak_session_24_1759710847,4,1,NZ Metal Roofing,155,102,The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line....,1.0,,AS/NZS 1397,False,True
+soak_session_17_1759710847,4,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_26_1759710871,1,1,NZ Metal Roofing,6,188,"...And Measurement
+18.6  Velocities
+18.7  Cricket Penetration Patterns
+18.8  Sheet Metal Work For Ro...",0.999,,,False,True
+soak_session_18_1759710847,4,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_23_1759710847,4,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_20_1759710847,4,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_16_1759710847,4,1,NZ Metal Roofing,155,102,The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line....,1.0,,AS/NZS 1397,False,True
+soak_session_21_1759710847,4,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_25_1759710847,4,1,NZ Metal Roofing,155,102,The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line....,1.0,,AS/NZS 1397,False,True
+soak_session_27_1759710871,1,2,NZ Metal Roofing,183,105,A scupper is formed where an internal gutter discharges horizontally through the side or end wall of...,0.999,Secret Gutters,,False,True
+soak_session_24_1759710847,4,2,NZ Metal Roofing,124,146,"4.9.4A
+ Interactive Material Compatibility Tool
+The Code of Practice Online provides an interactive ...",1.0,Interactive Material Compatibility Tool,,False,True
+soak_session_17_1759710847,4,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True
+soak_session_18_1759710847,4,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_26_1759710871,1,2,NZ Metal Roofing,183,105,A scupper is formed where an internal gutter discharges horizontally through the side or end wall of...,0.999,Secret Gutters,,False,True
+soak_session_16_1759710847,4,2,NZ Metal Roofing,124,146,"4.9.4A
+ Interactive Material Compatibility Tool
+The Code of Practice Online provides an interactive ...",1.0,Interactive Material Compatibility Tool,,False,True
+soak_session_20_1759710847,4,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_21_1759710847,4,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_23_1759710847,4,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True
+soak_session_25_1759710847,4,2,NZ Metal Roofing,124,146,"4.9.4A
+ Interactive Material Compatibility Tool
+The Code of Practice Online provides an interactive ...",1.0,Interactive Material Compatibility Tool,,False,True
+soak_session_33_1759710879,1,0,NZ Metal Roofing,444,145,"15.5.2.2C
+ Typical Built-Up Roof
+20 mm
+Roof
+Insulation
+Underlay
+Netting
+Foil
+Safety mesh
+Packer
+Purl...",0.998,Roof,,False,True
+soak_session_28_1759710879,1,0,NZ Metal Roofing,354,196,"...on Roofs 
+Falling from height is the most obvious hazard associated with installing roof and wall...",0.999,Working on Roofs,,False,True
+soak_session_31_1759710879,1,0,NZ Metal Roofing,562,192,"...clause.
+3 - Substantial
+change to
+recommendation
+5.5.7
+5.4.6
+ Secret Gutters
+Clause revised, for ...",1.0,4 - Clause,,False,True
+soak_session_29_1759710879,1,0,NZ Metal Roofing,354,196,"...on Roofs 
+Falling from height is the most obvious hazard associated with installing roof and wall...",0.999,Working on Roofs,,False,True
+soak_session_30_1759710879,1,0,NZ Metal Roofing,444,145,"15.5.2.2C
+ Typical Built-Up Roof
+20 mm
+Roof
+Insulation
+Underlay
+Netting
+Foil
+Safety mesh
+Packer
+Purl...",0.998,Roof,,False,True
+soak_session_27_1759710871,2,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_32_1759710879,1,0,NZ Metal Roofing,321,196,"...regardless of the temperature change.
+Absolute humidity is a suitable measure if one is looking f...",1.0,Absolute Humidity,,False,True
+soak_session_26_1759710871,2,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_21_1759710847,5,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_33_1759710879,1,1,NZ Metal Roofing,576,194,"...combined with 
+14.3.1
+ Unloading
+2 - Editing and
+rearrangement
+14
+14
+ Installation
+Clause revised...",0.998,0 - Clause,,False,True
+soak_session_25_1759710847,5,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_28_1759710879,1,1,NZ Metal Roofing,6,188,"...And Measurement
+18.6  Velocities
+18.7  Cricket Penetration Patterns
+18.8  Sheet Metal Work For Ro...",0.999,,,False,True
+soak_session_31_1759710879,1,1,NZ Metal Roofing,17,178,The final and most expensive alternative is litigation. That usually involves suing for breach of co...,1.0,INTRODUCTION,,False,True
+soak_session_29_1759710879,1,1,NZ Metal Roofing,6,188,"...And Measurement
+18.6  Velocities
+18.7  Cricket Penetration Patterns
+18.8  Sheet Metal Work For Ro...",0.999,,,False,True
+soak_session_30_1759710879,1,1,NZ Metal Roofing,576,194,"...combined with 
+14.3.1
+ Unloading
+2 - Editing and
+rearrangement
+14
+14
+ Installation
+Clause revised...",0.998,0 - Clause,,False,True
+soak_session_27_1759710871,2,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_32_1759710879,1,1,NZ Metal Roofing,396,200,"15 
+Other Products 
+Other roofing products, include:
+Curved Roofs.
+Solar Units.
+Pressed Metal Tiles....",1.0,OTHER PRODUCTS,,False,True
+soak_session_26_1759710871,2,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_21_1759710847,5,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_33_1759710879,1,2,NZ Metal Roofing,118,198,"...
+Materials comprising the building envelope should not be considered in isolation, as their perfo...",0.998,Compatibility,,False,True
+soak_session_25_1759710847,5,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_28_1759710879,1,2,NZ Metal Roofing,183,105,A scupper is formed where an internal gutter discharges horizontally through the side or end wall of...,0.999,Secret Gutters,,False,True
+soak_session_31_1759710879,1,2,NZ Metal Roofing,195,196,"...25%
+ 
+Downpipe Catchment 50%
+50%
+50%
+50%
+50%100%
+25%
+25%
+25%
+25%
+50%
+50%
+ 
+5.7.2 
+Capacity Table ...",1.0,300 mm Fall,,False,True
+soak_session_29_1759710879,1,2,NZ Metal Roofing,183,105,A scupper is formed where an internal gutter discharges horizontally through the side or end wall of...,0.999,Secret Gutters,,False,True
+soak_session_30_1759710879,1,2,NZ Metal Roofing,118,198,"...
+Materials comprising the building envelope should not be considered in isolation, as their perfo...",0.998,Compatibility,,False,True
+soak_session_27_1759710871,2,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_32_1759710879,1,2,NZ Metal Roofing,480,115,"...
+18 
+USEFUL INFORMATION
+ 
+18 
+ 
+18.
+2 
+PITCH %26 RISE CALCULATOR
+ 
+2  18 
+ 
+18.
+2 
+480
+NZ Metal R...",1.0,,,False,True
+soak_session_26_1759710871,2,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True
+soak_session_21_1759710847,5,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_25_1759710847,5,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True
+soak_session_28_1759710879,2,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_33_1759710879,2,0,NZ Metal Roofing,579,200,"4 - Clause
+Inserted
+14.18.4.1
+14.18.4.1
+ Identifying Swarf
+Stains
+Newly created clause
+4 - Clause
+In...",0.999,4 - Clause,,False,True
+soak_session_29_1759710879,2,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_31_1759710879,2,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_30_1759710879,2,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_27_1759710871,3,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_34_1759710887,1,0,NZ Metal Roofing,506,200,"...pressure with 
+10.10.1.3
+ Ridge Vents
+. Substantial changes
+include removing wind load/span graph...",0.998,Spouting Support Systems,,False,True
+soak_session_32_1759710879,2,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_26_1759710871,3,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_35_1759710888,1,0,NZ Metal Roofing,562,192,"...clause.
+3 - Substantial
+change to
+recommendation
+5.5.7
+5.4.6
+ Secret Gutters
+Clause revised, for ...",1.0,4 - Clause,,False,True
+soak_session_28_1759710879,2,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_33_1759710879,2,1,NZ Metal Roofing,479,200,"18.2 
+Pitch & Rise Calculator 
+ 
+The relationship between the pitch, fall or rise and the horizontal...",0.999,Fall,,False,True
+soak_session_29_1759710879,2,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_31_1759710879,2,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_30_1759710879,2,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_27_1759710871,3,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_34_1759710887,1,1,NZ Metal Roofing,475,148,"F   T-Bend Adhesion Test
+ – Procedure to be used for T bend adhesion
+G   Ball Adhesion Test
+ – Adhes...",0.998,,AS/NZS 2728:2013,False,True
+soak_session_32_1759710879,2,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_26_1759710871,3,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_35_1759710888,1,1,NZ Metal Roofing,17,178,The final and most expensive alternative is litigation. That usually involves suing for breach of co...,1.0,INTRODUCTION,,False,True
+soak_session_28_1759710879,2,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_33_1759710879,2,2,NZ Metal Roofing,465,200,"17.1.3.2A
+ Point Load Testing: Various Profiles
+Loads are imposed on a single rib to represent uncon...",0.999,Test Report,,False,True
+soak_session_29_1759710879,2,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_31_1759710879,2,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_30_1759710879,2,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_27_1759710871,3,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_34_1759710887,1,2,NZ Metal Roofing,564,192,"...clause had been removed. Gutters are
+now discussed in more detail in a separate
+clause for each t...",0.998,4 - Clause,,False,True
+soak_session_32_1759710879,2,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_26_1759710871,3,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True
+soak_session_35_1759710888,1,2,NZ Metal Roofing,195,196,"...25%
+ 
+Downpipe Catchment 50%
+50%
+50%
+50%
+50%100%
+25%
+25%
+25%
+25%
+50%
+50%
+ 
+5.7.2 
+Capacity Table ...",1.0,300 mm Fall,,False,True
+soak_session_28_1759710879,3,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_33_1759710879,3,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_29_1759710879,3,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_31_1759710879,3,0,NZ Metal Roofing,406,200,"...is most suited to trapezoidal profiles.
+Crimp curving is produced by pressing a small crimp in ei...",1.0,OTHER PRODUCTS,G300,False,True
+soak_session_30_1759710879,3,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_34_1759710887,2,0,NZ Metal Roofing,579,200,"4 - Clause
+Inserted
+14.18.4.1
+14.18.4.1
+ Identifying Swarf
+Stains
+Newly created clause
+4 - Clause
+In...",0.999,4 - Clause,,False,True
+soak_session_32_1759710879,3,0,NZ Metal Roofing,326,200,"...It has a service temperature
+of 60°C and a tensile strength of 52 MPa at 20°C.
+PVC may not satisf...",1.0,NATURAL LIGHT,,False,True
+soak_session_26_1759710871,4,0,NZ Metal Roofing,197,200,"...energy and ensure wide
+distribution of the water. A spreader should be used over multiple troughs...",0.998,Downpipe Spreaders,,False,True
+soak_session_35_1759710888,2,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_28_1759710879,3,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_33_1759710879,3,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_29_1759710879,3,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_31_1759710879,3,1,NZ Metal Roofing,70,200,"...or
+0.1 x Building length
+Kl 1.5
+Kl 
+2.0
+Kl 3.0
+Y
+X
+Pitch >10°
+Ridge
+a
+a
+a
+a
+a
+a
+On smaller roofs ...",1.0,"0.5 x Building Height, or",AS/NZS 1170:2011,False,True
+soak_session_30_1759710879,3,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_34_1759710887,2,1,NZ Metal Roofing,479,200,"18.2 
+Pitch & Rise Calculator 
+ 
+The relationship between the pitch, fall or rise and the horizontal...",0.999,Fall,,False,True
+soak_session_32_1759710879,3,1,NZ Metal Roofing,155,102,The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line....,1.0,,AS/NZS 1397,False,True
+soak_session_26_1759710871,4,1,NZ Metal Roofing,499,200,"...H¹ and produce same to intersect the centre line C¹O at O.
+Repeat the process with. B² as centre ...",0.998,,,False,True
+soak_session_35_1759710888,2,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_28_1759710879,3,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_33_1759710879,3,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_29_1759710879,3,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_31_1759710879,3,2,NZ Metal Roofing,424,197,"15.4.6A
+ Staggered End Laps
+ 
+Source: UK Guide to Good Practice in Fully Supported Metal Roofing and...",1.0,Staggered End Laps,,False,True
+soak_session_30_1759710879,3,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_34_1759710887,2,2,NZ Metal Roofing,465,200,"17.1.3.2A
+ Point Load Testing: Various Profiles
+Loads are imposed on a single rib to represent uncon...",0.999,Test Report,,False,True
+soak_session_32_1759710879,3,2,NZ Metal Roofing,124,146,"4.9.4A
+ Interactive Material Compatibility Tool
+The Code of Practice Online provides an interactive ...",1.0,Interactive Material Compatibility Tool,,False,True
+soak_session_26_1759710871,4,2,NZ Metal Roofing,68,194,"...load on the outside of the roof when calculating wind design load.
+Local territorial authorities ...",0.998,Topographical Influences,,False,True
+soak_session_35_1759710888,2,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_33_1759710879,4,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_28_1759710879,4,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_31_1759710879,4,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_30_1759710879,4,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_34_1759710887,3,0,NZ Metal Roofing,406,200,"...is most suited to trapezoidal profiles.
+Crimp curving is produced by pressing a small crimp in ei...",1.0,OTHER PRODUCTS,G300,False,True
+soak_session_32_1759710879,4,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_35_1759710888,3,0,NZ Metal Roofing,80,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Load Spreading Washers,,False,True
+soak_session_33_1759710879,4,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_28_1759710879,4,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_31_1759710879,4,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_30_1759710879,4,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_34_1759710887,3,1,NZ Metal Roofing,70,200,"...or
+0.1 x Building length
+Kl 1.5
+Kl 
+2.0
+Kl 3.0
+Y
+X
+Pitch >10°
+Ridge
+a
+a
+a
+a
+a
+a
+On smaller roofs ...",1.0,"0.5 x Building Height, or",AS/NZS 1170:2011,False,True
+soak_session_32_1759710879,4,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_35_1759710888,3,1,NZ Metal Roofing,190,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,Rainwater Heads,,False,True
+soak_session_33_1759710879,4,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_28_1759710879,4,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_31_1759710879,4,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_30_1759710879,4,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_34_1759710887,3,2,NZ Metal Roofing,424,197,"15.4.6A
+ Staggered End Laps
+ 
+Source: UK Guide to Good Practice in Fully Supported Metal Roofing and...",1.0,Staggered End Laps,,False,True
+soak_session_32_1759710879,4,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_35_1759710888,3,2,NZ Metal Roofing,486,129,...this document is the most up-to-date and in the case of conﬂict the Online version prevails over ...,0.998,The Greek Alphabet,,False,True
+soak_session_33_1759710879,5,0,NZ Metal Roofing,448,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,,,False,True
+soak_session_31_1759710879,5,0,NZ Metal Roofing,354,200,"13.3 
+Working on Roofs 
+Falling from height is the most obvious hazard associated with installing ro...",0.998,Working on Roofs,,False,True
+soak_session_30_1759710879,5,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_34_1759710887,4,0,NZ Metal Roofing,579,200,"4 - Clause
+Inserted
+14.18.4.1
+14.18.4.1
+ Identifying Swarf
+Stains
+Newly created clause
+4 - Clause
+In...",0.999,4 - Clause,,False,True
+soak_session_33_1759710879,5,1,NZ Metal Roofing,175,200,"...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity
+may vary within ...",0.998,RCP Level Descriptions,,False,True
+soak_session_30_1759710879,5,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_31_1759710879,5,1,NZ Metal Roofing,265,200,"8.11 
+Metal Wall Cladding Flashings 
+Flashing details for cladding using profiled metals should:
+hav...",0.998,EXTERNAL MOISTURE FLASHINGS,,False,True
+soak_session_34_1759710887,4,1,NZ Metal Roofing,479,200,"18.2 
+Pitch & Rise Calculator 
+ 
+The relationship between the pitch, fall or rise and the horizontal...",0.999,Fall,,False,True
+soak_session_33_1759710879,5,2,NZ Metal Roofing,361,200,"...Roof And Wall Cladding Code Of Practice v24.12
+© New Zealand Metal Roofing Manufacturers Inc 2024...",0.998,PRODUCT SELECTION,,False,True
+soak_session_30_1759710879,5,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True
+soak_session_31_1759710879,5,2,NZ Metal Roofing,317,200,"Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges...",0.998,1.2 m.,AS/NZS 4389:2015,False,True
+soak_session_34_1759710887,4,2,NZ Metal Roofing,465,200,"17.1.3.2A
+ Point Load Testing: Various Profiles
+Loads are imposed on a single rib to represent uncon...",0.999,Test Report,,False,True
+soak_session_34_1759710887,5,0,NZ Metal Roofing,13,184,"...9224
+2012
+Corrosion of metals and alloys. Corrosivity of atmospheres - Guiding values
+for the cor...",0.999,ISO 9223,"AS/NZS
+3500.3",False,True
+soak_session_34_1759710887,5,1,NZ Metal Roofing,169,192,"...Requirement
+Buildings and sitework shall be constructed in a way that protects people and other p...",0.999,Objective,,False,True
+soak_session_34_1759710887,5,2,NZ Metal Roofing,575,187,"...Night Sky Radiation
+Clause revised for clarity.
+2 - Editing and
+rearrangement
+10.13.4
+10.12.4
+ Th...",0.999,4 - Clause,,False,True

@@ -1,0 +1,4826 @@
+{
+  "metadata": {
+    "start_time": "2025-10-06T00:34:07.422247",
+    "api_base": "http://localhost:8001",
+    "targets": {
+      "p50_ms": 3000,
+      "p95_ms": 4500,
+      "error_rate_pct": 1.0,
+      "snippet_violations": 0,
+      "citation_integrity_pct": 100.0
+    }
+  },
+  "analysis": {
+    "performance": {
+      "total_requests": 81,
+      "successful_requests": 81,
+      "error_rate_pct": 0.0,
+      "p50_latency_ms": 2367.220163345337,
+      "p95_latency_ms": 3416.973066329956,
+      "avg_latency_ms": 2491.9595777252575
+    },
+    "citation_quality": {
+      "total_citations": 243,
+      "valid_citations": 243,
+      "citation_integrity_pct": 100.0,
+      "snippet_violations": 0
+    },
+    "session_analysis": {
+      "total_sessions": 35,
+      "single_turn_sessions": 15,
+      "multi_turn_sessions": 20,
+      "successful_multi_sessions": 20
+    },
+    "acceptance_criteria": {
+      "p50_passed": true,
+      "p95_passed": true,
+      "error_rate_passed": true,
+      "citation_integrity_passed": true,
+      "snippet_compliance_passed": true,
+      "multi_turn_memory_passed": true
+    },
+    "overall_passed": true
+  },
+  "raw_requests": [
+    {
+      "request_id": "soak_session_24_1759710847_turn_1",
+      "session_id": "soak_session_24_1759710847",
+      "turn_index": 1,
+      "message_length": 42,
+      "start_time": 1759710847.432411,
+      "end_time": 1759710850.7230809,
+      "latency_ms": 3290.6699180603027,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.999,
+            "snippet": "...on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at height.\n...",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 6,
+            "score": 0.999,
+            "snippet": "...And Measurement\n18.6  Velocities\n18.7  Cricket Penetration Patterns\n18.8  Sheet Metal Work For Roofing Contractors.\n19  Revision History\n19A Revision Categories\n19.1  v24.12 December..."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 183,
+            "score": 0.999,
+            "snippet": "A scupper is formed where an internal gutter discharges horizontally through the side or end wall of a...",
+            "section": "Secret Gutters"
+          }
+        ],
+        "session_id": "soak_session_24_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3285
+      }
+    },
+    {
+      "request_id": "soak_session_25_1759710847_turn_1",
+      "session_id": "soak_session_25_1759710847",
+      "turn_index": 1,
+      "message_length": 42,
+      "start_time": 1759710847.4326994,
+      "end_time": 1759710850.721872,
+      "latency_ms": 3289.172649383545,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 376,
+            "score": 1.0,
+            "snippet": "...their length, gauge pitch (threads per inch) and their drill point. The drill point\nmay be type 17 for driving into timber or drill point for driving into steel. Reduced diameter drill points, whic",
+            "section": "Screw Gauge"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 183,
+            "score": 1.0,
+            "snippet": "A scupper is formed where an internal gutter discharges horizontally through the side or end wall of a...",
+            "section": "Secret Gutters"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 6,
+            "score": 1.0,
+            "snippet": "...And Measurement\n18.6  Velocities\n18.7  Cricket Penetration Patterns\n18.8  Sheet Metal Work For Roofing Contractors.\n19  Revision History\n19A Revision Categories\n19.1  v24.12 December..."
+          }
+        ],
+        "session_id": "soak_session_25_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3284
+      }
+    },
+    {
+      "request_id": "soak_session_20_1759710847_turn_1",
+      "session_id": "soak_session_20_1759710847",
+      "turn_index": 1,
+      "message_length": 45,
+      "start_time": 1759710847.4290411,
+      "end_time": 1759710850.7923615,
+      "latency_ms": 3363.3203506469727,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 444,
+            "score": 0.998,
+            "snippet": "15.5.2.2C\n Typical Built-Up Roof\n20 mm\nRoof\nInsulation\nUnderlay\nNetting\nFoil\nSafety mesh\nPacker\nPurlin\n \n \n15.5.2.2D\n Post and Rail System\nTop...",
+            "section": "Roof"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 576,
+            "score": 0.998,
+            "snippet": "...combined with \n14.3.1\n Unloading\n2 - Editing and\nrearrangement\n14\n14\n Installation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n14.1\n14.1\n Pre- Installation\nClause revised for...",
+            "section": "0 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 118,
+            "score": 0.998,
+            "snippet": "...\nMaterials comprising the building envelope should not be considered in isolation, as their performance can be\naffected by contact with or run-off from other materials.\nThis reaction is caused...",
+            "section": "Compatibility"
+          }
+        ],
+        "session_id": "soak_session_20_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3356
+      }
+    },
+    {
+      "request_id": "soak_session_16_1759710847_turn_1",
+      "session_id": "soak_session_16_1759710847",
+      "turn_index": 1,
+      "message_length": 37,
+      "start_time": 1759710847.4264886,
+      "end_time": 1759710850.8179958,
+      "latency_ms": 3391.507148742676,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Apron flashing requirements vary by conditions. Standard coverage is 150mm, with increased requirements for high wind zones. Check your local wind zone requirements. [Documentation available]",
+        "citations": [
+          {
+            "source": "NZ Building Code",
+            "page": 210,
+            "score": 0.999,
+            "snippet": "NEW ZEALAND BUILDING CODE HANDBOOK  Index\n14 February 2014 MINISTRY OF BUSINESS, INNOVATION AND EMPLOYMENT 192S\nS rating\n see Fire resistance ratings\nSafe paths  ......................................",
+            "section": "................................................................. C/AS4 3.9.4, 3",
+            "clause": "G12AS1"
+          },
+          {
+            "source": "NZ Building Code",
+            "page": 171,
+            "score": 0.999,
+            "snippet": "MINISTRY OF BUSINESS, INNOVATION AND EMPLOYMENT 14 February 2014NEW ZEALAND BUILDING CODE HANDBOOK Index\n153C \nCall points .............................................................................",
+            "section": "Car park ventilation ...........................................................",
+            "clause": "F7AS1"
+          },
+          {
+            "source": "NZ Building Code",
+            "page": 185,
+            "score": 0.999,
+            "snippet": "MINISTRY OF BUSINESS, INNOVATION AND EMPLOYMENT 14 February 2014NEW ZEALAND BUILDING CODE HANDBOOK Index167\nF\nFactories\n see Industrial buildings\nFalsework see Structure\nFarm buildings see Buildings, ",
+            "clause": "E2AS1"
+          }
+        ],
+        "session_id": "soak_session_16_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3383
+      }
+    },
+    {
+      "request_id": "soak_session_23_1759710847_turn_1",
+      "session_id": "soak_session_23_1759710847",
+      "turn_index": 1,
+      "message_length": 58,
+      "start_time": 1759710847.4309769,
+      "end_time": 1759710850.8245037,
+      "latency_ms": 3393.526792526245,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 547,
+            "score": 0.998,
+            "snippet": "...clause has been removed as part\nof a substantial revision of COP Clause\n14. Installation. For handling and\nstorage of products with strippable\nfilm, please see Strippable Films.\n0 -...",
+            "section": "3 - Substantial"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 386,
+            "score": 0.998,
+            "snippet": "...a way that they do not cause ponding. See External\nMoisture: Penetrations.\nOn low pitched roofs, careless or excessive foot traffic may cause rib damage and localised ponding. This can be\nminimised",
+            "section": "Correctly Installed Gutters"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 592,
+            "score": 0.998,
+            "snippet": "...\"enough\"\n1 - Minor\nErrata\n10.2\n11.2\n Natural\nLight\nMaterials\nFixed typos: \"a varying mass\" and \"square\"\n1 - Minor\nErrata\n10.3\n11.3\n Types Of\nRoof Lights\nFixed typos: \"single\" and removed extra spac",
+            "section": "1 - Minor"
+          }
+        ],
+        "session_id": "soak_session_23_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3387
+      }
+    },
+    {
+      "request_id": "soak_session_18_1759710847_turn_1",
+      "session_id": "soak_session_18_1759710847",
+      "turn_index": 1,
+      "message_length": 45,
+      "start_time": 1759710847.4267426,
+      "end_time": 1759710850.8421853,
+      "latency_ms": 3415.442705154419,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 444,
+            "score": 0.998,
+            "snippet": "15.5.2.2C\n Typical Built-Up Roof\n20 mm\nRoof\nInsulation\nUnderlay\nNetting\nFoil\nSafety mesh\nPacker\nPurlin\n \n \n15.5.2.2D\n Post and Rail System\nTop...",
+            "section": "Roof"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 576,
+            "score": 0.998,
+            "snippet": "...combined with \n14.3.1\n Unloading\n2 - Editing and\nrearrangement\n14\n14\n Installation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n14.1\n14.1\n Pre- Installation\nClause revised for...",
+            "section": "0 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 118,
+            "score": 0.998,
+            "snippet": "...\nMaterials comprising the building envelope should not be considered in isolation, as their performance can be\naffected by contact with or run-off from other materials.\nThis reaction is caused...",
+            "section": "Compatibility"
+          }
+        ],
+        "session_id": "soak_session_18_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3406
+      }
+    },
+    {
+      "request_id": "soak_session_22_1759710847_turn_1",
+      "session_id": "soak_session_22_1759710847",
+      "turn_index": 1,
+      "message_length": 43,
+      "start_time": 1759710847.4297314,
+      "end_time": 1759710850.8468745,
+      "latency_ms": 3417.1431064605713,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 562,
+            "score": 1.0,
+            "snippet": "...clause.\n3 - Substantial\nchange to\nrecommendation\n5.5.7\n5.4.6\n Secret Gutters\nClause revised, for brevity and clarity.\n4 - Clause\nInserted\n \n5.6\n Rainwater Heads,\nSumps, and Overflows\nNew...",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 17,
+            "score": 1.0,
+            "snippet": "The final and most expensive alternative is litigation. That usually involves suing for breach of contract, non-\npayment, non-performance, faulty materials, or non-compliance....",
+            "section": "INTRODUCTION"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 195,
+            "score": 1.0,
+            "snippet": "...25%\n \nDownpipe Catchment 50%\n50%\n50%\n50%\n50%100%\n25%\n25%\n25%\n25%\n50%\n50%\n \n5.7.2 \nCapacity Table for Common Size Downpipes \nUse this table to select the correct internal dimensions of common...",
+            "section": "300 mm Fall"
+          }
+        ],
+        "session_id": "soak_session_22_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3409
+      }
+    },
+    {
+      "request_id": "soak_session_17_1759710847_turn_1",
+      "session_id": "soak_session_17_1759710847",
+      "turn_index": 1,
+      "message_length": 52,
+      "start_time": 1759710847.4266067,
+      "end_time": 1759710850.8616617,
+      "latency_ms": 3435.0550174713135,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "...with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at height.\n \n13.3A\n Working on Roofs Safety Systems\nELIMINATE\nEliminate the...",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 183,
+            "score": 0.998,
+            "snippet": "A scupper is formed where an internal gutter discharges horizontally through the side or end wall of a...",
+            "section": "Secret Gutters"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 385,
+            "score": 0.998,
+            "snippet": "14.19 \nAvoiding Problems \n14.19.1 \nRoof Cladding Damage \nExcessive downforce on a rib or corrugate crest can cause a compression fold, or \u201cding\u201d in the apex of the...",
+            "section": "Avoiding Problems"
+          }
+        ],
+        "session_id": "soak_session_17_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3426
+      }
+    },
+    {
+      "request_id": "soak_session_19_1759710847_turn_1",
+      "session_id": "soak_session_19_1759710847",
+      "turn_index": 1,
+      "message_length": 43,
+      "start_time": 1759710847.4268441,
+      "end_time": 1759710850.8613234,
+      "latency_ms": 3434.479236602783,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 562,
+            "score": 1.0,
+            "snippet": "...clause.\n3 - Substantial\nchange to\nrecommendation\n5.5.7\n5.4.6\n Secret Gutters\nClause revised, for brevity and clarity.\n4 - Clause\nInserted\n \n5.6\n Rainwater Heads,\nSumps, and Overflows\nNew...",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 17,
+            "score": 1.0,
+            "snippet": "The final and most expensive alternative is litigation. That usually involves suing for breach of contract, non-\npayment, non-performance, faulty materials, or non-compliance....",
+            "section": "INTRODUCTION"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 195,
+            "score": 1.0,
+            "snippet": "...25%\n \nDownpipe Catchment 50%\n50%\n50%\n50%\n50%100%\n25%\n25%\n25%\n25%\n50%\n50%\n \n5.7.2 \nCapacity Table for Common Size Downpipes \nUse this table to select the correct internal dimensions of common...",
+            "section": "300 mm Fall"
+          }
+        ],
+        "session_id": "soak_session_19_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3426
+      }
+    },
+    {
+      "request_id": "soak_session_21_1759710847_turn_1",
+      "session_id": "soak_session_21_1759710847",
+      "turn_index": 1,
+      "message_length": 58,
+      "start_time": 1759710847.42916,
+      "end_time": 1759710850.9162707,
+      "latency_ms": 3487.1106147766113,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 547,
+            "score": 0.998,
+            "snippet": "...clause has been removed as part\nof a substantial revision of COP Clause\n14. Installation. For handling and\nstorage of products with strippable\nfilm, please see Strippable Films.\n0 -...",
+            "section": "3 - Substantial"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 386,
+            "score": 0.998,
+            "snippet": "...a way that they do not cause ponding. See External\nMoisture: Penetrations.\nOn low pitched roofs, careless or excessive foot traffic may cause rib damage and localised ponding. This can be\nminimised",
+            "section": "Correctly Installed Gutters"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 592,
+            "score": 0.998,
+            "snippet": "...\"enough\"\n1 - Minor\nErrata\n10.2\n11.2\n Natural\nLight\nMaterials\nFixed typos: \"a varying mass\" and \"square\"\n1 - Minor\nErrata\n10.3\n11.3\n Types Of\nRoof Lights\nFixed typos: \"single\" and removed extra spac",
+            "section": "1 - Minor"
+          }
+        ],
+        "session_id": "soak_session_21_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710850,
+        "timing_ms": 3480
+      }
+    },
+    {
+      "request_id": "soak_session_24_1759710847_turn_2",
+      "session_id": "soak_session_24_1759710847",
+      "turn_index": 2,
+      "message_length": 35,
+      "start_time": 1759710856.1713498,
+      "end_time": 1759710858.5264132,
+      "latency_ms": 2355.0634384155273,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_24_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2353
+      }
+    },
+    {
+      "request_id": "soak_session_25_1759710847_turn_2",
+      "session_id": "soak_session_25_1759710847",
+      "turn_index": 2,
+      "message_length": 56,
+      "start_time": 1759710856.1905193,
+      "end_time": 1759710858.5646403,
+      "latency_ms": 2374.1209506988525,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_25_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2372
+      }
+    },
+    {
+      "request_id": "soak_session_23_1759710847_turn_2",
+      "session_id": "soak_session_23_1759710847",
+      "turn_index": 2,
+      "message_length": 37,
+      "start_time": 1759710856.2779782,
+      "end_time": 1759710858.6162918,
+      "latency_ms": 2338.313579559326,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_23_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2337
+      }
+    },
+    {
+      "request_id": "soak_session_16_1759710847_turn_2",
+      "session_id": "soak_session_16_1759710847",
+      "turn_index": 2,
+      "message_length": 32,
+      "start_time": 1759710856.275147,
+      "end_time": 1759710858.6496713,
+      "latency_ms": 2374.5243549346924,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 579,
+            "score": 0.999,
+            "snippet": "4 - Clause\nInserted\n14.18.4.1\n14.18.4.1\n Identifying Swarf\nStains\nNewly created clause\n4 - Clause\nInserted\n14.18.4.2\n14.19.4.1\n Preventing Swarf\nDamage\nNewly created clause\n4 - Clause\nInserted\n14.18.4",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 479,
+            "score": 0.999,
+            "snippet": "18.2 \nPitch & Rise Calculator \n \nThe relationship between the pitch, fall or rise and the horizontal, is the relationship between the\nopposite and the adjacent sides of a right angled triangle.\nThis i",
+            "section": "Fall"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 465,
+            "score": 0.999,
+            "snippet": "17.1.3.2A\n Point Load Testing: Various Profiles\nLoads are imposed on a single rib to represent uncontrolled traffic\nFor closed-spaced profiles loads are imposed to both two ribs and one ribLoads are i",
+            "section": "Test Report"
+          }
+        ],
+        "session_id": "soak_session_16_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2373
+      }
+    },
+    {
+      "request_id": "soak_session_22_1759710847_turn_2",
+      "session_id": "soak_session_22_1759710847",
+      "turn_index": 2,
+      "message_length": 44,
+      "start_time": 1759710856.3077266,
+      "end_time": 1759710858.6525295,
+      "latency_ms": 2344.8028564453125,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_22_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2343
+      }
+    },
+    {
+      "request_id": "soak_session_20_1759710847_turn_2",
+      "session_id": "soak_session_20_1759710847",
+      "turn_index": 2,
+      "message_length": 37,
+      "start_time": 1759710856.271275,
+      "end_time": 1759710858.6649745,
+      "latency_ms": 2393.6994075775146,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_20_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2391
+      }
+    },
+    {
+      "request_id": "soak_session_17_1759710847_turn_2",
+      "session_id": "soak_session_17_1759710847",
+      "turn_index": 2,
+      "message_length": 32,
+      "start_time": 1759710856.3198264,
+      "end_time": 1759710858.6772995,
+      "latency_ms": 2357.473134994507,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 579,
+            "score": 0.999,
+            "snippet": "4 - Clause\nInserted\n14.18.4.1\n14.18.4.1\n Identifying Swarf\nStains\nNewly created clause\n4 - Clause\nInserted\n14.18.4.2\n14.19.4.1\n Preventing Swarf\nDamage\nNewly created clause\n4 - Clause\nInserted\n14.18.4",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 479,
+            "score": 0.999,
+            "snippet": "18.2 \nPitch & Rise Calculator \n \nThe relationship between the pitch, fall or rise and the horizontal, is the relationship between the\nopposite and the adjacent sides of a right angled triangle.\nThis i",
+            "section": "Fall"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 465,
+            "score": 0.999,
+            "snippet": "17.1.3.2A\n Point Load Testing: Various Profiles\nLoads are imposed on a single rib to represent uncontrolled traffic\nFor closed-spaced profiles loads are imposed to both two ribs and one ribLoads are i",
+            "section": "Test Report"
+          }
+        ],
+        "session_id": "soak_session_17_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2355
+      }
+    },
+    {
+      "request_id": "soak_session_18_1759710847_turn_2",
+      "session_id": "soak_session_18_1759710847",
+      "turn_index": 2,
+      "message_length": 32,
+      "start_time": 1759710856.3035824,
+      "end_time": 1759710858.689059,
+      "latency_ms": 2385.476589202881,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 579,
+            "score": 0.999,
+            "snippet": "4 - Clause\nInserted\n14.18.4.1\n14.18.4.1\n Identifying Swarf\nStains\nNewly created clause\n4 - Clause\nInserted\n14.18.4.2\n14.19.4.1\n Preventing Swarf\nDamage\nNewly created clause\n4 - Clause\nInserted\n14.18.4",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 479,
+            "score": 0.999,
+            "snippet": "18.2 \nPitch & Rise Calculator \n \nThe relationship between the pitch, fall or rise and the horizontal, is the relationship between the\nopposite and the adjacent sides of a right angled triangle.\nThis i",
+            "section": "Fall"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 465,
+            "score": 0.999,
+            "snippet": "17.1.3.2A\n Point Load Testing: Various Profiles\nLoads are imposed on a single rib to represent uncontrolled traffic\nFor closed-spaced profiles loads are imposed to both two ribs and one ribLoads are i",
+            "section": "Test Report"
+          }
+        ],
+        "session_id": "soak_session_18_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2383
+      }
+    },
+    {
+      "request_id": "soak_session_21_1759710847_turn_2",
+      "session_id": "soak_session_21_1759710847",
+      "turn_index": 2,
+      "message_length": 37,
+      "start_time": 1759710856.3695288,
+      "end_time": 1759710858.705709,
+      "latency_ms": 2336.1802101135254,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_21_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2334
+      }
+    },
+    {
+      "request_id": "soak_session_19_1759710847_turn_2",
+      "session_id": "soak_session_19_1759710847",
+      "turn_index": 2,
+      "message_length": 37,
+      "start_time": 1759710856.325477,
+      "end_time": 1759710858.7375903,
+      "latency_ms": 2412.1134281158447,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_19_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710858,
+        "timing_ms": 2410
+      }
+    },
+    {
+      "request_id": "soak_session_24_1759710847_turn_3",
+      "session_id": "soak_session_24_1759710847",
+      "turn_index": 3,
+      "message_length": 148,
+      "start_time": 1759710863.990955,
+      "end_time": 1759710866.390768,
+      "latency_ms": 2399.812936782837,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 326,
+            "score": 1.0,
+            "snippet": "...It has a service temperature\nof 60\u00b0C and a tensile strength of 52 MPa at 20\u00b0C.\nPVC may not satisfy the 15-year durability requirements of the NZBC; it is not regarded as suitable\nfor commercial or.",
+            "section": "NATURAL LIGHT"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 155,
+            "score": 1.0,
+            "snippet": "The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line...",
+            "clause": "AS/NZS 1397"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 124,
+            "score": 1.0,
+            "snippet": "4.9.4A\n Interactive Material Compatibility Tool\nThe Code of Practice Online provides an interactive tool to interpret of the information in the...",
+            "section": "Interactive Material Compatibility Tool"
+          }
+        ],
+        "session_id": "soak_session_24_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2398
+      }
+    },
+    {
+      "request_id": "soak_session_16_1759710847_turn_3",
+      "session_id": "soak_session_16_1759710847",
+      "turn_index": 3,
+      "message_length": 44,
+      "start_time": 1759710864.108066,
+      "end_time": 1759710866.469479,
+      "latency_ms": 2361.41300201416,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_16_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2359
+      }
+    },
+    {
+      "request_id": "soak_session_25_1759710847_turn_3",
+      "session_id": "soak_session_25_1759710847",
+      "turn_index": 3,
+      "message_length": 37,
+      "start_time": 1759710864.0240161,
+      "end_time": 1759710866.461968,
+      "latency_ms": 2437.9518032073975,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_25_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2436
+      }
+    },
+    {
+      "request_id": "soak_session_23_1759710847_turn_3",
+      "session_id": "soak_session_23_1759710847",
+      "turn_index": 3,
+      "message_length": 37,
+      "start_time": 1759710864.0730805,
+      "end_time": 1759710866.4616144,
+      "latency_ms": 2388.5338306427,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_23_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2386
+      }
+    },
+    {
+      "request_id": "soak_session_20_1759710847_turn_3",
+      "session_id": "soak_session_20_1759710847",
+      "turn_index": 3,
+      "message_length": 66,
+      "start_time": 1759710864.130994,
+      "end_time": 1759710866.4937837,
+      "latency_ms": 2362.7896308898926,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 406,
+            "score": 1.0,
+            "snippet": "...is most suited to trapezoidal profiles.\nCrimp curving is produced by pressing a small crimp in either the tops of the ribs or the pans of the sheeting,\nprogressively shortening it at these points..",
+            "section": "OTHER PRODUCTS",
+            "clause": "G300"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 70,
+            "score": 1.0,
+            "snippet": "...or\n0.1 x Building length\nKl 1.5\nKl \n2.0\nKl 3.0\nY\nX\nPitch >10\u00b0\nRidge\na\na\na\na\na\na\nOn smaller roofs the local pressure factors comprise a sizeable portion of the roof, \nespecially where pitch exceeds.",
+            "section": "0.5 x Building Height, or",
+            "clause": "AS/NZS 1170:2011"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 424,
+            "score": 1.0,
+            "snippet": "15.4.6A\n Staggered End Laps\n \nSource: UK Guide to Good Practice in Fully Supported Metal Roofing and Cladding 3rd Edition, \u00a9 Federation of\nTraditional Metal Roofing Contractors\n \n15.4.7 \nSarking...",
+            "section": "Staggered End Laps"
+          }
+        ],
+        "session_id": "soak_session_20_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2361
+      }
+    },
+    {
+      "request_id": "soak_session_17_1759710847_turn_3",
+      "session_id": "soak_session_17_1759710847",
+      "turn_index": 3,
+      "message_length": 56,
+      "start_time": 1759710864.1409516,
+      "end_time": 1759710866.5155692,
+      "latency_ms": 2374.617576599121,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_17_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2372
+      }
+    },
+    {
+      "request_id": "soak_session_18_1759710847_turn_3",
+      "session_id": "soak_session_18_1759710847",
+      "turn_index": 3,
+      "message_length": 4,
+      "start_time": 1759710864.1475925,
+      "end_time": 1759710866.5117853,
+      "latency_ms": 2364.1927242279053,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_18_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2362
+      }
+    },
+    {
+      "request_id": "soak_session_19_1759710847_turn_3",
+      "session_id": "soak_session_19_1759710847",
+      "turn_index": 3,
+      "message_length": 32,
+      "start_time": 1759710864.193386,
+      "end_time": 1759710866.5337992,
+      "latency_ms": 2340.4130935668945,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 579,
+            "score": 0.999,
+            "snippet": "4 - Clause\nInserted\n14.18.4.1\n14.18.4.1\n Identifying Swarf\nStains\nNewly created clause\n4 - Clause\nInserted\n14.18.4.2\n14.19.4.1\n Preventing Swarf\nDamage\nNewly created clause\n4 - Clause\nInserted\n14.18.4",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 479,
+            "score": 0.999,
+            "snippet": "18.2 \nPitch & Rise Calculator \n \nThe relationship between the pitch, fall or rise and the horizontal, is the relationship between the\nopposite and the adjacent sides of a right angled triangle.\nThis i",
+            "section": "Fall"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 465,
+            "score": 0.999,
+            "snippet": "17.1.3.2A\n Point Load Testing: Various Profiles\nLoads are imposed on a single rib to represent uncontrolled traffic\nFor closed-spaced profiles loads are imposed to both two ribs and one ribLoads are i",
+            "section": "Test Report"
+          }
+        ],
+        "session_id": "soak_session_19_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2338
+      }
+    },
+    {
+      "request_id": "soak_session_21_1759710847_turn_3",
+      "session_id": "soak_session_21_1759710847",
+      "turn_index": 3,
+      "message_length": 44,
+      "start_time": 1759710864.1653538,
+      "end_time": 1759710866.5429733,
+      "latency_ms": 2377.619504928589,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_21_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2376
+      }
+    },
+    {
+      "request_id": "soak_session_22_1759710847_turn_3",
+      "session_id": "soak_session_22_1759710847",
+      "turn_index": 3,
+      "message_length": 4,
+      "start_time": 1759710864.1163738,
+      "end_time": 1759710866.6400063,
+      "latency_ms": 2523.632526397705,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_22_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710866,
+        "timing_ms": 2522
+      }
+    },
+    {
+      "request_id": "soak_session_27_1759710871_turn_1",
+      "session_id": "soak_session_27_1759710871",
+      "turn_index": 1,
+      "message_length": 42,
+      "start_time": 1759710871.600369,
+      "end_time": 1759710873.9563272,
+      "latency_ms": 2355.9582233428955,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.999,
+            "snippet": "...on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at height.\n...",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 6,
+            "score": 0.999,
+            "snippet": "...And Measurement\n18.6  Velocities\n18.7  Cricket Penetration Patterns\n18.8  Sheet Metal Work For Roofing Contractors.\n19  Revision History\n19A Revision Categories\n19.1  v24.12 December..."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 183,
+            "score": 0.999,
+            "snippet": "A scupper is formed where an internal gutter discharges horizontally through the side or end wall of a...",
+            "section": "Secret Gutters"
+          }
+        ],
+        "session_id": "soak_session_27_1759710871",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710873,
+        "timing_ms": 2354
+      }
+    },
+    {
+      "request_id": "soak_session_24_1759710847_turn_4",
+      "session_id": "soak_session_24_1759710847",
+      "turn_index": 4,
+      "message_length": 148,
+      "start_time": 1759710871.8551621,
+      "end_time": 1759710874.2005186,
+      "latency_ms": 2345.3564643859863,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 326,
+            "score": 1.0,
+            "snippet": "...It has a service temperature\nof 60\u00b0C and a tensile strength of 52 MPa at 20\u00b0C.\nPVC may not satisfy the 15-year durability requirements of the NZBC; it is not regarded as suitable\nfor commercial or.",
+            "section": "NATURAL LIGHT"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 155,
+            "score": 1.0,
+            "snippet": "The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line...",
+            "clause": "AS/NZS 1397"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 124,
+            "score": 1.0,
+            "snippet": "4.9.4A\n Interactive Material Compatibility Tool\nThe Code of Practice Online provides an interactive tool to interpret of the information in the...",
+            "section": "Interactive Material Compatibility Tool"
+          }
+        ],
+        "session_id": "soak_session_24_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2343
+      }
+    },
+    {
+      "request_id": "soak_session_17_1759710847_turn_4",
+      "session_id": "soak_session_17_1759710847",
+      "turn_index": 4,
+      "message_length": 35,
+      "start_time": 1759710871.9687774,
+      "end_time": 1759710874.3108351,
+      "latency_ms": 2342.057704925537,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_17_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2340
+      }
+    },
+    {
+      "request_id": "soak_session_18_1759710847_turn_4",
+      "session_id": "soak_session_18_1759710847",
+      "turn_index": 4,
+      "message_length": 4,
+      "start_time": 1759710871.9751928,
+      "end_time": 1759710874.3362153,
+      "latency_ms": 2361.022472381592,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_18_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2360
+      }
+    },
+    {
+      "request_id": "soak_session_26_1759710871_turn_1",
+      "session_id": "soak_session_26_1759710871",
+      "turn_index": 1,
+      "message_length": 42,
+      "start_time": 1759710871.4794624,
+      "end_time": 1759710873.8446338,
+      "latency_ms": 2365.171432495117,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.999,
+            "snippet": "...on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at height.\n...",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 6,
+            "score": 0.999,
+            "snippet": "...And Measurement\n18.6  Velocities\n18.7  Cricket Penetration Patterns\n18.8  Sheet Metal Work For Roofing Contractors.\n19  Revision History\n19A Revision Categories\n19.1  v24.12 December..."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 183,
+            "score": 0.999,
+            "snippet": "A scupper is formed where an internal gutter discharges horizontally through the side or end wall of a...",
+            "section": "Secret Gutters"
+          }
+        ],
+        "session_id": "soak_session_26_1759710871",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710873,
+        "timing_ms": 2363
+      }
+    },
+    {
+      "request_id": "soak_session_16_1759710847_turn_4",
+      "session_id": "soak_session_16_1759710847",
+      "turn_index": 4,
+      "message_length": 148,
+      "start_time": 1759710871.9283211,
+      "end_time": 1759710874.3308816,
+      "latency_ms": 2402.5604724884033,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 326,
+            "score": 1.0,
+            "snippet": "...It has a service temperature\nof 60\u00b0C and a tensile strength of 52 MPa at 20\u00b0C.\nPVC may not satisfy the 15-year durability requirements of the NZBC; it is not regarded as suitable\nfor commercial or.",
+            "section": "NATURAL LIGHT"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 155,
+            "score": 1.0,
+            "snippet": "The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line...",
+            "clause": "AS/NZS 1397"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 124,
+            "score": 1.0,
+            "snippet": "4.9.4A\n Interactive Material Compatibility Tool\nThe Code of Practice Online provides an interactive tool to interpret of the information in the...",
+            "section": "Interactive Material Compatibility Tool"
+          }
+        ],
+        "session_id": "soak_session_16_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2401
+      }
+    },
+    {
+      "request_id": "soak_session_20_1759710847_turn_4",
+      "session_id": "soak_session_20_1759710847",
+      "turn_index": 4,
+      "message_length": 56,
+      "start_time": 1759710871.95501,
+      "end_time": 1759710874.3244321,
+      "latency_ms": 2369.422197341919,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_20_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2367
+      }
+    },
+    {
+      "request_id": "soak_session_21_1759710847_turn_4",
+      "session_id": "soak_session_21_1759710847",
+      "turn_index": 4,
+      "message_length": 44,
+      "start_time": 1759710872.0139258,
+      "end_time": 1759710874.3625035,
+      "latency_ms": 2348.5777378082275,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_21_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2346
+      }
+    },
+    {
+      "request_id": "soak_session_23_1759710847_turn_4",
+      "session_id": "soak_session_23_1759710847",
+      "turn_index": 4,
+      "message_length": 35,
+      "start_time": 1759710871.9371421,
+      "end_time": 1759710874.3291373,
+      "latency_ms": 2391.9951915740967,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_23_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2390
+      }
+    },
+    {
+      "request_id": "soak_session_25_1759710847_turn_4",
+      "session_id": "soak_session_25_1759710847",
+      "turn_index": 4,
+      "message_length": 148,
+      "start_time": 1759710871.9298868,
+      "end_time": 1759710874.2776625,
+      "latency_ms": 2347.77569770813,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 326,
+            "score": 1.0,
+            "snippet": "...It has a service temperature\nof 60\u00b0C and a tensile strength of 52 MPa at 20\u00b0C.\nPVC may not satisfy the 15-year durability requirements of the NZBC; it is not regarded as suitable\nfor commercial or.",
+            "section": "NATURAL LIGHT"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 155,
+            "score": 1.0,
+            "snippet": "The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line...",
+            "clause": "AS/NZS 1397"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 124,
+            "score": 1.0,
+            "snippet": "4.9.4A\n Interactive Material Compatibility Tool\nThe Code of Practice Online provides an interactive tool to interpret of the information in the...",
+            "section": "Interactive Material Compatibility Tool"
+          }
+        ],
+        "session_id": "soak_session_25_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710874,
+        "timing_ms": 2346
+      }
+    },
+    {
+      "request_id": "soak_session_33_1759710879_turn_1",
+      "session_id": "soak_session_33_1759710879",
+      "turn_index": 1,
+      "message_length": 45,
+      "start_time": 1759710879.3540294,
+      "end_time": 1759710881.6848722,
+      "latency_ms": 2330.8427333831787,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 444,
+            "score": 0.998,
+            "snippet": "15.5.2.2C\n Typical Built-Up Roof\n20 mm\nRoof\nInsulation\nUnderlay\nNetting\nFoil\nSafety mesh\nPacker\nPurlin\n \n \n15.5.2.2D\n Post and Rail System\nTop...",
+            "section": "Roof"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 576,
+            "score": 0.998,
+            "snippet": "...combined with \n14.3.1\n Unloading\n2 - Editing and\nrearrangement\n14\n14\n Installation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n14.1\n14.1\n Pre- Installation\nClause revised for...",
+            "section": "0 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 118,
+            "score": 0.998,
+            "snippet": "...\nMaterials comprising the building envelope should not be considered in isolation, as their performance can be\naffected by contact with or run-off from other materials.\nThis reaction is caused...",
+            "section": "Compatibility"
+          }
+        ],
+        "session_id": "soak_session_33_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710881,
+        "timing_ms": 2329
+      }
+    },
+    {
+      "request_id": "soak_session_28_1759710879_turn_1",
+      "session_id": "soak_session_28_1759710879",
+      "turn_index": 1,
+      "message_length": 42,
+      "start_time": 1759710879.166518,
+      "end_time": 1759710881.5337381,
+      "latency_ms": 2367.220163345337,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.999,
+            "snippet": "...on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at height.\n...",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 6,
+            "score": 0.999,
+            "snippet": "...And Measurement\n18.6  Velocities\n18.7  Cricket Penetration Patterns\n18.8  Sheet Metal Work For Roofing Contractors.\n19  Revision History\n19A Revision Categories\n19.1  v24.12 December..."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 183,
+            "score": 0.999,
+            "snippet": "A scupper is formed where an internal gutter discharges horizontally through the side or end wall of a...",
+            "section": "Secret Gutters"
+          }
+        ],
+        "session_id": "soak_session_28_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710881,
+        "timing_ms": 2365
+      }
+    },
+    {
+      "request_id": "soak_session_31_1759710879_turn_1",
+      "session_id": "soak_session_31_1759710879",
+      "turn_index": 1,
+      "message_length": 43,
+      "start_time": 1759710879.304244,
+      "end_time": 1759710881.6389399,
+      "latency_ms": 2334.695816040039,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 562,
+            "score": 1.0,
+            "snippet": "...clause.\n3 - Substantial\nchange to\nrecommendation\n5.5.7\n5.4.6\n Secret Gutters\nClause revised, for brevity and clarity.\n4 - Clause\nInserted\n \n5.6\n Rainwater Heads,\nSumps, and Overflows\nNew...",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 17,
+            "score": 1.0,
+            "snippet": "The final and most expensive alternative is litigation. That usually involves suing for breach of contract, non-\npayment, non-performance, faulty materials, or non-compliance....",
+            "section": "INTRODUCTION"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 195,
+            "score": 1.0,
+            "snippet": "...25%\n \nDownpipe Catchment 50%\n50%\n50%\n50%\n50%100%\n25%\n25%\n25%\n25%\n50%\n50%\n \n5.7.2 \nCapacity Table for Common Size Downpipes \nUse this table to select the correct internal dimensions of common...",
+            "section": "300 mm Fall"
+          }
+        ],
+        "session_id": "soak_session_31_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710881,
+        "timing_ms": 2333
+      }
+    },
+    {
+      "request_id": "soak_session_29_1759710879_turn_1",
+      "session_id": "soak_session_29_1759710879",
+      "turn_index": 1,
+      "message_length": 42,
+      "start_time": 1759710879.2864656,
+      "end_time": 1759710881.645545,
+      "latency_ms": 2359.079360961914,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.999,
+            "snippet": "...on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at height.\n...",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 6,
+            "score": 0.999,
+            "snippet": "...And Measurement\n18.6  Velocities\n18.7  Cricket Penetration Patterns\n18.8  Sheet Metal Work For Roofing Contractors.\n19  Revision History\n19A Revision Categories\n19.1  v24.12 December..."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 183,
+            "score": 0.999,
+            "snippet": "A scupper is formed where an internal gutter discharges horizontally through the side or end wall of a...",
+            "section": "Secret Gutters"
+          }
+        ],
+        "session_id": "soak_session_29_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710881,
+        "timing_ms": 2357
+      }
+    },
+    {
+      "request_id": "soak_session_30_1759710879_turn_1",
+      "session_id": "soak_session_30_1759710879",
+      "turn_index": 1,
+      "message_length": 45,
+      "start_time": 1759710879.287402,
+      "end_time": 1759710881.6660187,
+      "latency_ms": 2378.6168098449707,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 444,
+            "score": 0.998,
+            "snippet": "15.5.2.2C\n Typical Built-Up Roof\n20 mm\nRoof\nInsulation\nUnderlay\nNetting\nFoil\nSafety mesh\nPacker\nPurlin\n \n \n15.5.2.2D\n Post and Rail System\nTop...",
+            "section": "Roof"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 576,
+            "score": 0.998,
+            "snippet": "...combined with \n14.3.1\n Unloading\n2 - Editing and\nrearrangement\n14\n14\n Installation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n14.1\n14.1\n Pre- Installation\nClause revised for...",
+            "section": "0 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 118,
+            "score": 0.998,
+            "snippet": "...\nMaterials comprising the building envelope should not be considered in isolation, as their performance can be\naffected by contact with or run-off from other materials.\nThis reaction is caused...",
+            "section": "Compatibility"
+          }
+        ],
+        "session_id": "soak_session_30_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710881,
+        "timing_ms": 2377
+      }
+    },
+    {
+      "request_id": "soak_session_27_1759710871_turn_2",
+      "session_id": "soak_session_27_1759710871",
+      "turn_index": 2,
+      "message_length": 56,
+      "start_time": 1759710879.4595082,
+      "end_time": 1759710881.7972147,
+      "latency_ms": 2337.7065658569336,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_27_1759710871",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710881,
+        "timing_ms": 2336
+      }
+    },
+    {
+      "request_id": "soak_session_32_1759710879_turn_1",
+      "session_id": "soak_session_32_1759710879",
+      "turn_index": 1,
+      "message_length": 47,
+      "start_time": 1759710879.307004,
+      "end_time": 1759710881.6835947,
+      "latency_ms": 2376.5907287597656,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 321,
+            "score": 1.0,
+            "snippet": "...regardless of the temperature change.\nAbsolute humidity is a suitable measure if one is looking for sources or sinks of water in an environment where\ntemperature is changing. If the absolute...",
+            "section": "Absolute Humidity"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 396,
+            "score": 1.0,
+            "snippet": "15 \nOther Products \nOther roofing products, include:\nCurved Roofs.\nSolar Units.\nPressed Metal Tiles.\nStanding Seam Cladding.\n \n \n15 \nOTHER PRODUCTS\n \n15 \n \n  15 \n \n396\nNZ Metal Roof And Wall Cladding ",
+            "section": "OTHER PRODUCTS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 480,
+            "score": 1.0,
+            "snippet": "...\n18 \nUSEFUL INFORMATION\n \n18 \n \n18.\n2 \nPITCH %26 RISE CALCULATOR\n \n2  18 \n \n18.\n2 \n480\nNZ Metal Roof And Wall..."
+          }
+        ],
+        "session_id": "soak_session_32_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710881,
+        "timing_ms": 2375
+      }
+    },
+    {
+      "request_id": "soak_session_26_1759710871_turn_2",
+      "session_id": "soak_session_26_1759710871",
+      "turn_index": 2,
+      "message_length": 35,
+      "start_time": 1759710879.801413,
+      "end_time": 1759710882.1678562,
+      "latency_ms": 2366.443157196045,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_26_1759710871",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710882,
+        "timing_ms": 2364
+      }
+    },
+    {
+      "request_id": "soak_session_21_1759710847_turn_5",
+      "session_id": "soak_session_21_1759710847",
+      "turn_index": 5,
+      "message_length": 44,
+      "start_time": 1759710879.818548,
+      "end_time": 1759710882.192809,
+      "latency_ms": 2374.2611408233643,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_21_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710882,
+        "timing_ms": 2372
+      }
+    },
+    {
+      "request_id": "soak_session_25_1759710847_turn_5",
+      "session_id": "soak_session_25_1759710847",
+      "turn_index": 5,
+      "message_length": 35,
+      "start_time": 1759710880.3039014,
+      "end_time": 1759710882.6941433,
+      "latency_ms": 2390.241861343384,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_25_1759710847",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710882,
+        "timing_ms": 2388
+      }
+    },
+    {
+      "request_id": "soak_session_28_1759710879_turn_2",
+      "session_id": "soak_session_28_1759710879",
+      "turn_index": 2,
+      "message_length": 56,
+      "start_time": 1759710887.6118224,
+      "end_time": 1759710889.7840097,
+      "latency_ms": 2172.187328338623,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_28_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710889,
+        "timing_ms": 2170
+      }
+    },
+    {
+      "request_id": "soak_session_33_1759710879_turn_2",
+      "session_id": "soak_session_33_1759710879",
+      "turn_index": 2,
+      "message_length": 32,
+      "start_time": 1759710887.4177408,
+      "end_time": 1759710889.8116984,
+      "latency_ms": 2393.9576148986816,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 579,
+            "score": 0.999,
+            "snippet": "4 - Clause\nInserted\n14.18.4.1\n14.18.4.1\n Identifying Swarf\nStains\nNewly created clause\n4 - Clause\nInserted\n14.18.4.2\n14.19.4.1\n Preventing Swarf\nDamage\nNewly created clause\n4 - Clause\nInserted\n14.18.4",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 479,
+            "score": 0.999,
+            "snippet": "18.2 \nPitch & Rise Calculator \n \nThe relationship between the pitch, fall or rise and the horizontal, is the relationship between the\nopposite and the adjacent sides of a right angled triangle.\nThis i",
+            "section": "Fall"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 465,
+            "score": 0.999,
+            "snippet": "17.1.3.2A\n Point Load Testing: Various Profiles\nLoads are imposed on a single rib to represent uncontrolled traffic\nFor closed-spaced profiles loads are imposed to both two ribs and one ribLoads are i",
+            "section": "Test Report"
+          }
+        ],
+        "session_id": "soak_session_33_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710889,
+        "timing_ms": 2392
+      }
+    },
+    {
+      "request_id": "soak_session_29_1759710879_turn_2",
+      "session_id": "soak_session_29_1759710879",
+      "turn_index": 2,
+      "message_length": 56,
+      "start_time": 1759710887.6961458,
+      "end_time": 1759710890.0253937,
+      "latency_ms": 2329.2479515075684,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_29_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710890,
+        "timing_ms": 2327
+      }
+    },
+    {
+      "request_id": "soak_session_31_1759710879_turn_2",
+      "session_id": "soak_session_31_1759710879",
+      "turn_index": 2,
+      "message_length": 56,
+      "start_time": 1759710887.68997,
+      "end_time": 1759710890.0546691,
+      "latency_ms": 2364.699125289917,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_31_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710890,
+        "timing_ms": 2362
+      }
+    },
+    {
+      "request_id": "soak_session_30_1759710879_turn_2",
+      "session_id": "soak_session_30_1759710879",
+      "turn_index": 2,
+      "message_length": 56,
+      "start_time": 1759710887.745817,
+      "end_time": 1759710890.1102507,
+      "latency_ms": 2364.433765411377,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_30_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710890,
+        "timing_ms": 2362
+      }
+    },
+    {
+      "request_id": "soak_session_27_1759710871_turn_3",
+      "session_id": "soak_session_27_1759710871",
+      "turn_index": 3,
+      "message_length": 37,
+      "start_time": 1759710887.8281503,
+      "end_time": 1759710890.218004,
+      "latency_ms": 2389.8537158966064,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_27_1759710871",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710890,
+        "timing_ms": 2388
+      }
+    },
+    {
+      "request_id": "soak_session_34_1759710887_turn_1",
+      "session_id": "soak_session_34_1759710887",
+      "turn_index": 1,
+      "message_length": 50,
+      "start_time": 1759710887.9312027,
+      "end_time": 1759710890.306225,
+      "latency_ms": 2375.0224113464355,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 506,
+            "score": 0.998,
+            "snippet": "...pressure with \n10.10.1.3\n Ridge Vents\n. Substantial changes\ninclude removing wind load/span graphs for 0.70 mm aluminium.\nEditing and rearrangement updates involve updating and editing images for..",
+            "section": "Spouting Support Systems"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 475,
+            "score": 0.998,
+            "snippet": "F   T-Bend Adhesion Test\n \u2013 Procedure to be used for T bend adhesion\nG   Ball Adhesion Test\n \u2013 Adhesion test procedure for laminate products.\nH  ...",
+            "clause": "AS/NZS 2728:2013"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 564,
+            "score": 0.998,
+            "snippet": "...clause had been removed. Gutters are\nnow discussed in more detail in a separate\nclause for each type, under the main\nclause Types of Gutter.\n0 - Clause\nRemoved\n5.5.3\nEaves Gutters\nClause...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_34_1759710887",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710890,
+        "timing_ms": 2373
+      }
+    },
+    {
+      "request_id": "soak_session_32_1759710879_turn_2",
+      "session_id": "soak_session_32_1759710879",
+      "turn_index": 2,
+      "message_length": 44,
+      "start_time": 1759710888.0389624,
+      "end_time": 1759710890.393142,
+      "latency_ms": 2354.179620742798,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_32_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710890,
+        "timing_ms": 2352
+      }
+    },
+    {
+      "request_id": "soak_session_26_1759710871_turn_3",
+      "session_id": "soak_session_26_1759710871",
+      "turn_index": 3,
+      "message_length": 35,
+      "start_time": 1759710888.4171243,
+      "end_time": 1759710890.7615504,
+      "latency_ms": 2344.426155090332,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_26_1759710871",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710890,
+        "timing_ms": 2342
+      }
+    },
+    {
+      "request_id": "soak_session_35_1759710888_turn_1",
+      "session_id": "soak_session_35_1759710888",
+      "turn_index": 1,
+      "message_length": 43,
+      "start_time": 1759710888.6649735,
+      "end_time": 1759710891.0460515,
+      "latency_ms": 2381.078004837036,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 562,
+            "score": 1.0,
+            "snippet": "...clause.\n3 - Substantial\nchange to\nrecommendation\n5.5.7\n5.4.6\n Secret Gutters\nClause revised, for brevity and clarity.\n4 - Clause\nInserted\n \n5.6\n Rainwater Heads,\nSumps, and Overflows\nNew...",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 17,
+            "score": 1.0,
+            "snippet": "The final and most expensive alternative is litigation. That usually involves suing for breach of contract, non-\npayment, non-performance, faulty materials, or non-compliance....",
+            "section": "INTRODUCTION"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 195,
+            "score": 1.0,
+            "snippet": "...25%\n \nDownpipe Catchment 50%\n50%\n50%\n50%\n50%100%\n25%\n25%\n25%\n25%\n50%\n50%\n \n5.7.2 \nCapacity Table for Common Size Downpipes \nUse this table to select the correct internal dimensions of common...",
+            "section": "300 mm Fall"
+          }
+        ],
+        "session_id": "soak_session_35_1759710888",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710891,
+        "timing_ms": 2379
+      }
+    },
+    {
+      "request_id": "soak_session_28_1759710879_turn_3",
+      "session_id": "soak_session_28_1759710879",
+      "turn_index": 3,
+      "message_length": 4,
+      "start_time": 1759710895.2305324,
+      "end_time": 1759710897.577388,
+      "latency_ms": 2346.855640411377,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_28_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710897,
+        "timing_ms": 2345
+      }
+    },
+    {
+      "request_id": "soak_session_33_1759710879_turn_3",
+      "session_id": "soak_session_33_1759710879",
+      "turn_index": 3,
+      "message_length": 4,
+      "start_time": 1759710895.2496557,
+      "end_time": 1759710897.617324,
+      "latency_ms": 2367.668390274048,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_33_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710897,
+        "timing_ms": 2365
+      }
+    },
+    {
+      "request_id": "soak_session_29_1759710879_turn_3",
+      "session_id": "soak_session_29_1759710879",
+      "turn_index": 3,
+      "message_length": 56,
+      "start_time": 1759710895.4619472,
+      "end_time": 1759710897.8530226,
+      "latency_ms": 2391.075372695923,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_29_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710897,
+        "timing_ms": 2389
+      }
+    },
+    {
+      "request_id": "soak_session_31_1759710879_turn_3",
+      "session_id": "soak_session_31_1759710879",
+      "turn_index": 3,
+      "message_length": 66,
+      "start_time": 1759710895.482101,
+      "end_time": 1759710897.8567636,
+      "latency_ms": 2374.6626377105713,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 406,
+            "score": 1.0,
+            "snippet": "...is most suited to trapezoidal profiles.\nCrimp curving is produced by pressing a small crimp in either the tops of the ribs or the pans of the sheeting,\nprogressively shortening it at these points..",
+            "section": "OTHER PRODUCTS",
+            "clause": "G300"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 70,
+            "score": 1.0,
+            "snippet": "...or\n0.1 x Building length\nKl 1.5\nKl \n2.0\nKl 3.0\nY\nX\nPitch >10\u00b0\nRidge\na\na\na\na\na\na\nOn smaller roofs the local pressure factors comprise a sizeable portion of the roof, \nespecially where pitch exceeds.",
+            "section": "0.5 x Building Height, or",
+            "clause": "AS/NZS 1170:2011"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 424,
+            "score": 1.0,
+            "snippet": "15.4.6A\n Staggered End Laps\n \nSource: UK Guide to Good Practice in Fully Supported Metal Roofing and Cladding 3rd Edition, \u00a9 Federation of\nTraditional Metal Roofing Contractors\n \n15.4.7 \nSarking...",
+            "section": "Staggered End Laps"
+          }
+        ],
+        "session_id": "soak_session_31_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710897,
+        "timing_ms": 2373
+      }
+    },
+    {
+      "request_id": "soak_session_30_1759710879_turn_3",
+      "session_id": "soak_session_30_1759710879",
+      "turn_index": 3,
+      "message_length": 44,
+      "start_time": 1759710895.5498524,
+      "end_time": 1759710897.9092193,
+      "latency_ms": 2359.3668937683105,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_30_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710897,
+        "timing_ms": 2357
+      }
+    },
+    {
+      "request_id": "soak_session_34_1759710887_turn_2",
+      "session_id": "soak_session_34_1759710887",
+      "turn_index": 2,
+      "message_length": 32,
+      "start_time": 1759710895.7410696,
+      "end_time": 1759710898.1048105,
+      "latency_ms": 2363.740921020508,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 579,
+            "score": 0.999,
+            "snippet": "4 - Clause\nInserted\n14.18.4.1\n14.18.4.1\n Identifying Swarf\nStains\nNewly created clause\n4 - Clause\nInserted\n14.18.4.2\n14.19.4.1\n Preventing Swarf\nDamage\nNewly created clause\n4 - Clause\nInserted\n14.18.4",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 479,
+            "score": 0.999,
+            "snippet": "18.2 \nPitch & Rise Calculator \n \nThe relationship between the pitch, fall or rise and the horizontal, is the relationship between the\nopposite and the adjacent sides of a right angled triangle.\nThis i",
+            "section": "Fall"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 465,
+            "score": 0.999,
+            "snippet": "17.1.3.2A\n Point Load Testing: Various Profiles\nLoads are imposed on a single rib to represent uncontrolled traffic\nFor closed-spaced profiles loads are imposed to both two ribs and one ribLoads are i",
+            "section": "Test Report"
+          }
+        ],
+        "session_id": "soak_session_34_1759710887",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710898,
+        "timing_ms": 2361
+      }
+    },
+    {
+      "request_id": "soak_session_32_1759710879_turn_3",
+      "session_id": "soak_session_32_1759710879",
+      "turn_index": 3,
+      "message_length": 148,
+      "start_time": 1759710895.8568914,
+      "end_time": 1759710898.229091,
+      "latency_ms": 2372.199535369873,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 326,
+            "score": 1.0,
+            "snippet": "...It has a service temperature\nof 60\u00b0C and a tensile strength of 52 MPa at 20\u00b0C.\nPVC may not satisfy the 15-year durability requirements of the NZBC; it is not regarded as suitable\nfor commercial or.",
+            "section": "NATURAL LIGHT"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 155,
+            "score": 1.0,
+            "snippet": "The thickness of the coating can be more precisely controlled on a continuous coil galvanising-line...",
+            "clause": "AS/NZS 1397"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 124,
+            "score": 1.0,
+            "snippet": "4.9.4A\n Interactive Material Compatibility Tool\nThe Code of Practice Online provides an interactive tool to interpret of the information in the...",
+            "section": "Interactive Material Compatibility Tool"
+          }
+        ],
+        "session_id": "soak_session_32_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710898,
+        "timing_ms": 2370
+      }
+    },
+    {
+      "request_id": "soak_session_26_1759710871_turn_4",
+      "session_id": "soak_session_26_1759710871",
+      "turn_index": 4,
+      "message_length": 56,
+      "start_time": 1759710896.2000399,
+      "end_time": 1759710898.5546796,
+      "latency_ms": 2354.639768600464,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 197,
+            "score": 0.998,
+            "snippet": "...energy and ensure wide\ndistribution of the water. A spreader should be used over multiple troughs.\nFor corrugate, a spreader should not discharge into a lapped trough. When using the COP calculator",
+            "section": "Downpipe Spreaders"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 499,
+            "score": 0.998,
+            "snippet": "...H\u00b9 and produce same to intersect the centre line C\u00b9O at O.\nRepeat the process with. B\u00b2 as centre for long radii, thus completing one quarter of the whole\ndevelopment.\nTo complete the pattern, draw."
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 68,
+            "score": 0.998,
+            "snippet": "...load on the outside of the roof when calculating wind design load.\nLocal territorial authorities are usually able to give wind speed figures for a specific address in their area. All\nother...",
+            "section": "Topographical Influences"
+          }
+        ],
+        "session_id": "soak_session_26_1759710871",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710898,
+        "timing_ms": 2352
+      }
+    },
+    {
+      "request_id": "soak_session_35_1759710888_turn_2",
+      "session_id": "soak_session_35_1759710888",
+      "turn_index": 2,
+      "message_length": 37,
+      "start_time": 1759710896.4814558,
+      "end_time": 1759710898.8395374,
+      "latency_ms": 2358.081579208374,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_35_1759710888",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710898,
+        "timing_ms": 2356
+      }
+    },
+    {
+      "request_id": "soak_session_33_1759710879_turn_4",
+      "session_id": "soak_session_33_1759710879",
+      "turn_index": 4,
+      "message_length": 4,
+      "start_time": 1759710903.0724776,
+      "end_time": 1759710905.4154913,
+      "latency_ms": 2343.0137634277344,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_33_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710905,
+        "timing_ms": 2341
+      }
+    },
+    {
+      "request_id": "soak_session_28_1759710879_turn_4",
+      "session_id": "soak_session_28_1759710879",
+      "turn_index": 4,
+      "message_length": 4,
+      "start_time": 1759710903.065211,
+      "end_time": 1759710905.4375875,
+      "latency_ms": 2372.3764419555664,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_28_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710905,
+        "timing_ms": 2370
+      }
+    },
+    {
+      "request_id": "soak_session_31_1759710879_turn_4",
+      "session_id": "soak_session_31_1759710879",
+      "turn_index": 4,
+      "message_length": 44,
+      "start_time": 1759710903.3153486,
+      "end_time": 1759710905.679837,
+      "latency_ms": 2364.488363265991,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_31_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710905,
+        "timing_ms": 2362
+      }
+    },
+    {
+      "request_id": "soak_session_30_1759710879_turn_4",
+      "session_id": "soak_session_30_1759710879",
+      "turn_index": 4,
+      "message_length": 4,
+      "start_time": 1759710903.357746,
+      "end_time": 1759710905.7268784,
+      "latency_ms": 2369.1325187683105,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_30_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710905,
+        "timing_ms": 2367
+      }
+    },
+    {
+      "request_id": "soak_session_34_1759710887_turn_3",
+      "session_id": "soak_session_34_1759710887",
+      "turn_index": 3,
+      "message_length": 66,
+      "start_time": 1759710903.5506546,
+      "end_time": 1759710905.9310687,
+      "latency_ms": 2380.4140090942383,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 406,
+            "score": 1.0,
+            "snippet": "...is most suited to trapezoidal profiles.\nCrimp curving is produced by pressing a small crimp in either the tops of the ribs or the pans of the sheeting,\nprogressively shortening it at these points..",
+            "section": "OTHER PRODUCTS",
+            "clause": "G300"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 70,
+            "score": 1.0,
+            "snippet": "...or\n0.1 x Building length\nKl 1.5\nKl \n2.0\nKl 3.0\nY\nX\nPitch >10\u00b0\nRidge\na\na\na\na\na\na\nOn smaller roofs the local pressure factors comprise a sizeable portion of the roof, \nespecially where pitch exceeds.",
+            "section": "0.5 x Building Height, or",
+            "clause": "AS/NZS 1170:2011"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 424,
+            "score": 1.0,
+            "snippet": "15.4.6A\n Staggered End Laps\n \nSource: UK Guide to Good Practice in Fully Supported Metal Roofing and Cladding 3rd Edition, \u00a9 Federation of\nTraditional Metal Roofing Contractors\n \n15.4.7 \nSarking...",
+            "section": "Staggered End Laps"
+          }
+        ],
+        "session_id": "soak_session_34_1759710887",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710905,
+        "timing_ms": 2378
+      }
+    },
+    {
+      "request_id": "soak_session_32_1759710879_turn_4",
+      "session_id": "soak_session_32_1759710879",
+      "turn_index": 4,
+      "message_length": 44,
+      "start_time": 1759710903.6582668,
+      "end_time": 1759710906.006001,
+      "latency_ms": 2347.734212875366,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_32_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710906,
+        "timing_ms": 2345
+      }
+    },
+    {
+      "request_id": "soak_session_35_1759710888_turn_3",
+      "session_id": "soak_session_35_1759710888",
+      "turn_index": 3,
+      "message_length": 37,
+      "start_time": 1759710904.3039532,
+      "end_time": 1759710906.6549857,
+      "latency_ms": 2351.032495498657,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 80,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Load Spreading Washers"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 190,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "Rainwater Heads"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 486,
+            "score": 0.998,
+            "snippet": "...this document is the most up-to-date and in the case of con\ufb02ict the Online version prevails over any saved or printed version.",
+            "section": "The Greek Alphabet"
+          }
+        ],
+        "session_id": "soak_session_35_1759710888",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710906,
+        "timing_ms": 2349
+      }
+    },
+    {
+      "request_id": "soak_session_33_1759710879_turn_5",
+      "session_id": "soak_session_33_1759710879",
+      "turn_index": 5,
+      "message_length": 44,
+      "start_time": 1759710910.8509536,
+      "end_time": 1759710913.189188,
+      "latency_ms": 2338.2344245910645,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 448,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 175,
+            "score": 0.998,
+            "snippet": "...on the NIWA site are for maximum intensity over a ten-minute duration. Intensity\nmay vary within this period, and roof drains can overflow quickly when demand exceeds capacity. A 1-minute\nrainfall.",
+            "section": "RCP Level Descriptions"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 361,
+            "score": 0.998,
+            "snippet": "...Roof And Wall Cladding Code Of Practice v24.12\n\u00a9 New Zealand Metal Roofing Manufacturers Inc 2024 \nThis is a controlled document. This copy of the Code Of Practice was issued \n1 December 2024\n, and",
+            "section": "PRODUCT SELECTION"
+          }
+        ],
+        "session_id": "soak_session_33_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710913,
+        "timing_ms": 2335
+      }
+    },
+    {
+      "request_id": "soak_session_30_1759710879_turn_5",
+      "session_id": "soak_session_30_1759710879",
+      "turn_index": 5,
+      "message_length": 35,
+      "start_time": 1759710911.1837893,
+      "end_time": 1759710913.530695,
+      "latency_ms": 2346.9057083129883,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_30_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710913,
+        "timing_ms": 2344
+      }
+    },
+    {
+      "request_id": "soak_session_31_1759710879_turn_5",
+      "session_id": "soak_session_31_1759710879",
+      "turn_index": 5,
+      "message_length": 4,
+      "start_time": 1759710911.1180692,
+      "end_time": 1759710913.530335,
+      "latency_ms": 2412.2657775878906,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 354,
+            "score": 0.998,
+            "snippet": "13.3 \nWorking on Roofs \nFalling from height is the most obvious hazard associated with installing roof and wall cladding.  There is a\nhierarchy of techniques and mechanisms for ensuring safety at heig",
+            "section": "Working on Roofs"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 265,
+            "score": 0.998,
+            "snippet": "8.11 \nMetal Wall Cladding Flashings \nFlashing details for cladding using profiled metals should:\nhave two lines of defence at any point,\nnot rely entirely on sealant,\nnot unnecessarily bridge the cavi",
+            "section": "EXTERNAL MOISTURE FLASHINGS"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 317,
+            "score": 0.998,
+            "snippet": "Horizontally laid underlay must be supported if used under long-run metal roofing, unless both edges are\nsupported by purlins. Under metal tiles, self-supporting underlay can be laid over the roof tru",
+            "section": "1.2 m.",
+            "clause": "AS/NZS 4389:2015"
+          }
+        ],
+        "session_id": "soak_session_31_1759710879",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710913,
+        "timing_ms": 2410
+      }
+    },
+    {
+      "request_id": "soak_session_34_1759710887_turn_4",
+      "session_id": "soak_session_34_1759710887",
+      "turn_index": 4,
+      "message_length": 32,
+      "start_time": 1759710911.3915112,
+      "end_time": 1759710913.7251704,
+      "latency_ms": 2333.6591720581055,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 579,
+            "score": 0.999,
+            "snippet": "4 - Clause\nInserted\n14.18.4.1\n14.18.4.1\n Identifying Swarf\nStains\nNewly created clause\n4 - Clause\nInserted\n14.18.4.2\n14.19.4.1\n Preventing Swarf\nDamage\nNewly created clause\n4 - Clause\nInserted\n14.18.4",
+            "section": "4 - Clause"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 479,
+            "score": 0.999,
+            "snippet": "18.2 \nPitch & Rise Calculator \n \nThe relationship between the pitch, fall or rise and the horizontal, is the relationship between the\nopposite and the adjacent sides of a right angled triangle.\nThis i",
+            "section": "Fall"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 465,
+            "score": 0.999,
+            "snippet": "17.1.3.2A\n Point Load Testing: Various Profiles\nLoads are imposed on a single rib to represent uncontrolled traffic\nFor closed-spaced profiles loads are imposed to both two ribs and one ribLoads are i",
+            "section": "Test Report"
+          }
+        ],
+        "session_id": "soak_session_34_1759710887",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710913,
+        "timing_ms": 2331
+      }
+    },
+    {
+      "request_id": "soak_session_34_1759710887_turn_5",
+      "session_id": "soak_session_34_1759710887",
+      "turn_index": 5,
+      "message_length": 35,
+      "start_time": 1759710919.1863363,
+      "end_time": 1759710921.5526607,
+      "latency_ms": 2366.3244247436523,
+      "success": true,
+      "citations_count": 3,
+      "error": null,
+      "response_data": {
+        "message": "Based on the available documentation, here's what I found regarding your question. Please refer to the cited sources for complete details. [Context provided from multiple sources]",
+        "citations": [
+          {
+            "source": "NZ Metal Roofing",
+            "page": 13,
+            "score": 0.999,
+            "snippet": "...9224\n2012\nCorrosion of metals and alloys. Corrosivity of atmospheres - Guiding values\nfor the corrosion categories.\nISO 9225\n2012\nCorrosion of metals and alloys -- Corrosivity of...",
+            "section": "ISO 9223",
+            "clause": "AS/NZS\n3500.3"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 169,
+            "score": 0.999,
+            "snippet": "...Requirement\nBuildings and sitework shall be constructed in a way that protects people and other property from the adverse\neffect of Surface Water.\nPerformance\nSurface water from an event...",
+            "section": "Objective"
+          },
+          {
+            "source": "NZ Metal Roofing",
+            "page": 575,
+            "score": 0.999,
+            "snippet": "...Night Sky Radiation\nClause revised for clarity.\n2 - Editing and\nrearrangement\n10.13.4\n10.12.4\n The Mechanics of\nCondensation\nClause revised and renamed, it is now: \nThe\nMechanics of...",
+            "section": "4 - Clause"
+          }
+        ],
+        "session_id": "soak_session_34_1759710887",
+        "notes": [
+          "rag",
+          "multi_turn",
+          "enhanced"
+        ],
+        "timestamp": 1759710921,
+        "timing_ms": 2362
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": "soak_session_1_1759710847",
+      "session_num": 1,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4257312,
+      "end_time": 1759710847.425738,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_2_1759710847",
+      "session_num": 2,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4258173,
+      "end_time": 1759710847.4258194,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_3_1759710847",
+      "session_num": 3,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4258258,
+      "end_time": 1759710847.4258268,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_4_1759710847",
+      "session_num": 4,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.425965,
+      "end_time": 1759710847.4259665,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_5_1759710847",
+      "session_num": 5,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4259725,
+      "end_time": 1759710847.4259734,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_6_1759710847",
+      "session_num": 6,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4259791,
+      "end_time": 1759710847.42598,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_7_1759710847",
+      "session_num": 7,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.426181,
+      "end_time": 1759710847.4261827,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_8_1759710847",
+      "session_num": 8,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.426192,
+      "end_time": 1759710847.4261942,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_9_1759710847",
+      "session_num": 9,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4262,
+      "end_time": 1759710847.4262009,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_10_1759710847",
+      "session_num": 10,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.426205,
+      "end_time": 1759710847.4262073,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_11_1759710847",
+      "session_num": 11,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4263318,
+      "end_time": 1759710847.4263372,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_12_1759710847",
+      "session_num": 12,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4263465,
+      "end_time": 1759710847.4263477,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_13_1759710847",
+      "session_num": 13,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.426352,
+      "end_time": 1759710847.426353,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_14_1759710847",
+      "session_num": 14,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4263556,
+      "end_time": 1759710847.426357,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_15_1759710847",
+      "session_num": 15,
+      "query_type": "single",
+      "planned_turns": 1,
+      "completed_turns": 0,
+      "start_time": 1759710847.4263601,
+      "end_time": 1759710847.426361,
+      "success": true,
+      "messages": []
+    },
+    {
+      "session_id": "soak_session_19_1759710847",
+      "session_num": 19,
+      "query_type": "multi",
+      "planned_turns": 3,
+      "completed_turns": 3,
+      "start_time": 1759710847.4268413,
+      "end_time": 1759710871.4794183,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Installation standards for membrane roofing",
+          "success": true,
+          "latency_ms": 3434.479236602783,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2412.1134281158447,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "What about very high wind zones?",
+          "success": true,
+          "latency_ms": 2340.4130935668945,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_22_1759710847",
+      "session_num": 22,
+      "query_type": "multi",
+      "planned_turns": 3,
+      "completed_turns": 3,
+      "start_time": 1759710847.4297261,
+      "end_time": 1759710871.6003313,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Installation standards for membrane roofing",
+          "success": true,
+          "latency_ms": 3417.1431064605713,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2344.8028564453125,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2523.632526397705,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_24_1759710847",
+      "session_num": 24,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710847.432405,
+      "end_time": 1759710879.1664762,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Fastener specifications for steel cladding",
+          "success": true,
+          "latency_ms": 3290.6699180603027,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2355.0634384155273,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "What building code applies to my project in Auckla...",
+          "success": true,
+          "latency_ms": 2399.812936782837,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "What building code applies to my project in Auckla...",
+          "success": true,
+          "latency_ms": 2345.3564643859863,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_17_1759710847",
+      "session_num": 17,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710847.4266012,
+      "end_time": 1759710879.2864287,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Building consent requirements for structural chang...",
+          "success": true,
+          "latency_ms": 3435.0550174713135,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "What about very high wind zones?",
+          "success": true,
+          "latency_ms": 2357.473134994507,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2374.617576599121,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2342.057704925537,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_18_1759710847",
+      "session_num": 18,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710847.4267368,
+      "end_time": 1759710879.2873774,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Insulation R-values for Auckland climate zone",
+          "success": true,
+          "latency_ms": 3415.442705154419,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "What about very high wind zones?",
+          "success": true,
+          "latency_ms": 2385.476589202881,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2364.1927242279053,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2361.022472381592,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_16_1759710847",
+      "session_num": 16,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710847.4264796,
+      "end_time": 1759710879.304206,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "What is minimum apron flashing cover?",
+          "success": true,
+          "latency_ms": 3391.507148742676,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "What about very high wind zones?",
+          "success": true,
+          "latency_ms": 2374.5243549346924,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2361.41300201416,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "What building code applies to my project in Auckla...",
+          "success": true,
+          "latency_ms": 2402.5604724884033,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_20_1759710847",
+      "session_num": 20,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710847.4290388,
+      "end_time": 1759710879.306977,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Insulation R-values for Auckland climate zone",
+          "success": true,
+          "latency_ms": 3363.3203506469727,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2393.6994075775146,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Can you explain the difference between E2/AS1 and ...",
+          "success": true,
+          "latency_ms": 2362.7896308898926,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2369.422197341919,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_23_1759710847",
+      "session_num": 23,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710847.4309688,
+      "end_time": 1759710879.3539891,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "What are fire safety clearances for solid fuel app...",
+          "success": true,
+          "latency_ms": 3393.526792526245,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2338.313579559326,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2388.5338306427,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2391.9951915740967,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_21_1759710847",
+      "session_num": 21,
+      "query_type": "multi",
+      "planned_turns": 5,
+      "completed_turns": 5,
+      "start_time": 1759710847.4291549,
+      "end_time": 1759710887.9311671,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "What are fire safety clearances for solid fuel app...",
+          "success": true,
+          "latency_ms": 3487.1106147766113,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2336.1802101135254,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2377.619504928589,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2348.5777378082275,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 5,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2374.2611408233643,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_25_1759710847",
+      "session_num": 25,
+      "query_type": "multi",
+      "planned_turns": 5,
+      "completed_turns": 5,
+      "start_time": 1759710847.4326947,
+      "end_time": 1759710888.664935,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Wind load requirements for roof structures",
+          "success": true,
+          "latency_ms": 3289.172649383545,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2374.1209506988525,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2437.9518032073975,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "What building code applies to my project in Auckla...",
+          "success": true,
+          "latency_ms": 2347.77569770813,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 5,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2390.241861343384,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_27_1759710871",
+      "session_num": 27,
+      "query_type": "multi",
+      "planned_turns": 3,
+      "completed_turns": 3,
+      "start_time": 1759710871.6003625,
+      "end_time": 1759710895.1597338,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Fastener specifications for steel cladding",
+          "success": true,
+          "latency_ms": 2355.9582233428955,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2337.7065658569336,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2389.8537158966064,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_29_1759710879",
+      "session_num": 29,
+      "query_type": "multi",
+      "planned_turns": 3,
+      "completed_turns": 3,
+      "start_time": 1759710879.286459,
+      "end_time": 1759710902.784121,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Fastener specifications for steel cladding",
+          "success": true,
+          "latency_ms": 2359.079360961914,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2329.2479515075684,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2391.075372695923,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_26_1759710871",
+      "session_num": 26,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710871.4794555,
+      "end_time": 1759710903.4987776,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Fastener specifications for steel cladding",
+          "success": true,
+          "latency_ms": 2365.171432495117,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2366.443157196045,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2344.426155090332,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2354.639768600464,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_28_1759710879",
+      "session_num": 28,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710879.1665108,
+      "end_time": 1759710910.3684936,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Fastener specifications for steel cladding",
+          "success": true,
+          "latency_ms": 2367.220163345337,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2172.187328338623,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2346.855640411377,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2372.3764419555664,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_32_1759710879",
+      "session_num": 32,
+      "query_type": "multi",
+      "planned_turns": 4,
+      "completed_turns": 4,
+      "start_time": 1759710879.3069994,
+      "end_time": 1759710910.961158,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Weatherproofing requirements for external walls",
+          "success": true,
+          "latency_ms": 2376.5907287597656,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2354.179620742798,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "What building code applies to my project in Auckla...",
+          "success": true,
+          "latency_ms": 2372.199535369873,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2347.734212875366,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_35_1759710888",
+      "session_num": 35,
+      "query_type": "multi",
+      "planned_turns": 3,
+      "completed_turns": 3,
+      "start_time": 1759710888.6649663,
+      "end_time": 1759710911.6411395,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Installation standards for membrane roofing",
+          "success": true,
+          "latency_ms": 2381.078004837036,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2358.081579208374,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Any specific installation guidelines?",
+          "success": true,
+          "latency_ms": 2351.032495498657,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_33_1759710879",
+      "session_num": 33,
+      "query_type": "multi",
+      "planned_turns": 5,
+      "completed_turns": 5,
+      "start_time": 1759710879.3540225,
+      "end_time": 1759710918.1333222,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Insulation R-values for Auckland climate zone",
+          "success": true,
+          "latency_ms": 2330.8427333831787,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "What about very high wind zones?",
+          "success": true,
+          "latency_ms": 2393.9576148986816,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2367.668390274048,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2343.0137634277344,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 5,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2338.2344245910645,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_30_1759710879",
+      "session_num": 30,
+      "query_type": "multi",
+      "planned_turns": 5,
+      "completed_turns": 5,
+      "start_time": 1759710879.2873979,
+      "end_time": 1759710918.5047064,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Insulation R-values for Auckland climate zone",
+          "success": true,
+          "latency_ms": 2378.6168098449707,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2364.433765411377,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2359.3668937683105,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2369.1325187683105,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 5,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2346.9057083129883,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_31_1759710879",
+      "session_num": 31,
+      "query_type": "multi",
+      "planned_turns": 5,
+      "completed_turns": 5,
+      "start_time": 1759710879.3042371,
+      "end_time": 1759710918.5097473,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Installation standards for membrane roofing",
+          "success": true,
+          "latency_ms": 2334.695816040039,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "Are there specific requirements for timber constru...",
+          "success": true,
+          "latency_ms": 2364.699125289917,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Can you explain the difference between E2/AS1 and ...",
+          "success": true,
+          "latency_ms": 2374.6626377105713,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "How does this apply to coastal environments?",
+          "success": true,
+          "latency_ms": 2364.488363265991,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 5,
+          "message": "Help",
+          "success": true,
+          "latency_ms": 2412.2657775878906,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    },
+    {
+      "session_id": "soak_session_34_1759710887",
+      "session_num": 34,
+      "query_type": "multi",
+      "planned_turns": 5,
+      "completed_turns": 5,
+      "start_time": 1759710887.9311962,
+      "end_time": 1759710926.520947,
+      "success": true,
+      "messages": [
+        {
+          "turn": 1,
+          "message": "Accessibility compliance for residential buildings",
+          "success": true,
+          "latency_ms": 2375.0224113464355,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 2,
+          "message": "What about very high wind zones?",
+          "success": true,
+          "latency_ms": 2363.740921020508,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 3,
+          "message": "Can you explain the difference between E2/AS1 and ...",
+          "success": true,
+          "latency_ms": 2380.4140090942383,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 4,
+          "message": "What about very high wind zones?",
+          "success": true,
+          "latency_ms": 2333.6591720581055,
+          "citations_count": 3,
+          "error": null
+        },
+        {
+          "turn": 5,
+          "message": "What are the fastener requirements?",
+          "success": true,
+          "latency_ms": 2366.3244247436523,
+          "citations_count": 3,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "errors": []
+}
