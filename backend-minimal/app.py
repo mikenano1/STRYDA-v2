@@ -18,10 +18,17 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 
 app = FastAPI(title="STRYDA Backend", version="0.2.0")
 
-# CORS for local development
+# CORS for development and production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://app.emergent.sh",
+        "https://onsite-copilot.preview.emergentagent.com",
+        "http://localhost:3000",
+        "http://localhost:19006",
+        "http://localhost:8001",
+        "*"  # Allow all for development
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
