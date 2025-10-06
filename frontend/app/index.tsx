@@ -756,4 +756,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  loadingContainer: {
+    alignItems: 'flex-start',
+    padding: 16,
+  },
+  loadingBubble: {
+    backgroundColor: '#2A2A2A',
+    borderRadius: 16,
+    borderBottomLeftRadius: 4,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    maxWidth: '80%',
+  },
+  loadingText: {
+    color: theme.muted,
+    fontSize: 14,
+    marginLeft: 8,
+    fontStyle: 'italic',
+  },
 });
