@@ -238,18 +238,7 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <View>
-          <Text style={styles.headerTitle}>STRYDA.ai</Text>
-          <Text style={styles.apiDisplay}>
-            API: {API_CONFIG.BASE_URL}
-          </Text>
-          <Text style={[styles.healthDisplay, 
-            healthStatus === 'ok' ? styles.healthOk : 
-            healthStatus === 'failed' ? styles.healthFailed : styles.healthChecking]}>
-            {healthStatus === 'ok' ? '✅ Connected' : 
-             healthStatus === 'failed' ? '❌ Offline' : '🔄 Checking...'}
-          </Text>
-        </View>
+        <Text style={styles.headerTitle}>STRYDA.ai</Text>
         <TouchableOpacity 
           style={styles.newChatButton}
           onPress={handleNewChat}
