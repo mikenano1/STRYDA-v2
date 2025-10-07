@@ -34,21 +34,31 @@ export default function HomeScreen() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [sessionId, setSessionId] = useState('');
   const [expandedCitation, setExpandedCitation] = useState<Citation | null>(null);
+  const [healthStatus, setHealthStatus] = useState<'checking' | 'ok' | 'failed'>('checking');
 
   // Initialize session and diagnostic logs
   useEffect(() => {
     const initializeApp = async () => {
-      // 1) Log API_BASE
-      const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
-      console.log('🔧 EXPO_PUBLIC_API_BASE:', apiBase);
+      // 1) Log API_BASE from centralized config
+      console.log('🔧 STRYDA Config Active:', {
+        API_BASE: API_CONFIG.BASE_URL,
+        USE_BACKEND: API_CONFIG.USE_BACKEND
+      });
       
-      // 2) Health check
+      // 2) Health check with new config
       try {
-        const healthResponse = await fetch(`${apiBase}/health`, { timeout: 10000 });
-        const healthData = await healthResponse.json();
-        console.log('✅ Health check result:', healthData);
+        const healthResponse = await fetch(`${API_CONFIG.BASE_URL}/health`);
+        if (healthResponse.ok) {
+          const healthData = await healthResponse.json();
+          console.log('✅ Health check result:', healthData);
+          setHealthStatus('ok');
+        } else {
+          console.error('❌ Health check failed:', healthResponse.status);
+          setHealthStatus('failed');
+        }
       } catch (error) {
-        console.error('❌ Health check failed:', error);
+        console.error('❌ Health check error:', error);
+        setHealthStatus('failed');
       }
       
       // 3) Generate session ID
@@ -66,7 +76,8 @@ export default function HomeScreen() {
     console.log('🎯 sendMessage called with:', {
       inputLength: inputText.trim().length,
       sessionId: sessionId.substring(0, 10) + '...',
-      isSending
+      isSending,
+      apiBase: API_CONFIG.BASE_URL
     });
     
     // Guard clauses
@@ -86,7 +97,6 @@ export default function HomeScreen() {
     }
     
     const messageText = inputText.trim();
-    const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
     
     // Clear input and add user message (optimistic)
     setInputText('');
@@ -104,12 +114,12 @@ export default function HomeScreen() {
     const startTime = Date.now();
     
     try {
-      console.log('🎯 POST /api/chat to:', `${apiBase}/api/chat`, { 
+      console.log('🎯 POST /api/chat to:', `${API_CONFIG.BASE_URL}/api/chat`, { 
         session_id: sessionId, 
         message_len: messageText.length 
       });
       
-      const response = await fetch(`${apiBase}/api/chat`, {
+      const response = await fetch(`${API_CONFIG.BASE_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -139,6 +149,7 @@ export default function HomeScreen() {
       console.log('🎯 Response OK:', { 
         messageLength: data.message?.length,
         citationsCount: data.citations?.length,
+        intent: data.intent,
         timingMs: data.timing_ms
       });
       
@@ -159,7 +170,6 @@ export default function HomeScreen() {
       const duration = endTime - startTime;
       
       console.error('❌ Chat request failed:', error);
-      console.log('🎯 Adding error message to state');
       
       // Add error message with retry
       const errorMessage: ChatMessage = {
@@ -169,7 +179,11 @@ export default function HomeScreen() {
         timestamp: Date.now()
       };
       
+      console.log('🎯 Adding error message to state');
       setMessages(prev => [...prev, errorMessage]);
+      
+      // Update health status
+      setHealthStatus('failed');
       
       Alert.alert(
         'Connection Error',
