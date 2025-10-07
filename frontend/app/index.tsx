@@ -34,46 +34,61 @@ export default function HomeScreen() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [sessionId, setSessionId] = useState('');
   const [expandedCitation, setExpandedCitation] = useState<Citation | null>(null);
-  const [healthStatus, setHealthStatus] = useState<'checking' | 'ok' | 'failed'>('checking');
+  const [healthStatus, setHealthStatus] = useState<'checking' | 'ok' | 'failed' | 'unknown'>('checking');
+  const [healthFailureCount, setHealthFailureCount] = useState(0);
 
   // Initialize session and diagnostic logs
   useEffect(() => {
-    const initializeApp = async () => {
-      // Clear any API override keys from AsyncStorage
-      try {
-        // Remove potential override keys that might force localhost
-        const keysToRemove = ['api_base_override', 'stryda_api_override', 'dev_api_base'];
-        for (const key of keysToRemove) {
-          // Note: AsyncStorage import would be needed, but we'll skip for now
+    const initializeApp = async () => {      
+      // Health check with same API_BASE as chat
+      const checkHealth = async () => {
+        try {
+          const healthResponse = await fetch(`${API_BASE}/health`, {
+            method: 'GET',
+            timeout: 5000
+          });
+          
+          if (healthResponse.status === 200) {
+            const healthData = await healthResponse.json();
+            if (healthData && healthData.ok === true) {
+              console.log('✅ Health check OK:', healthData);
+              setHealthStatus('ok');
+              setHealthFailureCount(0);
+              return;
+            }
+          }
+          
+          console.warn('⚠️ Health check: unexpected response');
+          setHealthStatus('unknown');
+          
+        } catch (error) {
+          console.log('⚠️ Health check failed (network/CORS):', error.message);
+          setHealthStatus('unknown');
+          setHealthFailureCount(prev => prev + 1);
+          
+          // Only mark as failed after 3 consecutive failures
+          if (healthFailureCount >= 2) {
+            setHealthStatus('failed');
+          }
         }
-      } catch (error) {
-        // Silent cleanup
-      }
+      };
       
-      // 2) Health check with centralized config
-      try {
-        const healthResponse = await fetch(`${API_BASE}/health`);
-        if (healthResponse.ok) {
-          const healthData = await healthResponse.json();
-          console.log('✅ Health check result:', healthData);
-          setHealthStatus('ok');
-        } else {
-          console.error('❌ Health check failed:', healthResponse.status);
-          setHealthStatus('failed');
-        }
-      } catch (error) {
-        console.error('❌ Health check error:', error);
-        setHealthStatus('failed');
-      }
+      // Initial health check
+      await checkHealth();
       
-      // 3) Generate session ID
+      // Generate session ID
       const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       setSessionId(newSessionId);
       console.log('🔄 Chat session initialized:', newSessionId.substring(0, 15) + '...');
+      
+      // Set up periodic health checks (every 30s)
+      const healthInterval = setInterval(checkHealth, 30000);
+      
+      return () => clearInterval(healthInterval);
     };
     
     initializeApp();
-  }, []);
+  }, [healthFailureCount]);
 
   const sendMessage = async () => {
     // Critical diagnostic logs
