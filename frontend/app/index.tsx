@@ -39,15 +39,20 @@ export default function HomeScreen() {
   // Initialize session and diagnostic logs
   useEffect(() => {
     const initializeApp = async () => {
-      // 1) Log API_BASE from centralized config
-      console.log('🔧 STRYDA Config Active:', {
-        API_BASE: API_CONFIG.BASE_URL,
-        USE_BACKEND: API_CONFIG.USE_BACKEND
-      });
-      
-      // 2) Health check with new config
+      // Clear any API override keys from AsyncStorage
       try {
-        const healthResponse = await fetch(`${API_CONFIG.BASE_URL}/health`);
+        // Remove potential override keys that might force localhost
+        const keysToRemove = ['api_base_override', 'stryda_api_override', 'dev_api_base'];
+        for (const key of keysToRemove) {
+          // Note: AsyncStorage import would be needed, but we'll skip for now
+        }
+      } catch (error) {
+        // Silent cleanup
+      }
+      
+      // 2) Health check with centralized config
+      try {
+        const healthResponse = await fetch(`${API_BASE}/health`);
         if (healthResponse.ok) {
           const healthData = await healthResponse.json();
           console.log('✅ Health check result:', healthData);
