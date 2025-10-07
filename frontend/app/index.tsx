@@ -119,12 +119,12 @@ export default function HomeScreen() {
     const startTime = Date.now();
     
     try {
-      console.log('🎯 POST /api/chat to:', `${API_CONFIG.BASE_URL}/api/chat`, { 
+      console.log('🎯 POST /api/chat to:', `${API_BASE}/api/chat`, { 
         session_id: sessionId, 
         message_len: messageText.length 
       });
       
-      const response = await fetch(`${API_CONFIG.BASE_URL}/api/chat`, {
+      const response = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
