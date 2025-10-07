@@ -599,4 +599,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  healthBanner: {
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#333333',
+  },
+  healthChecking: {
+    backgroundColor: '#2A2A2A',
+  },
+  healthFailed: {
+    backgroundColor: '#4A1A1A',
+  },
+  healthText: {
+    color: theme.text,
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: '500',
+  },
 });
