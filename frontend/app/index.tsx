@@ -248,6 +248,15 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
       
+      {/* Health Status Banner */}
+      {healthStatus !== 'ok' && (
+        <View style={[styles.healthBanner, healthStatus === 'checking' ? styles.healthChecking : styles.healthFailed]}>
+          <Text style={styles.healthText}>
+            {healthStatus === 'checking' ? '🔄 Connecting to STRYDA...' : '⚠️ STRYDA Backend Offline'}
+          </Text>
+        </View>
+      )}
+      
       {/* Messages Area */}
       <View style={styles.messagesContainer}>
         {messages.length === 0 ? (
