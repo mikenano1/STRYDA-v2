@@ -185,6 +185,10 @@ export default function HomeScreen() {
       console.log('🎯 Adding assistant message to state');
       setMessages(prev => [...prev, assistantMessage]);
       
+      // Optimistic health update on successful chat
+      setHealthStatus('ok');
+      setHealthFailureCount(0);
+      
     } catch (error) {
       const endTime = Date.now();
       const duration = endTime - startTime;
