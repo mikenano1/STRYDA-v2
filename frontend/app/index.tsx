@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { API_CONFIG } from './config/constants';
+import { API_BASE } from './config/constants';
 
 const theme = { 
   bg: '#111111', 
