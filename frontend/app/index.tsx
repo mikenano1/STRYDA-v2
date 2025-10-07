@@ -427,6 +427,20 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 2,
   },
+  healthDisplay: {
+    fontSize: 11,
+    marginTop: 2,
+    fontWeight: '500',
+  },
+  healthOk: {
+    color: '#4CAF50',
+  },
+  healthFailed: {
+    color: '#F44336',
+  },
+  healthChecking: {
+    color: '#FFC107',
+  },
   newChatButton: {
     backgroundColor: theme.accent,
     borderRadius: 12,
