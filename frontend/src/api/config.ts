@@ -1,9 +1,9 @@
-import Constants from 'expo-constants';
+import { API_BASE } from "../config/constants";
 
 export const config = {
-  // Read from EXPO_PUBLIC_* environment variables
-  API_BASE: process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001',
+  // Use centralized API_BASE - no localhost fallbacks
+  API_BASE: API_BASE,
   USE_BACKEND: process.env.EXPO_PUBLIC_USE_BACKEND === 'true' || false,
 };
 
-console.log('🔧 Config:', config);
+console.log('🔧 API Config:', config);
