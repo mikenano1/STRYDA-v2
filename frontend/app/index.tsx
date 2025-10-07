@@ -236,7 +236,7 @@ export default function HomeScreen() {
         <View>
           <Text style={styles.headerTitle}>STRYDA.ai</Text>
           <Text style={styles.apiDisplay}>
-            API: {process.env.EXPO_PUBLIC_API_BASE || 'localhost:8001'}
+            API: {API_CONFIG.BASE_URL}
           </Text>
         </View>
         <TouchableOpacity 
