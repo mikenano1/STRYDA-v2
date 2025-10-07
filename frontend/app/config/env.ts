@@ -1,11 +1,11 @@
 /**
  * Environment configuration for STRYDA  
- * ALWAYS defaults to preview URL - no localhost fallbacks
+ * HARDCODED to preview URL to break cache issues
  */
 
 export const ENV = {
-  API_BASE: process.env.EXPO_PUBLIC_API_BASE ?? "https://onsite-copilot.preview.emergentagent.com",
-  USE_BACKEND: process.env.EXPO_PUBLIC_USE_BACKEND === "true",
+  API_BASE: "https://onsite-copilot.preview.emergentagent.com",
+  USE_BACKEND: true,
 } as const;
 
-console.log('🔧 Environment Config (PREVIEW LOCKED):', ENV);
+console.log('🔧 Environment Config (HARDCODED PREVIEW):', ENV);
