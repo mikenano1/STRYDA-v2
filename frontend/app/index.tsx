@@ -82,7 +82,7 @@ export default function HomeScreen() {
       inputLength: inputText.trim().length,
       sessionId: sessionId.substring(0, 10) + '...',
       isSending,
-      apiBase: API_CONFIG.BASE_URL
+      apiBase: API_BASE
     });
     
     // Guard clauses
