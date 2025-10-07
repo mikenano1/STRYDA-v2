@@ -238,6 +238,12 @@ export default function HomeScreen() {
           <Text style={styles.apiDisplay}>
             API: {API_CONFIG.BASE_URL}
           </Text>
+          <Text style={[styles.healthDisplay, 
+            healthStatus === 'ok' ? styles.healthOk : 
+            healthStatus === 'failed' ? styles.healthFailed : styles.healthChecking]}>
+            {healthStatus === 'ok' ? '✅ Connected' : 
+             healthStatus === 'failed' ? '❌ Offline' : '🔄 Checking...'}
+          </Text>
         </View>
         <TouchableOpacity 
           style={styles.newChatButton}
