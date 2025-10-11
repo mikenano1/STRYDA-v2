@@ -216,22 +216,33 @@ def api_chat(req: ChatRequest):
         
         total_time = (time.time() - start_time) * 1000
         
-        # Enhanced telemetry
+        # Enhanced telemetry with confidence
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_response intent={intent} timing_ms={total_time:.0f} citations_count={len(enhanced_citations)} used_retrieval={used_retrieval}")
+            telemetry_data = {
+                "intent": intent,
+                "confidence": confidence,
+                "timing_ms": round(total_time),
+                "citations_count": len(enhanced_citations),
+                "used_retrieval": used_retrieval,
+                "answer_style": answer_style
+            }
+            print(f"[telemetry] chat_response {telemetry_data}")
         
-        # Step 6: Format response
+        # Step 6: Format response with enhanced metadata
         response = {
             "message": answer,
             "citations": enhanced_citations,
             "session_id": session_id,
             "intent": intent,
-            "notes": ["rag", "multi_turn", "conversational"],
+            "confidence": confidence,
+            "answer_style": answer_style,
+            "show_sources_button": show_sources_button,
+            "notes": ["rag", "multi_turn", "conversational", "v1.2.1"],
             "timestamp": int(time.time()),
             "timing_ms": round(total_time)
         }
         
-        print(f"✅ Conversational chat ({intent}): {len(enhanced_citations)} citations, {total_time:.0f}ms")
+        print(f"✅ Conversational chat v1.2.1 ({intent}, {answer_style}): {len(enhanced_citations)} citations, {total_time:.0f}ms")
         
         return response
         
