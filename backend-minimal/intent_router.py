@@ -16,67 +16,71 @@ class IntentRouter:
     @staticmethod
     def classify_intent_and_confidence(message: str, conversation_history: List[Dict] = None) -> Tuple[str, float, str]:
         """
-        Enhanced classification with confidence and answer_style
+        Enhanced classification to avoid code-dump replies on short queries
         Returns: (intent, confidence, answer_style)
         """
         message_lower = message.lower().strip()
         
-        # Chitchat patterns (high confidence)
+        # Chitchat patterns (high confidence) - expanded
         chitchat_patterns = [
-            r'\b(hi|hello|hey|ping|test|thanks?|thank you|bye|goodbye)\b',
-            r'^(how are you|what\'s up|testing|good morning|good day)$',
-            r'\b(cool|nice|great|awesome|perfect|thanks)\b',
+            r'\b(hi|hello|hey|ping|test|thanks?|thank you|bye|goodbye|good morning|good day)\b',
+            r'^(how are you|what\'s up|testing|all good|cheers)$',
+            r'\b(cool|nice|great|awesome|perfect|sweet|thanks)\b$',
+            r'^(kia ora|gday|morning)$',
         ]
         
         for pattern in chitchat_patterns:
             if re.search(pattern, message_lower):
                 return "chitchat", 0.95, "friendly"
         
-        # Compliance/Pinpoint patterns (high confidence)
+        # Compliance/Pinpoint patterns (high confidence) 
         compliance_patterns = [
-            r'\b(nzbc clause|clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',  # Explicit clauses
-            r'\b(as/nzs \d+|nzs \d+|iso \d+|astm [a-z]\d+)\b',  # Standards
-            r'\b(minimum|maximum|exact|specific).*(cover|clearance|spacing|distance)\b',  # Specific measurements
-            r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',  # Measurements with units
-            r'\b(wind zone [vh]+|ultimate limit state|characteristic load)\b',  # Technical terms
+            r'\b(nzbc clause|clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',
+            r'\b(as/nzs \d+|nzs \d+|iso \d+|astm [a-z]\d+)\b',
+            r'\b(minimum|maximum|exact|specific).*(cover|clearance|spacing|distance)\b',
+            r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',
+            r'\b(wind zone [vh]+|ultimate limit state|characteristic load)\b',
         ]
         
         for pattern in compliance_patterns:
             if re.search(pattern, message_lower):
                 return "compliance_strict", 0.85, "precise_citation"
         
-        # General advice patterns (medium confidence)
-        advice_patterns = [
-            r'\b(how to|how do i|what should|best practice|recommend)\b',
-            r'\b(check|inspect|install|fix|repair|maintain)\b',
-            r'\b(what.*(spacings?|pitch|slope|requirements?))\b',
-            r'\b(which.*(clause|standard|code|method))\b',
+        # How-to patterns (medium confidence) - avoid short queries becoming code dumps
+        how_to_patterns = [
+            r'\b(how to|how do i|step by step|best way to|process for)\b',
+            r'\b(install|fix|repair|maintain|check|inspect)\b.*\b(roof|flashing|gutter)\b',
+            r'(where do i start|new to|beginner|getting started)',
         ]
         
-        building_terms = ['flashing', 'roofing', 'stud', 'nog', 'joist', 'rafter', 'membrane', 'underlay', 'fastener', 'cladding']
+        building_terms = ['flashing', 'roofing', 'stud', 'nog', 'joist', 'rafter', 'membrane', 'underlay', 'fastener', 'cladding', 'gutter']
         has_building_content = any(term in message_lower for term in building_terms)
         
+        # Prevent short queries from getting complex responses
+        if len(message.split()) <= 3 and not any(re.search(pattern, message_lower) for pattern in compliance_patterns):
+            return "clarify", 0.60, "educational"
+        
         if has_building_content:
-            for pattern in advice_patterns:
+            for pattern in how_to_patterns:
                 if re.search(pattern, message_lower):
                     return "general_advice", 0.75, "practical_guidance"
         
-        # Clarifying patterns (medium-low confidence)
+        # Clarifying patterns
         clarify_patterns = [
-            r'\b(new to|beginner|getting started|don\'t know|help me understand)\b',
-            r'\b(what should i know|where do i start|basics|overview)\b',
-            r'\b(first time|never done|not sure)\b',
+            r'\b(help|advice|guidance|suggestions?)\b$',
+            r'^(what|where|why|which).*\?$',
+            r'\b(not sure|unsure|confused|unclear)\b',
         ]
         
         for pattern in clarify_patterns:
             if re.search(pattern, message_lower):
                 return "clarify", 0.65, "educational"
         
-        # General building (low-medium confidence)
+        # General building (lower confidence to avoid over-complexity)
         if has_building_content:
-            return "general_building", 0.60, "practical_guidance"
+            return "general_building", 0.55, "practical_guidance"
         
-        return "unknown", 0.30, "clarify_first"
+        return "clarify", 0.35, "clarify_first"
     
     @staticmethod
     def get_retrieval_params(intent: str, answer_style: str) -> Dict:
