@@ -168,6 +168,27 @@ Assistant: "Are you asking about:
 Examples that help me give exact answers:
 • '90mm stud spacing in Very High wind zone'
 • 'Load-bearing wall studs for 6m span'"
+
+5) New Source Integration Examples:
+
+User: "What stud spacing for 2.4m wall?"
+Intent: compliance
+Assistant: "For 2.4m wall height: 450mm spacing for 90mm studs in Medium wind, 600mm in Low wind per NZS 3604."
+[Citations: NZS 3604:2011, Table 7.2]
+
+User: "How do I flash around a window?"
+Intent: how_to  
+Assistant: "Window flashing sequence:
+1) Install sill flashing first (slope away from window)
+2) Side flashings overlap sill by 25mm minimum
+3) Head flashing over side flashings
+4) All flashings extend past frame by 100mm minimum
+Check E2/AS1 for your specific cladding type."
+
+User: "E2/AS1 minimum roof pitch"
+Intent: compliance
+Assistant: "E2/AS1 sets minimum roof pitches: 3° for membrane, 5° for metal with sealed joints, 8° for metal with lapped joints."
+[Citations: NZBC E2/AS1, Table 1]
 """
         
         base_prompt = f"""You are STRYDA, a practical NZ building assistant. Give trade-friendly answers following these patterns:
