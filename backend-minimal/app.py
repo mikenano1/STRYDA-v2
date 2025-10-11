@@ -134,43 +134,72 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Chat history retrieval failed: {e}")
         
-        # Step 4: Handle based on intent
+        # Step 4: Handle based on intent with enhanced styling
         enhanced_citations = []
         used_retrieval = False
+        show_sources_button = False
         
         if intent == "chitchat":
-            # Direct friendly response, no retrieval
-            answer = "Hey! I'm here to help with NZ building codes. Ask me anything about flashing, roofing, or building requirements!"
+            # Friendly conversational response
+            answer = "Hey! I'm here to help with NZ building codes and standards. Ask me about flashing, roofing, fasteners, or any building requirements!"
             
         elif intent == "clarify":
-            # Educational response with optional light retrieval
-            answer = "I can help with NZ building standards! Are you looking for:\n• Specific building code requirements?\n• Metal roofing installation guides?\n• Weatherproofing standards?\n\nWhat's your specific project or question?"
-            
-        else:
-            # general_building or compliance_strict - do full RAG
+            # Educational guidance with targeted questions
+            if "stud" in user_message.lower():
+                answer = "I can help with stud requirements! Are you asking about:\n• Spacing for wall studs?\n• Sizing for load-bearing walls?\n• Fastening to foundations?\n\nWhat type of construction and wind zone?"
+            elif "roofing" in user_message.lower():
+                answer = "For roofing guidance, I need to know:\n• What type of roof (metal, membrane, tile)?\n• Roof pitch and wind zone?\n• New construction or repair?\n\nThis helps me give you the right requirements!"
+            else:
+                answer = "I can help with NZ building standards! To give you the best guidance, could you tell me:\n• What type of building work?\n• Your location's wind zone?\n• Specific component you're working on?"
+                
+        elif answer_style == "practical_guidance":
+            # Step-by-step trade-friendly guidance
             used_retrieval = True
             rag_start = time.time()
             result = retrieve_and_answer(user_message, history=conversation_history)
-            rag_time = (time.time() - rag_start) * 1000
+            
+            # Format as practical guidance
+            raw_answer = result.get("answer", "")
+            answer = f"Here's what you need to check:\n\n{raw_answer}\n\n💡 Key points: Verify your wind zone classification and local council requirements."
+            
+            # Only show citations if confidence is low or specific compliance mentioned
+            raw_citations = result.get("citations", [])
+            if confidence < 0.65 or "clause" in user_message.lower():
+                show_sources_button = True
+                # Store citations for "Show sources" button
+                for cite in raw_citations[:3]:
+                    if cite.get("score", 0) >= 0.70:
+                        enhanced_citations.append({
+                            "id": f"cite_{cite.get('doc_id', '')[:8]}",
+                            "source": cite.get("source", "Unknown"),
+                            "page": cite.get("page", 0),
+                            "score": cite.get("score", 0.0),
+                            "snippet": cite.get("snippet", "")[:200],
+                            "section": cite.get("section"),
+                            "clause": cite.get("clause")
+                        })
+            
+        else:
+            # compliance_strict or unknown - full RAG with citations
+            used_retrieval = True
+            rag_start = time.time()
+            result = retrieve_and_answer(user_message, history=conversation_history)
             
             answer = result.get("answer", "I don't have specific information about that in my current knowledge base.")
             raw_citations = result.get("citations", [])
             
-            # Apply citation threshold based on intent
-            citation_threshold = retrieval_params["citation_threshold"]
-            
-            for cite in raw_citations:
-                if cite.get("score", 0) >= citation_threshold:
-                    citation = {
-                        "id": f"cite_{cite.get('doc_id', '')[:8]}",
-                        "source": cite.get("source", "Unknown"),
-                        "page": cite.get("page", 0),
-                        "score": cite.get("score", 0.0),
-                        "snippet": cite.get("snippet", "")[:200],
-                        "section": cite.get("section"),
-                        "clause": cite.get("clause")
-                    }
-                    enhanced_citations.append(citation)
+            # Always include citations for compliance queries (max 3)
+            for cite in raw_citations[:3]:
+                citation = {
+                    "id": f"cite_{cite.get('doc_id', '')[:8]}",
+                    "source": cite.get("source", "Unknown"),
+                    "page": cite.get("page", 0),
+                    "score": cite.get("score", 0.0),
+                    "snippet": cite.get("snippet", "")[:200],
+                    "section": cite.get("section"),
+                    "clause": cite.get("clause")
+                }
+                enhanced_citations.append(citation)
         
         # Step 5: Save assistant response
         try:
