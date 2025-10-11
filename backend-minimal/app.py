@@ -93,14 +93,14 @@ def api_chat(req: ChatRequest):
         # Import intent router
         from intent_router import intent_router
         
-        # Step 1: Classify intent
-        intent = intent_router.classify_intent(user_message)
-        retrieval_params = intent_router.get_retrieval_params(intent)
-        system_prompt = intent_router.get_system_prompt(intent)
+        # Step 1: Enhanced intent classification
+        intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
+        retrieval_params = intent_router.get_retrieval_params(intent, answer_style)
+        system_prompt = intent_router.get_system_prompt(intent, answer_style)
         
-        # Telemetry with intent
+        # Telemetry with enhanced metrics
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent={intent} message_length={len(user_message)}")
+            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent={intent} confidence={confidence:.2f} answer_style={answer_style} message_length={len(user_message)}")
         
         # Step 2: Save user message
         try:
