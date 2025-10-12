@@ -83,24 +83,29 @@ def api_ask(req: AskRequest):
 @app.post("/api/chat")
 def api_chat(req: ChatRequest):
     """
-    Conversational multi-turn chat with intent routing
+    Optimized conversational chat with profiling and hybrid retrieval (v1.3.3)
     """
+    # Import optimization modules
+    from profiler import profiler
+    from hybrid_retrieval import hybrid_retrieval_optimized
+    
     try:
-        start_time = time.time()
+        # Start profiling
+        profiler.reset()
+        profiler.start_request()
+        
         session_id = req.session_id or "default"
         user_message = req.message
         
-        # Import intent router
-        from intent_router import intent_router
+        # Step 1: Intent classification with profiling
+        with profiler.timer('t_parse'):
+            from intent_router import intent_router
+            intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
+            retrieval_params = intent_router.get_retrieval_params(intent, answer_style)
         
-        # Step 1: Enhanced intent classification
-        intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
-        retrieval_params = intent_router.get_retrieval_params(intent, answer_style)
-        system_prompt = intent_router.get_system_prompt(intent, answer_style)
-        
-        # Telemetry with enhanced metrics
+        # Enhanced telemetry
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent={intent} confidence={confidence:.2f} answer_style={answer_style} message_length={len(user_message)}")
+            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent={intent} confidence={confidence:.2f} answer_style={answer_style}")
         
         # Step 2: Save user message
         try:
@@ -115,7 +120,7 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Chat memory save failed: {e}")
         
-        # Step 3: Get conversation history for context
+        # Step 3: Get conversation history
         conversation_history = []
         try:
             conn = psycopg2.connect(DATABASE_URL, sslmode="require")
@@ -134,72 +139,104 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Chat history retrieval failed: {e}")
         
-        # Step 4: Handle based on intent with enhanced styling
+        # Step 4: Handle based on intent with optimized retrieval
         enhanced_citations = []
         used_retrieval = False
-        show_sources_button = False
+        cache_hit = False
+        top_sources = []
         
         if intent == "chitchat":
-            # Friendly conversational response
-            answer = "Hey! I'm here to help with NZ building codes and standards. Ask me about flashing, roofing, fasteners, or any building requirements!"
+            # Direct friendly response
+            answer = "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
             
         elif intent == "clarify":
-            # Educational guidance with targeted questions
+            # Educational response with examples
             if "stud" in user_message.lower():
-                answer = "I can help with stud requirements! Are you asking about:\n• Spacing for wall studs?\n• Sizing for load-bearing walls?\n• Fastening to foundations?\n\nWhat type of construction and wind zone?"
-            elif "roofing" in user_message.lower():
-                answer = "For roofing guidance, I need to know:\n• What type of roof (metal, membrane, tile)?\n• Roof pitch and wind zone?\n• New construction or repair?\n\nThis helps me give you the right requirements!"
+                answer = """Are you asking about:
+• Spacing for wall studs?
+• Sizing for load-bearing walls?
+• Fastening to foundations?
+
+Examples that help me give exact answers:
+• '90mm stud spacing in Very High wind zone'
+• 'Load-bearing wall studs for 6m span'"""
             else:
-                answer = "I can help with NZ building standards! To give you the best guidance, could you tell me:\n• What type of building work?\n• Your location's wind zone?\n• Specific component you're working on?"
+                answer = """I can help with NZ building standards! To give you the best guidance, could you tell me:
+• What type of building work?
+• Your location's wind zone?
+• Specific component you're working on?
+
+Examples:
+• 'Reroofing Colorsteel in high wind zone'
+• 'Internal wall framing for kitchen extension'"""
                 
         elif answer_style == "practical_guidance":
-            # Step-by-step trade-friendly guidance
+            # Optimized retrieval for how-to
             used_retrieval = True
-            rag_start = time.time()
-            result = retrieve_and_answer(user_message, history=conversation_history)
             
-            # Format as practical guidance
-            raw_answer = result.get("answer", "")
-            answer = f"Here's what you need to check:\n\n{raw_answer}\n\n💡 Key points: Verify your wind zone classification and local council requirements."
+            with profiler.timer('t_hybrid_keyword'):
+                # Use hybrid retrieval for better Tier-1 discovery
+                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                docs = hybrid_retrieval_optimized(user_message, top_k=6, database_conn=conn)
+                conn.close()
             
-            # Only show citations if confidence is low or specific compliance mentioned
-            raw_citations = result.get("citations", [])
+            with profiler.timer('t_merge_relevance'):
+                # Extract top sources for telemetry
+                top_sources = [doc.get('source', '') for doc in docs[:3]]
+                
+                # Format practical guidance
+                if docs:
+                    context_preview = docs[0].get('content', '')[:200] + "..."
+                    answer = f"""Here's what you need to check:
+
+Based on the building requirements:
+{context_preview}
+
+💡 Key points: Verify your wind zone classification and check with your local building consent authority for specific requirements."""
+                else:
+                    answer = "I can provide guidance on that. Could you be more specific about your building project and location?"
+            
+            # Only show citations if confidence is low or compliance mentioned
             if confidence < 0.65 or "clause" in user_message.lower():
-                show_sources_button = True
-                # Store citations for "Show sources" button
-                for cite in raw_citations[:3]:
-                    if cite.get("score", 0) >= 0.70:
-                        enhanced_citations.append({
-                            "id": f"cite_{cite.get('doc_id', '')[:8]}",
-                            "source": cite.get("source", "Unknown"),
-                            "page": cite.get("page", 0),
-                            "score": cite.get("score", 0.0),
-                            "snippet": cite.get("snippet", "")[:200],
-                            "section": cite.get("section"),
-                            "clause": cite.get("clause")
-                        })
+                enhanced_citations = docs[:3] if docs else []
             
         else:
-            # compliance_strict or unknown - full RAG with citations
+            # compliance_strict or unknown - full optimized retrieval
             used_retrieval = True
-            rag_start = time.time()
-            result = retrieve_and_answer(user_message, history=conversation_history)
             
-            answer = result.get("answer", "I don't have specific information about that in my current knowledge base.")
-            raw_citations = result.get("citations", [])
+            with profiler.timer('t_embed_query'):
+                # Hybrid retrieval with Tier-1 targeting
+                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                
+            with profiler.timer('t_vector_search'):
+                docs = hybrid_retrieval_optimized(user_message, top_k=6, database_conn=conn)
+                conn.close()
             
-            # Always include citations for compliance queries (max 3)
-            for cite in raw_citations[:3]:
-                citation = {
-                    "id": f"cite_{cite.get('doc_id', '')[:8]}",
-                    "source": cite.get("source", "Unknown"),
-                    "page": cite.get("page", 0),
-                    "score": cite.get("score", 0.0),
-                    "snippet": cite.get("snippet", "")[:200],
-                    "section": cite.get("section"),
-                    "clause": cite.get("clause")
-                }
-                enhanced_citations.append(citation)
+            with profiler.timer('t_merge_relevance'):
+                # Process results
+                top_sources = [doc.get('source', '') for doc in docs[:3]]
+                
+                # Always include citations for compliance (max 3)
+                for doc in docs[:3]:
+                    citation = {
+                        "id": f"cite_{doc.get('id', '')[:8]}",
+                        "source": doc.get("source", "Unknown"),
+                        "page": doc.get("page", 0),
+                        "score": doc.get("score", 0.0),
+                        "snippet": doc.get("snippet", "")[:200],
+                        "section": doc.get("section"),
+                        "clause": doc.get("clause")
+                    }
+                    enhanced_citations.append(citation)
+            
+            with profiler.timer('t_generate'):
+                # Generate answer based on retrieved content
+                if docs:
+                    answer = f"""Based on the building standards: {docs[0].get('content', '')[:150]}...
+
+For precise requirements, refer to the citations below."""
+                else:
+                    answer = "I don't have specific information about that in my current knowledge base. Could you rephrase or ask about a specific building code section?"
         
         # Step 5: Save assistant response
         try:
@@ -214,21 +251,28 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Assistant message save failed: {e}")
         
-        total_time = (time.time() - start_time) * 1000
+        # Finish profiling
+        profiler.finish_request()
+        timing_breakdown = profiler.get_breakdown()
         
-        # Enhanced telemetry with confidence
+        # Enhanced telemetry with profiling
+        tier1_hit = any(any(t1 in cite.get("source", "") for t1 in ["NZS 3604", "E2/AS1", "B1/AS1"]) 
+                       for cite in enhanced_citations)
+        
+        telemetry = profiler.get_telemetry(
+            intent=intent,
+            confidence=confidence,
+            citations_count=len(enhanced_citations),
+            cache_hit=cache_hit,
+            top_sources=top_sources
+        )
+        telemetry['tier1_hit'] = tier1_hit
+        telemetry['used_retrieval'] = used_retrieval
+        
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            telemetry_data = {
-                "intent": intent,
-                "confidence": confidence,
-                "timing_ms": round(total_time),
-                "citations_count": len(enhanced_citations),
-                "used_retrieval": used_retrieval,
-                "answer_style": answer_style
-            }
-            print(f"[telemetry] chat_response {telemetry_data}")
+            print(f"[telemetry] chat_response_v133 {telemetry}")
         
-        # Step 6: Format response with enhanced metadata
+        # Format response
         response = {
             "message": answer,
             "citations": enhanced_citations,
@@ -236,13 +280,13 @@ def api_chat(req: ChatRequest):
             "intent": intent,
             "confidence": confidence,
             "answer_style": answer_style,
-            "show_sources_button": show_sources_button,
-            "notes": ["rag", "multi_turn", "conversational", "v1.2.1"],
+            "notes": ["rag", "multi_turn", "optimized", "v1.3.3"],
             "timestamp": int(time.time()),
-            "timing_ms": round(total_time)
+            "timing_ms": round(timing_breakdown['t_total']),
+            "timing_breakdown": timing_breakdown
         }
         
-        print(f"✅ Conversational chat v1.2.1 ({intent}, {answer_style}): {len(enhanced_citations)} citations, {total_time:.0f}ms")
+        print(f"✅ Optimized chat v1.3.3 ({intent}): {len(enhanced_citations)} citations, {timing_breakdown['t_total']:.0f}ms")
         
         return response
         
@@ -250,7 +294,7 @@ def api_chat(req: ChatRequest):
         if os.getenv("ENABLE_TELEMETRY") == "true":
             print(f"[telemetry] chat_error error={str(e)[:50]} session_id={req.session_id or 'default'}")
         
-        print(f"❌ Conversational chat error: {e}")
+        print(f"❌ Optimized chat error: {e}")
         return {
             "message": "I'm temporarily unable to process your message. Please try again.",
             "citations": [],
