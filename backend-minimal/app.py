@@ -175,9 +175,10 @@ Examples:
             used_retrieval = True
             
             with profiler.timer('t_hybrid_keyword'):
-                # Use hybrid retrieval for better Tier-1 discovery
+                # Use fixed hybrid retrieval for better Tier-1 discovery
+                from hybrid_retrieval_fixed import hybrid_retrieve_fixed
                 conn = psycopg2.connect(DATABASE_URL, sslmode="require")
-                docs = hybrid_retrieval_optimized(user_message, top_k=6, database_conn=conn)
+                docs, debug_info = hybrid_retrieve_fixed(user_message, conn, top_k=6)
                 conn.close()
             
             with profiler.timer('t_merge_relevance'):
