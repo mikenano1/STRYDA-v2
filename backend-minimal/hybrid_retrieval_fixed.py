@@ -220,31 +220,127 @@ def hybrid_retrieve_fixed(query: str, conn, top_k: int = 6) -> Tuple[List[Dict],
     
     return final_results, debug_info
 
-def safe_float_convert(value) -> float:
-    """Safely convert any numeric type to float with comprehensive error handling"""
+def safe_numeric_convert(value) -> float:
+    """Bulletproof numeric conversion for PostgreSQL results"""
+    if value is None:
+        return 0.0
+    
+    # Handle all numeric types from PostgreSQL
     try:
-        if value is None:
-            return 0.0
+        from decimal import Decimal
+        
         if isinstance(value, (int, float)):
-            return float(value)
+            result = float(value)
+        elif isinstance(value, Decimal):
+            result = float(value)  # This was causing the error
+        else:
+            result = float(str(value))
         
-        # Handle Decimal explicitly
-        from decimal import Decimal, InvalidOperation
-        if isinstance(value, Decimal):
-            return float(value)
-        
-        # Handle strings
-        if isinstance(value, str):
-            try:
-                return float(value)
-            except ValueError:
-                return 0.0
-                
-        # Fallback for unknown types
-        return float(str(value))
+        # Guard against NaN/infinity
+        if result != result or result == float('inf') or result == float('-inf'):
+            return 0.0
+            
+        return max(0.0, min(1.0, result))
         
     except Exception:
         return 0.0
+
+def hybrid_score_safe(vector_score, keyword_score, source_boost) -> float:
+    """Safe hybrid scoring with bulletproof type conversion"""
+    # Convert all to safe floats
+    v = safe_numeric_convert(vector_score)
+    k = safe_numeric_convert(keyword_score)  
+    b = safe_numeric_convert(source_boost)
+    
+    # Safe computation
+    try:
+        score = (0.7 * v) + (0.2 * k) + (0.1 * b)
+        return max(0.0, min(1.0, score))
+    except Exception:
+        return 0.5  # Safe fallback
+
+def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
+    """
+    Working Tier-1 content search that actually returns citations
+    """
+    DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
+    
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        query_lower = query.lower()
+        
+        # Smart source targeting
+        if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber', 'lintel', 'fixing']):
+            target_sources = ['NZS 3604:2011']
+        elif any(term in query_lower for term in ['flashing', 'roof', 'pitch', 'e2', 'moisture', 'apron', 'underlay']):
+            target_sources = ['E2/AS1']
+        elif any(term in query_lower for term in ['brace', 'bracing', 'structure', 'b1', 'engineering']):
+            target_sources = ['B1/AS1']
+        else:
+            target_sources = ['NZS 3604:2011', 'E2/AS1', 'B1/AS1']
+        
+        all_results = []
+        
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            for source in target_sources:
+                # Use working FTS approach with explicit casting
+                search_terms = [term.strip() for term in query_lower.split() if len(term) > 3]
+                
+                if search_terms:
+                    # FTS search with type safety
+                    search_phrase = ' '.join(search_terms[:3])
+                    
+                    cur.execute("""
+                        SELECT id, source, page, content, section, clause, snippet,
+                               (ts_rank(ts, plainto_tsquery('english', %s)))::double precision as fts_score
+                        FROM documents 
+                        WHERE source = %s
+                        AND ts @@ plainto_tsquery('english', %s)
+                        ORDER BY fts_score DESC
+                        LIMIT %s;
+                    """, (search_phrase, source, search_phrase, top_k))
+                    
+                    source_results = cur.fetchall()
+                    
+                    for result in source_results:
+                        # Safe type conversion
+                        formatted_result = {
+                            'id': str(result['id']),
+                            'source': result['source'],
+                            'page': result['page'],
+                            'content': result['content'],
+                            'section': result['section'],
+                            'clause': result['clause'],
+                            'snippet': result['snippet'] or result['content'][:200],
+                            'score': safe_numeric_convert(result['fts_score']),
+                            'tier1_source': True,
+                            'search_method': 'fts'
+                        }
+                        
+                        all_results.append(formatted_result)
+        
+        conn.close()
+        
+        # Remove duplicates by (source, page)
+        seen = set()
+        deduped = []
+        
+        for result in all_results:
+            key = f"{result['source']}_{result['page']}"
+            if key not in seen:
+                seen.add(key)
+                deduped.append(result)
+        
+        # Sort by score and return top_k
+        final_results = sorted(deduped, key=lambda x: x['score'], reverse=True)[:top_k]
+        
+        print(f"🎯 Tier-1 retrieval: {len(final_results)} results from {target_sources}")
+        
+        return final_results
+        
+    except Exception as e:
+        print(f"❌ Tier-1 retrieval failed: {e}")
+        return []
 
 def merge_fts_vector_results(fts_results: List[Dict], vector_results: List[Dict]) -> List[Dict]:
     """Merge FTS and vector results with bulletproof type safety"""
