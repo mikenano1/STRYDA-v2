@@ -188,55 +188,100 @@ def generate_query_embedding(query: str, dim: int = 1536) -> list:
 
 def retrieve_with_enhanced_citations(query: str, top_k: int = DEFAULT_TOP_K, filters=None) -> List[Dict[str, Any]]:
     """
-    Retrieve documents with enhanced citation metadata and snippets
+    Enhanced retrieval with Tier-1 bias, caching, and optimization
     """
+    # Check cache first
+    cache_key = get_cache_key(query, top_k)
+    
+    if is_cached(cache_key):
+        print(f"🔄 Cache hit for query: {query[:30]}...")
+        cached_result = response_cache[cache_key]
+        
+        # Add cache hit indicator to documents
+        for doc in cached_result:
+            doc['cache_hit'] = True
+            
+        return cached_result
+    
     conn = get_conn()
     if not conn:
         return []
     
     try:
-        # Generate query embedding
+        # Generate embedding with Tier-1 awareness
         q_vec = embed_text(query)
         if not q_vec:
-            print("🔄 Using mock embedding for query matching")
-            q_vec = generate_query_embedding(query)
+            print("🔄 Using enhanced mock embedding for query matching")
+            q_vec = generate_tier1_aware_embedding(query)
         
         # Convert to SQL format
         vector_str = '[' + ','.join(map(str, q_vec)) + ']'
         
-        # Enhanced query to include metadata
+        # Enhanced query with source metadata
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             cur.execute("""
-                SELECT id, source, page, content, section, clause,
+                SELECT id, source, page, content, section, clause, snippet,
                        1 - (embedding <=> %s::vector) as score
                 FROM documents 
                 WHERE embedding IS NOT NULL
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s;
-            """, (vector_str, vector_str, top_k))
+            """, (vector_str, vector_str, top_k * 2))  # Get extra for processing
             
-            rows = cur.fetchall()
-            
-            # Process results to add snippets and format citations
-            enhanced_results = []
-            
-            for row in rows:
-                result = dict(row)
-                
-                # Generate snippet
-                result['snippet'] = generate_snippet(result['content'], query)
-                
-                # Format the enhanced citation
-                enhanced_results.append(result)
-            
-            print(f"✅ Found {len(enhanced_results)} documents with enhanced metadata")
-            return enhanced_results
-            
+            raw_results = [dict(row) for row in cur.fetchall()]
+        
+        conn.close()
+        
+        # Apply optimizations
+        biased_results = apply_tier1_bias(raw_results)
+        deduped_results = deduplicate_citations(biased_results)
+        optimized_results = optimize_snippets(deduped_results)
+        final_results = optimized_results[:top_k]
+        
+        # Add metadata
+        for doc in final_results:
+            doc['cache_hit'] = False
+            doc['tier1_hit'] = doc.get('tier1_source', False)
+        
+        # Cache the result
+        cache_response(cache_key, final_results)
+        
+        tier1_count = sum(1 for doc in final_results if doc.get('tier1_source', False))
+        print(f"✅ Enhanced retrieval: {len(final_results)} results ({tier1_count} Tier-1), cached")
+        
+        return final_results
+        
     except Exception as e:
         print(f"❌ Enhanced retrieval failed: {e}")
         return []
     finally:
-        conn.close()
+        if conn:
+            conn.close()
+
+def generate_tier1_aware_embedding(query: str, dim: int = 1536) -> list:
+    """Generate query embedding with Tier-1 source awareness"""
+    seed = hash(query.lower()) % (2**32)
+    random.seed(seed)
+    query_lower = query.lower()
+    
+    # Enhanced patterns for Tier-1 content matching
+    if any(term in query_lower for term in ['stud', 'spacing', 'timber', 'frame', 'nzs 3604', 'lintel', 'fixing']):
+        # NZS 3604 timber framing pattern
+        embedding = [0.6 + random.uniform(-0.01, 0.01) for _ in range(dim)]
+    elif any(term in query_lower for term in ['roof', 'pitch', 'moisture', 'flashing', 'e2', 'cladding', 'underlay']):
+        # E2/AS1 weatherproofing pattern  
+        embedding = [0.4 + random.uniform(-0.01, 0.01) for _ in range(dim)]
+    elif any(term in query_lower for term in ['brace', 'bracing', 'structure', 'demand', 'b1', 'engineering']):
+        # B1/AS1 structural pattern
+        embedding = [0.8 + random.uniform(-0.01, 0.01) for _ in range(dim)]
+    elif any(term in query_lower for term in ['wind', 'zone', 'very high']):
+        # Wind-related (often E2/AS1 or NZS 3604)
+        embedding = [0.35 + random.uniform(-0.01, 0.01) for _ in range(dim)]
+    else:
+        # General building pattern
+        embedding = [0.45 + random.uniform(-0.02, 0.02) for _ in range(dim)]
+    
+    return embedding
 
 def retrieve(query: str, top_k: int = DEFAULT_TOP_K, filters=None):
     """
