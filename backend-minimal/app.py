@@ -211,22 +211,35 @@ Based on the building standards:
                     enhanced_citations.append(citation)
             
         else:
-            # compliance_strict or unknown - full optimized retrieval
+            # compliance_strict or unknown - use working Tier-1 retrieval
             used_retrieval = True
             
             with profiler.timer('t_embed_query'):
-                # Hybrid retrieval with Tier-1 targeting
-                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                # Use working Tier-1 retrieval for compliance queries
+                from simple_tier1_retrieval import simple_tier1_retrieval
                 
             with profiler.timer('t_vector_search'):
-                docs = hybrid_retrieval_optimized(user_message, top_k=6, database_conn=conn)
-                conn.close()
+                docs = simple_tier1_retrieval(user_message, top_k=6)
             
             with profiler.timer('t_merge_relevance'):
-                # Process results
+                # Process results for compliance
                 top_sources = [doc.get('source', '') for doc in docs[:3]]
                 
-                # Always include citations for compliance (max 3)
+                # Generate compliance answer with citations
+                if docs:
+                    primary_source = docs[0].get('source', '')
+                    primary_content = docs[0].get('content', '')[:150] + "..."
+                    
+                    answer = f"""Based on {primary_source}:
+
+{primary_content}
+
+Refer to the citations below for specific requirements and full details."""
+                else:
+                    answer = "I don't have specific information about that in my current knowledge base. Could you rephrase or ask about a specific building code section?"
+                
+                # Always include citations for compliance queries (max 3)
+                enhanced_citations = []
                 for doc in docs[:3]:
                     citation = {
                         "id": f"cite_{doc.get('id', '')[:8]}",
@@ -238,15 +251,6 @@ Based on the building standards:
                         "clause": doc.get("clause")
                     }
                     enhanced_citations.append(citation)
-            
-            with profiler.timer('t_generate'):
-                # Generate answer based on retrieved content
-                if docs:
-                    answer = f"""Based on the building standards: {docs[0].get('content', '')[:150]}...
-
-For precise requirements, refer to the citations below."""
-                else:
-                    answer = "I don't have specific information about that in my current knowledge base. Could you rephrase or ask about a specific building code section?"
         
         # Step 5: Save assistant response
         try:
