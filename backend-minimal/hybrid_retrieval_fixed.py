@@ -40,15 +40,15 @@ def detect_tier1_query(query: str) -> Dict[str, Any]:
     }
 
 def fast_text_search(query: str, conn, limit: int = 50) -> List[Dict]:
-    """Fast text search using tsvector + GIN index"""
+    """Fast text search using tsvector + GIN index with type safety"""
     try:
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
-            # Use PostgreSQL FTS with tsvector
+            # Use PostgreSQL FTS with explicit CAST to double precision
             search_query = ' & '.join(query.lower().split()[:5])  # First 5 words
             
             cur.execute("""
                 SELECT id, source, page, content, section, clause, snippet,
-                       ts_rank(ts, plainto_tsquery('english', %s)) as fts_score
+                       (ts_rank(ts, plainto_tsquery('english', %s)))::double precision as fts_score
                 FROM documents 
                 WHERE ts @@ plainto_tsquery('english', %s)
                 AND source IN ('NZS 3604:2011', 'E2/AS1', 'B1/AS1')
@@ -58,11 +58,13 @@ def fast_text_search(query: str, conn, limit: int = 50) -> List[Dict]:
             
             results = [dict(row) for row in cur.fetchall()]
             
-            # Normalize FTS scores to 0-1 range
+            # Normalize FTS scores to 0-1 range with type safety
             if results:
-                max_fts_score = max(r['fts_score'] for r in results)
+                max_fts_score = max(float(r['fts_score']) for r in results)
                 for result in results:
-                    result['keyword_score'] = float(result['fts_score']) / float(max_fts_score) if max_fts_score > 0 else 0.0
+                    fts_score = float(result['fts_score'])
+                    result['keyword_score'] = fts_score / max_fts_score if max_fts_score > 0 else 0.0
+                    result['fts_score'] = fts_score  # Keep original for debugging
             
             return results
             
@@ -71,13 +73,13 @@ def fast_text_search(query: str, conn, limit: int = 50) -> List[Dict]:
         return []
 
 def vector_search_optimized(query: str, conn, source_filter: List[str] = None, limit: int = 20) -> List[Dict]:
-    """Optimized vector search with optional source filtering"""
+    """Optimized vector search with explicit type casting"""
     try:
-        # Generate Tier-1 aware embedding pattern
+        # Generate Tier-1 aware embedding pattern (known working approach)
         query_lower = query.lower()
         
         if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber']):
-            # NZS 3604 pattern - use distinct values
+            # NZS 3604 pattern
             pattern = [0.7, 0.3, 0.1] * 512  # 1536 dimensions
         elif any(term in query_lower for term in ['roof', 'pitch', 'flashing', 'e2', 'moisture']):
             # E2/AS1 pattern
@@ -93,12 +95,14 @@ def vector_search_optimized(query: str, conn, source_filter: List[str] = None, l
         
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             if source_filter:
-                # Filtered search
+                # Filtered search with explicit casting
                 source_list = "(" + ",".join([f"'{s}'" for s in source_filter]) + ")"
                 
                 cur.execute(f"""
                     SELECT id, source, page, content, section, clause, snippet,
-                           1 - (embedding <=> %s::vector) as vector_score
+                           (1 - (embedding <=> %s::vector))::double precision as vector_score,
+                           (CASE WHEN source IN ('NZS 3604:2011', 'E2/AS1', 'B1/AS1') 
+                                 THEN 0.10 ELSE 0.0 END)::double precision as source_boost
                     FROM documents 
                     WHERE embedding IS NOT NULL 
                     AND source IN {source_list}
@@ -106,17 +110,26 @@ def vector_search_optimized(query: str, conn, source_filter: List[str] = None, l
                     LIMIT %s;
                 """, (vector_str, vector_str, limit))
             else:
-                # Full corpus search
+                # Full corpus search with explicit casting
                 cur.execute("""
                     SELECT id, source, page, content, section, clause, snippet,
-                           1 - (embedding <=> %s::vector) as vector_score
+                           (1 - (embedding <=> %s::vector))::double precision as vector_score,
+                           (CASE WHEN source IN ('NZS 3604:2011', 'E2/AS1', 'B1/AS1') 
+                                 THEN 0.10 ELSE 0.0 END)::double precision as source_boost
                     FROM documents 
                     WHERE embedding IS NOT NULL
                     ORDER BY embedding <=> %s::vector
                     LIMIT %s;
                 """, (vector_str, vector_str, limit))
             
-            return [dict(row) for row in cur.fetchall()]
+            results = [dict(row) for row in cur.fetchall()]
+            
+            # Ensure all numeric fields are proper floats
+            for result in results:
+                result['vector_score'] = float(result['vector_score'])
+                result['source_boost'] = float(result['source_boost'])
+            
+            return results
             
     except Exception as e:
         print(f"❌ Vector search failed: {e}")
