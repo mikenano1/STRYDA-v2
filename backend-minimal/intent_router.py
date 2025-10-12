@@ -16,12 +16,30 @@ class IntentRouter:
     @staticmethod
     def classify_intent_and_confidence(message: str, conversation_history: List[Dict] = None) -> Tuple[str, float, str]:
         """
-        Enhanced classification to avoid code-dump replies on short queries
-        Returns: (intent, confidence, answer_style)
+        Enhanced classification with expanded E2/AS1 and B1/AS1 compliance detection
         """
         message_lower = message.lower().strip()
         
-        # Chitchat patterns (high confidence) - expanded
+        # Enhanced compliance patterns for all Tier-1 sources
+        tier1_compliance_patterns = [
+            # NZS 3604 patterns (already working)
+            r'\b(nzs 3604|stud spacing|timber|lintel|fixing|span)\b',
+            
+            # E2/AS1 patterns (expanded)
+            r'\b(e2/as1|e2 as1|external moisture|apron flashing|head flashing|soaker|pitch|barge|saddle|penetration|roof-to-wall)\b',
+            r'\b(minimum|maximum).*(cover|clearance)\b',
+            r'\b(roof pitch|corrugate|underlay|cladding)\b',
+            
+            # B1/AS1 patterns (expanded)
+            r'\b(b1/as1|b1 as1|wind bracing|bracing units|earthquake bracing|linings|hold-downs|brace wall)\b',
+            r'\b(bracing demand|bracing requirement|structure|engineering)\b',
+            
+            # General compliance indicators
+            r'\b(clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',
+            r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',
+        ]
+        
+        # Chitchat patterns (high confidence) - expanded  
         chitchat_patterns = [
             r'\b(hi|hello|hey|ping|test|thanks?|thank you|bye|goodbye|good morning|good day)\b',
             r'^(how are you|what\'s up|testing|all good|cheers)$',
@@ -33,20 +51,12 @@ class IntentRouter:
             if re.search(pattern, message_lower):
                 return "chitchat", 0.95, "friendly"
         
-        # Compliance/Pinpoint patterns (high confidence) 
-        compliance_patterns = [
-            r'\b(nzbc clause|clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',
-            r'\b(as/nzs \d+|nzs \d+|iso \d+|astm [a-z]\d+)\b',
-            r'\b(minimum|maximum|exact|specific).*(cover|clearance|spacing|distance)\b',
-            r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',
-            r'\b(wind zone [vh]+|ultimate limit state|characteristic load)\b',
-        ]
-        
-        for pattern in compliance_patterns:
+        # Check for Tier-1 compliance patterns
+        for pattern in tier1_compliance_patterns:
             if re.search(pattern, message_lower):
                 return "compliance_strict", 0.85, "precise_citation"
         
-        # How-to patterns (medium confidence) - avoid short queries becoming code dumps
+        # How-to patterns (medium confidence)
         how_to_patterns = [
             r'\b(how to|how do i|step by step|best way to|process for)\b',
             r'\b(install|fix|repair|maintain|check|inspect)\b.*\b(roof|flashing|gutter)\b',
@@ -57,7 +67,7 @@ class IntentRouter:
         has_building_content = any(term in message_lower for term in building_terms)
         
         # Prevent short queries from getting complex responses
-        if len(message.split()) <= 3 and not any(re.search(pattern, message_lower) for pattern in compliance_patterns):
+        if len(message.split()) <= 3 and not any(re.search(pattern, message_lower) for pattern in tier1_compliance_patterns):
             return "clarify", 0.60, "educational"
         
         if has_building_content:
