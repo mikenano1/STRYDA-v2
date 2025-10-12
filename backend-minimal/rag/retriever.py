@@ -4,6 +4,98 @@ from .llm import embed_text, chat_completion
 from .prompt import build_messages
 import random
 import psycopg2.extras
+import time
+import hashlib
+
+DEFAULT_TOP_K = 6
+
+# Tier-1 source bias configuration
+TIER1_SOURCES = ['NZS 3604:2011', 'E2/AS1', 'B1/AS1']
+SOURCE_BIAS = {
+    'NZS 3604:2011': 0.08,     # Boost for timber/structural queries
+    'E2/AS1': 0.10,            # Boost for weatherproofing queries  
+    'B1/AS1': 0.08,            # Boost for structural compliance
+    'NZ Building Code': 0.03,  # Slight boost for general code
+    'NZ Metal Roofing': 0.0    # No bias (comprehensive coverage)
+}
+
+# Simple in-memory cache
+response_cache = {}
+cache_timestamps = {}
+CACHE_TTL = 900  # 15 minutes
+
+def get_cache_key(query: str, top_k: int) -> str:
+    """Generate normalized cache key"""
+    normalized = query.lower().strip()
+    return hashlib.md5(f"{normalized}_{top_k}".encode()).hexdigest()
+
+def is_cached(cache_key: str) -> bool:
+    """Check if response is cached and valid"""
+    return (cache_key in response_cache and 
+            cache_key in cache_timestamps and 
+            time.time() - cache_timestamps[cache_key] < CACHE_TTL)
+
+def cache_response(cache_key: str, response: List[Dict]):
+    """Cache response with TTL"""
+    response_cache[cache_key] = response
+    cache_timestamps[cache_key] = time.time()
+    
+    # Cleanup old entries (keep last 100)
+    if len(response_cache) > 100:
+        old_keys = sorted(cache_timestamps.keys(), key=lambda k: cache_timestamps[k])[:20]
+        for key in old_keys:
+            response_cache.pop(key, None)
+            cache_timestamps.pop(key, None)
+
+def apply_tier1_bias(documents: List[Dict]) -> List[Dict]:
+    """Apply Tier-1 source bias to boost relevance"""
+    for doc in documents:
+        source = doc.get('source', '')
+        original_score = doc.get('score', 0.0)
+        
+        # Apply source bias
+        bias = SOURCE_BIAS.get(source, 0.0)
+        boosted_score = min(1.0, original_score + bias)
+        
+        doc['score'] = boosted_score
+        doc['original_score'] = original_score
+        doc['tier1_source'] = source in TIER1_SOURCES
+    
+    # Re-sort by boosted scores
+    return sorted(documents, key=lambda x: x.get('score', 0), reverse=True)
+
+def deduplicate_citations(documents: List[Dict]) -> List[Dict]:
+    """Deduplicate by (source, page), keeping highest score"""
+    seen = {}
+    
+    for doc in documents:
+        key = f"{doc.get('source', '')}_{doc.get('page', 0)}"
+        
+        if key not in seen or doc.get('score', 0) > seen[key].get('score', 0):
+            seen[key] = doc
+    
+    return list(seen.values())
+
+def optimize_snippets(documents: List[Dict]) -> List[Dict]:
+    """Optimize snippets to ≤200 chars, ending at punctuation"""
+    for doc in documents:
+        snippet = doc.get('snippet', '') or doc.get('content', '')
+        
+        if len(snippet) > 200:
+            # Cut at 200 chars, then back to nearest punctuation
+            truncated = snippet[:200]
+            last_punct = max(truncated.rfind('.'), truncated.rfind('!'), truncated.rfind('?'))
+            
+            if last_punct > 100:  # Only if punctuation found reasonably close
+                snippet = truncated[:last_punct + 1]
+            else:
+                # Cut at last space to avoid mid-word
+                last_space = truncated.rfind(' ')
+                snippet = truncated[:last_space] + "..." if last_space > 150 else truncated + "..."
+            
+            doc['snippet'] = snippet
+    
+    return documents
 import re
 
 DEFAULT_TOP_K = 6
