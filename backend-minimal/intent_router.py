@@ -20,23 +20,30 @@ class IntentRouter:
         """
         message_lower = message.lower().strip()
         
-        # Enhanced compliance patterns for all Tier-1 sources
+        # Enhanced compliance patterns for all Tier-1 sources with variants
         tier1_compliance_patterns = [
-            # NZS 3604 patterns (already working)
-            r'\b(nzs 3604|stud spacing|timber|lintel|fixing|span)\b',
+            # NZS 3604 patterns (enhanced with variants)
+            r'\b(nzs 3604|stud spacing|stud centres|timber|lintel|fixing|span)\b',
+            r'\b(stud)\s+.*(spacing|centres|center)\b',
+            r'\b\d+\.?\d*\s*m\s+(wall|stud)\b',  # "2.4m wall", "2400 stud"
             
-            # E2/AS1 patterns (expanded)
+            # E2/AS1 patterns (enhanced with variants)  
             r'\b(e2/as1|e2 as1|external moisture|apron flashing|head flashing|soaker|pitch|barge|saddle|penetration|roof-to-wall)\b',
-            r'\b(minimum|maximum).*(cover|clearance)\b',
+            r'\b(apron|head)\s+(flashing|cover)\b',
+            r'\b(minimum|maximum).*(cover|clearance|mm)\b',
             r'\b(roof pitch|corrugate|underlay|cladding)\b',
+            r'\bapron\s+cover\s*mm\b',  # "apron cover mm"
             
-            # B1/AS1 patterns (expanded)
+            # B1/AS1 patterns (enhanced with variants)
             r'\b(b1/as1|b1 as1|wind bracing|bracing units|earthquake bracing|linings|hold-downs|brace wall)\b',
             r'\b(bracing demand|bracing requirement|structure|engineering)\b',
+            r'\b(wind)\s+(brac|req)\b',  # "wind brace", "wind req"
+            r'\b(bracing units|bu)\s+(per|wall)\b',  # "bracing units per wall"
             
             # General compliance indicators
             r'\b(clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',
             r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',
+            r'\b\d{4}\s*(centre|center|spacing)\b',  # "2400 centre"
         ]
         
         # Chitchat patterns (high confidence) - expanded  
