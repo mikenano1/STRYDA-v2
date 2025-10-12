@@ -175,31 +175,40 @@ Examples:
             used_retrieval = True
             
             with profiler.timer('t_hybrid_keyword'):
-                # Use fixed hybrid retrieval for better Tier-1 discovery
-                from hybrid_retrieval_fixed import hybrid_retrieve_fixed
-                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
-                docs, debug_info = hybrid_retrieve_fixed(user_message, conn, top_k=6)
-                conn.close()
+                # Use working Tier-1 retrieval (no Decimal issues)
+                from simple_tier1_retrieval import simple_tier1_retrieval
+                docs = simple_tier1_retrieval(user_message, top_k=6)
             
             with profiler.timer('t_merge_relevance'):
                 # Extract top sources for telemetry
                 top_sources = [doc.get('source', '') for doc in docs[:3]]
                 
-                # Format practical guidance
+                # Format practical guidance with Tier-1 content
                 if docs:
-                    context_preview = docs[0].get('content', '')[:200] + "..."
-                    answer = f"""Here's what you need to check:
+                    tier1_content = docs[0].get('content', '')[:200] + "..."
+                    answer = f"""Here's the guidance you need:
 
-Based on the building requirements:
-{context_preview}
+Based on the building standards:
+{tier1_content}
 
-💡 Key points: Verify your wind zone classification and check with your local building consent authority for specific requirements."""
+💡 Key points: Check your specific wind zone and verify requirements with your local building consent authority."""
                 else:
-                    answer = "I can provide guidance on that. Could you be more specific about your building project and location?"
+                    answer = "I can provide guidance on that. Could you be more specific about your building project and wind zone?"
             
-            # Only show citations if confidence is low or compliance mentioned
-            if confidence < 0.65 or "clause" in user_message.lower():
-                enhanced_citations = docs[:3] if docs else []
+            # Show citations for compliance-related queries or low confidence
+            if confidence < 0.65 or "clause" in user_message.lower() or any(term in user_message.lower() for term in ['minimum', 'maximum', 'requirement']):
+                enhanced_citations = []
+                for doc in docs[:3]:
+                    citation = {
+                        "id": f"cite_{doc.get('id', '')[:8]}",
+                        "source": doc.get("source", "Unknown"),
+                        "page": doc.get("page", 0),
+                        "score": doc.get("score", 0.0),
+                        "snippet": doc.get("snippet", "")[:200],
+                        "section": doc.get("section"),
+                        "clause": doc.get("clause")
+                    }
+                    enhanced_citations.append(citation)
             
         else:
             # compliance_strict or unknown - full optimized retrieval
