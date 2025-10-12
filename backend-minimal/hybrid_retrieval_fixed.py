@@ -221,20 +221,33 @@ def hybrid_retrieve_fixed(query: str, conn, top_k: int = 6) -> Tuple[List[Dict],
     return final_results, debug_info
 
 def safe_float_convert(value) -> float:
-    """Safely convert any numeric type to float"""
+    """Safely convert any numeric type to float with comprehensive error handling"""
     try:
-        from decimal import Decimal
+        if value is None:
+            return 0.0
         if isinstance(value, (int, float)):
             return float(value)
-        elif isinstance(value, Decimal):
+        
+        # Handle Decimal explicitly
+        from decimal import Decimal, InvalidOperation
+        if isinstance(value, Decimal):
             return float(value)
-        else:
-            return float(str(value))
-    except:
+        
+        # Handle strings
+        if isinstance(value, str):
+            try:
+                return float(value)
+            except ValueError:
+                return 0.0
+                
+        # Fallback for unknown types
+        return float(str(value))
+        
+    except Exception:
         return 0.0
 
 def merge_fts_vector_results(fts_results: List[Dict], vector_results: List[Dict]) -> List[Dict]:
-    """Merge FTS and vector results with safe hybrid scoring"""
+    """Merge FTS and vector results with bulletproof type safety"""
     # Create lookup for vector scores
     vector_lookup = {f"{r['source']}_{r['page']}": r for r in vector_results}
     
@@ -252,33 +265,54 @@ def merge_fts_vector_results(fts_results: List[Dict], vector_results: List[Dict]
         vector_result = vector_lookup.get(key)
         
         if vector_result:
-            # SAFE hybrid scoring with type conversion
+            # BULLETPROOF hybrid scoring with comprehensive type safety
             vector_score = safe_float_convert(vector_result.get('vector_score', 0.0))
             keyword_score = safe_float_convert(fts_result.get('keyword_score', 0.0))
-            source_boost = 0.10  # Tier-1 boost (already float)
+            source_boost = safe_float_convert(vector_result.get('source_boost', 0.0))
             
-            # Guard against NaN/infinity
-            if not (0 <= vector_score <= 1):
+            # Additional guards for NaN/infinity
+            if not (0 <= vector_score <= 1) or vector_score != vector_score:  # NaN check
                 vector_score = 0.5
-            if not (0 <= keyword_score <= 1):
+            if not (0 <= keyword_score <= 1) or keyword_score != keyword_score:
                 keyword_score = 0.5
+            if not (0 <= source_boost <= 1) or source_boost != source_boost:
+                source_boost = 0.1
             
-            # Compute final score safely
-            final_score = (0.7 * vector_score) + (0.2 * keyword_score) + (0.1 * source_boost)
-            final_score = max(0.0, min(1.0, final_score))  # Clamp to valid range
+            # Safe computation with additional guards
+            try:
+                final_score = (0.7 * vector_score) + (0.2 * keyword_score) + (0.1 * source_boost)
+                
+                # Final safety checks
+                if final_score != final_score or final_score == float('inf') or final_score == float('-inf'):
+                    final_score = 0.5
+                    
+                final_score = max(0.0, min(1.0, final_score))
+                
+            except Exception as e:
+                print(f"⚠️ Scoring calculation failed: {e}, using fallback")
+                final_score = 0.5
             
-            # Combine metadata
+            # Combine metadata with type safety
             result = dict(vector_result)
             result['fts_score'] = safe_float_convert(fts_result.get('fts_score', 0))
             result['keyword_score'] = keyword_score
             result['final_score'] = final_score
             result['score'] = final_score  # For compatibility
-            result['tier1_source'] = True  # Mark as Tier-1
+            result['tier1_source'] = True
+            
+            # Ensure all numeric fields are proper floats
+            for field in ['vector_score', 'keyword_score', 'final_score', 'score']:
+                if field in result:
+                    result[field] = safe_float_convert(result[field])
             
             merged.append(result)
     
     # Sort by hybrid score
-    return sorted(merged, key=lambda x: x.get('final_score', 0), reverse=True)
+    try:
+        return sorted(merged, key=lambda x: safe_float_convert(x.get('final_score', 0)), reverse=True)
+    except Exception as e:
+        print(f"⚠️ Sorting failed: {e}, returning unsorted")
+        return merged
 
 # Export for main app
 def get_hybrid_retrieve_fixed():
