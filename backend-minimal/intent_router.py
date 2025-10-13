@@ -16,37 +16,11 @@ class IntentRouter:
     @staticmethod
     def classify_intent_and_confidence(message: str, conversation_history: List[Dict] = None) -> Tuple[str, float, str]:
         """
-        Enhanced classification with expanded E2/AS1 and B1/AS1 compliance detection
+        Enhanced classification with aggressive Tier-1 compliance detection
         """
         message_lower = message.lower().strip()
         
-        # Enhanced compliance patterns for all Tier-1 sources with variants
-        tier1_compliance_patterns = [
-            # NZS 3604 patterns (enhanced with variants)
-            r'\b(nzs 3604|stud spacing|stud centres|timber|lintel|fixing|span)\b',
-            r'\b(stud)\s+.*(spacing|centres|center)\b',
-            r'\b\d+\.?\d*\s*m\s+(wall|stud)\b',  # "2.4m wall", "2400 stud"
-            
-            # E2/AS1 patterns (enhanced with variants)  
-            r'\b(e2/as1|e2 as1|external moisture|apron flashing|head flashing|soaker|pitch|barge|saddle|penetration|roof-to-wall)\b',
-            r'\b(apron|head)\s+(flashing|cover)\b',
-            r'\b(minimum|maximum).*(cover|clearance|mm)\b',
-            r'\b(roof pitch|corrugate|underlay|cladding)\b',
-            r'\bapron\s+cover\s*mm\b',  # "apron cover mm"
-            
-            # B1/AS1 patterns (enhanced with variants)
-            r'\b(b1/as1|b1 as1|wind bracing|bracing units|earthquake bracing|linings|hold-downs|brace wall)\b',
-            r'\b(bracing demand|bracing requirement|structure|engineering)\b',
-            r'\b(wind)\s+(brac|req)\b',  # "wind brace", "wind req"
-            r'\b(bracing units|bu)\s+(per|wall)\b',  # "bracing units per wall"
-            
-            # General compliance indicators
-            r'\b(clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',
-            r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',
-            r'\b\d{4}\s*(centre|center|spacing)\b',  # "2400 centre"
-        ]
-        
-        # Chitchat patterns (high confidence) - expanded  
+        # Chitchat patterns (high confidence) - unchanged
         chitchat_patterns = [
             r'\b(hi|hello|hey|ping|test|thanks?|thank you|bye|goodbye|good morning|good day)\b',
             r'^(how are you|what\'s up|testing|all good|cheers)$',
@@ -58,7 +32,36 @@ class IntentRouter:
             if re.search(pattern, message_lower):
                 return "chitchat", 0.95, "friendly"
         
-        # Check for Tier-1 compliance patterns
+        # AGGRESSIVE Tier-1 compliance detection - catch all variants
+        tier1_compliance_patterns = [
+            # NZS 3604 patterns - enhanced for all variants
+            r'\b(nzs 3604|stud spacing|stud centres?|stud centers?|timber|lintel|fixing|span)\b',
+            r'\bstud\s+.*(spacing|centres?|centers?)\b',
+            r'\b\d+\.?\d*\s*m?\s*(wall|stud|spacing|centres?)\b',  # "2.4m", "2400", "2.4 spacing"
+            
+            # E2/AS1 patterns - enhanced for all variants  
+            r'\b(e2/?as1|e2\s+as1|external moisture)\b',
+            r'\b(apron|head)\s*.*(flashing|cover)\b',
+            r'\b(minimum|maximum)\s*.*(cover|clearance|mm)\b',
+            r'\b(roof pitch|pitch|corrugate|underlay|cladding)\b',
+            r'\bapron\s*cover\s*mm\b',  # "apron cover mm"
+            r'\broof.?to.?wall\b',  # "roof-to-wall"
+            
+            # B1/AS1 patterns - enhanced for all variants
+            r'\b(b1/?as1|b1\s+as1)\b',
+            r'\b(wind\s*bracing?|bracing\s*.*(units?|demand|requirement|wall))\b',
+            r'\b(wind\s*brace?\s*req)\b',  # "wind brace req"
+            r'\b(earthquake bracing|hold-downs|brace wall)\b',
+            r'\b(engineering design|specific engineering|structure)\b',
+            
+            # Measurement and compliance indicators
+            r'\b(clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',
+            r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',
+            r'\b\d{4}\s*(centre|center|spacing)\b',  # "2400 centre"
+            r'\b(requirement|minimum|maximum|shall|must)\b',
+        ]
+        
+        # Priority check: Tier-1 compliance first
         for pattern in tier1_compliance_patterns:
             if re.search(pattern, message_lower):
                 return "compliance_strict", 0.85, "precise_citation"
@@ -73,19 +76,15 @@ class IntentRouter:
         building_terms = ['flashing', 'roofing', 'stud', 'nog', 'joist', 'rafter', 'membrane', 'underlay', 'fastener', 'cladding', 'gutter']
         has_building_content = any(term in message_lower for term in building_terms)
         
-        # Prevent short queries from getting complex responses
-        if len(message.split()) <= 3 and not any(re.search(pattern, message_lower) for pattern in tier1_compliance_patterns):
-            return "clarify", 0.60, "educational"
-        
         if has_building_content:
             for pattern in how_to_patterns:
                 if re.search(pattern, message_lower):
                     return "general_advice", 0.75, "practical_guidance"
         
-        # Clarifying patterns
+        # Clarifying patterns (only for truly ambiguous queries)
         clarify_patterns = [
-            r'\b(help|advice|guidance|suggestions?)\b$',
-            r'^(what|where|why|which).*\?$',
+            r'\b(help|advice|guidance|suggestions?)\s*$',  # Only at end of query
+            r'^(what|where|why|which)\s+\?\s*$',  # Very short questions
             r'\b(not sure|unsure|confused|unclear)\b',
         ]
         
@@ -93,9 +92,9 @@ class IntentRouter:
             if re.search(pattern, message_lower):
                 return "clarify", 0.65, "educational"
         
-        # General building (lower confidence to avoid over-complexity)
+        # Default to compliance for building terms (safer than clarify)
         if has_building_content:
-            return "general_building", 0.55, "practical_guidance"
+            return "compliance_strict", 0.70, "precise_citation"  # Changed from clarify
         
         return "clarify", 0.35, "clarify_first"
     
