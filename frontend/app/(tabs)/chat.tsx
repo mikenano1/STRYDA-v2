@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { chatAPI } from '../lib/api';
+import { API_BASE } from '../internal/config/constants';
+import { chatAPI } from '../internal/lib/api';
 
 const theme = { 
   bg: '#111111', 
