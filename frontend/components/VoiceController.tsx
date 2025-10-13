@@ -10,7 +10,27 @@ import {
   Platform,
 } from 'react-native';
 import * as Speech from 'expo-speech';
-import Voice from '@react-native-voice/voice';
+// TODO: Re-enable @react-native-voice/voice once custom dev client is built
+// import Voice from '@react-native-voice/voice';
+
+// Voice module placeholder stubs for Expo Go compatibility
+const Voice = {
+  start: async () => console.log("Voice.start disabled in Expo Go"),
+  stop: async () => console.log("Voice.stop disabled in Expo Go"),
+  destroy: async () => console.log("Voice.destroy disabled in Expo Go"),
+  cancel: async () => console.log("Voice.cancel disabled in Expo Go"),
+  onSpeechStart: null,
+  onSpeechRecognized: null,
+  onSpeechEnd: null,
+  onSpeechError: null,
+  onSpeechResults: null,
+  onSpeechPartialResults: null,
+  onSpeechVolumeChanged: null,
+  removeAllListeners: () => console.log("Voice.removeAllListeners disabled"),
+  isAvailable: async () => false,
+  isRecognizing: async () => false,
+};
+
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/constants/Colors';
 
