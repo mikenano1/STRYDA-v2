@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView,
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { API_BASE } from '../internal/config/constants';
 import { chatAPI } from '../internal/lib/api';
+import DiagOverlay from '../internal/DiagOverlay';
 
 const theme = { 
   bg: '#111111', 
