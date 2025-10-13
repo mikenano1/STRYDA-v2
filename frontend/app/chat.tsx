@@ -116,52 +116,14 @@ export default function ChatScreen() {
     setIsLoading(true);
 
     try {
-      // Create FormData for image upload
-      const formData = new FormData();
-      formData.append('file', {
-        uri: imageUri,
-        type: 'image/jpeg',
-        name: 'diagram.jpg',
-      } as any);
-      formData.append('message', messageText || 'Please analyze this technical diagram for installation guidance and Building Code compliance.');
-      formData.append('session_id', 'mobile_vision_session');
-
-      const response = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/chat/vision`, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      const data = await response.json();
-
-      // Add user message with image
-      const userMessage: Message = {
-        id: Date.now().toString(),
-        text: messageText || 'Analyze this diagram',
-        sender: 'user',
-        timestamp: new Date(),
-        image_uri: imageUri,
-      };
-
-      // Add AI vision response
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: data.response || "I couldn't analyze the diagram. Please try again.",
-        sender: 'bot',
-        timestamp: new Date(),
-        is_vision_response: true,
-        processing_time_ms: data.processing_time_ms,
-      };
-
-      setMessages(prev => [...prev, userMessage, botMessage]);
+      // Vision endpoint not available, fallback to regular chat
+      Alert.alert('Feature Not Available', 'Image analysis is not currently available. Sending your message as text instead.');
+      await sendMessage(messageText || 'Please help with technical diagram analysis.');
       setSelectedImage(null);
       setInputText('');
-
     } catch (error) {
-      console.error('Vision API error:', error);
-      Alert.alert('Error', 'Failed to analyze diagram. Please try again.');
+      console.error('Vision fallback error:', error);
+      Alert.alert('Error', 'Failed to send message. Please try again.');
     } finally {
       setIsLoading(false);
     }
