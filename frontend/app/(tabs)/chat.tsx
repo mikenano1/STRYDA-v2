@@ -127,7 +127,7 @@ export default function ChatScreen() {
       });
       
       // Telemetry: chat_response
-      console.log(`[telemetry] chat_response timing_ms=${duration} citations_count=${data.citations?.length || 0}`);
+      console.log(`[telemetry] chat_response timing_ms=${data.timing_ms || 0} citations_count=${data.citations?.length || 0}`);
       
       // Add assistant message
       const assistantMessage: ChatMessage = {
