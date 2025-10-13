@@ -22,6 +22,7 @@ export default function TabLayout() {
         },
         headerShown: false,
       }}>
+      {/* EXACTLY 4 TABS - HARDCODED */}
       <Tabs.Screen
         name="index"
         options={{
@@ -58,6 +59,22 @@ export default function TabLayout() {
           ),
         }}
       />
+      
+      {/* HIDE ALL OTHER ROUTES FROM TABS */}
+      <Tabs.Screen name="index_fixed" options={{ href: null }} />
+      <Tabs.Screen name="_sitemap" options={{ href: null }} />
+      <Tabs.Screen name="(tabs)/ChatScreen" options={{ href: null }} />
+      <Tabs.Screen name="components/ChatMessage" options={{ href: null }} />
+      <Tabs.Screen name="components/CitationPill" options={{ href: null }} />
+      <Tabs.Screen name="lib/telemetry" options={{ href: null }} />
+      <Tabs.Screen name="state/chatStore" options={{ href: null }} />
+      <Tabs.Screen name="config/constants" options={{ href: null }} />
+      <Tabs.Screen name="config/env" options={{ href: null }} />
+      <Tabs.Screen name="lib/api" options={{ href: null }} />
+      <Tabs.Screen name="lib/api/chat" options={{ href: null }} />
+      <Tabs.Screen name="lib/session" options={{ href: null }} />
+      <Tabs.Screen name="state/chat" options={{ href: null }} />
+      <Tabs.Screen name="types/chat" options={{ href: null }} />
     </Tabs>
   );
 }
