@@ -12,13 +12,14 @@ export default function RootLayout() {
           backgroundColor: '#111111', // STRYDA dark background
           borderTopWidth: 1,
           borderTopColor: '#333333',
-          paddingBottom: 25,
-          paddingTop: 6,
-          height: 80,
+          paddingBottom: 30, // More space for labels
+          paddingTop: 10,
+          height: 90, // Taller to fit labels properly
         },
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '500',
+          marginTop: 4, // Space between icon and label
         },
       }}>
       {/* EXACTLY 4 TABS - MATCHING EXACT FILE NAMES */}
