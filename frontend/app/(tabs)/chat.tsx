@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { API_BASE } from '../internal/config/constants';
-import { chatAPI } from '../internal/lib/api';
-import { DEV_DIAG } from '../internal/diag';
-import DiagOverlay from '../internal/DiagOverlay';
+import { API_BASE } from '../../src/internal/config/constants';
+import { chatAPI } from '../../src/internal/lib/api';
+import { DEV_DIAG } from '../../src/internal/diag';
+import DiagOverlay from '../../src/internal/DiagOverlay';
 
 const theme = { 
   bg: '#111111', 
