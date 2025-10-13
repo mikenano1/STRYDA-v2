@@ -1,82 +1,72 @@
 /**
- * API wrapper for STRYDA chat endpoints
+ * Centralized STRYDA API Client
+ * All chat requests go through this single endpoint
  */
 
-import { ChatRequest, ChatResponse } from '../types/chat';
+import { API_BASE } from '../config/constants';
 
-const API_BASE = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
-
-export class APIError extends Error {
-  constructor(public status: number, message: string) {
-    super(message);
-    this.name = 'APIError';
-  }
+export interface ChatRequest {
+  session_id: string;
+  message: string;
 }
 
-export async function postChat(request: ChatRequest): Promise<ChatResponse> {
-  const startTime = Date.now();
+export interface Citation {
+  source: string;
+  page: number;
+  score?: number;
+  snippet?: string;
+  section?: string;
+  clause?: string;
+}
+
+export interface ChatResponse {
+  message: string;
+  citations: Citation[];
+  session_id: string;
+  intent?: string;
+  confidence?: number;
+  notes?: string[];
+  timing_ms?: number;
+}
+
+export async function chatAPI(request: ChatRequest): Promise<ChatResponse> {
+  console.log('🚀 STRYDA API Request:', { 
+    endpoint: `${API_BASE}/api/chat`,
+    session_id: request.session_id.substring(0, 8) + '...',
+    message_length: request.message.length 
+  });
   
   try {
-    console.log('🚀 Chat request:', { session_id: request.session_id, message: request.message.substring(0, 50) + '...' });
-    
     const response = await fetch(`${API_BASE}/api/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(request),
-      timeout: 30000,
     });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText.substring(0, 120)}`);
+    }
 
     const data = await response.json();
     
-    if (!response.ok) {
-      throw new APIError(response.status, data.message || 'Request failed');
-    }
-
-    const latency = Date.now() - startTime;
-    console.log(`✅ Chat response received: ${latency}ms, ${data.citations?.length || 0} citations`);
-    
-    // Analytics logging
-    console.log('📊 Chat Analytics:', {
-      latency_ms: latency,
-      citations_count: data.citations?.length || 0,
-      response_length: data.message?.length || 0,
-      session_id: data.session_id
+    console.log('✅ STRYDA API Response:', {
+      message_length: data.message?.length,
+      citations_count: data.citations?.length,
+      intent: data.intent,
+      timing_ms: data.timing_ms
     });
 
     return data;
     
   } catch (error) {
-    const latency = Date.now() - startTime;
-    
-    if (error instanceof APIError) {
-      throw error;
-    }
-    
-    console.error('❌ Chat request failed:', error);
-    throw new APIError(0, `Network error: ${error.message}`);
-  }
-}
-
-// Legacy ask endpoint for backward compatibility
-export async function postAsk(query: string): Promise<{ answer: string; citation: any[] }> {
-  try {
-    const response = await fetch(`${API_BASE}/api/ask`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error('❌ Ask request failed:', error);
+    console.error('❌ STRYDA API Error:', error);
     throw error;
   }
 }
+
+// Legacy compatibility
+export const sendChat = chatAPI;
+export const postChat = chatAPI;
