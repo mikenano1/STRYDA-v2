@@ -160,14 +160,14 @@ export default function ChatScreen() {
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response || "I'm still learning about NZ building codes. Can you try rephrasing your question?",
+        text: data.message || "I'm still learning about NZ building codes. Can you try rephrasing your question?",
         sender: 'bot',
         timestamp: new Date(),
         citations: data.citations || [],
-        confidence_score: data.confidence_score,
+        confidence_score: data.confidence,
         sources_used: data.sources_used || [],
         compliance_issues: data.compliance_issues || [],
-        processing_time_ms: data.processing_time_ms,
+        processing_time_ms: data.timing_ms,
         visual_content: data.visual_content || [],
       };
 
