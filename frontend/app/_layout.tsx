@@ -6,28 +6,24 @@ export default function RootLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#FF7A00',
-        tabBarInactiveTintColor: '#666666',
+        tabBarActiveTintColor: '#FF7A00', // STRYDA orange
+        tabBarInactiveTintColor: '#777777',
         tabBarStyle: {
-          backgroundColor: '#111111', // Match STRYDA's dark theme
+          backgroundColor: '#111111', // STRYDA dark background
           borderTopWidth: 1,
           borderTopColor: '#333333',
           paddingBottom: 25,
-          paddingTop: 5,
+          paddingTop: 6,
           height: 80,
         },
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '500',
-          marginTop: 2,
-        },
-        tabBarIconStyle: {
-          marginBottom: 2,
         },
       }}>
-      {/* EXACTLY 4 TABS - STRYDA DESIGN */}
+      {/* EXACTLY 4 TABS - MATCHING EXACT FILE NAMES */}
       <Tabs.Screen
-        name="index"
+        name="(tabs)/index"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
@@ -36,7 +32,7 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name="chat" 
+        name="(tabs)/chat"
         options={{
           title: 'Chat',
           tabBarIcon: ({ color }) => (
@@ -45,16 +41,16 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name="library"
+        name="(tabs)/library" 
         options={{
-          title: 'Library', 
+          title: 'Library',
           tabBarIcon: ({ color }) => (
             <Ionicons name="library" size={20} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="work"
+        name="(tabs)/work"
         options={{
           title: 'Tools',
           tabBarIcon: ({ color }) => (
