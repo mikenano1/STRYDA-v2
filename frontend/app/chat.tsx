@@ -153,8 +153,6 @@ export default function ChatScreen() {
         body: JSON.stringify({
           message: messageText || initialMessage,
           session_id: 'mobile_app_session',
-          enable_compliance_analysis: true,
-          enable_query_processing: true,
         }),
       });
 
