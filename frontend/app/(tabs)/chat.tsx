@@ -392,6 +392,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
+  apiDebug: {
+    color: '#888888',
+    fontSize: 10,
+    marginTop: 2,
+  },
   newChatButton: {
     backgroundColor: theme.accent,
     borderRadius: 12,
