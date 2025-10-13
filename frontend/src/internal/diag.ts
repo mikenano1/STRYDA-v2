@@ -1,5 +1,5 @@
 export const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? 'https://onsite-copilot.preview.emergentagent.com';
-export const DEV_DIAG = process.env.EXPO_PUBLIC_DEV_DIAG === '1';
+export const DEV_DIAG = false; // Disabled by default for production
 
 export async function pingHealth() {
   const url = `${API_BASE}/health`;
