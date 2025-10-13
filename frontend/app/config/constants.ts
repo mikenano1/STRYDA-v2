@@ -1,15 +1,20 @@
 /**
  * STRYDA Configuration Constants
- * SINGLE SOURCE OF TRUTH - Preview URL only, no localhost fallbacks
+ * Hardcoded preview URL for production deployment
  */
 
-export const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? 'https://onsite-copilot.preview.emergentagent.com';
+export const API_BASE = "https://onsite-copilot.preview.emergentagent.com";
+export const FEATURE_TIER1 = true;
 
 export const CONFIG = {
   API_BASE,
-  USE_BACKEND: process.env.EXPO_PUBLIC_USE_BACKEND === 'true',
+  USE_BACKEND: true,
   DEBUG: process.env.CHAT_DEBUG === 'true',
+  FEATURE_TIER1,
 } as const;
 
-// Log once at startup
-console.log('[config] API_BASE=' + API_BASE);
+// Log configuration for debugging
+console.log('[config] STRYDA Production Config:', {
+  API_BASE,
+  FEATURE_TIER1
+});
