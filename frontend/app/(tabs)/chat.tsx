@@ -141,13 +141,10 @@ export default function ChatScreen() {
       setMessages(prev => [...prev, assistantMessage]);
       
     } catch (error) {
-      const endTime = Date.now();
-      const duration = endTime - startTime;
-      
       console.error('❌ Chat request failed:', error);
       
-      // Telemetry: chat_error
-      console.log(`[telemetry] chat_error timing_ms=${duration} error=${error.message.substring(0, 50)}`);
+      // Telemetry: chat_error  
+      console.log(`[telemetry] chat_error timing_ms=${data.timing_ms || 0} error=${error.message.substring(0, 50)}`);
       
       // Add error message with retry
       const errorMessage: ChatMessage = {
