@@ -67,21 +67,10 @@ export default function ChatScreen() {
   }, []);
 
   const sendMessage = async () => {
-    // Diagnostic log
-    console.log('🎯 Send button pressed:', {
-      inputLength: inputText.trim().length,
-      sessionId: sessionId.substring(0, 10) + '...',
-      isSending
-    });
-    
-    // Guard clauses
-    if (isSending) {
-      console.log('⚠️ Already sending, ignoring press');
-      return;
-    }
-    
-    if (inputText.trim().length === 0) {
-      console.log('⚠️ Empty input, ignoring press');
+    // Safe parsing with defensive coding
+    const userText = inputText.trim();
+    if (!userText || isSending) {
+      console.log('⚠️ Send blocked:', { userText: userText.length, isSending });
       return;
     }
     
@@ -90,74 +79,89 @@ export default function ChatScreen() {
       return;
     }
     
-    const messageText = inputText.trim();
-    const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
-    
-    // Clear input and add user message (optimistic)
-    setInputText('');
-    const userMessage: ChatMessage = {
-      id: `user_${Date.now()}`,
-      role: 'user',
-      text: messageText,
+    // Create user message
+    const userMsg: Msg = { 
+      id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, 
+      role: 'user', 
+      text: userText,
       timestamp: Date.now()
     };
     
-    setMessages(prev => [...prev, userMessage]);
+    // Clear input and add user message (functional update)
+    setInputText('');
+    setMessages(prev => [...prev, userMsg]);
     setIsSending(true);
     
     // Telemetry: chat_send
-    console.log(`[telemetry] chat_send session_id=${sessionId.substring(0, 8)}... input_length=${messageText.length}`);
-    
-    const startTime = Date.now();
+    console.log(`[telemetry] chat_send session_id=${sessionId.substring(0, 8)}... input_length=${userText.length}`);
     
     try {
-      console.log('🎯 POST /api/chat to:', `${apiBase}/api/chat`, { 
-        session_id: sessionId, 
-        message_len: messageText.length 
+      console.log('🎯 POST /api/chat:', { 
+        session_id: sessionId.substring(0, 10) + '...',
+        message_len: userText.length 
       });
       
       // Use centralized API client
-      const data = await chatAPI({
+      const res = await chatAPI({
         session_id: sessionId,
-        message: messageText
+        message: userText
       });
       
-      console.log('🎯 Response OK:', { 
-        messageLength: data.message?.length,
-        citationsCount: data.citations?.length,
-        intent: data.intent,
-        timingMs: data.timing_ms
+      // DEBUG: Log complete server response
+      console.log('SERVER_RESPONSE', JSON.stringify(res, null, 2));
+      
+      // Normalize response with fallback chain
+      const answer = (res && (res.answer || res.message || res?.output?.text || res?.data?.answer)) ?? '';
+      const assistantText = String(answer).trim();
+      
+      console.log('🎯 Response parsed:', { 
+        messageLength: assistantText.length,
+        citationsCount: res.citations?.length || 0,
+        intent: res.intent,
+        timingMs: res.timing_ms
       });
       
-      // Telemetry: chat_response
-      console.log(`[telemetry] chat_response timing_ms=${data.timing_ms || 0} citations_count=${data.citations?.length || 0}`);
+      // Guard against accidental echo
+      if (assistantText === userText && assistantText !== '') {
+        console.warn('⚠️ Echo detected; response matches user input');
+      }
       
-      // Add assistant message
-      const assistantMessage: ChatMessage = {
-        id: `assistant_${Date.now()}`,
+      // Create assistant message with safe parsing
+      const assistantMsg: Msg = {
+        id: `assistant_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         role: 'assistant',
-        text: data.message || 'No response received',
-        citations: data.citations || [],
+        text: assistantText || '(no answer received)',
+        citations: res?.citations || res?.data?.citations || [],
         timestamp: Date.now()
       };
       
-      setMessages(prev => [...prev, assistantMessage]);
+      // Telemetry: chat_response
+      console.log(`[telemetry] chat_response timing_ms=${res.timing_ms || 0} citations_count=${res.citations?.length || 0}`);
       
-    } catch (error) {
+      setMessages(prev => [...prev, assistantMsg]);
+      
+      // Optimistic health update on successful chat
+      setHealthStatus('ok');
+      setHealthFailureCount(0);
+      
+    } catch (error: any) {
       console.error('❌ Chat request failed:', error);
       
       // Telemetry: chat_error  
-      console.log(`[telemetry] chat_error timing_ms=${data.timing_ms || 0} error=${error.message.substring(0, 50)}`);
+      console.log(`[telemetry] chat_error error=${error.message.substring(0, 50)}`);
       
       // Add error message with retry
-      const errorMessage: ChatMessage = {
+      const errorMsg: Msg = {
         id: `error_${Date.now()}`,
         role: 'assistant',
         text: `Couldn't reach server. ${error.message}`,
         timestamp: Date.now()
       };
       
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages(prev => [...prev, errorMsg]);
+      
+      // Update health status
+      setHealthStatus('failed');
       
       Alert.alert(
         'Connection Error',
