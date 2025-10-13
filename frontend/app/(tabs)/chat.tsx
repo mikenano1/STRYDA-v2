@@ -105,40 +105,22 @@ export default function ChatScreen() {
     const startTime = Date.now();
     
     try {
-      console.log('📡 Making API request to:', `${apiBase}/api/chat`);
-      
-      const response = await fetch(`${apiBase}/api/chat`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          session_id: sessionId,
-          message: messageText
-        })
+      console.log('🎯 POST /api/chat to:', `${apiBase}/api/chat`, { 
+        session_id: sessionId, 
+        message_len: messageText.length 
       });
       
-      const endTime = Date.now();
-      const duration = endTime - startTime;
-      
-      console.log('📡 API response:', {
-        status: response.status,
-        statusText: response.statusText,
-        duration: `${duration}ms`
+      // Use centralized API client
+      const data = await chatAPI({
+        session_id: sessionId,
+        message: messageText
       });
       
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText.substring(0, 120)}`);
-      }
-      
-      const data = await response.json();
-      
-      console.log('✅ Chat response received:', { 
+      console.log('🎯 Response OK:', { 
         messageLength: data.message?.length,
-        citationCount: data.citations?.length,
-        timingMs: data.timing_ms,
-        sessionId: data.session_id?.substring(0, 10) + '...'
+        citationsCount: data.citations?.length,
+        intent: data.intent,
+        timingMs: data.timing_ms
       });
       
       // Telemetry: chat_response
