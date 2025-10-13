@@ -91,6 +91,9 @@ export default function HomeScreen() {
           <Text style={styles.quickButtonText}>💨 Wind Zone Requirements</Text>
         </TouchableOpacity>
       </View>
+      
+      {/* Diagnostic Overlay */}
+      <DiagOverlay />
     </SafeAreaView>
   );
 }
