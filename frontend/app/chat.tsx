@@ -182,8 +182,8 @@ export default function ChatScreen() {
     setIsLoading(true);
 
     try {
-      // Call the enhanced backend API for AI response
-      const response = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/chat/enhanced`, {
+      // Call the backend API for AI response
+      const response = await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
