@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import { DEV_DIAG } from '../internal/diag';
-import DiagOverlay from '../internal/DiagOverlay';
+import { DEV_DIAG } from '../../src/internal/diag';
+import DiagOverlay from '../../src/internal/DiagOverlay';
 
 const theme = {
   bg: '#111111',
