@@ -10,6 +10,7 @@ import {
   Platform,
 } from 'react-native';
 import * as Speech from 'expo-speech';
+
 // TODO: Re-enable @react-native-voice/voice once custom dev client is built
 // import Voice from '@react-native-voice/voice';
 
@@ -31,8 +32,15 @@ const Voice = {
   isRecognizing: async () => false,
 };
 
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { Colors } from '@/constants/Colors';
+// Placeholder imports for missing components
+const IconSymbol = ({ name, size, color }: any) => (
+  <View style={{ width: size, height: size, backgroundColor: color || '#ccc' }} />
+);
+
+const Colors = {
+  light: { tint: '#FF7A00', background: '#111111', text: '#FFFFFF' },
+  dark: { tint: '#FF7A00', background: '#111111', text: '#FFFFFF' }
+};
 
 interface VoiceControllerProps {
   onVoiceInput: (text: string) => void;
