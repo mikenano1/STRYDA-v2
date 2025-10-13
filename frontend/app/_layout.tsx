@@ -1,34 +1,62 @@
 import { Tabs } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
-export default function Layout() {
+export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
-      {/* ONLY 4 TABS - EVERYTHING ELSE HIDDEN */}
-      <Tabs.Screen name="index"   options={{ title: 'Home'    }} />
-      <Tabs.Screen name="chat"    options={{ title: 'Chat'    }} />
-      <Tabs.Screen name="library" options={{ title: 'Library' }} />
-      <Tabs.Screen name="work"    options={{ title: 'Tools'   }} />
-      
-      {/* HIDE ALL OTHER DISCOVERED ROUTES */}
-      <Tabs.Screen name="_sitemap" options={{ href: null }} />
-      <Tabs.Screen name="+not-found" options={{ href: null }} />
-      <Tabs.Screen name="(tabs)/ChatScreen" options={{ href: null }} />
-      <Tabs.Screen name="internal/DiagOverlay" options={{ href: null }} />
-      <Tabs.Screen name="internal/chat" options={{ href: null }} />
-      <Tabs.Screen name="internal/index_fixed" options={{ href: null }} />
-      <Tabs.Screen name="internal/library" options={{ href: null }} />
-      <Tabs.Screen name="internal/work" options={{ href: null }} />
-      <Tabs.Screen name="internal/components/ChatMessage" options={{ href: null }} />
-      <Tabs.Screen name="internal/components/CitationPill" options={{ href: null }} />
-      <Tabs.Screen name="internal/lib/telemetry" options={{ href: null }} />
-      <Tabs.Screen name="internal/state/chatStore" options={{ href: null }} />
-      <Tabs.Screen name="internal/config/constants" options={{ href: null }} />
-      <Tabs.Screen name="internal/config/env" options={{ href: null }} />
-      <Tabs.Screen name="internal/lib/api" options={{ href: null }} />
-      <Tabs.Screen name="internal/lib/session" options={{ href: null }} />
-      <Tabs.Screen name="internal/state/chat" options={{ href: null }} />
-      <Tabs.Screen name="internal/types/chat" options={{ href: null }} />
-      <Tabs.Screen name="internal/diag" options={{ href: null }} />
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#FF7A00',
+        tabBarInactiveTintColor: '#666666',
+        tabBarStyle: {
+          backgroundColor: '#000000',
+          borderTopWidth: 1,
+          borderTopColor: '#222222',
+          height: 85,
+          paddingBottom: 25,
+          paddingTop: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '500',
+        },
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Chat',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="chatbubble-ellipses" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="library"
+        options={{
+          title: 'Library',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="library" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="work"
+        options={{
+          title: 'Tools',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="construct" size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
