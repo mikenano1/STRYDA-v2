@@ -14,6 +14,9 @@ const theme = {
   inputBg: '#1A1A1A' 
 };
 
+// Add explicit types and safe parsing
+type Msg = { id: string; role: 'user'|'assistant'; text: string; citations?: any[]; timestamp: number };
+
 interface Citation {
   source: string;
   page: number;
