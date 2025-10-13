@@ -222,7 +222,7 @@ export default function ChatScreen() {
       <View style={styles.header}>
         <View>
           <Text style={styles.headerTitle}>STRYDA.ai</Text>
-          <Text style={styles.apiDebug}>API: {API_BASE.split('//')[1]}</Text>
+          <Text style={styles.apiDebug}>API: {(process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001').split('//')[1]}</Text>
         </View>
         <TouchableOpacity 
           style={styles.newChatButton}
