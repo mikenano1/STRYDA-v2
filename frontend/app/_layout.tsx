@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function TabLayout() {
+export default function RootLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -9,42 +9,47 @@ export default function TabLayout() {
         tabBarActiveTintColor: '#FF7A00',
         tabBarInactiveTintColor: '#666666',
         tabBarStyle: {
-          backgroundColor: '#000000',
+          backgroundColor: '#111111', // Match STRYDA's dark theme
           borderTopWidth: 1,
-          borderTopColor: '#222222',
-          height: 85,
+          borderTopColor: '#333333',
           paddingBottom: 25,
-          paddingTop: 8,
+          paddingTop: 5,
+          height: 80,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: '500',
+          marginTop: 2,
+        },
+        tabBarIconStyle: {
+          marginBottom: 2,
         },
       }}>
+      {/* EXACTLY 4 TABS - STRYDA DESIGN */}
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="home" size={20} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="chat"
+        name="chat" 
         options={{
           title: 'Chat',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="chatbubble-ellipses" size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="chatbubble-ellipses" size={20} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="library"
         options={{
-          title: 'Library',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="library" size={size} color={color} />
+          title: 'Library', 
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="library" size={20} color={color} />
           ),
         }}
       />
@@ -52,8 +57,8 @@ export default function TabLayout() {
         name="work"
         options={{
           title: 'Tools',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="construct" size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="construct" size={20} color={color} />
           ),
         }}
       />
