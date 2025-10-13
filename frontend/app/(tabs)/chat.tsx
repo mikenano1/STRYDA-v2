@@ -355,6 +355,9 @@ export default function ChatScreen() {
           )}
         </TouchableOpacity>
       </View>
+      
+      {/* Diagnostic Overlay */}
+      <DiagOverlay />
     </SafeAreaView>
   );
 }
