@@ -398,6 +398,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     marginTop: 2,
   },
+  routeDebug: {
+    color: '#666666',
+    fontSize: 9,
+    marginTop: 1,
+  },
   newChatButton: {
     backgroundColor: theme.accent,
     borderRadius: 12,
