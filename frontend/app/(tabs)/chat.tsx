@@ -80,7 +80,7 @@ export default function ChatScreen() {
     }
     
     // Create user message
-    const userMsg: Msg = { 
+    const userMessage: ChatMessage = { 
       id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, 
       role: 'user', 
       text: userText,
@@ -89,7 +89,7 @@ export default function ChatScreen() {
     
     // Clear input and add user message (functional update)
     setInputText('');
-    setMessages(prev => [...prev, userMsg]);
+    setMessages(prev => [...prev, userMessage]);
     setIsSending(true);
     
     // Telemetry: chat_send
@@ -127,7 +127,7 @@ export default function ChatScreen() {
       }
       
       // Create assistant message with safe parsing
-      const assistantMsg: Msg = {
+      const assistantMessage: ChatMessage = {
         id: `assistant_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         role: 'assistant',
         text: assistantText || '(no answer received)',
@@ -138,11 +138,7 @@ export default function ChatScreen() {
       // Telemetry: chat_response
       console.log(`[telemetry] chat_response timing_ms=${res.timing_ms || 0} citations_count=${res.citations?.length || 0}`);
       
-      setMessages(prev => [...prev, assistantMsg]);
-      
-      // Optimistic health update on successful chat
-      setHealthStatus('ok');
-      setHealthFailureCount(0);
+      setMessages(prev => [...prev, assistantMessage]);
       
     } catch (error: any) {
       console.error('❌ Chat request failed:', error);
@@ -151,17 +147,14 @@ export default function ChatScreen() {
       console.log(`[telemetry] chat_error error=${error.message.substring(0, 50)}`);
       
       // Add error message with retry
-      const errorMsg: Msg = {
+      const errorMessage: ChatMessage = {
         id: `error_${Date.now()}`,
         role: 'assistant',
         text: `Couldn't reach server. ${error.message}`,
         timestamp: Date.now()
       };
       
-      setMessages(prev => [...prev, errorMsg]);
-      
-      // Update health status
-      setHealthStatus('failed');
+      setMessages(prev => [...prev, errorMessage]);
       
       Alert.alert(
         'Connection Error',
