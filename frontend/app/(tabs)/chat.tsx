@@ -60,26 +60,17 @@ export default function ChatScreen() {
   const [healthFailureCount, setHealthFailureCount] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
-  // Initialize session and diagnostic logs
+  // Initialize session (existing code preserved)
   useEffect(() => {
     const initializeApp = async () => {
-      // 1) Log API_BASE
-      const apiBase = process.env.EXPO_PUBLIC_API_BASE || 'http://localhost:8001';
-      console.log('🔧 EXPO_PUBLIC_API_BASE:', apiBase);
-      
-      // 2) Health check
+      // Health check removed - causing JSON parse errors
       try {
-        const healthResponse = await fetch(`${apiBase}/health`);
-        const healthData = await healthResponse.json();
-        console.log('✅ Health check result:', healthData);
+        const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        setSessionId(newSessionId);
+        console.log('🔄 Chat session initialized:', newSessionId.substring(0, 15) + '...');
       } catch (error) {
-        console.error('❌ Health check failed:', error);
+        console.error('❌ Session init failed:', error);
       }
-      
-      // 3) Generate session ID
-      const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-      setSessionId(newSessionId);
-      console.log('🔄 Chat session initialized:', newSessionId.substring(0, 15) + '...');
     };
     
     initializeApp();
