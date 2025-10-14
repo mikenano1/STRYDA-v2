@@ -189,7 +189,7 @@ export default function ChatScreen() {
       console.log(`[telemetry] chat_error error=${error.message?.substring(0, 50) || 'unknown'}`);
       
       // Add error message with retry
-      const errorMsg: Msg = {
+      const errorMsg: ChatMessage = {
         id: `error_${Date.now()}`,
         role: 'assistant',
         text: errorText,
