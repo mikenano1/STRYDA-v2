@@ -3,7 +3,7 @@ STRYDA Backend Hardening - Input Validation & Security
 Production-ready validation schemas and error handling
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional, Dict, Any
 from fastapi import HTTPException
 import re
