@@ -242,6 +242,101 @@ export default function ChatScreen() {
     );
   };
 
+  // Render message item
+  const renderMessage = ({ item }: { item: Msg }) => (
+    <View 
+      style={[
+        styles.messageContainer,
+        item.role === 'user' ? styles.userMessage : styles.assistantMessage
+      ]}
+    >
+      <View style={[
+        styles.messageBubble,
+        item.role === 'user' ? styles.userBubble : styles.assistantBubble
+      ]}>
+        <Text style={[
+          styles.messageText,
+          item.role === 'user' ? styles.userText : styles.assistantText
+        ]}>
+          {item.text}
+        </Text>
+      </View>
+      
+      {/* Citations */}
+      {item.role === 'assistant' && item.citations && item.citations.length > 0 && (
+        <View style={styles.citationsContainer}>
+          {item.citations.map((citation, index) => (
+            <TouchableOpacity
+              key={`${citation.source}-${citation.page}-${index}`}
+              style={styles.citationPill}
+              onPress={() => handleCitationPress(citation)}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <Text style={styles.citationText}>
+                {citation.source} p.{citation.page}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+      
+      {/* Expanded Citation */}
+      {expandedCitation && expandedCitation.source && 
+       item.citations?.some(c => c.page === expandedCitation.page) && (
+        <View style={styles.expandedCitation}>
+          <Text style={styles.expandedCitationTitle}>
+            {expandedCitation.source} • Page {expandedCitation.page}
+          </Text>
+          
+          {expandedCitation.snippet && (
+            <Text style={styles.expandedCitationSnippet}>
+              {expandedCitation.snippet}
+            </Text>
+          )}
+          
+          <View style={styles.citationMeta}>
+            {expandedCitation.score && (
+              <Text style={styles.metaText}>
+                Relevance: {(expandedCitation.score * 100).toFixed(0)}%
+              </Text>
+            )}
+            {expandedCitation.section && (
+              <Text style={styles.metaText}>
+                Section: {expandedCitation.section.substring(0, 30)}...
+              </Text>
+            )}
+            {expandedCitation.clause && (
+              <Text style={styles.metaText}>
+                Clause: {expandedCitation.clause}
+              </Text>
+            )}
+          </View>
+        </View>
+      )}
+    </View>
+  );
+
+  // Render Send Button
+  const SendButton = ({ onPress }: { onPress: () => void }) => (
+    <TouchableOpacity
+      style={[
+        styles.sendButton,
+        (!inputText.trim() || isSending) && styles.sendButtonDisabled
+      ]}
+      onPress={onPress}
+      disabled={!inputText.trim() || isSending}
+      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+    >
+      {isSending ? (
+        <ActivityIndicator size="small" color="#000000" />
+      ) : (
+        <Text style={styles.sendButtonText}>Send</Text>
+      )}
+    </TouchableOpacity>
+  );
+
+  const behavior = Platform.OS === 'ios' ? 'padding' : 'height';
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -260,8 +355,8 @@ export default function ChatScreen() {
         </TouchableOpacity>
       </View>
       
-      {/* Messages Area */}
-      <View style={styles.messagesContainer}>
+      <KeyboardAvoidingView style={styles.chatContainer} behavior={behavior} keyboardVerticalOffset={insets.top}>
+        {/* Messages */}
         {messages.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyTitle}>Ask STRYDA about:</Text>
@@ -271,131 +366,78 @@ export default function ChatScreen() {
             <Text style={styles.emptyHint}>• Building code compliance</Text>
           </View>
         ) : (
-          <ScrollView 
+          <FlatList
+            ref={flatListRef}
+            data={messages}
+            keyExtractor={(item) => item.id}
+            renderItem={renderMessage}
             style={styles.messagesList}
-            contentContainerStyle={styles.messagesContent}
+            contentContainerStyle={{ padding: 16, paddingBottom: 120 }}
             showsVerticalScrollIndicator={false}
-          >
-            {messages.map((message) => (
-              <View 
-                key={message.id} 
-                style={[
-                  styles.messageContainer,
-                  message.role === 'user' ? styles.userMessage : styles.assistantMessage
-                ]}
-              >
-                <View style={[
-                  styles.messageBubble,
-                  message.role === 'user' ? styles.userBubble : styles.assistantBubble
-                ]}>
-                  <Text style={[
-                    styles.messageText,
-                    message.role === 'user' ? styles.userText : styles.assistantText
-                  ]}>
-                    {message.text}
-                  </Text>
-                </View>
-                
-                {/* Citations */}
-                {message.role === 'assistant' && message.citations && message.citations.length > 0 && (
-                  <View style={styles.citationsContainer}>
-                    {message.citations.map((citation, index) => (
-                      <TouchableOpacity
-                        key={`${citation.source}-${citation.page}-${index}`}
-                        style={styles.citationPill}
-                        onPress={() => handleCitationPress(citation)}
-                        hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                      >
-                        <Text style={styles.citationText}>
-                          {citation.source} p.{citation.page}
-                        </Text>
-                      </TouchableOpacity>
-                    ))}
-                  </View>
-                )}
-                
-                {/* Expanded Citation */}
-                {expandedCitation && expandedCitation.source && 
-                 message.citations?.some(c => c.page === expandedCitation.page) && (
-                  <View style={styles.expandedCitation}>
-                    <Text style={styles.expandedCitationTitle}>
-                      {expandedCitation.source} • Page {expandedCitation.page}
-                    </Text>
-                    
-                    {expandedCitation.snippet && (
-                      <Text style={styles.expandedCitationSnippet}>
-                        {expandedCitation.snippet}
-                      </Text>
-                    )}
-                    
-                    <View style={styles.citationMeta}>
-                      {expandedCitation.score && (
-                        <Text style={styles.metaText}>
-                          Relevance: {(expandedCitation.score * 100).toFixed(0)}%
-                        </Text>
-                      )}
-                      {expandedCitation.section && (
-                        <Text style={styles.metaText}>
-                          Section: {expandedCitation.section.substring(0, 30)}...
-                        </Text>
-                      )}
-                      {expandedCitation.clause && (
-                        <Text style={styles.metaText}>
-                          Clause: {expandedCitation.clause}
-                        </Text>
-                      )}
-                    </View>
-                  </View>
-                )}
-              </View>
-            ))}
-          </ScrollView>
+            onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+            keyboardShouldPersistTaps="handled"
+          />
         )}
-        
-        {/* Loading indicator */}
-        {isSending && (
-          <View style={styles.loadingContainer}>
-            <View style={styles.loadingBubble}>
-              <ActivityIndicator size="small" color={theme.muted} />
-              <Text style={styles.loadingText}>STRYDA is thinking...</Text>
-            </View>
+
+        {/* INPUT (Android & Web) */}
+        {Platform.OS !== 'ios' && (
+          <View style={[styles.inputContainer, { paddingBottom: Math.max(insets.bottom, 16) }]}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Ask STRYDA…"
+              placeholderTextColor={theme.muted}
+              value={inputText}
+              onChangeText={setInputText}
+              multiline
+              maxLength={4000}
+              editable={!isSending}
+              returnKeyType="send"
+              onSubmitEditing={sendMessage}
+              enablesReturnKeyAutomatically
+              blurOnSubmit={false}
+            />
+            <SendButton onPress={sendMessage} />
           </View>
         )}
-      </View>
-      
-      {/* Input Area */}
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Ask STRYDA…"
-          placeholderTextColor={theme.muted}
-          value={inputText}
-          onChangeText={setInputText}
-          multiline
-          maxLength={1000}
-          editable={!isSending}
-          returnKeyType="send"
-          onSubmitEditing={sendMessage}
-        />
-        <TouchableOpacity
-          style={[
-            styles.sendButton,
-            (!inputText.trim() || isSending) && styles.sendButtonDisabled
-          ]}
-          onPress={() => {
-            console.log('🎯 CHAT TAB - Send button onPress triggered');
-            sendMessage();
-          }}
-          disabled={!inputText.trim() || isSending}
-          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-        >
-          {isSending ? (
-            <ActivityIndicator size="small" color="#000000" />
-          ) : (
-            <Text style={styles.sendButtonText}>Send</Text>
-          )}
-        </TouchableOpacity>
-      </View>
+
+        {/* iOS: InputAccessoryView for keyboard avoidance */}
+        {Platform.OS === 'ios' && (
+          <>
+            <TextInput
+              style={{ height: 0 }}
+              value={inputText}
+              onChangeText={setInputText}
+              inputAccessoryViewID={ACCESSORY_ID}
+              onSubmitEditing={sendMessage}
+              returnKeyType="send"
+              enablesReturnKeyAutomatically
+              blurOnSubmit={false}
+              placeholder="Ask STRYDA…"
+              placeholderTextColor={theme.muted}
+            />
+            <InputAccessoryView nativeID={ACCESSORY_ID}>
+              <View style={[styles.iosInputContainer, { paddingBottom: Math.max(insets.bottom, 12) }]}>
+                <View style={styles.iosInputRow}>
+                  <TextInput
+                    style={styles.iosTextInput}
+                    value={inputText}
+                    onChangeText={setInputText}
+                    onSubmitEditing={sendMessage}
+                    returnKeyType="send"
+                    enablesReturnKeyAutomatically
+                    blurOnSubmit={false}
+                    placeholder="Ask STRYDA…"
+                    placeholderTextColor={theme.muted}
+                    maxLength={4000}
+                    editable={!isSending}
+                  />
+                  <SendButton onPress={sendMessage} />
+                </View>
+              </View>
+            </InputAccessoryView>
+          </>
+        )}
+      </KeyboardAvoidingView>
       
       {/* Diagnostic Overlay (completely disabled for production) */}
       {false ? <DiagOverlay /> : null}
