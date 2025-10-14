@@ -1,6 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.security import HTTPBearer
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 from pydantic import BaseModel
 from typing import List, Optional
 from dotenv import load_dotenv
@@ -9,10 +13,16 @@ import time
 import json
 import psycopg2
 import psycopg2.extras
+import asyncio
 
-# Load environment variables from .env file
+# Load environment variables first
 load_dotenv()
 
+# Security and rate limiting
+limiter = Limiter(key_func=get_remote_address)
+
+# Import validation and modules
+from validation import validate_input, validate_output
 from rag.retriever import retrieve_and_answer
 from profiler import profiler
 
@@ -20,23 +30,54 @@ from profiler import profiler
 DATABASE_URL = os.getenv("DATABASE_URL")
 API_KEY = os.getenv("OPENAI_API_KEY")
 
-app = FastAPI(title="STRYDA Backend", version="0.2.0")
+# Environment validation (fail fast)
+required_env_vars = ["DATABASE_URL"]
+missing_vars = [var for var in required_env_vars if not os.getenv(var)]
 
-# CORS for development and production
+if missing_vars:
+    raise EnvironmentError(f"Missing required environment variables: {', '.join(missing_vars)}")
+
+app = FastAPI(
+    title="STRYDA Backend", 
+    version="1.4.0",
+    docs_url=None,  # Disable docs in production
+    redoc_url=None   # Disable redoc in production
+)
+
+# Security middleware
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# Enhanced CORS for production security
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://app.emergent.sh",
         "https://onsite-copilot.preview.emergentagent.com",
-        "http://localhost:3000",
-        "http://localhost:19006",
-        "http://localhost:8001",
-        "*"  # Allow all for development
+        "http://localhost:3000",  # Dev only
     ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_credentials=False,  # Enhanced security
+    allow_methods=["GET", "POST"],  # Specific methods only
+    allow_headers=["Content-Type", "Authorization"],
 )
+
+# Security headers middleware
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    
+    # Production security headers
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY" 
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    
+    # Remove server info
+    if "server" in response.headers:
+        del response.headers["server"]
+    
+    return response
 
 class HistoryItem(BaseModel):
     role: str
