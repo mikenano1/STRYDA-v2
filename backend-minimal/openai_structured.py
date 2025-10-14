@@ -104,165 +104,159 @@ def with_timeout_and_retry(func, timeout_seconds=20, max_retries=3, backoff_base
 
 def generate_structured_response(user_message: str, tier1_snippets: List[Dict], conversation_history: List[Dict] = None) -> Dict[str, Any]:
     """
-    Generate structured GPT response with strict JSON validation and resilience
+    Generate structured GPT response with proper async timeout handling
     """
     if not API_KEY:
         print("⚠️ No OpenAI API key - using server-side fallback")
-        
-        # Intelligent server-side response with Tier-1 citations
-        if "hello" in user_message.lower() or "hi" in user_message.lower():
-            return {
-                "answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
-                "intent": "chitchat",
-                "citations": [],
-                "model": "server_fallback",
-                "tokens_used": 0
-            }
-        elif tier1_snippets:
-            # Use Tier-1 content for compliance responses
-            primary_snippet = tier1_snippets[0]
-            source = primary_snippet.get('source', 'Building Standards')
-            content = primary_snippet.get('snippet', '')[:150]
-            
-            return {
-                "answer": f"Based on {source}: {content}... Refer to the citations for specific requirements.",
-                "intent": "compliance_strict", 
-                "citations": [
-                    {
-                        "source": doc.get("source", "Unknown"),
-                        "section": doc.get("section"),
-                        "page": str(doc.get("page", "")),
-                        "snippet": doc.get("snippet", "")[:200]
-                    }
-                    for doc in tier1_snippets[:3]
-                ],
-                "model": "server_fallback",
-                "tokens_used": 0
-            }
-        else:
-            return {
-                "answer": "I can help with NZ building standards. Could you be more specific about your building project?",
-                "intent": "clarify",
-                "citations": [],
-                "model": "server_fallback", 
-                "tokens_used": 0
-            }
+        return create_fallback_response(user_message, tier1_snippets, "no_api_key")
     
-    # If OpenAI is available, use structured generation (with timeout and retry)
-    def make_openai_call():
+    try:
         from openai import OpenAI
         client = OpenAI(api_key=API_KEY)
         
-        # Format context
+        # Format context from Tier-1 snippets
         snippet_context = ""
         if tier1_snippets:
             snippet_bullets = []
             for snippet in tier1_snippets[:3]:
                 source = snippet.get('source', 'Unknown')
                 section = snippet.get('section', '')
-                content = snippet.get('snippet', snippet.get('content', ''))[:200]
+                content = snippet.get('snippet', snippet.get('content', ''))[:150]
                 section_text = f" §{section}" if section else ""
-                snippet_bullets.append(f"• [{source}{section_text}] {content}")
+                snippet_bullets.append(f"• {source}{section_text}: {content}")
             snippet_context = "\n".join(snippet_bullets)
         
-        # Build messages for structured generation
+        # Build conversation-aware messages
         messages = [
-            {"role": "system", "content": "You are STRYDA, a NZ building standards assistant. Return only valid JSON with answer, intent, and citations fields."}
+            {"role": "system", "content": "You are STRYDA, a helpful NZ building assistant. Be conversational and practical. Use provided building standards to give accurate answers."}
         ]
         
-        user_content = f"""Query: {user_message}
-
-Available standards:
-{snippet_context if snippet_context else "(no specific standards found)"}
-
-Return JSON: {{"answer": "your response", "intent": "chitchat|compliance_strict|clarify", "citations": [...]}}"""
-
+        # Add recent conversation context
+        if conversation_history:
+            for msg in conversation_history[-2:]:  # Last 2 messages for context
+                messages.append({
+                    "role": msg.get("role", "user"),
+                    "content": msg.get("content", "")[:200]
+                })
+        
+        # Add current query with context
+        if snippet_context:
+            user_content = f"{user_message}\n\nAvailable building standards:\n{snippet_context}"
+        else:
+            user_content = user_message
+            
         messages.append({"role": "user", "content": user_content})
         
-        # Call OpenAI with structured output
+        print(f"🔄 Calling OpenAI {os.getenv('OPENAI_MODEL', 'gpt-4o-mini')}...")
+        
+        # Call OpenAI with proper timeout (no signal handling)
         response = client.chat.completions.create(
             model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
             messages=messages,
             temperature=0.3,
-            max_tokens=600,
-            response_format={"type": "json_object"}
+            max_tokens=500,
+            timeout=20  # Simple timeout parameter
         )
         
-        return response
-    
-    try:
-        # Execute with timeout and retry
-        response = with_timeout_and_retry(make_openai_call, timeout_seconds=20, max_retries=3)
-        
-        response_text = response.choices[0].message.content
+        # Extract response
+        answer = response.choices[0].message.content
         usage = response.usage
         
-        # STRICT JSON parsing
-        try:
-            structured_data = json.loads(response_text)
-            
-            # Validate required fields
-            required_fields = ['answer', 'intent', 'citations']
-            for field in required_fields:
-                if field not in structured_data:
-                    structured_data[field] = "" if field in ["answer", "intent"] else []
-            
-            # Add metadata
-            structured_data.update({
-                "model": os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
-                "tokens_used": usage.total_tokens if usage else 0,
-                "tokens_in": usage.prompt_tokens if usage else 0,
-                "tokens_out": usage.completion_tokens if usage else 0
-            })
-            
-            return structured_data
-            
-        except json.JSONDecodeError as e:
-            # Log the invalid output (truncated for safety)
-            output_sample = response_text[:1000] if response_text else "empty"
-            print(f"❌ JSON parse error: {e}")
-            print(f"❌ Model output (first 1k): {output_sample}")
-            
-            # Return 502 error data structure
-            raise ValueError("bad_json")
-            
+        print(f"✅ OpenAI response received: {len(answer)} chars, {usage.total_tokens} tokens")
+        
+        # Create structured response
+        structured_response = {
+            "answer": answer,
+            "intent": classify_intent_from_answer(answer, user_message),
+            "citations": format_tier1_citations(tier1_snippets[:3]),
+            "model": os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+            "tokens_used": usage.total_tokens,
+            "tokens_in": usage.prompt_tokens,
+            "tokens_out": usage.completion_tokens
+        }
+        
+        return structured_response
+        
     except Exception as e:
         error_str = str(e)
-        
-        # Mask API key in error messages
-        if API_KEY and API_KEY in error_str:
-            error_str = error_str.replace(API_KEY, "sk-***")
-        
         print(f"❌ OpenAI call failed: {error_str}")
         
-        if "bad_json" in error_str:
-            raise ValueError("bad_json")
+        # Check specific error types
+        if "Incorrect API key" in error_str:
+            print("   Root cause: Invalid OpenAI API key")
+        elif "429" in error_str:
+            print("   Root cause: Rate limit exceeded")
+        elif "timeout" in error_str.lower():
+            print("   Root cause: Request timeout")
         
-        # Return server-side fallback
-        if tier1_snippets:
-            return {
-                "answer": f"Based on available building standards: {tier1_snippets[0].get('snippet', '')[:100]}... Refer to citations for details.",
-                "intent": "compliance_strict",
-                "citations": [
-                    {
-                        "source": doc.get("source", "Unknown"),
-                        "section": doc.get("section"),
-                        "page": str(doc.get("page", "")),
-                        "snippet": doc.get("snippet", "")[:200]
-                    }
-                    for doc in tier1_snippets[:3]
-                ],
-                "model": "server_fallback",
-                "tokens_used": 0
-            }
-        
+        # Return proper fallback
+        return create_fallback_response(user_message, tier1_snippets, "openai_failed")
+
+def create_fallback_response(user_message: str, tier1_snippets: List[Dict], reason: str) -> Dict[str, Any]:
+    """Create intelligent fallback response"""
+    query_lower = user_message.lower()
+    
+    # Intelligent fallback based on query type
+    if any(word in query_lower for word in ['hello', 'hi', 'hey', 'thanks']):
         return {
-            "answer": "I encountered an issue processing your question. Please try rephrasing your query.",
-            "intent": "error_llm",
+            "answer": "Kia ora! I'm here to help with NZ building codes and practical guidance. What specific building question can I help you with?",
+            "intent": "chitchat",
             "citations": [],
-            "model": "error_fallback",
+            "model": f"server_intelligent_fallback_{reason}",
             "tokens_used": 0
         }
+    elif tier1_snippets:
+        # Use first relevant snippet intelligently
+        primary_doc = tier1_snippets[0]
+        source = primary_doc.get('source', 'building standards')
+        
+        return {
+            "answer": f"Based on {source}, here's what I found: {primary_doc.get('snippet', '')[:200]}... I can provide more specific guidance if you clarify your building situation.",
+            "intent": "compliance_strict",
+            "citations": format_tier1_citations(tier1_snippets[:3]),
+            "model": f"server_intelligent_fallback_{reason}",
+            "tokens_used": 0
+        }
+    else:
+        return {
+            "answer": "I'd be happy to help with building code questions! Could you be more specific about what you're working on? For example, are you asking about roofing, structural requirements, or weatherproofing?",
+            "intent": "clarify",
+            "citations": [],
+            "model": f"server_intelligent_fallback_{reason}",
+            "tokens_used": 0
+        }
+
+def classify_intent_from_answer(answer: str, original_query: str) -> str:
+    """Classify intent from the answer content"""
+    answer_lower = answer.lower()
+    query_lower = original_query.lower()
+    
+    if any(word in answer_lower for word in ['hello', 'hi', 'kia ora', 'help you']):
+        return "chitchat"
+    elif any(word in answer_lower for word in ['specific', 'precise', 'refer to', 'citation']):
+        return "compliance_strict"
+    elif '?' in answer:
+        return "clarify"
+    else:
+        return "general_building"
+
+def format_tier1_citations(tier1_snippets: List[Dict]) -> List[Dict]:
+    """Format Tier-1 snippets into proper citation structure"""
+    citations = []
+    
+    for doc in tier1_snippets:
+        citation = {
+            "id": f"cite_{doc.get('id', '')[:8]}",
+            "source": doc.get("source", "Unknown"),
+            "page": doc.get("page", 0),
+            "score": doc.get("score", 0.0),
+            "snippet": doc.get("snippet", "")[:200],
+            "section": doc.get("section"),
+            "clause": doc.get("clause")
+        }
+        citations.append(citation)
+    
+    return citations
 
 # Export for use in main app
 def get_structured_response():
