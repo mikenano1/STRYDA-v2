@@ -148,7 +148,7 @@ export default function ChatScreen() {
       });
       
       // Create assistant message with safe parsing
-      const assistantMsg: Msg = {
+      const assistantMsg: ChatMessage = {
         id: `assistant_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         role: 'assistant',
         text: assistantText || 'I need more information to provide a helpful answer.',
