@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import List, Optional
 from dotenv import load_dotenv
 import os
 import time
+import json
 import psycopg2
 import psycopg2.extras
 
