@@ -27,6 +27,8 @@ const theme = {
   inputBg: '#1A1A1A' 
 };
 
+const ACCESSORY_ID = 'chatToolbar';
+
 // Add explicit types and safe parsing
 type Msg = { id: string; role: 'user'|'assistant'; text: string; citations?: any[]; timestamp: number };
 
