@@ -50,11 +50,15 @@ interface ChatMessage {
 }
 
 export default function ChatScreen() {
+  const insets = useSafeAreaInsets();
   const [inputText, setInputText] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [sessionId, setSessionId] = useState('');
   const [expandedCitation, setExpandedCitation] = useState<Citation | null>(null);
+  const [healthStatus, setHealthStatus] = useState<'checking' | 'ok' | 'failed' | 'unknown'>('checking');
+  const [healthFailureCount, setHealthFailureCount] = useState(0);
+  const flatListRef = useRef<FlatList>(null);
 
   // Initialize session and diagnostic logs
   useEffect(() => {
