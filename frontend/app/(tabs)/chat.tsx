@@ -614,6 +614,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontStyle: 'italic',
   },
+  // Android/Web input styles
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
