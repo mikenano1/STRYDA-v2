@@ -89,7 +89,7 @@ export default function ChatScreen() {
     }
 
     // Create user message
-    const userMsg: Msg = { 
+    const userMsg: ChatMessage = { 
       id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, 
       role: 'user', 
       text: userText,
