@@ -14,7 +14,8 @@ class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=4000)
     metadata: Optional[Dict[str, Any]] = Field(default_factory=dict)
     
-    @validator('message')
+    @field_validator('message')
+    @classmethod
     def validate_message(cls, v):
         if not v or not v.strip():
             raise ValueError('Message cannot be empty or whitespace only')
@@ -26,7 +27,8 @@ class ChatRequest(BaseModel):
             
         return v_clean
     
-    @validator('session_id')
+    @field_validator('session_id')
+    @classmethod
     def validate_session_id(cls, v):
         if v is None:
             return None
