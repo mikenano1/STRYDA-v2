@@ -14,6 +14,7 @@ import psycopg2.extras
 load_dotenv()
 
 from rag.retriever import retrieve_and_answer
+from profiler import profiler
 
 # Database configuration
 DATABASE_URL = os.getenv("DATABASE_URL")
