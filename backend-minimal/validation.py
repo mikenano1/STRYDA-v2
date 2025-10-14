@@ -10,7 +10,7 @@ import re
 
 class ChatRequest(BaseModel):
     """Validated chat request with security constraints"""
-    session_id: Optional[str] = Field(None, max_length=100, regex=r'^[a-zA-Z0-9_-]*$')
+    session_id: Optional[str] = Field(None, max_length=100, pattern=r'^[a-zA-Z0-9_-]*$')
     message: str = Field(..., min_length=1, max_length=4000)
     metadata: Optional[Dict[str, Any]] = Field(default_factory=dict)
     
