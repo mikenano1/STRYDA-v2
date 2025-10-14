@@ -46,7 +46,8 @@ class Citation(BaseModel):
     page: Optional[str] = Field(None, max_length=20)
     snippet: str = Field(..., min_length=1, max_length=200)
     
-    @validator('snippet')
+    @field_validator('snippet')
+    @classmethod
     def validate_snippet(cls, v):
         if len(v) > 200:
             # Truncate at word boundary
