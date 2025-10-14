@@ -652,4 +652,27 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  // iOS-specific input styles
+  iosInputContainer: {
+    backgroundColor: '#111111',
+    paddingHorizontal: 16,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#333333',
+  },
+  iosInputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  iosTextInput: {
+    flex: 1,
+    backgroundColor: theme.inputBg,
+    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    fontSize: 16,
+    color: theme.text,
+    minHeight: 44,
+  },
 });
