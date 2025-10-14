@@ -58,7 +58,7 @@ class Citation(BaseModel):
 class ChatResponse(BaseModel):
     """Strict response schema for /api/chat"""
     answer: str = Field(..., min_length=1)
-    intent: str = Field(..., regex=r'^(chitchat|compliance_strict|clarify|general_building|error)$')
+    intent: str = Field(..., pattern=r'^(chitchat|compliance_strict|clarify|general_building|error)$')
     citations: List[Citation] = Field(default_factory=list, max_items=3)
     tier1_hit: bool = Field(default=False)
     model: str = Field(..., min_length=1)
