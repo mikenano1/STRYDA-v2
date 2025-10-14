@@ -93,8 +93,8 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
       
-      {/* Diagnostic Overlay (dev only) */}
-      {DEV_DIAG ? <DiagOverlay /> : null}
+      {/* Diagnostic Overlay (completely disabled for production) */}
+      {false ? <DiagOverlay /> : null}
     </SafeAreaView>
   );
 }
