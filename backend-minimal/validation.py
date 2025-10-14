@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional, Dict, Any
 from fastapi import HTTPException
 import re
+import time
 
 class ChatRequest(BaseModel):
     """Validated chat request with security constraints"""
