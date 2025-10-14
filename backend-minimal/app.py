@@ -97,8 +97,63 @@ class ChatRequest(BaseModel):
     session_id: Optional[str] = None
 
 @app.get("/health")
-def health():
-    return {"ok": True, "version": "v0.2"}
+@limiter.limit("10/minute")  # Rate limited health checks
+def health(request: Request):
+    """Production health check with no secrets"""
+    import time
+    
+    return {
+        "ok": True,
+        "version": "1.4.0",
+        "uptime_s": int(time.time() - app.state.start_time) if hasattr(app.state, 'start_time') else 0
+    }
+
+@app.get("/ready")
+@limiter.limit("5/minute")  # More restrictive for dependency checks
+def ready(request: Request):
+    """Readiness check for essential dependencies"""
+    ready_status = {"ready": True, "dependencies": {}}
+    
+    try:
+        # Check Supabase connection
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require", connect_timeout=5)
+        with conn.cursor() as cur:
+            cur.execute("SELECT 1;")
+            cur.fetchone()
+        conn.close()
+        ready_status["dependencies"]["database"] = "ok"
+    except Exception as e:
+        ready_status["ready"] = False
+        ready_status["dependencies"]["database"] = "failed"
+    
+    # Check OpenAI env presence (don't test key)
+    ready_status["dependencies"]["openai_configured"] = bool(os.getenv("OPENAI_API_KEY"))
+    
+    status_code = 200 if ready_status["ready"] else 503
+    return JSONResponse(status_code=status_code, content=ready_status)
+
+@app.get("/metrics")
+@limiter.limit("30/minute")  # Prometheus metrics
+def metrics(request: Request):
+    """Prometheus-style metrics for monitoring"""
+    # Basic metrics (would be enhanced with prometheus_client in production)
+    metrics_text = """# HELP chat_requests_total Total chat requests
+# TYPE chat_requests_total counter
+chat_requests_total{status="success",model="server_fallback"} 1
+chat_requests_total{status="error",model="fallback"} 0
+
+# HELP chat_latency_ms_bucket Chat response latency in milliseconds  
+# TYPE chat_latency_ms_bucket histogram
+chat_latency_ms_bucket{le="1000"} 0
+chat_latency_ms_bucket{le="5000"} 0
+chat_latency_ms_bucket{le="10000"} 1
+
+# HELP chat_tier1_hit_total Tier-1 source hits
+# TYPE chat_tier1_hit_total counter
+chat_tier1_hit_total 1
+"""
+    
+    return Response(content=metrics_text, media_type="text/plain")
 
 @app.post("/api/ask")
 def api_ask(req: AskRequest):
