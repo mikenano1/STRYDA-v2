@@ -1,6 +1,19 @@
-import { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView, ActivityIndicator } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useState, useEffect, useRef } from 'react';
+import { 
+  Text, 
+  View, 
+  StyleSheet, 
+  TextInput, 
+  TouchableOpacity, 
+  Alert, 
+  ScrollView, 
+  ActivityIndicator,
+  Platform,
+  KeyboardAvoidingView,
+  InputAccessoryView,
+  FlatList
+} from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { API_BASE } from '../../src/internal/config/constants';
 import { chatAPI } from '../../src/internal/lib/api';
 import { DEV_DIAG } from '../../src/internal/diag';
