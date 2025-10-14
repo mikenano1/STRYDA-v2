@@ -77,7 +77,6 @@ export default function ChatScreen() {
   }, []);
 
   const sendMessage = async () => {
-    // Safe parsing with defensive coding
     const userText = inputText.trim();
     if (!userText || isSending) {
       console.log('⚠️ Send blocked:', { userText: userText.length, isSending });
@@ -88,9 +87,9 @@ export default function ChatScreen() {
       console.log('❌ No session ID available');
       return;
     }
-    
+
     // Create user message
-    const userMessage: ChatMessage = { 
+    const userMsg: Msg = { 
       id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, 
       role: 'user', 
       text: userText,
@@ -99,8 +98,13 @@ export default function ChatScreen() {
     
     // Clear input and add user message (functional update)
     setInputText('');
-    setMessages(prev => [...prev, userMessage]);
+    setMessages(prev => [...prev, userMsg]);
     setIsSending(true);
+    
+    // Auto-scroll to bottom
+    setTimeout(() => {
+      flatListRef.current?.scrollToEnd({ animated: true });
+    }, 100);
     
     // Telemetry: chat_send
     console.log(`[telemetry] chat_send session_id=${sessionId.substring(0, 8)}... input_length=${userText.length}`);
@@ -111,64 +115,93 @@ export default function ChatScreen() {
         message_len: userText.length 
       });
       
-      // Use centralized API client
+      // Use centralized API client with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20000); // 20s timeout
+      
       const res = await chatAPI({
         session_id: sessionId,
         message: userText
       });
       
-      // DEBUG: Log complete server response
+      clearTimeout(timeoutId);
+      
+      // DEBUG: Log complete server response for verification
       console.log('SERVER_RESPONSE', JSON.stringify(res, null, 2));
       
-      // Normalize response with fallback chain
+      // Normalize response with fallback chain (ECHO GUARD)
       const answer = (res && (res.answer || res.message || res?.output?.text || res?.data?.answer)) ?? '';
-      const assistantText = String(answer).trim();
+      let assistantText = String(answer).trim();
+      
+      // Enhanced echo detection
+      if (assistantText === userText && assistantText !== '') {
+        console.warn('⚠️ Echo detected; replacing with clarification request');
+        assistantText = "I need a bit more detail about your building project to give you the right guidance.";
+      }
       
       console.log('🎯 Response parsed:', { 
         messageLength: assistantText.length,
         citationsCount: res.citations?.length || 0,
         intent: res.intent,
-        timingMs: res.timing_ms
+        model: res.model,
+        tokens: res.tokens_in || 0
       });
       
-      // Guard against accidental echo
-      if (assistantText === userText && assistantText !== '') {
-        console.warn('⚠️ Echo detected; response matches user input');
-      }
-      
       // Create assistant message with safe parsing
-      const assistantMessage: ChatMessage = {
+      const assistantMsg: Msg = {
         id: `assistant_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         role: 'assistant',
-        text: assistantText || '(no answer received)',
+        text: assistantText || 'I need more information to provide a helpful answer.',
         citations: res?.citations || res?.data?.citations || [],
         timestamp: Date.now()
       };
       
       // Telemetry: chat_response
-      console.log(`[telemetry] chat_response timing_ms=${res.timing_ms || 0} citations_count=${res.citations?.length || 0}`);
+      console.log(`[telemetry] chat_response timing_ms=${res.timing_ms || 0} citations_count=${res.citations?.length || 0} model=${res.model || 'unknown'}`);
       
-      setMessages(prev => [...prev, assistantMessage]);
+      setMessages(prev => [...prev, assistantMsg]);
+      
+      // Auto-scroll after response
+      setTimeout(() => {
+        flatListRef.current?.scrollToEnd({ animated: true });
+      }, 100);
+      
+      setHealthStatus('ok');
+      setHealthFailureCount(0);
       
     } catch (error: any) {
       console.error('❌ Chat request failed:', error);
       
+      // Enhanced error handling based on error type
+      let errorText = "Couldn't reach server.";
+      
+      if (error.name === 'AbortError') {
+        errorText = "Timed out—retry.";
+      } else if (error.message?.includes('502') && error.message?.includes('bad_json')) {
+        errorText = "Model returned invalid output. Try again.";
+      } else if (error.message?.includes('network') || error.message?.includes('fetch')) {
+        errorText = "Couldn't reach the server.";
+      } else {
+        errorText = `Connection error: ${error.message}`;
+      }
+      
       // Telemetry: chat_error  
-      console.log(`[telemetry] chat_error error=${error.message.substring(0, 50)}`);
+      console.log(`[telemetry] chat_error error=${error.message?.substring(0, 50) || 'unknown'}`);
       
       // Add error message with retry
-      const errorMessage: ChatMessage = {
+      const errorMsg: Msg = {
         id: `error_${Date.now()}`,
         role: 'assistant',
-        text: `Couldn't reach server. ${error.message}`,
+        text: errorText,
         timestamp: Date.now()
       };
       
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages(prev => [...prev, errorMsg]);
+      setHealthStatus('failed');
       
       Alert.alert(
         'Connection Error',
-        `Failed to get response from STRYDA: ${error.message}`,
+        `${errorText} Please try again.`,
         [
           { text: 'OK' },
           { text: 'Retry', onPress: () => sendMessage() }
