@@ -18,6 +18,7 @@ from profiler import profiler
 
 # Database configuration
 DATABASE_URL = os.getenv("DATABASE_URL")
+API_KEY = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI(title="STRYDA Backend", version="0.2.0")
 
