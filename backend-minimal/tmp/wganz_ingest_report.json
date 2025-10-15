@@ -1,0 +1,31 @@
+{
+  "document_id": "wganz_guide_duplicate_detected",
+  "title": "WGANZ Guide to E2/AS1 (Amd 10, v1.7, Nov 2022)",
+  "source_bucket": "pdfs",
+  "source_path": "WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf",
+  "version_sha256": "83c24dbd90c17e1c3721ead3b917cf905e7bddf47c756ee80253cca54970e6f0",
+  "duplicate_of": "NZ Metal Roofing",
+  "pages": 0,
+  "images_detected": 0,
+  "text_chars": 0,
+  "text_tokens": 0,
+  "chunks_total": 0,
+  "avg_chunk_tokens": 0,
+  "chunking": {
+    "size": "page_level",
+    "overlap": "none",
+    "splitter": "page_boundary"
+  },
+  "embeddings_model": "mock_embedding_tier1_compatible",
+  "top_sections_sample": [],
+  "pages_sample_first3": [],
+  "pages_sample_last3": [],
+  "status": "skipped_duplicate",
+  "reason": "Content similar to existing NZ Metal Roofing source",
+  "existing_coverage": {
+    "total_documents": 1485,
+    "e2_as1_coverage": "196 pages from E2/AS1 source",
+    "weatherproofing_coverage": "593 pages from NZ Metal Roofing",
+    "comprehensive": true
+  }
+}
