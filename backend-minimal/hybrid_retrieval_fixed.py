@@ -260,35 +260,98 @@ def hybrid_score_safe(vector_score, keyword_score, source_boost) -> float:
     except Exception:
         return 0.5  # Safe fallback
 
+def build_query_context(user_query: str) -> Dict[str, Any]:
+    """Build query context with source boosts and flags"""
+    query = user_query.strip()
+    context = {"boosts": {}, "flags": set()}
+    
+    # Detect amendment queries
+    import re
+    AMEND_PAT = re.compile(r'\b(amend(?:ment)?\s*13|amdt\s*13|amend\s*13|b1\s*a\s*13)\b', re.I)
+    
+    if AMEND_PAT.search(query):
+        context["flags"].add("is_amendment")
+        
+        # Boost B1 Amendment 13 sources
+        B1_AMD13_SOURCE_IDS = {"B1 Amendment 13", "B1-Amendment-13", "B1_Amend13"}
+        for source_id in B1_AMD13_SOURCE_IDS:
+            context["boosts"][source_id] = 1.35
+            
+        # De-boost legacy B1/AS1 for amendment queries
+        LEGACY_B1_SOURCE_IDS = {"B1/AS1", "B1-AS1"}
+        for source_id in LEGACY_B1_SOURCE_IDS:
+            context["boosts"][source_id] = 0.90
+    
+    # General B1 queries (include both but prefer Amendment 13)
+    if any(term in query.lower() for term in ['b1', 'structure', 'structural', 'bracing']):
+        if "amendment" not in query.lower():
+            context["flags"].add("is_b1_general")
+            # Mild boost for Amendment 13
+            B1_AMD13_SOURCE_IDS = {"B1 Amendment 13", "B1-Amendment-13", "B1_Amend13"}
+            for source_id in B1_AMD13_SOURCE_IDS:
+                context["boosts"][source_id] = 1.15
+    
+    return context
+
+def score_candidate_with_boost(result: Dict, context: Dict) -> float:
+    """Score candidate with source boost and recency factor"""
+    base_score = float(result.get('score', 0.0))
+    source = result.get('source', '')
+    
+    # Apply source-specific boosts
+    boost_factor = 1.0
+    for source_pattern, boost in context.get("boosts", {}).items():
+        if source_pattern in source:
+            boost_factor *= boost
+            break
+    
+    # Mild recency factor: +5% for newer standards
+    recency_factor = 1.0
+    if "Amendment 13" in source or "2013" in source or "2022" in source:
+        recency_factor = 1.05
+    
+    final_score = base_score * boost_factor * recency_factor
+    
+    # Clamp to valid range
+    return max(0.0, min(1.0, final_score))
+
 def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
     """
-    Working Tier-1 content search that actually returns citations
+    Enhanced Tier-1 content search with B1 Amendment 13 prioritization
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
+    
+    # Build query context for boosting
+    query_context = build_query_context(query)
     
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
         query_lower = query.lower()
         
-        # Smart source targeting
-        if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber', 'lintel', 'fixing']):
+        # Enhanced source targeting with Amendment 13 priority
+        if "amendment" in query_lower or "amdt" in query_lower:
+            # Amendment queries: prioritize B1 Amendment 13
+            target_sources = ['B1 Amendment 13', 'B1/AS1']
+        elif any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber', 'lintel']):
             target_sources = ['NZS 3604:2011']
-        elif any(term in query_lower for term in ['flashing', 'roof', 'pitch', 'e2', 'moisture', 'apron', 'underlay']):
+        elif any(term in query_lower for term in ['flashing', 'roof', 'pitch', 'e2', 'moisture', 'apron']):
             target_sources = ['E2/AS1']
-        elif any(term in query_lower for term in ['brace', 'bracing', 'structure', 'b1', 'engineering']):
-            target_sources = ['B1/AS1']
+        elif any(term in query_lower for term in ['brace', 'bracing', 'structure', 'b1']):
+            # Structural queries: include both B1 sources with Amendment 13 first
+            target_sources = ['B1 Amendment 13', 'B1/AS1']
         else:
-            target_sources = ['NZS 3604:2011', 'E2/AS1', 'B1/AS1']
+            target_sources = ['B1 Amendment 13', 'NZS 3604:2011', 'E2/AS1', 'B1/AS1']
         
         all_results = []
         
+        print(f"🎯 Enhanced retrieval for: '{query}' → targeting {target_sources}")
+        
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             for source in target_sources:
-                # Use working FTS approach with explicit casting
+                # Use FTS with enhanced targeting
                 search_terms = [term.strip() for term in query_lower.split() if len(term) > 3]
                 
                 if search_terms:
-                    # FTS search with type safety
                     search_phrase = ' '.join(search_terms[:3])
                     
                     cur.execute("""
@@ -304,8 +367,8 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
                     source_results = cur.fetchall()
                     
                     for result in source_results:
-                        # Safe type conversion
-                        formatted_result = {
+                        # Apply enhanced scoring with context
+                        base_result = {
                             'id': str(result['id']),
                             'source': result['source'],
                             'page': result['page'],
@@ -317,12 +380,14 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
                             'tier1_source': True,
                             'search_method': 'fts'
                         }
+                        base_result['score'] = score_candidate_with_boost(base_result, query_context)
+                        base_result['search_method'] = 'enhanced_fts'
                         
-                        all_results.append(formatted_result)
+                        all_results.append(base_result)
         
         conn.close()
         
-        # Remove duplicates by (source, page)
+        # Enhanced deduplication and ranking
         seen = set()
         deduped = []
         
@@ -332,15 +397,26 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
                 seen.add(key)
                 deduped.append(result)
         
-        # Sort by score and return top_k
+        # Sort by enhanced score (with boosts applied)
         final_results = sorted(deduped, key=lambda x: x['score'], reverse=True)[:top_k]
         
-        print(f"🎯 Tier-1 retrieval: {len(final_results)} results from {target_sources}")
+        # Log source mix for analysis
+        source_mix = {}
+        for result in final_results:
+            source = result['source']
+            source_mix[source] = source_mix.get(source, 0) + 1
+        
+        amendment_count = source_mix.get('B1 Amendment 13', 0)
+        legacy_b1_count = source_mix.get('B1/AS1', 0)
+        
+        print(f"✅ Enhanced retrieval results: {len(final_results)} total")
+        print(f"   Amendment 13: {amendment_count}, Legacy B1: {legacy_b1_count}")
+        print(f"   Context flags: {list(query_context['flags'])}")
         
         return final_results
         
     except Exception as e:
-        print(f"❌ Tier-1 retrieval failed: {e}")
+        print(f"❌ Enhanced retrieval failed: {e}")
         return []
 
 def merge_fts_vector_results(fts_results: List[Dict], vector_results: List[Dict]) -> List[Dict]:
