@@ -342,88 +342,80 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Chat history retrieval failed: {e}")
         
-        # Step 4: Enhanced response generation
-        tier1_hit = False
-        tier1_snippets = []
+        # Step 4: Handle based on FINAL intent (preserve classifier decision)
+        enhanced_citations = []
+        used_retrieval = False
         
-        if intent != "chitchat":
-            # Get Tier-1 retrieval for context
+        # PRESERVE final_intent - no downgrading for high confidence
+        if final_intent == "chitchat" and final_confidence >= 0.70:
+            # High confidence chitchat
+            answer = "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+            
+        elif final_intent == "chitchat":
+            # Low confidence chitchat (fallback case)
+            answer = "I can help with NZ building standards. What specific building question can I help you with?"
+            
+        elif final_intent == "clarify":
+            # Educational response with examples
+            if "stud" in user_message.lower():
+                answer = """Are you asking about:
+• Spacing for wall studs?
+• Sizing for load-bearing walls?
+• Fastening to foundations?
+
+Examples that help me give exact answers:
+• '90mm stud spacing in Very High wind zone'
+• 'Load-bearing wall studs for 6m span'"""
+            else:
+                answer = """I can help with NZ building standards! To give you the best guidance, could you tell me:
+• What type of building work?
+• Your location's wind zone?
+• Specific component you're working on?"""
+                
+        else:
+            # compliance_strict, general_building, or other intents - USE RETRIEVAL
+            used_retrieval = True
+            
             with profiler.timer('t_vector_search'):
-                from simple_tier1_retrieval import simple_tier1_retrieval
-                docs = simple_tier1_retrieval(user_message, top_k=6)
-                tier1_hit = len(docs) > 0
-                tier1_snippets = docs
-        
-        # Step 5: Generate structured response with timeout and retries
-        with profiler.timer('t_generate'):
-            try:
+                # Use enhanced Tier-1 retrieval with amendment prioritization
+                docs = tier1_content_search(user_message, top_k=6)
+            
+            with profiler.timer('t_merge_relevance'):
+                # Log source mix for analysis
+                source_mix = {}
+                for doc in docs:
+                    source = doc.get('source', 'Unknown')
+                    source_mix[source] = source_mix.get(source, 0) + 1
+                
+                print(f"📊 Source mix for '{user_message[:30]}...': {source_mix}")
+            
+            # Generate structured response with GPT
+            with profiler.timer('t_generate'):
                 structured_response = generate_structured_response(
                     user_message=user_message,
-                    tier1_snippets=tier1_snippets,
+                    tier1_snippets=docs,
                     conversation_history=conversation_history
                 )
                 
-                # Strict JSON validation
-                required_fields = ['answer', 'intent', 'citations']
-                for field in required_fields:
-                    if field not in structured_response:
-                        raise ValueError(f"Missing required field: {field}")
-                
+                # Use GPT answer but PRESERVE CLASSIFIER INTENT
                 answer = structured_response.get("answer", "")
-                response_intent = structured_response.get("intent", intent)
-                response_citations = structured_response.get("citations", [])
-                
-                # Safety merge: Use server-side citations if model didn't provide
-                if not response_citations and tier1_snippets:
-                    response_citations = [
-                        {
-                            "id": f"cite_{doc.get('id', '')[:8]}",
-                            "source": doc.get("source", "Unknown"),
-                            "page": doc.get("page", 0),
-                            "score": doc.get("score", 0.0),
-                            "snippet": doc.get("snippet", "")[:200],
-                            "section": doc.get("section"),
-                            "clause": doc.get("clause")
-                        }
-                        for doc in tier1_snippets[:3]
-                    ]
-                
-                # Ensure citations are properly formatted
-                formatted_citations = []
-                for cite in response_citations[:3]:  # Max 3 citations
-                    if isinstance(cite, dict):
-                        formatted_citation = {
-                            "id": cite.get("id", f"cite_{hash(cite.get('source', ''))}"),
-                            "source": cite.get("source", "Unknown"),
-                            "page": cite.get("page", 0),
-                            "score": cite.get("score", 0.0),
-                            "snippet": str(cite.get("snippet", ""))[:200],
-                            "section": cite.get("section"),
-                            "clause": cite.get("clause")
-                        }
-                        formatted_citations.append(formatted_citation)
-                
-                model_used = structured_response.get("model", "gpt-4o-mini")
+                model_used = structured_response.get("model", "fallback")
                 tokens_used = structured_response.get("tokens_used", 0)
                 
-            except json.JSONDecodeError as e:
-                # Strict JSON enforcement - return 502 for invalid model output
-                print(f"❌ JSON parse error from model: {e}")
-                return JSONResponse(
-                    status_code=502,
-                    content={
-                        "error": "bad_json",
-                        "hint": "model_output_invalid", 
-                        "detail": "The AI model returned invalid JSON. Please try again."
-                    }
-                )
-            except Exception as e:
-                print(f"❌ Structured generation failed: {e}")
+                # CRITICAL: Don't let GPT override the classifier intent
+                if final_confidence >= 0.70:
+                    print(f"🔒 Preserving high-confidence intent: {final_intent} ({final_confidence:.2f})")
+                    # Keep final_intent as is
+                else:
+                    # Only allow intent changes for low confidence
+                    gpt_intent = structured_response.get("intent", final_intent)
+                    if gpt_intent != final_intent:
+                        print(f"⚠️ Low confidence intent change: {final_intent} → {gpt_intent}")
+                        final_intent = gpt_intent
                 
-                # Fallback with server-side citations
-                answer = "I encountered an issue processing your question. Let me provide what I can find in the building standards."
-                formatted_citations = [
-                    {
+                # Format citations (max 3)
+                for doc in docs[:3]:
+                    citation = {
                         "id": f"cite_{doc.get('id', '')[:8]}",
                         "source": doc.get("source", "Unknown"),
                         "page": doc.get("page", 0),
@@ -432,11 +424,7 @@ def api_chat(req: ChatRequest):
                         "section": doc.get("section"),
                         "clause": doc.get("clause")
                     }
-                    for doc in tier1_snippets[:3]
-                ] if tier1_snippets else []
-                
-                model_used = "fallback"
-                tokens_used = 0
+                    enhanced_citations.append(citation)
         
         # Step 6: Save assistant response
         try:
