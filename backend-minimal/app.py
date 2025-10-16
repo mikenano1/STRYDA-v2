@@ -272,7 +272,7 @@ def api_chat(req: ChatRequest):
         # Import optimization modules with error handling
         try:
             from profiler import profiler
-            from simple_tier1_retrieval import tier1_content_search
+            from simple_tier1_retrieval import simple_tier1_retrieval
             from openai_structured import generate_structured_response
         except ImportError as e:
             print(f"❌ Import error: {e}")
