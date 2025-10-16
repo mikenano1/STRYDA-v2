@@ -247,6 +247,9 @@ def safe_numeric_convert(value) -> float:
     except Exception:
         return 0.0
 
+# Alias for compatibility
+safe_float_convert = safe_numeric_convert
+
 def hybrid_score_safe(vector_score, keyword_score, source_boost) -> float:
     """Safe hybrid scoring with bulletproof type conversion"""
     # Convert all to safe floats
