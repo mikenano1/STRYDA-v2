@@ -266,51 +266,80 @@ async def search_documents(request: Request, search_request: dict):
 @app.post("/api/chat")
 def api_chat(req: ChatRequest):
     """
-    Enhanced conversational chat with GPT-5 structured JSON output
+    Enhanced conversational chat with safe error handling and unified intent flow
     """
-    import asyncio
-    from openai_structured import generate_structured_response
-    
     try:
-        # Start enhanced profiling
-        profiler.reset()
-        profiler.start_request()
+        # Import optimization modules with error handling
+        try:
+            from profiler import profiler
+            from simple_tier1_retrieval import tier1_content_search
+            from openai_structured import generate_structured_response
+        except ImportError as e:
+            print(f"❌ Import error: {e}")
+            return JSONResponse(
+                status_code=502,
+                content={
+                    "error": "module_error",
+                    "hint": "backend_module_issue",
+                    "detail": "Backend modules not available. Please try again."
+                }
+            )
+        
+        # Start profiling with error handling
+        try:
+            profiler.reset()
+            profiler.start_request()
+        except Exception as e:
+            print(f"⚠️ Profiler error: {e}")
         
         session_id = req.session_id or "default"
         user_message = req.message
         
-        # Step 1: Intent classification with unified decision making
-        with profiler.timer('t_parse'):
-            from intent_router import intent_router
-            
-            # Get primary classification
-            primary_intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
-            
-            # Use unified decision making to prevent downgrading
-            final_intent, final_confidence, intent_meta = intent_router.decide_intent(
-                (primary_intent, confidence), 
-                []  # No secondary classifiers for now
-            )
-            
-            # Create context for retrieval
-            context = {
-                "intent": final_intent,
-                "intent_conf": final_confidence,
-                "flags": set()
-            }
-            
-            if final_intent == "compliance_strict":
-                context["flags"].add("strict")
+        # Step 1: SAFE intent classification
+        try:
+            with profiler.timer('t_parse'):
+                from intent_router import intent_router
+                
+                # Get primary classification
+                primary_intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
+                
+                # Use unified decision making - SAFE
+                try:
+                    final_intent, final_confidence, intent_meta = intent_router.decide_intent(
+                        (primary_intent, confidence), 
+                        []  # No secondary classifiers
+                    )
+                except Exception as e:
+                    print(f"⚠️ Intent decision failed: {e}")
+                    # Safe fallback
+                    final_intent, final_confidence = primary_intent, confidence
+                    intent_meta = {"source": "fallback"}
+                
+                # Create context for retrieval
+                context = {
+                    "intent": final_intent,
+                    "intent_conf": final_confidence,
+                    "flags": set()
+                }
+                
+                if final_intent == "compliance_strict":
+                    context["flags"].add("strict")
+                    
+        except Exception as e:
+            print(f"❌ Intent classification failed: {e}")
+            # Emergency fallback
+            final_intent = "clarify"
+            final_confidence = 0.5
+            context = {"intent": "clarify", "flags": set()}
         
-        # Enhanced telemetry with intent tracking
+        # Enhanced telemetry with error safety
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent_primary={primary_intent}:{confidence:.2f} intent_final={final_intent}:{final_confidence:.2f} message_length={len(user_message)}")
+            try:
+                print(f"[telemetry] chat_request session_id={session_id[:8]}... intent_primary={primary_intent}:{confidence:.2f} intent_final={final_intent}:{final_confidence:.2f}")
+            except Exception as e:
+                print(f"⚠️ Telemetry error: {e}")
         
-        # Log intent discrepancies for debugging
-        if primary_intent != final_intent:
-            print(f"⚠️ Intent changed: {primary_intent}({confidence:.2f}) → {final_intent}({final_confidence:.2f}), reason: {intent_meta.get('source', 'unknown')}")
-        
-        # Step 2: Save user message (async-safe)
+        # Step 2: SAFE message saving
         try:
             conn = psycopg2.connect(DATABASE_URL, sslmode="require")
             with conn.cursor() as cur:
@@ -323,7 +352,7 @@ def api_chat(req: ChatRequest):
         except Exception as e:
             print(f"⚠️ Chat memory save failed: {e}")
         
-        # Step 3: Get conversation history
+        # Step 3: SAFE conversation history
         conversation_history = []
         try:
             conn = psycopg2.connect(DATABASE_URL, sslmode="require")
@@ -341,6 +370,7 @@ def api_chat(req: ChatRequest):
             conn.close()
         except Exception as e:
             print(f"⚠️ Chat history retrieval failed: {e}")
+            conversation_history = []
         
         # Step 4: Handle based on FINAL intent (preserve classifier decision)
         enhanced_citations = []
