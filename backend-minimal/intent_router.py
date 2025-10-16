@@ -10,7 +10,35 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class IntentRouter:
-    """Enhanced intent classification for natural conversation flow with B1 Amendment 13 priority"""
+    """Enhanced intent classification with unified flow control"""
+    
+    # Intent threshold configuration
+    INTENT_THRESHOLD = 0.70  # Raised from 0.60 to reduce false chitchat
+    
+    @staticmethod
+    def decide_intent(primary_result: tuple, secondary_results: list = None):
+        """
+        Unified intent decision with thresholding
+        Returns: (intent, confidence, metadata)
+        """
+        intent_name, confidence = primary_result
+        
+        # High confidence primary result
+        if confidence >= IntentRouter.INTENT_THRESHOLD:
+            return intent_name, confidence, {"source": "primary", "threshold_met": True}
+        
+        # Check secondary results if available
+        if secondary_results:
+            best_secondary = max(secondary_results, key=lambda x: x[1])
+            if best_secondary[1] >= IntentRouter.INTENT_THRESHOLD:
+                return best_secondary[0], best_secondary[1], {"source": "secondary", "threshold_met": True}
+        
+        # Fallback only if confidence is truly low
+        if confidence < 0.40:
+            return "chitchat", confidence, {"source": "fallback", "threshold_met": False}
+        
+        # Preserve original intent even if below threshold
+        return intent_name, confidence, {"source": "preserved", "threshold_met": False}
     
     @staticmethod
     def classify_intent_and_confidence(message: str, conversation_history: List[Dict] = None) -> Tuple[str, float, str]:
