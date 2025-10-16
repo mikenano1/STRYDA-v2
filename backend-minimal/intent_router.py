@@ -61,10 +61,14 @@ class IntentRouter:
             r'\b(requirement|minimum|maximum|shall|must)\b',
         ]
         
-        # Priority check: Tier-1 compliance first
+        # Priority check: Tier-1 compliance first (ENHANCED for B1 Amendment 13)
         for pattern in tier1_compliance_patterns:
             if re.search(pattern, message_lower):
                 return "compliance_strict", 0.85, "precise_citation"
+        
+        # Specific B1 Amendment 13 detection
+        if any(term in message_lower for term in ['amendment 13', 'b1 amendment', 'latest b1']):
+            return "compliance_strict", 0.90, "precise_citation"
         
         # How-to patterns (medium confidence)
         how_to_patterns = [
