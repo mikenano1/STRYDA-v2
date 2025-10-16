@@ -16,9 +16,14 @@ class IntentRouter:
     @staticmethod
     def classify_intent_and_confidence(message: str, conversation_history: List[Dict] = None) -> Tuple[str, float, str]:
         """
-        Enhanced classification with aggressive Tier-1 compliance detection
+        Enhanced classification with B1 Amendment 13 priority
         """
         message_lower = message.lower().strip()
+        
+        # PRIORITY: Force compliance_strict for amendment queries
+        AMEND_PAT = re.compile(r'\b(amend(?:ment)?\s*13|amdt\s*13|amend\s*13|b1\s*a\s*13|b1\s*amendment)\b', re.I)
+        if AMEND_PAT.search(message):
+            return "compliance_strict", 0.95, "precise_citation"
         
         # Chitchat patterns (high confidence) - unchanged
         chitchat_patterns = [
