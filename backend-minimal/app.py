@@ -478,14 +478,14 @@ Examples that help me give exact answers:
         # Enhanced telemetry with GPT-5 metrics
         telemetry_data = {
             "status": "success",
-            "intent": response_intent,
-            "confidence": confidence,
+            "intent": final_intent,
+            "confidence": final_confidence,
             "model": model_used,
             "latency_ms": round(timing_breakdown['t_total']),
             "tokens_in": structured_response.get("tokens_in", 0) if 'structured_response' in locals() else 0,
             "tokens_out": structured_response.get("tokens_out", 0) if 'structured_response' in locals() else 0,
-            "tier1_hit": tier1_hit,
-            "citations_count": len(formatted_citations),
+            "tier1_hit": used_retrieval,
+            "citations_count": len(enhanced_citations),
             "timing_breakdown": timing_breakdown
         }
         
@@ -495,9 +495,9 @@ Examples that help me give exact answers:
         # Step 7: Return structured response
         response = {
             "answer": answer,
-            "intent": response_intent,
-            "citations": formatted_citations,
-            "tier1_hit": tier1_hit,
+            "intent": final_intent,
+            "citations": enhanced_citations,
+            "tier1_hit": used_retrieval,
             "model": model_used,
             "latency_ms": round(timing_breakdown['t_total']),
             "session_id": session_id,
@@ -505,7 +505,7 @@ Examples that help me give exact answers:
             "timestamp": int(time.time())
         }
         
-        print(f"✅ Structured chat response ({response_intent}): {len(formatted_citations)} citations, {timing_breakdown['t_total']:.0f}ms, model: {model_used}")
+        print(f"✅ Structured chat response ({final_intent}): {len(enhanced_citations)} citations, {timing_breakdown['t_total']:.0f}ms, model: {model_used}")
         
         return response
         
