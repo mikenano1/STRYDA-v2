@@ -409,8 +409,8 @@ Examples that help me give exact answers:
             
             with profiler.timer('t_vector_search'):
                 # Use enhanced Tier-1 retrieval with amendment prioritization
-                from simple_tier1_retrieval import tier1_content_search
-                docs = tier1_content_search(user_message, top_k=6)
+                from simple_tier1_retrieval import simple_tier1_retrieval
+                docs = simple_tier1_retrieval(user_message, top_k=6)
             
             with profiler.timer('t_merge_relevance'):
                 # Log source mix for analysis
