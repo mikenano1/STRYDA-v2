@@ -6,6 +6,7 @@ Fast text search + vector search for optimal Tier-1 discovery
 import psycopg2
 import psycopg2.extras
 import time
+import re
 from typing import List, Dict, Any, Tuple
 
 # Tier-1 lexicon for detection - UPDATED to include B1 Amendment 13
