@@ -3,7 +3,6 @@ STRYDA Conversational Intent Router v1.2
 Enhanced conversational flow with answer_style routing
 """
 
-import os
 import re
 from typing import List, Dict, Tuple, Optional
 from dotenv import load_dotenv
@@ -11,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class IntentRouter:
-    """Enhanced intent classification for natural conversation flow"""
+    """Enhanced intent classification for natural conversation flow with B1 Amendment 13 priority"""
     
     @staticmethod
     def classify_intent_and_confidence(message: str, conversation_history: List[Dict] = None) -> Tuple[str, float, str]:
