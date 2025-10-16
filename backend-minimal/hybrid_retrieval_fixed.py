@@ -192,14 +192,14 @@ def hybrid_retrieve_fixed(query: str, conn, top_k: int = 6) -> Tuple[List[Dict],
             final_results = vector_results[:top_k]
     
     else:
-        print(f"🔍 General query: using full corpus vector search")
+        print("🔍 General query: using full corpus vector search")
         # Full corpus search for non-Tier-1 queries
         vector_results = vector_search_optimized(query, conn, limit=top_k)
         final_results = vector_results
     
     # Tier-1 rescuer pass if needed
     if debug_info['prefilter_active'] and not any(r.get('source', '') in TIER1_SOURCES for r in final_results):
-        print(f"🚨 Tier-1 rescuer: No Tier-1 in top results, adding rescue pass")
+        print("🚨 Tier-1 rescuer: No Tier-1 in top results, adding rescue pass")
         
         rescue_results = vector_search_optimized(query, conn, source_filter=TIER1_SOURCES, limit=10)
         
