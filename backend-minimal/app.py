@@ -458,7 +458,7 @@ Examples that help me give exact answers:
                     }
                     enhanced_citations.append(citation)
         
-        # Step 6: Save assistant response
+        # Step 6: Save assistant response with error safety
         try:
             conn = psycopg2.connect(DATABASE_URL, sslmode="require")
             with conn.cursor() as cur:
@@ -471,61 +471,75 @@ Examples that help me give exact answers:
         except Exception as e:
             print(f"⚠️ Assistant message save failed: {e}")
         
-        # Finish profiling
-        profiler.finish_request()
-        timing_breakdown = profiler.get_breakdown()
+        # Step 7: Safe profiling completion
+        try:
+            profiler.finish_request()
+            timing_breakdown = profiler.get_breakdown()
+        except Exception as e:
+            print(f"⚠️ Profiler completion failed: {e}")
+            timing_breakdown = {"t_total": 5000}  # Safe fallback
         
-        # Enhanced telemetry with GPT-5 metrics
+        # Enhanced telemetry with safety
+        tier1_hit = used_retrieval and len(enhanced_citations) > 0
+        
         telemetry_data = {
             "status": "success",
             "intent": final_intent,
             "confidence": final_confidence,
             "model": model_used,
-            "latency_ms": round(timing_breakdown['t_total']),
-            "tokens_in": structured_response.get("tokens_in", 0) if 'structured_response' in locals() else 0,
-            "tokens_out": structured_response.get("tokens_out", 0) if 'structured_response' in locals() else 0,
-            "tier1_hit": used_retrieval,
+            "latency_ms": round(timing_breakdown.get('t_total', 0)),
+            "tokens_in": locals().get('tokens_in', 0),
+            "tokens_out": locals().get('tokens_out', 0),
+            "tier1_hit": tier1_hit,
             "citations_count": len(enhanced_citations),
             "timing_breakdown": timing_breakdown
         }
         
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_response_structured {telemetry_data}")
+            try:
+                print(f"[telemetry] chat_response_fixed {telemetry_data}")
+            except Exception as e:
+                print(f"⚠️ Telemetry logging failed: {e}")
         
-        # Step 7: Return structured response
+        # Step 8: Return safe response
         response = {
             "answer": answer,
             "intent": final_intent,
             "citations": enhanced_citations,
-            "tier1_hit": used_retrieval,
+            "tier1_hit": tier1_hit,
             "model": model_used,
-            "latency_ms": round(timing_breakdown['t_total']),
+            "latency_ms": round(timing_breakdown.get('t_total', 0)),
             "session_id": session_id,
-            "notes": ["structured", "tier1", "v1.4"],
+            "notes": ["structured", "tier1", "safe_errors", "v1.4.1"],
             "timestamp": int(time.time())
         }
         
-        print(f"✅ Structured chat response ({final_intent}): {len(enhanced_citations)} citations, {timing_breakdown['t_total']:.0f}ms, model: {model_used}")
+        print(f"✅ Safe chat response ({final_intent}): {len(enhanced_citations)} citations, {timing_breakdown.get('t_total', 0):.0f}ms, model: {model_used}")
         
         return response
         
     except Exception as e:
+        # CRITICAL: Ultimate error safety net
+        error_msg = str(e)
+        
+        # Mask API key in error logs
+        if os.getenv("OPENAI_API_KEY") and os.getenv("OPENAI_API_KEY") in error_msg:
+            error_msg = error_msg.replace(os.getenv("OPENAI_API_KEY"), "sk-***")
+        
         # Enhanced error telemetry
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            error_msg = str(e)
-            # Mask API key in error logs
-            if "sk-" in error_msg:
-                error_msg = error_msg.replace(API_KEY[:20] if API_KEY else "", "sk-***")
-            
-            print(f"[telemetry] chat_error status=error latency_ms={profiler.timers.get('t_total', 0):.0f} error={error_msg[:100]}")
+            try:
+                print(f"[telemetry] chat_error_ultimate stage=chat error=internal_error detail={error_msg[:100]}")
+            except Exception:
+                print("[telemetry] chat_error_ultimate stage=chat error=logging_failed")
         
-        print(f"❌ Enhanced chat error: {e}")
+        print(f"❌ Ultimate chat error: {error_msg}")
         
         return JSONResponse(
-            status_code=500,
+            status_code=502,
             content={
                 "error": "internal_error",
-                "hint": "processing_failed",
+                "hint": "processing_failed", 
                 "detail": "I'm temporarily unable to process your message. Please try again.",
                 "session_id": req.session_id or "default",
                 "timestamp": int(time.time())
