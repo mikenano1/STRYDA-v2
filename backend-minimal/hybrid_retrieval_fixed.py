@@ -8,14 +8,15 @@ import psycopg2.extras
 import time
 from typing import List, Dict, Any, Tuple
 
-# Tier-1 lexicon for detection
+# Tier-1 lexicon for detection - UPDATED to include B1 Amendment 13
 TIER1_LEXICON = {
     'NZS 3604': ['stud spacing', 'nzs 3604', 'timber', 'lintel', 'bracing', 'wind zone', 'h1.2', 'bottom plate', 'fixing', 'span', 'treatment'],
     'E2/AS1': ['e2/as1', 'e2 as1', 'external moisture', 'roof pitch', 'apron flashing', 'underlay', 'cladding', 'corrugate', 'skylight', 'very high wind'],
-    'B1/AS1': ['b1/as1', 'b1 as1', 'bracing demand', 'structure', 'engineering design', 'specific engineering', 'single-storey', 'dwelling']
+    'B1/AS1': ['b1/as1', 'b1 as1', 'bracing demand', 'structure', 'engineering design', 'specific engineering', 'single-storey', 'dwelling', 'b1 amendment', 'amendment 13', 'structural amendments', 'verification methods', 'acceptable solutions']
 }
 
-TIER1_SOURCES = ['NZS 3604:2011', 'E2/AS1', 'B1/AS1']
+# Updated Tier-1 sources to include B1 Amendment 13
+TIER1_SOURCES = ['NZS 3604:2011', 'E2/AS1', 'B1/AS1', 'B1 Amendment 13']
 
 def detect_tier1_query(query: str) -> Dict[str, Any]:
     """Detect Tier-1 intent with detailed logging"""
