@@ -375,6 +375,7 @@ def api_chat(req: ChatRequest):
         # Step 4: Handle based on FINAL intent (preserve classifier decision)
         enhanced_citations = []
         used_retrieval = False
+        model_used = "server_fallback"
         
         # PRESERVE final_intent - no downgrading for high confidence
         if final_intent == "chitchat" and final_confidence >= 0.70:
@@ -408,6 +409,7 @@ Examples that help me give exact answers:
             
             with profiler.timer('t_vector_search'):
                 # Use enhanced Tier-1 retrieval with amendment prioritization
+                from simple_tier1_retrieval import tier1_content_search
                 docs = tier1_content_search(user_message, top_k=6)
             
             with profiler.timer('t_merge_relevance'):
