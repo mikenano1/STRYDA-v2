@@ -29,9 +29,13 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
         if any(term in query_lower for term in ['brace', 'bracing', 'structure', 'b1', 'engineering', 'demand']):
             target_sources.append('B1/AS1')
         
+        # Check for B1 Amendment 13 queries
+        if any(term in query_lower for term in ['amendment 13', 'b1 amendment', 'verification methods']):
+            target_sources.append('B1 Amendment 13')
+        
         # If no specific match, include all Tier-1
         if not target_sources:
-            target_sources = ['NZS 3604:2011', 'E2/AS1', 'B1/AS1']
+            target_sources = ['NZS 3604:2011', 'E2/AS1', 'B1/AS1', 'B1 Amendment 13']
         
         results = []
         
