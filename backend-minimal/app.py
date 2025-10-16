@@ -279,14 +279,36 @@ def api_chat(req: ChatRequest):
         session_id = req.session_id or "default"
         user_message = req.message
         
-        # Step 1: Intent classification with profiling
+        # Step 1: Intent classification with unified decision making
         with profiler.timer('t_parse'):
             from intent_router import intent_router
-            intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
+            
+            # Get primary classification
+            primary_intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
+            
+            # Use unified decision making to prevent downgrading
+            final_intent, final_confidence, intent_meta = intent_router.decide_intent(
+                (primary_intent, confidence), 
+                []  # No secondary classifiers for now
+            )
+            
+            # Create context for retrieval
+            context = {
+                "intent": final_intent,
+                "intent_conf": final_confidence,
+                "flags": set()
+            }
+            
+            if final_intent == "compliance_strict":
+                context["flags"].add("strict")
         
-        # Enhanced telemetry
+        # Enhanced telemetry with intent tracking
         if os.getenv("ENABLE_TELEMETRY") == "true":
-            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent={intent} confidence={confidence:.2f} message_length={len(user_message)}")
+            print(f"[telemetry] chat_request session_id={session_id[:8]}... intent_primary={primary_intent}:{confidence:.2f} intent_final={final_intent}:{final_confidence:.2f} message_length={len(user_message)}")
+        
+        # Log intent discrepancies for debugging
+        if primary_intent != final_intent:
+            print(f"⚠️ Intent changed: {primary_intent}({confidence:.2f}) → {final_intent}({final_confidence:.2f}), reason: {intent_meta.get('source', 'unknown')}")
         
         # Step 2: Save user message (async-safe)
         try:
