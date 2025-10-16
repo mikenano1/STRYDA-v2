@@ -267,7 +267,6 @@ def build_query_context(user_query: str) -> Dict[str, Any]:
     context = {"boosts": {}, "flags": set()}
     
     # Detect amendment queries
-    import re
     AMEND_PAT = re.compile(r'\b(amend(?:ment)?\s*13|amdt\s*13|amend\s*13|b1\s*a\s*13)\b', re.I)
     
     if AMEND_PAT.search(query):
