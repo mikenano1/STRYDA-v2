@@ -475,27 +475,33 @@ Examples that help me give exact answers:
             print(f"⚠️ Profiler completion failed: {e}")
             timing_breakdown = {"t_total": 5000}  # Safe fallback
         
-        # Enhanced telemetry with safety
-        tier1_hit = used_retrieval and len(enhanced_citations) > 0
-        
+        # Enhanced telemetry with bias tracking
         telemetry_data = {
             "status": "success",
             "intent": final_intent,
             "confidence": final_confidence,
             "model": model_used,
             "latency_ms": round(timing_breakdown.get('t_total', 0)),
-            "tokens_in": locals().get('tokens_in', 0),
-            "tokens_out": locals().get('tokens_out', 0),
+            "tokens_in": tokens_in,
+            "tokens_out": tokens_out,
             "tier1_hit": tier1_hit,
             "citations_count": len(enhanced_citations),
+            "source_bias": {},  # Will be populated if bias applied
             "timing_breakdown": timing_breakdown
         }
         
+        # Add source bias logging if applicable
+        if used_retrieval:
+            from hybrid_retrieval_fixed import detect_b1_amendment_bias
+            bias_weights = detect_b1_amendment_bias(user_message)
+            if bias_weights:
+                telemetry_data["source_bias"] = bias_weights
+        
         if os.getenv("ENABLE_TELEMETRY") == "true":
             try:
-                print(f"[telemetry] chat_response_fixed {telemetry_data}")
+                print(f"[telemetry] chat_response_enhanced {telemetry_data}")
             except Exception as e:
-                print(f"⚠️ Telemetry logging failed: {e}")
+                print(f"⚠️ Enhanced telemetry failed: {e}")
         
         # Step 8: Return safe response
         response = {
