@@ -404,24 +404,29 @@ Examples that help me give exact answers:
 • Specific component you're working on?"""
                 
         else:
-            # compliance_strict, general_building, or other intents - USE RETRIEVAL
+            # compliance_strict, general_building, or other intents - USE ENHANCED RETRIEVAL
             used_retrieval = True
             
             with profiler.timer('t_vector_search'):
-                # Use enhanced Tier-1 retrieval with amendment prioritization
+                # CRITICAL: Use enhanced B1 Amendment 13 retrieval
                 from simple_tier1_retrieval import simple_tier1_retrieval
                 docs = simple_tier1_retrieval(user_message, top_k=6)
+                tier1_hit = len(docs) > 0
             
             with profiler.timer('t_merge_relevance'):
-                # Log source mix for analysis
+                # Log source mix for amendment analysis
                 source_mix = {}
                 for doc in docs:
                     source = doc.get('source', 'Unknown')
                     source_mix[source] = source_mix.get(source, 0) + 1
                 
-                print(f"📊 Source mix for '{user_message[:30]}...': {source_mix}")
+                amendment_count = source_mix.get('B1 Amendment 13', 0)
+                legacy_b1_count = source_mix.get('B1/AS1', 0)
+                
+                print(f"📊 Retrieval source mix for '{user_message[:30]}...': {source_mix}")
+                print(f"   B1 Amendment 13: {amendment_count}, Legacy B1: {legacy_b1_count}")
             
-            # Generate structured response with GPT
+            # Generate structured response with retrieved content
             with profiler.timer('t_generate'):
                 structured_response = generate_structured_response(
                     user_message=user_message,
@@ -429,24 +434,15 @@ Examples that help me give exact answers:
                     conversation_history=conversation_history
                 )
                 
-                # Use GPT answer but PRESERVE CLASSIFIER INTENT
+                # Use GPT answer but preserve Tier-1 citations
                 answer = structured_response.get("answer", "")
                 model_used = structured_response.get("model", "fallback")
-                tokens_used = structured_response.get("tokens_used", 0)
+                tokens_in = structured_response.get("tokens_in", 0)
+                tokens_out = structured_response.get("tokens_out", 0)
                 
-                # CRITICAL: Don't let GPT override the classifier intent
-                if final_confidence >= 0.70:
-                    print(f"🔒 Preserving high-confidence intent: {final_intent} ({final_confidence:.2f})")
-                    # Keep final_intent as is
-                else:
-                    # Only allow intent changes for low confidence
-                    gpt_intent = structured_response.get("intent", final_intent)
-                    if gpt_intent != final_intent:
-                        print(f"⚠️ Low confidence intent change: {final_intent} → {gpt_intent}")
-                        final_intent = gpt_intent
-                
-                # Format citations (max 3)
-                for doc in docs[:3]:
+                # CRITICAL: Always use server-side Tier-1 citations for compliance
+                enhanced_citations = []
+                for doc in docs[:3]:  # Max 3 citations
                     citation = {
                         "id": f"cite_{doc.get('id', '')[:8]}",
                         "source": doc.get("source", "Unknown"),
