@@ -334,7 +334,7 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
         
         # Enhanced source targeting with Amendment 13 HARD PRIORITY
         if is_amendment_query:
-            print(f"🎯 AMENDMENT QUERY DETECTED: Prioritizing B1 Amendment 13")
+            print("🎯 AMENDMENT QUERY DETECTED: Prioritizing B1 Amendment 13")
             # Amendment queries: ONLY B1 sources, Amendment 13 first
             target_sources = ['B1 Amendment 13', 'B1/AS1']
         elif any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber']):
