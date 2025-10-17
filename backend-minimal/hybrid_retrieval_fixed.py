@@ -9,6 +9,81 @@ import time
 import re
 from typing import List, Dict, Any, Tuple
 
+# Enhanced amendment detection patterns
+AMEND_PAT = re.compile(r'\b(amend(?:ment)?\s*13|amdt\s*13|amend\s*13|b1\s*a\s*13)\b', re.I)
+B1_LATEST_PAT = re.compile(r'\b(latest\s+b1|current\s+b1|new\s+b1|updated\s+b1)\b', re.I)
+VERIFICATION_PAT = re.compile(r'\b(verification\s+method|verification\s+requirement)\b', re.I)
+
+# Source ID mapping for bias application
+B1_AMD13_SOURCE_IDS = {"B1 Amendment 13", "B1-Amendment-13", "B1_Amend13"}
+LEGACY_B1_SOURCE_IDS = {"B1/AS1", "B1-AS1"}
+
+def detect_b1_amendment_bias(query: str) -> Dict[str, float]:
+    """
+    Detect if query should have B1 Amendment 13 ranking bias
+    Returns bias weights for different sources
+    """
+    query_lower = query.lower()
+    bias_weights = {}
+    
+    # Strong bias for explicit amendment queries
+    if AMEND_PAT.search(query):
+        bias_weights.update({
+            'B1 Amendment 13': 1.5,  # Strong boost for amendment
+            'B1/AS1': 0.85           # Slight de-bias for legacy
+        })
+        
+    # Moderate bias for latest B1 queries  
+    elif B1_LATEST_PAT.search(query):
+        bias_weights.update({
+            'B1 Amendment 13': 1.3,  # Moderate boost for latest
+            'B1/AS1': 0.90           # Mild de-bias for legacy
+        })
+        
+    # Mild bias for verification method queries
+    elif VERIFICATION_PAT.search(query) and 'b1' in query_lower:
+        bias_weights.update({
+            'B1 Amendment 13': 1.2,  # Mild boost for verification
+            'B1/AS1': 0.95           # Very mild de-bias
+        })
+        
+    # General B1 queries with mild Amendment 13 preference
+    elif any(term in query_lower for term in ['b1', 'structure', 'structural']):
+        bias_weights.update({
+            'B1 Amendment 13': 1.1,  # Slight boost for general B1
+            'B1/AS1': 0.98           # Minimal de-bias
+        })
+    
+    return bias_weights
+
+def apply_ranking_bias(results: List[Dict], bias_weights: Dict[str, float]) -> List[Dict]:
+    """
+    Apply ranking bias to search results based on source
+    """
+    biased_results = []
+    
+    for result in results:
+        source = result.get('source', '')
+        original_score = result.get('score', 0.0)
+        
+        # Apply bias if source matches
+        bias_factor = 1.0
+        for source_pattern, weight in bias_weights.items():
+            if source_pattern in source:
+                bias_factor = weight
+                break
+        
+        # Create biased result
+        biased_result = dict(result)
+        biased_result['score'] = min(1.0, original_score * bias_factor)
+        biased_result['original_score'] = original_score
+        biased_result['bias_factor'] = bias_factor
+        biased_result['bias_applied'] = bias_factor != 1.0
+        
+        biased_results.append(biased_result)
+    
+    return biased_results
+
 # Tier-1 lexicon for detection - UPDATED to include B1 Amendment 13
 TIER1_LEXICON = {
     'NZS 3604': ['stud spacing', 'nzs 3604', 'timber', 'lintel', 'bracing', 'wind zone', 'h1.2', 'bottom plate', 'fixing', 'span', 'treatment'],
