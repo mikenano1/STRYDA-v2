@@ -175,6 +175,12 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
                 seen.add(key)
                 deduped.append(result)
         
+        # Apply ranking bias based on query patterns
+        bias_weights = detect_b1_amendment_bias(query)
+        if bias_weights:
+            print(f"🎯 Applying ranking bias: {bias_weights}")
+            deduped = apply_ranking_bias(deduped, bias_weights)
+        
         # Sort by score and return top_k
         final_results = sorted(deduped, key=lambda x: x['score'], reverse=True)[:top_k]
         
