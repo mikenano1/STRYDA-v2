@@ -18,10 +18,21 @@ class IntentRouter:
     @staticmethod
     def decide_intent(primary_result: tuple, secondary_results: list = None):
         """
-        Unified intent decision with thresholding
+        Unified intent decision with B1 Amendment 13 prioritization
         Returns: (intent, confidence, metadata)
         """
         intent_name, confidence = primary_result
+        
+        # SPECIAL CASE: B1 compliance queries with Amendment 13 bias
+        if intent_name == "compliance_strict" and confidence >= 0.70:
+            # Check if query mentions B1 - ensure Amendment 13 priority
+            query_indicators = secondary_results[0] if secondary_results else ""
+            if isinstance(query_indicators, str) and any(term in query_indicators.lower() for term in ['b1', 'amendment', 'structure']):
+                return intent_name, min(0.95, confidence + 0.1), {
+                    "source": "b1_compliance_boost", 
+                    "threshold_met": True,
+                    "b1_amendment_priority": True
+                }
         
         # High confidence primary result
         if confidence >= IntentRouter.INTENT_THRESHOLD:
