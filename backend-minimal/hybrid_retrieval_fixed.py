@@ -487,6 +487,12 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
                 seen.add(key)
                 deduped.append(result)
         
+        # Apply ranking bias based on query patterns
+        bias_weights = detect_b1_amendment_bias(query)
+        if bias_weights:
+            print(f"🎯 Applying ranking bias: {bias_weights}")
+            deduped = apply_ranking_bias(deduped, bias_weights)
+        
         # Sort by enhanced score (amendment boost applied)
         final_results = sorted(deduped, key=lambda x: x['score'], reverse=True)[:top_k]
         
