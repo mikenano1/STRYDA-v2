@@ -290,6 +290,18 @@ def hybrid_retrieve_fixed(query: str, conn, top_k: int = 6) -> Tuple[List[Dict],
         # Re-sort and limit
         final_results = sorted(final_results, key=lambda x: x.get('vector_score', 0), reverse=True)[:top_k]
     
+    # Apply ranking bias based on query patterns
+    bias_weights = detect_b1_amendment_bias(query)
+    if bias_weights:
+        print(f"🎯 Applying ranking bias to hybrid results: {bias_weights}")
+        # Convert vector_score to score for bias application
+        for r in final_results:
+            if 'score' not in r:
+                r['score'] = r.get('vector_score', 0.0)
+        final_results = apply_ranking_bias(final_results, bias_weights)
+        # Re-sort after bias application
+        final_results = sorted(final_results, key=lambda x: x.get('score', 0), reverse=True)
+    
     # Final formatting
     tier1_count = sum(1 for r in final_results if r.get('source', '') in TIER1_SOURCES)
     
