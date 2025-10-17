@@ -675,7 +675,30 @@ Examples that help me give exact answers:
             print(f"⚠️ Profiler completion failed: {e}")
             timing_breakdown = {"t_total": 5000}  # Safe fallback
         
-        # Enhanced telemetry with bias tracking
+        # Enhanced telemetry with comprehensive tracking
+        tier1_hit = used_retrieval and len(enhanced_citations) > 0
+        
+        # Calculate sources_count_by_name for telemetry
+        sources_count_by_name = {}
+        for cite in enhanced_citations:
+            source = cite.get("source", "Unknown")
+            sources_count_by_name[source] = sources_count_by_name.get(source, 0) + 1
+        
+        # Generate query hash for tracking
+        import hashlib
+        query_hash = hashlib.md5(user_message.encode()).hexdigest()[:12]
+        
+        # Detect and log source bias
+        from hybrid_retrieval_fixed import detect_b1_amendment_bias
+        source_bias_detected = detect_b1_amendment_bias(user_message)
+        
+        # Check for amendment warning
+        amend_regex = os.getenv("AMEND_REGEX", "amend(ment)?\\s*13|b1\\s*a?m?e?n?d?ment|latest\\s+b1")
+        if amend_regex and re.search(amend_regex, user_message, re.I):
+            amendment_citations = sources_count_by_name.get("B1 Amendment 13", 0)
+            if amendment_citations == 0:
+                print(f"⚠️ WARN: Amendment pattern detected but no Amendment 13 citations for: {user_message}")
+        
         telemetry_data = {
             "status": "success",
             "intent": final_intent,
@@ -686,16 +709,11 @@ Examples that help me give exact answers:
             "tokens_out": tokens_out,
             "tier1_hit": tier1_hit,
             "citations_count": len(enhanced_citations),
-            "source_bias": {},  # Will be populated if bias applied
+            "sources_count_by_name": sources_count_by_name,
+            "source_bias": source_bias_detected,
+            "query_hash": query_hash,
             "timing_breakdown": timing_breakdown
         }
-        
-        # Add source bias logging if applicable
-        if used_retrieval:
-            from hybrid_retrieval_fixed import detect_b1_amendment_bias
-            bias_weights = detect_b1_amendment_bias(user_message)
-            if bias_weights:
-                telemetry_data["source_bias"] = bias_weights
         
         if os.getenv("ENABLE_TELEMETRY") == "true":
             try:
