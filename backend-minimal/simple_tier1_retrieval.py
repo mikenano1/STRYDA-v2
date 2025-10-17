@@ -177,15 +177,34 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
         
         # Apply ranking bias based on query patterns
         bias_weights = detect_b1_amendment_bias(query)
+        bias_applied = False
         if bias_weights:
             print(f"🎯 Applying ranking bias: {bias_weights}")
             deduped = apply_ranking_bias(deduped, bias_weights)
+            bias_applied = True
+            
+            # Log telemetry for bias application
+            bias_count = sum(1 for r in deduped if r.get('bias_applied', False))
+            print(f"[telemetry] ranking_bias applied={bias_applied} weights={bias_weights} affected_results={bias_count}/{len(deduped)}")
         
         # Sort by score and return top_k
         final_results = sorted(deduped, key=lambda x: x['score'], reverse=True)[:top_k]
         
         tier1_count = sum(1 for r in final_results if r.get('tier1_source', False))
+        
+        # Log source distribution after bias
+        source_mix = {}
+        for result in final_results:
+            source = result['source']
+            source_mix[source] = source_mix.get(source, 0) + 1
+        
         print(f"✅ Simple Tier-1 retrieval: {len(final_results)} results ({tier1_count} Tier-1)")
+        print(f"📊 Retrieval source mix for '{query[:50]}...': {source_mix}")
+        
+        # Log B1 Amendment 13 vs Legacy B1 distribution
+        amendment_count = source_mix.get('B1 Amendment 13', 0)
+        legacy_count = source_mix.get('B1/AS1', 0)
+        print(f"   B1 Amendment 13: {amendment_count}, Legacy B1: {legacy_count}")
         
         return final_results
         
