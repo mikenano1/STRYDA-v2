@@ -320,34 +320,34 @@ def score_candidate_with_boost(result: Dict, context: Dict) -> float:
 
 def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
     """
-    Enhanced Tier-1 content search with B1 Amendment 13 prioritization
+    Enhanced Tier-1 search with B1 Amendment 13 prioritization
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
     
-    # Build query context for boosting
+    # Build query context with amendment detection
     query_context = build_query_context(query)
+    is_amendment_query = "is_amendment" in query_context.get("flags", set())
     
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
         query_lower = query.lower()
         
-        # Enhanced source targeting with Amendment 13 priority
-        if "amendment" in query_lower or "amdt" in query_lower:
-            # Amendment queries: prioritize B1 Amendment 13
+        # Enhanced source targeting with Amendment 13 HARD PRIORITY
+        if is_amendment_query:
+            print(f"🎯 AMENDMENT QUERY DETECTED: Prioritizing B1 Amendment 13")
+            # Amendment queries: ONLY B1 sources, Amendment 13 first
             target_sources = ['B1 Amendment 13', 'B1/AS1']
-        elif any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber', 'lintel']):
+        elif any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber']):
             target_sources = ['NZS 3604:2011']
-        elif any(term in query_lower for term in ['flashing', 'roof', 'pitch', 'e2', 'moisture', 'apron']):
+        elif any(term in query_lower for term in ['flashing', 'roof', 'pitch', 'e2', 'moisture']):
             target_sources = ['E2/AS1']
         elif any(term in query_lower for term in ['brace', 'bracing', 'structure', 'b1']):
-            # Structural queries: include both B1 sources with Amendment 13 first
+            # General B1 queries: Amendment 13 first, then legacy
             target_sources = ['B1 Amendment 13', 'B1/AS1']
         else:
             target_sources = ['B1 Amendment 13', 'NZS 3604:2011', 'E2/AS1', 'B1/AS1']
         
         all_results = []
-        
-        print(f"🎯 Enhanced retrieval for: '{query}' → targeting {target_sources}")
         
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             for source in target_sources:
@@ -365,13 +365,21 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
                         AND ts @@ plainto_tsquery('english', %s)
                         ORDER BY fts_score DESC
                         LIMIT %s;
-                    """, (search_phrase, source, search_phrase, top_k))
+                    """, (search_phrase, source, search_phrase, top_k * 2))  # Get more for filtering
                     
                     source_results = cur.fetchall()
                     
                     for result in source_results:
-                        # Apply enhanced scoring with context
-                        base_result = {
+                        # Enhanced scoring with amendment boost
+                        base_score = score_candidate_with_boost(dict(result), query_context)
+                        
+                        # Additional boost for amendment queries
+                        if is_amendment_query and "Amendment 13" in result['source']:
+                            base_score *= 1.40  # Strong boost for amendment queries
+                        elif is_amendment_query and "B1/AS1" in result['source']:
+                            base_score *= 0.92  # De-boost legacy for amendment queries
+                        
+                        formatted_result = {
                             'id': str(result['id']),
                             'source': result['source'],
                             'page': result['page'],
@@ -379,18 +387,22 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
                             'section': result['section'],
                             'clause': result['clause'],
                             'snippet': result['snippet'] or result['content'][:200],
-                            'score': safe_numeric_convert(result['fts_score']),
+                            'score': base_score,
                             'tier1_source': True,
-                            'search_method': 'fts'
+                            'search_method': 'enhanced_amendment_aware',
+                            'amendment_boost': 1.40 if is_amendment_query and "Amendment 13" in result['source'] else 1.0
                         }
-                        base_result['score'] = score_candidate_with_boost(base_result, query_context)
-                        base_result['search_method'] = 'enhanced_fts'
                         
-                        all_results.append(base_result)
+                        all_results.append(formatted_result)
+                
+                # Break early for amendment queries if we found Amendment 13 content
+                if is_amendment_query and source == 'B1 Amendment 13' and len([r for r in all_results if 'Amendment 13' in r['source']]) >= 3:
+                    print(f"   ✅ Found {len([r for r in all_results if 'Amendment 13' in r['source']])} B1 Amendment 13 results, prioritizing")
+                    break
         
         conn.close()
         
-        # Enhanced deduplication and ranking
+        # Enhanced deduplication and ranking with amendment priority
         seen = set()
         deduped = []
         
@@ -400,8 +412,44 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
                 seen.add(key)
                 deduped.append(result)
         
-        # Sort by enhanced score (with boosts applied)
+        # Sort by enhanced score (amendment boost applied)
         final_results = sorted(deduped, key=lambda x: x['score'], reverse=True)[:top_k]
+        
+        # FORCE AT LEAST ONE B1 AMENDMENT 13 for amendment queries
+        if is_amendment_query:
+            amendment_results = [r for r in final_results if 'Amendment 13' in r['source']]
+            if not amendment_results:
+                # Emergency rescue: get B1 Amendment 13 content
+                print("🚨 AMENDMENT RESCUE: No Amendment 13 in top results, forcing inclusion")
+                
+                with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+                    cur.execute("""
+                        SELECT id, source, page, content, snippet
+                        FROM documents 
+                        WHERE source = 'B1 Amendment 13'
+                        ORDER BY page
+                        LIMIT 2;
+                    """, (search_phrase, search_phrase))
+                    
+                    rescue_results = cur.fetchall()
+                    
+                    for rescue in rescue_results:
+                        rescue_result = {
+                            'id': str(rescue['id']),
+                            'source': rescue['source'],
+                            'page': rescue['page'],
+                            'content': rescue['content'],
+                            'snippet': rescue['snippet'] or rescue['content'][:200],
+                            'score': 0.85,  # High score for rescue
+                            'tier1_source': True,
+                            'search_method': 'amendment_rescue'
+                        }
+                        
+                        # Replace lowest score result
+                        if len(final_results) >= top_k:
+                            final_results[-1] = rescue_result
+                        else:
+                            final_results.append(rescue_result)
         
         # Log source mix for analysis
         source_mix = {}
@@ -410,11 +458,12 @@ def tier1_content_search(query: str, top_k: int = 6) -> List[Dict]:
             source_mix[source] = source_mix.get(source, 0) + 1
         
         amendment_count = source_mix.get('B1 Amendment 13', 0)
-        legacy_b1_count = source_mix.get('B1/AS1', 0)
+        legacy_count = source_mix.get('B1/AS1', 0)
         
-        print(f"✅ Enhanced retrieval results: {len(final_results)} total")
-        print(f"   Amendment 13: {amendment_count}, Legacy B1: {legacy_b1_count}")
-        print(f"   Context flags: {list(query_context['flags'])}")
+        print(f"✅ Enhanced amendment-aware retrieval: {len(final_results)} results")
+        print(f"   B1 Amendment 13: {amendment_count}, Legacy B1: {legacy_count}")
+        print(f"   Amendment query: {is_amendment_query}")
+        print(f"   Context flags: {list(query_context.get('flags', set()))}")
         
         return final_results
         
