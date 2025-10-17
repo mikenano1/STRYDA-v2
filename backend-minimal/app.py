@@ -133,28 +133,100 @@ def ready(request: Request):
     status_code = 200 if ready_status["ready"] else 503
     return JSONResponse(status_code=status_code, content=ready_status)
 
-@app.get("/metrics")
-@limiter.limit("30/minute")  # Prometheus metrics
-def metrics(request: Request):
-    """Prometheus-style metrics for monitoring"""
-    # Basic metrics (would be enhanced with prometheus_client in production)
-    metrics_text = """# HELP chat_requests_total Total chat requests
-# TYPE chat_requests_total counter
-chat_requests_total{status="success",model="server_fallback"} 1
-chat_requests_total{status="error",model="fallback"} 0
-
-# HELP chat_latency_ms_bucket Chat response latency in milliseconds  
-# TYPE chat_latency_ms_bucket histogram
-chat_latency_ms_bucket{le="1000"} 0
-chat_latency_ms_bucket{le="5000"} 0
-chat_latency_ms_bucket{le="10000"} 1
-
-# HELP chat_tier1_hit_total Tier-1 source hits
-# TYPE chat_tier1_hit_total counter
-chat_tier1_hit_total 1
-"""
+@app.get("/admin/selftest")
+@limiter.limit("5/minute")  # Restricted admin endpoint
+async def admin_selftest(request: Request, x_admin_key: str = Header(None)):
+    """
+    Administrative selftest endpoint for golden test regression
+    """
+    # Admin authentication
+    expected_admin_key = os.getenv("ADMIN_KEY")
+    if not expected_admin_key or x_admin_key != expected_admin_key:
+        raise HTTPException(status_code=401, detail="Unauthorized - Invalid admin key")
     
-    return Response(content=metrics_text, media_type="text/plain")
+    try:
+        from golden_tests import run_comprehensive_selftest
+        
+        # Create chat function wrapper for golden tests
+        def chat_function_wrapper(query: str, session_id: str):
+            """Wrapper to call our chat pipeline for golden tests"""
+            try:
+                # Use the same logic as /api/chat
+                from simple_tier1_retrieval import tier1_content_search
+                from openai_structured import generate_structured_response
+                from intent_router import intent_router
+                
+                # Intent classification
+                intent, confidence, answer_style = intent_router.classify_intent_and_confidence(query)
+                final_intent, final_confidence, intent_meta = intent_router.decide_intent((intent, confidence), [])
+                
+                # Retrieval
+                docs = tier1_content_search(query, top_k=6) if final_intent != "chitchat" else []
+                
+                # Response generation
+                structured_response = generate_structured_response(
+                    user_message=query,
+                    tier1_snippets=docs,
+                    conversation_history=[]
+                )
+                
+                # Format response for testing
+                citations = []
+                for doc in docs[:3]:
+                    citation = {
+                        "id": f"cite_{doc.get('id', '')[:8]}",
+                        "source": doc.get("source", "Unknown"),
+                        "page": doc.get("page", 0),
+                        "score": doc.get("score", 0.0),
+                        "snippet": doc.get("snippet", "")[:200],
+                        "section": doc.get("section"),
+                        "clause": doc.get("clause")
+                    }
+                    citations.append(citation)
+                
+                # Detect bias application
+                from hybrid_retrieval_fixed import detect_b1_amendment_bias
+                source_bias = detect_b1_amendment_bias(query)
+                
+                return {
+                    "intent": final_intent,
+                    "citations": citations,
+                    "tier1_hit": len(docs) > 0,
+                    "source_bias": source_bias,
+                    "answer": structured_response.get("answer", ""),
+                    "model": structured_response.get("model", "test")
+                }
+                
+            except Exception as e:
+                return {
+                    "intent": "error",
+                    "citations": [],
+                    "tier1_hit": False,
+                    "source_bias": {},
+                    "error": str(e)
+                }
+        
+        # Run the comprehensive golden test suite
+        selftest_results = run_comprehensive_selftest(chat_function_wrapper)
+        
+        print(f"\n🎯 Golden test regression completed")
+        
+        return selftest_results
+        
+    except Exception as e:
+        print(f"❌ Selftest failed: {e}")
+        
+        return JSONResponse(
+            status_code=500,
+            content={
+                "ok": False,
+                "version": "1.4.0",
+                "error": "selftest_failed",
+                "detail": str(e),
+                "tests_total": 0,
+                "tests_passed": 0
+            }
+        )
 
 @app.post("/ingest")
 @limiter.limit("5/minute")  # Rate limited ingestion
