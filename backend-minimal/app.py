@@ -613,8 +613,7 @@ Examples that help me give exact answers:
             used_retrieval = True
             
             with profiler.timer('t_vector_search'):
-                # Use CANONICAL retrieval (same as selftest)
-                from services.retrieval import tier1_retrieval
+                # Use CANONICAL retrieval at top level (no duplicate import)
                 docs = tier1_retrieval(user_message, top_k=6)
                 tier1_hit = len(docs) > 0
             
