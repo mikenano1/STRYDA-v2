@@ -680,28 +680,28 @@ Examples that help me give exact answers:
                         model_used = structured_response.get("model", "fallback")
                         tokens_in = structured_response.get("tokens_in", 0)
                         tokens_out = structured_response.get("tokens_out", 0)
-                
-                # SAFE citation building (prevent 502 errors)
-                try:
-                    if docs:  # Only build citations if we have retrieval results
-                        for doc in docs[:3]:  # Max 3 citations
-                            citation = {
-                                "id": f"cite_{doc.get('id', '')[:8]}",
-                                "source": doc.get("source", "Unknown"),
-                                "page": doc.get("page", 0),
-                                "score": doc.get("score", 0.0),
-                                "snippet": doc.get("snippet", "")[:200],
-                                "section": doc.get("section"),
-                                "clause": doc.get("clause")
-                            }
-                            enhanced_citations.append(citation)
-                    else:
-                        citations_reason = "no_results"
                         
-                except Exception as e:
-                    print(f"⚠️ Citation building failed: {e}")
-                    enhanced_citations = []
-                    citations_reason = "citation_error"
+                        # SAFE citation building for GPT fallback (prevent 502 errors)
+                        try:
+                            if docs:  # Only build citations if we have retrieval results
+                                for doc in docs[:3]:  # Max 3 citations
+                                    citation = {
+                                        "id": f"cite_{doc.get('id', '')[:8]}",
+                                        "source": doc.get("source", "Unknown"),
+                                        "page": doc.get("page", 0),
+                                        "score": doc.get("score", 0.0),
+                                        "snippet": doc.get("snippet", "")[:200],
+                                        "section": doc.get("section"),
+                                        "clause": doc.get("clause")
+                                    }
+                                    enhanced_citations.append(citation)
+                            else:
+                                citations_reason = "no_results"
+                                
+                        except Exception as e2:
+                            print(f"⚠️ Citation building failed: {e2}")
+                            enhanced_citations = []
+                            citations_reason = "citation_error"
                 
             else:
                 # Unknown intent - safe fallback, no citations
