@@ -722,8 +722,9 @@ Examples that help me give exact answers:
             print(f"⚠️ Profiler completion failed: {e}")
             timing_breakdown = {"t_total": 5000}  # Safe fallback
         
-        # Enhanced telemetry with comprehensive tracking
+        # Enhanced telemetry with citation policy tracking
         tier1_hit = used_retrieval and len(enhanced_citations) > 0
+        citations_shown = len(enhanced_citations) > 0
         
         # Calculate sources_count_by_name for telemetry
         sources_count_by_name = {}
@@ -733,7 +734,7 @@ Examples that help me give exact answers:
         
         # Generate query hash for tracking
         import hashlib
-        query_hash = hashlib.md5(user_message.encode()).hexdigest()[:12]
+        query_hash = hashlib.sha1(user_message.encode()).hexdigest()[:12]
         
         # Detect and log source bias
         from hybrid_retrieval_fixed import detect_b1_amendment_bias
