@@ -577,24 +577,25 @@ def api_chat(req: ChatRequest):
             print(f"⚠️ Chat history retrieval failed: {e}")
             conversation_history = []
         
-        # Step 4: Handle based on FINAL intent (preserve classifier decision)
+        # Step 4: Handle based on FINAL intent with proper citation policy
         enhanced_citations = []
         used_retrieval = False
+        citations_reason = "intent"
         model_used = "server_fallback"
+        tokens_in = 0
+        tokens_out = 0
         
-        # PRESERVE final_intent - no downgrading for high confidence
-        if final_intent == "chitchat" and final_confidence >= 0.70:
-            # High confidence chitchat
-            answer = "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
-            
-        elif final_intent == "chitchat":
-            # Low confidence chitchat (fallback case)
-            answer = "I can help with NZ building standards. What specific building question can I help you with?"
-            
-        elif final_intent == "clarify":
-            # Educational response with examples
-            if "stud" in user_message.lower():
-                answer = """Are you asking about:
+        try:
+            # CITATION POLICY: Only compliance_strict gets citations
+            if final_intent == "chitchat":
+                # High confidence chitchat - NO citations
+                answer = "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+                citations_reason = "user_general"
+                
+            elif final_intent == "clarify":
+                # Educational response - NO citations
+                if "stud" in user_message.lower():
+                    answer = """Are you asking about:
 • Spacing for wall studs?
 • Sizing for load-bearing walls?
 • Fastening to foundations?
@@ -602,61 +603,103 @@ def api_chat(req: ChatRequest):
 Examples that help me give exact answers:
 • '90mm stud spacing in Very High wind zone'
 • 'Load-bearing wall studs for 6m span'"""
-            else:
-                answer = """I can help with NZ building standards! To give you the best guidance, could you tell me:
+                else:
+                    answer = """I can help with NZ building standards! To give you the best guidance, could you tell me:
 • What type of building work?
 • Your location's wind zone?
 • Specific component you're working on?"""
                 
-        else:
-            # compliance_strict, general_building, or other intents - USE ENHANCED RETRIEVAL
-            used_retrieval = True
-            
-            with profiler.timer('t_vector_search'):
-                # Use CANONICAL retrieval at top level (no duplicate import)
-                docs = tier1_retrieval(user_message, top_k=6)
-                tier1_hit = len(docs) > 0
-            
-            with profiler.timer('t_merge_relevance'):
-                # Log source mix for amendment analysis
-                source_mix = {}
-                for doc in docs:
-                    source = doc.get('source', 'Unknown')
-                    source_mix[source] = source_mix.get(source, 0) + 1
+                citations_reason = "user_general"
                 
-                amendment_count = source_mix.get('B1 Amendment 13', 0)
-                legacy_b1_count = source_mix.get('B1/AS1', 0)
+            elif final_intent in ["general_help", "product_info"]:
+                # Product/general help - NO citations
+                answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
+                citations_reason = "user_general"
                 
-                print(f"📊 Retrieval source mix for '{user_message[:30]}...': {source_mix}")
-                print(f"   B1 Amendment 13: {amendment_count}, Legacy B1: {legacy_b1_count}")
-            
-            # Generate structured response with retrieved content
-            with profiler.timer('t_generate'):
-                structured_response = generate_structured_response(
-                    user_message=user_message,
-                    tier1_snippets=docs,
-                    conversation_history=conversation_history
-                )
+            elif final_intent == "compliance_strict":
+                # ONLY compliance_strict gets citations
+                used_retrieval = True
+                citations_reason = "intent"
                 
-                # Use GPT answer but preserve Tier-1 citations
-                answer = structured_response.get("answer", "")
-                model_used = structured_response.get("model", "fallback")
-                tokens_in = structured_response.get("tokens_in", 0)
-                tokens_out = structured_response.get("tokens_out", 0)
+                with profiler.timer('t_vector_search'):
+                    # Use CANONICAL retrieval with safe error handling
+                    try:
+                        docs = tier1_retrieval(user_message, top_k=6)
+                        tier1_hit = len(docs) > 0
+                    except Exception as e:
+                        print(f"⚠️ Retrieval failed: {e}")
+                        docs = []
+                        tier1_hit = False
+                        citations_reason = "no_results"
                 
-                # CRITICAL: Always use server-side Tier-1 citations for compliance
-                enhanced_citations = []
-                for doc in docs[:3]:  # Max 3 citations
-                    citation = {
-                        "id": f"cite_{doc.get('id', '')[:8]}",
-                        "source": doc.get("source", "Unknown"),
-                        "page": doc.get("page", 0),
-                        "score": doc.get("score", 0.0),
-                        "snippet": doc.get("snippet", "")[:200],
-                        "section": doc.get("section"),
-                        "clause": doc.get("clause")
-                    }
-                    enhanced_citations.append(citation)
+                with profiler.timer('t_merge_relevance'):
+                    # Safe source mix analysis
+                    try:
+                        source_mix = {}
+                        for doc in docs:
+                            source = doc.get('source', 'Unknown')
+                            source_mix[source] = source_mix.get(source, 0) + 1
+                        
+                        print(f"📊 Compliance query source mix: {source_mix}")
+                    except Exception as e:
+                        print(f"⚠️ Source mix analysis failed: {e}")
+                        source_mix = {}
+                
+                # Generate GPT response with retrieved content
+                with profiler.timer('t_generate'):
+                    try:
+                        structured_response = generate_structured_response(
+                            user_message=user_message,
+                            tier1_snippets=docs,
+                            conversation_history=conversation_history
+                        )
+                        
+                        answer = structured_response.get("answer", "")
+                        model_used = structured_response.get("model", "fallback")
+                        tokens_in = structured_response.get("tokens_in", 0)
+                        tokens_out = structured_response.get("tokens_out", 0)
+                        
+                    except Exception as e:
+                        print(f"⚠️ GPT generation failed: {e}")
+                        answer = "I can help with building code compliance. Please rephrase your question for specific building requirements."
+                        model_used = "error_fallback"
+                        tokens_in = 0
+                        tokens_out = 0
+                
+                # SAFE citation building (prevent 502 errors)
+                try:
+                    if docs:  # Only build citations if we have retrieval results
+                        for doc in docs[:3]:  # Max 3 citations
+                            citation = {
+                                "id": f"cite_{doc.get('id', '')[:8]}",
+                                "source": doc.get("source", "Unknown"),
+                                "page": doc.get("page", 0),
+                                "score": doc.get("score", 0.0),
+                                "snippet": doc.get("snippet", "")[:200],
+                                "section": doc.get("section"),
+                                "clause": doc.get("clause")
+                            }
+                            enhanced_citations.append(citation)
+                    else:
+                        citations_reason = "no_results"
+                        
+                except Exception as e:
+                    print(f"⚠️ Citation building failed: {e}")
+                    enhanced_citations = []
+                    citations_reason = "citation_error"
+                
+            else:
+                # Unknown intent - safe fallback, no citations
+                answer = "I can help with NZ building standards. What specific building question can I help you with?"
+                citations_reason = "user_general"
+                
+        except Exception as e:
+            print(f"❌ Response generation failed: {e}")
+            # Ultimate safe fallback
+            answer = "I encountered an issue processing your question. Please try rephrasing your building code question."
+            enhanced_citations = []
+            used_retrieval = False
+            citations_reason = "error_fallback"
         
         # Step 6: Save assistant response with error safety
         try:
