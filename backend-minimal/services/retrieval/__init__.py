@@ -3,15 +3,15 @@ Canonical retrieval export for all callers (chat, selftest, tools).
 This prevents drift between implementations.
 """
 
+import sys
+import os
+
+# Add backend-minimal to path for imports
+sys.path.insert(0, '/app/backend-minimal')
+
 try:
-    # Import the working implementation
-    import sys
-    import os
-    
-    # Add backend-minimal to path for imports
-    sys.path.insert(0, '/app/backend-minimal')
-    
-    from simple_tier1_retrieval import tier1_content_search
+    # Import the actual working function (correct name)
+    from simple_tier1_retrieval import simple_tier1_retrieval
     
     # Canonical function that all systems use
     def tier1_retrieval(query: str, top_k: int = 6, **kwargs):
@@ -19,7 +19,10 @@ try:
         Canonical Tier-1 retrieval used by chat, selftest, and all other systems
         Ensures consistency across all callers
         """
-        return tier1_content_search(query, top_k)
+        return simple_tier1_retrieval(query, top_k)
+    
+    # Also export with the expected name for compatibility
+    tier1_content_search = tier1_retrieval
     
 except ImportError as e:
     # Fallback implementation
@@ -28,6 +31,8 @@ except ImportError as e:
     def tier1_retrieval(query: str, top_k: int = 6, **kwargs):
         """Fallback retrieval implementation"""
         return []
+    
+    tier1_content_search = tier1_retrieval
 
-# Export the canonical function
-__all__ = ['tier1_retrieval']
+# Export both names for compatibility
+__all__ = ['tier1_retrieval', 'tier1_content_search']
