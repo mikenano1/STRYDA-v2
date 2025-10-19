@@ -24,6 +24,9 @@ limiter = Limiter(key_func=get_remote_address)
 
 # Import validation and modules
 from validation import validate_input, validate_output
+
+# Canonical imports (single source of truth)
+from services.retrieval import tier1_retrieval
 from rag.retriever import retrieve_and_answer
 from profiler import profiler
 
