@@ -756,6 +756,8 @@ Examples that help me give exact answers:
             "tokens_out": tokens_out,
             "tier1_hit": tier1_hit,
             "citations_count": len(enhanced_citations),
+            "citations_shown": len(enhanced_citations) > 0,
+            "citations_reason": citations_reason,
             "sources_count_by_name": sources_count_by_name,
             "source_bias": source_bias_detected,
             "query_hash": query_hash,
