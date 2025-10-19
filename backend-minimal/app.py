@@ -229,8 +229,8 @@ async def admin_selftest(request: Request, x_admin_key: str = Header(None)):
             query = test["query"]
             
             try:
-                # Use the exact same retrieval as the working chat endpoint
-                from simple_tier1_retrieval import simple_tier1_retrieval
+                # Use the EXACT SAME retrieval as chat endpoint (canonical export)
+                from services.retrieval import tier1_retrieval
                 from openai_structured import generate_structured_response  
                 from intent_router import intent_router
                 import hashlib
@@ -243,8 +243,8 @@ async def admin_selftest(request: Request, x_admin_key: str = Header(None)):
                 primary_intent, confidence, answer_style = intent_router.classify_intent_and_confidence(query)
                 final_intent, final_confidence, intent_meta = intent_router.decide_intent((primary_intent, confidence), [])
                 
-                # Retrieval (EXACT SAME as chat endpoint)
-                docs = simple_tier1_retrieval(query, top_k=6) if final_intent != "chitchat" else []
+                # Retrieval (CANONICAL - same as chat endpoint)
+                docs = tier1_retrieval(query, top_k=6) if final_intent != "chitchat" else []
                 tier1_hit = len(docs) > 0
                 
                 # Analyze citations
