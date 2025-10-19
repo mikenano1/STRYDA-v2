@@ -609,9 +609,9 @@ Examples that help me give exact answers:
             used_retrieval = True
             
             with profiler.timer('t_vector_search'):
-                # CRITICAL: Use enhanced B1 Amendment 13 retrieval
-                from simple_tier1_retrieval import simple_tier1_retrieval
-                docs = simple_tier1_retrieval(user_message, top_k=6)
+                # Use CANONICAL retrieval (same as selftest)
+                from services.retrieval import tier1_retrieval
+                docs = tier1_retrieval(user_message, top_k=6)
                 tier1_hit = len(docs) > 0
             
             with profiler.timer('t_merge_relevance'):
