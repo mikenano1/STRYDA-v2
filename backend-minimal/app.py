@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 import os
 import time
 import json
+import re
 import psycopg2
 import psycopg2.extras
 import asyncio
