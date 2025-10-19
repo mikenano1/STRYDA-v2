@@ -645,9 +645,31 @@ Examples that help me give exact answers:
                         print(f"⚠️ Source mix analysis failed: {e}")
                         source_mix = {}
                 
-                # Generate GPT response with retrieved content
+                # Generate STRUCTURED compliance response
                 with profiler.timer('t_generate'):
                     try:
+                        # Use structured compliance checker for compliance_strict queries
+                        from compliance_checker import build_compliance_response
+                        
+                        compliance_result = build_compliance_response(user_message, docs, final_intent)
+                        
+                        answer = compliance_result.get("answer", "")
+                        model_used = "compliance_checker_v2"
+                        tokens_in = 0  # Compliance checker doesn't use tokens
+                        tokens_out = 0
+                        
+                        # Override citations with compliance checker format
+                        enhanced_citations = compliance_result.get("citations", [])
+                        
+                        # Add compliance fields to telemetry
+                        verdict = compliance_result.get("verdict", "COND")
+                        assumptions = compliance_result.get("assumptions", [])
+                        
+                        print(f"✅ Compliance checker result: {verdict}, {len(enhanced_citations)} citations")
+                        
+                    except Exception as e:
+                        print(f"⚠️ Compliance checker failed: {e}")
+                        # Fallback to GPT
                         structured_response = generate_structured_response(
                             user_message=user_message,
                             tier1_snippets=docs,
@@ -658,13 +680,6 @@ Examples that help me give exact answers:
                         model_used = structured_response.get("model", "fallback")
                         tokens_in = structured_response.get("tokens_in", 0)
                         tokens_out = structured_response.get("tokens_out", 0)
-                        
-                    except Exception as e:
-                        print(f"⚠️ GPT generation failed: {e}")
-                        answer = "I can help with building code compliance. Please rephrase your question for specific building requirements."
-                        model_used = "error_fallback"
-                        tokens_in = 0
-                        tokens_out = 0
                 
                 # SAFE citation building (prevent 502 errors)
                 try:
