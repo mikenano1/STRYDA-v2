@@ -1,0 +1,15 @@
+{
+  "run_id": "gov_crawl_20251020_063606",
+  "started_at": "2025-10-20T06:36:18.959864",
+  "mode": "DRY_RUN",
+  "seeds": [
+    "https://www.building.govt.nz/building-code/",
+    "https://www.building.govt.nz/building-code/acceptable-solutions-and-verification-methods/",
+    "https://codehub.building.govt.nz/acceptable-solutions-and-verification-methods",
+    "https://www.mbie.govt.nz/building-and-construction/building-code/"
+  ],
+  "discovered_pdf_count": 0,
+  "analyzed_candidates": 0,
+  "total_size_mb": 0,
+  "candidates": []
+}
