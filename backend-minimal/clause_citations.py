@@ -32,50 +32,65 @@ class ClauseCitation:
         self.confidence = self._calculate_confidence()
     
     def _extract_clause_info(self) -> Tuple[Optional[str], Optional[str], LocatorType]:
-        """Enhanced clause extraction with professional formatting"""
+        """Enhanced clause extraction with table/figure priority"""
         content = self.content or self.snippet or ""
+        query_lower = self.query.lower()
         
-        # TABLE detection (highest priority)
+        # FORCE TABLE MODE for table-related queries
+        force_table_mode = any(term in query_lower for term in ['table', 'span', 'schedule', 'joist span', 'maximum span'])
+        
+        # ENHANCED TABLE detection (HIGHEST PRIORITY)
         table_patterns = [
-            r'(Table\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
-            r'(TABLE\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
+            r'(?:^|\s)Table\s+(\d+(?:\.\d+)*)\b.*?[:\-—]?\s*(.{1,80})?',
+            r'(?:^|\s)TABLE\s+(\d+(?:\.\d+)*)\b.*?[:\-—]?\s*(.{1,80})?',
         ]
         
+        table_matches = []
         for pattern in table_patterns:
-            match = re.search(pattern, content, re.IGNORECASE)
-            if match:
-                table_id = match.group(2)  # "7.1"
-                table_title = match.group(3).strip() if len(match.groups()) > 2 and match.group(3) else ""
+            for match in re.finditer(pattern, content, re.IGNORECASE | re.MULTILINE):
+                table_id = match.group(1)
+                table_title = match.group(2).strip() if len(match.groups()) > 1 and match.group(2) else ""
                 
-                # Clean and format title
+                # Enhanced table title extraction
                 table_title = re.sub(r'^[:\-—\s]*', '', table_title)
-                table_title = table_title.split('\n')[0]  # First line only
-                table_title = table_title[:50] + "..." if len(table_title) > 50 else table_title
+                table_title = table_title.split('\n')[0].strip()
                 
-                return table_id, table_title or f"Table {table_id}", LocatorType.TABLE
-        
-        # FIGURE detection (second priority)
-        figure_patterns = [
-            r'(Figure\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
-            r'(FIGURE\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
-        ]
-        
-        for pattern in figure_patterns:
-            match = re.search(pattern, content, re.IGNORECASE)
-            if match:
-                figure_id = match.group(2)  # "4.2"
-                figure_title = match.group(3).strip() if len(match.groups()) > 2 and match.group(3) else ""
+                # Score based on query relevance
+                score = 0.7
+                if force_table_mode:
+                    score += 0.2  # Boost when table explicitly requested
+                if any(term in table_title.lower() for term in ['joist', 'span', 'spacing', 'beam']):
+                    score += 0.1  # Boost for structural terms
                 
-                figure_title = re.sub(r'^[:\-—\s]*', '', figure_title)
-                figure_title = figure_title.split('\n')[0]
-                figure_title = figure_title[:50] + "..." if len(figure_title) > 50 else figure_title
-                
-                return figure_id, figure_title or f"Figure {figure_id}", LocatorType.FIGURE
+                table_matches.append((table_id, table_title or f"Table {table_id}", score))
         
-        # CLAUSE detection (third priority) - avoid table/figure false matches
+        # Return highest scoring table if found
+        if table_matches:
+            best_table = max(table_matches, key=lambda x: x[2])
+            return best_table[0], best_table[1], LocatorType.TABLE
+        
+        # FIGURE detection (SECOND PRIORITY) - only if no tables or figure explicitly mentioned
+        if not force_table_mode or 'figure' in query_lower:
+            figure_patterns = [
+                r'(?:^|\s)Figure\s+(\d+(?:\.\d+)*)\b.*?[:\-—]?\s*(.{1,80})?',
+                r'(?:^|\s)FIGURE\s+(\d+(?:\.\d+)*)\b.*?[:\-—]?\s*(.{1,80})?',
+            ]
+            
+            for pattern in figure_patterns:
+                match = re.search(pattern, content, re.IGNORECASE | re.MULTILINE)
+                if match:
+                    figure_id = match.group(1)
+                    figure_title = match.group(2).strip() if len(match.groups()) > 1 and match.group(2) else ""
+                    
+                    figure_title = re.sub(r'^[:\-—\s]*', '', figure_title)
+                    figure_title = figure_title.split('\n')[0].strip()[:45]
+                    
+                    return figure_id, figure_title or f"Figure {figure_id}", LocatorType.FIGURE
+        
+        # CLAUSE detection (THIRD PRIORITY) - enhanced with negative lookbehind
         clause_patterns = [
-            r'(?<!Table\s)(?<!Figure\s)(\d+(?:\.\d+){1,3})\s*[:\-—]?\s*(.{1,80})?',
-            r'([A-H]\d+(?:/[A-Z]+\d+)?)\s*[:\-—]?\s*(.{1,80})?',  # B1/AS1, E2/AS1
+            r'(?<!Table\s)(?<!Figure\s)(?<!table\s)(?<!figure\s)(\d+(?:\.\d+){1,3})\s*[:\-—]?\s*(.{1,60})?',
+            r'([A-H]\d+(?:/[A-Z]+\d+)?)\s*[:\-—]?\s*(.{1,60})?',  # B1/AS1, E2/AS1
         ]
         
         for pattern in clause_patterns:
@@ -85,33 +100,26 @@ class ClauseCitation:
                 clause_title = match.group(2).strip() if len(match.groups()) > 1 and match.group(2) else ""
                 
                 clause_title = re.sub(r'^[:\-—\s]*', '', clause_title)
-                clause_title = clause_title.split('\n')[0]
-                clause_title = clause_title[:50] + "..." if len(clause_title) > 50 else clause_title
+                clause_title = clause_title.split('\n')[0].strip()[:45]
                 
                 return clause_id, clause_title or f"Clause {clause_id}", LocatorType.CLAUSE
         
-        # SECTION heading detection (fourth priority)
+        # SECTION heading detection (FOURTH PRIORITY)
         section_patterns = [
-            r'^(\d+(?:\.\d+)*)\s+([A-Z][^\n]{5,60})',  # "7.1 FLOOR JOISTS"
-            r'^([A-Z\s]{5,40})\s*$'  # All caps headings
+            r'^(\d+(?:\.\d+)*)\s+([A-Z][^\n]{5,50})',  # "7.1 FLOOR JOISTS"
         ]
         
-        lines = content.split('\n')[:15]  # Check first 15 lines
+        lines = content.split('\n')[:15]
         for line in lines:
             line = line.strip()
             for pattern in section_patterns:
                 match = re.match(pattern, line)
                 if match:
-                    if len(match.groups()) >= 2:
-                        section_id = match.group(1)
-                        section_title = match.group(2)[:50]
-                        return section_id, section_title, LocatorType.SECTION
-                    else:
-                        # All caps heading
-                        section_title = match.group(1)[:40]
-                        return None, section_title, LocatorType.SECTION
+                    section_id = match.group(1)
+                    section_title = match.group(2)[:45]
+                    return section_id, section_title, LocatorType.SECTION
         
-        # Fallback to page-level
+        # PAGE-level fallback (lowest priority)
         return None, None, LocatorType.PAGE
     
     def _build_anchor(self) -> Optional[str]:
