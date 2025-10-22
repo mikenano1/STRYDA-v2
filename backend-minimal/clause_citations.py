@@ -166,35 +166,42 @@ class ClauseCitation:
         }
     
     def get_pill_text(self) -> str:
-        """Generate text for citation pill display"""
-        # Source shortname
-        source_short = self.source.replace("NZS 3604:2011", "NZS 3604").replace("B1 Amendment 13", "B1 Amd 13")
+        """Generate professional pill text with source abbreviations"""
+        # Professional source shortnames
+        source_mapping = {
+            "NZS 3604:2011": "NZS 3604",
+            "B1 Amendment 13": "B1 Amd 13", 
+            "E2/AS1": "E2/AS1",
+            "B1/AS1": "B1/AS1",
+            "NZS 4229:2013": "NZS 4229",
+            "NZ Building Code": "NZBC"
+        }
         
-        # Clause/table identifier
+        source_short = source_mapping.get(self.source, self.source)
+        
+        # Build clause identifier part
         if self.clause_id and self.locator_type == LocatorType.TABLE:
             clause_part = f"Table {self.clause_id}"
         elif self.clause_id and self.locator_type == LocatorType.FIGURE:
             clause_part = f"Figure {self.clause_id}"
         elif self.clause_id and self.locator_type == LocatorType.CLAUSE:
-            clause_part = f"Clause {self.clause_id}"
+            clause_part = self.clause_id
         elif self.clause_id and self.locator_type == LocatorType.SECTION:
             clause_part = f"§{self.clause_id}"
         else:
-            clause_part = ""
+            # Page-level fallback
+            clause_part = f"p.{self.page}"
+            return f"[{source_short}] {clause_part}"
         
-        # Title (shortened)
+        # Add title if available
         title_part = ""
         if self.clause_title:
-            title = self.clause_title
-            if len(title) > 40:
-                title = title[:37] + "..."
-            title_part = f" — {title}"
+            clean_title = self.clause_title
+            if len(clean_title) > 35:
+                clean_title = clean_title[:32] + "..."
+            title_part = f" — {clean_title}"
         
-        # Combine parts
-        if clause_part:
-            return f"[{source_short}] {clause_part}{title_part} (p.{self.page})"
-        else:
-            return f"[{source_short}] p.{self.page}"
+        return f"[{source_short}] {clause_part}{title_part} (p.{self.page})"
 
 def build_clause_citations(docs: List[Dict], query: str, max_citations: int = 3) -> List[Dict]:
     """Build clause-level citations from retrieval results"""
