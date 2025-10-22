@@ -32,77 +32,84 @@ class ClauseCitation:
         self.confidence = self._calculate_confidence()
     
     def _extract_clause_info(self) -> Tuple[Optional[str], Optional[str], LocatorType]:
-        """Extract clause/table/figure information from content"""
+        """Enhanced clause extraction with professional formatting"""
         content = self.content or self.snippet or ""
         
-        # Table detection patterns
+        # TABLE detection (highest priority)
         table_patterns = [
-            r'(Table\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*([^\n]{1,80})',
-            r'(TABLE\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*([^\n]{1,80})',
+            r'(Table\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
+            r'(TABLE\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
         ]
         
         for pattern in table_patterns:
             match = re.search(pattern, content, re.IGNORECASE)
             if match:
-                table_ref = match.group(1)  # "Table 7.1"
-                table_id = match.group(2)   # "7.1"
-                table_title = match.group(3).strip() if len(match.groups()) > 2 else ""
+                table_id = match.group(2)  # "7.1"
+                table_title = match.group(3).strip() if len(match.groups()) > 2 and match.group(3) else ""
                 
-                # Clean title
+                # Clean and format title
                 table_title = re.sub(r'^[:\-—\s]*', '', table_title)
-                table_title = table_title[:60] + "..." if len(table_title) > 60 else table_title
+                table_title = table_title.split('\n')[0]  # First line only
+                table_title = table_title[:50] + "..." if len(table_title) > 50 else table_title
                 
-                return table_id, table_title or table_ref, LocatorType.TABLE
+                return table_id, table_title or f"Table {table_id}", LocatorType.TABLE
         
-        # Figure detection patterns
+        # FIGURE detection (second priority)
         figure_patterns = [
-            r'(Figure\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*([^\n]{1,80})',
-            r'(FIGURE\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*([^\n]{1,80})',
+            r'(Figure\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
+            r'(FIGURE\s+(\d+(?:\.\d+)*))\s*[:\-—]?\s*(.{1,80})?',
         ]
         
         for pattern in figure_patterns:
             match = re.search(pattern, content, re.IGNORECASE)
             if match:
-                figure_ref = match.group(1)  # "Figure 4.2"
-                figure_id = match.group(2)   # "4.2"
-                figure_title = match.group(3).strip() if len(match.groups()) > 2 else ""
+                figure_id = match.group(2)  # "4.2"
+                figure_title = match.group(3).strip() if len(match.groups()) > 2 and match.group(3) else ""
                 
                 figure_title = re.sub(r'^[:\-—\s]*', '', figure_title)
-                figure_title = figure_title[:60] + "..." if len(figure_title) > 60 else figure_title
+                figure_title = figure_title.split('\n')[0]
+                figure_title = figure_title[:50] + "..." if len(figure_title) > 50 else figure_title
                 
-                return figure_id, figure_title or figure_ref, LocatorType.FIGURE
+                return figure_id, figure_title or f"Figure {figure_id}", LocatorType.FIGURE
         
-        # Clause detection patterns
+        # CLAUSE detection (third priority) - avoid table/figure false matches
         clause_patterns = [
-            r'(?:Clause\s*)?(\d+(?:\.\d+){1,3})\s*[:\-—]?\s*([^\n]{1,80})',
-            r'([A-H]\d+(?:/[A-Z]+\d+)?)\s*[:\-—]?\s*([^\n]{1,80})',  # B1/AS1, E2/AS1
+            r'(?<!Table\s)(?<!Figure\s)(\d+(?:\.\d+){1,3})\s*[:\-—]?\s*(.{1,80})?',
+            r'([A-H]\d+(?:/[A-Z]+\d+)?)\s*[:\-—]?\s*(.{1,80})?',  # B1/AS1, E2/AS1
         ]
         
         for pattern in clause_patterns:
             match = re.search(pattern, content, re.IGNORECASE)
             if match:
                 clause_id = match.group(1)
-                clause_title = match.group(2).strip() if len(match.groups()) > 1 else ""
+                clause_title = match.group(2).strip() if len(match.groups()) > 1 and match.group(2) else ""
                 
                 clause_title = re.sub(r'^[:\-—\s]*', '', clause_title)
-                clause_title = clause_title[:60] + "..." if len(clause_title) > 60 else clause_title
+                clause_title = clause_title.split('\n')[0]
+                clause_title = clause_title[:50] + "..." if len(clause_title) > 50 else clause_title
                 
-                return clause_id, clause_title, LocatorType.CLAUSE
+                return clause_id, clause_title or f"Clause {clause_id}", LocatorType.CLAUSE
         
-        # Section heading detection
+        # SECTION heading detection (fourth priority)
         section_patterns = [
-            r'^(\d+(?:\.\d+)*)\s+([A-Z][^\n]{5,80})',  # "7.1 FLOOR JOISTS"
+            r'^(\d+(?:\.\d+)*)\s+([A-Z][^\n]{5,60})',  # "7.1 FLOOR JOISTS"
+            r'^([A-Z\s]{5,40})\s*$'  # All caps headings
         ]
         
-        lines = content.split('\n')[:10]  # Check first 10 lines
+        lines = content.split('\n')[:15]  # Check first 15 lines
         for line in lines:
+            line = line.strip()
             for pattern in section_patterns:
-                match = re.match(pattern, line.strip())
+                match = re.match(pattern, line)
                 if match:
-                    section_id = match.group(1)
-                    section_title = match.group(2)
-                    
-                    return section_id, section_title[:60], LocatorType.SECTION
+                    if len(match.groups()) >= 2:
+                        section_id = match.group(1)
+                        section_title = match.group(2)[:50]
+                        return section_id, section_title, LocatorType.SECTION
+                    else:
+                        # All caps heading
+                        section_title = match.group(1)[:40]
+                        return None, section_title, LocatorType.SECTION
         
         # Fallback to page-level
         return None, None, LocatorType.PAGE
