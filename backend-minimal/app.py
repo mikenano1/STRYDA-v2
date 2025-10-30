@@ -35,9 +35,15 @@ from profiler import profiler
 DATABASE_URL = os.getenv("DATABASE_URL")
 API_KEY = os.getenv("OPENAI_API_KEY")
 
+# Model configuration
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
+print(f"🤖 OpenAI Model: {OPENAI_MODEL}")
+
 # Feature flags
 CLAUSE_PILLS_ENABLED = os.getenv("CLAUSE_PILLS", "false").lower() == "true"
+ENABLE_WEB_SEARCH = os.getenv("ENABLE_WEB_SEARCH", "true").lower() == "true"
 print(f"🎛️  Feature flag CLAUSE_PILLS: {'ENABLED' if CLAUSE_PILLS_ENABLED else 'DISABLED'}")
+print(f"🌐 Feature flag ENABLE_WEB_SEARCH: {'ENABLED' if ENABLE_WEB_SEARCH else 'DISABLED'}")
 
 # Environment validation (fail fast)
 required_env_vars = ["DATABASE_URL"]
