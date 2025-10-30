@@ -13,18 +13,75 @@ load_dotenv()
 
 # OpenAI Client Configuration
 client = None
-MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Fallback to available model
+MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Primary model
+FALLBACK_MODEL = os.getenv("OPENAI_MODEL_FALLBACK", "gpt-4o-mini")  # Fallback if primary fails
 API_KEY = os.getenv("OPENAI_API_KEY")
+
+print(f"🤖 Primary model: {MODEL}, Fallback: {FALLBACK_MODEL}")
 
 if API_KEY:
     try:
         client = OpenAI(api_key=API_KEY)
-        print(f"✅ OpenAI client initialized for model: {MODEL}")
+        print(f"✅ OpenAI client initialized")
     except Exception as e:
         print(f"❌ OpenAI client initialization failed: {e}")
         client = None
 else:
     print("⚠️ No OpenAI API key configured")
+
+
+def extract_final_text(response) -> tuple[str, int, dict]:
+    """
+    Extract final assistant text from OpenAI response, avoiding reasoning content.
+    
+    Returns:
+        (final_text, raw_len, meta_additions) where:
+        - final_text: Assistant's final/output text only (no reasoning)
+        - raw_len: Character count of extracted text
+        - meta_additions: Dict with extraction_path for debugging
+    """
+    import re
+    
+    # Try 1: Responses API style (output_text field)
+    if hasattr(response, "output_text") and response.output_text:
+        text = str(response.output_text)
+        return text, len(text), {"extraction_path": "output_text"}
+    
+    # Try 2: Classic chat style (choices[0].message.content)
+    try:
+        if hasattr(response, "choices") and response.choices:
+            message = response.choices[0].message
+            
+            # Check if content is a string
+            if hasattr(message, "content") and isinstance(message.content, str) and message.content:
+                text = message.content
+                return text, len(text), {"extraction_path": "choices[0].message.content"}
+            
+            # Check if content is a list/array of parts
+            if hasattr(message, "content") and isinstance(message.content, list):
+                text_parts = []
+                for part in message.content:
+                    if isinstance(part, dict):
+                        part_type = part.get("type", "")
+                        # Include only text/output parts, exclude reasoning/tool
+                        if part_type in {"text", "output_text"} and "text" in part:
+                            text_parts.append(part["text"])
+                
+                if text_parts:
+                    joined = " ".join(text_parts)
+                    return joined, len(joined), {"extraction_path": "choices[0].message.content[parts]"}
+            
+            # Check for reasoning_content field (GPT-5 specific)
+            # We NEVER return this directly, but log it as warning
+            if hasattr(message, "reasoning_content") and message.reasoning_content:
+                print(f"⚠️ GPT-5 returned only reasoning_content ({len(str(message.reasoning_content))} chars), no final content")
+                return "", 0, {"extraction_path": "<reasoning_only>", "has_reasoning": True}
+    
+    except Exception as e:
+        print(f"⚠️ Error extracting from response: {e}")
+    
+    # Default: No text found
+    return "", 0, {"extraction_path": "<none>"}
 
 # JSON Schema for Structured Response
 STRYDA_RESPONSE_SCHEMA = {
