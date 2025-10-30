@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://onsite-copilot.preview.emergentagent.com",
+  API_BASE: "https://stryda-rag-chat-1.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 

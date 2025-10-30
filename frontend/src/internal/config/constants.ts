@@ -3,7 +3,7 @@
  * Hardcoded preview URL for production deployment
  */
 
-export const API_BASE = "https://onsite-copilot.preview.emergentagent.com";
+export const API_BASE = "https://stryda-rag-chat-1.preview.emergentagent.com";
 export const FEATURE_TIER1 = true;
 
 export const CONFIG = {

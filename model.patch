@@ -1975,7 +1975,7 @@ index 779a1e5..33cc40f 100644
 -----------------     CORSMiddleware,
 -----------------     allow_origins=[
 -----------------         "https://app.emergent.sh",
------------------         "https://onsite-copilot.preview.emergentagent.com",
+-----------------         "https://stryda-rag-chat-1.preview.emergentagent.com",
 ------------------        "http://localhost:3000",
 ------------------        "http://localhost:19006",
 ------------------        "http://localhost:8001",
@@ -5849,7 +5849,7 @@ index 779a1e5..33cc40f 100644
 --------------------------------------------+        })
 --------------------------------------------+        
 --------------------------------------------+        # URLs to test
---------------------------------------------+        self.production_url = "https://onsite-copilot.preview.emergentagent.com"
+--------------------------------------------+        self.production_url = "https://stryda-rag-chat-1.preview.emergentagent.com"
 --------------------------------------------+        self.local_url = "http://localhost:8001"
 --------------------------------------------+    
 --------------------------------------------+    def log_result(self, test_name: str, success: bool, details: str, url: str = ""):
