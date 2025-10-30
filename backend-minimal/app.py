@@ -679,6 +679,9 @@ Examples that help me give exact answers:
                 used_retrieval = True
                 citations_reason = "intent"
                 
+                # Log the decision (compliance uses RAG only, no web search)
+                print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED}")
+                
                 with profiler.timer('t_vector_search'):
                     # Use CANONICAL retrieval with safe error handling
                     try:
