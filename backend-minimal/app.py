@@ -642,10 +642,6 @@ Examples that help me give exact answers:
                         print(f"⚠️ Web search failed (graceful fallback): {e}")
                         web_context = ""
                 
-                # Log the decision
-                word_count = len(answer.split()) if answer else 0
-                print(f"[chat] intent={final_intent} use_web={use_web} model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} words={word_count}")
-                
                 # Generate response with optional web context
                 try:
                     with profiler.timer('t_generate'):
@@ -671,6 +667,16 @@ Examples that help me give exact answers:
                         model_used = structured_response.get("model", OPENAI_MODEL)
                         tokens_in = structured_response.get("tokens_in", 0)
                         tokens_out = structured_response.get("tokens_out", 0)
+                        
+                        # Extract metadata for logging
+                        raw_len = structured_response.get("raw_len", 0)
+                        json_ok = structured_response.get("json_ok", False)
+                        retry_reason = structured_response.get("retry_reason", "")
+                        answer_words = structured_response.get("answer_words", 0)
+                        
+                        # Log the full decision + metadata
+                        print(f"[chat] intent={final_intent} use_web={use_web} model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words}")
+                        
                 except Exception as e:
                     print(f"⚠️ General help generation failed: {e}")
                     answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
