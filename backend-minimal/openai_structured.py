@@ -149,22 +149,23 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         
         print(f"🔄 Calling OpenAI {os.getenv('OPENAI_MODEL', 'gpt-4o-mini')}...")
         
-        # Determine model and appropriate parameter
+        # Determine model and appropriate parameters
         model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
         
-        # GPT-5 uses max_completion_tokens, older models use max_tokens
+        # GPT-5 uses max_completion_tokens and doesn't support temperature
         completion_params = {
             "model": model,
             "messages": messages,
-            "temperature": 0.3,
             "timeout": 20
         }
         
-        # Use appropriate parameter based on model
+        # Use appropriate parameters based on model
         if "gpt-5" in model.lower() or "o1" in model.lower():
             completion_params["max_completion_tokens"] = 500
+            # GPT-5 doesn't support temperature parameter, uses default 1
         else:
             completion_params["max_tokens"] = 500
+            completion_params["temperature"] = 0.3
         
         # Call OpenAI with proper timeout (no signal handling)
         response = client.chat.completions.create(**completion_params)
