@@ -166,9 +166,9 @@ def with_timeout_and_retry(func, timeout_seconds=20, max_retries=3, backoff_base
     
     raise Exception(f"Max retries ({max_retries}) exceeded")
 
-def generate_structured_response(user_message: str, tier1_snippets: List[Dict], conversation_history: List[Dict] = None) -> Dict[str, Any]:
+def generate_structured_response(user_message: str, tier1_snippets: List[Dict], conversation_history: List[Dict] = None, intent: str = "general_help") -> Dict[str, Any]:
     """
-    Generate structured GPT response with proper async timeout handling
+    Generate structured GPT response with intent-aware prompting and length guards
     """
     if not API_KEY:
         print("⚠️ No OpenAI API key - using server-side fallback")
@@ -185,14 +185,15 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
             for snippet in tier1_snippets[:3]:
                 source = snippet.get('source', 'Unknown')
                 section = snippet.get('section', '')
-                content = snippet.get('snippet', snippet.get('content', ''))[:150]
+                content = snippet.get('snippet', snippet.get('content', ''))[:200]
                 section_text = f" §{section}" if section else ""
                 snippet_bullets.append(f"• {source}{section_text}: {content}")
             snippet_context = "\n".join(snippet_bullets)
         
-        # Build conversation-aware messages
+        # Build messages with intent-aware system prompt
+        system_prompt = build_system_prompt(intent)
         messages = [
-            {"role": "system", "content": "You are STRYDA, a helpful NZ building assistant. Be conversational and practical. Use provided building standards to give accurate answers."}
+            {"role": "system", "content": system_prompt}
         ]
         
         # Add recent conversation context
@@ -220,34 +221,67 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         completion_params = {
             "model": model,
             "messages": messages,
-            "timeout": 20
+            "timeout": 30  # Increased for GPT-5 reasoning
         }
         
         # Use appropriate parameters based on model
         if "gpt-5" in model.lower() or "o1" in model.lower():
-            completion_params["max_completion_tokens"] = 500
+            completion_params["max_completion_tokens"] = 600  # Increased for complete answers
+            completion_params["top_p"] = 0.9
+            completion_params["presence_penalty"] = 0.1
+            completion_params["frequency_penalty"] = 0.0
             # GPT-5 doesn't support temperature parameter, uses default 1
         else:
-            completion_params["max_tokens"] = 500
+            completion_params["max_tokens"] = 600
             completion_params["temperature"] = 0.3
         
-        # Call OpenAI with proper timeout (no signal handling)
+        # Call OpenAI with proper timeout
         response = client.chat.completions.create(**completion_params)
         
         # Extract response
-        answer = response.choices[0].message.content
+        answer = response.choices[0].message.content or ""
         usage = response.usage
         
-        print(f"✅ OpenAI response received: {len(answer)} chars, {usage.total_tokens} tokens")
+        word_count = len(answer.split())
+        print(f"✅ OpenAI response received: {len(answer)} chars, {word_count} words, {usage.total_tokens} tokens")
+        
+        # Length guard: If response is too short and query is substantial, retry with expansion prompt
+        query_word_count = len(user_message.split())
+        if word_count < 80 and query_word_count > 5 and snippet_context:
+            print(f"⚠️ Response too short ({word_count} words), retrying with expansion prompt...")
+            
+            # Add expansion instruction
+            messages.append({"role": "assistant", "content": answer})
+            messages.append({
+                "role": "user",
+                "content": "Please expand your answer with concrete details, specific measurements, practical examples, and step-by-step guidance. Keep it clear and actionable for a tradie."
+            })
+            
+            # Retry with expansion
+            try:
+                retry_response = client.chat.completions.create(**completion_params)
+                expanded_answer = retry_response.choices[0].message.content or answer
+                expanded_word_count = len(expanded_answer.split())
+                
+                if expanded_word_count > word_count:
+                    print(f"✅ Expanded response: {expanded_word_count} words")
+                    answer = expanded_answer
+                    usage = retry_response.usage
+            except Exception as e:
+                print(f"⚠️ Expansion failed, using original: {e}")
         
         # Create structured response
         structured_response = {
             "answer": answer,
-            "intent": classify_intent_from_answer(answer, user_message),
-            "citations": format_tier1_citations(tier1_snippets[:3]),
-            "model": os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+            "intent": intent,
+            "citations": format_tier1_citations(tier1_snippets[:3]) if tier1_snippets else [],
+            "model": model,
             "tokens_used": usage.total_tokens,
             "tokens_in": usage.prompt_tokens,
+            "tokens_out": usage.completion_tokens
+        }
+        
+        return structured_response
             "tokens_out": usage.completion_tokens
         }
         
