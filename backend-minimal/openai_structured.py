@@ -217,26 +217,44 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         # Determine model and appropriate parameters
         model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
         
-        # GPT-5 uses max_completion_tokens and doesn't support temperature
+        # GPT-5/o1 reasoning models have restricted parameters
         completion_params = {
             "model": model,
             "messages": messages,
-            "timeout": 30  # Increased for GPT-5 reasoning
+            "timeout": 30  # Increased for reasoning models
         }
         
-        # Use appropriate parameters based on model
+        # Use appropriate parameters based on model type
         if "gpt-5" in model.lower() or "o1" in model.lower():
-            completion_params["max_completion_tokens"] = 600  # Increased for complete answers
-            completion_params["top_p"] = 0.9
-            completion_params["presence_penalty"] = 0.1
-            completion_params["frequency_penalty"] = 0.0
-            # GPT-5 doesn't support temperature parameter, uses default 1
+            # GPT-5/o1 reasoning models: Only max_completion_tokens supported
+            completion_params["max_completion_tokens"] = 600
+            # No temperature, top_p, presence_penalty, frequency_penalty
+            print(f"🤖 Using GPT-5/o1 with restricted parameters (max_completion_tokens only)")
         else:
+            # Standard models: Full parameter set
             completion_params["max_tokens"] = 600
             completion_params["temperature"] = 0.3
+            print(f"🤖 Using standard model with full parameters")
         
-        # Call OpenAI with proper timeout
-        response = client.chat.completions.create(**completion_params)
+        # Call OpenAI with proper timeout and error handling
+        try:
+            response = client.chat.completions.create(**completion_params)
+        except Exception as api_error:
+            print(f"❌ OpenAI API error: {api_error}")
+            # Return safe fallback with metadata
+            return {
+                "answer": "I encountered a technical issue. Please try again shortly.",
+                "intent": intent,
+                "citations": [],
+                "model": model,
+                "tokens_used": 0,
+                "tokens_in": 0,
+                "tokens_out": 0,
+                "raw_len": 0,
+                "json_ok": False,
+                "retry_reason": "api_error",
+                "answer_words": 9
+            }
         
         # Extract raw response
         raw_text = response.choices[0].message.content or ""
