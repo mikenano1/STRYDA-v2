@@ -238,17 +238,53 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         # Call OpenAI with proper timeout
         response = client.chat.completions.create(**completion_params)
         
-        # Extract response
-        answer = response.choices[0].message.content or ""
+        # Extract raw response
+        raw_text = response.choices[0].message.content or ""
         usage = response.usage
         
+        raw_len = len(raw_text)
+        print(f"📥 Raw OpenAI response: {raw_len} chars, {usage.total_tokens} tokens")
+        
+        # Robust JSON extraction with fallback
+        json_ok = False
+        retry_reason = None
+        answer = ""
+        
+        try:
+            # Attempt 1: Direct JSON parse
+            parsed = json.loads(raw_text)
+            if isinstance(parsed, dict) and "answer" in parsed:
+                answer = parsed.get("answer", "")
+                json_ok = True
+                print(f"✅ JSON parsed directly")
+        except json.JSONDecodeError:
+            # Attempt 2: Extract JSON block with regex
+            import re
+            json_match = re.search(r'\{[\s\S]*"answer"[\s\S]*\}', raw_text)
+            if json_match:
+                try:
+                    parsed = json.loads(json_match.group(0))
+                    answer = parsed.get("answer", "")
+                    json_ok = True
+                    retry_reason = "regex_extraction"
+                    print(f"✅ JSON extracted via regex")
+                except:
+                    pass
+        
+        # Fallback: Use raw text as answer
+        if not answer and raw_text:
+            answer = raw_text.strip()
+            retry_reason = "raw_fallback"
+            print(f"⚠️ JSON parse failed, using raw text: {len(answer)} chars")
+        
         word_count = len(answer.split())
-        print(f"✅ OpenAI response received: {len(answer)} chars, {word_count} words, {usage.total_tokens} tokens")
+        print(f"📊 Final answer: {len(answer)} chars, {word_count} words, json_ok={json_ok}")
         
         # Length guard: If response is too short and query is substantial, retry with expansion prompt
         query_word_count = len(user_message.split())
         if word_count < 80 and query_word_count > 5 and snippet_context:
             print(f"⚠️ Response too short ({word_count} words), retrying with expansion prompt...")
+            retry_reason = "length_guard"
             
             # Add expansion instruction
             messages.append({"role": "assistant", "content": answer})
@@ -260,17 +296,26 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
             # Retry with expansion
             try:
                 retry_response = client.chat.completions.create(**completion_params)
-                expanded_answer = retry_response.choices[0].message.content or answer
+                retry_raw = retry_response.choices[0].message.content or answer
+                
+                # Try parsing retry response
+                try:
+                    retry_parsed = json.loads(retry_raw)
+                    expanded_answer = retry_parsed.get("answer", retry_raw)
+                except:
+                    expanded_answer = retry_raw.strip()
+                
                 expanded_word_count = len(expanded_answer.split())
                 
                 if expanded_word_count > word_count:
                     print(f"✅ Expanded response: {expanded_word_count} words")
                     answer = expanded_answer
                     usage = retry_response.usage
+                    word_count = expanded_word_count
             except Exception as e:
                 print(f"⚠️ Expansion failed, using original: {e}")
         
-        # Create structured response
+        # Create structured response with metadata
         structured_response = {
             "answer": answer,
             "intent": intent,
@@ -278,7 +323,12 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
             "model": model,
             "tokens_used": usage.total_tokens,
             "tokens_in": usage.prompt_tokens,
-            "tokens_out": usage.completion_tokens
+            "tokens_out": usage.completion_tokens,
+            # Metadata for logging
+            "raw_len": raw_len,
+            "json_ok": json_ok,
+            "retry_reason": retry_reason,
+            "answer_words": word_count
         }
         
         return structured_response
