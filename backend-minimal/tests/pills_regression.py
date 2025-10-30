@@ -54,7 +54,7 @@ def test_chat_query(query: str, session_id: str = "regression-test") -> Dict[str
         response = requests.post(
             f"{API_BASE}/api/chat",
             json={
-                "user_message": query,
+                "message": query,
                 "session_id": session_id
             },
             timeout=30
