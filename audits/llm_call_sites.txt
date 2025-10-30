@@ -1,0 +1,24 @@
+=== OpenAI Call Sites Inventory ===
+
+1. Direct 'openai' imports:
+backend-minimal/app.py:248:                from openai_structured import generate_structured_response  
+backend-minimal/app.py:491:            from openai_structured import generate_structured_response
+backend-minimal/openai_structured.py:9:from openai import OpenAI
+backend-minimal/openai_structured.py:178:        from openai import OpenAI
+
+2. ChatCompletion calls:
+backend-minimal/openai_structured.py:241:            response = client.chat.completions.create(**completion_params)
+backend-minimal/openai_structured.py:316:                retry_response = client.chat.completions.create(**completion_params)
+
+3. Legacy 'max_tokens' usage:
+backend-minimal/openai_structured.py:235:            completion_params["max_tokens"] = 600
+backend-minimal/openai_structured.py:236:            completion_params["temperature"] = 0.3
+
+4. generate_structured_response usage:
+backend-minimal/app.py:248:                from openai_structured import generate_structured_response  
+backend-minimal/app.py:491:            from openai_structured import generate_structured_response
+backend-minimal/app.py:658:                        # Use generate_structured_response with empty docs (no RAG)
+backend-minimal/app.py:659:                        structured_response = generate_structured_response(
+backend-minimal/app.py:739:                        structured_response = generate_structured_response(
+backend-minimal/openai_structured.py:169:def generate_structured_response(user_message: str, tier1_snippets: List[Dict], conversation_history: List[Dict] = None, intent: str = "general_help") -> Dict[str, Any]:
+backend-minimal/openai_structured.py:437:    return generate_structured_response
