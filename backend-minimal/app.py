@@ -643,7 +643,8 @@ Examples that help me give exact answers:
                         web_context = ""
                 
                 # Log the decision
-                print(f"[chat] intent={final_intent} use_web={use_web} model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED}")
+                word_count = len(answer.split()) if answer else 0
+                print(f"[chat] intent={final_intent} use_web={use_web} model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} words={word_count}")
                 
                 # Generate response with optional web context
                 try:
