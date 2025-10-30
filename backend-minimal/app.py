@@ -622,9 +622,57 @@ Examples that help me give exact answers:
                 citations_reason = "user_general"
                 
             elif final_intent in ["general_help", "product_info"]:
-                # Product/general help - NO citations
-                answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
+                # Product/general help - NO citations, but MAY use web search for context
                 citations_reason = "user_general"
+                use_web = False
+                web_context = ""
+                
+                # Check if web search should be attempted
+                from web_search import should_use_web_search, web_search, summarize_snippets
+                
+                if should_use_web_search(final_intent, ENABLE_WEB_SEARCH):
+                    use_web = True
+                    try:
+                        with profiler.timer('t_web_search'):
+                            snippets = web_search(user_message, max_results=3, timeout=6.0)
+                            web_context = summarize_snippets(snippets)
+                            if web_context:
+                                print(f"🌐 Web search enrichment: {len(web_context)} chars")
+                    except Exception as e:
+                        print(f"⚠️ Web search failed (graceful fallback): {e}")
+                        web_context = ""
+                
+                # Log the decision
+                print(f"[chat] intent={final_intent} use_web={use_web} model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED}")
+                
+                # Generate response with optional web context
+                try:
+                    with profiler.timer('t_generate'):
+                        # Build prompt with optional web context
+                        prompt_parts = [f"User question: {user_message}"]
+                        
+                        if web_context:
+                            prompt_parts.append(f"\nAdditional context from web: {web_context}")
+                        
+                        prompt_parts.append("\nProvide a helpful, practical response about general building guidance.")
+                        
+                        full_prompt = "\n".join(prompt_parts)
+                        
+                        # Use generate_structured_response with empty docs (no RAG)
+                        structured_response = generate_structured_response(
+                            user_message=full_prompt,
+                            tier1_snippets=[],  # No RAG for general queries
+                            conversation_history=conversation_history
+                        )
+                        
+                        answer = structured_response.get("answer", "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions.")
+                        model_used = structured_response.get("model", OPENAI_MODEL)
+                        tokens_in = structured_response.get("tokens_in", 0)
+                        tokens_out = structured_response.get("tokens_out", 0)
+                except Exception as e:
+                    print(f"⚠️ General help generation failed: {e}")
+                    answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
+                    model_used = "fallback"
                 
             elif final_intent == "compliance_strict":
                 # ONLY compliance_strict gets citations
