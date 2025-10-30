@@ -35,6 +35,10 @@ from profiler import profiler
 DATABASE_URL = os.getenv("DATABASE_URL")
 API_KEY = os.getenv("OPENAI_API_KEY")
 
+# Feature flags
+CLAUSE_PILLS_ENABLED = os.getenv("CLAUSE_PILLS", "false").lower() == "true"
+print(f"🎛️  Feature flag CLAUSE_PILLS: {'ENABLED' if CLAUSE_PILLS_ENABLED else 'DISABLED'}")
+
 # Environment validation (fail fast)
 required_env_vars = ["DATABASE_URL"]
 missing_vars = [var for var in required_env_vars if not os.getenv(var)]
@@ -681,43 +685,77 @@ Examples that help me give exact answers:
                         tokens_in = structured_response.get("tokens_in", 0)
                         tokens_out = structured_response.get("tokens_out", 0)
                         
-                        # SAFE citation building with clause-level enhancement
+                        # SAFE citation building with clause-level enhancement (feature-flagged)
                 try:
                     if docs:  # Only build citations if we have retrieval results
-                        # Use clause-level citation system for enhanced pills
-                        from clause_citations import build_clause_citations
+                        use_clause_pills = CLAUSE_PILLS_ENABLED  # Local copy for this request
                         
-                        clause_level_citations = build_clause_citations(docs, user_message, max_citations=3)
+                        if use_clause_pills:
+                            # CLAUSE PILLS ENABLED: Use clause-level citation system for enhanced pills
+                            try:
+                                from clause_citations import build_clause_citations
+                                
+                                clause_level_citations = build_clause_citations(docs, user_message, max_citations=3)
+                                
+                                # Convert to expected format for response
+                                enhanced_citations = []
+                                citations_level_breakdown = {"clause": 0, "table": 0, "figure": 0, "section": 0, "page": 0}
+                                
+                                for clause_cite in clause_level_citations:
+                                    # Count locator types for telemetry
+                                    locator_type = clause_cite.get("locator_type", "page")
+                                    citations_level_breakdown[locator_type] = citations_level_breakdown.get(locator_type, 0) + 1
+                                    
+                                    # Format for frontend
+                                    citation = {
+                                        "id": clause_cite["id"],
+                                        "source": clause_cite["source"],
+                                        "page": clause_cite["page"],
+                                        "clause_id": clause_cite.get("clause_id"),
+                                        "clause_title": clause_cite.get("clause_title"),
+                                        "locator_type": clause_cite["locator_type"],
+                                        "snippet": clause_cite["snippet"],
+                                        "anchor": clause_cite.get("anchor"),
+                                        "confidence": clause_cite["confidence"],
+                                        "pill_text": f"[{clause_cite['source'].replace('NZS 3604:2011', 'NZS 3604')}] {clause_cite.get('clause_id', '')} (p.{clause_cite['page']})"
+                                    }
+                                    enhanced_citations.append(citation)
+                                
+                                # Calculate clause hit rate for telemetry
+                                clause_hits = sum(1 for c in clause_level_citations if c.get("clause_id"))
+                                clause_hit_rate = clause_hits / len(clause_level_citations) if clause_level_citations else 0
+                                
+                                print(f"✅ Clause-level citations: {len(enhanced_citations)} total, {clause_hits} with clause IDs ({clause_hit_rate:.1%})")
+                            except ImportError:
+                                print("⚠️ clause_citations module not found, falling back to page-level citations")
+                                use_clause_pills = False  # Disable for this request if module missing
                         
-                        # Convert to expected format for response
-                        enhanced_citations = []
-                        citations_level_breakdown = {"clause": 0, "table": 0, "figure": 0, "section": 0, "page": 0}
-                        
-                        for clause_cite in clause_level_citations:
-                            # Count locator types for telemetry
-                            locator_type = clause_cite.get("locator_type", "page")
-                            citations_level_breakdown[locator_type] = citations_level_breakdown.get(locator_type, 0) + 1
+                        if not use_clause_pills:
+                            # CLAUSE PILLS DISABLED: Use simple page-level citations (stable production mode)
+                            enhanced_citations = []
+                            citations_level_breakdown = {"page": len(docs[:3])}
+                            clause_hit_rate = 0
                             
-                            # Format for frontend
-                            citation = {
-                                "id": clause_cite["id"],
-                                "source": clause_cite["source"],
-                                "page": clause_cite["page"],
-                                "clause_id": clause_cite.get("clause_id"),
-                                "clause_title": clause_cite.get("clause_title"),
-                                "locator_type": clause_cite["locator_type"],
-                                "snippet": clause_cite["snippet"],
-                                "anchor": clause_cite.get("anchor"),
-                                "confidence": clause_cite["confidence"],
-                                "pill_text": f"[{clause_cite['source'].replace('NZS 3604:2011', 'NZS 3604')}] {clause_cite.get('clause_id', '')} (p.{clause_cite['page']})"
-                            }
-                            enhanced_citations.append(citation)
-                        
-                        # Calculate clause hit rate for telemetry
-                        clause_hits = sum(1 for c in clause_level_citations if c.get("clause_id"))
-                        clause_hit_rate = clause_hits / len(clause_level_citations) if clause_level_citations else 0
-                        
-                        print(f"✅ Clause-level citations: {len(enhanced_citations)} total, {clause_hits} with clause IDs ({clause_hit_rate:.1%})")
+                            for idx, doc in enumerate(docs[:3]):  # Max 3 citations
+                                source = doc.get("source", "Unknown")
+                                page = doc.get("page", 0)
+                                snippet = doc.get("snippet", "")[:200]
+                                
+                                citation = {
+                                    "id": f"{source}_{page}_{idx}",
+                                    "source": source,
+                                    "page": page,
+                                    "clause_id": None,  # No clause-level data in page mode
+                                    "clause_title": None,
+                                    "locator_type": "page",
+                                    "snippet": snippet,
+                                    "anchor": None,
+                                    "confidence": 1.0,
+                                    "pill_text": f"[{source.replace('NZS 3604:2011', 'NZS 3604')}] p.{page}"
+                                }
+                                enhanced_citations.append(citation)
+                            
+                            print(f"✅ Page-level citations: {len(enhanced_citations)} total (CLAUSE_PILLS=false)")
                         
                     else:
                         enhanced_citations = []
@@ -726,7 +764,7 @@ Examples that help me give exact answers:
                         clause_hit_rate = 0
                         
                 except Exception as e:
-                    print(f"⚠️ Clause citation building failed: {e}")
+                    print(f"⚠️ Citation building failed: {e}")
                     enhanced_citations = []
                     citations_reason = "citation_error"
                     citations_level_breakdown = {}
