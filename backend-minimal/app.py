@@ -35,6 +35,10 @@ from profiler import profiler
 DATABASE_URL = os.getenv("DATABASE_URL")
 API_KEY = os.getenv("OPENAI_API_KEY")
 
+# Feature flags
+CLAUSE_PILLS_ENABLED = os.getenv("CLAUSE_PILLS", "false").lower() == "true"
+print(f"🎛️  Feature flag CLAUSE_PILLS: {'ENABLED' if CLAUSE_PILLS_ENABLED else 'DISABLED'}")
+
 # Environment validation (fail fast)
 required_env_vars = ["DATABASE_URL"]
 missing_vars = [var for var in required_env_vars if not os.getenv(var)]
