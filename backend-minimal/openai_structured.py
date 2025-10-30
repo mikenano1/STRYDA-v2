@@ -350,10 +350,6 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         }
         
         return structured_response
-            "tokens_out": usage.completion_tokens
-        }
-        
-        return structured_response
         
     except Exception as e:
         error_str = str(e)
