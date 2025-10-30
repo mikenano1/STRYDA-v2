@@ -662,7 +662,8 @@ Examples that help me give exact answers:
                         structured_response = generate_structured_response(
                             user_message=full_prompt,
                             tier1_snippets=[],  # No RAG for general queries
-                            conversation_history=conversation_history
+                            conversation_history=conversation_history,
+                            intent=final_intent
                         )
                         
                         answer = structured_response.get("answer", "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions.")
