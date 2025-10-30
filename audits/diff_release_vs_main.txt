@@ -1,0 +1,12 @@
+ .emergent/emergent.yml                         |    4 +-
+ .gitignore                                     |    8 -
+ backend-minimal/app.py                         |  104 +-
+ backend-minimal/clause_citations.py            |  192 -
+ backend-minimal/services/citations/__init__.py |    4 -
+ backend-minimal/services/citations/locator.py  |  276 -
+ backend-minimal/tests/page_number_test.py      |  188 -
+ backend-minimal/tests/pills_regression.py      |  249 -
+ frontend/yarn.lock                             | 7810 ------------------------
+ simple_backend.log                             |    6 -
+ test_result.md                                 |    3 +-
+ 11 files changed, 36 insertions(+), 8808 deletions(-)
