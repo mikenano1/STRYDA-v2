@@ -688,7 +688,9 @@ Examples that help me give exact answers:
                         # SAFE citation building with clause-level enhancement (feature-flagged)
                 try:
                     if docs:  # Only build citations if we have retrieval results
-                        if CLAUSE_PILLS_ENABLED:
+                        use_clause_pills = CLAUSE_PILLS_ENABLED  # Local copy for this request
+                        
+                        if use_clause_pills:
                             # CLAUSE PILLS ENABLED: Use clause-level citation system for enhanced pills
                             try:
                                 from clause_citations import build_clause_citations
@@ -726,9 +728,9 @@ Examples that help me give exact answers:
                                 print(f"✅ Clause-level citations: {len(enhanced_citations)} total, {clause_hits} with clause IDs ({clause_hit_rate:.1%})")
                             except ImportError:
                                 print("⚠️ clause_citations module not found, falling back to page-level citations")
-                                CLAUSE_PILLS_ENABLED = False  # Disable if module missing
+                                use_clause_pills = False  # Disable for this request if module missing
                         
-                        if not CLAUSE_PILLS_ENABLED:
+                        if not use_clause_pills:
                             # CLAUSE PILLS DISABLED: Use simple page-level citations (stable production mode)
                             enhanced_citations = []
                             citations_level_breakdown = {"page": len(docs[:3])}
