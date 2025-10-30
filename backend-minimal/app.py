@@ -752,6 +752,15 @@ Examples that help me give exact answers:
                         tokens_in = structured_response.get("tokens_in", 0)
                         tokens_out = structured_response.get("tokens_out", 0)
                         
+                        # Extract metadata for logging
+                        raw_len = structured_response.get("raw_len", 0)
+                        json_ok = structured_response.get("json_ok", False)
+                        retry_reason = structured_response.get("retry_reason", "")
+                        answer_words = structured_response.get("answer_words", 0)
+                        
+                        # Log the full decision + metadata (compliance uses RAG only, no web search)
+                        print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words}")
+                        
                         # SAFE citation building with clause-level enhancement (feature-flagged)
                 try:
                     if docs:  # Only build citations if we have retrieval results
