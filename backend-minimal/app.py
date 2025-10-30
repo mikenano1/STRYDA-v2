@@ -735,7 +735,8 @@ Examples that help me give exact answers:
                         structured_response = generate_structured_response(
                             user_message=user_message,
                             tier1_snippets=docs,
-                            conversation_history=conversation_history
+                            conversation_history=conversation_history,
+                            intent=final_intent
                         )
                         
                         answer = structured_response.get("answer", "")
