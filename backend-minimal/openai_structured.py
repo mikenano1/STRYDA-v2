@@ -310,54 +310,104 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
                 "raw_len": 0,
                 "json_ok": False,
                 "retry_reason": "api_error",
-                "answer_words": 9
+                "answer_words": 9,
+                "extraction_path": "<error>",
+                "fallback_used": False
             }
         
-        # Extract raw response
-        raw_text = response.choices[0].message.content or ""
+        # Step 1: Extract final text using robust helper
+        final_text, raw_len, extraction_meta = extract_final_text(response)
         usage = response.usage
         
-        raw_len = len(raw_text)
-        print(f"📥 Raw OpenAI response: {raw_len} chars, {usage.total_tokens} tokens")
+        print(f"📥 Raw response: {raw_len} chars, {usage.total_tokens} tokens (path: {extraction_meta.get('extraction_path')})")
         
-        # Robust JSON extraction with fallback
+        # Step 2: If empty, retry with strict instruction
+        retry_reason = ""
+        fallback_used = False
+        
+        if not final_text:
+            print(f"⚠️ Empty response detected, retrying with strict instructions...")
+            retry_reason = "reasoning_retry"
+            
+            # Add strict instruction
+            messages.append({
+                "role": "user",
+                "content": "Return the final answer as JSON in assistant content. Do not include hidden reasoning."
+            })
+            
+            try:
+                retry_response = client.chat.completions.create(**completion_params)
+                final_text, raw_len, extraction_meta = extract_final_text(retry_response)
+                usage = retry_response.usage
+                print(f"🔄 Retry response: {raw_len} chars (path: {extraction_meta.get('extraction_path')})")
+            except Exception as e:
+                print(f"⚠️ Retry failed: {e}")
+        
+        # Step 3: If still empty, fallback to different model
+        if not final_text:
+            fallback_model = os.getenv("OPENAI_MODEL_FALLBACK", "gpt-4o-mini")
+            print(f"⚠️ Still empty, switching to fallback model: {fallback_model}")
+            fallback_used = True
+            retry_reason = "fallback_model"
+            
+            # Update params for fallback model
+            completion_params["model"] = fallback_model
+            # Ensure correct parameters for fallback (standard model)
+            if "max_completion_tokens" in completion_params:
+                completion_params["max_tokens"] = completion_params.pop("max_completion_tokens")
+            if "temperature" not in completion_params:
+                completion_params["temperature"] = 0.3
+            
+            try:
+                fallback_response = client.chat.completions.create(**completion_params)
+                final_text, raw_len, extraction_meta = extract_final_text(fallback_response)
+                usage = fallback_response.usage
+                print(f"🔄 Fallback response: {raw_len} chars from {fallback_model} (path: {extraction_meta.get('extraction_path')})")
+            except Exception as e:
+                print(f"❌ Fallback also failed: {e}")
+                final_text = "I apologize, but I'm having difficulty generating a response. Please try again."
+                raw_len = len(final_text)
+        
+        # Step 4: Run JSON extraction on final_text (3-stage: direct → regex → raw)
         json_ok = False
-        retry_reason = None
         answer = ""
         
-        try:
-            # Attempt 1: Direct JSON parse
-            parsed = json.loads(raw_text)
-            if isinstance(parsed, dict) and "answer" in parsed:
-                answer = parsed.get("answer", "")
-                json_ok = True
-                print(f"✅ JSON parsed directly")
-        except json.JSONDecodeError:
-            # Attempt 2: Extract JSON block with regex
-            import re
-            json_match = re.search(r'\{[\s\S]*"answer"[\s\S]*\}', raw_text)
-            if json_match:
-                try:
-                    parsed = json.loads(json_match.group(0))
+        if final_text:
+            try:
+                # Attempt 1: Direct JSON parse
+                parsed = json.loads(final_text)
+                if isinstance(parsed, dict) and "answer" in parsed:
                     answer = parsed.get("answer", "")
                     json_ok = True
-                    retry_reason = "regex_extraction"
-                    print(f"✅ JSON extracted via regex")
-                except:
-                    pass
-        
-        # Fallback: Use raw text as answer
-        if not answer and raw_text:
-            answer = raw_text.strip()
-            retry_reason = "raw_fallback"
-            print(f"⚠️ JSON parse failed, using raw text: {len(answer)} chars")
+                    print(f"✅ JSON parsed directly")
+            except json.JSONDecodeError:
+                # Attempt 2: Extract JSON block with regex
+                import re
+                json_match = re.search(r'\{[\s\S]*"answer"[\s\S]*\}', final_text)
+                if json_match:
+                    try:
+                        parsed = json.loads(json_match.group(0))
+                        answer = parsed.get("answer", "")
+                        json_ok = True
+                        if not retry_reason:
+                            retry_reason = "regex_extraction"
+                        print(f"✅ JSON extracted via regex")
+                    except:
+                        pass
+            
+            # Fallback: Use raw text as answer
+            if not answer:
+                answer = final_text.strip()
+                if not retry_reason:
+                    retry_reason = "raw_fallback"
+                print(f"⚠️ JSON parse failed, using raw text: {len(answer)} chars")
         
         word_count = len(answer.split())
         print(f"📊 Final answer: {len(answer)} chars, {word_count} words, json_ok={json_ok}")
         
-        # Length guard: If response is too short and query is substantial, retry with expansion prompt
+        # Step 5: Length guard (if still too short after all retries)
         query_word_count = len(user_message.split())
-        if word_count < 80 and query_word_count > 5 and snippet_context:
+        if word_count < 80 and query_word_count > 5 and snippet_context and not fallback_used:
             print(f"⚠️ Response too short ({word_count} words), retrying with expansion prompt...")
             retry_reason = "length_guard"
             
