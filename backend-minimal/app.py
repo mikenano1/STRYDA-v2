@@ -16,9 +16,22 @@ import psycopg2
 import psycopg2.extras
 import asyncio
 import requests
+import subprocess
+from datetime import datetime, timezone
 
 # Load environment variables first
 load_dotenv()
+
+# Version helpers
+def current_git_sha():
+    """Get current git commit SHA (short)"""
+    try:
+        return subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd='/app').decode().strip()
+    except:
+        return "unknown"
+
+BUILD_TIME = datetime.now(timezone.utc).isoformat()
+GIT_SHA = current_git_sha()
 
 # Security and rate limiting
 limiter = Limiter(key_func=get_remote_address)
@@ -37,13 +50,14 @@ API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Model configuration
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
-print(f"🤖 OpenAI Model: {OPENAI_MODEL}")
+OPENAI_MODEL_FALLBACK = os.getenv("OPENAI_MODEL_FALLBACK", "gpt-4o-mini")
 
 # Feature flags
 CLAUSE_PILLS_ENABLED = os.getenv("CLAUSE_PILLS", "false").lower() == "true"
 ENABLE_WEB_SEARCH = os.getenv("ENABLE_WEB_SEARCH", "true").lower() == "true"
-print(f"🎛️  Feature flag CLAUSE_PILLS: {'ENABLED' if CLAUSE_PILLS_ENABLED else 'DISABLED'}")
-print(f"🌐 Feature flag ENABLE_WEB_SEARCH: {'ENABLED' if ENABLE_WEB_SEARCH else 'DISABLED'}")
+
+# Startup banner
+print(f"🚀 STRYDA-v2 start | sha={GIT_SHA} | model={OPENAI_MODEL} | fb={OPENAI_MODEL_FALLBACK} | pills={CLAUSE_PILLS_ENABLED} | web={ENABLE_WEB_SEARCH} | extractor=on")
 
 # Environment validation (fail fast)
 required_env_vars = ["DATABASE_URL"]
