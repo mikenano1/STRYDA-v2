@@ -293,11 +293,12 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         # Use appropriate parameters based on model type
         if "gpt-5" in model.lower() or "o1" in model.lower():
             # GPT-5/o1 reasoning models: Only max_completion_tokens supported
-            # CRITICAL: GPT-5 uses most tokens for internal reasoning, needs large buffer
-            # for final output. Set to 4000 to ensure output space after reasoning.
-            completion_params["max_completion_tokens"] = 4000
+            # CRITICAL: Balance between reasoning space and response time
+            # 2500 tokens allows reasoning while avoiding timeout (30s limit)
+            completion_params["max_completion_tokens"] = 2500
+            completion_params["timeout"] = 45  # Increased timeout for reasoning models
             # No temperature, top_p, presence_penalty, frequency_penalty
-            print(f"🤖 Using GPT-5/o1 with max_completion_tokens=4000 (reasoning+output buffer)")
+            print(f"🤖 Using GPT-5/o1 with max_completion_tokens=2500, timeout=45s")
         else:
             # Standard models: Full parameter set
             completion_params["max_tokens"] = 600
