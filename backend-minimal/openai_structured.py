@@ -338,10 +338,24 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
                         print("DEBUG GPT5 message.content value:", repr(msg.content)[:200] if msg.content else "None or empty")
                         
                         # Check all message attributes
-                        for attr in ['audio', 'content', 'function_call', 'parsed', 'refusal', 'role', 'tool_calls']:
+                        for attr in ['audio', 'content', 'function_call', 'parsed', 'refusal', 'role', 'tool_calls', 'annotations']:
                             if hasattr(msg, attr):
                                 val = getattr(msg, attr)
-                                print(f"DEBUG GPT5 message.{attr}:", type(val), repr(val)[:100] if val else "None")
+                                print(f"DEBUG GPT5 message.{attr}:", type(val), repr(val)[:200] if val else "None")
+                        
+                        # Deep dive into parsed if it exists
+                        if hasattr(msg, 'parsed') and msg.parsed:
+                            print("DEBUG GPT5 message.parsed type:", type(msg.parsed))
+                            print("DEBUG GPT5 message.parsed keys:", [k for k in dir(msg.parsed) if not k.startswith('_')])
+                            if hasattr(msg.parsed, 'text'):
+                                print("DEBUG GPT5 message.parsed.text:", repr(msg.parsed.text)[:300])
+                            if hasattr(msg.parsed, 'content'):
+                                print("DEBUG GPT5 message.parsed.content:", repr(msg.parsed.content)[:300])
+                        
+                        # Deep dive into annotations if it exists
+                        if hasattr(msg, 'annotations') and msg.annotations:
+                            print("DEBUG GPT5 message.annotations type:", type(msg.annotations))
+                            print("DEBUG GPT5 message.annotations:", repr(msg.annotations)[:300])
                                 
             except Exception as e:
                 print("DEBUG GPT5 inspection error:", str(e))
