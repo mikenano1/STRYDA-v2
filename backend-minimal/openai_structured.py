@@ -284,9 +284,11 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         # Use appropriate parameters based on model type
         if "gpt-5" in model.lower() or "o1" in model.lower():
             # GPT-5/o1 reasoning models: Only max_completion_tokens supported
-            completion_params["max_completion_tokens"] = 600
+            # IMPORTANT: GPT-5 uses tokens for reasoning AND final output
+            # Set higher limit to allow room for both (1500 tokens total)
+            completion_params["max_completion_tokens"] = 1500
             # No temperature, top_p, presence_penalty, frequency_penalty
-            print(f"🤖 Using GPT-5/o1 with restricted parameters (max_completion_tokens only)")
+            print(f"🤖 Using GPT-5/o1 with restricted parameters (max_completion_tokens=1500 for reasoning+output)")
         else:
             # Standard models: Full parameter set
             completion_params["max_tokens"] = 600
