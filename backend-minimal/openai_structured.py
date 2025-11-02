@@ -318,47 +318,41 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         # DIAGNOSTIC: Inspect GPT-5 response structure
         if model.startswith("gpt-5"):
             try:
-                print("DEBUG GPT5 dir(response):", [attr for attr in dir(response) if not attr.startswith('_')])
+                print("DEBUG GPT5 response.model:", response.model if hasattr(response, 'model') else "N/A")
                 print("DEBUG GPT5 model_dump keys:", list(response.model_dump().keys()))
                 
-                # Check if response has 'output' field
-                if hasattr(response, "output"):
-                    print("DEBUG GPT5 output type:", type(response.output))
-                    if response.output:
-                        print("DEBUG GPT5 output[0] keys:", [k for k in dir(response.output[0]) if not k.startswith('_')])
+                # Dump the full model_dump to see structure
+                dump = response.model_dump()
+                print("DEBUG GPT5 model_dump['model']:", dump.get('model', 'N/A'))
+                print("DEBUG GPT5 model_dump['choices'][0]:", dump.get('choices', [{}])[0].keys() if dump.get('choices') else "N/A")
                 
                 # Check choices structure
                 if hasattr(response, "choices") and response.choices:
                     choice = response.choices[0]
-                    print("DEBUG GPT5 choices[0] keys:", [k for k in dir(choice) if not k.startswith('_')])
+                    print("DEBUG GPT5 choices[0].finish_reason:", choice.finish_reason)
                     if hasattr(choice, "message"):
                         msg = choice.message
-                        print("DEBUG GPT5 message keys:", [k for k in dir(msg) if not k.startswith('_')])
-                        print("DEBUG GPT5 message.content type:", type(msg.content))
-                        print("DEBUG GPT5 message.content value:", repr(msg.content)[:200] if msg.content else "None or empty")
+                        print("DEBUG GPT5 message.role:", msg.role)
+                        print("DEBUG GPT5 message.content:", repr(msg.content)[:300] if msg.content else "EMPTY STRING" if msg.content == "" else "None")
                         
-                        # Check all message attributes
-                        for attr in ['audio', 'content', 'function_call', 'parsed', 'refusal', 'role', 'tool_calls', 'annotations']:
-                            if hasattr(msg, attr):
-                                val = getattr(msg, attr)
-                                print(f"DEBUG GPT5 message.{attr}:", type(val), repr(val)[:200] if val else "None")
+                        # Try model_dump on the message
+                        try:
+                            msg_dump = msg.model_dump()
+                            print("DEBUG GPT5 message.model_dump() keys:", list(msg_dump.keys()))
+                            print("DEBUG GPT5 message.model_dump():", repr(msg_dump)[:500])
+                        except Exception as e2:
+                            print("DEBUG GPT5 message.model_dump() error:", str(e2))
                         
-                        # Deep dive into parsed if it exists
-                        if hasattr(msg, 'parsed') and msg.parsed:
-                            print("DEBUG GPT5 message.parsed type:", type(msg.parsed))
-                            print("DEBUG GPT5 message.parsed keys:", [k for k in dir(msg.parsed) if not k.startswith('_')])
-                            if hasattr(msg.parsed, 'text'):
-                                print("DEBUG GPT5 message.parsed.text:", repr(msg.parsed.text)[:300])
-                            if hasattr(msg.parsed, 'content'):
-                                print("DEBUG GPT5 message.parsed.content:", repr(msg.parsed.content)[:300])
-                        
-                        # Deep dive into annotations if it exists
-                        if hasattr(msg, 'annotations') and msg.annotations:
-                            print("DEBUG GPT5 message.annotations type:", type(msg.annotations))
+                        # Check if annotations or parsed exist and have data
+                        if hasattr(msg, 'annotations') and msg.annotations is not None:
                             print("DEBUG GPT5 message.annotations:", repr(msg.annotations)[:300])
+                        if hasattr(msg, 'parsed') and msg.parsed is not None:
+                            print("DEBUG GPT5 message.parsed:", type(msg.parsed), repr(msg.parsed)[:300])
                                 
             except Exception as e:
                 print("DEBUG GPT5 inspection error:", str(e))
+                import traceback
+                traceback.print_exc()
         
         # Step 1: Extract final text using robust helper
         final_text, raw_len, extraction_meta = extract_final_text(response)
