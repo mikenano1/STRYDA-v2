@@ -478,7 +478,9 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
             "raw_len": raw_len,
             "json_ok": json_ok,
             "retry_reason": retry_reason,
-            "answer_words": word_count
+            "answer_words": word_count,
+            "extraction_path": extraction_meta.get("extraction_path", "<unknown>"),
+            "fallback_used": fallback_used
         }
         
         return structured_response
