@@ -57,7 +57,7 @@ CLAUSE_PILLS_ENABLED = os.getenv("CLAUSE_PILLS", "false").lower() == "true"
 ENABLE_WEB_SEARCH = os.getenv("ENABLE_WEB_SEARCH", "true").lower() == "true"
 
 # Startup banner
-print(f"🚀 STRYDA-v2 start | sha={GIT_SHA} | model={OPENAI_MODEL} | fb={OPENAI_MODEL_FALLBACK} | pills={CLAUSE_PILLS_ENABLED} | web={ENABLE_WEB_SEARCH} | extractor=on")
+print(f"🚀 STRYDA-v2 start | sha={GIT_SHA} | model={OPENAI_MODEL} | fb={OPENAI_MODEL_FALLBACK} | pills={CLAUSE_PILLS_ENABLED} | web={ENABLE_WEB_SEARCH} | extractor=reasoning-mode")
 
 # Environment validation (fail fast)
 required_env_vars = ["DATABASE_URL"]
