@@ -137,6 +137,22 @@ def health(request: Request):
         "uptime_s": int(time.time() - app.state.start_time) if hasattr(app.state, 'start_time') else 0
     }
 
+@app.get("/__version")
+@limiter.limit("10/minute")
+def version_info(request: Request):
+    """Version verification endpoint with build and extraction metadata"""
+    return {
+        "git_sha": GIT_SHA,
+        "build_time": BUILD_TIME,
+        "model": OPENAI_MODEL,
+        "fallback": OPENAI_MODEL_FALLBACK,
+        "flags": {
+            "CLAUSE_PILLS": CLAUSE_PILLS_ENABLED,
+            "ENABLE_WEB_SEARCH": ENABLE_WEB_SEARCH
+        },
+        "extraction_signature": "extract_final_text+retry+fallback"
+    }
+
 @app.get("/ready")
 @limiter.limit("5/minute")  # More restrictive for dependency checks
 def ready(request: Request):
