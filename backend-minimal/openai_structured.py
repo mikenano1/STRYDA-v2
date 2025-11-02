@@ -323,24 +323,6 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         
         print(f"📥 Raw response: {raw_len} chars, {usage.total_tokens} tokens (path: {extraction_meta.get('extraction_path')})")
         
-        # Debugging helper: If raw_len==0, print sanitized response structure
-        if raw_len == 0:
-            print(f"🔍 DEBUG: Response structure keys:")
-            try:
-                if hasattr(response, "choices"):
-                    choice = response.choices[0]
-                    msg = choice.message
-                    print(f"  - response.choices[0].message: role={msg.role if hasattr(msg, 'role') else '?'}")
-                    print(f"  - content type: {type(msg.content) if hasattr(msg, 'content') else 'missing'}")
-                    if hasattr(msg, 'content') and isinstance(msg.content, list):
-                        print(f"  - content[0..n] types: {[type(p).__name__ for p in msg.content]}")
-                    if hasattr(msg, 'reasoning_content'):
-                        print(f"  - reasoning_content exists: {len(str(msg.reasoning_content))} chars")
-                if hasattr(response, 'output_text'):
-                    print(f"  - response.output_text: {type(response.output_text)}")
-            except Exception as debug_e:
-                print(f"  - Debug error: {debug_e}")
-        
         # Step 2: If empty, retry with strict instruction
         retry_reason = ""
         fallback_used = False
