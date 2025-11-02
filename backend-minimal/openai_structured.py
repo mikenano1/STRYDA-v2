@@ -342,13 +342,6 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
                 final_text, raw_len, extraction_meta = extract_final_text(retry_response)
                 usage = retry_response.usage
                 print(f"🔄 Retry response: {raw_len} chars (path: {extraction_meta.get('extraction_path')})")
-                
-                # Debug retry if still empty
-                if raw_len == 0:
-                    print(f"🔍 DEBUG: Retry still empty, response structure:")
-                    if hasattr(retry_response, "choices"):
-                        retry_msg = retry_response.choices[0].message
-                        print(f"  - content type: {type(retry_msg.content) if hasattr(retry_msg, 'content') else 'missing'}")
             except Exception as e:
                 print(f"⚠️ Retry failed: {e}")
         
