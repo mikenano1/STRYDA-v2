@@ -13,7 +13,7 @@ load_dotenv()
 
 # OpenAI Client Configuration
 client = None
-MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Primary model
+MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")  # Primary model (GPT-5/o1 incompatible)
 FALLBACK_MODEL = os.getenv("OPENAI_MODEL_FALLBACK", "gpt-4o-mini")  # Fallback if primary fails
 API_KEY = os.getenv("OPENAI_API_KEY")
 
