@@ -315,6 +315,37 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
                 "fallback_used": False
             }
         
+        # DIAGNOSTIC: Inspect GPT-5 response structure
+        if model.startswith("gpt-5"):
+            try:
+                print("DEBUG GPT5 dir(response):", [attr for attr in dir(response) if not attr.startswith('_')])
+                print("DEBUG GPT5 model_dump keys:", list(response.model_dump().keys()))
+                
+                # Check if response has 'output' field
+                if hasattr(response, "output"):
+                    print("DEBUG GPT5 output type:", type(response.output))
+                    if response.output:
+                        print("DEBUG GPT5 output[0] keys:", [k for k in dir(response.output[0]) if not k.startswith('_')])
+                
+                # Check choices structure
+                if hasattr(response, "choices") and response.choices:
+                    choice = response.choices[0]
+                    print("DEBUG GPT5 choices[0] keys:", [k for k in dir(choice) if not k.startswith('_')])
+                    if hasattr(choice, "message"):
+                        msg = choice.message
+                        print("DEBUG GPT5 message keys:", [k for k in dir(msg) if not k.startswith('_')])
+                        print("DEBUG GPT5 message.content type:", type(msg.content))
+                        print("DEBUG GPT5 message.content value:", repr(msg.content)[:200] if msg.content else "None or empty")
+                        
+                        # Check all message attributes
+                        for attr in ['audio', 'content', 'function_call', 'parsed', 'refusal', 'role', 'tool_calls']:
+                            if hasattr(msg, attr):
+                                val = getattr(msg, attr)
+                                print(f"DEBUG GPT5 message.{attr}:", type(val), repr(val)[:100] if val else "None")
+                                
+            except Exception as e:
+                print("DEBUG GPT5 inspection error:", str(e))
+        
         # Step 1: Extract final text using robust helper
         final_text, raw_len, extraction_meta = extract_final_text(response)
         usage = response.usage
