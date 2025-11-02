@@ -317,45 +317,6 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
                 "fallback_used": False
             }
         
-        # DIAGNOSTIC: Inspect GPT-5 response structure
-        if model.startswith("gpt-5"):
-            try:
-                print("DEBUG GPT5 response.model:", response.model if hasattr(response, 'model') else "N/A")
-                print("DEBUG GPT5 model_dump keys:", list(response.model_dump().keys()))
-                
-                # Dump the full model_dump to see structure
-                dump = response.model_dump()
-                print("DEBUG GPT5 model_dump['model']:", dump.get('model', 'N/A'))
-                print("DEBUG GPT5 model_dump['choices'][0]:", dump.get('choices', [{}])[0].keys() if dump.get('choices') else "N/A")
-                
-                # Check choices structure
-                if hasattr(response, "choices") and response.choices:
-                    choice = response.choices[0]
-                    print("DEBUG GPT5 choices[0].finish_reason:", choice.finish_reason)
-                    if hasattr(choice, "message"):
-                        msg = choice.message
-                        print("DEBUG GPT5 message.role:", msg.role)
-                        print("DEBUG GPT5 message.content:", repr(msg.content)[:300] if msg.content else "EMPTY STRING" if msg.content == "" else "None")
-                        
-                        # Try model_dump on the message
-                        try:
-                            msg_dump = msg.model_dump()
-                            print("DEBUG GPT5 message.model_dump() keys:", list(msg_dump.keys()))
-                            print("DEBUG GPT5 message.model_dump():", repr(msg_dump)[:500])
-                        except Exception as e2:
-                            print("DEBUG GPT5 message.model_dump() error:", str(e2))
-                        
-                        # Check if annotations or parsed exist and have data
-                        if hasattr(msg, 'annotations') and msg.annotations is not None:
-                            print("DEBUG GPT5 message.annotations:", repr(msg.annotations)[:300])
-                        if hasattr(msg, 'parsed') and msg.parsed is not None:
-                            print("DEBUG GPT5 message.parsed:", type(msg.parsed), repr(msg.parsed)[:300])
-                                
-            except Exception as e:
-                print("DEBUG GPT5 inspection error:", str(e))
-                import traceback
-                traceback.print_exc()
-        
         # Step 1: Extract final text using robust helper
         final_text, raw_len, extraction_meta = extract_final_text(response)
         usage = response.usage
