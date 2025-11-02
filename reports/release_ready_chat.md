@@ -96,7 +96,7 @@
 ## 🚀 Deployment Information
 
 ### Preview Details:
-- **Preview URL**: https://stryda-rag-chat-1.preview.emergentagent.com
+- **Preview URL**: https://citation-guard.preview.emergentagent.com
 - **QR Code**: Available via Expo development tools
 - **API Integration**: Backend fully operational at localhost:8001
 
