@@ -32,7 +32,7 @@ else:
 
 def extract_final_text(response) -> tuple[str, int, dict]:
     """
-    Extract final assistant text from OpenAI response, avoiding reasoning content.
+    Extract final assistant text from OpenAI response, supporting GPT-5/o1 reasoning outputs.
     
     Returns:
         (final_text, raw_len, meta_additions) where:
@@ -40,45 +40,54 @@ def extract_final_text(response) -> tuple[str, int, dict]:
         - raw_len: Character count of extracted text
         - meta_additions: Dict with extraction_path for debugging
     """
-    import re
-    
-    # Try 1: Responses API style (output_text field)
-    if hasattr(response, "output_text") and response.output_text:
-        text = str(response.output_text)
-        return text, len(text), {"extraction_path": "output_text"}
-    
-    # Try 2: Classic chat style (choices[0].message.content)
     try:
-        if hasattr(response, "choices") and response.choices:
-            message = response.choices[0].message
+        payload = response.model_dump()
+        
+        # 1️⃣ GPT-5 / o1 reasoning model output path
+        if "output" in payload and payload["output"]:
+            for part in payload["output"][0].get("content", []):
+                part_type = part.get("type", "")
+                # Skip reasoning/thoughts parts, extract only output_text
+                if part_type in ("reasoning", "thoughts"):
+                    continue
+                if part_type in ("output_text", "text"):
+                    text = part.get("text") or part.get("value") or ""
+                    if text.strip():
+                        return text, len(text), {"extraction_path": "output[0].content[output_text]"}
+        
+        # 2️⃣ GPT-5 Responses API compatibility (output_text field)
+        if hasattr(response, "output_text") and response.output_text:
+            text = str(response.output_text)
+            return text, len(text), {"extraction_path": "output_text"}
+        
+        # 3️⃣ Standard GPT-4 path (choices[0].message.content)
+        choices = payload.get("choices", [])
+        if choices:
+            msg = choices[0].get("message", {})
+            content = msg.get("content")
             
-            # Check if content is a string
-            if hasattr(message, "content") and isinstance(message.content, str) and message.content:
-                text = message.content
-                return text, len(text), {"extraction_path": "choices[0].message.content"}
+            # String content
+            if isinstance(content, str) and content.strip():
+                return content, len(content), {"extraction_path": "choices[0].message.content"}
             
-            # Check if content is a list/array of parts
-            if hasattr(message, "content") and isinstance(message.content, list):
+            # Array content (multi-part messages)
+            if isinstance(content, list):
                 text_parts = []
-                for part in message.content:
+                for part in content:
                     if isinstance(part, dict):
                         part_type = part.get("type", "")
-                        # Include only text/output parts, exclude reasoning/tool
-                        if part_type in {"text", "output_text"} and "text" in part:
+                        # Skip reasoning, extract only text/output_text
+                        if part_type in ("reasoning", "thoughts"):
+                            continue
+                        if part_type in ("text", "output_text") and "text" in part:
                             text_parts.append(part["text"])
                 
                 if text_parts:
                     joined = " ".join(text_parts)
-                    return joined, len(joined), {"extraction_path": "choices[0].message.content[parts]"}
-            
-            # Check for reasoning_content field (GPT-5 specific)
-            # We NEVER return this directly, but log it as warning
-            if hasattr(message, "reasoning_content") and message.reasoning_content:
-                print(f"⚠️ GPT-5 returned only reasoning_content ({len(str(message.reasoning_content))} chars), no final content")
-                return "", 0, {"extraction_path": "<reasoning_only>", "has_reasoning": True}
+                    return joined, len(joined), {"extraction_path": "choices[0].message.content[list]"}
     
     except Exception as e:
-        print(f"⚠️ Error extracting from response: {e}")
+        print(f"⚠️ extract_final_text error: {e}")
     
     # Default: No text found
     return "", 0, {"extraction_path": "<none>"}
