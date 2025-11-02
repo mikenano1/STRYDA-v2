@@ -785,9 +785,11 @@ Examples that help me give exact answers:
                         json_ok = structured_response.get("json_ok", False)
                         retry_reason = structured_response.get("retry_reason", "")
                         answer_words = structured_response.get("answer_words", 0)
+                        extraction_path = structured_response.get("extraction_path", "")
+                        fallback_used_flag = structured_response.get("fallback_used", False)
                         
                         # Log the full decision + metadata (compliance uses RAG only, no web search)
-                        print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words}")
+                        print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
                         
                         # SAFE citation building with clause-level enhancement (feature-flagged)
                 try:
