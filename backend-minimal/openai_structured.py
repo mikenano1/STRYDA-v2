@@ -470,6 +470,68 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
             "fallback_used": fallback_used
         }
         
+        # Store reasoning trace for GPT-5/experimental models
+        use_gpt5_experimental = os.getenv("USE_GPT5_EXPERIMENTAL", "false").lower() == "true"
+        if (model.startswith("gpt-5") or use_gpt5_experimental) and hasattr(response, 'model_dump'):
+            try:
+                import psycopg2
+                import json
+                import time
+                
+                DATABASE_URL = os.getenv("DATABASE_URL")
+                if DATABASE_URL:
+                    # Calculate response time (approximate from current request)
+                    response_time_ms = int(usage.total_tokens * 50)  # Rough estimate
+                    
+                    # Prepare reasoning trace record
+                    reasoning_dump = response.model_dump()
+                    reasoning_trace_size = len(json.dumps(reasoning_dump))
+                    
+                    record_data = {
+                        "query": user_message[:500],  # Limit query size
+                        "intent": intent,
+                        "model": model,
+                        "reasoning_trace": json.dumps(reasoning_dump),
+                        "final_answer": answer or "",
+                        "metadata": json.dumps({
+                            "extraction_path": extraction_meta.get("extraction_path", "<unknown>"),
+                            "raw_len": raw_len,
+                            "json_ok": json_ok,
+                            "retry_reason": retry_reason,
+                            "answer_words": word_count,
+                            "tokens_used": usage.total_tokens,
+                            "tokens_in": usage.prompt_tokens,
+                            "tokens_out": usage.completion_tokens
+                        }),
+                        "fallback_used": fallback_used,
+                        "response_time_ms": response_time_ms
+                    }
+                    
+                    # Insert into database (non-blocking)
+                    conn = psycopg2.connect(DATABASE_URL, sslmode="require", connect_timeout=5)
+                    cur = conn.cursor()
+                    cur.execute("""
+                        INSERT INTO reasoning_responses 
+                        (session_id, query, intent, model, reasoning_trace, final_answer, metadata, fallback_used, response_time_ms)
+                        VALUES (%(session_id)s, %(query)s, %(intent)s, %(model)s, %(reasoning_trace)s::jsonb, 
+                                %(final_answer)s, %(metadata)s::jsonb, %(fallback_used)s, %(response_time_ms)s);
+                    """, {
+                        "session_id": "default",  # Will be passed from caller later
+                        **record_data
+                    })
+                    conn.commit()
+                    cur.close()
+                    conn.close()
+                    
+                    print(f"🧠 Stored reasoning trace ({reasoning_trace_size:,} bytes) model={model} fallback={fallback_used}")
+                    
+                    if fallback_used:
+                        print(f"⚙️ Live answer served from fallback model (reasoning trace captured for GPT-5)")
+                        
+            except Exception as db_error:
+                # Don't block user response if DB fails
+                print(f"⚠️ Reasoning trace storage failed (non-blocking): {db_error}")
+        
         return structured_response
         
     except Exception as e:
