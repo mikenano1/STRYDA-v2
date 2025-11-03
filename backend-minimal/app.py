@@ -147,6 +147,7 @@ def version_info(request: Request):
         "build_time": BUILD_TIME,
         "model": OPENAI_MODEL,
         "fallback": OPENAI_MODEL_FALLBACK,
+        "gpt5_shadow": SHADOW_GPT5_CAPTURE,
         "flags": {
             "CLAUSE_PILLS": CLAUSE_PILLS_ENABLED,
             "ENABLE_WEB_SEARCH": ENABLE_WEB_SEARCH
