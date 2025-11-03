@@ -155,6 +155,57 @@ def version_info(request: Request):
         "extraction_signature": "extract_final_text+retry+fallback"
     }
 
+
+@app.get("/admin/reasoning/recent")
+@limiter.limit("10/minute")
+def admin_reasoning_recent(request: Request, limit: int = 20, x_admin_token: str = Header(None)):
+    """
+    Admin endpoint to inspect recent GPT-5 reasoning traces
+    """
+    # Admin authentication
+    expected_admin_token = os.getenv("ADMIN_TOKEN", "stryda_secure_admin_token_2024")
+    if not x_admin_token or x_admin_token != expected_admin_token:
+        raise HTTPException(status_code=403, detail="Forbidden - Invalid admin token")
+    
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            cur.execute("""
+                SELECT 
+                    id,
+                    created_at,
+                    session_id,
+                    intent,
+                    model,
+                    (reasoning_trace IS NOT NULL) as has_trace,
+                    length(reasoning_trace::text) as trace_size_bytes,
+                    length(final_answer) as answer_length,
+                    fallback_used,
+                    response_time_ms,
+                    metadata->>'finish_reason' as finish_reason,
+                    (metadata->>'tokens_used')::int as tokens_used
+                FROM reasoning_responses
+                ORDER BY created_at DESC
+                LIMIT %s;
+            """, (min(limit, 100),))  # Cap at 100 for safety
+            
+            rows = cur.fetchall()
+            results = [dict(row) for row in rows]
+        
+        conn.close()
+        
+        return {
+            "ok": True,
+            "count": len(results),
+            "limit": limit,
+            "results": results
+        }
+        
+    except Exception as e:
+        print(f"❌ Admin reasoning/recent error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+
+
 @app.get("/ready")
 @limiter.limit("5/minute")  # More restrictive for dependency checks
 def ready(request: Request):
