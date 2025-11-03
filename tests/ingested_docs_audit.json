@@ -1,0 +1,126 @@
+{
+  "audit_date": "2025-11-03 08:41:21",
+  "database": "supabase",
+  "table_used": "documents",
+  "total_documents": 1742,
+  "total_chunks": 1742,
+  "documents": [
+    {
+      "source": "NZ Metal Roofing",
+      "chunks": 593,
+      "pages": 593,
+      "status": "\u2705 Complete"
+    },
+    {
+      "source": "NZS 3604:2011",
+      "chunks": 449,
+      "pages": 449,
+      "status": "\u2705 Complete"
+    },
+    {
+      "source": "NZ Building Code",
+      "chunks": 224,
+      "pages": 224,
+      "status": "\u2705 Complete"
+    },
+    {
+      "source": "E2/AS1",
+      "chunks": 196,
+      "pages": 196,
+      "status": "\u2705 Complete"
+    },
+    {
+      "source": "NZS 4229:2013",
+      "chunks": 169,
+      "pages": 169,
+      "status": "\u2705 Complete"
+    },
+    {
+      "source": "B1 Amendment 13",
+      "chunks": 88,
+      "pages": 88,
+      "status": "\u2705 Complete"
+    },
+    {
+      "source": "B1/AS1",
+      "chunks": 21,
+      "pages": 21,
+      "status": "\u2705 Complete"
+    },
+    {
+      "source": "TEST_GUIDE",
+      "chunks": 1,
+      "pages": 1,
+      "status": "\u26a0\ufe0f Incomplete"
+    },
+    {
+      "source": "TEST_WIND",
+      "chunks": 1,
+      "pages": 1,
+      "status": "\u26a0\ufe0f Incomplete"
+    }
+  ],
+  "statistics": {
+    "unique_sources": 9,
+    "avg_chunk_length": 1955.5275545350173,
+    "chunks_with_embeddings": 1740,
+    "embedding_coverage_percent": 99.89,
+    "avg_pages_per_doc": 193.6
+  },
+  "top_documents": [
+    {
+      "source": "NZ Metal Roofing",
+      "chunks": 593,
+      "pages": 593,
+      "ingested_at": "2025-10-04 08:56:43.015286"
+    },
+    {
+      "source": "NZS 3604:2011",
+      "chunks": 449,
+      "pages": 449,
+      "ingested_at": "2025-10-12 16:12:54.204266"
+    },
+    {
+      "source": "NZ Building Code",
+      "chunks": 224,
+      "pages": 224,
+      "ingested_at": "2025-10-04 08:55:44.030421"
+    },
+    {
+      "source": "E2/AS1",
+      "chunks": 196,
+      "pages": 196,
+      "ingested_at": "2025-10-12 16:11:25.587894"
+    },
+    {
+      "source": "NZS 4229:2013",
+      "chunks": 169,
+      "pages": 169,
+      "ingested_at": "2025-10-16 08:11:07.393100"
+    },
+    {
+      "source": "B1 Amendment 13",
+      "chunks": 88,
+      "pages": 88,
+      "ingested_at": "2025-10-16 08:21:55.597733"
+    },
+    {
+      "source": "B1/AS1",
+      "chunks": 21,
+      "pages": 21,
+      "ingested_at": "2025-10-12 16:17:38.414238"
+    },
+    {
+      "source": "TEST_GUIDE",
+      "chunks": 1,
+      "pages": 1,
+      "ingested_at": "2025-10-04 07:46:56.228360"
+    },
+    {
+      "source": "TEST_WIND",
+      "chunks": 1,
+      "pages": 1,
+      "ingested_at": "2025-10-04 07:46:56.228360"
+    }
+  ]
+}
