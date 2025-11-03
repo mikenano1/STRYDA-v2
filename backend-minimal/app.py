@@ -49,15 +49,16 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Model configuration
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
 OPENAI_MODEL_FALLBACK = os.getenv("OPENAI_MODEL_FALLBACK", "gpt-4o-mini")
 
 # Feature flags
 CLAUSE_PILLS_ENABLED = os.getenv("CLAUSE_PILLS", "false").lower() == "true"
 ENABLE_WEB_SEARCH = os.getenv("ENABLE_WEB_SEARCH", "true").lower() == "true"
+SHADOW_GPT5_CAPTURE = os.getenv("SHADOW_GPT5_CAPTURE", "false").lower() == "true"
 
 # Startup banner
-print(f"🚀 STRYDA-v2 start | sha={GIT_SHA} | model={OPENAI_MODEL} | fb={OPENAI_MODEL_FALLBACK} | pills={CLAUSE_PILLS_ENABLED} | web={ENABLE_WEB_SEARCH} | extractor=reasoning-mode")
+print(f"🚀 STRYDA-v2 | model={OPENAI_MODEL} | fb={OPENAI_MODEL_FALLBACK} | gpt5_shadow={SHADOW_GPT5_CAPTURE} | pills={CLAUSE_PILLS_ENABLED} | web={ENABLE_WEB_SEARCH} | extractor=stable")
 
 # Environment validation (fail fast)
 required_env_vars = ["DATABASE_URL"]
