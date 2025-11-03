@@ -232,6 +232,70 @@ def with_timeout_and_retry(func, timeout_seconds=20, max_retries=3, backoff_base
     
     raise Exception(f"Max retries ({max_retries}) exceeded")
 
+def store_reasoning_trace(response_obj, user_message: str, intent: str, model: str, final_text: str, extraction_meta: dict, fallback_used: bool):
+    """
+    Store full GPT-5/o1 reasoning response for deferred parsing.
+    Non-blocking - will not interrupt user flow if DB fails.
+    """
+    try:
+        import psycopg2
+        import json
+        
+        DATABASE_URL = os.getenv("DATABASE_URL")
+        if not DATABASE_URL:
+            return
+        
+        # Get response dump
+        reasoning_dump = response_obj.model_dump() if hasattr(response_obj, 'model_dump') else {}
+        reasoning_trace_size = len(json.dumps(reasoning_dump))
+        
+        # Get usage stats
+        usage = response_obj.usage if hasattr(response_obj, 'usage') else None
+        tokens_total = usage.total_tokens if usage else 0
+        tokens_in = usage.prompt_tokens if usage else 0
+        tokens_out = usage.completion_tokens if usage else 0
+        
+        # Prepare metadata
+        metadata = {
+            "extraction_path": extraction_meta.get("extraction_path", "<unknown>"),
+            "raw_len": len(final_text),
+            "tokens_used": tokens_total,
+            "tokens_in": tokens_in,
+            "tokens_out": tokens_out,
+            "finish_reason": reasoning_dump.get("choices", [{}])[0].get("finish_reason", "unknown") if reasoning_dump.get("choices") else "unknown"
+        }
+        
+        # Insert into database
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require", connect_timeout=5)
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO reasoning_responses 
+            (session_id, query, intent, model, reasoning_trace, final_answer, metadata, fallback_used, response_time_ms)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);
+        """, (
+            "default",  # Session ID will be added later
+            user_message[:500],
+            intent,
+            model,
+            json.dumps(reasoning_dump),
+            final_text[:1000] if final_text else "",
+            json.dumps(metadata),
+            fallback_used,
+            int(tokens_total * 50)  # Rough estimate
+        ))
+        conn.commit()
+        cur.close()
+        conn.close()
+        
+        print(f"🧠 Stored reasoning trace ({reasoning_trace_size:,} bytes) model={model} fallback={fallback_used}")
+        
+        if fallback_used:
+            print(f"⚙️ Live answer served from fallback model (reasoning trace captured for {model})")
+            
+    except Exception as db_error:
+        # Non-blocking: don't interrupt user flow
+        print(f"⚠️ Reasoning trace storage failed (non-blocking): {db_error}")
+
 def generate_structured_response(user_message: str, tier1_snippets: List[Dict], conversation_history: List[Dict] = None, intent: str = "general_help") -> Dict[str, Any]:
     """
     Generate structured GPT response with intent-aware prompting and length guards
