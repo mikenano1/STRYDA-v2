@@ -111,11 +111,11 @@ def reparse_pending_traces():
         cur.execute("""
             SELECT id, query, intent, model, reasoning_trace, final_answer, metadata
             FROM reasoning_responses
-            WHERE model LIKE '%gpt-5%'
-              AND (final_answer IS NULL OR final_answer = '')
+            WHERE model LIKE %s
+              AND (final_answer IS NULL OR final_answer = %s)
             ORDER BY created_at DESC
             LIMIT %s;
-        """, (BATCH_LIMIT,))
+        """, ('%gpt-5%', '', BATCH_LIMIT))
         
         rows = cur.fetchall()
         total_pending = len(rows)
