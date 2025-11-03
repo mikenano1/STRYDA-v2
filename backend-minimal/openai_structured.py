@@ -397,6 +397,11 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
         
         print(f"📥 Raw response: {raw_len} chars, {usage.total_tokens} tokens (path: {extraction_meta.get('extraction_path')})")
         
+        # Store GPT-5 reasoning trace immediately (before retry/fallback)
+        use_gpt5_experimental = os.getenv("USE_GPT5_EXPERIMENTAL", "false").lower() == "true"
+        if model.startswith("gpt-5") or use_gpt5_experimental:
+            store_reasoning_trace(response, user_message, intent, model, final_text, extraction_meta, fallback_used=False)
+        
         # Step 2: If empty, retry with strict instruction
         retry_reason = ""
         fallback_used = False
