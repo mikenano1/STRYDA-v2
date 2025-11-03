@@ -1,0 +1,326 @@
+{
+  "test_date": "2025-11-03T08:32:25.710380",
+  "model": "gpt-4o",
+  "total_queries": 15,
+  "pass_count": 7,
+  "pass_rate": 46.666666666666664,
+  "avg_latency_ms": 10225.59429804484,
+  "results": [
+    {
+      "query": "E2/AS1 minimum apron flashing cover",
+      "category": "clause_specific",
+      "timestamp": "2025-11-03T08:29:41.806022",
+      "verdict": "accurate",
+      "intent": "unknown",
+      "word_count": 126,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 10651.259183883667,
+      "citation_issues": [],
+      "answer_preview": "The minimum apron flashing cover is a crucial aspect of preventing water ingress in roof-to-wall junctions. According to the NZ Building Code E2/AS1, the apron flashing must extend a minimum of 50 mm "
+    },
+    {
+      "query": "B1 Amendment 13 verification methods for structural design",
+      "category": "clause_specific",
+      "timestamp": "2025-11-03T08:29:55.034052",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 145,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 12727.715730667114,
+      "citation_issues": [],
+      "answer_preview": "B1 Amendment 13 outlines verification methods for structural design in accordance with the New Zealand Building Code. This amendment includes specific sections that provide guidelines and standards fo"
+    },
+    {
+      "query": "G5.3.2 hearth clearance requirements",
+      "category": "clause_specific",
+      "timestamp": "2025-11-03T08:30:00.940960",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 16,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 5404.74796295166,
+      "citation_issues": [],
+      "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+    },
+    {
+      "query": "H1 insulation R-values for Auckland climate zone",
+      "category": "clause_specific",
+      "timestamp": "2025-11-03T08:30:06.768172",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 16,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 5325.124740600586,
+      "citation_issues": [],
+      "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+    },
+    {
+      "query": "F4 means of escape requirements for 2-storey buildings",
+      "category": "clause_specific",
+      "timestamp": "2025-11-03T08:30:12.596023",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 16,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 5327.57830619812,
+      "citation_issues": [],
+      "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+    },
+    {
+      "query": "NZS 3604 Table 7.1 wind zones",
+      "category": "table_specific",
+      "timestamp": "2025-11-03T08:30:26.992418",
+      "verdict": "accurate",
+      "intent": "unknown",
+      "word_count": 170,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 13896.075010299683,
+      "citation_issues": [],
+      "answer_preview": "In NZS 3604:2011, Table 7.1 provides a detailed breakdown of wind zones which are crucial for determining the appropriate design and construction methods for timber-framed buildings in New Zealand. Th"
+    },
+    {
+      "query": "NZS 3604 stud spacing table for standard wind",
+      "category": "table_specific",
+      "timestamp": "2025-11-03T08:30:41.398580",
+      "verdict": "accurate",
+      "intent": "unknown",
+      "word_count": 149,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 13905.861854553223,
+      "citation_issues": [],
+      "answer_preview": "In NZS 3604:2011, the stud spacing for standard wind zones is specified to ensure the structural integrity of timber-framed buildings. The standard provides detailed tables that outline the maximum al"
+    },
+    {
+      "query": "E2/AS1 table for cladding risk scores",
+      "category": "table_specific",
+      "timestamp": "2025-11-03T08:30:54.078305",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 159,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 12179.419994354248,
+      "citation_issues": [],
+      "answer_preview": "To determine cladding risk scores, you would refer to the E2/AS1 document, which provides a framework for assessing the risk of moisture penetration in buildings. The risk score is calculated based on"
+    },
+    {
+      "query": "difference between B1 and B2 compliance verification",
+      "category": "cross_code",
+      "timestamp": "2025-11-03T08:30:59.977800",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 16,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 5397.337436676025,
+      "citation_issues": [],
+      "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+    },
+    {
+      "query": "how does E2 weathertightness relate to H1 thermal performance",
+      "category": "cross_code",
+      "timestamp": "2025-11-03T08:31:05.802990",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 16,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 5323.448657989502,
+      "citation_issues": [],
+      "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+    },
+    {
+      "query": "NZS 3604 and B1 structural requirements for deck joists",
+      "category": "cross_code",
+      "timestamp": "2025-11-03T08:31:19.409194",
+      "verdict": "accurate",
+      "intent": "unknown",
+      "word_count": 217,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 13105.880975723267,
+      "citation_issues": [],
+      "answer_preview": "When constructing deck joists, compliance with NZS 3604:2011 and B1 Structure is crucial to ensure safety and durability. Here\u2019s a summary of the structural requirements:\n\n- **NZS 3604:2011** provides"
+    },
+    {
+      "query": "what grade timber for external decks under NZS 3604",
+      "category": "general_building",
+      "timestamp": "2025-11-03T08:31:32.016969",
+      "verdict": "partial",
+      "intent": "unknown",
+      "word_count": 145,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 12107.476234436035,
+      "citation_issues": [],
+      "answer_preview": "For external decks in New Zealand, NZS 3604:2011 specifies that the timber must be treated to a specific hazard class to ensure durability and compliance. The required hazard class for timber used in "
+    },
+    {
+      "query": "minimum bearer size for 3m span deck",
+      "category": "general_building",
+      "timestamp": "2025-11-03T08:31:44.872740",
+      "verdict": "accurate",
+      "intent": "unknown",
+      "word_count": 163,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 12355.49259185791,
+      "citation_issues": [],
+      "answer_preview": "For a deck with a 3m span, the minimum bearer size will depend on several factors including the load it needs to support and the spacing of the supporting posts. According to NZS 3604:2011, the bearer"
+    },
+    {
+      "query": "what underlay is acceptable under corrugate roofing",
+      "category": "product_level",
+      "timestamp": "2025-11-03T08:31:57.140009",
+      "verdict": "accurate",
+      "intent": "unknown",
+      "word_count": 155,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 11766.994714736938,
+      "citation_issues": [],
+      "answer_preview": "When installing corrugated roofing, the underlay plays a crucial role in ensuring the roof remains weathertight and durable. According to the NZ Building Code, specifically E2/AS1, the underlay must b"
+    },
+    {
+      "query": "recommended flashing tape for window installations",
+      "category": "product_level",
+      "timestamp": "2025-11-03T08:32:11.549794",
+      "verdict": "accurate",
+      "intent": "unknown",
+      "word_count": 178,
+      "citation_count": 0,
+      "sources_count_by_name": {},
+      "latency_ms": 13909.501075744629,
+      "citation_issues": [],
+      "answer_preview": "When selecting flashing tape for window installations, it's important to ensure that the tape is compatible with the materials used in your building project and complies with the NZ Building Code. Her"
+    }
+  ],
+  "system_health": {
+    "version": {
+      "success": true,
+      "data": {
+        "git_sha": "c39e919",
+        "build_time": "2025-11-03T08:13:50.974176+00:00",
+        "model": "gpt-4o",
+        "fallback": "gpt-4o-mini",
+        "gpt5_shadow": true,
+        "flags": {
+          "CLAUSE_PILLS": false,
+          "ENABLE_WEB_SEARCH": true
+        },
+        "extraction_signature": "extract_final_text+retry+fallback"
+      },
+      "checks": {
+        "model_correct": true,
+        "fallback_correct": true,
+        "gpt5_shadow_enabled": true
+      }
+    },
+    "database": {
+      "success": true,
+      "doc_count": 1742,
+      "reasoning_count": 1,
+      "schema_columns": 15,
+      "checks": {
+        "documents_exist": true,
+        "reasoning_responses_exist": true,
+        "schema_valid": true
+      }
+    },
+    "api": {
+      "success": true,
+      "results": {
+        "health": {
+          "success": true,
+          "data": {
+            "ok": true,
+            "version": "1.4.0",
+            "uptime_s": 0
+          }
+        },
+        "ready": {
+          "success": true,
+          "data": {
+            "ready": true,
+            "dependencies": {
+              "database": "ok",
+              "openai_configured": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "stress_test": {
+    "success": false,
+    "all_completed": true,
+    "max_latency_ms": 12017.729997634888,
+    "avg_latency_ms": 11700.537824630737,
+    "under_10s": false,
+    "results": [
+      {
+        "success": true,
+        "status_code": 200,
+        "latency_ms": 11287.35375404358,
+        "request_id": 1
+      },
+      {
+        "success": true,
+        "status_code": 200,
+        "latency_ms": 11561.40422821045,
+        "request_id": 2
+      },
+      {
+        "success": true,
+        "status_code": 200,
+        "latency_ms": 11691.199541091919,
+        "request_id": 5
+      },
+      {
+        "success": true,
+        "status_code": 200,
+        "latency_ms": 11945.001602172852,
+        "request_id": 4
+      },
+      {
+        "success": true,
+        "status_code": 200,
+        "latency_ms": 12017.729997634888,
+        "request_id": 3
+      }
+    ]
+  },
+  "admin_endpoint": {
+    "success": true,
+    "auth_working": true,
+    "records_count": 1,
+    "data": {
+      "ok": true,
+      "count": 1,
+      "limit": 10,
+      "results": [
+        {
+          "id": 1,
+          "created_at": "2025-11-03T08:13:12.338283",
+          "session_id": "test_session",
+          "intent": "compliance_strict",
+          "model": "gpt-5",
+          "has_trace": true,
+          "trace_size_bytes": 495,
+          "answer_length": 127,
+          "fallback_used": false,
+          "response_time_ms": 150000,
+          "finish_reason": null,
+          "tokens_used": 3050
+        }
+      ]
+    }
+  }
+}
