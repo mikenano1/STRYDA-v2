@@ -92,10 +92,10 @@ class CitationAuditor:
             
             data = response.json()
             
-            # Extract response details
-            answer = data.get('response', '')
+            # Extract response details (handle both 'answer' and 'response' keys)
+            answer = data.get('answer', data.get('response', ''))
             citations = data.get('citations', [])
-            confidence_score = data.get('confidence_score', 0)
+            confidence_score = data.get('confidence_score', data.get('confidence', 0))
             sources_used = data.get('sources_used', [])
             
             # Analyze response
