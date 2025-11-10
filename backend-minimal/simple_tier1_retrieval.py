@@ -178,7 +178,8 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
             search_time = (time.time() - search_start) * 1000
             print(f"⚡ Vector search completed in {search_time:.0f}ms, found {len(results)} chunks")
         
-        conn.close()
+        # Return connection to pool
+        return_db_connection(conn)
         
         # Format results
         formatted_results = []
