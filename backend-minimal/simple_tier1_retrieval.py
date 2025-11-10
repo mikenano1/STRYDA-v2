@@ -227,7 +227,6 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
         return _fallback_keyword_search(query, top_k, DATABASE_URL)
 
 def _fallback_keyword_search(query: str, top_k: int, DATABASE_URL: str) -> List[Dict]:
-    """Fallback keyword search if vector search fails"""
     """Old keyword-based search as fallback"""
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
