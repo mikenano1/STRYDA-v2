@@ -1,53 +1,43 @@
 #!/usr/bin/env python3
 """
-STRYDA-v2 Citation Repair Validation Test
-Retest 20 queries from citation precision audit after intent router fixes
+STRYDA-v2 Performance Optimization Testing
+Tests the current implementation and benchmarks performance
 """
 
 import requests
-import json
 import time
+import json
 from datetime import datetime
-from typing import Dict, List, Any
-import os
+from typing import List, Dict, Any
 
 # Backend URL from environment
 BACKEND_URL = "https://citation-guard.preview.emergentagent.com"
 
-# Test queries organized by category
-TEST_QUERIES = {
-    "clause_specific": [
-        "E2/AS1 minimum apron flashing cover",
-        "B1 Amendment 13 verification methods for structural design",
-        "G5.3.2 hearth clearance requirements for solid fuel appliances",
-        "H1 insulation R-values for Auckland climate zone",
-        "F4 means of escape requirements for 2-storey residential buildings",
-        "E2.3.7 cladding requirements for horizontal weatherboards",
-        "B1.3.3 foundation requirements for standard soil conditions",
-        "NZS 3604 clause 5.4.2 bracing requirements"
-    ],
-    "table_specific": [
-        "NZS 3604 Table 7.1 wind zones for New Zealand regions",
-        "NZS 3604 stud spacing table for standard wind zone",
-        "E2/AS1 table for cladding risk scores and weathertightness",
-        "NZS 3604 Table 8.3 bearer and joist sizing for decks"
-    ],
-    "cross_reference": [
-        "difference between B1 and B2 structural compliance verification methods",
-        "how does E2 weathertightness relate to H1 thermal performance at wall penetrations",
-        "NZS 3604 and B1 Amendment 13 requirements for deck joist connections",
-        "relationship between F7 warning systems and G5 solid fuel heating"
-    ],
-    "product_practical": [
-        "what underlay is acceptable under corrugate metal roofing per NZMRM",
-        "recommended flashing tape specifications for window installations",
-        "what grade timber for external deck joists under NZS 3604",
-        "minimum fixing requirements for cladding in Very High wind zone"
-    ]
-}
+# 20 test queries from CITATION_PRECISION_AUDIT.md
+TEST_QUERIES = [
+    "E2/AS1 minimum apron flashing cover",
+    "B1 Amendment 13 verification methods for structural engineering",
+    "G5.3.2 hearth clearance requirements for solid fuel appliances",
+    "H1 insulation R-values for Auckland climate zone",
+    "F4 means of escape requirements for 2-storey residential buildings",
+    "E2.3.7 cladding requirements for horizontal weatherboards",
+    "B1.3.3 foundation requirements for standard soil conditions",
+    "NZS 3604 clause 5.4.2 bracing requirements",
+    "NZS 3604 Table 7.1 wind zones for New Zealand regions",
+    "NZS 3604 stud spacing table for standard wind zone",
+    "E2/AS1 table for cladding risk scores and weathertightness",
+    "NZS 3604 Table 8.3 bearer and joist sizing for decks",
+    "difference between B1 and B2 structural compliance verification methods",
+    "how does E2 weathertightness relate to H1 thermal performance",
+    "NZS 3604 and B1 Amendment 13 requirements for deck joist connections",
+    "relationship between F7 warning systems and G5 solid fuel appliances",
+    "what underlay is acceptable under corrugate metal roofing per E2/AS1",
+    "recommended flashing tape specifications for window installations",
+    "what grade timber for external deck joists under NZS 3604",
+    "minimum fixing requirements for cladding in Very High wind zone"
+]
 
-# Load previous audit results for comparison
-def load_previous_audit():
+def test_backend_health():
     """Load previous audit results from citation_precision_audit.json"""
     try:
         with open('/app/tests/citation_precision_audit.json', 'r') as f:
