@@ -1,5 +1,5 @@
 {
-  "test_date": "2025-11-10T06:55:43.577956",
+  "test_date": "2025-11-10T07:04:01.613239",
   "fixes_applied": [
     "intent_router_clause_patterns",
     "comparative_query_detection"
@@ -12,170 +12,644 @@
   },
   "after": {
     "pass": 0,
-    "partial": 0,
-    "fail": 20,
-    "avg_latency_ms": 37.49
+    "partial": 17,
+    "fail": 3,
+    "avg_latency_ms": 11981.35
   },
   "improvement_pct": 0,
   "results": [
     {
       "query": "E2/AS1 minimum apron flashing cover",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 69.57340240478516,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 122,
+        "answer_preview": "The minimum cover for apron flashings is specified in the NZ Building Code under E2/AS1. Apron flash...",
+        "full_answer": "The minimum cover for apron flashings is specified in the NZ Building Code under E2/AS1. Apron flashings are crucial for preventing water ingress at the junction between a roof and a wall. According to E2/AS1, the minimum cover for apron flashings should be at least 50mm. This ensures adequate protection against water penetration.\n\nKey points to consider:\n- Ensure the flashing extends at least 50mm over the roof cladding.\n- The flashing should be securely fixed to prevent movement and potential gaps.\n- Use compatible materials to avoid corrosion, especially in coastal areas.\n- Regularly inspect and maintain flashings to ensure they remain effective over time.\n\nFollowing these guidelines will help maintain the integrity of the building envelope and prevent moisture-related issues.",
+        "citations": [
+          {
+            "source": "E2/AS1",
+            "page": 7,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nGeneral  \nMINISTRY OF BUSINESS, INNOVATION AND EM"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 2,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION  E2/AS1 \nPreface  \n \n \nMINISTRY OF BUSINESS, INNOVATION AN"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 3,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1 \nMain changes in this version  \nMINISTRY OF BUSINES"
+          }
+        ],
+        "sources_count": {
+          "E2/AS1": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 14370.84,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:00:06.340003",
       "query_number": 1
     },
     {
       "query": "B1 Amendment 13 verification methods for structural design",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 37.82463073730469,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 125,
+        "answer_preview": "B1 Amendment 13 provides verification methods for structural design, ensuring compliance with the Ne...",
+        "full_answer": "B1 Amendment 13 provides verification methods for structural design, ensuring compliance with the New Zealand Building Code. These methods are essential for demonstrating that a building's structural performance meets the required standards. Key aspects include:\n\n- **Verification Method B1/VM1**: This method outlines the procedures for assessing the structural integrity of buildings. It includes calculations and modeling techniques to ensure that structures can withstand expected loads and forces.\n- **Verification Method B1/VM4**: This method focuses on specific structural elements and their performance under various conditions. It provides guidelines for testing and evaluating materials and construction techniques.\n\nFor detailed guidance, refer to pages 17\u201322B for B1/VM1 and page 51 for B1/VM4 in the document. These sections provide comprehensive instructions and criteria for compliance with structural design requirements.",
+        "citations": [
+          {
+            "source": "B1 Amendment 13",
+            "page": 3,
+            "snippet": "3B1: Document History\nDate Alterations\nFirst published July 1992\nAmendment 1 September 1993 p. ix\u2013xi"
+          },
+          {
+            "source": "B1 Amendment 13",
+            "page": 4,
+            "snippet": "4B1: Document History\nAmendment 8 1 December 2008 p. 2, Document Status  \np. 3, Document History  \np"
+          },
+          {
+            "source": "B1 Amendment 13",
+            "page": 8,
+            "snippet": "(short page 8 from B1 Amendment 13)"
+          }
+        ],
+        "sources_count": {
+          "B1 Amendment 13": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 13593.51,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:00:20.434314",
       "query_number": 2
     },
     {
       "query": "G5.3.2 hearth clearance requirements for solid fuel appliances",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 37.95504570007324,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 125,
+        "answer_preview": "For solid fuel appliances, the hearth clearance requirements are crucial to ensure safety and compli...",
+        "full_answer": "For solid fuel appliances, the hearth clearance requirements are crucial to ensure safety and compliance with the NZ Building Code. While specific details from the provided standards aren't available, generally, the hearth should extend a minimum of 300mm in front of the appliance and 150mm on each side. The hearth must be made of non-combustible materials and be capable of supporting the appliance's weight. Additionally, ensure that the hearth is level and securely fixed to prevent movement.\n\n- Minimum clearance in front: 300mm\n- Minimum clearance on sides: 150mm\n- Use non-combustible materials\n- Ensure hearth is level and secure\n- Check for any specific manufacturer requirements\n\nAlways refer to the specific appliance installation manual and any local amendments or additional requirements that may apply.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 47,
+            "snippet": "SECTION 2 \u2013 GENERAL  N ZS 3604:2011\n2\u20136 COPYRIGHT \u00a9 Standards New Zealand2.3.9.6  \nProprietary grade"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 11,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nCladding systems and materials  \nMINISTRY OF BUSI"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 24,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nFlashings  \nMINISTRY OF BUSINESS, INNOVATION AND "
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 1,
+          "E2/AS1": 2
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 11998.52,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:00:32.933625",
       "query_number": 3
     },
     {
       "query": "H1 insulation R-values for Auckland climate zone",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 34.16275978088379,
+      "intent": "chitchat",
+      "response": {
+        "word_count": 16,
+        "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "full_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "citations": [],
+        "sources_count": {},
+        "confidence_score": 0
+      },
+      "latency_ms": 6257.64,
       "verdict": "\u274c FAIL",
+      "timestamp": "2025-11-10T07:00:39.692045",
       "query_number": 4
     },
     {
       "query": "F4 means of escape requirements for 2-storey residential buildings",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 37.69826889038086,
+      "intent": "chitchat",
+      "response": {
+        "word_count": 16,
+        "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "full_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "citations": [],
+        "sources_count": {},
+        "confidence_score": 0
+      },
+      "latency_ms": 5428.33,
       "verdict": "\u274c FAIL",
+      "timestamp": "2025-11-10T07:00:45.621231",
       "query_number": 5
     },
     {
       "query": "E2.3.7 cladding requirements for horizontal weatherboards",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 40.14921188354492,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 140,
+        "answer_preview": "For horizontal weatherboards, E2/AS1 provides specific requirements to ensure effective management o...",
+        "full_answer": "For horizontal weatherboards, E2/AS1 provides specific requirements to ensure effective management of external moisture. Key considerations include the installation of a cavity behind the cladding to allow for drainage and ventilation. This is crucial to prevent moisture accumulation that can lead to rot or other damage. Here are the main requirements:\n\n- **Cavity Construction**: A minimum 20 mm drained cavity is required behind the weatherboards.\n- **Overlap and Fixing**: Weatherboards must overlap by at least 32 mm and be securely fixed to the framing.\n- **Flashing**: Proper flashing must be installed at all junctions, openings, and penetrations to direct water away from the building.\n- **Ventilation**: Ensure adequate ventilation of the cavity to allow moisture to escape.\n\nThese measures are outlined to ensure compliance with the NZ Building Code and to maintain the durability and performance of the cladding system.",
+        "citations": [
+          {
+            "source": "E2/AS1",
+            "page": 8,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nGeneral  \nMINISTRY OF BUSINESS, INNOVATION AND EM"
+          }
+        ],
+        "sources_count": {
+          "E2/AS1": 1
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 11466.63,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:00:57.588634",
       "query_number": 6
     },
     {
       "query": "B1.3.3 foundation requirements for standard soil conditions",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 40.04216194152832,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 157,
+        "answer_preview": "For foundation requirements under standard soil conditions, the NZ Building Code B1/AS1 provides spe...",
+        "full_answer": "For foundation requirements under standard soil conditions, the NZ Building Code B1/AS1 provides specific guidelines to ensure structural stability and safety. The key points include:\n\n- **Minimum Depth**: Foundations must be at least 200mm deep into natural ground to ensure stability and prevent settlement.\n- **Width of Footings**: The width should be at least 300mm for strip footings to distribute loads effectively.\n- **Reinforcement**: Use appropriate reinforcement as specified in NZS 3604 to handle tensile stresses and prevent cracking.\n- **Concrete Strength**: Ensure concrete used in foundations has a minimum compressive strength of 17.5 MPa.\n- **Drainage Considerations**: Proper drainage must be installed to prevent water accumulation around the foundation, which can lead to erosion or swelling of the soil.\n\nThese requirements are designed to provide a solid base for structures, preventing issues like subsidence or uneven settling. Always ensure that the site is properly assessed by a qualified engineer to confirm that these standard conditions apply.",
+        "citations": [
+          {
+            "source": "B1/AS1",
+            "page": 5,
+            "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION B1/AS1  \nGeneral  \nMINISTRY OF BUSINESS, INNOVATION AND EMPLOYMENT "
+          }
+        ],
+        "sources_count": {
+          "B1/AS1": 1
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 11755.16,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:01:09.844586",
       "query_number": 7
     },
     {
       "query": "NZS 3604 clause 5.4.2 bracing requirements",
       "category": "clause_specific",
-      "error": "HTTP 422",
-      "latency_ms": 35.68863868713379,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 147,
+        "answer_preview": "Clause 5.4.2 of NZS 3604 deals with the bracing requirements for buildings to ensure they can withst...",
+        "full_answer": "Clause 5.4.2 of NZS 3604 deals with the bracing requirements for buildings to ensure they can withstand lateral forces such as wind and earthquakes. This clause outlines the specifications for bracing elements, including their placement, type, and the amount required based on the building's location and design. Key considerations include:\n\n- **Bracing Units**: Calculate the required bracing units based on the building's wind zone and seismic zone.\n- **Distribution**: Ensure bracing elements are evenly distributed throughout the structure to provide balanced resistance.\n- **Types of Bracing**: Use approved bracing systems such as diagonal braces, sheet bracing, or proprietary systems that meet the standard's requirements.\n- **Installation**: Follow the manufacturer's instructions and ensure all connections are secure and compliant.\n\nIt's crucial to adhere to these guidelines to maintain structural integrity and safety. Always double-check calculations and installation details to avoid common mistakes like insufficient bracing or improper placement.",
+        "citations": [
+          {
+            "source": "B1/AS1",
+            "page": 7,
+            "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+          },
+          {
+            "source": "B1/AS1",
+            "page": 8,
+            "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+          },
+          {
+            "source": "B1/AS1",
+            "page": 9,
+            "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+          }
+        ],
+        "sources_count": {
+          "B1/AS1": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 13009.71,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:01:23.355121",
       "query_number": 8
     },
     {
       "query": "NZS 3604 Table 7.1 wind zones for New Zealand regions",
       "category": "table_specific",
-      "error": "HTTP 422",
-      "latency_ms": 34.20901298522949,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 162,
+        "answer_preview": "NZS 3604:2011 provides guidance on determining wind zones for different regions in New Zealand, whic...",
+        "full_answer": "NZS 3604:2011 provides guidance on determining wind zones for different regions in New Zealand, which is crucial for ensuring structures are designed to withstand local wind conditions. Table 7.1 in NZS 3604 outlines the wind zones, which are categorized into Low, Medium, High, Very High, and Extra High, based on wind speed and other factors. \n\nHere's a quick guide to using Table 7.1:\n- **Identify the Region**: Determine the specific region where the building project is located.\n- **Assess Terrain and Topography**: Consider the terrain category and topographical features, as these influence wind speed.\n- **Determine Wind Zone**: Use the table to find the corresponding wind zone for your region, considering the above factors.\n- **Design Accordingly**: Ensure that your building design complies with the requirements for the identified wind zone.\n\nCommon mistakes include underestimating the wind zone due to overlooking local topographical features or changes in terrain. Always double-check with the latest regional maps and local council guidelines to ensure compliance.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 1,
+            "snippet": "ADVISORY NOTE FOR NZS 3604:2011 AND SNZ HB 3604:2011\nOn 1 August 2011, the Department of Building an"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 5,
+            "snippet": "COMMITTEE REPRESENTATION\nThis Standard was prepared under the supervision of the P 3604 technical co"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 8,
+            "snippet": "NZS 3604:2011\n3 COPYRIGHT \u00a9 Standards New Zealand\nCONTENTS \nCommittee representation   ............."
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 14251.07,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:01:38.107018",
       "query_number": 9
     },
     {
       "query": "NZS 3604 stud spacing table for standard wind zone",
       "category": "table_specific",
-      "error": "HTTP 422",
-      "latency_ms": 30.728578567504883,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 169,
+        "answer_preview": "In a standard wind zone, the stud spacing for walls is determined by the NZS 3604:2011. This standar...",
+        "full_answer": "In a standard wind zone, the stud spacing for walls is determined by the NZS 3604:2011. This standard provides specific guidance on the maximum allowable spacing for timber wall studs to ensure structural integrity and compliance with building codes. Here\u2019s a quick guide based on typical requirements:\n\n- **Stud Spacing**: For a standard wind zone, the typical maximum stud spacing is 600mm center-to-center. This is applicable for walls supporting roof loads.\n- **Wall Height**: Ensure that the wall height does not exceed the limits set for the specific stud size and spacing, as outlined in the tables of NZS 3604.\n- **Stud Size**: Common stud sizes include 90x45mm, but always check the specific requirements for your project.\n- **Bracing**: Adequate wall bracing must be provided as per the bracing demand calculations in NZS 3604.\n\nAlways ensure that you refer to the specific tables and figures in NZS 3604:2011 for precise measurements and conditions. This will help avoid common mistakes such as underestimating wind loads or using incorrect stud sizes.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 1,
+            "snippet": "ADVISORY NOTE FOR NZS 3604:2011 AND SNZ HB 3604:2011\nOn 1 August 2011, the Department of Building an"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 5,
+            "snippet": "COMMITTEE REPRESENTATION\nThis Standard was prepared under the supervision of the P 3604 technical co"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 8,
+            "snippet": "NZS 3604:2011\n3 COPYRIGHT \u00a9 Standards New Zealand\nCONTENTS \nCommittee representation   ............."
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 12095.15,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:01:50.702980",
       "query_number": 10
     },
     {
       "query": "E2/AS1 table for cladding risk scores and weathertightness",
       "category": "table_specific",
-      "error": "HTTP 422",
-      "latency_ms": 51.90539360046387,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 169,
+        "answer_preview": "To determine cladding risk scores and ensure weathertightness compliance, you should refer to the E2...",
+        "full_answer": "To determine cladding risk scores and ensure weathertightness compliance, you should refer to the E2/AS1 document, which provides guidance on managing external moisture in buildings. The cladding risk score is a crucial part of assessing the potential for moisture ingress and is used to select appropriate cladding systems and detailing. Here's a summary of how to approach this:\n\n- **Identify Risk Factors**: Consider factors such as wind zone, building complexity, eaves width, and cladding type.\n- **Calculate Risk Score**: Use the tables provided in E2/AS1 to assign scores to each factor. The total score will guide the selection of cladding systems.\n- **Select Cladding System**: Based on the risk score, choose a cladding system that meets the requirements for your specific score range.\n- **Ensure Compliance**: Follow the detailing and installation requirements outlined in E2/AS1 to ensure compliance with the NZ Building Code.\n\nFor precise details, refer to the specific tables and figures in the E2/AS1 document. This will ensure that your building project meets the necessary weathertightness standards.",
+        "citations": [
+          {
+            "source": "E2/AS1",
+            "page": 2,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION  E2/AS1 \nPreface  \n \n \nMINISTRY OF BUSINESS, INNOVATION AN"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 3,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1 \nMain changes in this version  \nMINISTRY OF BUSINES"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 4,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nFeatures of this document  \nMINISTRY OF BUSINESS,"
+          }
+        ],
+        "sources_count": {
+          "E2/AS1": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 11687.95,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:02:02.891746",
       "query_number": 11
     },
     {
       "query": "NZS 3604 Table 8.3 bearer and joist sizing for decks",
       "category": "table_specific",
-      "error": "HTTP 422",
-      "latency_ms": 32.16385841369629,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 176,
+        "answer_preview": "To determine the correct sizing for bearers and joists for decks according to NZS 3604:2011, you'll ...",
+        "full_answer": "To determine the correct sizing for bearers and joists for decks according to NZS 3604:2011, you'll want to refer to Table 8.3 in the standard. This table provides the necessary dimensions based on the span and loading requirements for your deck. Here\u2019s a quick guide on how to use it:\n\n- **Identify the Span**: Measure the span of the joists and bearers. This is the distance they cover without support.\n- **Determine the Load**: Consider the load your deck will need to support. This includes the weight of the deck itself and any additional loads like furniture or people.\n- **Select the Timber Grade**: NZS 3604 specifies different timber grades, which affect the sizing. Common grades include SG8 and SG10.\n- **Refer to Table 8.3**: Match your span and load requirements to the table to find the appropriate size for your bearers and joists.\n\nEnsure that you follow all safety guidelines and consider any local amendments or conditions that may apply. This will help ensure your deck is both safe and compliant with New Zealand standards.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 1,
+            "snippet": "ADVISORY NOTE FOR NZS 3604:2011 AND SNZ HB 3604:2011\nOn 1 August 2011, the Department of Building an"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 8,
+            "snippet": "NZS 3604:2011\n3 COPYRIGHT \u00a9 Standards New Zealand\nCONTENTS \nCommittee representation   ............."
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 5,
+            "snippet": "COMMITTEE REPRESENTATION\nThis Standard was prepared under the supervision of the P 3604 technical co"
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 12443.52,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:02:15.836153",
       "query_number": 12
     },
     {
       "query": "difference between B1 and B2 structural compliance verification methods",
       "category": "cross_reference",
-      "error": "HTTP 422",
-      "latency_ms": 32.323360443115234,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 182,
+        "answer_preview": "The B1 and B2 compliance verification methods in the New Zealand Building Code focus on different as...",
+        "full_answer": "The B1 and B2 compliance verification methods in the New Zealand Building Code focus on different aspects of a building's performance. B1 covers 'Structure' and ensures that buildings are structurally sound and capable of withstanding various loads, such as wind and earthquakes. B2, on the other hand, deals with 'Durability', ensuring that building elements continue to perform their intended function over time without significant loss of performance. \n\nKey differences include:\n- **B1 Structure**:\n  - Focuses on the strength, stability, and serviceability of buildings.\n  - Includes requirements for loadings, such as live loads, dead loads, and environmental loads (e.g., wind, earthquake).\n  - Covers materials and construction methods to ensure structural integrity.\n\n- **B2 Durability**:\n  - Ensures building components last for a specified period, typically 5, 15, or 50 years, depending on their function and exposure.\n  - Addresses issues like corrosion, decay, and wear and tear.\n  - Requires materials and systems to be selected and installed to meet these durability expectations.\n\nBoth B1 and B2 are crucial for ensuring that buildings are safe, functional, and long-lasting, but they address different aspects of building performance.",
+        "citations": [
+          {
+            "source": "B1 Amendment 13",
+            "page": 30,
+            "snippet": "MINISTRY OF BUSINESS, INNOVATION AND EMPLOYMENT7.0 Glazing\n7.1 NZS 4223.1  subject to the following "
+          },
+          {
+            "source": "B1 Amendment 13",
+            "page": 73,
+            "snippet": "C5.0 Loadings\nC5.1 Active thrusts\nUnfactored active thrusts:\nStatic active thrust per metre from bac"
+          },
+          {
+            "source": "B1/AS1",
+            "page": 7,
+            "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+          }
+        ],
+        "sources_count": {
+          "B1 Amendment 13": 2,
+          "B1/AS1": 1
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 12070.44,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:02:28.407474",
       "query_number": 13
     },
     {
       "query": "how does E2 weathertightness relate to H1 thermal performance at wall penetrations",
       "category": "cross_reference",
-      "error": "HTTP 422",
-      "latency_ms": 35.7208251953125,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 190,
+        "answer_preview": "E2 weathertightness and H1 thermal performance are both critical aspects of building design, especia...",
+        "full_answer": "E2 weathertightness and H1 thermal performance are both critical aspects of building design, especially at wall penetrations like windows, doors, and vents. Ensuring that these penetrations are both weathertight and thermally efficient is essential for building durability and energy efficiency. \n\n- **E2 Weathertightness**: Focuses on preventing water ingress through the building envelope. At wall penetrations, this involves using appropriate flashing and sealing techniques to ensure that water cannot enter the building. \n- **H1 Thermal Performance**: Deals with the insulation and energy efficiency of the building. At penetrations, this means ensuring that the thermal envelope is not compromised, which often involves using insulated frames or thermal breaks.\n\nTo achieve compliance:\n- Use appropriate flashing and sealants as per E2/AS1 guidelines to prevent water ingress.\n- Ensure that any insulation around penetrations is continuous and meets the R-value requirements specified in H1.\n- Avoid thermal bridging by using materials that minimize heat transfer.\n- Regularly inspect and maintain these areas to ensure ongoing performance.\n\nBy integrating both E2 and H1 requirements, you can ensure that wall penetrations are both weathertight and energy-efficient, contributing to the overall performance and durability of the building.",
+        "citations": [
+          {
+            "source": "E2/AS1",
+            "page": 2,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION  E2/AS1 \nPreface  \n \n \nMINISTRY OF BUSINESS, INNOVATION AN"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 11,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nCladding systems and materials  \nMINISTRY OF BUSI"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 61,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nRoof claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+          }
+        ],
+        "sources_count": {
+          "E2/AS1": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 12397.43,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:02:41.305785",
       "query_number": 14
     },
     {
       "query": "NZS 3604 and B1 Amendment 13 requirements for deck joist connections",
       "category": "cross_reference",
-      "error": "HTTP 422",
-      "latency_ms": 31.641483306884766,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 184,
+        "answer_preview": "For deck joist connections under NZS 3604:2011 and B1 Amendment 13, it's crucial to ensure that the ...",
+        "full_answer": "For deck joist connections under NZS 3604:2011 and B1 Amendment 13, it's crucial to ensure that the connections are designed to withstand the loads they will encounter, including live loads, dead loads, and any environmental factors such as wind or seismic activity. Here are the key requirements and considerations:\n\n- **Joist Hangers**: Use appropriate joist hangers that are rated for the load and environmental conditions. Ensure they are installed according to the manufacturer's specifications.\n- **Fasteners**: Use corrosion-resistant fasteners, especially in coastal or high-moisture environments. Galvanized or stainless steel is recommended.\n- **Spacing**: Follow the spacing guidelines for joists as specified in NZS 3604:2011, ensuring that the span and spacing are appropriate for the load.\n- **Bracing**: Proper bracing is essential to prevent lateral movement. Refer to the specific bracing requirements in NZS 3604.\n- **Inspection**: Regularly inspect connections for signs of wear or corrosion, especially in exposed areas.\n\nThese guidelines ensure compliance with the structural integrity requirements outlined in the NZ Building Code. Make sure to consult the specific clauses in NZS 3604:2011 and B1 Amendment 13 for detailed requirements and any updates.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 1,
+            "snippet": "ADVISORY NOTE FOR NZS 3604:2011 AND SNZ HB 3604:2011\nOn 1 August 2011, the Department of Building an"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 5,
+            "snippet": "COMMITTEE REPRESENTATION\nThis Standard was prepared under the supervision of the P 3604 technical co"
+          },
+          {
+            "source": "B1 Amendment 13",
+            "page": 9,
+            "snippet": "Page\nReferences 11\nDefinitions 15\nVerification Method B1/VM1 17 \nGeneral  17\n1.0 General 17\n \n2.0 St"
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 2,
+          "B1 Amendment 13": 1
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 11776.09,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:02:53.582684",
       "query_number": 15
     },
     {
       "query": "relationship between F7 warning systems and G5 solid fuel heating",
       "category": "cross_reference",
-      "error": "HTTP 422",
-      "latency_ms": 33.57243537902832,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 172,
+        "answer_preview": "The relationship between F7 warning systems and G5 solid fuel heating primarily involves ensuring th...",
+        "full_answer": "The relationship between F7 warning systems and G5 solid fuel heating primarily involves ensuring that safety measures are in place to protect occupants from potential hazards associated with solid fuel heating. F7 covers warning systems like smoke alarms, which are crucial in detecting fires early, especially when using solid fuel heaters that can pose fire risks. G5 focuses on the installation and operation of solid fuel heating appliances, ensuring they are safe and efficient.\n\nHere are some key considerations:\n- **Smoke Alarms (F7):** Ensure smoke alarms are installed in accordance with F7 requirements, particularly near areas where solid fuel heaters are used.\n- **Ventilation (G5):** Proper ventilation is crucial to prevent the buildup of harmful gases like carbon monoxide.\n- **Clearances:** Maintain appropriate clearances around solid fuel heaters to prevent fire hazards.\n- **Regular Maintenance:** Regularly clean and inspect chimneys and flues to prevent blockages and ensure efficient operation.\n- **Installation Compliance:** Ensure that the installation of solid fuel heaters complies with both F7 and G5 standards to maximize safety and efficiency.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 54,
+            "snippet": "3\u20131\nSECTION 3\nSITE REQUIREMENTS\n3.1 Soil bearing capacity   ........................................"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 57,
+            "snippet": "SECTION 3 \u2013 SITE REQUIREMENTS  NZS 3 604:2011\n3\u20134 COPYRIGHT \u00a9 Standards New ZealandC3.1.3\n(b) Surfac"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 11,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nCladding systems and materials  \nMINISTRY OF BUSI"
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 2,
+          "E2/AS1": 1
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 12684.11,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:03:06.767625",
       "query_number": 16
     },
     {
       "query": "what underlay is acceptable under corrugate metal roofing per NZMRM",
       "category": "product_practical",
-      "error": "HTTP 422",
-      "latency_ms": 35.16387939453125,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 146,
+        "answer_preview": "For corrugated metal roofing, the NZ Metal Roofing Manufacturers (NZMRM) guidelines typically align ...",
+        "full_answer": "For corrugated metal roofing, the NZ Metal Roofing Manufacturers (NZMRM) guidelines typically align with the NZ Building Code requirements. According to E2/AS1, underlays used under metal roofing should be breathable and allow moisture to escape while preventing water ingress. Here are some key points to consider:\n\n- Use a synthetic or bituminous underlay that complies with the NZMRM Code of Practice.\n- The underlay should have a water vapour resistance of less than 7 MNs/g to ensure breathability.\n- Ensure the underlay is installed with a minimum 150mm overlap at joints and is securely fixed to prevent wind uplift.\n- Avoid using non-breathable underlays, as they can trap moisture and lead to condensation issues.\n- Follow the manufacturer's installation instructions for best results and compliance.\n\nAlways check for any updates or specific requirements in the NZMRM Code of Practice and E2/AS1 for the most accurate guidance.",
+        "citations": [
+          {
+            "source": "E2/AS1",
+            "page": 13,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWeathertightness risk factors  \nMINISTRY OF BUSIN"
+          }
+        ],
+        "sources_count": {
+          "E2/AS1": 1
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 11183.92,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:03:18.452324",
       "query_number": 17
     },
     {
       "query": "recommended flashing tape specifications for window installations",
       "category": "product_practical",
-      "error": "HTTP 422",
-      "latency_ms": 33.77842903137207,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 206,
+        "answer_preview": "For window installations, the NZ Building Code provides specific guidelines for flashing tape to ens...",
+        "full_answer": "For window installations, the NZ Building Code provides specific guidelines for flashing tape to ensure effective moisture management and durability. Here are the key specifications you should follow:\n\n- **Material**: Flashing tape should be made from a durable, waterproof material that adheres well to both the window frame and the surrounding wall structure.\n- **Width**: The tape should be wide enough to cover the entire window flange and extend beyond it to ensure a proper seal. A common width is around 100mm to 150mm, depending on the window size and wall construction.\n- **Adhesion**: Ensure the tape has strong adhesive properties suitable for the substrate it will be applied to, whether it's timber, metal, or another material.\n- **Temperature Range**: The tape should perform well under the temperature conditions expected in your area, maintaining adhesion in both hot and cold weather.\n- **UV Resistance**: If the tape will be exposed to sunlight for extended periods before being covered, it should have UV-resistant properties to prevent degradation.\n\nCommon mistakes to avoid include using tape that is too narrow, not applying enough pressure during installation to ensure adhesion, and failing to overlap the tape correctly at corners and joints. Always follow the manufacturer's instructions for the best results.",
+        "citations": [
+          {
+            "source": "E2/AS1",
+            "page": 45,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nRoof claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 67,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nRoof claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 146,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+          }
+        ],
+        "sources_count": {
+          "E2/AS1": 3
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 12099.02,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:03:31.052266",
       "query_number": 18
     },
     {
       "query": "what grade timber for external deck joists under NZS 3604",
       "category": "product_practical",
-      "error": "HTTP 422",
-      "latency_ms": 31.055927276611328,
-      "verdict": "\u274c FAIL",
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 161,
+        "answer_preview": "For external deck joists in New Zealand, NZS 3604 specifies that the timber must be treated to a min...",
+        "full_answer": "For external deck joists in New Zealand, NZS 3604 specifies that the timber must be treated to a minimum of H3.2 hazard class. This treatment level ensures that the timber is protected against decay and insect attack, which is crucial given the exposure to weather conditions. Here are some key points to consider:\n\n- **H3.2 Treatment:** This level is suitable for timber that is exposed to the weather but not in contact with the ground. It provides protection against fungal decay and borer.\n- **Timber Grade:** The timber should also be structurally graded to at least SG8, which is a common structural grade for deck joists.\n- **Common Mistakes:** Avoid using untreated or inadequately treated timber, as this can lead to premature failure and safety hazards.\n- **Installation Tip:** Ensure all cuts and holes in the treated timber are resealed with a suitable preservative to maintain protection.\n\nAlways check for any local amendments or specific requirements that might affect your project.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 65,
+            "snippet": "SECTION 4 \u2013 DURABILITY  NZ S 3604:2011\n4\u20134 COPYRIGHT \u00a9 Standards New ZealandHouhora Heads\nKerikeri\nK"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 67,
+            "snippet": "SECTION 4 \u2013 DURABILITY  N ZS 3604:2011\n4\u20136 COPYRIGHT \u00a9 Standards New Zealand4.2.4  M icroclimatic co"
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 2
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 12169.33,
+      "verdict": "\u26a0\ufe0f PARTIAL",
+      "timestamp": "2025-11-10T07:03:43.722443",
       "query_number": 19
     },
     {
       "query": "minimum fixing requirements for cladding in Very High wind zone",
       "category": "product_practical",
-      "error": "HTTP 422",
-      "latency_ms": 34.52253341674805,
+      "intent": "compliance_strict",
+      "response": {
+        "word_count": 180,
+        "answer_preview": "For cladding in a Very High wind zone, the NZ Building Code specifies certain minimum fixing require...",
+        "full_answer": "For cladding in a Very High wind zone, the NZ Building Code specifies certain minimum fixing requirements to ensure structural integrity and weather tightness. According to NZS 3604:2011, the fixing requirements vary depending on the type of cladding material used, but generally, the following guidelines apply:\n\n- **Fastener Type**: Use corrosion-resistant fasteners, such as stainless steel or hot-dip galvanized nails or screws, especially in coastal areas.\n- **Fastener Spacing**: Typically, fasteners should be spaced no more than 600mm apart horizontally and 300mm vertically. However, specific materials may have different requirements.\n- **Edge Distance**: Maintain a minimum edge distance of 12mm from the edge of the cladding to prevent splitting.\n- **Nailing Pattern**: Follow the manufacturer's specifications for nailing patterns, as these are designed to meet the wind load requirements.\n- **Substrate Requirements**: Ensure the substrate is properly prepared and capable of holding the fasteners securely.\n\nAlways refer to the specific manufacturer's guidelines and NZS 3604:2011 for detailed requirements for different materials and conditions. Compliance with these standards helps prevent cladding failure and ensures the building's durability in high wind conditions.",
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 10,
+            "snippet": "NZS 3604:2011\n5 COPYRIGHT \u00a9 Standards New Zealand\nJOINT AUSTRALIAN/NEW ZEALAND STANDARDS\nAS/NZS 1170"
+          },
+          {
+            "source": "NZS 3604:2011",
+            "page": 13,
+            "snippet": "NZS 3604:2011\n8 COPYRIGHT \u00a9 Standards New Zealand\nLATEST REVISIONS\nThe users of this Standard should"
+          },
+          {
+            "source": "E2/AS1",
+            "page": 7,
+            "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nGeneral  \nMINISTRY OF BUSINESS, INNOVATION AND EM"
+          }
+        ],
+        "sources_count": {
+          "NZS 3604:2011": 2,
+          "E2/AS1": 1
+        },
+        "confidence_score": 0
+      },
+      "latency_ms": 16888.56,
       "verdict": "\u274c FAIL",
+      "timestamp": "2025-11-10T07:04:01.111816",
       "query_number": 20
     }
   ]
