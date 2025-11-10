@@ -81,11 +81,153 @@ def apply_ranking_bias(results: List[Dict], bias_weights: Dict[str, float]) -> L
 
 def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
     """
-    Simplified Tier-1 retrieval that actually works
+    Optimized Tier-1 retrieval using pgvector similarity search
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
     
     try:
+        import time
+        from openai import OpenAI
+        import os
+        
+        start_time = time.time()
+        
+        # Generate query embedding using OpenAI
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            print("⚠️ No OpenAI API key, falling back to keyword search")
+            return _fallback_keyword_search(query, top_k, DATABASE_URL)
+        
+        client = OpenAI(api_key=api_key)
+        embedding_response = client.embeddings.create(
+            model="text-embedding-ada-002",
+            input=query
+        )
+        query_embedding = embedding_response.data[0].embedding
+        
+        embed_time = (time.time() - start_time) * 1000
+        print(f"⚡ Query embedding generated in {embed_time:.0f}ms")
+        
+        # Connect to database
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        query_lower = query.lower()
+        
+        # Determine target sources based on query terms
+        target_sources = []
+        
+        if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber', 'framing', 'lintel']):
+            target_sources.append('NZS 3604:2011')
+        
+        if any(term in query_lower for term in ['flashing', 'roof', 'pitch', 'e2', 'moisture', 'underlay', 'apron']):
+            target_sources.append('E2/AS1')
+        
+        if any(term in query_lower for term in ['brace', 'bracing', 'structure', 'b1', 'engineering', 'demand']):
+            target_sources.append('B1/AS1')
+        
+        # Check for B1 Amendment 13 queries
+        if any(term in query_lower for term in ['amendment 13', 'b1 amendment', 'verification methods']):
+            target_sources.append('B1 Amendment 13')
+        
+        # If no specific match, search all sources
+        if not target_sources:
+            target_sources = None
+        
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            search_start = time.time()
+            
+            # Use pgvector similarity search
+            if target_sources:
+                # Search specific sources
+                cur.execute("""
+                    SELECT id, source, page, content, section, clause, snippet,
+                           (embedding <=> %s::vector) as similarity
+                    FROM documents 
+                    WHERE source = ANY(%s)
+                      AND embedding IS NOT NULL
+                    ORDER BY similarity ASC
+                    LIMIT %s;
+                """, (query_embedding, target_sources, top_k * 2))
+            else:
+                # Search all documents
+                cur.execute("""
+                    SELECT id, source, page, content, section, clause, snippet,
+                           (embedding <=> %s::vector) as similarity
+                    FROM documents 
+                    WHERE embedding IS NOT NULL
+                    ORDER BY similarity ASC
+                    LIMIT %s;
+                """, (query_embedding, top_k * 2))
+            
+            results = cur.fetchall()
+            search_time = (time.time() - search_start) * 1000
+            print(f"⚡ Vector search completed in {search_time:.0f}ms, found {len(results)} chunks")
+        
+        conn.close()
+        
+        # Format results
+        formatted_results = []
+        for result in results:
+            # Convert similarity to score (lower similarity = higher score)
+            # Similarity ranges from 0 (identical) to 2 (opposite)
+            # Convert to 0-1 score where 1 is best match
+            similarity = float(result['similarity'])
+            score = max(0.0, 1.0 - (similarity / 2.0))
+            
+            formatted_result = {
+                'id': str(result['id']),
+                'source': result['source'],
+                'page': result['page'],
+                'content': result['content'],
+                'section': result['section'],
+                'clause': result['clause'],
+                'snippet': result['snippet'] or result['content'][:200],
+                'score': score,
+                'similarity': similarity,
+                'tier1_source': True
+            }
+            
+            formatted_results.append(formatted_result)
+        
+        # Apply ranking bias based on query patterns
+        bias_weights = detect_b1_amendment_bias(query)
+        bias_applied = False
+        if bias_weights:
+            print(f"🎯 Applying ranking bias: {bias_weights}")
+            formatted_results = apply_ranking_bias(formatted_results, bias_weights)
+            bias_applied = True
+            
+            # Log telemetry for bias application
+            bias_count = sum(1 for r in formatted_results if r.get('bias_applied', False))
+            print(f"[telemetry] ranking_bias applied={bias_applied} weights={bias_weights} affected_results={bias_count}/{len(formatted_results)}")
+        
+        # Sort by score and return top_k
+        final_results = sorted(formatted_results, key=lambda x: x['score'], reverse=True)[:top_k]
+        
+        tier1_count = sum(1 for r in final_results if r.get('tier1_source', False))
+        
+        # Log source distribution after bias
+        source_mix = {}
+        for result in final_results:
+            source = result['source']
+            source_mix[source] = source_mix.get(source, 0) + 1
+        
+        total_time = (time.time() - start_time) * 1000
+        print(f"✅ Vector Tier-1 retrieval: {len(final_results)} results ({tier1_count} Tier-1) in {total_time:.0f}ms")
+        print(f"📊 Retrieval source mix for '{query[:50]}...': {source_mix}")
+        
+        # Log B1 Amendment 13 vs Legacy B1 distribution
+        amendment_count = source_mix.get('B1 Amendment 13', 0)
+        legacy_count = source_mix.get('B1/AS1', 0)
+        print(f"   B1 Amendment 13: {amendment_count}, Legacy B1: {legacy_count}")
+        
+        return final_results
+        
+    except Exception as e:
+        print(f"❌ Vector retrieval failed: {e}, falling back to keyword search")
+        return _fallback_keyword_search(query, top_k, DATABASE_URL)
+
+def _fallback_keyword_search(query: str, top_k: int, DATABASE_URL: str) -> List[Dict]:
+    """Fallback keyword search if vector search fails"""
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
         query_lower = query.lower()
         
