@@ -1,0 +1,182 @@
+{
+  "test_date": "2025-11-10T06:55:43.577956",
+  "fixes_applied": [
+    "intent_router_clause_patterns",
+    "comparative_query_detection"
+  ],
+  "before": {
+    "pass": 2,
+    "partial": 11,
+    "fail": 7,
+    "avg_latency_ms": 9347
+  },
+  "after": {
+    "pass": 0,
+    "partial": 0,
+    "fail": 20,
+    "avg_latency_ms": 37.49
+  },
+  "improvement_pct": 0,
+  "results": [
+    {
+      "query": "E2/AS1 minimum apron flashing cover",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 69.57340240478516,
+      "verdict": "\u274c FAIL",
+      "query_number": 1
+    },
+    {
+      "query": "B1 Amendment 13 verification methods for structural design",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 37.82463073730469,
+      "verdict": "\u274c FAIL",
+      "query_number": 2
+    },
+    {
+      "query": "G5.3.2 hearth clearance requirements for solid fuel appliances",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 37.95504570007324,
+      "verdict": "\u274c FAIL",
+      "query_number": 3
+    },
+    {
+      "query": "H1 insulation R-values for Auckland climate zone",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 34.16275978088379,
+      "verdict": "\u274c FAIL",
+      "query_number": 4
+    },
+    {
+      "query": "F4 means of escape requirements for 2-storey residential buildings",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 37.69826889038086,
+      "verdict": "\u274c FAIL",
+      "query_number": 5
+    },
+    {
+      "query": "E2.3.7 cladding requirements for horizontal weatherboards",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 40.14921188354492,
+      "verdict": "\u274c FAIL",
+      "query_number": 6
+    },
+    {
+      "query": "B1.3.3 foundation requirements for standard soil conditions",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 40.04216194152832,
+      "verdict": "\u274c FAIL",
+      "query_number": 7
+    },
+    {
+      "query": "NZS 3604 clause 5.4.2 bracing requirements",
+      "category": "clause_specific",
+      "error": "HTTP 422",
+      "latency_ms": 35.68863868713379,
+      "verdict": "\u274c FAIL",
+      "query_number": 8
+    },
+    {
+      "query": "NZS 3604 Table 7.1 wind zones for New Zealand regions",
+      "category": "table_specific",
+      "error": "HTTP 422",
+      "latency_ms": 34.20901298522949,
+      "verdict": "\u274c FAIL",
+      "query_number": 9
+    },
+    {
+      "query": "NZS 3604 stud spacing table for standard wind zone",
+      "category": "table_specific",
+      "error": "HTTP 422",
+      "latency_ms": 30.728578567504883,
+      "verdict": "\u274c FAIL",
+      "query_number": 10
+    },
+    {
+      "query": "E2/AS1 table for cladding risk scores and weathertightness",
+      "category": "table_specific",
+      "error": "HTTP 422",
+      "latency_ms": 51.90539360046387,
+      "verdict": "\u274c FAIL",
+      "query_number": 11
+    },
+    {
+      "query": "NZS 3604 Table 8.3 bearer and joist sizing for decks",
+      "category": "table_specific",
+      "error": "HTTP 422",
+      "latency_ms": 32.16385841369629,
+      "verdict": "\u274c FAIL",
+      "query_number": 12
+    },
+    {
+      "query": "difference between B1 and B2 structural compliance verification methods",
+      "category": "cross_reference",
+      "error": "HTTP 422",
+      "latency_ms": 32.323360443115234,
+      "verdict": "\u274c FAIL",
+      "query_number": 13
+    },
+    {
+      "query": "how does E2 weathertightness relate to H1 thermal performance at wall penetrations",
+      "category": "cross_reference",
+      "error": "HTTP 422",
+      "latency_ms": 35.7208251953125,
+      "verdict": "\u274c FAIL",
+      "query_number": 14
+    },
+    {
+      "query": "NZS 3604 and B1 Amendment 13 requirements for deck joist connections",
+      "category": "cross_reference",
+      "error": "HTTP 422",
+      "latency_ms": 31.641483306884766,
+      "verdict": "\u274c FAIL",
+      "query_number": 15
+    },
+    {
+      "query": "relationship between F7 warning systems and G5 solid fuel heating",
+      "category": "cross_reference",
+      "error": "HTTP 422",
+      "latency_ms": 33.57243537902832,
+      "verdict": "\u274c FAIL",
+      "query_number": 16
+    },
+    {
+      "query": "what underlay is acceptable under corrugate metal roofing per NZMRM",
+      "category": "product_practical",
+      "error": "HTTP 422",
+      "latency_ms": 35.16387939453125,
+      "verdict": "\u274c FAIL",
+      "query_number": 17
+    },
+    {
+      "query": "recommended flashing tape specifications for window installations",
+      "category": "product_practical",
+      "error": "HTTP 422",
+      "latency_ms": 33.77842903137207,
+      "verdict": "\u274c FAIL",
+      "query_number": 18
+    },
+    {
+      "query": "what grade timber for external deck joists under NZS 3604",
+      "category": "product_practical",
+      "error": "HTTP 422",
+      "latency_ms": 31.055927276611328,
+      "verdict": "\u274c FAIL",
+      "query_number": 19
+    },
+    {
+      "query": "minimum fixing requirements for cladding in Very High wind zone",
+      "category": "product_practical",
+      "error": "HTTP 422",
+      "latency_ms": 34.52253341674805,
+      "verdict": "\u274c FAIL",
+      "query_number": 20
+    }
+  ]
+}
