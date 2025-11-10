@@ -80,8 +80,9 @@ class IntentRouter:
             # NZBC Specific Clause Patterns (NEW - highest priority) - case insensitive
             r'\b[a-h]\d+\.\d+\.\d+\b',  # g5.3.2, h1.2.1, f4.3.1
             r'\b[a-h]\d+\.\d+\b',  # g5.3, h1.2, f4.3
-            r'\b[a-h]\d+\b.*\b(clause|section|requirement|provision)\b',  # h1 clause, g5 requirement
+            r'\b[a-h]\d+\b.*\b(clause|section|requirement|provision|insulation|escape|clearance)\b',  # h1 clause, g5 requirement, f4 escape
             r'\b(clause|section)\s+[a-h]?\d+\.?\d*\.?\d*\b',  # clause g5.3.2, section h1
+            r'\b(h1|f4|f7|g5|g9|e2|e3|b1|b2)\b.*\b(requirement|r-?value|insulation|escape|clearance|zone)\b',  # h1 insulation, f4 escape
             
             # Comparative/Cross-Reference Patterns (NEW)
             r'\b(difference|compare|versus|vs\.?|vs\s+)\b.*\b[a-h]\d+',  # "difference between b1 and b2"
