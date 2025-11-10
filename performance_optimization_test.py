@@ -79,12 +79,21 @@ def test_backend_health():
     print("=" * 80)
     
     try:
-        response = requests.get(f"{BACKEND_URL}/health", timeout=10)
-        print(f"✅ Backend health check: {response.status_code}")
-        print(f"   Response: {response.json()}")
-        return True
+        # Try the /api/chat endpoint with a simple test
+        response = requests.post(
+            f"{BACKEND_URL}/api/chat",
+            json={"query": "test"},
+            timeout=10
+        )
+        print(f"✅ Backend API check: {response.status_code}")
+        if response.status_code == 200:
+            print(f"   Backend is accessible and responding")
+            return True
+        else:
+            print(f"   Response: {response.text[:200]}")
+            return False
     except Exception as e:
-        print(f"❌ Backend health check failed: {e}")
+        print(f"❌ Backend API check failed: {e}")
         return False
 
 def test_query_performance(query: str, query_num: int) -> Dict[str, Any]:
