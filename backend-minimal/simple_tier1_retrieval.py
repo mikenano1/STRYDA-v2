@@ -122,8 +122,10 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
             embed_time = (time.time() - embed_start) * 1000
             print(f"⚡ Query embedding generated in {embed_time:.0f}ms (cached for 1h)")
         
-        # Connect to database
-        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        # Connect to database using connection pool
+        from db_pool import get_db_connection, return_db_connection
+        
+        conn = get_db_connection()
         query_lower = query.lower()
         
         # Determine target sources based on query terms
