@@ -228,6 +228,56 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
 
 def _fallback_keyword_search(query: str, top_k: int, DATABASE_URL: str) -> List[Dict]:
     """Fallback keyword search if vector search fails"""
+    """Old keyword-based search as fallback"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        query_lower = query.lower()
+        
+        # Simple keyword search
+        search_terms = [term for term in query_lower.split() if len(term) > 3][:3]
+        results = []
+        
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            for term in search_terms:
+                cur.execute("""
+                    SELECT id, source, page, content, section, clause, snippet
+                    FROM documents 
+                    WHERE LOWER(content) LIKE %s
+                    ORDER BY page
+                    LIMIT %s;
+                """, (f'%{term}%', top_k))
+                
+                term_results = cur.fetchall()
+                for result in term_results:
+                    results.append({
+                        'id': str(result['id']),
+                        'source': result['source'],
+                        'page': result['page'],
+                        'content': result['content'],
+                        'section': result['section'],
+                        'clause': result['clause'],
+                        'snippet': result['snippet'] or result['content'][:200],
+                        'score': 0.7,
+                        'tier1_source': True
+                    })
+        
+        conn.close()
+        
+        # Remove duplicates
+        seen = set()
+        deduped = []
+        for result in results:
+            key = f"{result['source']}_{result['page']}"
+            if key not in seen:
+                seen.add(key)
+                deduped.append(result)
+        
+        return deduped[:top_k]
+        
+    except Exception as e:
+        print(f"❌ Fallback keyword search failed: {e}")
+        return []
+
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
         query_lower = query.lower()
         
