@@ -829,7 +829,7 @@ Examples that help me give exact answers:
                 with profiler.timer('t_vector_search'):
                     # Use CANONICAL retrieval with safe error handling
                     try:
-                        docs = tier1_retrieval(user_message, top_k=6)
+                        docs = tier1_retrieval(user_message, top_k=4)
                         tier1_hit = len(docs) > 0
                     except Exception as e:
                         print(f"⚠️ Retrieval failed: {e}")
