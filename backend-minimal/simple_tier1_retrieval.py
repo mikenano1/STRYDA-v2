@@ -79,9 +79,10 @@ def apply_ranking_bias(results: List[Dict], bias_weights: Dict[str, float]) -> L
     
     return biased_results
 
-def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
+def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
     """
     Optimized Tier-1 retrieval using pgvector similarity search with caching
+    PERFORMANCE: Reduced top_k to 4 for faster context assembly and lower token usage
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
     
