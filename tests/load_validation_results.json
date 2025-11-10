@@ -1,0 +1,95 @@
+{
+  "test_date": "2025-11-10T16:57:51.482868",
+  "test_type": "concurrent_load",
+  "total_queries": 20,
+  "success_count": 20,
+  "failure_count": 0,
+  "success_rate": 100.0,
+  "avg_latency_ms": 15973.368728160858,
+  "p95_latency_ms": 19678.97319793701,
+  "p99_latency_ms": 19678.97319793701,
+  "cache_hit_rate": 50.0,
+  "production_ready": false,
+  "cycles": [
+    {
+      "cycle": 1,
+      "concurrent_requests": 5,
+      "successful": 5,
+      "avg_latency_ms": 17854.37903404236,
+      "timestamp": "2025-11-10T16:57:11.817601"
+    },
+    {
+      "cycle": 2,
+      "concurrent_requests": 10,
+      "successful": 10,
+      "avg_latency_ms": 15732.88164138794,
+      "timestamp": "2025-11-10T16:57:31.667471"
+    },
+    {
+      "cycle": 3,
+      "concurrent_requests": 5,
+      "successful": 5,
+      "avg_latency_ms": 14573.332595825195,
+      "timestamp": "2025-11-10T16:57:49.478966"
+    }
+  ],
+  "metrics": {
+    "total_requests": 20,
+    "successful": 20,
+    "failed": 0,
+    "success_rate": 100.0,
+    "latency": {
+      "min": 11972.769737243652,
+      "max": 19678.97319793701,
+      "mean": 15973.368728160858,
+      "median": 16518.78774166107,
+      "p95": 19678.97319793701,
+      "p99": 19678.97319793701
+    },
+    "intent_classification": {
+      "compliance_strict": 20
+    },
+    "citation_stats": {
+      "total_with_citations": 16,
+      "avg_citations_per_query": 2.15,
+      "max_citations": 3
+    },
+    "word_count_stats": {
+      "min": 113,
+      "max": 211,
+      "mean": 150.85
+    }
+  },
+  "criteria_validation": [
+    {
+      "category": "Stability",
+      "criterion": "All requests complete successfully",
+      "passed": true
+    },
+    {
+      "category": "Performance",
+      "criterion": "Avg latency <7s (actual: 16.0s)",
+      "passed": false
+    },
+    {
+      "category": "Performance",
+      "criterion": "P95 latency <10s (actual: 19.7s)",
+      "passed": false
+    },
+    {
+      "category": "Caching",
+      "criterion": "Cached queries <3s (actual: 14.6s)",
+      "passed": false
+    },
+    {
+      "category": "Caching",
+      "criterion": "Cache improvement: 18.4%",
+      "passed": true
+    },
+    {
+      "category": "Caching",
+      "criterion": "Cache hit rate \u226540% (actual: 50.0%)",
+      "passed": true
+    }
+  ]
+}
