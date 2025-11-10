@@ -206,6 +206,33 @@ def admin_reasoning_recent(request: Request, limit: int = 20, x_admin_token: str
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 
+@app.get("/admin/cache/stats")
+@limiter.limit("10/minute")
+def admin_cache_stats(request: Request, x_admin_token: str = Header(None)):
+    """
+    Admin endpoint to view cache statistics
+    """
+    # Admin authentication
+    expected_admin_token = os.getenv("ADMIN_TOKEN", "stryda_secure_admin_token_2024")
+    if not x_admin_token or x_admin_token != expected_admin_token:
+        raise HTTPException(status_code=403, detail="Forbidden - Invalid admin token")
+    
+    try:
+        from cache_manager import get_cache_stats
+        stats = get_cache_stats()
+        return {
+            "ok": True,
+            "cache_stats": stats,
+            "timestamp": int(time.time())
+        }
+    except Exception as e:
+        print(f"❌ Cache stats error: {e}")
+        return {
+            "ok": False,
+            "error": str(e)
+        }
+
+
 @app.get("/ready")
 @limiter.limit("5/minute")  # More restrictive for dependency checks
 def ready(request: Request):
