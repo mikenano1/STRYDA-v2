@@ -1,0 +1,190 @@
+{
+  "benchmark_date": "2025-11-10T17:17:24.337553",
+  "index_config": {
+    "name": "docs_embedding_ivfflat",
+    "type": "ivfflat",
+    "operator": "vector_cosine_ops",
+    "lists": 100,
+    "creation_time_s": 0.9,
+    "size": "14 MB"
+  },
+  "before": {
+    "avg_latency_ms": 16000,
+    "avg_vector_search_ms": 11000,
+    "method": "unindexed_scan"
+  },
+  "after": {
+    "avg_latency_ms": 12052.3,
+    "min_latency_ms": 10502.0,
+    "max_latency_ms": 13593.0,
+    "method": "ivfflat_index_scan"
+  },
+  "improvement_pct": 24.7,
+  "target_met": false,
+  "cache_performance": {
+    "run1_cold_avg_ms": 11680.2,
+    "run2_warm_avg_ms": 12424.4,
+    "cache_improvement_pct": -6.4,
+    "cache_hit_rate_pct": 50.0
+  },
+  "accuracy": {
+    "total_citations": 24,
+    "avg_citations_per_query": 2.4,
+    "avg_word_count": 145.3,
+    "success_rate_pct": 100.0
+  },
+  "queries": [
+    {
+      "query": "E2/AS1 minimum apron flashing cover",
+      "run": 1,
+      "success": true,
+      "total_latency_ms": 10814.0,
+      "backend_latency_ms": 10810,
+      "word_count": 100,
+      "citation_count": 3,
+      "citation_sources": [
+        "E2/AS1",
+        "E2/AS1",
+        "E2/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "The minimum cover for apron flashings in the context of E2/AS1 is not directly provided in the excer..."
+    },
+    {
+      "query": "NZS 3604 stud spacing for standard wind zone",
+      "run": 1,
+      "success": true,
+      "total_latency_ms": 10502.0,
+      "backend_latency_ms": 10499,
+      "word_count": 127,
+      "citation_count": 0,
+      "citation_sources": [],
+      "intent": "compliance_strict",
+      "answer_preview": "In a standard wind zone, NZS 3604:2011 specifies the stud spacing for timber-framed buildings. For w..."
+    },
+    {
+      "query": "difference between B1 and B2 structural compliance verification",
+      "run": 1,
+      "success": true,
+      "total_latency_ms": 13307.3,
+      "backend_latency_ms": 13304,
+      "word_count": 153,
+      "citation_count": 3,
+      "citation_sources": [
+        "B1/AS1",
+        "B1/AS1",
+        "B1/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "The difference between B1 and B2 structural compliance verification primarily lies in their focus ar..."
+    },
+    {
+      "query": "H1 insulation R-values for Auckland climate zone",
+      "run": 1,
+      "success": true,
+      "total_latency_ms": 11007.4,
+      "backend_latency_ms": 11004,
+      "word_count": 115,
+      "citation_count": 3,
+      "citation_sources": [
+        "E2/AS1",
+        "E2/AS1",
+        "E2/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "For the Auckland climate zone, the New Zealand Building Code specifies minimum R-values for insulati..."
+    },
+    {
+      "query": "F4 means of escape requirements for 2-storey residential buildings",
+      "run": 1,
+      "success": true,
+      "total_latency_ms": 12770.5,
+      "backend_latency_ms": 12768,
+      "word_count": 198,
+      "citation_count": 3,
+      "citation_sources": [
+        "E2/AS1",
+        "E2/AS1",
+        "E2/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "For 2-storey residential buildings, the F4 Means of Escape requirements focus on ensuring that occup..."
+    },
+    {
+      "query": "E2/AS1 minimum apron flashing cover",
+      "run": 2,
+      "success": true,
+      "total_latency_ms": 12639.8,
+      "backend_latency_ms": 12637,
+      "word_count": 161,
+      "citation_count": 3,
+      "citation_sources": [
+        "E2/AS1",
+        "E2/AS1",
+        "E2/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "To determine the minimum apron flashing cover, you should refer to the specific section in E2/AS1 th..."
+    },
+    {
+      "query": "NZS 3604 stud spacing for standard wind zone",
+      "run": 2,
+      "success": true,
+      "total_latency_ms": 12070.7,
+      "backend_latency_ms": 12068,
+      "word_count": 138,
+      "citation_count": 0,
+      "citation_sources": [],
+      "intent": "compliance_strict",
+      "answer_preview": "In a standard wind zone, NZS 3604:2011 provides specific guidelines for stud spacing to ensure struc..."
+    },
+    {
+      "query": "difference between B1 and B2 structural compliance verification",
+      "run": 2,
+      "success": true,
+      "total_latency_ms": 13593.0,
+      "backend_latency_ms": 13590,
+      "word_count": 193,
+      "citation_count": 3,
+      "citation_sources": [
+        "B1/AS1",
+        "B1/AS1",
+        "B1/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "The B1 and B2 compliance verification methods relate to different aspects of building performance in..."
+    },
+    {
+      "query": "H1 insulation R-values for Auckland climate zone",
+      "run": 2,
+      "success": true,
+      "total_latency_ms": 11257.1,
+      "backend_latency_ms": 11254,
+      "word_count": 122,
+      "citation_count": 3,
+      "citation_sources": [
+        "E2/AS1",
+        "E2/AS1",
+        "E2/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "For Auckland, which falls under Climate Zone 1 in New Zealand, the minimum R-values for insulation a..."
+    },
+    {
+      "query": "F4 means of escape requirements for 2-storey residential buildings",
+      "run": 2,
+      "success": true,
+      "total_latency_ms": 12561.2,
+      "backend_latency_ms": 12558,
+      "word_count": 146,
+      "citation_count": 3,
+      "citation_sources": [
+        "E2/AS1",
+        "E2/AS1",
+        "E2/AS1"
+      ],
+      "intent": "compliance_strict",
+      "answer_preview": "The F4 means of escape requirements for 2-storey residential buildings focus on ensuring safe and ef..."
+    }
+  ]
+}
