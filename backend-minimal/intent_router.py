@@ -77,6 +77,17 @@ class IntentRouter:
         
         # AGGRESSIVE Tier-1 compliance detection - catch all variants
         tier1_compliance_patterns = [
+            # NZBC Specific Clause Patterns (NEW - highest priority)
+            r'\b[A-H]\d+\.\d+\.\d+\b',  # G5.3.2, H1.2.1, F4.3.1
+            r'\b[A-H]\d+\.\d+\b',  # G5.3, H1.2, F4.3
+            r'\b[A-H]\d+\b.*\b(clause|section|requirement|provision)\b',  # H1 clause, G5 requirement
+            r'\b(clause|section)\s+[A-H]?\d+\.?\d*\.?\d*\b',  # clause G5.3.2, section H1
+            
+            # Comparative/Cross-Reference Patterns (NEW)
+            r'\b(difference|compare|versus|vs\.?|vs\s+)\b.*\b[A-H]\d+',  # "difference between B1 and B2"
+            r'\b(relate|relationship|connection|link)\b.*\b[A-H]\d+',  # "how does E2 relate to H1"
+            r'\b[A-H]\d+\s+(and|&|\+)\s+[A-H]\d+\b',  # "B1 and B2", "E2 & H1"
+            
             # NZS 3604 patterns - enhanced for all variants
             r'\b(nzs 3604|stud spacing|stud centres?|stud centers?|timber|lintel|fixing|span)\b',
             r'\bstud\s+.*(spacing|centres?|centers?)\b',
