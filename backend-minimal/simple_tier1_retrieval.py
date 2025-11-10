@@ -280,9 +280,7 @@ def _fallback_keyword_search(query: str, top_k: int, DATABASE_URL: str) -> List[
 # Export the working function
 def get_simple_tier1_retrieval():
     return simple_tier1_retrieval
-        
-        # Determine target sources based on query terms
-        target_sources = []
+
         
         if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber', 'framing', 'lintel']):
             target_sources.append('NZS 3604:2011')
