@@ -233,6 +233,33 @@ def admin_cache_stats(request: Request, x_admin_token: str = Header(None)):
         }
 
 
+@app.get("/admin/db/pool_status")
+@limiter.limit("10/minute")
+def admin_db_pool_status(request: Request, x_admin_token: str = Header(None)):
+    """
+    Admin endpoint to view database connection pool status
+    """
+    # Admin authentication
+    expected_admin_token = os.getenv("ADMIN_TOKEN", "stryda_secure_admin_token_2024")
+    if not x_admin_token or x_admin_token != expected_admin_token:
+        raise HTTPException(status_code=403, detail="Forbidden - Invalid admin token")
+    
+    try:
+        from db_pool import get_pool_stats
+        pool_stats = get_pool_stats()
+        return {
+            "ok": True,
+            "pool_stats": pool_stats,
+            "timestamp": int(time.time())
+        }
+    except Exception as e:
+        print(f"❌ Pool stats error: {e}")
+        return {
+            "ok": False,
+            "error": str(e)
+        }
+
+
 @app.get("/ready")
 @limiter.limit("5/minute")  # More restrictive for dependency checks
 def ready(request: Request):
