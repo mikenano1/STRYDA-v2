@@ -66,7 +66,7 @@ def test_single_query(query: str, category: str) -> Dict[str, Any]:
         response = requests.post(
             f"{BACKEND_URL}/api/chat",
             json={
-                "query": query,
+                "message": query,
                 "session_id": f"citation_repair_test_{int(time.time())}"
             },
             timeout=30
