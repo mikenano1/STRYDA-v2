@@ -81,7 +81,7 @@ def apply_ranking_bias(results: List[Dict], bias_weights: Dict[str, float]) -> L
 
 def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
     """
-    Optimized Tier-1 retrieval using pgvector similarity search
+    Optimized Tier-1 retrieval using pgvector similarity search with caching
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
     
@@ -89,24 +89,38 @@ def simple_tier1_retrieval(query: str, top_k: int = 6) -> List[Dict]:
         import time
         from openai import OpenAI
         import os
+        from cache_manager import embedding_cache, cache_key
         
         start_time = time.time()
         
-        # Generate query embedding using OpenAI
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            print("⚠️ No OpenAI API key, falling back to keyword search")
-            return _fallback_keyword_search(query, top_k, DATABASE_URL)
+        # Check embedding cache
+        embed_cache_key = cache_key(query)
+        cached_embedding = embedding_cache.get(embed_cache_key)
         
-        client = OpenAI(api_key=api_key)
-        embedding_response = client.embeddings.create(
-            model="text-embedding-ada-002",
-            input=query
-        )
-        query_embedding = embedding_response.data[0].embedding
-        
-        embed_time = (time.time() - start_time) * 1000
-        print(f"⚡ Query embedding generated in {embed_time:.0f}ms")
+        if cached_embedding:
+            query_embedding = cached_embedding
+            print(f"🎯 Embedding cache HIT for query")
+            embed_time = 0
+        else:
+            # Generate query embedding using OpenAI
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not api_key:
+                print("⚠️ No OpenAI API key, falling back to keyword search")
+                return _fallback_keyword_search(query, top_k, DATABASE_URL)
+            
+            embed_start = time.time()
+            client = OpenAI(api_key=api_key)
+            embedding_response = client.embeddings.create(
+                model="text-embedding-ada-002",
+                input=query
+            )
+            query_embedding = embedding_response.data[0].embedding
+            
+            # Cache for future use
+            embedding_cache.set(embed_cache_key, query_embedding)
+            
+            embed_time = (time.time() - embed_start) * 1000
+            print(f"⚡ Query embedding generated in {embed_time:.0f}ms (cached for 1h)")
         
         # Connect to database
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
