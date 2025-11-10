@@ -342,32 +342,34 @@ def generate_structured_response(user_message: str, tier1_snippets: List[Dict], 
             
         messages.append({"role": "user", "content": user_content})
         
-        print(f"🔄 Calling OpenAI {os.getenv('OPENAI_MODEL', 'gpt-4o-mini')}...")
+        print(f"🔄 Calling OpenAI for intent={intent}...")
         
-        # Determine model and appropriate parameters
-        model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+        # OPTIMIZED MODEL ROUTING: Use faster model for non-compliance queries
+        if intent in ["general_help", "product_info", "chitchat"]:
+            model = "gpt-4o-mini"  # Faster model for general queries
+            max_tokens_limit = 250  # Shorter responses for general help
+        else:
+            model = os.getenv("OPENAI_MODEL", "gpt-4o")  # Full model for compliance
+            max_tokens_limit = 350  # Compliance needs more detail
         
         # GPT-5/o1 reasoning models have restricted parameters
         completion_params = {
             "model": model,
             "messages": messages,
-            "timeout": 30  # Increased for reasoning models
+            "timeout": 20  # Tighter timeout for faster responses
         }
         
         # Use appropriate parameters based on model type
         if "gpt-5" in model.lower() or "o1" in model.lower():
             # GPT-5/o1 reasoning models: Only max_completion_tokens supported
-            # CRITICAL: Balance between reasoning space and response time
-            # 2500 tokens allows reasoning while avoiding timeout (30s limit)
-            completion_params["max_completion_tokens"] = 2500
+            completion_params["max_completion_tokens"] = max_tokens_limit
             completion_params["timeout"] = 45  # Increased timeout for reasoning models
-            # No temperature, top_p, presence_penalty, frequency_penalty
-            print(f"🤖 Using GPT-5/o1 with max_completion_tokens=2500, timeout=45s")
+            print(f"🤖 Using {model} (reasoning) with max_completion_tokens={max_tokens_limit}")
         else:
-            # Standard models: Full parameter set
-            completion_params["max_tokens"] = 600
+            # Standard models: Full parameter set with strict token limits
+            completion_params["max_tokens"] = max_tokens_limit
             completion_params["temperature"] = 0.3
-            print(f"🤖 Using standard model with full parameters")
+            print(f"🤖 Using {model} with max_tokens={max_tokens_limit}, timeout=20s")
         
         # Call OpenAI with proper timeout and error handling
         try:
