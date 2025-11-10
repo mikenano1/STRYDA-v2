@@ -87,16 +87,8 @@ def test_single_query(query: str, category: str) -> Dict[str, Any]:
         
         # Extract response details
         answer = data.get("answer", "")
-        citations = data.get("citation", [])
-        
-        # Determine intent from response characteristics
-        intent = "unknown"
-        if len(answer) > 100 and citations:
-            intent = "compliance_strict"
-        elif len(answer) < 50 and not citations:
-            intent = "chitchat"
-        else:
-            intent = "general_help"
+        citations = data.get("citations", [])
+        intent = data.get("intent", "unknown")
         
         # Count words
         word_count = len(answer.split())
