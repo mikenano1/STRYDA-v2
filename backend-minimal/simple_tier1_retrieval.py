@@ -168,7 +168,7 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
             search_start = time.time()
             
             # Use pgvector similarity search
-            if target_sources:
+            if target_sources and len(target_sources) > 0:
                 # Search specific sources (use psycopg2 array handling)
                 cur.execute("""
                     SELECT id, source, page, content, section, clause, snippet,
@@ -179,8 +179,10 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
                     ORDER BY similarity ASC
                     LIMIT %s;
                 """, (query_embedding, target_sources, top_k * 2))
+                print(f"   🔎 Searching {len(target_sources)} specific sources")
             else:
-                # Search all documents
+                # Search all documents (no source filter)
+                print(f"   🌐 Searching ALL documents (no source filter)")
                 cur.execute("""
                     SELECT id, source, page, content, section, clause, snippet,
                            (embedding <=> %s::vector) as similarity
