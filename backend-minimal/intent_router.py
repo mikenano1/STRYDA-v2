@@ -75,53 +75,48 @@ class IntentRouter:
             if re.search(pattern, message_lower):
                 return "chitchat", 0.95, "friendly"
         
-        # AGGRESSIVE Tier-1 compliance detection - catch all variants
-        tier1_compliance_patterns = [
-            # NZBC Specific Clause Patterns (NEW - highest priority) - case insensitive
+        # STRICT Compliance detection - Only explicit code/clause references
+        strict_compliance_patterns = [
+            # Explicit NZBC Clause References (MUST HAVE CODE PREFIX)
             r'\b[a-h]\d+\.\d+\.\d+\b',  # g5.3.2, h1.2.1, f4.3.1
             r'\b[a-h]\d+\.\d+\b',  # g5.3, h1.2, f4.3
-            r'\b[a-h]\d+\b.*\b(clause|section|requirement|provision|insulation|escape|clearance)\b',  # h1 clause, g5 requirement, f4 escape
-            r'\b(clause|section)\s+[a-h]?\d+\.?\d*\.?\d*\b',  # clause g5.3.2, section h1
-            r'\b(h1|f4|f7|g5|g9|e2|e3|b1|b2)\b.*\b(requirement|r-?value|insulation|escape|clearance|zone)\b',  # h1 insulation, f4 escape
+            r'\b(clause|section)\s+[a-h]?\d+\.?\d*\.?\d*\b',  # "clause g5.3.2", "section h1"
             
-            # Comparative/Cross-Reference Patterns (NEW)
-            r'\b(difference|compare|versus|vs\.?|vs\s+)\b.*\b[a-h]\d+',  # "difference between b1 and b2"
-            r'\b(relate|relationship|connection|link)\b.*\b[a-h]\d+',  # "how does e2 relate to h1"
-            r'\b[a-h]\d+\s+(and|&|\+)\s+[a-h]\d+\b',  # "b1 and b2", "e2 & h1"
+            # Explicit Document References
+            r'\b(e2/?as1|e2\s+as1)\b',  # E2/AS1
+            r'\b(b1/?as1|b1\s+as1)\b',  # B1/AS1
+            r'\b(nzs\s*3604|nzs\s*4229)\b',  # NZS 3604, NZS 4229
+            r'\b(b1\s*amendment\s*13|amendment\s*13)\b',  # B1 Amendment 13
             
-            # NZS 3604 patterns - enhanced for all variants
-            r'\b(nzs 3604|stud spacing|stud centres?|stud centers?|timber|lintel|fixing|span)\b',
-            r'\bstud\s+.*(spacing|centres?|centers?)\b',
-            r'\b\d+\.?\d*\s*m?\s*(wall|stud|spacing|centres?)\b',  # "2.4m", "2400", "2.4 spacing"
+            # Code-Specific Language
+            r'\b(according to|as per|under|per|in)\s+(e2|b1|h1|f4|g5|nzs\s*\d+)\b',  # "according to E2"
+            r'\b(refer to|reference|specified in|outlined in)\s+(e2|b1|h1|nzs)\b',  # "refer to B1"
+            r'\btable\s+\d+\.\d+\b',  # "Table 7.1"
             
-            # E2/AS1 patterns - enhanced for all variants  
-            r'\b(e2/?as1|e2\s+as1|external moisture)\b',
-            r'\b(apron|head)\s*.*(flashing|cover)\b',
-            r'\b(minimum|maximum)\s*.*(cover|clearance|mm)\b',
-            r'\b(roof pitch|pitch|corrugate|underlay|cladding)\b',
-            r'\bapron\s*cover\s*mm\b',  # "apron cover mm"
-            r'\broof.?to.?wall\b',  # "roof-to-wall"
-            
-            # B1/AS1 patterns - enhanced for all variants
-            r'\b(b1/?as1|b1\s+as1)\b',
-            r'\b(wind\s*bracing?|bracing\s*.*(units?|demand|requirement|wall))\b',
-            r'\b(wind\s*brace?\s*req)\b',  # "wind brace req"
-            r'\b(earthquake bracing|hold-downs|brace wall)\b',
-            r'\b(engineering design|specific engineering|structure)\b',
-            
-            # Measurement and compliance indicators
-            r'\b(clause [a-h]\d+|[a-h]\d+/[a-z]+\d+)\b',
-            r'\b\d+\s*(mm|kpa|kn|m\^?2|degrees?)\b',
-            r'\b\d{4}\s*(centre|center|spacing)\b',  # "2400 centre"
-            r'\b(requirement|minimum|maximum|shall|must)\b',
+            # Comparative Compliance (with explicit codes)
+            r'\b(difference|compare|versus|vs\.?)\b.*(b1|e2|h1|f4|g5|nzs\s*\d+)',  # "difference between B1 and E2"
+            r'\b(b1|e2|h1|f4)\s+(and|&|vs)\s+(b1|e2|h1|f4)\b',  # "B1 and E2"
         ]
         
-        # Priority check: Tier-1 compliance first (ENHANCED for B1 Amendment 13)
-        for pattern in tier1_compliance_patterns:
+        # Check strict compliance first
+        for pattern in strict_compliance_patterns:
             if re.search(pattern, message_lower):
                 return "compliance_strict", 0.85, "precise_citation"
         
-        # Specific B1 Amendment 13 detection
+        # Practical building questions (general_help) - Moved BEFORE generic compliance
+        practical_building_patterns = [
+            r'\b(what\'?s?|what is|what are)\s+(the\s+)?(minimum|maximum|recommended|best|good)\b',  # "what's the minimum"
+            r'\b(how\s+(far|thick|wide|long|high))\b',  # "how far", "how thick"
+            r'\b(what\s+size|what\s+grade|what\s+type)\b',  # "what size timber"
+            r'\b(best\s+(way|practice|method)|recommended)\b',  # "best way to", "recommended"
+            r'\b(how\s+(do\s+i|to))\s+(install|fix|attach|secure|flash)\b',  # "how do I install"
+        ]
+        
+        for pattern in practical_building_patterns:
+            if re.search(pattern, message_lower):
+                return "general_help", 0.75, "practical_guidance"
+        
+        # Specific B1 Amendment 13 detection (keep for explicit amendment queries)
         if any(term in message_lower for term in ['amendment 13', 'b1 amendment', 'latest b1']):
             return "compliance_strict", 0.90, "precise_citation"
         
