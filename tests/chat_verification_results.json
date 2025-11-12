@@ -1,0 +1,487 @@
+[
+  {
+    "query_num": 1,
+    "query": "what's the minimum roof pitch for metal roofing",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 17215,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "E2/AS1",
+        "page": 64,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nRoof claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 155,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 124,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      }
+    ],
+    "word_count": 219,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict",
+      "Over-citation: 3 citations (expected 0-1)",
+      "Latency too high: 17215ms (expected <15s)"
+    ],
+    "answer_preview": "In New Zealand, the minimum roof pitch for metal roofing is typically 3 degrees. This is crucial for effective water runoff and to prevent water pooling, which can lead to leaks and structural damage."
+  },
+  {
+    "query_num": 2,
+    "query": "how far should nogs be spaced on a standard wall",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 10422,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "E2/AS1",
+        "page": 96,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 162,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 143,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      }
+    ],
+    "word_count": 138,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict",
+      "Over-citation: 3 citations (expected 0-1)"
+    ],
+    "answer_preview": "For standard timber-framed walls in New Zealand, nogs (also known as blocking or dwangs) are generally spaced at 800mm centres vertically. This spacing helps to provide lateral support for the studs a"
+  },
+  {
+    "query_num": 3,
+    "query": "best way to flash a roof-to-wall junction",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 11179,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 216,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict"
+    ],
+    "answer_preview": "Flashing a roof-to-wall junction properly is crucial to prevent water ingress and ensure the longevity of the structure. Here\u2019s a step-by-step guide to get it right:\n\n- **Select the Right Material**: "
+  },
+  {
+    "query_num": 4,
+    "query": "what size timber for deck joists spanning 3 metres",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 10448,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 106,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict"
+    ],
+    "answer_preview": "For a deck with joists spanning 3 metres, you would typically use 140x45mm timber if the joists are spaced at 450mm centres. This size is suitable for most residential decks and complies with NZS 3604"
+  },
+  {
+    "query_num": 5,
+    "query": "how do I install weatherboards properly",
+    "expected_intent": "general_help",
+    "actual_intent": "chitchat",
+    "latency_ms": 5383,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 16,
+    "verdict": "PASS",
+    "issues": [],
+    "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+  },
+  {
+    "query_num": 6,
+    "query": "what's a good fixing pattern for hardiplank cladding",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 11460,
+    "citations_count": 1,
+    "citations": [
+      {
+        "source": "TEST_GUIDE",
+        "page": 1,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "Apron flashing cover must be 150 mm in standard conditions."
+      }
+    ],
+    "word_count": 119,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict"
+    ],
+    "answer_preview": "For Hardiplank cladding, a good fixing pattern is essential to ensure durability and weather resistance. Here\u2019s a recommended approach:\n\n- **Stud Spacing**: Ensure studs are spaced at a maximum of 600"
+  },
+  {
+    "query_num": 7,
+    "query": "recommended screw type for corrugate iron roofing",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 12379,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 165,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict"
+    ],
+    "answer_preview": "For corrugated iron roofing, it's crucial to use screws that are specifically designed for metal roofing to ensure a secure and weather-tight installation. Here are the recommended screw types and con"
+  },
+  {
+    "query_num": 8,
+    "query": "how thick should concrete slab be for a garage",
+    "expected_intent": "general_help",
+    "actual_intent": "chitchat",
+    "latency_ms": 5373,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 16,
+    "verdict": "PASS",
+    "issues": [],
+    "answer_preview": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
+  },
+  {
+    "query_num": 9,
+    "query": "what underlay goes under metal roofing",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 11994,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 173,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict"
+    ],
+    "answer_preview": "When installing metal roofing in New Zealand, selecting the correct underlay is crucial for ensuring weather tightness and preventing moisture issues. The underlay serves as a secondary barrier agains"
+  },
+  {
+    "query_num": 10,
+    "query": "best practice for installing gutters and downpipes",
+    "expected_intent": "general_help",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 11597,
+    "citations_count": 1,
+    "citations": [
+      {
+        "source": "TEST_GUIDE",
+        "page": 1,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "Apron flashing cover must be 150 mm in standard conditions."
+      }
+    ],
+    "word_count": 171,
+    "verdict": "FAIL",
+    "issues": [
+      "Intent mismatch: expected general, got compliance_strict"
+    ],
+    "answer_preview": "When installing gutters and downpipes, it's important to ensure proper water management to prevent damage to the building structure. Here are some best practices to follow:\n\n- **Gutter Slope:** Ensure"
+  },
+  {
+    "query_num": 11,
+    "query": "E2/AS1 minimum apron flashing cover requirements",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 13149,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "E2/AS1",
+        "page": 44,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nDecks and pergolas  \nMINISTRY OF BUSINESS, INNOVA"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 169,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nConstruction moisture  \nMINISTRY OF BUSINESS, INN"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 4,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nFeatures of this document  \nMINISTRY OF BUSINESS,"
+      }
+    ],
+    "word_count": 127,
+    "verdict": "PASS",
+    "issues": [],
+    "answer_preview": "The minimum apron flashing cover requirements are crucial for ensuring that water is effectively diverted away from the building structure, preventing moisture ingress. According to E2/AS1, apron flas"
+  },
+  {
+    "query_num": 12,
+    "query": "NZS 3604 stud spacing requirements for standard wind zone",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 12469,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 155,
+    "verdict": "PARTIAL",
+    "issues": [
+      "No citations provided"
+    ],
+    "answer_preview": "In a standard wind zone, NZS 3604:2011 provides specific guidelines for stud spacing in timber-framed buildings. The standard generally allows for a maximum stud spacing of 600mm centers for internal "
+  },
+  {
+    "query_num": 13,
+    "query": "B1 Amendment 13 verification methods for structural design",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 11233,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "B1/AS1",
+        "page": 12,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+      },
+      {
+        "source": "B1/AS1",
+        "page": 7,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+      },
+      {
+        "source": "B1/AS1",
+        "page": 9,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+      }
+    ],
+    "word_count": 141,
+    "verdict": "PASS",
+    "issues": [],
+    "answer_preview": "The B1 Amendment 13 outlines verification methods for structural design, ensuring that buildings and structures meet the necessary performance criteria for safety and stability. This amendment provide"
+  },
+  {
+    "query_num": 14,
+    "query": "H1 insulation R-values for Auckland climate zone",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 11726,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "E2/AS1",
+        "page": 96,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 143,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 162,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      }
+    ],
+    "word_count": 117,
+    "verdict": "FAIL",
+    "issues": [
+      "Source mismatch: expected H1 citations"
+    ],
+    "answer_preview": "For Auckland, which falls under Climate Zone 1 in New Zealand, the NZ Building Code specifies minimum R-values for insulation to ensure energy efficiency and comfort. The required R-values for new bui"
+  },
+  {
+    "query_num": 15,
+    "query": "F4 means of escape requirements for 2-storey residential",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 12209,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "E2/AS1",
+        "page": 155,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 93,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nWall claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 64,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nRoof claddings  \nMINISTRY OF BUSINESS, INNOVATION"
+      }
+    ],
+    "word_count": 137,
+    "verdict": "FAIL",
+    "issues": [
+      "Source mismatch: expected F4 citations"
+    ],
+    "answer_preview": "For a 2-storey residential building, the F4 means of escape requirements focus on ensuring that occupants can safely exit the building in the event of an emergency, such as a fire. Key considerations "
+  },
+  {
+    "query_num": 16,
+    "query": "NZS 3604 Table 7.1 wind zone classifications",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 12499,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 139,
+    "verdict": "PARTIAL",
+    "issues": [
+      "No citations provided"
+    ],
+    "answer_preview": "Table 7.1 in NZS 3604:2011 provides the wind zone classifications which are crucial for determining the structural requirements of buildings in different areas. These classifications help ensure that "
+  },
+  {
+    "query_num": 17,
+    "query": "E2/AS1 cladding risk scores for weathertightness",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 12591,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 166,
+    "verdict": "PARTIAL",
+    "issues": [
+      "No citations provided"
+    ],
+    "answer_preview": "The E2/AS1 document provides a framework for assessing the weathertightness risk of cladding systems based on a scoring system. This system helps determine the appropriate construction details needed "
+  },
+  {
+    "query_num": 18,
+    "query": "B1.3.3 foundation requirements for standard soil",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 12112,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "B1/AS1",
+        "page": 18,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nReferences  \nMINISTRY OF BUSINESS, INNOVATION AND EMPLOYME"
+      },
+      {
+        "source": "B1/AS1",
+        "page": 9,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+      },
+      {
+        "source": "B1/AS1",
+        "page": 8,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "B1 STRUCTURE ACCEPTABLE SOLUTION  B1/AS1 \nBuildings and structures  \nMINISTRY OF BUSINESS, INNOVATIO"
+      }
+    ],
+    "word_count": 146,
+    "verdict": "PASS",
+    "issues": [],
+    "answer_preview": "For standard soil conditions, the foundation requirements are outlined in B1/AS1 of the NZ Building Code. These requirements ensure that the foundation is capable of supporting the building loads with"
+  },
+  {
+    "query_num": 19,
+    "query": "G5.3.2 hearth clearance for solid fuel appliances",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 11207,
+    "citations_count": 3,
+    "citations": [
+      {
+        "source": "E2/AS1",
+        "page": 4,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nFeatures of this document  \nMINISTRY OF BUSINESS,"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 169,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nConstruction moisture  \nMINISTRY OF BUSINESS, INN"
+      },
+      {
+        "source": "E2/AS1",
+        "page": 44,
+        "is_fabricated": false,
+        "clause_id": null,
+        "snippet": "E2 EXTERNAL MOISTURE  ACCEPTABLE SOLUTION E2/AS1  \nDecks and pergolas  \nMINISTRY OF BUSINESS, INNOVA"
+      }
+    ],
+    "word_count": 145,
+    "verdict": "FAIL",
+    "issues": [
+      "Source mismatch: expected G5 citations"
+    ],
+    "answer_preview": "For solid fuel appliances, the hearth clearance is crucial to ensure safety and compliance with the New Zealand Building Code. The hearth must extend a minimum distance from the appliance to prevent f"
+  },
+  {
+    "query_num": 20,
+    "query": "NZS 3604 bearer and joist sizing for deck construction",
+    "expected_intent": "compliance_strict",
+    "actual_intent": "compliance_strict",
+    "latency_ms": 12010,
+    "citations_count": 0,
+    "citations": [],
+    "word_count": 180,
+    "verdict": "PARTIAL",
+    "issues": [
+      "No citations provided"
+    ],
+    "answer_preview": "When constructing a deck in New Zealand, it's crucial to follow the NZS 3604 standards for bearer and joist sizing to ensure structural integrity and compliance with the building code. Here's a summar"
+  }
+]
