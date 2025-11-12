@@ -145,9 +145,24 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
         if any(term in query_lower for term in ['amendment 13', 'b1 amendment', 'verification methods']):
             target_sources.append('B1 Amendment 13')
         
-        # If no specific match, search all sources
+        # Add more source patterns for other building codes
+        if any(term in query_lower for term in ['h1', 'insulation', 'r-value', 'thermal']):
+            target_sources.append('NZ Building Code')  # H1 might be in Building Code Handbook
+        
+        if any(term in query_lower for term in ['f4', 'escape', 'means of escape', 'safety']):
+            target_sources.append('NZ Building Code')  # F4 might be in Building Code Handbook
+        
+        if any(term in query_lower for term in ['g5', 'hearth', 'clearance', 'solid fuel', 'fireplace']):
+            target_sources.append('NZ Building Code')  # G5 might be in Building Code Handbook
+        
+        # Debug logging
+        print(f"🔍 Source detection for query: '{query[:60]}...'")
+        print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
+        
+        # If no specific match, search all sources (CHANGED FROM None)
         if not target_sources:
-            target_sources = None
+            target_sources = []  # Empty list means search all
+            print(f"   ⚠️ No sources matched, searching ALL documents")
         
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             search_start = time.time()
