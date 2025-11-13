@@ -1,0 +1,833 @@
+{
+  "test_date": "2025-11-13T10:04:50.141225",
+  "backend_url": "http://localhost:8001",
+  "summary": {
+    "total_queries": 30,
+    "pass_count": 19,
+    "partial_count": 6,
+    "fail_count": 5,
+    "pass_rate": 63.33333333333333,
+    "compliance_queries": 20,
+    "general_queries": 10,
+    "compliance_with_citations": 10,
+    "general_with_citations": 0,
+    "cosine_success_rate": 33.33333333333333,
+    "avg_vector_latency_ms": 10216.633333333333,
+    "avg_total_latency_ms": 10219.463721911112,
+    "category_stats": {
+      "nzs_3604": {
+        "total": 5,
+        "pass": 5,
+        "pass_rate": 100.0,
+        "citations_returned": 5,
+        "avg_latency_ms": 11931.928491592407
+      },
+      "nz_building_code": {
+        "total": 5,
+        "pass": 1,
+        "pass_rate": 20.0,
+        "citations_returned": 1,
+        "avg_latency_ms": 6394.990491867065
+      },
+      "e2_as1": {
+        "total": 5,
+        "pass": 0,
+        "pass_rate": 0.0,
+        "citations_returned": 0,
+        "avg_latency_ms": 12312.689447402954
+      },
+      "nzs_4229": {
+        "total": 5,
+        "pass": 4,
+        "pass_rate": 80.0,
+        "citations_returned": 4,
+        "avg_latency_ms": 13544.191932678223
+      },
+      "general_builder": {
+        "total": 5,
+        "pass": 4,
+        "pass_rate": 80.0,
+        "citations_returned": 0,
+        "avg_latency_ms": 8761.4670753479
+      },
+      "practical_tools": {
+        "total": 5,
+        "pass": 5,
+        "pass_rate": 100.0,
+        "citations_returned": 0,
+        "avg_latency_ms": 8371.514892578125
+      }
+    },
+    "production_readiness": "\u274c NOT READY"
+  },
+  "results": [
+    {
+      "query_num": 1,
+      "query": "nzs 3604 stud spacing requirements",
+      "category": "nzs_3604",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "In NZS 3604:2011, the stud spacing requirements are influenced by several factors including the wind zone, wall height, and type of cladding. Here\u2019s a concise guide:\n\n- **Standard Stud Spacing**: Typically, studs are spaced at 600mm centers for non-load bearing walls and 400mm centers for load-bearing walls.\n- **Wind Zones**: In high wind zones, closer spacing such as 400mm centers may be required to ensure structural integrity.\n- **Wall Height**: Taller walls may require closer stud spacing to maintain stability.\n- **Cladding Type**: Heavier cladding materials might necessitate closer stud spacing to support the additional weight.\n\nAlways refer to the specific tables and clauses in NZS 3604:2011 for detailed requirements based on your specific building conditions and ensure compliance with all relevant sections.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 10579,
+        "total_latency_ms": 10582.537174224854,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 2,
+      "query": "nzs 3604 rafter span 4.2m",
+      "category": "nzs_3604",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "For a rafter span of 4.2 meters under NZS 3604:2011, you'll need to ensure that the rafters are appropriately sized and spaced according to the span tables provided in the standard. Here\u2019s a general guide to help you:\n\n- **Material and Grade**: Choose the correct timber grade, such as SG8 or SG10, which will affect the allowable span.\n- **Spacing**: Rafters are typically spaced at 600mm or 900mm centers. The span tables will specify the maximum span for each spacing.\n- **Roof Load**: Consider the roof load, including dead load (weight of the roofing materials) and live load (such as snow load if applicable).\n- **Roof Pitch**: The pitch of the roof can affect the span capacity. Steeper pitches may allow for longer spans.\n- **Environmental Conditions**: Consider microclimatic conditions as per section 4.2.4, which may affect durability and require adjustments.\n\nAlways consult the specific span tables in NZS 3604:2011 for precise requirements and ensure compliance with all relevant clauses.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 11488,
+        "total_latency_ms": 11490.860939025879,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 3,
+      "query": "nzs 3604 brace fixing pattern",
+      "category": "nzs_3604",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "In NZS 3604:2011, the brace fixing pattern is a critical aspect of ensuring the structural integrity of timber-framed buildings. While the specific section on brace fixing patterns isn't directly provided in the snippet you mentioned, brace fixing generally involves the correct placement and securing of bracing elements to resist lateral forces such as wind and earthquakes. \n\nHere's a general guide on brace fixing patterns:\n\n- **Placement**: Bracing should be evenly distributed throughout the structure to provide balanced resistance against lateral forces.\n- **Fastening**: Use appropriate fasteners as specified in NZS 3604, ensuring they are of the correct type and size for the materials being joined.\n- **Spacing**: Follow the specified spacing for fasteners to ensure maximum load distribution.\n- **Inspection**: Regularly inspect bracing elements for signs of wear or damage, especially after significant weather events.\n\nFor precise requirements, refer to the specific clauses in NZS 3604:2011 related to bracing, which will detail the necessary fixing patterns, fastener types, and spacing requirements.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 11227,
+        "total_latency_ms": 11230.06796836853,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 4,
+      "query": "nzs 3604 pile embedment depth",
+      "category": "nzs_3604",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "In NZS 3604:2011, the embedment depth for piles is crucial to ensure the stability and durability of the structure. The standard specifies different requirements based on the type of pile and the soil conditions. Here are the key points to consider:\n\n- **Minimum Embedment Depth**: For standard timber piles, the minimum embedment depth is typically 900 mm into firm ground. This is to ensure adequate stability and resistance against lateral forces.\n- **Soil Conditions**: If the soil is soft or loose, deeper embedment may be required to reach firm ground. It's essential to assess the soil type before determining the final depth.\n- **Pile Types**: Different pile types, such as driven piles or bored piles, might have different requirements. Always refer to the specific section in NZS 3604 for the type of pile you are using.\n- **Microclimatic Considerations**: Local environmental effects can influence durability, so consider any specific conditions that might affect the pile performance, such as high moisture or corrosive environments.\n\nAlways ensure compliance with the specific clauses in NZS 3604:2011 for detailed requirements and consult with an engineer if uncertain about the conditions or requirements.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 15436,
+        "total_latency_ms": 15438.911437988281,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 5,
+      "query": "nzs 3604 verandah beam sizing",
+      "category": "nzs_3604",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "To determine the correct sizing for a verandah beam according to NZS 3604:2011, you need to consider several factors including the span, load, and type of timber. Here\u2019s a concise guide:\n\n- **Span and Load:** The span of the beam and the load it needs to support are critical. Longer spans and heavier loads require larger beams.\n- **Timber Type:** Different types of timber have different strength properties. Common choices include Radiata Pine and Douglas Fir.\n- **Tables and Figures:** Refer to the span tables in NZS 3604:2011 for specific dimensions based on your conditions. These tables provide maximum spans for different beam sizes and timber grades.\n- **Durability:** Ensure the timber meets the durability requirements outlined in Section 4 of NZS 3604:2011, considering any microclimatic effects that might impact the timber's longevity.\n\nAlways ensure compliance with the specific clauses and tables relevant to your project to meet the building code requirements.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 10914,
+        "total_latency_ms": 10917.264938354492,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 6,
+      "query": "minimum barrier height f4 requirements",
+      "category": "nz_building_code",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5421,
+        "total_latency_ms": 5423.89702796936,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "FAIL",
+      "notes": [
+        "Wrong intent: expected 'compliance_strict', got 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 7,
+      "query": "b1 as1 footing depth for standard residential",
+      "category": "nz_building_code",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "For standard residential buildings in New Zealand, the B1/AS1 provides specific guidelines for footing depths to ensure compliance with structural stability requirements. According to B1/AS1, the minimum footing depth for standard residential construction is typically 300mm below the finished ground level. This depth is necessary to ensure that the footings are below the frost line and protected from soil movement due to moisture changes. \n\n- **Minimum Depth**: 300mm below finished ground level\n- **Considerations**: Ensure footings are on undisturbed soil or properly compacted fill\n- **Common Mistakes**: Avoid placing footings on loose or uncompacted soil, which can lead to settlement issues\n- **Additional Requirements**: Check for local amendments or specific site conditions, such as expansive soils, which may require deeper footings\n\nThese requirements help prevent structural issues and ensure the longevity of the building. Always refer to the latest version of the B1/AS1 for any updates or changes.",
+        "intent": "compliance_strict",
+        "citations_count": 3,
+        "citations": [
+          {
+            "source": "B1/AS1",
+            "page": 18
+          },
+          {
+            "source": "B1/AS1",
+            "page": 8
+          },
+          {
+            "source": "B1/AS1",
+            "page": 10
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 10289,
+        "total_latency_ms": 10294.185638427734,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "B1/AS1"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 3 citations"
+      ]
+    },
+    {
+      "query_num": 8,
+      "query": "fire stopping between floors c3 rules",
+      "category": "nz_building_code",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5435,
+        "total_latency_ms": 5438.226938247681,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "FAIL",
+      "notes": [
+        "Wrong intent: expected 'compliance_strict', got 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 9,
+      "query": "h1 insulation r-values for walls",
+      "category": "nz_building_code",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5409,
+        "total_latency_ms": 5411.14616394043,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "FAIL",
+      "notes": [
+        "Wrong intent: expected 'compliance_strict', got 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 10,
+      "query": "g12 hot water system safe temperatures",
+      "category": "nz_building_code",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5405,
+        "total_latency_ms": 5407.496690750122,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "FAIL",
+      "notes": [
+        "Wrong intent: expected 'compliance_strict', got 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 11,
+      "query": "e2as1 minimum apron flashing cover",
+      "category": "e2_as1",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "According to E2/AS1, the minimum cover for apron flashings is specified to ensure proper weatherproofing and to prevent water ingress. The standard requires:\n\n- A minimum cover of 50mm over the roofing material.\n- Ensure the flashing extends at least 150mm up the wall surface.\n- The flashing should be securely fastened and sealed to prevent any water penetration.\n\nThese requirements help maintain the integrity of the building envelope and prevent moisture-related issues. Always ensure that the installation is done according to the manufacturer's specifications and the NZ Building Code to avoid common issues like leaks or corrosion.",
+        "intent": "compliance_strict",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 9043,
+        "total_latency_ms": 9045.331478118896,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PARTIAL",
+      "notes": [
+        "Correct intent but 0 citations"
+      ]
+    },
+    {
+      "query_num": 12,
+      "query": "e2as1 roof pitch requirements",
+      "category": "e2_as1",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "The NZ Building Code E2/AS1 outlines specific roof pitch requirements based on the type of roofing material. Here are the key points:\n\n- **Metal Roofing**: The minimum roof pitch for long-run metal roofing is 3 degrees. This ensures adequate water runoff and prevents water pooling.\n- **Concrete and Clay Tiles**: These require a minimum pitch of 15 degrees. This higher pitch is necessary due to the overlapping nature of tiles, which can allow water ingress if the pitch is too shallow.\n- **Asphalt Shingles**: The minimum pitch is 9 degrees. This allows for proper drainage and prevents water from seeping under the shingles.\n- **Membrane Roofing**: Typically used on flat roofs, these require a minimum pitch of 1.5 degrees to ensure water does not pool.\n\nAlways ensure that the specific product's manufacturer guidelines are followed as they may have additional requirements. Also, consider local environmental conditions such as heavy rainfall or snow, which might necessitate a steeper pitch for effective drainage.",
+        "intent": "compliance_strict",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 14666,
+        "total_latency_ms": 14668.31111907959,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PARTIAL",
+      "notes": [
+        "Correct intent but 0 citations"
+      ]
+    },
+    {
+      "query_num": 13,
+      "query": "e2as1 cavity batten treatment levels",
+      "category": "e2_as1",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "In the NZ Building Code, specifically E2/AS1, cavity battens used in exterior wall cladding systems must meet certain treatment levels to ensure durability and resistance to moisture. Here\u2019s a summary of the requirements:\n\n- **H3.1 Treatment**: Cavity battens must be treated to at least H3.1 level. This treatment level is suitable for timber that is exposed to the weather but not in contact with the ground. It provides protection against decay and insect attack.\n- **Material Options**: Battens can be made from treated timber or other durable materials like PVC or metal, provided they meet the performance requirements.\n- **Installation Considerations**: Ensure that battens are installed with proper drainage and ventilation to prevent moisture accumulation.\n\nThese requirements help prevent moisture-related issues in wall assemblies, contributing to the overall durability and performance of the building envelope.",
+        "intent": "compliance_strict",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 10842,
+        "total_latency_ms": 10845.125198364258,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PARTIAL",
+      "notes": [
+        "Correct intent but 0 citations"
+      ]
+    },
+    {
+      "query_num": 14,
+      "query": "e2as1 deck to cladding clearance",
+      "category": "e2_as1",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "In the NZ Building Code, E2/AS1 specifies the requirements for the clearance between a deck and cladding to ensure proper drainage and prevent moisture ingress. The key points are:\n\n- **Minimum Clearance**: There should be a minimum clearance of 12 mm between the deck surface and the bottom edge of the cladding. This gap helps prevent water from pooling and allows for proper drainage.\n- **Ventilation**: Ensure adequate ventilation beneath the deck to prevent moisture buildup, which can lead to decay.\n- **Slope**: The deck should be sloped away from the building at a minimum of 1:40 to direct water away from the structure.\n- **Materials**: Use durable materials for both the deck and the cladding that are suitable for exterior exposure.\n\nThese measures help maintain the integrity of the building envelope and prevent moisture-related issues.",
+        "intent": "compliance_strict",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 15322,
+        "total_latency_ms": 15324.600219726562,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PARTIAL",
+      "notes": [
+        "Correct intent but 0 citations"
+      ]
+    },
+    {
+      "query_num": 15,
+      "query": "e2as1 membrane fall requirements",
+      "category": "e2_as1",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "In the NZ Building Code, E2/AS1 outlines specific requirements for membrane roofing systems, particularly regarding the minimum fall to ensure effective water drainage. According to E2/AS1:\n\n- **Minimum Fall for Roof Membranes**: The minimum fall for roofs with a membrane is 1.5 degrees (approximately 1:40). This ensures that water drains effectively and does not pond on the roof surface.\n- **Decks and Balconies**: For decks and balconies that are exposed to the weather and have a membrane, the minimum fall is 1.5 degrees as well.\n- **Internal Gutters**: These should have a minimum fall of 1:100 to ensure proper drainage.\n\nIt's crucial to ensure that these falls are maintained during construction to prevent water pooling, which can lead to membrane failure and water ingress. Regular inspections and maintenance are recommended to ensure the integrity of the membrane over time.",
+        "intent": "compliance_strict",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 11677,
+        "total_latency_ms": 11680.079221725464,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PARTIAL",
+      "notes": [
+        "Correct intent but 0 citations"
+      ]
+    },
+    {
+      "query_num": 16,
+      "query": "nzs 4229 minimum reinforcing for concrete masonry",
+      "category": "nzs_4229",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "For minimum reinforcing requirements for concrete masonry, you would typically refer to NZS 4229, which provides guidelines for the design and construction of earth buildings, including concrete masonry. While I don't have the specific text of NZS 4229, I can offer some general guidance based on typical practices:\n\n- **Reinforcing Bars**: Concrete masonry walls often require vertical and horizontal reinforcing bars to ensure structural integrity. The size and spacing of these bars depend on the wall height, load conditions, and seismic requirements.\n- **Vertical Reinforcement**: Typically, vertical reinforcement is placed in the cores of the masonry units. Common practice might involve using D12 bars at 400mm centers, but this can vary.\n- **Horizontal Reinforcement**: Horizontal reinforcement is usually placed in the mortar joints or in bond beams. This might involve using reinforcing mesh or bars.\n- **Seismic Considerations**: In seismic zones, additional reinforcement may be required to meet the specific seismic performance criteria.\n\nFor precise requirements, always refer to the specific clauses in NZS 4229 and consult with a structural engineer to ensure compliance with the latest standards and local conditions.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 11343,
+        "total_latency_ms": 11345.818281173706,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 17,
+      "query": "nzs 4229 lintel reinforcement schedule",
+      "category": "nzs_4229",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "The NZS 4229 standard provides guidelines for the design and construction of earth buildings, including the reinforcement of lintels. While I don't have the exact reinforcement schedule from the standard, I can offer some general advice on lintel reinforcement based on typical practices:\n\n- **Material**: Use deformed reinforcing bars, typically Grade 500, for lintel reinforcement.\n- **Placement**: Reinforcement should be placed in the tension zone of the lintel, usually the bottom third of the lintel depth.\n- **Cover**: Ensure adequate concrete cover to protect the reinforcement from corrosion, typically around 30mm for internal lintels and 50mm for external ones.\n- **Spacing**: Maintain proper spacing between bars to ensure concrete can flow around them during pouring, usually no more than 300mm apart.\n- **Anchorage**: Extend the reinforcement beyond the ends of the lintel to provide proper anchorage into the supporting walls.\n\nFor precise requirements, refer to the specific clauses in NZS 4229 related to lintel design and reinforcement. Always ensure compliance with the latest standards and consult with a structural engineer if needed.",
+        "intent": "compliance_strict",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 21615,
+        "total_latency_ms": 21617.52724647522,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PARTIAL",
+      "notes": [
+        "Correct intent but 0 citations"
+      ]
+    },
+    {
+      "query_num": 18,
+      "query": "nzs 4229 grout fill requirements",
+      "category": "nzs_4229",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "For grout fill requirements in masonry construction, NZS 4229 provides detailed guidelines to ensure structural integrity and durability. While I don't have the specific text from NZS 4229, here are some general principles based on typical standards:\n\n- **Grout Mix**: Use a mix that achieves a compressive strength of at least 12.5 MPa. This usually involves a mix of cement, sand, and water, sometimes with additives to improve flow and reduce shrinkage.\n- **Placement**: Ensure grout is placed in lifts not exceeding 1.2 meters to prevent excessive pressure on the formwork and ensure proper compaction.\n- **Consolidation**: Use mechanical vibration or rodding to consolidate the grout and eliminate air pockets.\n- **Curing**: Protect the grout from rapid drying by covering it with wet burlap or plastic sheeting for at least 3 days.\n- **Inspection**: Check for voids or incomplete filling, which can compromise structural performance.\n\nAlways refer to the latest version of NZS 4229 for specific requirements and consult with a structural engineer if in doubt.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 11486,
+        "total_latency_ms": 11488.213777542114,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 19,
+      "query": "nzs 4229 bond beam spacing rules",
+      "category": "nzs_4229",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "For bond beam spacing in concrete masonry construction, NZS 4229 provides specific guidelines to ensure structural integrity and compliance with New Zealand standards. Typically, bond beams are required at the top of walls and at intermediate levels depending on the wall height and load requirements. Here are some general rules to follow:\n\n- **Top of Wall**: A bond beam is usually required at the top of all masonry walls to tie the structure together and provide lateral support.\n- **Intermediate Levels**: For walls over a certain height, intermediate bond beams may be necessary to provide additional stability and support. This is often required in high wind or seismic zones.\n- **Spacing**: The spacing of bond beams can vary based on the wall height and the specific structural requirements, but they are generally spaced no more than 1200mm apart vertically.\n- **Reinforcement**: Ensure that bond beams are adequately reinforced with steel to meet the structural demands and comply with seismic requirements.\n\nAlways refer to the specific clauses in NZS 4229 for detailed requirements and consult with a structural engineer if in doubt.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 11657,
+        "total_latency_ms": 11659.681797027588,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 20,
+      "query": "nzs 4229 foundation block requirements",
+      "category": "nzs_4229",
+      "expected_citations": true,
+      "results": {
+        "final_answer": "For foundation block requirements, NZS 4229 provides guidance on the design and construction of concrete masonry buildings not requiring specific engineering design. Here are some key points to consider:\n\n- **Foundation Depth**: Ensure the foundation is at least 450mm below ground level to prevent frost heave and provide stability.\n- **Reinforcement**: Use appropriate reinforcement bars (rebars) as specified, typically D12 bars for horizontal reinforcement and D16 for vertical, spaced according to the load requirements.\n- **Concrete Mix**: Use a concrete mix with a minimum compressive strength of 17.5 MPa for foundation blocks.\n- **Damp Proofing**: Install a damp-proof course (DPC) to prevent moisture ingress, typically 150mm above ground level.\n- **Drainage**: Ensure proper site drainage to direct water away from the foundation to prevent water accumulation and potential damage.\n\nThese guidelines help ensure the foundation is robust and compliant with NZ standards. Always refer to the latest version of NZS 4229 for detailed specifications and consult with a structural engineer if needed.",
+        "intent": "compliance_strict",
+        "citations_count": 1,
+        "citations": [
+          {
+            "source": "NZS 3604:2011",
+            "page": 67
+          }
+        ],
+        "tier1_hit": true,
+        "vector_latency_ms": 11607,
+        "total_latency_ms": 11609.718561172485,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [
+          "NZS 3604:2011"
+        ],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 Compliance query with 1 citations"
+      ]
+    },
+    {
+      "query_num": 21,
+      "query": "how far can 140x45 joists span",
+      "category": "general_builder",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "{\"answer\": \"For 140x45 mm timber joists, the maximum span largely depends on the load they will carry and the spacing between the joists. Here are some general guidelines:\\n\\n- **Standard Span**: Typically, 140x45 joists can span up to 3.0 meters when spaced at 600 mm apart for a standard residential floor load (1.5 kPa live load).\\n- **Increased Load**: If the joists are carrying heavier loads, such as in commercial applications or for thicker flooring, the span should be reduced. For example, at 450 mm spacing, they might safely span around 2.5 meters.\\n- **Spacing Considerations**: Common spacing for residential applications is either 400 mm or 600 mm. Closer spacing increases load capacity but may require more materials.\\n\\n### Tools and Materials Needed:\\n- Timber joists (140x45 mm)\\n- Joist hangers (if needed)\\n- Level\\n- Measuring tape\\n- Saw\\n- Drill and screws\\n\\n### Quick Tips:\\n- **Check Local Codes**: Always refer to local building codes or consult with a structural engineer for specific requirements in your area",
+        "intent": "general_help",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 10709,
+        "total_latency_ms": 10711.751937866211,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o-mini",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'general_help'"
+      ]
+    },
+    {
+      "query_num": 22,
+      "query": "best fixings for exterior pergola",
+      "category": "general_builder",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5411,
+        "total_latency_ms": 5413.944482803345,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 23,
+      "query": "how to prevent decking cupping",
+      "category": "general_builder",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5407,
+        "total_latency_ms": 5410.056829452515,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 24,
+      "query": "how much clearance under cladding",
+      "category": "general_builder",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "For cladding clearance, the NZ Building Code requires specific distances to prevent moisture ingress and ensure durability. According to E2/AS1, the clearance between the bottom edge of the cladding and the finished ground level should be at least 150mm. This helps to prevent moisture from wicking up into the cladding material.\n\n- **150mm minimum clearance** from finished ground level to the bottom of the cladding.\n- Ensure that any decks or paving adjacent to the cladding also maintain this clearance.\n- For areas with high rainfall or where snow is a concern, additional clearance may be advisable.\n- Regularly check for any build-up of soil or debris that could reduce this clearance over time.\n\nMaintaining this clearance is crucial for the longevity of the building envelope and to comply with the moisture management requirements of the NZ Building Code.",
+        "intent": "compliance_strict",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 10732,
+        "total_latency_ms": 10734.920740127563,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o",
+        "fallback_used": false
+      },
+      "verdict": "FAIL",
+      "notes": [
+        "Over-classified: expected ['general_help', 'product_info', 'general_advice', 'chitchat'], got 'compliance_strict'"
+      ]
+    },
+    {
+      "query_num": 25,
+      "query": "what size posts for 3m veranda",
+      "category": "general_builder",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "{\"answer\": \"For a 3m veranda, the size of the posts you need will depend on several factors, including the load they need to support, the spacing between them, and the type of materials used. Here\u2019s a practical guide:\\n\\n- **Post Size**: Generally, for a veranda of this size, 100mm x 100mm (4\\\" x 4\\\") treated timber posts are commonly used for standard residential applications. If you're expecting heavier loads (like a roof or additional features), consider using 125mm x 125mm (5\\\" x 5\\\") posts.\\n\\n- **Spacing**: Posts should typically be spaced no more than 2.4m apart for adequate support. If you're using larger spans or heavier roofing materials, reduce the spacing to 1.5m.\\n\\n- **Footings**: Ensure your posts are set in concrete footings at least 600mm deep to prevent movement and provide stability. Use a minimum of 300mm diameter for the footings.\\n\\n- **Safety Considerations**: Always wear safety gear when working with timber and power tools. Ensure your posts are level and plumb before securing them.\\n\\n- **Common Mist",
+        "intent": "general_help",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 11534,
+        "total_latency_ms": 11536.661386489868,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o-mini",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'general_help'"
+      ]
+    },
+    {
+      "query_num": 26,
+      "query": "whats the best laser level for framing",
+      "category": "practical_tools",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "{\"answer\": \"When choosing the best laser level for framing, consider the following factors to ensure you get the right tool for the job:\\n\\n- **Type of Laser Level**: For framing, a rotary laser level is ideal for larger areas, while a line laser level works well for smaller spaces and interior work.\\n- **Accuracy**: Look for a laser level with an accuracy of \u00b11/8 inch at 100 feet. This precision is crucial for framing to ensure everything aligns correctly.\\n- **Range**: A good laser level should have a range of at least 100 feet for indoor work. If you\u2019re working outdoors, consider a model with a range of 200 feet or more.\\n- **Durability**: Choose a level that is rugged and can withstand job site conditions. Look for models with IP ratings for dust and water resistance.\\n- **Ease of Use**: Features like self-leveling, a bright laser beam, and easy-to-read displays can save you time and hassle.\\n\\n### Quick Tips:\\n- **Battery Life**: Ensure the laser level has a long battery life or consider models with rechargeable batteries.\\n- **Tripod Compatibility**: Check if the laser level",
+        "intent": "general_help",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 13546,
+        "total_latency_ms": 13548.535585403442,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o-mini",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'general_help'"
+      ]
+    },
+    {
+      "query_num": 27,
+      "query": "how to stop doors sticking in winter",
+      "category": "practical_tools",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5408,
+        "total_latency_ms": 5410.897970199585,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 28,
+      "query": "why is my deck moving when i walk on it",
+      "category": "practical_tools",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5383,
+        "total_latency_ms": 5385.523080825806,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'chitchat'"
+      ]
+    },
+    {
+      "query_num": 29,
+      "query": "what is the best timber for outdoor steps",
+      "category": "practical_tools",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "{\"answer\": \"When choosing timber for outdoor steps, durability and resistance to the elements are key factors. Here are some of the best options:\\n\\n- **Treated Pine**: This is a popular choice due to its affordability and resistance to rot and insects. Ensure it's treated to H3 or higher for outdoor use.\\n- **Hardwood**: Species like Kwila (Merbau) or Vitex are excellent for outdoor steps. They are naturally durable and resistant to decay, though they can be pricier.\\n- **Cedar**: Western Red Cedar is lightweight and naturally resistant to moisture and insects, making it a good option for outdoor use.\\n\\n### Installation Tips:\\n- **Use Non-Slip Finishes**: Consider applying a non-slip coating or using textured timber to prevent slips, especially when wet.\\n- **Proper Sealing**: Seal the timber with a good quality outdoor sealant to prolong its life and maintain appearance.\\n- **Spacing and Support**: Ensure proper spacing between steps and adequate support underneath to prevent sagging.\\n\\n### Common Mistakes to Avoid:\\n- **Using Untreated Timber**: Avoid untreated timber as it will quickly deteriorate outdoors.\\n- **",
+        "intent": "general_help",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 12122,
+        "total_latency_ms": 12124.222040176392,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "gpt-4o-mini",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'general_help'"
+      ]
+    },
+    {
+      "query_num": 30,
+      "query": "best screws for treated pine",
+      "category": "practical_tools",
+      "expected_citations": false,
+      "results": {
+        "final_answer": "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?",
+        "intent": "chitchat",
+        "citations_count": 0,
+        "citations": [],
+        "tier1_hit": false,
+        "vector_latency_ms": 5386,
+        "total_latency_ms": 5388.3957862854,
+        "retrieval_operator_used": "<=>",
+        "sources_selected": [],
+        "model_used": "server_fallback",
+        "fallback_used": false
+      },
+      "verdict": "PASS",
+      "notes": [
+        "\u2705 General query with correct intent 'chitchat'"
+      ]
+    }
+  ]
+}
