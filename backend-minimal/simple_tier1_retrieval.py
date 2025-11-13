@@ -167,18 +167,38 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             search_start = time.time()
             
-            # TEMPORARY FIX: Search all documents without source filter
-            # Direct SQL tests show filtering works, but runtime execution returns 0
-            # Searching all docs and letting similarity ranking work
-            print(f"   🌐 Searching ALL documents (source filter temporarily disabled for debugging)")
-            cur.execute("""
-                SELECT id, source, page, content, section, clause, snippet,
-                       (embedding <=> %s::vector) as similarity
-                FROM documents 
-                WHERE embedding IS NOT NULL
-                ORDER BY similarity ASC
-                LIMIT %s;
-            """, (query_embedding, top_k * 3))
+            # SAFE SOURCE FILTERING: Use dynamically expanded IN clause
+            if target_sources and len(target_sources) > 0:
+                # Generate placeholders for IN clause (%s, %s, %s, ...)
+                placeholders = ', '.join(['%s'] * len(target_sources))
+                
+                # Build SQL with expanded IN clause (psycopg2-safe)
+                sql = f"""
+                    SELECT id, source, page, content, section, clause, snippet,
+                           (embedding <=> %s::vector) as similarity
+                    FROM documents 
+                    WHERE source IN ({placeholders})
+                      AND embedding IS NOT NULL
+                    ORDER BY similarity ASC
+                    LIMIT %s;
+                """
+                
+                # Bind parameters: embedding, then each source individually, then limit
+                params = [query_embedding] + target_sources + [top_k * 2]
+                
+                print(f"   🔎 Searching {len(target_sources)} sources: {target_sources}")
+                cur.execute(sql, params)
+            else:
+                # Search all documents (no source filter)
+                print(f"   🌐 Searching ALL documents (no source filter)")
+                cur.execute("""
+                    SELECT id, source, page, content, section, clause, snippet,
+                           (embedding <=> %s::vector) as similarity
+                    FROM documents 
+                    WHERE embedding IS NOT NULL
+                    ORDER BY similarity ASC
+                    LIMIT %s;
+                """, (query_embedding, top_k * 2))
             
             results = cur.fetchall()
             search_time = (time.time() - search_start) * 1000
