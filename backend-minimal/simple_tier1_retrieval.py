@@ -167,30 +167,18 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             search_start = time.time()
             
-            # Use pgvector similarity search
-            if target_sources and len(target_sources) > 0:
-                # Search specific sources (use IN with tuple for proper parameter binding)
-                cur.execute("""
-                    SELECT id, source, page, content, section, clause, snippet,
-                           (embedding <=> %s::vector) as similarity
-                    FROM documents 
-                    WHERE source IN %s
-                      AND embedding IS NOT NULL
-                    ORDER BY similarity ASC
-                    LIMIT %s;
-                """, (query_embedding, tuple(target_sources), top_k * 2))
-                print(f"   🔎 Searching {len(target_sources)} specific sources")
-            else:
-                # Search all documents (no source filter)
-                print(f"   🌐 Searching ALL documents (no source filter)")
-                cur.execute("""
-                    SELECT id, source, page, content, section, clause, snippet,
-                           (embedding <=> %s::vector) as similarity
-                    FROM documents 
-                    WHERE embedding IS NOT NULL
-                    ORDER BY similarity ASC
-                    LIMIT %s;
-                """, (query_embedding, top_k * 2))
+            # TEMPORARY FIX: Search all documents without source filter
+            # Direct SQL tests show filtering works, but runtime execution returns 0
+            # Searching all docs and letting similarity ranking work
+            print(f"   🌐 Searching ALL documents (source filter temporarily disabled for debugging)")
+            cur.execute("""
+                SELECT id, source, page, content, section, clause, snippet,
+                       (embedding <=> %s::vector) as similarity
+                FROM documents 
+                WHERE embedding IS NOT NULL
+                ORDER BY similarity ASC
+                LIMIT %s;
+            """, (query_embedding, top_k * 3))
             
             results = cur.fetchall()
             search_time = (time.time() - search_start) * 1000
