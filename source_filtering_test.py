@@ -70,13 +70,16 @@ def test_chat_endpoint(query: str, session_id: str) -> Dict[str, Any]:
         
         if response.status_code == 200:
             data = response.json()
+            # Handle both "citation" and "citations" keys
+            citations = data.get("citations", data.get("citation", []))
             return {
                 "success": True,
                 "status_code": 200,
                 "latency_ms": latency,
                 "response": data.get("answer", ""),
-                "citations": data.get("citation", []),
+                "citations": citations,
                 "intent": data.get("intent", "unknown"),
+                "tier1_hit": data.get("tier1_hit", False),
                 "raw_data": data
             }
         else:
