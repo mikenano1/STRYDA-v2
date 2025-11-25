@@ -1,0 +1,8 @@
+{
+  "project": "STRYDA-v2 Training Corpus Ingestion",
+  "created_at": "2025-06-01",
+  "total_batches": 14,
+  "batches_ingested": 0,
+  "embedding_model": "text-embedding-3-small",
+  "ingestion_history": []
+}
