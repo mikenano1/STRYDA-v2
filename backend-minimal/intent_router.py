@@ -89,7 +89,8 @@ class IntentRouter:
             r'\b(b1\s*amendment\s*13|amendment\s*13)\b',  # B1 Amendment 13
             
             # Building Code Clause Patterns (F4, H1, G12, etc.)
-            r'\b(f4|f4/as1)\b.*\b(barrier|balustrade|handrail|fall|height|1m)\b',  # F4 barriers
+            r'\b(f4|f4/as1)\b',  # F4 in any context
+            r'\b(barrier|balustrade|handrail|guardrail)\b.*\b(height|minimum|f4)\b',  # barrier queries
             r'\b(h1)\b.*\b(insulation|r-?value|thermal|energy)\b',  # H1 insulation
             r'\b(g12|g13)\b.*\b(water|hot water|temperature|safe|supply)\b',  # G12/G13 water
             r'\b(g5|g5\.3)\b.*\b(hearth|fireplace|clearance|solid fuel)\b',  # G5 hearth
