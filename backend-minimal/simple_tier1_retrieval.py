@@ -79,10 +79,92 @@ def apply_ranking_bias(results: List[Dict], bias_weights: Dict[str, float]) -> L
     
     return biased_results
 
+def canonical_source_map(query: str) -> List[str]:
+    """
+    Map query terms to canonical source names in database
+    Returns prioritized list of sources to search
+    """
+    query_lower = query.lower()
+    sources = []
+    
+    # NZS 3604 - Timber framing standard
+    if any(term in query_lower for term in [
+        'nzs 3604', 'nzs3604', '3604',
+        'stud', 'spacing', 'timber', 'framing', 'lintel',
+        'bearer', 'joist', 'nog', 'dwang', 'plate',
+        'table 7.1', 'table 5.', 'span', 'member'
+    ]):
+        sources.append('NZS 3604:2011')
+    
+    # E2/AS1 - External moisture
+    if any(term in query_lower for term in [
+        'e2', 'e2/as1', 'as1', 'external moisture',
+        'flashing', 'apron', 'weathertight', 'weather',
+        'cladding', 'cavity', 'membrane', 'underlay',
+        'roof pitch', 'deck', 'balcony', 'risk score'
+    ]):
+        sources.append('E2/AS1')
+    
+    # B1 Amendment 13 - Latest structural standard (prioritize over B1/AS1)
+    if any(term in query_lower for term in [
+        'amendment 13', 'amdt 13', 'b1 amendment', 'b1 amend',
+        'verification method', 'vm1', 'vm4', 'vm8',
+        'latest b1', 'current b1', 'new b1', 'updated b1'
+    ]):
+        sources.append('B1 Amendment 13')
+    
+    # B1/AS1 - Legacy structural standard (only if Amendment 13 not mentioned)
+    elif any(term in query_lower for term in [
+        'b1', 'b1/as1', 'structure', 'structural',
+        'brace', 'bracing', 'foundation', 'footing',
+        'demand', 'capacity', 'engineering'
+    ]):
+        # Prioritize Amendment 13 over legacy B1/AS1
+        if 'B1 Amendment 13' not in sources:
+            sources.append('B1 Amendment 13')  # Default to latest
+        sources.append('B1/AS1')  # Also include legacy for completeness
+    
+    # NZ Building Code - General building code sections
+    if any(term in query_lower for term in [
+        'h1', 'energy', 'insulation', 'r-value', 'thermal',
+        'f4', 'escape', 'means of escape', 'safety barriers',
+        'g5', 'hearth', 'solid fuel', 'fireplace',
+        'c1', 'c2', 'c3', 'c4', 'fire', 'fire rating',
+        'g12', 'g13', 'water', 'sanitary', 'plumbing',
+        'building code', 'nzbc'
+    ]):
+        sources.append('NZ Building Code')
+    
+    # NZS 4229 - Concrete masonry
+    if any(term in query_lower for term in [
+        'nzs 4229', 'nzs4229', '4229',
+        'concrete', 'masonry', 'block', 'blockwork',
+        'reinforcement', 'steel', 'mesh', 'rebar'
+    ]):
+        sources.append('NZS 4229:2013')
+    
+    # NZ Metal Roofing
+    if any(term in query_lower for term in [
+        'metal roof', 'corrugated', 'profiled', 'longrun',
+        'fixing screw', 'roofing screw', 'purlin'
+    ]):
+        sources.append('NZ Metal Roofing')
+    
+    # Remove duplicates while preserving order
+    seen = set()
+    unique_sources = []
+    for src in sources:
+        if src not in seen:
+            seen.add(src)
+            unique_sources.append(src)
+    
+    return unique_sources
+
 def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
     """
     Optimized Tier-1 retrieval using pgvector similarity search with caching
     PERFORMANCE: Reduced top_k to 4 for faster context assembly and lower token usage
+    IMPROVEMENTS: Canonical source mapping + fallback logic if filtered search returns 0 results
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
     
@@ -127,47 +209,21 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
         from db_pool import get_db_connection, return_db_connection
         
         conn = get_db_connection()
-        query_lower = query.lower()
         
-        # Determine target sources based on query terms
-        target_sources = []
-        
-        if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber', 'framing', 'lintel']):
-            target_sources.append('NZS 3604:2011')
-        
-        if any(term in query_lower for term in ['flashing', 'roof', 'pitch', 'e2', 'moisture', 'underlay', 'apron']):
-            target_sources.append('E2/AS1')
-        
-        if any(term in query_lower for term in ['brace', 'bracing', 'structure', 'b1', 'engineering', 'demand']):
-            target_sources.append('B1/AS1')
-        
-        # Check for B1 Amendment 13 queries
-        if any(term in query_lower for term in ['amendment 13', 'b1 amendment', 'verification methods']):
-            target_sources.append('B1 Amendment 13')
-        
-        # Add more source patterns for other building codes
-        if any(term in query_lower for term in ['h1', 'insulation', 'r-value', 'thermal']):
-            target_sources.append('NZ Building Code')  # H1 might be in Building Code Handbook
-        
-        if any(term in query_lower for term in ['f4', 'escape', 'means of escape', 'safety']):
-            target_sources.append('NZ Building Code')  # F4 might be in Building Code Handbook
-        
-        if any(term in query_lower for term in ['g5', 'hearth', 'clearance', 'solid fuel', 'fireplace']):
-            target_sources.append('NZ Building Code')  # G5 might be in Building Code Handbook
+        # Use canonical source mapping for better source detection
+        target_sources = canonical_source_map(query)
         
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
         
-        # If no specific match, search all sources (CHANGED FROM None)
-        if not target_sources:
-            target_sources = []  # Empty list means search all
-            print(f"   ⚠️ No sources matched, searching ALL documents")
+        results = []
+        search_time = 0
         
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             search_start = time.time()
             
-            # SAFE SOURCE FILTERING: Use dynamically expanded IN clause
+            # STRATEGY: Try filtered search first, fallback to global if no results
             if target_sources and len(target_sources) > 0:
                 # Generate placeholders for IN clause (%s, %s, %s, ...)
                 placeholders = ', '.join(['%s'] * len(target_sources))
@@ -188,8 +244,23 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
                 
                 print(f"   🔎 Searching {len(target_sources)} sources: {target_sources}")
                 cur.execute(sql, params)
+                results = cur.fetchall()
+                
+                # FALLBACK LOGIC: If filtered search returns 0 results, retry with global search
+                if len(results) == 0:
+                    print(f"   ⚠️ Filtered search returned 0 results, retrying with GLOBAL search...")
+                    cur.execute("""
+                        SELECT id, source, page, content, section, clause, snippet,
+                               (embedding <=> %s::vector) as similarity
+                        FROM documents 
+                        WHERE embedding IS NOT NULL
+                        ORDER BY similarity ASC
+                        LIMIT %s;
+                    """, (query_embedding, top_k * 2))
+                    results = cur.fetchall()
+                    print(f"   🌐 Global search fallback: found {len(results)} chunks")
             else:
-                # Search all documents (no source filter)
+                # No sources detected, search all documents
                 print(f"   🌐 Searching ALL documents (no source filter)")
                 cur.execute("""
                     SELECT id, source, page, content, section, clause, snippet,
@@ -199,8 +270,8 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
                     ORDER BY similarity ASC
                     LIMIT %s;
                 """, (query_embedding, top_k * 2))
+                results = cur.fetchall()
             
-            results = cur.fetchall()
             search_time = (time.time() - search_start) * 1000
             print(f"⚡ Vector search completed in {search_time:.0f}ms, found {len(results)} chunks")
         
