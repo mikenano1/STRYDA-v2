@@ -568,11 +568,11 @@ test_plan:
 
   - task: "Source Filtering Fix with Canonical Mapping & Fallback"
     implemented: true
-    working: "NA"
+    working: false
     file: "backend-minimal/simple_tier1_retrieval.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: "NA"
           agent: "main"
