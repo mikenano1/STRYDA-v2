@@ -2,8 +2,9 @@
   "batch_id": "batch_05",
   "category": "Drainage / Drainlayer",
   "created_at": null,
-  "ingested_at": null,
-  "total_items": 0,
+  "ingested_at": "2025-11-25T09:39:18.109252",
+  "total_items": 100,
   "embedding_model": "text-embedding-3-small",
-  "validation_status": "pending"
+  "validation_status": "complete",
+  "failed_items": 0
 }
