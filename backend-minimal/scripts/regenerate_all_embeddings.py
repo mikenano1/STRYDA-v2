@@ -74,7 +74,7 @@ def process_batch(batch, conn):
     """Process a batch of documents"""
     try:
         # Generate embeddings
-        texts = [row['content'] for row in batch]
+        texts = [row[1] for row in batch]  # content is at index 1
         response = client.embeddings.create(
             model=EMBEDDING_MODEL,
             input=texts
@@ -84,11 +84,12 @@ def process_batch(batch, conn):
         with conn.cursor() as cur:
             for i, row in enumerate(batch):
                 embedding = response.data[i].embedding
+                doc_id = row[0]  # id is at index 0
                 cur.execute("""
                     UPDATE documents
                     SET embedding = %s::vector
                     WHERE id = %s;
-                """, (embedding, row['id']))
+                """, (embedding, doc_id))
         
         conn.commit()
         return len(batch)
