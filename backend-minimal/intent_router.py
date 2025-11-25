@@ -88,6 +88,13 @@ class IntentRouter:
             r'\b(nzs\s*3604|nzs\s*4229)\b',  # NZS 3604, NZS 4229
             r'\b(b1\s*amendment\s*13|amendment\s*13)\b',  # B1 Amendment 13
             
+            # Building Code Clause Patterns (F4, H1, G12, etc.)
+            r'\b(f4|f4/as1)\b.*\b(barrier|balustrade|handrail|fall|height|1m)\b',  # F4 barriers
+            r'\b(h1)\b.*\b(insulation|r-?value|thermal|energy)\b',  # H1 insulation
+            r'\b(g12|g13)\b.*\b(water|hot water|temperature|safe|supply)\b',  # G12/G13 water
+            r'\b(g5|g5\.3)\b.*\b(hearth|fireplace|clearance|solid fuel)\b',  # G5 hearth
+            r'\b(c3|c4)\b.*\b(fire|fire stopping|penetration)\b',  # C3/C4 fire
+            
             # Code-Specific Language
             r'\b(according to|as per|under|per|in)\s+(e2|b1|h1|f4|g5|nzs\s*\d+)\b',  # "according to E2"
             r'\b(refer to|reference|specified in|outlined in)\s+(e2|b1|h1|nzs)\b',  # "refer to B1"
