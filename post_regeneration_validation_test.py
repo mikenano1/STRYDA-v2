@@ -107,7 +107,7 @@ def test_query(query: str, category: str) -> Dict[str, Any]:
         # Extract data
         final_answer = data.get("answer", "")[:150] if data.get("answer") else ""
         intent = data.get("intent", "unknown")
-        citations = data.get("citation", [])
+        citations = data.get("citations", [])  # Fixed: was "citation", should be "citations"
         citations_count = len(citations)
         
         # Extract citation sources and pages
