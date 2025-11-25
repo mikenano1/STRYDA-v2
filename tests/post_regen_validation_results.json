@@ -1,0 +1,377 @@
+{
+  "test_date": "2025-11-25T07:29:59.981382",
+  "backend_url": "https://codequery-4.preview.emergentagent.com",
+  "total_queries": 30,
+  "passed": 25,
+  "pass_rate": 83.3,
+  "total_time_seconds": 288.3,
+  "category_stats": {
+    "NZS 3604": {
+      "passed": 5,
+      "total": 5,
+      "pass_rate": 100.0
+    },
+    "E2/AS1": {
+      "passed": 5,
+      "total": 5,
+      "pass_rate": 100.0
+    },
+    "NZ Building Code": {
+      "passed": 1,
+      "total": 5,
+      "pass_rate": 20.0
+    },
+    "NZS 4229": {
+      "passed": 5,
+      "total": 5,
+      "pass_rate": 100.0
+    },
+    "General Builder": {
+      "passed": 4,
+      "total": 5,
+      "pass_rate": 80.0
+    },
+    "Practical/Tool": {
+      "passed": 5,
+      "total": 5,
+      "pass_rate": 100.0
+    }
+  },
+  "results": [
+    {
+      "query": "nzs 3604 stud spacing requirements",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 12601.1,
+      "pass": true
+    },
+    {
+      "query": "nzs 3604 rafter span 4.2m",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 12025.9,
+      "pass": true
+    },
+    {
+      "query": "nzs 3604 brace fixing pattern",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 10988.4,
+      "pass": true
+    },
+    {
+      "query": "nzs 3604 pile embedment depth",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 14658.4,
+      "pass": true
+    },
+    {
+      "query": "nzs 3604 verandah beam sizing",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 10975.6,
+      "pass": true
+    },
+    {
+      "query": "e2as1 minimum apron flashing cover",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 10885.9,
+      "pass": true
+    },
+    {
+      "query": "e2as1 roof pitch requirements",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 10969.1,
+      "pass": true
+    },
+    {
+      "query": "e2as1 cavity batten treatment levels",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 11243.5,
+      "pass": true
+    },
+    {
+      "query": "e2as1 deck to cladding clearance",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 11187.8,
+      "pass": true
+    },
+    {
+      "query": "e2as1 membrane fall requirements",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 11147.1,
+      "pass": true
+    },
+    {
+      "query": "minimum barrier height f4 requirements",
+      "category": "NZ Building Code",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5259.0,
+      "pass": false
+    },
+    {
+      "query": "b1 as1 footing depth for standard residential",
+      "category": "NZ Building Code",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "B1/AS1"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 11560.9,
+      "pass": true
+    },
+    {
+      "query": "fire stopping between floors c3 rules",
+      "category": "NZ Building Code",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5032.1,
+      "pass": false
+    },
+    {
+      "query": "h1 insulation r-values for walls",
+      "category": "NZ Building Code",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5045.1,
+      "pass": false
+    },
+    {
+      "query": "g12 hot water system safe temperatures",
+      "category": "NZ Building Code",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5351.4,
+      "pass": false
+    },
+    {
+      "query": "nzs 4229 minimum reinforcing for concrete masonry",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 4229:2013"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 10327.7,
+      "pass": true
+    },
+    {
+      "query": "nzs 4229 lintel reinforcement schedule",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011",
+        "NZS 4229:2013"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 10528.6,
+      "pass": true
+    },
+    {
+      "query": "nzs 4229 grout fill requirements",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 4229:2013"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 10698.1,
+      "pass": true
+    },
+    {
+      "query": "nzs 4229 bond beam spacing rules",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 9721.5,
+      "pass": true
+    },
+    {
+      "query": "nzs 4229 foundation block requirements",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 11213.0,
+      "pass": true
+    },
+    {
+      "query": "how far can 140x45 joists span",
+      "category": "General Builder",
+      "intent": "general_help",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 7616.2,
+      "pass": true
+    },
+    {
+      "query": "best fixings for exterior pergola",
+      "category": "General Builder",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5061.5,
+      "pass": true
+    },
+    {
+      "query": "how to prevent decking cupping",
+      "category": "General Builder",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5066.8,
+      "pass": true
+    },
+    {
+      "query": "how much clearance under cladding",
+      "category": "General Builder",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "tier1_hit": true,
+      "latency_ms": 11052.3,
+      "pass": false
+    },
+    {
+      "query": "what size posts for 3m veranda",
+      "category": "General Builder",
+      "intent": "general_help",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 8948.7,
+      "pass": true
+    },
+    {
+      "query": "whats the best laser level for framing",
+      "category": "Practical/Tool",
+      "intent": "general_help",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 9619.5,
+      "pass": true
+    },
+    {
+      "query": "how to stop doors sticking in winter",
+      "category": "Practical/Tool",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5078.0,
+      "pass": true
+    },
+    {
+      "query": "why is my deck moving when i walk on it",
+      "category": "Practical/Tool",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5058.1,
+      "pass": true
+    },
+    {
+      "query": "what is the best timber for outdoor steps",
+      "category": "Practical/Tool",
+      "intent": "general_help",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 9267.9,
+      "pass": true
+    },
+    {
+      "query": "best screws for treated pine",
+      "category": "Practical/Tool",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "tier1_hit": false,
+      "latency_ms": 5081.9,
+      "pass": true
+    }
+  ]
+}
