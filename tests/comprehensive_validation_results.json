@@ -1,9 +1,9 @@
 {
   "summary": {
     "total": 10,
-    "passed": 7,
-    "failed": 3,
-    "pass_rate": 70.0
+    "passed": 9,
+    "failed": 1,
+    "pass_rate": 90.0
   },
   "category_breakdown": {
     "NZS 3604": {
@@ -15,7 +15,7 @@
       "total": 2
     },
     "NZ Building Code (H1)": {
-      "pass": 0,
+      "pass": 1,
       "total": 1
     },
     "NZ Building Code (F4)": {
@@ -23,7 +23,7 @@
       "total": 1
     },
     "NZ Building Code (G12)": {
-      "pass": 0,
+      "pass": 1,
       "total": 1
     },
     "NZS 4229": {
@@ -47,7 +47,7 @@
         "NZS 3604:2011 p.200",
         "NZS 3604:2011 p.201"
       ],
-      "latency_ms": 14369,
+      "latency_ms": 15563,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -64,7 +64,7 @@
         "NZS 3604:2011 p.270",
         "NZS 3604:2011 p.315"
       ],
-      "latency_ms": 10773,
+      "latency_ms": 13552,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -81,7 +81,7 @@
         "E2/AS1 p.66",
         "E2/AS1 p.26"
       ],
-      "latency_ms": 10209,
+      "latency_ms": 9629,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -98,7 +98,7 @@
         "E2/AS1 p.53",
         "E2/AS1 p.80"
       ],
-      "latency_ms": 10286,
+      "latency_ms": 11081,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -108,14 +108,18 @@
       "query_num": 5,
       "query": "h1 insulation r-values for walls",
       "category": "NZ Building Code (H1)",
-      "intent": "chitchat",
-      "citations_count": 0,
-      "citation_sources": [],
-      "latency_ms": 5020,
-      "tier1_hit": false,
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "NZ Metal Roofing p.436",
+        "NZ Metal Roofing p.437",
+        "NZ Metal Roofing p.434"
+      ],
+      "latency_ms": 12551,
+      "tier1_hit": true,
       "expect_citations": true,
-      "pass": false,
-      "reason": "Wrong intent: chitchat"
+      "pass": true,
+      "reason": "\u2705 PASS"
     },
     {
       "query_num": 6,
@@ -124,7 +128,7 @@
       "intent": "chitchat",
       "citations_count": 0,
       "citation_sources": [],
-      "latency_ms": 5128,
+      "latency_ms": 5155,
       "tier1_hit": false,
       "expect_citations": true,
       "pass": false,
@@ -134,14 +138,18 @@
       "query_num": 7,
       "query": "g12 hot water system safe temperatures",
       "category": "NZ Building Code (G12)",
-      "intent": "chitchat",
-      "citations_count": 0,
-      "citation_sources": [],
-      "latency_ms": 5019,
-      "tier1_hit": false,
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "NZ Building Code p.79",
+        "NZ Building Code p.78",
+        "NZ Building Code p.76"
+      ],
+      "latency_ms": 11137,
+      "tier1_hit": true,
       "expect_citations": true,
-      "pass": false,
-      "reason": "Wrong intent: chitchat"
+      "pass": true,
+      "reason": "\u2705 PASS"
     },
     {
       "query_num": 8,
@@ -154,7 +162,7 @@
         "NZS 4229:2013 p.5",
         "NZS 4229:2013 p.29"
       ],
-      "latency_ms": 13704,
+      "latency_ms": 11143,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -171,7 +179,7 @@
         "NZS 4229:2013 p.111",
         "NZS 3604:2011 p.378"
       ],
-      "latency_ms": 10484,
+      "latency_ms": 10061,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -184,7 +192,7 @@
       "intent": "chitchat",
       "citations_count": 0,
       "citation_sources": [],
-      "latency_ms": 5012,
+      "latency_ms": 5011,
       "tier1_hit": false,
       "expect_citations": false,
       "pass": true,
