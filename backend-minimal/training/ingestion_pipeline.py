@@ -57,8 +57,8 @@ def insert_training_items(items: List[Dict], batch_id: str, category: str, conn)
         batch = items[i:i + BATCH_SIZE]
         
         try:
-            # Extract texts for embedding
-            texts = [item.get('content', item.get('text', '')) for item in batch]
+            # Extract texts for embedding (use 'question' field for training data)
+            texts = [item.get('question', item.get('content', item.get('text', ''))) for item in batch]
             
             # Generate embeddings
             embeddings = generate_embeddings(texts)
