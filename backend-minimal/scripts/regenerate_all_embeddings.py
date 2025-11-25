@@ -31,49 +31,35 @@ def regenerate_embeddings():
     """Regenerate embeddings for targeted documents"""
     conn = psycopg2.connect(DATABASE_URL, sslmode="require")
     
-    # Get total count
+    # Get all document IDs to process
     cur = conn.cursor()
     cur.execute("""
-        SELECT COUNT(*)
+        SELECT id, content
         FROM documents
-        WHERE source = ANY(%s);
+        WHERE source = ANY(%s)
+        ORDER BY id;
     """, (TARGET_SOURCES,))
-    total_docs = cur.fetchone()[0]
-    print(f"📊 Total documents to regenerate: {total_docs}\n")
+    all_docs = cur.fetchall()
+    total_docs = len(all_docs)
     cur.close()
+    
+    print(f"📊 Total documents to regenerate: {total_docs}\n")
     
     # Process in batches
     processed = 0
     failed = 0
     start_time = time.time()
     
-    # Fetch documents in batches
-    with conn.cursor(cursor_factory=psycopg2.extras.DictCursor, name='embedding_regen') as cur:
-        cur.execute("""
-            SELECT id, content
-            FROM documents
-            WHERE source = ANY(%s)
-            ORDER BY id;
-        """, (TARGET_SOURCES,))
+    for i in range(0, total_docs, BATCH_SIZE):
+        batch = all_docs[i:i + BATCH_SIZE]
+        processed += process_batch(batch, conn)
         
-        batch = []
-        for row in cur:
-            batch.append(row)
-            
-            if len(batch) >= BATCH_SIZE:
-                processed += process_batch(batch, conn)
-                batch = []
-                
-                # Progress update
-                pct = (processed / total_docs) * 100
-                elapsed = time.time() - start_time
-                rate = processed / elapsed if elapsed > 0 else 0
-                eta = (total_docs - processed) / rate if rate > 0 else 0
-                print(f"   [{processed}/{total_docs}] {pct:.1f}% | {rate:.1f} docs/sec | ETA: {eta/60:.1f}min")
-        
-        # Process remaining
-        if batch:
-            processed += process_batch(batch, conn)
+        # Progress update
+        pct = (processed / total_docs) * 100
+        elapsed = time.time() - start_time
+        rate = processed / elapsed if elapsed > 0 else 0
+        eta = (total_docs - processed) / rate if rate > 0 else 0
+        print(f"   [{processed}/{total_docs}] {pct:.1f}% | {rate:.1f} docs/sec | ETA: {eta/60:.1f}min")
     
     conn.close()
     
