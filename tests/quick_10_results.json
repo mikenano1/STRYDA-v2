@@ -1,0 +1,111 @@
+{
+  "results": [
+    {
+      "query": "nzs 3604 stud spacing requirements",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "latency_ms": 13247.6,
+      "pass": true
+    },
+    {
+      "query": "nzs 3604 rafter span 4.2m",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011"
+      ],
+      "latency_ms": 11268.1,
+      "pass": true
+    },
+    {
+      "query": "e2as1 minimum apron flashing cover",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "latency_ms": 9222.9,
+      "pass": true
+    },
+    {
+      "query": "e2as1 roof pitch requirements",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "E2/AS1"
+      ],
+      "latency_ms": 10888.5,
+      "pass": true
+    },
+    {
+      "query": "minimum barrier height f4 requirements",
+      "category": "NZ Building Code",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citations_sources": [],
+      "latency_ms": 5202.3,
+      "pass": false
+    },
+    {
+      "query": "b1 as1 footing depth for standard residential",
+      "category": "NZ Building Code",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "B1/AS1"
+      ],
+      "latency_ms": 10572.5,
+      "pass": true
+    },
+    {
+      "query": "nzs 4229 minimum reinforcing for concrete masonry",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 4229:2013"
+      ],
+      "latency_ms": 11160.0,
+      "pass": true
+    },
+    {
+      "query": "nzs 4229 lintel reinforcement schedule",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citations_sources": [
+        "NZS 3604:2011",
+        "NZS 4229:2013"
+      ],
+      "latency_ms": 10497.8,
+      "pass": true
+    },
+    {
+      "query": "how far can 140x45 joists span",
+      "category": "General Builder",
+      "intent": "general_help",
+      "citations_count": 0,
+      "citations_sources": [],
+      "latency_ms": 9319.1,
+      "pass": true
+    },
+    {
+      "query": "whats the best laser level for framing",
+      "category": "Practical/Tool",
+      "intent": "general_help",
+      "citations_count": 0,
+      "citations_sources": [],
+      "latency_ms": 10735.8,
+      "pass": true
+    }
+  ],
+  "passed": 9,
+  "total": 10
+}
