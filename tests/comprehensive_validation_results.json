@@ -1,0 +1,194 @@
+{
+  "summary": {
+    "total": 10,
+    "passed": 7,
+    "failed": 3,
+    "pass_rate": 70.0
+  },
+  "category_breakdown": {
+    "NZS 3604": {
+      "pass": 2,
+      "total": 2
+    },
+    "E2/AS1": {
+      "pass": 2,
+      "total": 2
+    },
+    "NZ Building Code (H1)": {
+      "pass": 0,
+      "total": 1
+    },
+    "NZ Building Code (F4)": {
+      "pass": 0,
+      "total": 1
+    },
+    "NZ Building Code (G12)": {
+      "pass": 0,
+      "total": 1
+    },
+    "NZS 4229": {
+      "pass": 2,
+      "total": 2
+    },
+    "Practical": {
+      "pass": 1,
+      "total": 1
+    }
+  },
+  "detailed_results": [
+    {
+      "query_num": 1,
+      "query": "nzs 3604 stud spacing requirements",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "NZS 3604:2011 p.207",
+        "NZS 3604:2011 p.200",
+        "NZS 3604:2011 p.201"
+      ],
+      "latency_ms": 14369,
+      "tier1_hit": true,
+      "expect_citations": true,
+      "pass": true,
+      "reason": "\u2705 PASS"
+    },
+    {
+      "query_num": 2,
+      "query": "nzs 3604 rafter span 4.2m",
+      "category": "NZS 3604",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "NZS 3604:2011 p.317",
+        "NZS 3604:2011 p.270",
+        "NZS 3604:2011 p.315"
+      ],
+      "latency_ms": 10773,
+      "tier1_hit": true,
+      "expect_citations": true,
+      "pass": true,
+      "reason": "\u2705 PASS"
+    },
+    {
+      "query_num": 3,
+      "query": "e2as1 minimum apron flashing cover",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "E2/AS1 p.25",
+        "E2/AS1 p.66",
+        "E2/AS1 p.26"
+      ],
+      "latency_ms": 10209,
+      "tier1_hit": true,
+      "expect_citations": true,
+      "pass": true,
+      "reason": "\u2705 PASS"
+    },
+    {
+      "query_num": 4,
+      "query": "e2as1 roof pitch requirements",
+      "category": "E2/AS1",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "E2/AS1 p.69",
+        "E2/AS1 p.53",
+        "E2/AS1 p.80"
+      ],
+      "latency_ms": 10286,
+      "tier1_hit": true,
+      "expect_citations": true,
+      "pass": true,
+      "reason": "\u2705 PASS"
+    },
+    {
+      "query_num": 5,
+      "query": "h1 insulation r-values for walls",
+      "category": "NZ Building Code (H1)",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citation_sources": [],
+      "latency_ms": 5020,
+      "tier1_hit": false,
+      "expect_citations": true,
+      "pass": false,
+      "reason": "Wrong intent: chitchat"
+    },
+    {
+      "query_num": 6,
+      "query": "minimum barrier height f4 requirements",
+      "category": "NZ Building Code (F4)",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citation_sources": [],
+      "latency_ms": 5128,
+      "tier1_hit": false,
+      "expect_citations": true,
+      "pass": false,
+      "reason": "Wrong intent: chitchat"
+    },
+    {
+      "query_num": 7,
+      "query": "g12 hot water system safe temperatures",
+      "category": "NZ Building Code (G12)",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citation_sources": [],
+      "latency_ms": 5019,
+      "tier1_hit": false,
+      "expect_citations": true,
+      "pass": false,
+      "reason": "Wrong intent: chitchat"
+    },
+    {
+      "query_num": 8,
+      "query": "nzs 4229 minimum reinforcing for concrete masonry",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "NZS 4229:2013 p.1",
+        "NZS 4229:2013 p.5",
+        "NZS 4229:2013 p.29"
+      ],
+      "latency_ms": 13704,
+      "tier1_hit": true,
+      "expect_citations": true,
+      "pass": true,
+      "reason": "\u2705 PASS"
+    },
+    {
+      "query_num": 9,
+      "query": "nzs 4229 lintel reinforcement schedule",
+      "category": "NZS 4229",
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "NZS 4229:2013 p.112",
+        "NZS 4229:2013 p.111",
+        "NZS 3604:2011 p.378"
+      ],
+      "latency_ms": 10484,
+      "tier1_hit": true,
+      "expect_citations": true,
+      "pass": true,
+      "reason": "\u2705 PASS"
+    },
+    {
+      "query_num": 10,
+      "query": "best screws for treated pine",
+      "category": "Practical",
+      "intent": "chitchat",
+      "citations_count": 0,
+      "citation_sources": [],
+      "latency_ms": 5012,
+      "tier1_hit": false,
+      "expect_citations": false,
+      "pass": true,
+      "reason": "\u2705 PASS"
+    }
+  ]
+}
