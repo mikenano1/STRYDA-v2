@@ -1,0 +1,9 @@
+{
+  "batch_id": "batch_04",
+  "category": "Plumbing",
+  "created_at": null,
+  "ingested_at": null,
+  "total_items": 0,
+  "embedding_model": "text-embedding-3-small",
+  "validation_status": "pending"
+}
