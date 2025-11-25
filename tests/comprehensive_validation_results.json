@@ -1,9 +1,9 @@
 {
   "summary": {
     "total": 10,
-    "passed": 9,
-    "failed": 1,
-    "pass_rate": 90.0
+    "passed": 10,
+    "failed": 0,
+    "pass_rate": 100.0
   },
   "category_breakdown": {
     "NZS 3604": {
@@ -19,7 +19,7 @@
       "total": 1
     },
     "NZ Building Code (F4)": {
-      "pass": 0,
+      "pass": 1,
       "total": 1
     },
     "NZ Building Code (G12)": {
@@ -47,7 +47,7 @@
         "NZS 3604:2011 p.200",
         "NZS 3604:2011 p.201"
       ],
-      "latency_ms": 15563,
+      "latency_ms": 12319,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -64,7 +64,7 @@
         "NZS 3604:2011 p.270",
         "NZS 3604:2011 p.315"
       ],
-      "latency_ms": 13552,
+      "latency_ms": 11081,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -81,7 +81,7 @@
         "E2/AS1 p.66",
         "E2/AS1 p.26"
       ],
-      "latency_ms": 9629,
+      "latency_ms": 12077,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -98,7 +98,7 @@
         "E2/AS1 p.53",
         "E2/AS1 p.80"
       ],
-      "latency_ms": 11081,
+      "latency_ms": 10548,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -115,7 +115,7 @@
         "NZ Metal Roofing p.437",
         "NZ Metal Roofing p.434"
       ],
-      "latency_ms": 12551,
+      "latency_ms": 10382,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -125,14 +125,18 @@
       "query_num": 6,
       "query": "minimum barrier height f4 requirements",
       "category": "NZ Building Code (F4)",
-      "intent": "chitchat",
-      "citations_count": 0,
-      "citation_sources": [],
-      "latency_ms": 5155,
-      "tier1_hit": false,
+      "intent": "compliance_strict",
+      "citations_count": 3,
+      "citation_sources": [
+        "NZ Building Code p.56",
+        "NZ Building Code p.60",
+        "NZ Building Code p.61"
+      ],
+      "latency_ms": 11825,
+      "tier1_hit": true,
       "expect_citations": true,
-      "pass": false,
-      "reason": "Wrong intent: chitchat"
+      "pass": true,
+      "reason": "\u2705 PASS"
     },
     {
       "query_num": 7,
@@ -145,7 +149,7 @@
         "NZ Building Code p.78",
         "NZ Building Code p.76"
       ],
-      "latency_ms": 11137,
+      "latency_ms": 11475,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -162,7 +166,7 @@
         "NZS 4229:2013 p.5",
         "NZS 4229:2013 p.29"
       ],
-      "latency_ms": 11143,
+      "latency_ms": 12206,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -179,7 +183,7 @@
         "NZS 4229:2013 p.111",
         "NZS 3604:2011 p.378"
       ],
-      "latency_ms": 10061,
+      "latency_ms": 9950,
       "tier1_hit": true,
       "expect_citations": true,
       "pass": true,
@@ -192,7 +196,7 @@
       "intent": "chitchat",
       "citations_count": 0,
       "citation_sources": [],
-      "latency_ms": 5011,
+      "latency_ms": 4995,
       "tier1_hit": false,
       "expect_citations": false,
       "pass": true,
