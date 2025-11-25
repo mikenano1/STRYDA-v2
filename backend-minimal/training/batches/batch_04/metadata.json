@@ -2,8 +2,9 @@
   "batch_id": "batch_04",
   "category": "Plumbing",
   "created_at": null,
-  "ingested_at": null,
-  "total_items": 0,
+  "ingested_at": "2025-11-25T09:28:43.141768",
+  "total_items": 100,
   "embedding_model": "text-embedding-3-small",
-  "validation_status": "pending"
+  "validation_status": "complete",
+  "failed_items": 0
 }
