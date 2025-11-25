@@ -194,7 +194,7 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
             embed_start = time.time()
             client = OpenAI(api_key=api_key)
             embedding_response = client.embeddings.create(
-                model="text-embedding-ada-002",
+                model="text-embedding-3-small",  # CHANGED: Match regenerated embeddings model
                 input=query
             )
             query_embedding = embedding_response.data[0].embedding
