@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://citation-guard.preview.emergentagent.com",
+  API_BASE: "https://codequery-4.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 
