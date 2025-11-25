@@ -127,10 +127,12 @@ def canonical_source_map(query: str) -> List[str]:
     # NZ Building Code - General building code sections
     if any(term in query_lower for term in [
         'h1', 'energy', 'insulation', 'r-value', 'thermal',
-        'f4', 'escape', 'means of escape', 'safety barriers',
-        'g5', 'hearth', 'solid fuel', 'fireplace',
-        'c1', 'c2', 'c3', 'c4', 'fire', 'fire rating',
-        'g12', 'g13', 'water', 'sanitary', 'plumbing',
+        'f4', 'f4/as1', 'barrier', 'balustrade', 'handrail', 'guardrail',
+        'deck fall', '1m fall', '1 metre fall', 'fall protection',
+        'escape', 'means of escape', 'safety barriers', 'minimum barrier height',
+        'g5', 'g5.3.2', 'hearth', 'solid fuel', 'fireplace',
+        'c1', 'c2', 'c3', 'c4', 'fire', 'fire rating', 'fire stopping',
+        'g12', 'g13', 'water', 'sanitary', 'plumbing', 'hot water',
         'building code', 'nzbc'
     ]):
         sources.append('NZ Building Code')
