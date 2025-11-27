@@ -1,7 +1,7 @@
 {
   "batch_id": "batch_07",
   "category": "Electrical (Sparkies)",
-  "status": "ready",
+  "status": "complete",
   "items": [
     {
       "id": "E001",
@@ -1800,6 +1800,1206 @@
     {
       "id": "E300",
       "question": "how do you check voltage drop on long switched active runs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E301",
+      "question": "When does a CoC need to be issued for work on an existing final subcircuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E302",
+      "question": "What parts of ESR 73 apply to testing before livening a circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E303",
+      "question": "What info must be included on a CoC for mains upgrades?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E304",
+      "question": "When does general repair work still require a CoC under ESR?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E305",
+      "question": "Who can legally sign an ESC on a new dwelling?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E306",
+      "question": "How long must CoCs and ESCs be stored by the electrician?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E307",
+      "question": "Does replacing a faulty RCD require a CoC or only an ESC?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E308",
+      "question": "Is a CoC required when adding a socket to an existing ring circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E309",
+      "question": "What is the definition of \"completed work\" under ESR 65?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E310",
+      "question": "When must you notify the network for mains connection changes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E311",
+      "question": "When does relocation of a switchboard need a CoC?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E312",
+      "question": "When is a Certificate of Electrical Safety required for PV installs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E313",
+      "question": "What ESR clauses govern livening underground mains?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E314",
+      "question": "What paperwork is required for temporary builder's supply boards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E315",
+      "question": "Do alterations to MEN links require their own CoC?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E316",
+      "question": "What testing records must accompany an ESC for a new build?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E317",
+      "question": "Is an ESC needed for replacing a damaged luminaire?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E318",
+      "question": "What documentation is required for converting a property from single to three-phase?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E319",
+      "question": "What ESR rules apply to caravan connection points?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E320",
+      "question": "When must a licensed inspector be involved rather than a standard electrician?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E321",
+      "question": "What ESR requirements apply to marinas and boat connections?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E322",
+      "question": "When does solar battery storage require an inspector sign-off?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E323",
+      "question": "What are the ESC requirements for EV charger installations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E324",
+      "question": "When does meter board work require network approval first?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E325",
+      "question": "What documentation is needed for mains polarity failure rectification?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E326",
+      "question": "Which ESR clauses govern work in hazardous locations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E327",
+      "question": "What evidence is required to prove compliance when using alternative methods?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E328",
+      "question": "What CoC information must be kept for underground jointing?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E329",
+      "question": "Do I need a CoC for changing main earthing conductor size?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E330",
+      "question": "What parts of AS/NZS 3000 must be referenced in CoC notes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E331",
+      "question": "When does an ESC need to be issued for pump control installations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E332",
+      "question": "Which ESRs define competence for testing prior to livening?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E333",
+      "question": "Do I need a CoC for fitting a new ventilation fan in an existing bathroom?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E334",
+      "question": "What ESR rules apply for work inside switchboards above 250V?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E335",
+      "question": "How soon must a copy of a CoC be supplied to the client?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E336",
+      "question": "What's the ESR rule for maintaining records of pre-commissioning tests?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E337",
+      "question": "Does relocating an EV charger require a new CoC?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E338",
+      "question": "When is a CoC needed for generator changeover switches?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E339",
+      "question": "What ESR section applies to medical locations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E340",
+      "question": "What CoC requirements apply when upgrading main bonding?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E341",
+      "question": "What's the maximum permitted voltage drop for a dwelling subcircuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E342",
+      "question": "When are main switches required to be lockable?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E343",
+      "question": "What's the spacing rule for switchboard busbar shrouding?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E344",
+      "question": "What clearances are required around residential switchboards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E345",
+      "question": "How many final subcircuits are recommended on a small dwelling?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E346",
+      "question": "What's the maximum demand calculation for a 3-bedroom house?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E347",
+      "question": "What cable size is needed for a 40A EV charger run at 20m?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E348",
+      "question": "What's the rule for grouping derating inside insulated walls?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E349",
+      "question": "How is load diversity applied for kitchen circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E350",
+      "question": "What are the rules for neutral bars when adding new circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E351",
+      "question": "When must submains be armoured or mechanically protected?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E352",
+      "question": "What's the separation distance between mains and ELV control wiring?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E353",
+      "question": "How do you size a submain feeding a detached sleepout?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E354",
+      "question": "What thermal ratings apply when using TPS in ceiling insulation?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E355",
+      "question": "What's the acceptable maximum earth loop impedance for 32A circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E356",
+      "question": "When are two RCDs needed on a single dwelling switchboard?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E357",
+      "question": "What's the rule for mixed lighting and socket outlets on one circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E358",
+      "question": "What's the max load allowed on a single-phase 63A main switch?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E359",
+      "question": "How should load balancing be handled on three-phase boards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E360",
+      "question": "What enclosure rating is needed for switchboards in outdoor exposed areas?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E361",
+      "question": "When must surge protection be installed on domestic installations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E362",
+      "question": "What's the rule for switching neutral conductors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E363",
+      "question": "What's the minimum conductor size for main earthing electrodes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E364",
+      "question": "What's the acceptable voltage rise on large rural properties?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E365",
+      "question": "When must parallel conductors be identical size and type?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E366",
+      "question": "What fire barriers apply when cables penetrate inter-tenancy walls?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E367",
+      "question": "What's the rule for segregating DC cabling on solar installs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E368",
+      "question": "How close can I run LV cables to plumbing copper pipes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E369",
+      "question": "What's the maximum circuit length for 2.5mm\u00b2 TPS on 20A breakers?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E370",
+      "question": "What fault rating must consumer mains insulation withstand?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E371",
+      "question": "What's the rule for downstream RCD selectivity?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E372",
+      "question": "What overload protection applies to cooktop + oven combined circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E373",
+      "question": "What's the minimum clearance between switchboard and gas meter?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E374",
+      "question": "How do you size cables supplying a workshop with welders?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E375",
+      "question": "What IP rating is required for switchboards installed in farm sheds?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E376",
+      "question": "How do you determine fault current contribution on long rural feeders?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E377",
+      "question": "When must a main switch be manually lockable under AS/NZS 3000?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E378",
+      "question": "What's the rule for installing two circuits under one breaker terminal?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E379",
+      "question": "How do you calculate derating when grouping more than six cables?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E380",
+      "question": "What are the requirements for isolating a submain supplying a minor dwelling?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E381",
+      "question": "What size earthing conductor is required for a 100A three-phase supply?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E382",
+      "question": "What are the requirements for segregating LV from CAT6 data cabling?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E383",
+      "question": "What's the minimum bend radius for TPS and XLPE cables?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E384",
+      "question": "When are dedicated circuits required for appliances in new homes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E385",
+      "question": "What fault rating must a switchboard have for a 16kA prospective fault level?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E386",
+      "question": "What's the rule for circuit identification labelling inside switchboards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E387",
+      "question": "When must RCDs be type A instead of type AC?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E388",
+      "question": "What's the rule for installing socket outlets in meter cupboards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E389",
+      "question": "What are the restrictions on looping neutrals through RCD terminals?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E390",
+      "question": "What temperature rating must cables have when installed near flues?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E391",
+      "question": "What height should general-purpose sockets be installed at in new dwellings?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E392",
+      "question": "What's the rule for fixing cables to metal studs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E393",
+      "question": "How far from floor level can you run cables horizontally without protection?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E394",
+      "question": "What mechanical protection is required for cables buried in walls?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E395",
+      "question": "What's the minimum depth for underground TPS with mechanical protection?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E396",
+      "question": "How close can cables be run to hot water pipes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E397",
+      "question": "When must cable trays be bonded?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E398",
+      "question": "What supports are required for heavy luminaires?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E399",
+      "question": "What's the rule for recessed downlight clearances under AS/NZS 3000?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E400",
+      "question": "How should cables be supported in roof spaces containing loose insulation?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E401",
+      "question": "What locations allow sockets above kitchen benchtops?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E402",
+      "question": "What's the allowable distance from a sink for a socket outlet?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E403",
+      "question": "What height should isolators be mounted for heat pumps?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E404",
+      "question": "How far from the floor can light switches be mounted?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E405",
+      "question": "What protection must be used when running cables in concrete slabs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E406",
+      "question": "What's the rule for installing conduit externally on masonry walls?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E407",
+      "question": "How must cables be run inside steel framed walls?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E408",
+      "question": "What's the clearance required between cables and gas pipes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E409",
+      "question": "What are the mounting rules for exterior lights in coastal zones?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E410",
+      "question": "What is required when installing lights in wardrobes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E411",
+      "question": "What IP rating is required for light fittings in shower zones?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E412",
+      "question": "What support must be used for pendant lights over 3m drop?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E413",
+      "question": "When do outdoor sockets require a weatherproof cover?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E414",
+      "question": "What cable types are suitable for underground garden lighting?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E415",
+      "question": "When must cables be protected from UV exposure?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E416",
+      "question": "What additional precautions apply when installing electrics in tiny homes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E417",
+      "question": "What are the installation rules for power points on island benches?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E418",
+      "question": "What support is required for overhead consumer mains?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E419",
+      "question": "What's needed when installing recessed floor boxes indoors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E420",
+      "question": "What installation restrictions apply around attic access hatches?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E421",
+      "question": "What protection is required for induction cooktop circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E422",
+      "question": "What cable size is required for a 32A wall oven?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E423",
+      "question": "When must dishwashers be on a dedicated circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E424",
+      "question": "What connection rules apply for rangehood isolation?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E425",
+      "question": "What's the rule for connecting spa pools to residential switchboards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E426",
+      "question": "What protection do heat pump outdoor units require?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E427",
+      "question": "What are the isolation rules for hot water cylinders?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E428",
+      "question": "What's the rule for hard-wiring heated towel rails?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E429",
+      "question": "What protection is required for EV chargers above 20A?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E430",
+      "question": "What type of RCD is required for EV chargers?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E431",
+      "question": "What isolation is required for solar inverters?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E432",
+      "question": "What's the maximum allowable voltage drop for long EV charger runs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E433",
+      "question": "What type of protection applies to commercial kitchen appliances?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E434",
+      "question": "When must cooktop isolation switches be within sight?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E435",
+      "question": "What are the wiring rules for high-load welders in workshops?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E436",
+      "question": "What breakers are recommended for combination cooktop/oven circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E437",
+      "question": "What requirements apply for Rangehood + Light circuit combos?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E438",
+      "question": "What's needed to connect bore pumps safely?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E439",
+      "question": "What rating must isolators have for three-phase machinery?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E440",
+      "question": "What cable type is suitable for sauna or steam room heaters?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E441",
+      "question": "What's the minimum depth for earth electrodes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E442",
+      "question": "What resistance must a driven earth electrode achieve?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E443",
+      "question": "When must supplementary bonding be installed in bathrooms?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E444",
+      "question": "What's the rule for bonding metal water pipes in new homes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E445",
+      "question": "When must pool zones have equipotential bonding?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E446",
+      "question": "What GLI reading is acceptable before livening a circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E447",
+      "question": "What's the maximum earth loop impedance for 16A socket circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E448",
+      "question": "What's the rule for MEN links inside switchboards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E449",
+      "question": "When must you install bonding on metal framing systems?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E450",
+      "question": "What are the requirements for earthing garden sheds with a submain?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E451",
+      "question": "What are the isolation rules for testing main earth conductors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E452",
+      "question": "What's the rule for bonding rebar in concrete slabs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E453",
+      "question": "How should earthing be handled for off-grid solar systems?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E454",
+      "question": "What inspection steps are required before connecting an MEN system?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E455",
+      "question": "How close can earth electrodes be placed next to water pipes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E456",
+      "question": "What is required when upgrading earthing on older homes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E457",
+      "question": "How should fault protection be handled on long rural feeders?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E458",
+      "question": "What are the bonding rules for metal fences near electrical equipment?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E459",
+      "question": "What's the rule for earthing satellite dishes or antenna masts?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E460",
+      "question": "When must PME (TN-C-S) systems be converted to MEN for domestic installs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E461",
+      "question": "What wiring rules apply in Zone 0 of a bathroom?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E462",
+      "question": "What IP rating is required for fittings installed in Zone 1 of a bathroom?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E463",
+      "question": "What's allowed in Zone 2 for lighting and sockets?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E464",
+      "question": "What wiring restrictions apply in laundries?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E465",
+      "question": "What rules apply to wiring inside commercial coolrooms?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E466",
+      "question": "What's required for hazardous location classification in workshops?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E467",
+      "question": "What cabling rules apply to fuel pump installations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E468",
+      "question": "What wiring requirements apply to farms with livestock sheds?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E469",
+      "question": "What precautions are needed for coastal corrosion zones?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E470",
+      "question": "What are the rules for marina shore power outlets?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E471",
+      "question": "What wiring restrictions apply on aluminium boats?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E472",
+      "question": "What rules apply to caravan inlet sockets?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E473",
+      "question": "What are the requirements for EV chargers installed outdoors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E474",
+      "question": "What's required for medical locations in residential homes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E475",
+      "question": "What safety rules apply for wiring in ceiling cavities with spray foam insulation?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E476",
+      "question": "What restrictions apply to wiring inside refrigerated trucks?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E477",
+      "question": "What are the requirements for solar isolator placement?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E478",
+      "question": "What fire-safety requirements apply to lithium battery installations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E479",
+      "question": "What cabling rules apply for generator back-feed systems?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E480",
+      "question": "What's required for open-deck industrial areas exposed to weather?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E481",
+      "question": "What wiring rules apply to rural woolsheds?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E482",
+      "question": "What requirements apply to high-humidity horticulture sheds?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E483",
+      "question": "What are the wiring requirements for container conversions?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E484",
+      "question": "What protection rules apply when feeding tiny home trailers?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E485",
+      "question": "What grounding is required for free-standing metal structures near dwellings?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E486",
+      "question": "What's needed when wiring signage exposed to public access?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E487",
+      "question": "What IP rating is required for pit pumps and sump areas?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E488",
+      "question": "What rules apply to chemical storage rooms?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E489",
+      "question": "What thermal limits apply to cabling near boilers?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E490",
+      "question": "What restrictions apply for wiring under raised computer floors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E491",
+      "question": "What wiring rules apply to fibreglass swimming pools?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E492",
+      "question": "What's required for bond continuity across metal handrails?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E493",
+      "question": "What are the rules for wiring in roof voids with high wind exposure?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E494",
+      "question": "When are arc-fault detection devices recommended?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E495",
+      "question": "What are the special rules for caravan parks and holiday parks?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E496",
+      "question": "What's required for farm pump sheds near open water?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E497",
+      "question": "What wiring rules apply to refrigerated shipping containers?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E498",
+      "question": "What special precautions apply to EV chargers in coastal homes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E499",
+      "question": "What are the wiring restrictions for commercial carwash bays?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E500",
+      "question": "What's required to ensure compliance for battery-ready homes?",
       "intent": "general_help",
       "trade": "electrician"
     }
