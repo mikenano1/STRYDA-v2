@@ -3,205 +3,1805 @@
   "category": "Electrical (Sparkies)",
   "status": "ready",
   "items": [
-{"id":"E001","question":"why does the breaker keep tripping when I plug the vac in?","intent":"general_help","trade":"electrician"},
-{"id":"E002","question":"how do you figure out which breaker feeds which circuit in an old house?","intent":"general_help","trade":"electrician"},
-{"id":"E003","question":"why do LED downlights flicker when they're dimmed?","intent":"general_help","trade":"electrician"},
-{"id":"E004","question":"how do you stop a light switch from buzzing?","intent":"general_help","trade":"electrician"},
-{"id":"E005","question":"why does the RCD trip when it rains?","intent":"general_help","trade":"electrician"},
-{"id":"E006","question":"how do you find a hidden junction box in a finished ceiling?","intent":"general_help","trade":"electrician"},
-{"id":"E007","question":"why do some circuits shock a little when you touch metal parts?","intent":"general_help","trade":"electrician"},
-{"id":"E008","question":"how do you test if a neutral is shared between circuits?","intent":"general_help","trade":"electrician"},
-{"id":"E009","question":"why do cheap LED lamps fail so fast?","intent":"general_help","trade":"electrician"},
-{"id":"E010","question":"how do you stop a ceiling fan from wobbling and humming?","intent":"general_help","trade":"electrician"},
-{"id":"E011","question":"why does a light still glow faintly after switching it off?","intent":"general_help","trade":"electrician"},
-{"id":"E012","question":"how do you find which socket is causing the earth leakage?","intent":"general_help","trade":"electrician"},
-{"id":"E013","question":"why do breakers feel warm even when nothing heavy is running?","intent":"general_help","trade":"electrician"},
-{"id":"E014","question":"how do you trace a short in a long cable run?","intent":"general_help","trade":"electrician"},
-{"id":"E015","question":"why does the dimmer get so hot on full load?","intent":"general_help","trade":"electrician"},
-{"id":"E016","question":"how do you fix a loose backbox in a gib wall?","intent":"general_help","trade":"electrician"},
-{"id":"E017","question":"why does the oven trip the RCD halfway through cooking?","intent":"general_help","trade":"electrician"},
-{"id":"E018","question":"how do you test insulation resistance on an old house circuit safely?","intent":"general_help","trade":"electrician"},
-{"id":"E019","question":"why does the main switch arc a bit when turned on?","intent":"general_help","trade":"electrician"},
-{"id":"E020","question":"how do you stop customers overloading a multi-board on site?","intent":"general_help","trade":"electrician"},
-{"id":"E021","question":"why do outside lights fail more often than inside ones?","intent":"general_help","trade":"electrician"},
-{"id":"E022","question":"how do you route cables in a tight soffit without damaging them?","intent":"general_help","trade":"electrician"},
-{"id":"E023","question":"why does the heat pump trip the breaker on startup?","intent":"general_help","trade":"electrician"},
-{"id":"E024","question":"how do you confirm polarity when colours don't match the usual scheme?","intent":"general_help","trade":"electrician"},
-{"id":"E025","question":"why does a two-way lighting circuit confuse apprentices so much?","intent":"general_help","trade":"electrician"},
-{"id":"E026","question":"how do you fix a socket that keeps working loose in a timber wall?","intent":"general_help","trade":"electrician"},
-{"id":"E027","question":"why does voltage show on a dead cable with a non-contact tester?","intent":"general_help","trade":"electrician"},
-{"id":"E028","question":"how do you find a broken ring circuit joint?","intent":"general_help","trade":"electrician"},
-{"id":"E029","question":"why do smart switches sometimes lose connection after a power cut?","intent":"general_help","trade":"electrician"},
-{"id":"E030","question":"how do you decide cable routes around steel framing?","intent":"general_help","trade":"electrician"},
-{"id":"E031","question":"why does the metre box buzz loudly at random times?","intent":"general_help","trade":"electrician"},
-{"id":"E032","question":"how do you label a messy old switchboard properly?","intent":"general_help","trade":"electrician"},
-{"id":"E033","question":"why do fluorescent fittings struggle to start on cold mornings?","intent":"general_help","trade":"electrician"},
-{"id":"E034","question":"how do you secure conduits on an exposed block wall so they look tidy?","intent":"general_help","trade":"electrician"},
-{"id":"E035","question":"why do some cheap dimmers kill LEDs quickly?","intent":"general_help","trade":"electrician"},
-{"id":"E036","question":"how do you test a ceiling rose loop-in without getting lost?","intent":"general_help","trade":"electrician"},
-{"id":"E037","question":"why does the customer's computer reboot when a pump starts?","intent":"general_help","trade":"electrician"},
-{"id":"E038","question":"how do you find which light cable goes to which room in a bundle?","intent":"general_help","trade":"electrician"},
-{"id":"E039","question":"why does the EV charger trip randomly at night?","intent":"general_help","trade":"electrician"},
-{"id":"E040","question":"how do you decide when to run a separate circuit instead of piggybacking?","intent":"general_help","trade":"electrician"},
-{"id":"E041","question":"why does a socket arc when you plug big tools in?","intent":"general_help","trade":"electrician"},
-{"id":"E042","question":"how do you tidy a spaghetti switchboard from older add-ons?","intent":"general_help","trade":"electrician"},
-{"id":"E043","question":"why does the bathroom fan keep running after the light is off?","intent":"general_help","trade":"electrician"},
-{"id":"E044","question":"how do you run cables through a tight steel purlin safely?","intent":"general_help","trade":"electrician"},
-{"id":"E045","question":"why does the neighbour's welding cause lights to flicker?","intent":"general_help","trade":"electrician"},
-{"id":"E046","question":"how do you mount outdoor sockets so water doesn't sit in them?","intent":"general_help","trade":"electrician"},
-{"id":"E047","question":"why does the hot water cylinder trip the RCD occasionally?","intent":"general_help","trade":"electrician"},
-{"id":"E048","question":"how do you test earth continuity on metal conduit runs?","intent":"general_help","trade":"electrician"},
-{"id":"E049","question":"why does the customer feel tingles off a metal sink sometimes?","intent":"general_help","trade":"electrician"},
-{"id":"E050","question":"how do you choose between RCBOs and RCD + MCB setup?","intent":"general_help","trade":"electrician"},
-{"id":"E051","question":"why do outside power points fill with ants and bugs?","intent":"general_help","trade":"electrician"},
-{"id":"E052","question":"how do you make an old surface-mount job look less rough?","intent":"general_help","trade":"electrician"},
-{"id":"E053","question":"why does a long extension lead get so warm on site?","intent":"general_help","trade":"electrician"},
-{"id":"E054","question":"how do you stop apprentices from over-stripping conductors?","intent":"general_help","trade":"electrician"},
-{"id":"E055","question":"why does the RCD only trip when the dryer and toaster are on together?","intent":"general_help","trade":"electrician"},
-{"id":"E056","question":"how do you test for a borrowed neutral in lighting circuits?","intent":"general_help","trade":"electrician"},
-{"id":"E057","question":"why is the neutral bar overloaded with too many conductors?","intent":"general_help","trade":"electrician"},
-{"id":"E058","question":"how do you phase out old fittings while keeping the lights on?","intent":"general_help","trade":"electrician"},
-{"id":"E059","question":"why does cable insulation feel sticky in older houses?","intent":"general_help","trade":"electrician"},
-{"id":"E060","question":"how do you work out load when clients add appliances after the fact?","intent":"general_help","trade":"electrician"},
-{"id":"E061","question":"why do garden lights keep filling with water?","intent":"general_help","trade":"electrician"},
-{"id":"E062","question":"how do you decide where to put external junction boxes?","intent":"general_help","trade":"electrician"},
-{"id":"E063","question":"why does the switchboard hum louder at certain times of day?","intent":"general_help","trade":"electrician"},
-{"id":"E064","question":"how do you trace an underground cable without a plan?","intent":"general_help","trade":"electrician"},
-{"id":"E065","question":"why does the garage door opener mess with other circuits?","intent":"general_help","trade":"electrician"},
-{"id":"E066","question":"how do you run cables neatly in exposed rafters?","intent":"general_help","trade":"electrician"},
-{"id":"E067","question":"why does the surge protector trip but breakers stay on?","intent":"general_help","trade":"electrician"},
-{"id":"E068","question":"how do you find the source of a low-level earth leakage?","intent":"general_help","trade":"electrician"},
-{"id":"E069","question":"why do some LEDs glow when tested with a megger?","intent":"general_help","trade":"electrician"},
-{"id":"E070","question":"how do you stop cable damage when other trades work nearby?","intent":"general_help","trade":"electrician"},
-{"id":"E071","question":"why does the customer's TV lose signal when lights are switched?","intent":"general_help","trade":"electrician"},
-{"id":"E072","question":"how do you deal with clients wanting power points everywhere?","intent":"general_help","trade":"electrician"},
-{"id":"E073","question":"why does the switch arc more on inductive loads?","intent":"general_help","trade":"electrician"},
-{"id":"E074","question":"how do you decide when to upsize cable for voltage drop?","intent":"general_help","trade":"electrician"},
-{"id":"E075","question":"why do smoke alarms false alarm after painting and sanding?","intent":"general_help","trade":"electrician"},
-{"id":"E076","question":"how do you route cables around a steel portal frame?","intent":"general_help","trade":"electrician"},
-{"id":"E077","question":"why does the wholesaler push certain brands that fail quicker?","intent":"general_help","trade":"electrician"},
-{"id":"E078","question":"how do you stop apprentices mixing earth and neutral bars?","intent":"general_help","trade":"electrician"},
-{"id":"E079","question":"why do smart downlights lose pairing after power cuts?","intent":"general_help","trade":"electrician"},
-{"id":"E080","question":"how do you check if a circuit can handle an EV charger add-on?","intent":"general_help","trade":"electrician"},
-{"id":"E081","question":"why do power tools trip RCDs more on generators?","intent":"general_help","trade":"electrician"},
-{"id":"E082","question":"how do you keep switchboard wiring tidy on a rushed job?","intent":"general_help","trade":"electrician"},
-{"id":"E083","question":"why does cable insulation crack when bent in the cold?","intent":"general_help","trade":"electrician"},
-{"id":"E084","question":"how do you protect cables in a low roof space full of nails and screws?","intent":"general_help","trade":"electrician"},
-{"id":"E085","question":"why does a split load board confuse clients?","intent":"general_help","trade":"electrician"},
-{"id":"E086","question":"how do you separate lighting and power circuits in old villa rewires?","intent":"general_help","trade":"electrician"},
-{"id":"E087","question":"why do bathrooms need so many separate circuits nowadays?","intent":"general_help","trade":"electrician"},
-{"id":"E088","question":"how do you lay out switchboards so future add-ons are easier?","intent":"general_help","trade":"electrician"},
-{"id":"E089","question":"why does the pool pump cause lights to dip briefly?","intent":"general_help","trade":"electrician"},
-{"id":"E090","question":"how do you explain to clients why you can't just add more to one circuit?","intent":"general_help","trade":"electrician"},
-{"id":"E091","question":"why do underbench lights fail early in kitchens?","intent":"general_help","trade":"electrician"},
-{"id":"E092","question":"how do you route cables around ducted heat pump systems?","intent":"general_help","trade":"electrician"},
-{"id":"E093","question":"why does the house lose power when the neighbour works on their place?","intent":"general_help","trade":"electrician"},
-{"id":"E094","question":"how do you avoid nicking conductors when stripping large cables?","intent":"general_help","trade":"electrician"},
-{"id":"E095","question":"why do some fittings buzz more on dimmers than others?","intent":"general_help","trade":"electrician"},
-{"id":"E096","question":"how do you keep cable groupings from overheating in trunking?","intent":"general_help","trade":"electrician"},
-{"id":"E097","question":"why does the customer get static shocks from metal door frames?","intent":"general_help","trade":"electrician"},
-{"id":"E098","question":"how do you manage load diversity in a big reno with lots of appliances?","intent":"general_help","trade":"electrician"},
-{"id":"E099","question":"why do garden transformers burn out quite often?","intent":"general_help","trade":"electrician"},
-{"id":"E100","question":"how do you pick IP ratings for fittings in different outdoor spots?","intent":"general_help","trade":"electrician"},
-{"id":"E101","question":"why does the panel heater plug feel hot after a few hours?","intent":"general_help","trade":"electrician"},
-{"id":"E102","question":"how do you stop cables from rubbing on sharp metal edges?","intent":"general_help","trade":"electrician"},
-{"id":"E103","question":"why does the customer's wifi drop when you turn on certain lights?","intent":"general_help","trade":"electrician"},
-{"id":"E104","question":"how do you test for bad connections on a lighting circuit quickly?","intent":"general_help","trade":"electrician"},
-{"id":"E105","question":"why do halogen fittings cook the insulation around them?","intent":"general_help","trade":"electrician"},
-{"id":"E106","question":"how do you talk clients out of stupid DIY electrical ideas?","intent":"general_help","trade":"electrician"},
-{"id":"E107","question":"why does the kitchen trip more than any other area?","intent":"general_help","trade":"electrician"},
-{"id":"E108","question":"how do you plan circuit layouts on new builds so they're future proof?","intent":"general_help","trade":"electrician"},
-{"id":"E109","question":"why do long LED strip runs drop brightness at the far end?","intent":"general_help","trade":"electrician"},
-{"id":"E110","question":"how do you size drivers for mixed LED strip lengths?","intent":"general_help","trade":"electrician"},
-{"id":"E111","question":"why does the heat pump share a circuit with random sockets in old installs?","intent":"general_help","trade":"electrician"},
-{"id":"E112","question":"how do you clean up old holes and scars left by previous sparkies?","intent":"general_help","trade":"electrician"},
-{"id":"E113","question":"why does the power flicker when the fridge kicks in?","intent":"general_help","trade":"electrician"},
-{"id":"E114","question":"how do you run cables into metal switchboards without stressing them?","intent":"general_help","trade":"electrician"},
-{"id":"E115","question":"why do clients want downlights everywhere and then complain about glare?","intent":"general_help","trade":"electrician"},
-{"id":"E116","question":"how do you lay out a house lighting plan that feels calm, not harsh?","intent":"general_help","trade":"electrician"},
-{"id":"E117","question":"why do USB sockets fail faster than standard outlets?","intent":"general_help","trade":"electrician"},
-{"id":"E118","question":"how do you test which device on a circuit has the earth fault?","intent":"general_help","trade":"electrician"},
-{"id":"E119","question":"why does the garage circuit pop when a welder is used?","intent":"general_help","trade":"electrician"},
-{"id":"E120","question":"how do you choose cable entry points to keep water out of enclosures?","intent":"general_help","trade":"electrician"},
-{"id":"E121","question":"why does the switchboard smell hot but nothing trips?","intent":"general_help","trade":"electrician"},
-{"id":"E122","question":"how do you handle cracked old porcelain fittings safely?","intent":"general_help","trade":"electrician"},
-{"id":"E123","question":"why do some appliances trip only on cold, damp mornings?","intent":"general_help","trade":"electrician"},
-{"id":"E124","question":"how do you plan circuits in tiny homes where clients want everything?","intent":"general_help","trade":"electrician"},
-{"id":"E125","question":"why does a drill sometimes shock you lightly through the handle?","intent":"general_help","trade":"electrician"},
-{"id":"E126","question":"how do you keep apprentices from mixing up switched and permanent actives?","intent":"general_help","trade":"electrician"},
-{"id":"E127","question":"why do certain cheap power boards rattle inside?","intent":"general_help","trade":"electrician"},
-{"id":"E128","question":"how do you confirm your tester is reading right before fault finding?","intent":"general_help","trade":"electrician"},
-{"id":"E129","question":"why do some clients complain of 'dirty power' after solar installs?","intent":"general_help","trade":"electrician"},
-{"id":"E130","question":"how do you lay out circuits when future solar and battery are planned?","intent":"general_help","trade":"electrician"},
-{"id":"E131","question":"why do some older aluminium cables give trouble at terminations?","intent":"general_help","trade":"electrician"},
-{"id":"E132","question":"how do you safely tighten old terminals without snapping them?","intent":"general_help","trade":"electrician"},
-{"id":"E133","question":"why do grid-tied inverters trip during brownouts?","intent":"general_help","trade":"electrician"},
-{"id":"E134","question":"how do you keep data and power separated in tight services spaces?","intent":"general_help","trade":"electrician"},
-{"id":"E135","question":"why does the client hear hum through speakers when lights are on?","intent":"general_help","trade":"electrician"},
-{"id":"E136","question":"how do you design a board layout for quick fault finding later?","intent":"general_help","trade":"electrician"},
-{"id":"E137","question":"why do customers overload kitchen benches with multi-boards?","intent":"general_help","trade":"electrician"},
-{"id":"E138","question":"how do you explain safe loading to non-technical clients?","intent":"general_help","trade":"electrician"},
-{"id":"E139","question":"why does the outdoor GPO trip only in heavy rain, not light showers?","intent":"general_help","trade":"electrician"},
-{"id":"E140","question":"how do you waterproof terminations in tough coastal sites?","intent":"general_help","trade":"electrician"},
-{"id":"E141","question":"why do attic cables get brittle faster than others?","intent":"general_help","trade":"electrician"},
-{"id":"E142","question":"how do you protect cables from rodents in roof spaces?","intent":"general_help","trade":"electrician"},
-{"id":"E143","question":"why does the customer's surge board trip during storms but nothing else?","intent":"general_help","trade":"electrician"},
-{"id":"E144","question":"how do you group circuits logically so other sparkies can follow later?","intent":"general_help","trade":"electrician"},
-{"id":"E145","question":"why do sensor lights false trigger in windy conditions?","intent":"general_help","trade":"electrician"},
-{"id":"E146","question":"how do you aim sensor lights to avoid annoying neighbours?","intent":"general_help","trade":"electrician"},
-{"id":"E147","question":"why do some bathroom fans whistle more than others?","intent":"general_help","trade":"electrician"},
-{"id":"E148","question":"how do you choose fans that won't annoy people with noise?","intent":"general_help","trade":"electrician"},
-{"id":"E149","question":"why do some kids' night lights cause buzzing at sockets?","intent":"general_help","trade":"electrician"},
-{"id":"E150","question":"how do you test sockets for heat under normal load instead of megger only?","intent":"general_help","trade":"electrician"},
-{"id":"E151","question":"why does a caravan trip house RCDs but not on site power?","intent":"general_help","trade":"electrician"},
-{"id":"E152","question":"how do you wire tiny switchboards in cabins without them looking jammed?","intent":"general_help","trade":"electrician"},
-{"id":"E153","question":"why do some LED strips change colour along the run?","intent":"general_help","trade":"electrician"},
-{"id":"E154","question":"how do you match LED strip and controller so colours stay stable?","intent":"general_help","trade":"electrician"},
-{"id":"E155","question":"why does the doorbell transformer buzz loudly sometimes?","intent":"general_help","trade":"electrician"},
-{"id":"E156","question":"how do you choose between hard-wired and plug-in for certain loads?","intent":"general_help","trade":"electrician"},
-{"id":"E157","question":"why does the house lose power briefly when big motors start on neighbouring sites?","intent":"general_help","trade":"electrician"},
-{"id":"E158","question":"how do you check if main bonds and earth stakes are actually doing their job?","intent":"general_help","trade":"electrician"},
-{"id":"E159","question":"why do some solar installs upset RCDs in the house?","intent":"general_help","trade":"electrician"},
-{"id":"E160","question":"how do you lay out boards for future battery backup circuits?","intent":"general_help","trade":"electrician"},
-{"id":"E161","question":"why does the client complain of mild shocks on metal appliances but the tester says fine?","intent":"general_help","trade":"electrician"},
-{"id":"E162","question":"how do you confirm touch voltage issues in borderline cases?","intent":"general_help","trade":"electrician"},
-{"id":"E163","question":"why do pool light transformers give trouble more often than others?","intent":"general_help","trade":"electrician"},
-{"id":"E164","question":"how do you safely fault find pool light circuits with water nearby?","intent":"general_help","trade":"electrician"},
-{"id":"E165","question":"why does the spa cause nuisance trips on some boards?","intent":"general_help","trade":"electrician"},
-{"id":"E166","question":"how do you allow for heavy spa loads when upgrading houses?","intent":"general_help","trade":"electrician"},
-{"id":"E167","question":"why do some clients insist on dimming every light and regret it later?","intent":"general_help","trade":"electrician"},
-{"id":"E168","question":"how do you design simple lighting controls that clients can actually use?","intent":"general_help","trade":"electrician"},
-{"id":"E169","question":"why does the fridge circuit sometimes share with random outlets?","intent":"general_help","trade":"electrician"},
-{"id":"E170","question":"how do you isolate and split that out cleanly on a live job?","intent":"general_help","trade":"electrician"},
-{"id":"E171","question":"why does an induction cooktop trip more than a resistive one?","intent":"general_help","trade":"electrician"},
-{"id":"E172","question":"how do you size cooktop circuits when clients pick oversize appliances?","intent":"general_help","trade":"electrician"},
-{"id":"E173","question":"why does the extractor fan circuit sometimes feed stray loads?","intent":"general_help","trade":"electrician"},
-{"id":"E174","question":"how do you tidy legacy wiring in old kitchens that have been patched many times?","intent":"general_help","trade":"electrician"},
-{"id":"E175","question":"why does the house lose lights when the mower hits an outside socket?","intent":"general_help","trade":"electrician"},
-{"id":"E176","question":"how do you protect outdoor circuits against garden damage long term?","intent":"general_help","trade":"electrician"},
-{"id":"E177","question":"why do stair lights confuse people if switching isn't laid out well?","intent":"general_help","trade":"electrician"},
-{"id":"E178","question":"how do you plan switching so movement flows naturally through a house?","intent":"general_help","trade":"electrician"},
-{"id":"E179","question":"why does the client hate big switch plates full of tiny buttons?","intent":"general_help","trade":"electrician"},
-{"id":"E180","question":"how do you keep controls simple but still flexible for future use?","intent":"general_help","trade":"electrician"},
-{"id":"E181","question":"why do garages end up with too few sockets for how people really use them?","intent":"general_help","trade":"electrician"},
-{"id":"E182","question":"how do you plan garage power with tools, chargers, and freezers in mind?","intent":"general_help","trade":"electrician"},
-{"id":"E183","question":"why do some outdoor floodlights annoy neighbours for glare and spill?","intent":"general_help","trade":"electrician"},
-{"id":"E184","question":"how do you set angles and wattage so floodlights feel tidy and not aggressive?","intent":"general_help","trade":"electrician"},
-{"id":"E185","question":"why do clients complain the house is 'too bright' after a full LED refit?","intent":"general_help","trade":"electrician"},
-{"id":"E186","question":"how do you pick colour temperature so spaces feel comfortable?","intent":"general_help","trade":"electrician"},
-{"id":"E187","question":"why do small switchboards get crowded once clients start adding toys?","intent":"general_help","trade":"electrician"},
-{"id":"E188","question":"how do you allow spare ways for realistic future growth?","intent":"general_help","trade":"electrician"},
-{"id":"E189","question":"why does every extra appliance seem to 'only need a little bit of power' in the client's mind?","intent":"general_help","trade":"electrician"},
-{"id":"E190","question":"how do you politely push back when a circuit is at its safe limit?","intent":"general_help","trade":"electrician"},
-{"id":"E191","question":"why do some clients unplug fridges to use the outlet and forget to put them back?","intent":"general_help","trade":"electrician"},
-{"id":"E192","question":"how do you design fridge circuits so that's less likely to happen?","intent":"general_help","trade":"electrician"},
-{"id":"E193","question":"why do outdoor festoon lights fail quick in coastal spots?","intent":"general_help","trade":"electrician"},
-{"id":"E194","question":"how do you pick hardware that survives near the sea?","intent":"general_help","trade":"electrician"},
-{"id":"E195","question":"why does the switch arc when switching big loads with cheap mechanisms?","intent":"general_help","trade":"electrician"},
-{"id":"E196","question":"how do you choose better quality mechanisms for high-use points?","intent":"general_help","trade":"electrician"},
-{"id":"E197","question":"why do some clients complain of headaches under certain lighting setups?","intent":"general_help","trade":"electrician"},
-{"id":"E198","question":"how do you design lighting that feels calm, not harsh or fatiguing?","intent":"general_help","trade":"electrician"},
-{"id":"E199","question":"why do retrofit jobs feel messier than clean new builds from a wiring view?","intent":"general_help","trade":"electrician"},
-{"id":"E200","question":"how do you keep your wiring standard high even when you're fixing other people's work?","intent":"general_help","trade":"electrician"}
+    {
+      "id": "E001",
+      "question": "why does the breaker keep tripping when I plug the vac in?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E002",
+      "question": "how do you figure out which breaker feeds which circuit in an old house?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E003",
+      "question": "why do LED downlights flicker when they're dimmed?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E004",
+      "question": "how do you stop a light switch from buzzing?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E005",
+      "question": "why does the RCD trip when it rains?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E006",
+      "question": "how do you find a hidden junction box in a finished ceiling?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E007",
+      "question": "why do some circuits shock a little when you touch metal parts?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E008",
+      "question": "how do you test if a neutral is shared between circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E009",
+      "question": "why do cheap LED lamps fail so fast?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E010",
+      "question": "how do you stop a ceiling fan from wobbling and humming?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E011",
+      "question": "why does a light still glow faintly after switching it off?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E012",
+      "question": "how do you find which socket is causing the earth leakage?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E013",
+      "question": "why do breakers feel warm even when nothing heavy is running?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E014",
+      "question": "how do you trace a short in a long cable run?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E015",
+      "question": "why does the dimmer get so hot on full load?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E016",
+      "question": "how do you fix a loose backbox in a gib wall?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E017",
+      "question": "why does the oven trip the RCD halfway through cooking?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E018",
+      "question": "how do you test insulation resistance on an old house circuit safely?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E019",
+      "question": "why does the main switch arc a bit when turned on?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E020",
+      "question": "how do you stop customers overloading a multi-board on site?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E021",
+      "question": "why do outside lights fail more often than inside ones?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E022",
+      "question": "how do you route cables in a tight soffit without damaging them?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E023",
+      "question": "why does the heat pump trip the breaker on startup?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E024",
+      "question": "how do you confirm polarity when colours don't match the usual scheme?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E025",
+      "question": "why does a two-way lighting circuit confuse apprentices so much?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E026",
+      "question": "how do you fix a socket that keeps working loose in a timber wall?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E027",
+      "question": "why does voltage show on a dead cable with a non-contact tester?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E028",
+      "question": "how do you find a broken ring circuit joint?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E029",
+      "question": "why do smart switches sometimes lose connection after a power cut?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E030",
+      "question": "how do you decide cable routes around steel framing?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E031",
+      "question": "why does the metre box buzz loudly at random times?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E032",
+      "question": "how do you label a messy old switchboard properly?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E033",
+      "question": "why do fluorescent fittings struggle to start on cold mornings?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E034",
+      "question": "how do you secure conduits on an exposed block wall so they look tidy?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E035",
+      "question": "why do some cheap dimmers kill LEDs quickly?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E036",
+      "question": "how do you test a ceiling rose loop-in without getting lost?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E037",
+      "question": "why does the customer's computer reboot when a pump starts?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E038",
+      "question": "how do you find which light cable goes to which room in a bundle?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E039",
+      "question": "why does the EV charger trip randomly at night?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E040",
+      "question": "how do you decide when to run a separate circuit instead of piggybacking?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E041",
+      "question": "why does a socket arc when you plug big tools in?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E042",
+      "question": "how do you tidy a spaghetti switchboard from older add-ons?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E043",
+      "question": "why does the bathroom fan keep running after the light is off?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E044",
+      "question": "how do you run cables through a tight steel purlin safely?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E045",
+      "question": "why does the neighbour's welding cause lights to flicker?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E046",
+      "question": "how do you mount outdoor sockets so water doesn't sit in them?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E047",
+      "question": "why does the hot water cylinder trip the RCD occasionally?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E048",
+      "question": "how do you test earth continuity on metal conduit runs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E049",
+      "question": "why does the customer feel tingles off a metal sink sometimes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E050",
+      "question": "how do you choose between RCBOs and RCD + MCB setup?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E051",
+      "question": "why do outside power points fill with ants and bugs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E052",
+      "question": "how do you make an old surface-mount job look less rough?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E053",
+      "question": "why does a long extension lead get so warm on site?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E054",
+      "question": "how do you stop apprentices from over-stripping conductors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E055",
+      "question": "why does the RCD only trip when the dryer and toaster are on together?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E056",
+      "question": "how do you test for a borrowed neutral in lighting circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E057",
+      "question": "why is the neutral bar overloaded with too many conductors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E058",
+      "question": "how do you phase out old fittings while keeping the lights on?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E059",
+      "question": "why does cable insulation feel sticky in older houses?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E060",
+      "question": "how do you work out load when clients add appliances after the fact?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E061",
+      "question": "why do garden lights keep filling with water?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E062",
+      "question": "how do you decide where to put external junction boxes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E063",
+      "question": "why does the switchboard hum louder at certain times of day?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E064",
+      "question": "how do you trace an underground cable without a plan?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E065",
+      "question": "why does the garage door opener mess with other circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E066",
+      "question": "how do you run cables neatly in exposed rafters?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E067",
+      "question": "why does the surge protector trip but breakers stay on?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E068",
+      "question": "how do you find the source of a low-level earth leakage?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E069",
+      "question": "why do some LEDs glow when tested with a megger?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E070",
+      "question": "how do you stop cable damage when other trades work nearby?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E071",
+      "question": "why does the customer's TV lose signal when lights are switched?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E072",
+      "question": "how do you deal with clients wanting power points everywhere?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E073",
+      "question": "why does the switch arc more on inductive loads?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E074",
+      "question": "how do you decide when to upsize cable for voltage drop?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E075",
+      "question": "why do smoke alarms false alarm after painting and sanding?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E076",
+      "question": "how do you route cables around a steel portal frame?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E077",
+      "question": "why does the wholesaler push certain brands that fail quicker?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E078",
+      "question": "how do you stop apprentices mixing earth and neutral bars?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E079",
+      "question": "why do smart downlights lose pairing after power cuts?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E080",
+      "question": "how do you check if a circuit can handle an EV charger add-on?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E081",
+      "question": "why do power tools trip RCDs more on generators?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E082",
+      "question": "how do you keep switchboard wiring tidy on a rushed job?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E083",
+      "question": "why does cable insulation crack when bent in the cold?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E084",
+      "question": "how do you protect cables in a low roof space full of nails and screws?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E085",
+      "question": "why does a split load board confuse clients?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E086",
+      "question": "how do you separate lighting and power circuits in old villa rewires?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E087",
+      "question": "why do bathrooms need so many separate circuits nowadays?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E088",
+      "question": "how do you lay out switchboards so future add-ons are easier?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E089",
+      "question": "why does the pool pump cause lights to dip briefly?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E090",
+      "question": "how do you explain to clients why you can't just add more to one circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E091",
+      "question": "why do underbench lights fail early in kitchens?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E092",
+      "question": "how do you route cables around ducted heat pump systems?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E093",
+      "question": "why does the house lose power when the neighbour works on their place?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E094",
+      "question": "how do you avoid nicking conductors when stripping large cables?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E095",
+      "question": "why do some fittings buzz more on dimmers than others?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E096",
+      "question": "how do you keep cable groupings from overheating in trunking?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E097",
+      "question": "why does the customer get static shocks from metal door frames?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E098",
+      "question": "how do you manage load diversity in a big reno with lots of appliances?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E099",
+      "question": "why do garden transformers burn out quite often?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E100",
+      "question": "how do you pick IP ratings for fittings in different outdoor spots?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E101",
+      "question": "why does the panel heater plug feel hot after a few hours?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E102",
+      "question": "how do you stop cables from rubbing on sharp metal edges?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E103",
+      "question": "why does the customer's wifi drop when you turn on certain lights?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E104",
+      "question": "how do you test for bad connections on a lighting circuit quickly?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E105",
+      "question": "why do halogen fittings cook the insulation around them?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E106",
+      "question": "how do you talk clients out of stupid DIY electrical ideas?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E107",
+      "question": "why does the kitchen trip more than any other area?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E108",
+      "question": "how do you plan circuit layouts on new builds so they're future proof?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E109",
+      "question": "why do long LED strip runs drop brightness at the far end?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E110",
+      "question": "how do you size drivers for mixed LED strip lengths?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E111",
+      "question": "why does the heat pump share a circuit with random sockets in old installs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E112",
+      "question": "how do you clean up old holes and scars left by previous sparkies?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E113",
+      "question": "why does the power flicker when the fridge kicks in?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E114",
+      "question": "how do you run cables into metal switchboards without stressing them?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E115",
+      "question": "why do clients want downlights everywhere and then complain about glare?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E116",
+      "question": "how do you lay out a house lighting plan that feels calm, not harsh?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E117",
+      "question": "why do USB sockets fail faster than standard outlets?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E118",
+      "question": "how do you test which device on a circuit has the earth fault?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E119",
+      "question": "why does the garage circuit pop when a welder is used?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E120",
+      "question": "how do you choose cable entry points to keep water out of enclosures?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E121",
+      "question": "why does the switchboard smell hot but nothing trips?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E122",
+      "question": "how do you handle cracked old porcelain fittings safely?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E123",
+      "question": "why do some appliances trip only on cold, damp mornings?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E124",
+      "question": "how do you plan circuits in tiny homes where clients want everything?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E125",
+      "question": "why does a drill sometimes shock you lightly through the handle?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E126",
+      "question": "how do you keep apprentices from mixing up switched and permanent actives?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E127",
+      "question": "why do certain cheap power boards rattle inside?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E128",
+      "question": "how do you confirm your tester is reading right before fault finding?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E129",
+      "question": "why do some clients complain of 'dirty power' after solar installs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E130",
+      "question": "how do you lay out circuits when future solar and battery are planned?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E131",
+      "question": "why do some older aluminium cables give trouble at terminations?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E132",
+      "question": "how do you safely tighten old terminals without snapping them?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E133",
+      "question": "why do grid-tied inverters trip during brownouts?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E134",
+      "question": "how do you keep data and power separated in tight services spaces?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E135",
+      "question": "why does the client hear hum through speakers when lights are on?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E136",
+      "question": "how do you design a board layout for quick fault finding later?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E137",
+      "question": "why do customers overload kitchen benches with multi-boards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E138",
+      "question": "how do you explain safe loading to non-technical clients?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E139",
+      "question": "why does the outdoor GPO trip only in heavy rain, not light showers?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E140",
+      "question": "how do you waterproof terminations in tough coastal sites?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E141",
+      "question": "why do attic cables get brittle faster than others?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E142",
+      "question": "how do you protect cables from rodents in roof spaces?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E143",
+      "question": "why does the customer's surge board trip during storms but nothing else?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E144",
+      "question": "how do you group circuits logically so other sparkies can follow later?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E145",
+      "question": "why do sensor lights false trigger in windy conditions?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E146",
+      "question": "how do you aim sensor lights to avoid annoying neighbours?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E147",
+      "question": "why do some bathroom fans whistle more than others?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E148",
+      "question": "how do you choose fans that won't annoy people with noise?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E149",
+      "question": "why do some kids' night lights cause buzzing at sockets?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E150",
+      "question": "how do you test sockets for heat under normal load instead of megger only?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E151",
+      "question": "why does a caravan trip house RCDs but not on site power?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E152",
+      "question": "how do you wire tiny switchboards in cabins without them looking jammed?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E153",
+      "question": "why do some LED strips change colour along the run?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E154",
+      "question": "how do you match LED strip and controller so colours stay stable?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E155",
+      "question": "why does the doorbell transformer buzz loudly sometimes?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E156",
+      "question": "how do you choose between hard-wired and plug-in for certain loads?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E157",
+      "question": "why does the house lose power briefly when big motors start on neighbouring sites?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E158",
+      "question": "how do you check if main bonds and earth stakes are actually doing their job?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E159",
+      "question": "why do some solar installs upset RCDs in the house?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E160",
+      "question": "how do you lay out boards for future battery backup circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E161",
+      "question": "why does the client complain of mild shocks on metal appliances but the tester says fine?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E162",
+      "question": "how do you confirm touch voltage issues in borderline cases?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E163",
+      "question": "why do pool light transformers give trouble more often than others?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E164",
+      "question": "how do you safely fault find pool light circuits with water nearby?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E165",
+      "question": "why does the spa cause nuisance trips on some boards?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E166",
+      "question": "how do you allow for heavy spa loads when upgrading houses?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E167",
+      "question": "why do some clients insist on dimming every light and regret it later?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E168",
+      "question": "how do you design simple lighting controls that clients can actually use?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E169",
+      "question": "why does the fridge circuit sometimes share with random outlets?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E170",
+      "question": "how do you isolate and split that out cleanly on a live job?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E171",
+      "question": "why does an induction cooktop trip more than a resistive one?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E172",
+      "question": "how do you size cooktop circuits when clients pick oversize appliances?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E173",
+      "question": "why does the extractor fan circuit sometimes feed stray loads?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E174",
+      "question": "how do you tidy legacy wiring in old kitchens that have been patched many times?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E175",
+      "question": "why does the house lose lights when the mower hits an outside socket?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E176",
+      "question": "how do you protect outdoor circuits against garden damage long term?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E177",
+      "question": "why do stair lights confuse people if switching isn't laid out well?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E178",
+      "question": "how do you plan switching so movement flows naturally through a house?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E179",
+      "question": "why does the client hate big switch plates full of tiny buttons?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E180",
+      "question": "how do you keep controls simple but still flexible for future use?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E181",
+      "question": "why do garages end up with too few sockets for how people really use them?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E182",
+      "question": "how do you plan garage power with tools, chargers, and freezers in mind?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E183",
+      "question": "why do some outdoor floodlights annoy neighbours for glare and spill?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E184",
+      "question": "how do you set angles and wattage so floodlights feel tidy and not aggressive?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E185",
+      "question": "why do clients complain the house is 'too bright' after a full LED refit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E186",
+      "question": "how do you pick colour temperature so spaces feel comfortable?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E187",
+      "question": "why do small switchboards get crowded once clients start adding toys?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E188",
+      "question": "how do you allow spare ways for realistic future growth?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E189",
+      "question": "why does every extra appliance seem to 'only need a little bit of power' in the client's mind?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E190",
+      "question": "how do you politely push back when a circuit is at its safe limit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E191",
+      "question": "why do some clients unplug fridges to use the outlet and forget to put them back?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E192",
+      "question": "how do you design fridge circuits so that's less likely to happen?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E193",
+      "question": "why do outdoor festoon lights fail quick in coastal spots?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E194",
+      "question": "how do you pick hardware that survives near the sea?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E195",
+      "question": "why does the switch arc when switching big loads with cheap mechanisms?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E196",
+      "question": "how do you choose better quality mechanisms for high-use points?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E197",
+      "question": "why do some clients complain of headaches under certain lighting setups?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E198",
+      "question": "how do you design lighting that feels calm, not harsh or fatiguing?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E199",
+      "question": "why do retrofit jobs feel messier than clean new builds from a wiring view?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E200",
+      "question": "how do you keep your wiring standard high even when you're fixing other people's work?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E201",
+      "question": "why does the customer get a zap touching the metal fridge door?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E202",
+      "question": "how do you identify which lighting cable is the switched active in a mess of loops?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E203",
+      "question": "why does the heat pump breaker run warm most of the day?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E204",
+      "question": "how do you add an extra two-way switch in an existing hallway circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E205",
+      "question": "why do USB power points sometimes buzz under load?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E206",
+      "question": "how do you fix a ceiling rose that sparks when the bulb is screwed in?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E207",
+      "question": "why does the neighbour's workshop machinery cause power dips?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E208",
+      "question": "how do you safely megger old lighting circuits without blowing lamps?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E209",
+      "question": "why does the outdoor socket smell like burning plastic?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E210",
+      "question": "how do you waterproof a conduit entry through a concrete wall?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E211",
+      "question": "why does the switchboard door shock people when touched?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E212",
+      "question": "how do you identify shared neutrals on multi-light circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E213",
+      "question": "why does the dishwasher trip the RCD sometimes but not always?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E214",
+      "question": "how do you route cable through an awkward steel portal intersection?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E215",
+      "question": "why does the socket spark when unplugging heaters?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E216",
+      "question": "how do you decide between looping at the rose or looping at the switch?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E217",
+      "question": "why does the outdoor light stay on all night even with a sensor?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E218",
+      "question": "how do you test sensors correctly during the day?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E219",
+      "question": "why does the bathroom mirror light hum at certain brightness levels?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E220",
+      "question": "how do you keep low voltage lighting transformers cool?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E221",
+      "question": "why do some safety switches feel loose when toggled?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E222",
+      "question": "how do you run cables on a pre-clad exterior wall without damage?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E223",
+      "question": "why does the main breaker trip only during the morning rush?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E224",
+      "question": "how do you separate loads in a house with minimal spare ways?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E225",
+      "question": "why do floodlights trip when a cat runs past the sensor?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E226",
+      "question": "how do you find buried garden circuits once landscaping is done?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E227",
+      "question": "why do ceiling fans buzz after switching to LED lamps?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E228",
+      "question": "how do you stabilise a loose ceiling fan on a thin batten?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E229",
+      "question": "why does the bathroom extractor stop working after heavy showers?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E230",
+      "question": "how do you decide proper ventilation controls for wet areas?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E231",
+      "question": "why do solar installers leave messy wiring near the isolator?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E232",
+      "question": "how do you clean up a poor solar install without breaching warranty?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E233",
+      "question": "why does smart home lighting lose WiFi connection randomly?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E234",
+      "question": "how do you stop flicker in long RGB strip runs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E235",
+      "question": "why do hallway downlights flash after being switched off?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E236",
+      "question": "how do you fix LED backfeed glow from pilot lamps?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E237",
+      "question": "why does a touch dimmer activate on its own?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E238",
+      "question": "how do you isolate capacitive coupling issues in older houses?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E239",
+      "question": "why do outdoor LED strips fail in cold weather?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E240",
+      "question": "how do you seal LED strip runs for high moisture areas?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E241",
+      "question": "why do freezers trip occasionally on older circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E242",
+      "question": "how do you identify which appliance causes nuisance tripping?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E243",
+      "question": "why does the garage GPO feel warm even when unused?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E244",
+      "question": "how do you secure loose conduits that move in the wind?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E245",
+      "question": "why does the smart meter flash fault codes at night only?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E246",
+      "question": "how do you fix low voltage issues at the end of a long driveway?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E247",
+      "question": "why do some downlights constantly fail on one particular circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E248",
+      "question": "how do you find a hidden junction in a finished tiled bathroom?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E249",
+      "question": "why does the dimmer stay warm even when nothing is on?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E250",
+      "question": "how do you test for neutral breakdown inside walls?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E251",
+      "question": "why do ovens cause brief brownouts when cycling heat?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E252",
+      "question": "how do you test cooktop circuits for loose terminations safely?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E253",
+      "question": "why do outdoor outlets corrode quickly at beach houses?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E254",
+      "question": "how do you prevent moisture ingress in exposed exterior fittings?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E255",
+      "question": "why do long cable runs buzz under high load?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E256",
+      "question": "how do you measure voltage drop on parallel circuit paths?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E257",
+      "question": "why do certain chargers cause socket arcing?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E258",
+      "question": "how do you avoid damaging insulation when pulling cables through insulation?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E259",
+      "question": "why does the heat pump drip breaker sometimes fail in winter?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E260",
+      "question": "how do you calculate diversity on large multi-appliance households?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E261",
+      "question": "why does the customer see sparks when flicking the porch light?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E262",
+      "question": "how do you determine correct IP rating for coastal front doors?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E263",
+      "question": "why do some power tools cause RCD nuisance tripping on certain sites?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E264",
+      "question": "how do you tell if a downstream device is backfeeding voltage?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E265",
+      "question": "why do fridge compressors make boards hum?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E266",
+      "question": "how do you diagnose induction noise from appliances on shared circuits?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E267",
+      "question": "why does the customer's electric gate cause interference inside the house?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E268",
+      "question": "how do you route power for driveway gates safely?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E269",
+      "question": "why does the hot water cylinder breaker smell?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E270",
+      "question": "how do you confirm element faults on hot water cylinders?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E271",
+      "question": "why do solar inverters reboot randomly under cloud cover?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E272",
+      "question": "how do you design boards to include future solar expansion?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E273",
+      "question": "why do dimmers cut out on long lighting runs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E274",
+      "question": "how do you size dimmers for large open plan areas?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E275",
+      "question": "why does the EV charger require its own dedicated circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E276",
+      "question": "how do you confirm whether a house can support a 32A EV charger?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E277",
+      "question": "why do builders cut cables hidden in walls without checking?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E278",
+      "question": "how do you protect your wiring from other trades on site?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E279",
+      "question": "why does the garage RCD trip only when the roller door moves?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E280",
+      "question": "how do you test interference from motor loads in garages?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E281",
+      "question": "why does the customer get a shock leaning on metal outdoor railings?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E282",
+      "question": "how do you diagnose stray voltage on metal structures?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E283",
+      "question": "why do RGB strips flicker when other appliances switch?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E284",
+      "question": "how do you isolate switching interference in lighting systems?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E285",
+      "question": "why do certain appliances buzz when other loads start?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E286",
+      "question": "how do you check harmonic distortion on mixed loads?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E287",
+      "question": "why does the bathroom GPO trip the entire lighting circuit?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E288",
+      "question": "how do you separate lighting and GPO circuits cleanly on old villas?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E289",
+      "question": "why do office clients complain of screen flicker even with new LEDs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E290",
+      "question": "how do you test flicker frequency safely?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E291",
+      "question": "why does the meter enclosure get warm even with no load?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E292",
+      "question": "how do you check main conductors for internal resistance breakdown?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E293",
+      "question": "why does a light go dim when another one is turned on?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E294",
+      "question": "how do you test loop impedance on circuits with mystery connections?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E295",
+      "question": "why does the dishwasher cause the lights to flicker?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E296",
+      "question": "how do you diagnose load dips on old consumer mains?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E297",
+      "question": "why do attic cables run hotter than cables in walls?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E298",
+      "question": "how do you derate cables for attic installs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E299",
+      "question": "why does the long hallway light flicker after hours of use?",
+      "intent": "general_help",
+      "trade": "electrician"
+    },
+    {
+      "id": "E300",
+      "question": "how do you check voltage drop on long switched active runs?",
+      "intent": "general_help",
+      "trade": "electrician"
+    }
   ]
 }
