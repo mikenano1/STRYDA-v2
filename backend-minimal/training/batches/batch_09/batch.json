@@ -3,205 +3,2405 @@
   "category": "Interior Linings & Passive Fire",
   "status": "ready",
   "items": [
-{"id":"I001","question":"What causes GIB joints to hairline crack after painting?","intent":"general_help","trade":"interior_linings"},
-{"id":"I002","question":"Why do cornice lines shadow in certain light?","intent":"general_help","trade":"interior_linings"},
-{"id":"I003","question":"What makes ceiling sheets sag between joists?","intent":"general_help","trade":"interior_linings"},
-{"id":"I004","question":"What causes screw pops in new GIB installs?","intent":"general_help","trade":"interior_linings"},
-{"id":"I005","question":"Why do plastered joins flash under LED lights?","intent":"general_help","trade":"interior_linings"},
-{"id":"I006","question":"What makes internal corners crack even after tape?","intent":"general_help","trade":"interior_linings"},
-{"id":"I007","question":"Why do board edges swell after one wet day?","intent":"general_help","trade":"interior_linings"},
-{"id":"I008","question":"What causes hollow-sounding spots when tapping walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I009","question":"Why does ceiling compound shrink back overnight?","intent":"general_help","trade":"interior_linings"},
-{"id":"I010","question":"What makes paint bubble over stopped joints?","intent":"general_help","trade":"interior_linings"},
-{"id":"I011","question":"How do you fix a bowed GIB lining?","intent":"general_help","trade":"interior_linings"},
-{"id":"I012","question":"How do you reset a corner bead that sits proud?","intent":"general_help","trade":"interior_linings"},
-{"id":"I013","question":"How do you pack out a wall before re-lining?","intent":"general_help","trade":"interior_linings"},
-{"id":"I014","question":"How do you fix GIB that's cracked around a door frame?","intent":"general_help","trade":"interior_linings"},
-{"id":"I015","question":"How do you reattach sagging ceiling sheets?","intent":"general_help","trade":"interior_linings"},
-{"id":"I016","question":"How do you tidy a butt joint that keeps flashing?","intent":"general_help","trade":"interior_linings"},
-{"id":"I017","question":"How do you correct a wavy stopping line?","intent":"general_help","trade":"interior_linings"},
-{"id":"I018","question":"How do you re-fix GIB on misaligned battens?","intent":"general_help","trade":"interior_linings"},
-{"id":"I019","question":"How do you straighten internal corners before plastering?","intent":"general_help","trade":"interior_linings"},
-{"id":"I020","question":"How do you repair crushed sheet edges?","intent":"general_help","trade":"interior_linings"},
-{"id":"I021","question":"What GIB thickness is required for wet areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I022","question":"What spacing is allowed between fixing screws?","intent":"general_help","trade":"interior_linings"},
-{"id":"I023","question":"What clearance is needed at sheet bottoms?","intent":"general_help","trade":"interior_linings"},
-{"id":"I024","question":"What FRR applies to inter-tenancy walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I025","question":"What penetration rules apply for pipework?","intent":"general_help","trade":"interior_linings"},
-{"id":"I026","question":"What's allowed for recessed lights in fire-rated ceilings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I027","question":"What gaps can be left at perimeter joints?","intent":"general_help","trade":"interior_linings"},
-{"id":"I028","question":"What fixing pattern is required for ceilings in high wind zones?","intent":"general_help","trade":"interior_linings"},
-{"id":"I029","question":"When must GIB Aqualine be used?","intent":"general_help","trade":"interior_linings"},
-{"id":"I030","question":"How should control joints be placed for large ceilings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I031","question":"How do you fix lining around a crooked window frame?","intent":"general_help","trade":"interior_linings"},
-{"id":"I032","question":"What do you do when insulation bulges out at the lining?","intent":"general_help","trade":"interior_linings"},
-{"id":"I033","question":"How do you sort a ceiling that dips at mid-span?","intent":"general_help","trade":"interior_linings"},
-{"id":"I034","question":"How do you fix bowed studs before lining?","intent":"general_help","trade":"interior_linings"},
-{"id":"I035","question":"How do you fit GIB around last-minute service penetrations?","intent":"general_help","trade":"interior_linings"},
-{"id":"I036","question":"How do you handle walls where plasterboard meets LVL?","intent":"general_help","trade":"interior_linings"},
-{"id":"I037","question":"How do you reline after discovering damp insulation?","intent":"general_help","trade":"interior_linings"},
-{"id":"I038","question":"How do you patch GIB damaged by electricians?","intent":"general_help","trade":"interior_linings"},
-{"id":"I039","question":"How do you deal with uneven nog spacing on ceilings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I040","question":"How do you adjust stopping when walls aren't square?","intent":"general_help","trade":"interior_linings"},
-{"id":"I041","question":"What GIB works best in sauna or steam areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I042","question":"What lining suits high-impact commercial zones?","intent":"general_help","trade":"interior_linings"},
-{"id":"I043","question":"What compounds work best for first coats?","intent":"general_help","trade":"interior_linings"},
-{"id":"I044","question":"What stopping system gives clean shadow lines?","intent":"general_help","trade":"interior_linings"},
-{"id":"I045","question":"What boards resist screw pops long-term?","intent":"general_help","trade":"interior_linings"},
-{"id":"I046","question":"What insulation is best behind fire-rated wall systems?","intent":"general_help","trade":"interior_linings"},
-{"id":"I047","question":"What fire mastic works best around small penetrations?","intent":"general_help","trade":"interior_linings"},
-{"id":"I048","question":"What trims suit level-5 finish walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I049","question":"What boards are best for curved walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I050","question":"What sealers prevent flash-through on joins?","intent":"general_help","trade":"interior_linings"},
-{"id":"I051","question":"Why do stopped joins flash under grazing light?","intent":"general_help","trade":"interior_linings"},
-{"id":"I052","question":"Why do corner beads rust on coastal homes?","intent":"general_help","trade":"interior_linings"},
-{"id":"I053","question":"Why does GIB warp after storing flat?","intent":"general_help","trade":"interior_linings"},
-{"id":"I054","question":"Why does plaster crack at ceiling-to-wall junctions?","intent":"general_help","trade":"interior_linings"},
-{"id":"I055","question":"Why does mould appear behind linings in winter?","intent":"general_help","trade":"interior_linings"},
-{"id":"I056","question":"Why does paint peel from stopped joins?","intent":"general_help","trade":"interior_linings"},
-{"id":"I057","question":"Why does framing movement show through GIB?","intent":"general_help","trade":"interior_linings"},
-{"id":"I058","question":"Why do screws pop after first coat?","intent":"general_help","trade":"interior_linings"},
-{"id":"I059","question":"Why do internal corners slump after sanding?","intent":"general_help","trade":"interior_linings"},
-{"id":"I060","question":"Why does fire mastic pull away from penetrations?","intent":"general_help","trade":"interior_linings"},
-{"id":"I061","question":"How do you fix bent furring channels?","intent":"general_help","trade":"interior_linings"},
-{"id":"I062","question":"How do you line over uneven concrete block walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I063","question":"How do you repair a damaged control joint?","intent":"general_help","trade":"interior_linings"},
-{"id":"I064","question":"How do you install GIB on a ceiling with low pitch?","intent":"general_help","trade":"interior_linings"},
-{"id":"I065","question":"How do you correct a bowed window reveal?","intent":"general_help","trade":"interior_linings"},
-{"id":"I066","question":"How do you fix lining where the plumber's pipe is too close?","intent":"general_help","trade":"interior_linings"},
-{"id":"I067","question":"How do you patch large holes without sagging?","intent":"general_help","trade":"interior_linings"},
-{"id":"I068","question":"How do you repair bulging joins after drying?","intent":"general_help","trade":"interior_linings"},
-{"id":"I069","question":"How do you re-stop a wall that keeps flashing lines?","intent":"general_help","trade":"interior_linings"},
-{"id":"I070","question":"How do you secure linings when studs are out of spec?","intent":"general_help","trade":"interior_linings"},
-{"id":"I071","question":"What FRR applies to apartment corridors?","intent":"general_help","trade":"interior_linings"},
-{"id":"I072","question":"What's required for fire-rated shaft walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I073","question":"What rules apply to penetrations in inter-tenancy ceilings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I074","question":"What systems meet 30-minute FRR for small residential units?","intent":"general_help","trade":"interior_linings"},
-{"id":"I075","question":"What are the requirements for fire collars around PVC pipe?","intent":"general_help","trade":"interior_linings"},
-{"id":"I076","question":"What clearances are needed for fire-rated downlights?","intent":"general_help","trade":"interior_linings"},
-{"id":"I077","question":"What fire sealants handle movement best?","intent":"general_help","trade":"interior_linings"},
-{"id":"I078","question":"What rules apply for service risers in acoustic/fire walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I079","question":"What insulation types are acceptable in fire-rated walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I080","question":"What's required to keep FRR when adding new penetrations?","intent":"general_help","trade":"interior_linings"},
-{"id":"I081","question":"How do you adjust linings when steel studs twist?","intent":"general_help","trade":"interior_linings"},
-{"id":"I082","question":"How do you straighten walls that bow behind GIB?","intent":"general_help","trade":"interior_linings"},
-{"id":"I083","question":"How do you hide join lines in raked ceilings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I084","question":"How do you cut boards neatly around ventilation grilles?","intent":"general_help","trade":"interior_linings"},
-{"id":"I085","question":"How do you reline after fire damage?","intent":"general_help","trade":"interior_linings"},
-{"id":"I086","question":"How do you stop cracking on tall feature walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I087","question":"How do you re-fix backing blocks behind weak areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I088","question":"How do you handle GIB installations during cold weather?","intent":"general_help","trade":"interior_linings"},
-{"id":"I089","question":"How do you deal with compound drying unevenly?","intent":"general_help","trade":"interior_linings"},
-{"id":"I090","question":"How do you re-stop screw heads that reappear?","intent":"general_help","trade":"interior_linings"},
-{"id":"I091","question":"What plasterboard works best for hospitals?","intent":"general_help","trade":"interior_linings"},
-{"id":"I092","question":"What trims are used for clean negative corners?","intent":"general_help","trade":"interior_linings"},
-{"id":"I093","question":"What insulation pairs well with Fyreline systems?","intent":"general_help","trade":"interior_linings"},
-{"id":"I094","question":"What acoustic board suits inter-tenancy work?","intent":"general_help","trade":"interior_linings"},
-{"id":"I095","question":"What vapour barrier is needed for cold zones?","intent":"general_help","trade":"interior_linings"},
-{"id":"I096","question":"What mastic resists smoke migration?","intent":"general_help","trade":"interior_linings"},
-{"id":"I097","question":"What fire board suits commercial kitchens?","intent":"general_help","trade":"interior_linings"},
-{"id":"I098","question":"What underlay goes under tiled wet-area linings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I099","question":"What fasteners suit metal furring channels?","intent":"general_help","trade":"interior_linings"},
-{"id":"I100","question":"What high-build primers are best for level-5 finishing?","intent":"general_help","trade":"interior_linings"},
-{"id":"I101","question":"Why does GIB bow after being left in plastic wrap?","intent":"general_help","trade":"interior_linings"},
-{"id":"I102","question":"Why do screw heads telegraph through paint?","intent":"general_help","trade":"interior_linings"},
-{"id":"I103","question":"Why do internal corners shrink after drying?","intent":"general_help","trade":"interior_linings"},
-{"id":"I104","question":"Why does mould appear behind wet-area linings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I105","question":"Why do walls sound hollow when knocked?","intent":"general_help","trade":"interior_linings"},
-{"id":"I106","question":"Why does insulation slump behind tall walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I107","question":"Why do fire wraps loosen over time?","intent":"general_help","trade":"interior_linings"},
-{"id":"I108","question":"Why does smoke staining appear around light fittings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I109","question":"Why does compound dry patchy in cold rooms?","intent":"general_help","trade":"interior_linings"},
-{"id":"I110","question":"Why do windows show wavy shadow lines on linings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I111","question":"How do you fix a bowed ceiling grid?","intent":"general_help","trade":"interior_linings"},
-{"id":"I112","question":"How do you reline around large structural beams?","intent":"general_help","trade":"interior_linings"},
-{"id":"I113","question":"How do you fix linings where the frame steps in and out?","intent":"general_help","trade":"interior_linings"},
-{"id":"I114","question":"How do you repair GIB broken at edges?","intent":"general_help","trade":"interior_linings"},
-{"id":"I115","question":"How do you manage compound that keeps crazing?","intent":"general_help","trade":"interior_linings"},
-{"id":"I116","question":"How do you re-fix sagging GIB in garages?","intent":"general_help","trade":"interior_linings"},
-{"id":"I117","question":"How do you handle ceilings when trusses have dipped?","intent":"general_help","trade":"interior_linings"},
-{"id":"I118","question":"How do you adjust linings for oversized window reveals?","intent":"general_help","trade":"interior_linings"},
-{"id":"I119","question":"How do you work around penetrations too close to studs?","intent":"general_help","trade":"interior_linings"},
-{"id":"I120","question":"How do you fix sheets that don't meet cleanly at mid-span?","intent":"general_help","trade":"interior_linings"},
-{"id":"I121","question":"What FRR systems allow penetrations for HVAC?","intent":"general_help","trade":"interior_linings"},
-{"id":"I122","question":"What are the fire rules for recessed meter boxes?","intent":"general_help","trade":"interior_linings"},
-{"id":"I123","question":"What's required for GIB on protected escape routes?","intent":"general_help","trade":"interior_linings"},
-{"id":"I124","question":"What FRR applies to stairwell linings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I125","question":"What fire sealants suit large annular gaps?","intent":"general_help","trade":"interior_linings"},
-{"id":"I126","question":"What's allowed for suspended ceilings in fire-rated areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I127","question":"What fire-rated duct wraps comply with NZ standards?","intent":"general_help","trade":"interior_linings"},
-{"id":"I128","question":"What rules cover cable trays passing through fire walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I129","question":"What fire systems work for tall shaft walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I130","question":"What's required to keep FRR when retrofitting plumbing?","intent":"general_help","trade":"interior_linings"},
-{"id":"I131","question":"How do you pack out walls to straighten linings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I132","question":"How do you handle compound shrinkage on big ceilings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I133","question":"How do you fix warped metal studs?","intent":"general_help","trade":"interior_linings"},
-{"id":"I134","question":"How do you sort squeaking linings after install?","intent":"general_help","trade":"interior_linings"},
-{"id":"I135","question":"How do you fill wide gaps on uneven frames?","intent":"general_help","trade":"interior_linings"},
-{"id":"I136","question":"How do you fix popped corner beads?","intent":"general_help","trade":"interior_linings"},
-{"id":"I137","question":"How do you re-stop after movement cracks?","intent":"general_help","trade":"interior_linings"},
-{"id":"I138","question":"How do you correct bowed reveals?","intent":"general_help","trade":"interior_linings"},
-{"id":"I139","question":"How do you patch ceiling holes around downlights?","intent":"general_help","trade":"interior_linings"},
-{"id":"I140","question":"How do you cover mistakes from over-sanding?","intent":"general_help","trade":"interior_linings"},
-{"id":"I141","question":"What lining handles high acoustic requirements?","intent":"general_help","trade":"interior_linings"},
-{"id":"I142","question":"What plasterboard suits curved soffits?","intent":"general_help","trade":"interior_linings"},
-{"id":"I143","question":"What trims give crisp detailing on exposed junctions?","intent":"general_help","trade":"interior_linings"},
-{"id":"I144","question":"What glue works best for GIB to concrete walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I145","question":"What boards suit high humidity in laundries?","intent":"general_help","trade":"interior_linings"},
-{"id":"I146","question":"What vapour barriers suit cold southern regions?","intent":"general_help","trade":"interior_linings"},
-{"id":"I147","question":"What fire boards handle grease-laden ductwork?","intent":"general_help","trade":"interior_linings"},
-{"id":"I148","question":"What compounds avoid shadow lines on long walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I149","question":"What insulation suits deep cavity walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I150","question":"What corner beads work best with level-5 stops?","intent":"general_help","trade":"interior_linings"},
-{"id":"I151","question":"Why do ceilings bow after insulation is added?","intent":"general_help","trade":"interior_linings"},
-{"id":"I152","question":"Why do negative details collect dust lines?","intent":"general_help","trade":"interior_linings"},
-{"id":"I153","question":"Why does fire mastic crack near hot water pipes?","intent":"general_help","trade":"interior_linings"},
-{"id":"I154","question":"Why does paint look patchy over repaired areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I155","question":"Why do stopped joins expand in hot weather?","intent":"general_help","trade":"interior_linings"},
-{"id":"I156","question":"Why does GIB dent easily in high-use areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I157","question":"Why does compound dry too fast in summer?","intent":"general_help","trade":"interior_linings"},
-{"id":"I158","question":"Why do studs telegraph lines through the paint?","intent":"general_help","trade":"interior_linings"},
-{"id":"I159","question":"Why do fire collars split under heat cycles?","intent":"general_help","trade":"interior_linings"},
-{"id":"I160","question":"Why do ceiling joins sag under lights?","intent":"general_help","trade":"interior_linings"},
-{"id":"I161","question":"How do you back-block ceilings properly?","intent":"general_help","trade":"interior_linings"},
-{"id":"I162","question":"How do you repair bowed GIB after framing shrinkage?","intent":"general_help","trade":"interior_linings"},
-{"id":"I163","question":"How do you maintain straight joins on long hallways?","intent":"general_help","trade":"interior_linings"},
-{"id":"I164","question":"How do you adjust for off-centre downlight holes?","intent":"general_help","trade":"interior_linings"},
-{"id":"I165","question":"How do you avoid cracking on tall staircase walls?","intent":"general_help","trade":"interior_linings"},
-{"id":"I166","question":"How do you reinstall linings after plumber changes pipe layout?","intent":"general_help","trade":"interior_linings"},
-{"id":"I167","question":"How do you correct a sagging garage ceiling?","intent":"general_help","trade":"interior_linings"},
-{"id":"I168","question":"How do you deal with linings that butt into warped beams?","intent":"general_help","trade":"interior_linings"},
-{"id":"I169","question":"How do you tidy joins caused by uneven framing?","intent":"general_help","trade":"interior_linings"},
-{"id":"I170","question":"How do you secure linings on steel channels?","intent":"general_help","trade":"interior_linings"},
-{"id":"I171","question":"What system meets FRR for lift lobbies?","intent":"general_help","trade":"interior_linings"},
-{"id":"I172","question":"What products meet smoke control requirements?","intent":"general_help","trade":"interior_linings"},
-{"id":"I173","question":"What fire wraps work for steel pipe penetrations?","intent":"general_help","trade":"interior_linings"},
-{"id":"I174","question":"What acoustic/fire combo boards suit apartments?","intent":"general_help","trade":"interior_linings"},
-{"id":"I175","question":"What mastic handles movement near seismic joints?","intent":"general_help","trade":"interior_linings"},
-{"id":"I176","question":"What duct systems comply in fire-rated risers?","intent":"general_help","trade":"interior_linings"},
-{"id":"I177","question":"What boards meet XPS-compatible fire ratings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I178","question":"What hat channels suit fire-rated ceilings?","intent":"general_help","trade":"interior_linings"},
-{"id":"I179","question":"What collar types suit mixed-material pipe penetrations?","intent":"general_help","trade":"interior_linings"},
-{"id":"I180","question":"What compound suits level-5 walls in sun-heavy areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I181","question":"Why do compound ridges show after sanding?","intent":"general_help","trade":"interior_linings"},
-{"id":"I182","question":"Why do boards swell near wet-area floors?","intent":"general_help","trade":"interior_linings"},
-{"id":"I183","question":"Why does GIB crack at door heads?","intent":"general_help","trade":"interior_linings"},
-{"id":"I184","question":"Why does fire wrap sag around ducts?","intent":"general_help","trade":"interior_linings"},
-{"id":"I185","question":"Why do screws tear paper on install?","intent":"general_help","trade":"interior_linings"},
-{"id":"I186","question":"Why does mould appear behind fridge alcoves?","intent":"general_help","trade":"interior_linings"},
-{"id":"I187","question":"Why does paint flash where studs are closer?","intent":"general_help","trade":"interior_linings"},
-{"id":"I188","question":"Why do walls sound hollow after retrofitting?","intent":"general_help","trade":"interior_linings"},
-{"id":"I189","question":"Why does mastic shrink at large gaps?","intent":"general_help","trade":"interior_linings"},
-{"id":"I190","question":"Why do ceiling joins telegraph under LED lights?","intent":"general_help","trade":"interior_linings"},
-{"id":"I191","question":"How do you straighten a bowed ceiling batten?","intent":"general_help","trade":"interior_linings"},
-{"id":"I192","question":"How do you reline walls damaged from leaks?","intent":"general_help","trade":"interior_linings"},
-{"id":"I193","question":"How do you correct over-sanded joints?","intent":"general_help","trade":"interior_linings"},
-{"id":"I194","question":"How do you deal with GIB meeting blockwork?","intent":"general_help","trade":"interior_linings"},
-{"id":"I195","question":"How do you patch GIB where trusses moved?","intent":"general_help","trade":"interior_linings"},
-{"id":"I196","question":"How do you fit linings around large service ducts?","intent":"general_help","trade":"interior_linings"},
-{"id":"I197","question":"How do you secure boards when studs are spaced wide?","intent":"general_help","trade":"interior_linings"},
-{"id":"I198","question":"How do you restore level-5 finish after patching?","intent":"general_help","trade":"interior_linings"},
-{"id":"I199","question":"How do you seal gaps behind linings in windy areas?","intent":"general_help","trade":"interior_linings"},
-{"id":"I200","question":"How do you fix cracks around skylight shafts?","intent":"general_help","trade":"interior_linings"}
+    {
+      "id": "I001",
+      "question": "What causes GIB joints to hairline crack after painting?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I002",
+      "question": "Why do cornice lines shadow in certain light?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I003",
+      "question": "What makes ceiling sheets sag between joists?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I004",
+      "question": "What causes screw pops in new GIB installs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I005",
+      "question": "Why do plastered joins flash under LED lights?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I006",
+      "question": "What makes internal corners crack even after tape?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I007",
+      "question": "Why do board edges swell after one wet day?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I008",
+      "question": "What causes hollow-sounding spots when tapping walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I009",
+      "question": "Why does ceiling compound shrink back overnight?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I010",
+      "question": "What makes paint bubble over stopped joints?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I011",
+      "question": "How do you fix a bowed GIB lining?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I012",
+      "question": "How do you reset a corner bead that sits proud?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I013",
+      "question": "How do you pack out a wall before re-lining?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I014",
+      "question": "How do you fix GIB that's cracked around a door frame?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I015",
+      "question": "How do you reattach sagging ceiling sheets?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I016",
+      "question": "How do you tidy a butt joint that keeps flashing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I017",
+      "question": "How do you correct a wavy stopping line?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I018",
+      "question": "How do you re-fix GIB on misaligned battens?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I019",
+      "question": "How do you straighten internal corners before plastering?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I020",
+      "question": "How do you repair crushed sheet edges?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I021",
+      "question": "What GIB thickness is required for wet areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I022",
+      "question": "What spacing is allowed between fixing screws?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I023",
+      "question": "What clearance is needed at sheet bottoms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I024",
+      "question": "What FRR applies to inter-tenancy walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I025",
+      "question": "What penetration rules apply for pipework?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I026",
+      "question": "What's allowed for recessed lights in fire-rated ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I027",
+      "question": "What gaps can be left at perimeter joints?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I028",
+      "question": "What fixing pattern is required for ceilings in high wind zones?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I029",
+      "question": "When must GIB Aqualine be used?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I030",
+      "question": "How should control joints be placed for large ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I031",
+      "question": "How do you fix lining around a crooked window frame?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I032",
+      "question": "What do you do when insulation bulges out at the lining?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I033",
+      "question": "How do you sort a ceiling that dips at mid-span?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I034",
+      "question": "How do you fix bowed studs before lining?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I035",
+      "question": "How do you fit GIB around last-minute service penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I036",
+      "question": "How do you handle walls where plasterboard meets LVL?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I037",
+      "question": "How do you reline after discovering damp insulation?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I038",
+      "question": "How do you patch GIB damaged by electricians?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I039",
+      "question": "How do you deal with uneven nog spacing on ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I040",
+      "question": "How do you adjust stopping when walls aren't square?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I041",
+      "question": "What GIB works best in sauna or steam areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I042",
+      "question": "What lining suits high-impact commercial zones?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I043",
+      "question": "What compounds work best for first coats?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I044",
+      "question": "What stopping system gives clean shadow lines?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I045",
+      "question": "What boards resist screw pops long-term?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I046",
+      "question": "What insulation is best behind fire-rated wall systems?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I047",
+      "question": "What fire mastic works best around small penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I048",
+      "question": "What trims suit level-5 finish walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I049",
+      "question": "What boards are best for curved walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I050",
+      "question": "What sealers prevent flash-through on joins?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I051",
+      "question": "Why do stopped joins flash under grazing light?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I052",
+      "question": "Why do corner beads rust on coastal homes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I053",
+      "question": "Why does GIB warp after storing flat?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I054",
+      "question": "Why does plaster crack at ceiling-to-wall junctions?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I055",
+      "question": "Why does mould appear behind linings in winter?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I056",
+      "question": "Why does paint peel from stopped joins?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I057",
+      "question": "Why does framing movement show through GIB?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I058",
+      "question": "Why do screws pop after first coat?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I059",
+      "question": "Why do internal corners slump after sanding?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I060",
+      "question": "Why does fire mastic pull away from penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I061",
+      "question": "How do you fix bent furring channels?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I062",
+      "question": "How do you line over uneven concrete block walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I063",
+      "question": "How do you repair a damaged control joint?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I064",
+      "question": "How do you install GIB on a ceiling with low pitch?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I065",
+      "question": "How do you correct a bowed window reveal?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I066",
+      "question": "How do you fix lining where the plumber's pipe is too close?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I067",
+      "question": "How do you patch large holes without sagging?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I068",
+      "question": "How do you repair bulging joins after drying?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I069",
+      "question": "How do you re-stop a wall that keeps flashing lines?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I070",
+      "question": "How do you secure linings when studs are out of spec?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I071",
+      "question": "What FRR applies to apartment corridors?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I072",
+      "question": "What's required for fire-rated shaft walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I073",
+      "question": "What rules apply to penetrations in inter-tenancy ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I074",
+      "question": "What systems meet 30-minute FRR for small residential units?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I075",
+      "question": "What are the requirements for fire collars around PVC pipe?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I076",
+      "question": "What clearances are needed for fire-rated downlights?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I077",
+      "question": "What fire sealants handle movement best?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I078",
+      "question": "What rules apply for service risers in acoustic/fire walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I079",
+      "question": "What insulation types are acceptable in fire-rated walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I080",
+      "question": "What's required to keep FRR when adding new penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I081",
+      "question": "How do you adjust linings when steel studs twist?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I082",
+      "question": "How do you straighten walls that bow behind GIB?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I083",
+      "question": "How do you hide join lines in raked ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I084",
+      "question": "How do you cut boards neatly around ventilation grilles?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I085",
+      "question": "How do you reline after fire damage?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I086",
+      "question": "How do you stop cracking on tall feature walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I087",
+      "question": "How do you re-fix backing blocks behind weak areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I088",
+      "question": "How do you handle GIB installations during cold weather?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I089",
+      "question": "How do you deal with compound drying unevenly?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I090",
+      "question": "How do you re-stop screw heads that reappear?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I091",
+      "question": "What plasterboard works best for hospitals?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I092",
+      "question": "What trims are used for clean negative corners?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I093",
+      "question": "What insulation pairs well with Fyreline systems?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I094",
+      "question": "What acoustic board suits inter-tenancy work?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I095",
+      "question": "What vapour barrier is needed for cold zones?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I096",
+      "question": "What mastic resists smoke migration?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I097",
+      "question": "What fire board suits commercial kitchens?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I098",
+      "question": "What underlay goes under tiled wet-area linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I099",
+      "question": "What fasteners suit metal furring channels?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I100",
+      "question": "What high-build primers are best for level-5 finishing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I101",
+      "question": "Why does GIB bow after being left in plastic wrap?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I102",
+      "question": "Why do screw heads telegraph through paint?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I103",
+      "question": "Why do internal corners shrink after drying?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I104",
+      "question": "Why does mould appear behind wet-area linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I105",
+      "question": "Why do walls sound hollow when knocked?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I106",
+      "question": "Why does insulation slump behind tall walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I107",
+      "question": "Why do fire wraps loosen over time?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I108",
+      "question": "Why does smoke staining appear around light fittings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I109",
+      "question": "Why does compound dry patchy in cold rooms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I110",
+      "question": "Why do windows show wavy shadow lines on linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I111",
+      "question": "How do you fix a bowed ceiling grid?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I112",
+      "question": "How do you reline around large structural beams?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I113",
+      "question": "How do you fix linings where the frame steps in and out?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I114",
+      "question": "How do you repair GIB broken at edges?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I115",
+      "question": "How do you manage compound that keeps crazing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I116",
+      "question": "How do you re-fix sagging GIB in garages?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I117",
+      "question": "How do you handle ceilings when trusses have dipped?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I118",
+      "question": "How do you adjust linings for oversized window reveals?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I119",
+      "question": "How do you work around penetrations too close to studs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I120",
+      "question": "How do you fix sheets that don't meet cleanly at mid-span?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I121",
+      "question": "What FRR systems allow penetrations for HVAC?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I122",
+      "question": "What are the fire rules for recessed meter boxes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I123",
+      "question": "What's required for GIB on protected escape routes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I124",
+      "question": "What FRR applies to stairwell linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I125",
+      "question": "What fire sealants suit large annular gaps?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I126",
+      "question": "What's allowed for suspended ceilings in fire-rated areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I127",
+      "question": "What fire-rated duct wraps comply with NZ standards?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I128",
+      "question": "What rules cover cable trays passing through fire walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I129",
+      "question": "What fire systems work for tall shaft walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I130",
+      "question": "What's required to keep FRR when retrofitting plumbing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I131",
+      "question": "How do you pack out walls to straighten linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I132",
+      "question": "How do you handle compound shrinkage on big ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I133",
+      "question": "How do you fix warped metal studs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I134",
+      "question": "How do you sort squeaking linings after install?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I135",
+      "question": "How do you fill wide gaps on uneven frames?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I136",
+      "question": "How do you fix popped corner beads?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I137",
+      "question": "How do you re-stop after movement cracks?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I138",
+      "question": "How do you correct bowed reveals?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I139",
+      "question": "How do you patch ceiling holes around downlights?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I140",
+      "question": "How do you cover mistakes from over-sanding?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I141",
+      "question": "What lining handles high acoustic requirements?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I142",
+      "question": "What plasterboard suits curved soffits?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I143",
+      "question": "What trims give crisp detailing on exposed junctions?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I144",
+      "question": "What glue works best for GIB to concrete walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I145",
+      "question": "What boards suit high humidity in laundries?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I146",
+      "question": "What vapour barriers suit cold southern regions?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I147",
+      "question": "What fire boards handle grease-laden ductwork?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I148",
+      "question": "What compounds avoid shadow lines on long walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I149",
+      "question": "What insulation suits deep cavity walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I150",
+      "question": "What corner beads work best with level-5 stops?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I151",
+      "question": "Why do ceilings bow after insulation is added?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I152",
+      "question": "Why do negative details collect dust lines?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I153",
+      "question": "Why does fire mastic crack near hot water pipes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I154",
+      "question": "Why does paint look patchy over repaired areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I155",
+      "question": "Why do stopped joins expand in hot weather?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I156",
+      "question": "Why does GIB dent easily in high-use areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I157",
+      "question": "Why does compound dry too fast in summer?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I158",
+      "question": "Why do studs telegraph lines through the paint?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I159",
+      "question": "Why do fire collars split under heat cycles?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I160",
+      "question": "Why do ceiling joins sag under lights?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I161",
+      "question": "How do you back-block ceilings properly?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I162",
+      "question": "How do you repair bowed GIB after framing shrinkage?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I163",
+      "question": "How do you maintain straight joins on long hallways?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I164",
+      "question": "How do you adjust for off-centre downlight holes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I165",
+      "question": "How do you avoid cracking on tall staircase walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I166",
+      "question": "How do you reinstall linings after plumber changes pipe layout?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I167",
+      "question": "How do you correct a sagging garage ceiling?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I168",
+      "question": "How do you deal with linings that butt into warped beams?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I169",
+      "question": "How do you tidy joins caused by uneven framing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I170",
+      "question": "How do you secure linings on steel channels?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I171",
+      "question": "What system meets FRR for lift lobbies?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I172",
+      "question": "What products meet smoke control requirements?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I173",
+      "question": "What fire wraps work for steel pipe penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I174",
+      "question": "What acoustic/fire combo boards suit apartments?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I175",
+      "question": "What mastic handles movement near seismic joints?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I176",
+      "question": "What duct systems comply in fire-rated risers?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I177",
+      "question": "What boards meet XPS-compatible fire ratings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I178",
+      "question": "What hat channels suit fire-rated ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I179",
+      "question": "What collar types suit mixed-material pipe penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I180",
+      "question": "What compound suits level-5 walls in sun-heavy areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I181",
+      "question": "Why do compound ridges show after sanding?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I182",
+      "question": "Why do boards swell near wet-area floors?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I183",
+      "question": "Why does GIB crack at door heads?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I184",
+      "question": "Why does fire wrap sag around ducts?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I185",
+      "question": "Why do screws tear paper on install?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I186",
+      "question": "Why does mould appear behind fridge alcoves?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I187",
+      "question": "Why does paint flash where studs are closer?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I188",
+      "question": "Why do walls sound hollow after retrofitting?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I189",
+      "question": "Why does mastic shrink at large gaps?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I190",
+      "question": "Why do ceiling joins telegraph under LED lights?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I191",
+      "question": "How do you straighten a bowed ceiling batten?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I192",
+      "question": "How do you reline walls damaged from leaks?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I193",
+      "question": "How do you correct over-sanded joints?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I194",
+      "question": "How do you deal with GIB meeting blockwork?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I195",
+      "question": "How do you patch GIB where trusses moved?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I196",
+      "question": "How do you fit linings around large service ducts?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I197",
+      "question": "How do you secure boards when studs are spaced wide?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I198",
+      "question": "How do you restore level-5 finish after patching?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I199",
+      "question": "How do you seal gaps behind linings in windy areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I200",
+      "question": "How do you fix cracks around skylight shafts?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I201",
+      "question": "What causes ceiling boards to show wavy lines?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I202",
+      "question": "Why do GIB joins crack after two seasons?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I203",
+      "question": "What makes corner beads detach from walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I204",
+      "question": "Why does plaster bubble around screw heads?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I205",
+      "question": "Why are shadow lines uneven on high walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I206",
+      "question": "What causes dried compound to turn patchy?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I207",
+      "question": "Why does mould appear behind wardrobes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I208",
+      "question": "Why do inter-tenancy walls echo noise?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I209",
+      "question": "Why do pipes sweat behind bathroom linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I210",
+      "question": "Why do fire collars sag after heat cycles?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I211",
+      "question": "How do you straighten a bowed hallway wall?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I212",
+      "question": "How do you pack out linings on wonky studs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I213",
+      "question": "How do you fix a ceiling joint that won't sit flat?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I214",
+      "question": "How do you tidy a broken sheet edge at mid-wall?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I215",
+      "question": "How do you repair compound blowouts?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I216",
+      "question": "How do you reline walls with uneven nogs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I217",
+      "question": "How do you patch a cracked skylight shaft lining?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I218",
+      "question": "How do you reinforce linings behind TV brackets?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I219",
+      "question": "How do you back-block joints in raked ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I220",
+      "question": "How do you fix popping screws behind tiled walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I221",
+      "question": "What lining thickness suits garage ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I222",
+      "question": "What screw spacing is required for double-layer GIB?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I223",
+      "question": "What clearance is allowed at sheet perimeter?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I224",
+      "question": "What FRR applies to risers in townhouses?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I225",
+      "question": "What are the rules for fire stopping cable bundles?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I226",
+      "question": "What linings are allowed over insulated concrete forms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I227",
+      "question": "What penetrations are allowed in fire-rated soffits?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I228",
+      "question": "What GIB systems suit 60-minute FRR walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I229",
+      "question": "What fire sealants suit large pipe holes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I230",
+      "question": "What requirements apply for smoke-rated corridors?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I231",
+      "question": "How do you fix GIB around bowed trusses?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I232",
+      "question": "How do you adjust lining around uneven windows?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I233",
+      "question": "How do you fix walls where the substrate steps?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I234",
+      "question": "How do you deal with wall framing that twists?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I235",
+      "question": "How do you tidy penetrations made too big?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I236",
+      "question": "How do you reframe small areas behind linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I237",
+      "question": "How do you repair cracked internal corners?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I238",
+      "question": "How do you fix over-stopped joints?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I239",
+      "question": "How do you redo linings that were glued crooked?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I240",
+      "question": "How do you compensate for sagging mid studs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I241",
+      "question": "What GIB suits high-moisture laundries?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I242",
+      "question": "What mastic is best for acoustic-rated penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I243",
+      "question": "What insulation goes in double-lined fire walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I244",
+      "question": "What trims work with recessed shadow lines?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I245",
+      "question": "What primers work best on repaired GIB?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I246",
+      "question": "What FRR boards suit multi-storey units?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I247",
+      "question": "What backing board suits tiled shower linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I248",
+      "question": "What finish coats help hide grazing light?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I249",
+      "question": "What sealants work on mixed steel/plaster penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I250",
+      "question": "What boards suit heavy-duty garage walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I251",
+      "question": "Why do plaster cracks appear around doors?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I252",
+      "question": "Why does insulation bulge through linings over time?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I253",
+      "question": "Why does GIB bend when humidity changes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I254",
+      "question": "Why do LED lights show joint imperfections?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I255",
+      "question": "Why does mould grow behind wardrobes on outside walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I256",
+      "question": "Why do screw heads show through after painting?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I257",
+      "question": "Why does paint flash differently across repairs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I258",
+      "question": "Why do stud lines show through when heating runs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I259",
+      "question": "Why do fire wraps loosen after vibration?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I260",
+      "question": "Why does compound shrink around corner trims?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I261",
+      "question": "How do you fix sagging plasterboard around HVAC penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I262",
+      "question": "How do you reline walls around warped steel studs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I263",
+      "question": "How do you tidy up GIB cut too short at the floor?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I264",
+      "question": "How do you repair cracked skylight shaft corners?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I265",
+      "question": "How do you fix plastered joins that won't stop flashing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I266",
+      "question": "How do you install linings on wavy concrete?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I267",
+      "question": "How do you correct bowed furring channels?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I268",
+      "question": "How do you fill large gaps in uneven framing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I269",
+      "question": "How do you stop screw pops in garage ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I270",
+      "question": "How do you re-set trims that warped after painting?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I271",
+      "question": "What FRR system suits lightweight framing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I272",
+      "question": "What systems allow penetrations in rated corridors?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I273",
+      "question": "What collar types are needed for mixed pipe materials?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I274",
+      "question": "What FRR applies to carpark-to-unit separations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I275",
+      "question": "What duct wraps suit commercial kitchens?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I276",
+      "question": "What fire boards work with acoustic insulation?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I277",
+      "question": "What fire-rated tapes suit vertical penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I278",
+      "question": "What systems meet FRR on timber floors?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I279",
+      "question": "What sealants suit seismic-gap penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I280",
+      "question": "What rules apply to furring channels in fire-rated walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I281",
+      "question": "How do you fix plasterboard on bowed masonry?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I282",
+      "question": "How do you stop cracking where ceilings meet feature walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I283",
+      "question": "How do you fix linings on walls with warped studs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I284",
+      "question": "How do you deal with back-blocked joins that still show?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I285",
+      "question": "How do you repair broken reveals?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I286",
+      "question": "How do you tidy a GIB butt join on a curved wall?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I287",
+      "question": "How do you fix compound blistering on ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I288",
+      "question": "How do you keep ceilings flat when trusses move?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I289",
+      "question": "How do you reline a wall with damp insulation?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I290",
+      "question": "How do you fix patch lines that keep flashing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I291",
+      "question": "What boards work for extra-tall ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I292",
+      "question": "What vapour control layers suit cold climates?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I293",
+      "question": "What trims give crisp finish on recessed features?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I294",
+      "question": "What compounds are best for first-time stoppers?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I295",
+      "question": "What fire boards work on multi-unit ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I296",
+      "question": "What glue works on concrete block walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I297",
+      "question": "What insulation suits garage ceilings with living above?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I298",
+      "question": "What moisture barriers fit behind tiled bathrooms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I299",
+      "question": "What boards suit acoustic cinema rooms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I300",
+      "question": "What underlay suits overlay laminate behind walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I301",
+      "question": "Why do tall walls bow after lining?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I302",
+      "question": "Why does mould appear behind wet-area GIB?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I303",
+      "question": "Why does paint flash across wide repairs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I304",
+      "question": "Why do joints crack when houses settle?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I305",
+      "question": "Why do ceilings shift after heating is installed?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I306",
+      "question": "Why do fire collars split around copper pipes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I307",
+      "question": "Why does compound dry uneven on cold days?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I308",
+      "question": "Why does sound travel through GIB walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I309",
+      "question": "Why do reveals warp after plastering?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I310",
+      "question": "Why do control joints crack despite correct spacing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I311",
+      "question": "How do you straighten linings after frame shrinkage?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I312",
+      "question": "How do you rehang GIB in garages with heavy sag?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I313",
+      "question": "How do you fix walls when battens don't line up?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I314",
+      "question": "How do you patch fire-rated walls without losing FRR?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I315",
+      "question": "How do you repair cracked returns around windows?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I316",
+      "question": "How do you correct boards installed too tight?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I317",
+      "question": "How do you re-stop joins after humidity changes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I318",
+      "question": "How do you fix bowed skylight shafts?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I319",
+      "question": "How do you handle linings near hot water pipes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I320",
+      "question": "How do you stop cracked joins under skylight wells?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I321",
+      "question": "What FRR applies to internal escape paths?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I322",
+      "question": "What systems suit fire-rated lift shafts?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I323",
+      "question": "What boards meet acoustic + fire combo ratings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I324",
+      "question": "What duct wraps resist oil and grease?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I325",
+      "question": "What are the rules for penetrations in rated ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I326",
+      "question": "What collar systems suit cast-iron pipes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I327",
+      "question": "What mastic handles movement around HVAC ducts?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I328",
+      "question": "What FRR walls allow double-stud framing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I329",
+      "question": "What tapes suit penetrations through rigid barriers?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I330",
+      "question": "What systems keep FRR when adding new cabling?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I331",
+      "question": "Why does compound \"ghost\" after first coat?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I332",
+      "question": "Why do screw heads lift in winter?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I333",
+      "question": "Why does mould appear at the base of wall linings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I334",
+      "question": "Why does plaster bubble around corner beads?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I335",
+      "question": "Why do fire wraps sag near fittings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I336",
+      "question": "Why does insulation slump behind tall walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I337",
+      "question": "Why do paint edges feather badly over compound?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I338",
+      "question": "Why do reveals shift after settling?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I339",
+      "question": "Why do control joints highlight after painting?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I340",
+      "question": "Why do fire-rated walls feel hollow after drilling?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I341",
+      "question": "How do you adjust lining over bowed joists?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I342",
+      "question": "How do you reline around misaligned beams?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I343",
+      "question": "How do you fix ceiling boards lifting at mid-span?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I344",
+      "question": "How do you reattach plasterboard that lost adhesion?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I345",
+      "question": "How do you fix GIB that's been damp?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I346",
+      "question": "How do you straighten corners that open up?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I347",
+      "question": "How do you re-stop walls after framing movement?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I348",
+      "question": "How do you handle uneven joints on long high walls?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I349",
+      "question": "How do you strengthen boards near doorframes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I350",
+      "question": "How do you patch ceilings where fans were removed?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I351",
+      "question": "What boards suit feature walls needing level-5?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I352",
+      "question": "What trims help hide movement gaps?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I353",
+      "question": "What primers reduce flashing over stops?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I354",
+      "question": "What fire boards suit compressed construction zones?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I355",
+      "question": "What tapes work under high humidity?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I356",
+      "question": "What compounds resist cracking under load?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I357",
+      "question": "What plasterboard suits home gyms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I358",
+      "question": "What vapour barriers suit poorly insulated homes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I359",
+      "question": "What insulation suits tight acoustic framing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I360",
+      "question": "What corner beads suit modern square-edge finishing?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I361",
+      "question": "Why do joints fail where beams and GIB meet?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I362",
+      "question": "Why does compound sink when coats are rushed?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I363",
+      "question": "Why do tall ceilings show every imperfection?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I364",
+      "question": "Why does plaster crack along backing blocks?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I365",
+      "question": "Why does fire mastic shrink away from pipes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I366",
+      "question": "Why do high-sun rooms highlight stopping defects?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I367",
+      "question": "Why do ceilings sag after storms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I368",
+      "question": "Why does mould grow behind fridge cavities?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I369",
+      "question": "Why do studs telegraph when heating cycles start?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I370",
+      "question": "Why do walls drum when hit near joins?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I371",
+      "question": "How do you reline around ducting changes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I372",
+      "question": "How do you fix sagging GIB in older homes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I373",
+      "question": "How do you repair wavy ceiling lines?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I374",
+      "question": "How do you straighten warped reveals?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I375",
+      "question": "How do you patch around new downlight holes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I376",
+      "question": "How do you correct cracked skylight tunnels?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I377",
+      "question": "How do you stop joins spanning between uneven studs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I378",
+      "question": "How do you reinforce walls for heavy cabinetry?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I379",
+      "question": "How do you tidy GIB after moisture repairs?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I380",
+      "question": "How do you reline ceilings with truss uplift?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I381",
+      "question": "What airflow is needed behind fire wraps?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I382",
+      "question": "What FRR systems handle large pipe penetrations?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I383",
+      "question": "What boards work for acoustic control in multi-units?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I384",
+      "question": "What duct wraps prevent smoke migration?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I385",
+      "question": "What sealing compounds are fire-rated?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I386",
+      "question": "What trims work for floating ceiling systems?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I387",
+      "question": "What insulation suits long ceiling spans?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I388",
+      "question": "What linings suit commercial hallways?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I389",
+      "question": "What fire collars suit high-temp pipes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I390",
+      "question": "What systems meet FRR for suspended ceilings?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I391",
+      "question": "Why do cracks appear after heating cycles?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I392",
+      "question": "Why does compound ridge under LED lighting?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I393",
+      "question": "Why do corners bulge after drying?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I394",
+      "question": "Why does mastic dry brittle near warm pipes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I395",
+      "question": "Why do boards warp in unventilated rooms?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I396",
+      "question": "Why does mould form behind wardrobes?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I397",
+      "question": "Why do ceiling joins buckle under roof load?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I398",
+      "question": "Why do pipes sweat behind linings in winter?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I399",
+      "question": "Why does paint flash across large GIB areas?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    },
+    {
+      "id": "I400",
+      "question": "Why do reveals look twisted under bright light?",
+      "intent": "general_help",
+      "trade": "interior_linings"
+    }
   ]
 }
