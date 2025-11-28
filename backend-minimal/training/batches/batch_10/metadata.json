@@ -2,8 +2,9 @@
   "batch_id": "batch_10",
   "category": "Joinery / Windows / Doors",
   "created_at": null,
-  "ingested_at": null,
-  "total_items": 0,
+  "ingested_at": "2025-11-28T19:11:14.868614",
+  "total_items": 200,
   "embedding_model": "text-embedding-3-small",
-  "validation_status": "pending"
+  "validation_status": "complete",
+  "failed_items": 0
 }
