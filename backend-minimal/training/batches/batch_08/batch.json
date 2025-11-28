@@ -3,205 +3,2405 @@
   "category": "Cladding & Facades",
   "status": "ready",
   "items": [
-{"id":"C001","question":"What causes sheet cladding to bulge after a wet week?","intent":"general_help","trade":"cladding"},
-{"id":"C002","question":"Why does paint keep cracking along the horizontal joints?","intent":"general_help","trade":"cladding"},
-{"id":"C003","question":"What usually leads to dark staining under aluminium joinery?","intent":"general_help","trade":"cladding"},
-{"id":"C004","question":"What makes fibre cement sheets delaminate in coastal spots?","intent":"general_help","trade":"cladding"},
-{"id":"C005","question":"Why does timber weatherboard cupping get worse in winter?","intent":"general_help","trade":"cladding"},
-{"id":"C006","question":"How do you tell if cladding movement is from framing moisture?","intent":"general_help","trade":"cladding"},
-{"id":"C007","question":"What makes certain boards bow away from studs?","intent":"general_help","trade":"cladding"},
-{"id":"C008","question":"Why do some joints open up even when sealed?","intent":"general_help","trade":"cladding"},
-{"id":"C009","question":"What causes water track lines under face-fixed sheets?","intent":"general_help","trade":"cladding"},
-{"id":"C010","question":"What signs point to early cladding fastener corrosion?","intent":"general_help","trade":"cladding"},
-{"id":"C011","question":"What makes plaster cladding hairline crack around corners?","intent":"general_help","trade":"cladding"},
-{"id":"C012","question":"Why does flashings tape peel back on north-facing walls?","intent":"general_help","trade":"cladding"},
-{"id":"C013","question":"What causes swollen spot defects in composite panels?","intent":"general_help","trade":"cladding"},
-{"id":"C014","question":"Why would a new paint system bubble on fibre cement?","intent":"general_help","trade":"cladding"},
-{"id":"C015","question":"What causes random blister patches under membrane facades?","intent":"general_help","trade":"cladding"},
-{"id":"C016","question":"Why do corner soakers sometimes trap water instead of draining?","intent":"general_help","trade":"cladding"},
-{"id":"C017","question":"Why does the cavity accumulate debris after strong wind?","intent":"general_help","trade":"cladding"},
-{"id":"C018","question":"What causes damp patches on internal linings behind clad walls?","intent":"general_help","trade":"cladding"},
-{"id":"C019","question":"Why does mould show near bottom plates behind cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C020","question":"What makes certain cladding systems rattle in high wind?","intent":"general_help","trade":"cladding"},
-{"id":"C021","question":"How do you fix bowed weatherboards mid-run?","intent":"general_help","trade":"cladding"},
-{"id":"C022","question":"What's the best approach for overdriven cladding nails?","intent":"general_help","trade":"cladding"},
-{"id":"C023","question":"How do you correct misaligned sheet joins on a long elevation?","intent":"general_help","trade":"cladding"},
-{"id":"C024","question":"How should you reattach boards that pulled off studs?","intent":"general_help","trade":"cladding"},
-{"id":"C025","question":"What's the right method to lift a board to close a 3mm gap?","intent":"general_help","trade":"cladding"},
-{"id":"C026","question":"How do you repair cracked fibre cement sheet edges?","intent":"general_help","trade":"cladding"},
-{"id":"C027","question":"What's the correct method to replace a failed flashing end?","intent":"general_help","trade":"cladding"},
-{"id":"C028","question":"How do you reset a cavity batten that's come loose?","intent":"general_help","trade":"cladding"},
-{"id":"C029","question":"How do you tidy up uneven window scribers after install?","intent":"general_help","trade":"cladding"},
-{"id":"C030","question":"How do you fix a board that's been nailed without packing?","intent":"general_help","trade":"cladding"},
-{"id":"C031","question":"How do you correct stepped joints between two cladding planes?","intent":"general_help","trade":"cladding"},
-{"id":"C032","question":"How do you realign warped aluminium planks?","intent":"general_help","trade":"cladding"},
-{"id":"C033","question":"How do you repair chips in prefinished metal cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C034","question":"How to handle a sheet that's cut too tight against a corner?","intent":"general_help","trade":"cladding"},
-{"id":"C035","question":"What's the fix if the cavity is blocked by insulation bulge?","intent":"general_help","trade":"cladding"},
-{"id":"C036","question":"What's the tidy way to refit corners after backing strips fail?","intent":"general_help","trade":"cladding"},
-{"id":"C037","question":"How do you reflash a head flashing with poor fall?","intent":"general_help","trade":"cladding"},
-{"id":"C038","question":"How do you replace a bottom plate flashing without removing full wall?","intent":"general_help","trade":"cladding"},
-{"id":"C039","question":"What's the best fix for compression cracks in plaster coat?","intent":"general_help","trade":"cladding"},
-{"id":"C040","question":"How do you re-secure battens behind a partially installed wall?","intent":"general_help","trade":"cladding"},
-{"id":"C041","question":"What clearance is needed between cladding and paving?","intent":"general_help","trade":"cladding"},
-{"id":"C042","question":"What gap is needed behind fibre cement sheets for cavity airflow?","intent":"general_help","trade":"cladding"},
-{"id":"C043","question":"When do you need horizontal cavity battens?","intent":"general_help","trade":"cladding"},
-{"id":"C044","question":"What's the correct overlap for bevel-back weatherboards?","intent":"general_help","trade":"cladding"},
-{"id":"C045","question":"What slope is required on head flashings?","intent":"general_help","trade":"cladding"},
-{"id":"C046","question":"What fixings work for metal cladding in Extra High wind zones?","intent":"general_help","trade":"cladding"},
-{"id":"C047","question":"What's the right embed depth for window flashing tapes?","intent":"general_help","trade":"cladding"},
-{"id":"C048","question":"How much expansion gap is needed on long composite panels?","intent":"general_help","trade":"cladding"},
-{"id":"C049","question":"What fire rules apply to multi-storey cladding replacements?","intent":"general_help","trade":"cladding"},
-{"id":"C050","question":"What's the correct distance between fixings on sheet edges?","intent":"general_help","trade":"cladding"},
-{"id":"C051","question":"How do you keep E2/AS1 compliance when mixing systems?","intent":"general_help","trade":"cladding"},
-{"id":"C052","question":"What clearance is required to ground for risk zone areas?","intent":"general_help","trade":"cladding"},
-{"id":"C053","question":"What are the rules around drained vs vented cavities?","intent":"general_help","trade":"cladding"},
-{"id":"C054","question":"How do you stay compliant when fixing over rigid air barriers?","intent":"general_help","trade":"cladding"},
-{"id":"C055","question":"What's the max joint width before flashing instead of sealant?","intent":"general_help","trade":"cladding"},
-{"id":"C056","question":"When do you need backflashings at inter-storey junctions?","intent":"general_help","trade":"cladding"},
-{"id":"C057","question":"What spacing rules apply for vertical shiplap in high wind areas?","intent":"general_help","trade":"cladding"},
-{"id":"C058","question":"What's required to keep the weathertightness around meter boxes?","intent":"general_help","trade":"cladding"},
-{"id":"C059","question":"What are the fire spread rules for cladding in townhouse boundaries?","intent":"general_help","trade":"cladding"},
-{"id":"C060","question":"What E2 requirements apply to parapet cap flashing over cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C061","question":"How do you fix cladding if the frame is 10mm out of plumb?","intent":"general_help","trade":"cladding"},
-{"id":"C062","question":"What do you do when windows arrive 8mm smaller than planned?","intent":"general_help","trade":"cladding"},
-{"id":"C063","question":"How do you work around a bowed bottom plate causing gaps?","intent":"general_help","trade":"cladding"},
-{"id":"C064","question":"What's the approach when cavity battens clash with services?","intent":"general_help","trade":"cladding"},
-{"id":"C065","question":"How do you adjust cladding around a crooked corner line?","intent":"general_help","trade":"cladding"},
-{"id":"C066","question":"What do you do when scaffold ties damage installed boards?","intent":"general_help","trade":"cladding"},
-{"id":"C067","question":"How do you re-clad walls where insulation got saturated?","intent":"general_help","trade":"cladding"},
-{"id":"C068","question":"How do you correct flashing installed before the wrap?","intent":"general_help","trade":"cladding"},
-{"id":"C069","question":"What's the workaround for cladding that doesn't lap cleanly on rake walls?","intent":"general_help","trade":"cladding"},
-{"id":"C070","question":"How do you manage cladding around awkward downpipe routes?","intent":"general_help","trade":"cladding"},
-{"id":"C071","question":"How do you tidy cladding after the roofer alters apron flashings?","intent":"general_help","trade":"cladding"},
-{"id":"C072","question":"What's the fix when joinery fins were compressed during install?","intent":"general_help","trade":"cladding"},
-{"id":"C073","question":"How do you work around a wrap that tore behind the cavity?","intent":"general_help","trade":"cladding"},
-{"id":"C074","question":"How do you handle cladding sequencing when scaffold removal is booked early?","intent":"general_help","trade":"cladding"},
-{"id":"C075","question":"How do you reset the starter strip when the slab pour varied?","intent":"general_help","trade":"cladding"},
-{"id":"C076","question":"What do you do when battens twist after exposure to rain?","intent":"general_help","trade":"cladding"},
-{"id":"C077","question":"How can you correct bowed vertical panels mid-rise?","intent":"general_help","trade":"cladding"},
-{"id":"C078","question":"How do you temporarily weatherproof a partially clad elevation?","intent":"general_help","trade":"cladding"},
-{"id":"C079","question":"What's the fix when the cavity vermin strip doesn't sit flat?","intent":"general_help","trade":"cladding"},
-{"id":"C080","question":"How do you reclad a wall after discovering framing decay?","intent":"general_help","trade":"cladding"},
-{"id":"C081","question":"What's the best fibre cement brand for coastal builds?","intent":"general_help","trade":"cladding"},
-{"id":"C082","question":"What causes blackening on cedar weatherboards?","intent":"general_help","trade":"cladding"},
-{"id":"C083","question":"What's the difference between pre-primed vs site-primed boards?","intent":"general_help","trade":"cladding"},
-{"id":"C084","question":"How do composite cladding panels behave in heat?","intent":"general_help","trade":"cladding"},
-{"id":"C085","question":"What timber profile suits tight architectural lines?","intent":"general_help","trade":"cladding"},
-{"id":"C086","question":"What underlays pair best with ventilated cladding systems?","intent":"general_help","trade":"cladding"},
-{"id":"C087","question":"What coating lasts longest on rough-sawn facings?","intent":"general_help","trade":"cladding"},
-{"id":"C088","question":"What fixing type works best with aluminium plank systems?","intent":"general_help","trade":"cladding"},
-{"id":"C089","question":"What sealants stick well to fibre cement edges?","intent":"general_help","trade":"cladding"},
-{"id":"C090","question":"How do you pick battens that won't warp behind the cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C091","question":"What underlay is best for Extra High wind zones?","intent":"general_help","trade":"cladding"},
-{"id":"C092","question":"What products resist coastal corrosion the best?","intent":"general_help","trade":"cladding"},
-{"id":"C093","question":"What type of flashing suits deep-reveal joinery?","intent":"general_help","trade":"cladding"},
-{"id":"C094","question":"What paint holds up best on north-west walls?","intent":"general_help","trade":"cladding"},
-{"id":"C095","question":"What type of breathable wrap prevents condensation behind panels?","intent":"general_help","trade":"cladding"},
-{"id":"C096","question":"What's the safest cladding choice for high-bushfire zones?","intent":"general_help","trade":"cladding"},
-{"id":"C097","question":"What products cope best with inter-storey differential movement?","intent":"general_help","trade":"cladding"},
-{"id":"C098","question":"How to choose between timber vs composite weatherboards?","intent":"general_help","trade":"cladding"},
-{"id":"C099","question":"What stains last longest on cedar in NZ conditions?","intent":"general_help","trade":"cladding"},
-{"id":"C100","question":"What fasteners work best with thermally modified wood cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C101","question":"Why do battens sometimes twist behind panels?","intent":"general_help","trade":"cladding"},
-{"id":"C102","question":"Why does water pool on certain horizontal joints?","intent":"general_help","trade":"cladding"},
-{"id":"C103","question":"Why does mould appear on wrap before cladding goes on?","intent":"general_help","trade":"cladding"},
-{"id":"C104","question":"Why does metal cladding oil-can on big elevations?","intent":"general_help","trade":"cladding"},
-{"id":"C105","question":"Why do vertical shiplap boards drift out over time?","intent":"general_help","trade":"cladding"},
-{"id":"C106","question":"Why do fixing lines telegraph through paint coats?","intent":"general_help","trade":"cladding"},
-{"id":"C107","question":"Why does sealant fail early on high-sun exposures?","intent":"general_help","trade":"cladding"},
-{"id":"C108","question":"Why does the cavity sometimes whistle in strong winds?","intent":"general_help","trade":"cladding"},
-{"id":"C109","question":"Why do coated cedar boards still fade in shade?","intent":"general_help","trade":"cladding"},
-{"id":"C110","question":"Why do fibre cement sheets crack around light penetrations?","intent":"general_help","trade":"cladding"},
-{"id":"C111","question":"Why do expansion joints close up after painting?","intent":"general_help","trade":"cladding"},
-{"id":"C112","question":"Why does tape adhesion fail on cold mornings?","intent":"general_help","trade":"cladding"},
-{"id":"C113","question":"Why do aluminium plank clips creak overnight?","intent":"general_help","trade":"cladding"},
-{"id":"C114","question":"Why do valley gutters sometimes dump water against cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C115","question":"Why does cladding cup even when acclimatised?","intent":"general_help","trade":"cladding"},
-{"id":"C116","question":"Why do horizontal battens sag behind heavier systems?","intent":"general_help","trade":"cladding"},
-{"id":"C117","question":"Why does staining appear under negative-detail joints?","intent":"general_help","trade":"cladding"},
-{"id":"C118","question":"Why do window scribers swell after one heavy rain?","intent":"general_help","trade":"cladding"},
-{"id":"C119","question":"Why does plywood cladding ripple once painted?","intent":"general_help","trade":"cladding"},
-{"id":"C120","question":"Why do sealants slump on hotter days?","intent":"general_help","trade":"cladding"},
-{"id":"C121","question":"How do you straighten cladding lines on a bowed wall?","intent":"general_help","trade":"cladding"},
-{"id":"C122","question":"How do you handle clash points around chimney projections?","intent":"general_help","trade":"cladding"},
-{"id":"C123","question":"How do you fix cladding when the soffit is out of level?","intent":"general_help","trade":"cladding"},
-{"id":"C124","question":"How do you adapt cladding around oversized downpipes?","intent":"general_help","trade":"cladding"},
-{"id":"C125","question":"How do you maintain airflow when battens are misaligned?","intent":"general_help","trade":"cladding"},
-{"id":"C126","question":"How do you waterproof temporary cut-outs for services?","intent":"general_help","trade":"cladding"},
-{"id":"C127","question":"What's the approach to redoing a failed negative-detail corner?","intent":"general_help","trade":"cladding"},
-{"id":"C128","question":"How do you remedy stains from tannin bleed-through?","intent":"general_help","trade":"cladding"},
-{"id":"C129","question":"How do you replace a single damaged board mid-wall?","intent":"general_help","trade":"cladding"},
-{"id":"C130","question":"How do you extend a cladding run when product batches differ?","intent":"general_help","trade":"cladding"},
-{"id":"C131","question":"How do you pack cladding when the framing bows inward?","intent":"general_help","trade":"cladding"},
-{"id":"C132","question":"How do you reinstate weathertightness after removing a heat pump unit?","intent":"general_help","trade":"cladding"},
-{"id":"C133","question":"How do you re-secure battens on over-dry framing?","intent":"general_help","trade":"cladding"},
-{"id":"C134","question":"How do you correct drip-edge flashings with no fall?","intent":"general_help","trade":"cladding"},
-{"id":"C135","question":"How do you manage two cladding types meeting on one line?","intent":"general_help","trade":"cladding"},
-{"id":"C136","question":"How do you retrofit wrap around old joinery without full removal?","intent":"general_help","trade":"cladding"},
-{"id":"C137","question":"How do you fix cavity blockage found during reclad?","intent":"general_help","trade":"cladding"},
-{"id":"C138","question":"How do you connect new cladding to existing monolithic systems?","intent":"general_help","trade":"cladding"},
-{"id":"C139","question":"How do you protect partial cladding installs during storms?","intent":"general_help","trade":"cladding"},
-{"id":"C140","question":"How do you approach re-cladding where old fixings left holes?","intent":"general_help","trade":"cladding"},
-{"id":"C141","question":"What's the safest way to identify moisture paths behind cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C142","question":"What's the right way to test cavity ventilation?","intent":"general_help","trade":"cladding"},
-{"id":"C143","question":"What level of movement is normal in vertical board systems?","intent":"general_help","trade":"cladding"},
-{"id":"C144","question":"What are the common failure points around inter-storey junctions?","intent":"general_help","trade":"cladding"},
-{"id":"C145","question":"What joint width minimises crack risk on fibre cement?","intent":"general_help","trade":"cladding"},
-{"id":"C146","question":"What ventilation is needed at top of ventilated facades?","intent":"general_help","trade":"cladding"},
-{"id":"C147","question":"What slope is required for parapet caps over cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C148","question":"What clearances prevent capillary rise at bottom boards?","intent":"general_help","trade":"cladding"},
-{"id":"C149","question":"What's needed to keep weathertightness around deck-to-wall junctions?","intent":"general_help","trade":"cladding"},
-{"id":"C150","question":"What are the risks of mixing timber and composite claddings?","intent":"general_help","trade":"cladding"},
-{"id":"C151","question":"What's the safest fix for cladding around recessed windows?","intent":"general_help","trade":"cladding"},
-{"id":"C152","question":"What's required to stop water bridging across battens?","intent":"general_help","trade":"cladding"},
-{"id":"C153","question":"What's the rule for sealing penetrations on high-risk walls?","intent":"general_help","trade":"cladding"},
-{"id":"C154","question":"What keeps horizontal weatherboards draining correctly?","intent":"general_help","trade":"cladding"},
-{"id":"C155","question":"What's the minimum required cavity depth for good airflow?","intent":"general_help","trade":"cladding"},
-{"id":"C156","question":"What are the fire considerations for vented facades?","intent":"general_help","trade":"cladding"},
-{"id":"C157","question":"What's needed at inter-storey drip edges for E2 compliance?","intent":"general_help","trade":"cladding"},
-{"id":"C158","question":"What stops water being driven up cladding laps?","intent":"general_help","trade":"cladding"},
-{"id":"C159","question":"What clearances prevent splashback onto cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C160","question":"What fire rules limit foil-backed cladding choices?","intent":"general_help","trade":"cladding"},
-{"id":"C161","question":"What products fix best into LVL studs for heavier panels?","intent":"general_help","trade":"cladding"},
-{"id":"C162","question":"What flashings suit rough-sawn timber finishes?","intent":"general_help","trade":"cladding"},
-{"id":"C163","question":"What fasteners suit wide cedar boards?","intent":"general_help","trade":"cladding"},
-{"id":"C164","question":"What cavity systems suit high-humidity regions?","intent":"general_help","trade":"cladding"},
-{"id":"C165","question":"What paint systems cope with deep colours on large walls?","intent":"general_help","trade":"cladding"},
-{"id":"C166","question":"What drip edges work for layered cladding types?","intent":"general_help","trade":"cladding"},
-{"id":"C167","question":"What battens perform best under dark composite panels?","intent":"general_help","trade":"cladding"},
-{"id":"C168","question":"What underlays reduce risk of summer condensation?","intent":"general_help","trade":"cladding"},
-{"id":"C169","question":"What stains help cedar resist mould long-term?","intent":"general_help","trade":"cladding"},
-{"id":"C170","question":"What metal cladding profiles suit high rainfall?","intent":"general_help","trade":"cladding"},
-{"id":"C171","question":"What corner caps give the cleanest modern detail?","intent":"general_help","trade":"cladding"},
-{"id":"C172","question":"What products suit low-maintenance bach cladding?","intent":"general_help","trade":"cladding"},
-{"id":"C173","question":"What cladding materials work best for curved walls?","intent":"general_help","trade":"cladding"},
-{"id":"C174","question":"What fire-rated systems are available for boundary walls?","intent":"general_help","trade":"cladding"},
-{"id":"C175","question":"What fixings reduce risk of galvanic corrosion?","intent":"general_help","trade":"cladding"},
-{"id":"C176","question":"What trims match composite vertical panels?","intent":"general_help","trade":"cladding"},
-{"id":"C177","question":"What wrap works best behind battens on noisy sites?","intent":"general_help","trade":"cladding"},
-{"id":"C178","question":"What's the most durable soffit-to-wall junction system?","intent":"general_help","trade":"cladding"},
-{"id":"C179","question":"What cladding resists hail impact the best?","intent":"general_help","trade":"cladding"},
-{"id":"C180","question":"What materials allow wider sheet spans without backing strips?","intent":"general_help","trade":"cladding"},
-{"id":"C181","question":"Why does darker cladding distort faster in sun?","intent":"general_help","trade":"cladding"},
-{"id":"C182","question":"Why do battens absorb moisture differently and show through?","intent":"general_help","trade":"cladding"},
-{"id":"C183","question":"Why do negative-details amplify small installation errors?","intent":"general_help","trade":"cladding"},
-{"id":"C184","question":"Why do aluminium panels pop in temperature swings?","intent":"general_help","trade":"cladding"},
-{"id":"C185","question":"Why do plywood edges telegraph after painting?","intent":"general_help","trade":"cladding"},
-{"id":"C186","question":"Why do wide timber boards twist more than narrow ones?","intent":"general_help","trade":"cladding"},
-{"id":"C187","question":"Why does oil-based stain perform differently in wet zones?","intent":"general_help","trade":"cladding"},
-{"id":"C188","question":"Why do composite panels need larger expansion gaps?","intent":"general_help","trade":"cladding"},
-{"id":"C189","question":"Why does cavity ventilation matter more on high walls?","intent":"general_help","trade":"cladding"},
-{"id":"C190","question":"Why do plaster systems shed hairline cracks in first year?","intent":"general_help","trade":"cladding"},
-{"id":"C191","question":"Why do rigid air barriers force different fixing patterns?","intent":"general_help","trade":"cladding"},
-{"id":"C192","question":"Why do stained boards fade unevenly?","intent":"general_help","trade":"cladding"},
-{"id":"C193","question":"Why do buildings get water marks under soffit junctions?","intent":"general_help","trade":"cladding"},
-{"id":"C194","question":"Why do foam-backed systems trap moisture if detailed wrong?","intent":"general_help","trade":"cladding"},
-{"id":"C195","question":"Why does mixed cladding expand at different rates?","intent":"general_help","trade":"cladding"},
-{"id":"C196","question":"Why do high-wind zones affect board spacing rules?","intent":"general_help","trade":"cladding"},
-{"id":"C197","question":"Why do deep-window reveals change flashing details?","intent":"general_help","trade":"cladding"},
-{"id":"C198","question":"Why do dark colours reduce paint system lifespan?","intent":"general_help","trade":"cladding"},
-{"id":"C199","question":"Why does south-facing cladding grow mould quicker?","intent":"general_help","trade":"cladding"},
-{"id":"C200","question":"Why do soffit-to-wall junctions often leak first?","intent":"general_help","trade":"cladding"}
+    {
+      "id": "C001",
+      "question": "What causes sheet cladding to bulge after a wet week?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C002",
+      "question": "Why does paint keep cracking along the horizontal joints?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C003",
+      "question": "What usually leads to dark staining under aluminium joinery?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C004",
+      "question": "What makes fibre cement sheets delaminate in coastal spots?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C005",
+      "question": "Why does timber weatherboard cupping get worse in winter?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C006",
+      "question": "How do you tell if cladding movement is from framing moisture?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C007",
+      "question": "What makes certain boards bow away from studs?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C008",
+      "question": "Why do some joints open up even when sealed?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C009",
+      "question": "What causes water track lines under face-fixed sheets?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C010",
+      "question": "What signs point to early cladding fastener corrosion?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C011",
+      "question": "What makes plaster cladding hairline crack around corners?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C012",
+      "question": "Why does flashings tape peel back on north-facing walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C013",
+      "question": "What causes swollen spot defects in composite panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C014",
+      "question": "Why would a new paint system bubble on fibre cement?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C015",
+      "question": "What causes random blister patches under membrane facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C016",
+      "question": "Why do corner soakers sometimes trap water instead of draining?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C017",
+      "question": "Why does the cavity accumulate debris after strong wind?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C018",
+      "question": "What causes damp patches on internal linings behind clad walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C019",
+      "question": "Why does mould show near bottom plates behind cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C020",
+      "question": "What makes certain cladding systems rattle in high wind?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C021",
+      "question": "How do you fix bowed weatherboards mid-run?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C022",
+      "question": "What's the best approach for overdriven cladding nails?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C023",
+      "question": "How do you correct misaligned sheet joins on a long elevation?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C024",
+      "question": "How should you reattach boards that pulled off studs?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C025",
+      "question": "What's the right method to lift a board to close a 3mm gap?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C026",
+      "question": "How do you repair cracked fibre cement sheet edges?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C027",
+      "question": "What's the correct method to replace a failed flashing end?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C028",
+      "question": "How do you reset a cavity batten that's come loose?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C029",
+      "question": "How do you tidy up uneven window scribers after install?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C030",
+      "question": "How do you fix a board that's been nailed without packing?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C031",
+      "question": "How do you correct stepped joints between two cladding planes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C032",
+      "question": "How do you realign warped aluminium planks?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C033",
+      "question": "How do you repair chips in prefinished metal cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C034",
+      "question": "How to handle a sheet that's cut too tight against a corner?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C035",
+      "question": "What's the fix if the cavity is blocked by insulation bulge?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C036",
+      "question": "What's the tidy way to refit corners after backing strips fail?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C037",
+      "question": "How do you reflash a head flashing with poor fall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C038",
+      "question": "How do you replace a bottom plate flashing without removing full wall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C039",
+      "question": "What's the best fix for compression cracks in plaster coat?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C040",
+      "question": "How do you re-secure battens behind a partially installed wall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C041",
+      "question": "What clearance is needed between cladding and paving?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C042",
+      "question": "What gap is needed behind fibre cement sheets for cavity airflow?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C043",
+      "question": "When do you need horizontal cavity battens?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C044",
+      "question": "What's the correct overlap for bevel-back weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C045",
+      "question": "What slope is required on head flashings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C046",
+      "question": "What fixings work for metal cladding in Extra High wind zones?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C047",
+      "question": "What's the right embed depth for window flashing tapes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C048",
+      "question": "How much expansion gap is needed on long composite panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C049",
+      "question": "What fire rules apply to multi-storey cladding replacements?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C050",
+      "question": "What's the correct distance between fixings on sheet edges?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C051",
+      "question": "How do you keep E2/AS1 compliance when mixing systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C052",
+      "question": "What clearance is required to ground for risk zone areas?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C053",
+      "question": "What are the rules around drained vs vented cavities?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C054",
+      "question": "How do you stay compliant when fixing over rigid air barriers?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C055",
+      "question": "What's the max joint width before flashing instead of sealant?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C056",
+      "question": "When do you need backflashings at inter-storey junctions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C057",
+      "question": "What spacing rules apply for vertical shiplap in high wind areas?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C058",
+      "question": "What's required to keep the weathertightness around meter boxes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C059",
+      "question": "What are the fire spread rules for cladding in townhouse boundaries?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C060",
+      "question": "What E2 requirements apply to parapet cap flashing over cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C061",
+      "question": "How do you fix cladding if the frame is 10mm out of plumb?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C062",
+      "question": "What do you do when windows arrive 8mm smaller than planned?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C063",
+      "question": "How do you work around a bowed bottom plate causing gaps?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C064",
+      "question": "What's the approach when cavity battens clash with services?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C065",
+      "question": "How do you adjust cladding around a crooked corner line?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C066",
+      "question": "What do you do when scaffold ties damage installed boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C067",
+      "question": "How do you re-clad walls where insulation got saturated?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C068",
+      "question": "How do you correct flashing installed before the wrap?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C069",
+      "question": "What's the workaround for cladding that doesn't lap cleanly on rake walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C070",
+      "question": "How do you manage cladding around awkward downpipe routes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C071",
+      "question": "How do you tidy cladding after the roofer alters apron flashings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C072",
+      "question": "What's the fix when joinery fins were compressed during install?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C073",
+      "question": "How do you work around a wrap that tore behind the cavity?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C074",
+      "question": "How do you handle cladding sequencing when scaffold removal is booked early?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C075",
+      "question": "How do you reset the starter strip when the slab pour varied?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C076",
+      "question": "What do you do when battens twist after exposure to rain?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C077",
+      "question": "How can you correct bowed vertical panels mid-rise?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C078",
+      "question": "How do you temporarily weatherproof a partially clad elevation?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C079",
+      "question": "What's the fix when the cavity vermin strip doesn't sit flat?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C080",
+      "question": "How do you reclad a wall after discovering framing decay?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C081",
+      "question": "What's the best fibre cement brand for coastal builds?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C082",
+      "question": "What causes blackening on cedar weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C083",
+      "question": "What's the difference between pre-primed vs site-primed boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C084",
+      "question": "How do composite cladding panels behave in heat?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C085",
+      "question": "What timber profile suits tight architectural lines?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C086",
+      "question": "What underlays pair best with ventilated cladding systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C087",
+      "question": "What coating lasts longest on rough-sawn facings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C088",
+      "question": "What fixing type works best with aluminium plank systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C089",
+      "question": "What sealants stick well to fibre cement edges?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C090",
+      "question": "How do you pick battens that won't warp behind the cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C091",
+      "question": "What underlay is best for Extra High wind zones?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C092",
+      "question": "What products resist coastal corrosion the best?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C093",
+      "question": "What type of flashing suits deep-reveal joinery?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C094",
+      "question": "What paint holds up best on north-west walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C095",
+      "question": "What type of breathable wrap prevents condensation behind panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C096",
+      "question": "What's the safest cladding choice for high-bushfire zones?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C097",
+      "question": "What products cope best with inter-storey differential movement?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C098",
+      "question": "How to choose between timber vs composite weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C099",
+      "question": "What stains last longest on cedar in NZ conditions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C100",
+      "question": "What fasteners work best with thermally modified wood cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C101",
+      "question": "Why do battens sometimes twist behind panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C102",
+      "question": "Why does water pool on certain horizontal joints?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C103",
+      "question": "Why does mould appear on wrap before cladding goes on?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C104",
+      "question": "Why does metal cladding oil-can on big elevations?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C105",
+      "question": "Why do vertical shiplap boards drift out over time?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C106",
+      "question": "Why do fixing lines telegraph through paint coats?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C107",
+      "question": "Why does sealant fail early on high-sun exposures?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C108",
+      "question": "Why does the cavity sometimes whistle in strong winds?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C109",
+      "question": "Why do coated cedar boards still fade in shade?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C110",
+      "question": "Why do fibre cement sheets crack around light penetrations?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C111",
+      "question": "Why do expansion joints close up after painting?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C112",
+      "question": "Why does tape adhesion fail on cold mornings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C113",
+      "question": "Why do aluminium plank clips creak overnight?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C114",
+      "question": "Why do valley gutters sometimes dump water against cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C115",
+      "question": "Why does cladding cup even when acclimatised?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C116",
+      "question": "Why do horizontal battens sag behind heavier systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C117",
+      "question": "Why does staining appear under negative-detail joints?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C118",
+      "question": "Why do window scribers swell after one heavy rain?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C119",
+      "question": "Why does plywood cladding ripple once painted?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C120",
+      "question": "Why do sealants slump on hotter days?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C121",
+      "question": "How do you straighten cladding lines on a bowed wall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C122",
+      "question": "How do you handle clash points around chimney projections?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C123",
+      "question": "How do you fix cladding when the soffit is out of level?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C124",
+      "question": "How do you adapt cladding around oversized downpipes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C125",
+      "question": "How do you maintain airflow when battens are misaligned?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C126",
+      "question": "How do you waterproof temporary cut-outs for services?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C127",
+      "question": "What's the approach to redoing a failed negative-detail corner?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C128",
+      "question": "How do you remedy stains from tannin bleed-through?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C129",
+      "question": "How do you replace a single damaged board mid-wall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C130",
+      "question": "How do you extend a cladding run when product batches differ?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C131",
+      "question": "How do you pack cladding when the framing bows inward?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C132",
+      "question": "How do you reinstate weathertightness after removing a heat pump unit?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C133",
+      "question": "How do you re-secure battens on over-dry framing?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C134",
+      "question": "How do you correct drip-edge flashings with no fall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C135",
+      "question": "How do you manage two cladding types meeting on one line?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C136",
+      "question": "How do you retrofit wrap around old joinery without full removal?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C137",
+      "question": "How do you fix cavity blockage found during reclad?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C138",
+      "question": "How do you connect new cladding to existing monolithic systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C139",
+      "question": "How do you protect partial cladding installs during storms?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C140",
+      "question": "How do you approach re-cladding where old fixings left holes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C141",
+      "question": "What's the safest way to identify moisture paths behind cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C142",
+      "question": "What's the right way to test cavity ventilation?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C143",
+      "question": "What level of movement is normal in vertical board systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C144",
+      "question": "What are the common failure points around inter-storey junctions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C145",
+      "question": "What joint width minimises crack risk on fibre cement?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C146",
+      "question": "What ventilation is needed at top of ventilated facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C147",
+      "question": "What slope is required for parapet caps over cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C148",
+      "question": "What clearances prevent capillary rise at bottom boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C149",
+      "question": "What's needed to keep weathertightness around deck-to-wall junctions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C150",
+      "question": "What are the risks of mixing timber and composite claddings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C151",
+      "question": "What's the safest fix for cladding around recessed windows?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C152",
+      "question": "What's required to stop water bridging across battens?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C153",
+      "question": "What's the rule for sealing penetrations on high-risk walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C154",
+      "question": "What keeps horizontal weatherboards draining correctly?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C155",
+      "question": "What's the minimum required cavity depth for good airflow?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C156",
+      "question": "What are the fire considerations for vented facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C157",
+      "question": "What's needed at inter-storey drip edges for E2 compliance?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C158",
+      "question": "What stops water being driven up cladding laps?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C159",
+      "question": "What clearances prevent splashback onto cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C160",
+      "question": "What fire rules limit foil-backed cladding choices?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C161",
+      "question": "What products fix best into LVL studs for heavier panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C162",
+      "question": "What flashings suit rough-sawn timber finishes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C163",
+      "question": "What fasteners suit wide cedar boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C164",
+      "question": "What cavity systems suit high-humidity regions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C165",
+      "question": "What paint systems cope with deep colours on large walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C166",
+      "question": "What drip edges work for layered cladding types?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C167",
+      "question": "What battens perform best under dark composite panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C168",
+      "question": "What underlays reduce risk of summer condensation?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C169",
+      "question": "What stains help cedar resist mould long-term?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C170",
+      "question": "What metal cladding profiles suit high rainfall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C171",
+      "question": "What corner caps give the cleanest modern detail?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C172",
+      "question": "What products suit low-maintenance bach cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C173",
+      "question": "What cladding materials work best for curved walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C174",
+      "question": "What fire-rated systems are available for boundary walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C175",
+      "question": "What fixings reduce risk of galvanic corrosion?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C176",
+      "question": "What trims match composite vertical panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C177",
+      "question": "What wrap works best behind battens on noisy sites?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C178",
+      "question": "What's the most durable soffit-to-wall junction system?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C179",
+      "question": "What cladding resists hail impact the best?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C180",
+      "question": "What materials allow wider sheet spans without backing strips?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C181",
+      "question": "Why does darker cladding distort faster in sun?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C182",
+      "question": "Why do battens absorb moisture differently and show through?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C183",
+      "question": "Why do negative-details amplify small installation errors?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C184",
+      "question": "Why do aluminium panels pop in temperature swings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C185",
+      "question": "Why do plywood edges telegraph after painting?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C186",
+      "question": "Why do wide timber boards twist more than narrow ones?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C187",
+      "question": "Why does oil-based stain perform differently in wet zones?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C188",
+      "question": "Why do composite panels need larger expansion gaps?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C189",
+      "question": "Why does cavity ventilation matter more on high walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C190",
+      "question": "Why do plaster systems shed hairline cracks in first year?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C191",
+      "question": "Why do rigid air barriers force different fixing patterns?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C192",
+      "question": "Why do stained boards fade unevenly?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C193",
+      "question": "Why do buildings get water marks under soffit junctions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C194",
+      "question": "Why do foam-backed systems trap moisture if detailed wrong?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C195",
+      "question": "Why does mixed cladding expand at different rates?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C196",
+      "question": "Why do high-wind zones affect board spacing rules?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C197",
+      "question": "Why do deep-window reveals change flashing details?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C198",
+      "question": "Why do dark colours reduce paint system lifespan?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C199",
+      "question": "Why does south-facing cladding grow mould quicker?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C200",
+      "question": "Why do soffit-to-wall junctions often leak first?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C201",
+      "question": "What causes joint sealant to go chalky after one summer?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C202",
+      "question": "What makes some fibre cement edges soften after heavy rain?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C203",
+      "question": "Why do cedar boards leak tannin onto concrete?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C204",
+      "question": "Why does flashing tape wrinkle under composite panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C205",
+      "question": "What causes rippling down a full wall of plywood?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C206",
+      "question": "Why do nails lift slightly on north-facing weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C207",
+      "question": "What usually causes damp patches around deck ledger boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C208",
+      "question": "Why do soffit junctions show moisture staining?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C209",
+      "question": "Why do battens detach when the frame shrinks?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C210",
+      "question": "What causes condensation inside ventilated cavities?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C211",
+      "question": "How do you fix a bowed corner flashing?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C212",
+      "question": "How do you repair scratched prefinished metal sheets?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C213",
+      "question": "How do you close a gap between weatherboard laps?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C214",
+      "question": "How do you re-fix damaged cavity battens without removing cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C215",
+      "question": "How do you cut in a clean negative detail on a retrofit job?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C216",
+      "question": "How do you straighten out-of-line vertical joints?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C217",
+      "question": "How do you tidy up a starter strip that sits too low?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C218",
+      "question": "How do you reset a window head flashing with no fall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C219",
+      "question": "How do you repair cracked plaster mesh around windows?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C220",
+      "question": "How do you fix a cladding return that won't sit flush?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C221",
+      "question": "What clearance do you need under weatherboards over decks?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C222",
+      "question": "What gap must be left at the base of vertical cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C223",
+      "question": "When does E2 require drained and vented cavities?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C224",
+      "question": "What's the minimum slope for sill support bars?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C225",
+      "question": "What distance should fixings be from sheet edges?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C226",
+      "question": "When are rigid air barriers mandatory?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C227",
+      "question": "What fire rules affect cladding in a boundary setback?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C228",
+      "question": "What's the minimum wrap-to-flashing overlap?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C229",
+      "question": "What rules apply to cladding behind pergola beams?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C230",
+      "question": "What expansion rules apply to long metal runs?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C231",
+      "question": "How do you fit cladding around a bowed steel lintel?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C232",
+      "question": "How do you sort misaligned soffit corners affecting cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C233",
+      "question": "How do you handle a window installed 6mm off centre?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C234",
+      "question": "What's the fix when wrap gets torn behind the top courses?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C235",
+      "question": "How do you adjust cladding around a sloping slab edge?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C236",
+      "question": "What do you do when the roofer blocks your cavity ventilation?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C237",
+      "question": "How do you fix a warped bottom plate that causes uneven starter height?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C238",
+      "question": "How do you tidy a wall where the electrician overcut penetrations?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C239",
+      "question": "How do you straighten negative details when battens vary?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C240",
+      "question": "How do you deal with cladding when scaffold brace points leak?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C241",
+      "question": "What composite cladding copes best with ground moisture?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C242",
+      "question": "What stain works best on wide cedar boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C243",
+      "question": "What underlay handles high humidity in coastal zones?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C244",
+      "question": "What metal coating is best for salt spray areas?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C245",
+      "question": "What boards perform best on high-impact walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C246",
+      "question": "What corner profiles work cleanest with fibre cement?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C247",
+      "question": "What rigid air barrier suits modern vented facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C248",
+      "question": "What cavity batten material lasts longest in exposed areas?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C249",
+      "question": "What ventilated facades handle hot summer walls best?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C250",
+      "question": "What wrap works best under dark cladding profiles?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C251",
+      "question": "Why does flashing tape fail early behind composite systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C252",
+      "question": "Why do long metal sheets oil-can after repainting?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C253",
+      "question": "Why does cedar develop patchy silvering?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C254",
+      "question": "Why do wrapped walls sweat in winter?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C255",
+      "question": "Why does mould appear only on the south elevation?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C256",
+      "question": "Why do plaster corners crack near mid-summer?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C257",
+      "question": "Why does plywood warp after first coat of paint?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C258",
+      "question": "Why do negative details collect wind-blown debris?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C259",
+      "question": "Why do battens twist even after acclimatising?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C260",
+      "question": "Why do joint flashings show through thin paint coats?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C261",
+      "question": "How do you fix cladding when the soffit is 12mm too short?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C262",
+      "question": "How do you adjust a rake wall so the cladding lines stay consistent?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C263",
+      "question": "How do you close a 5mm gap under a window scriber?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C264",
+      "question": "How do you reseal penetrations after services were added last minute?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C265",
+      "question": "How do you straighten a panel wall when battens pull away?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C266",
+      "question": "How do you adapt cladding around a flashing that runs uphill?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C267",
+      "question": "How do you re-secure vertical boards that have slipped?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C268",
+      "question": "How do you correct a wall after the plumber overcut pipe holes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C269",
+      "question": "How do you line up cladding with uneven deck edges?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C270",
+      "question": "How do you install cladding when adjoining walls are out of square?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C271",
+      "question": "What checks help track leaks around window heads?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C272",
+      "question": "What's the best way to test drainage at the base of a cavity?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C273",
+      "question": "What expansion allowance stops cracking in plaster systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C274",
+      "question": "What ventilation gap prevents damp in plywood facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C275",
+      "question": "What drip-edge detail works for complex junctions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C276",
+      "question": "What slope stops parapet cladding from pooling water?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C277",
+      "question": "What flashing stops water being pushed behind weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C278",
+      "question": "What's needed to keep fire separation behind cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C279",
+      "question": "What detail prevents water from bridging cavity battens?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C280",
+      "question": "What clearance is needed above concrete to prevent capillary uptake?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C281",
+      "question": "What's the best fastener for H3.2 weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C282",
+      "question": "What type of wrap suits rigid air barrier installs?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C283",
+      "question": "What stain best handles north-facing cedar walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C284",
+      "question": "What metal profiles suit steep gable ends?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C285",
+      "question": "What trims work best at window returns on tall walls?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C286",
+      "question": "What flashing tape handles cold installs well?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C287",
+      "question": "What sealant bonds well to painted fibre cement?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C288",
+      "question": "What battens suit drained-only cavities?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C289",
+      "question": "What panel system handles large expansion areas?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C290",
+      "question": "What fixings avoid corrosion near swimming pools?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C291",
+      "question": "Why do battens darken unevenly when exposed too long?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C292",
+      "question": "Why do vertical lines appear after painting plywood?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C293",
+      "question": "Why do window scribers swell on humid days?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C294",
+      "question": "Why do sheet joints open after strong wind events?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C295",
+      "question": "Why does plaster craze around head flashings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C296",
+      "question": "Why do certain stains attract dust faster?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C297",
+      "question": "Why do flashing corners leak even with sealant?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C298",
+      "question": "Why do plywood panels cup in shaded areas?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C299",
+      "question": "Why does wrap wrinkle behind black cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C300",
+      "question": "Why do battens squeak behind composite boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C301",
+      "question": "How do you fix bowed sheet edges without full removal?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C302",
+      "question": "How do you handle cladding when the joinery isn't square?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C303",
+      "question": "How do you repair damaged battens discovered mid-install?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C304",
+      "question": "How do you tidy cladding around recessed downpipes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C305",
+      "question": "How do you adjust for uneven foundations causing stepped boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C306",
+      "question": "How do you keep cladding level when slab dripline varies?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C307",
+      "question": "How do you fix poor overlaps on bevel-back boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C308",
+      "question": "How do you weatherproof a service entry on a finished wall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C309",
+      "question": "How do you correct buckled flashing ends?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C310",
+      "question": "How do you refit cladding after the roofer changed apron height?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C311",
+      "question": "What's the correct approach for weathertight negative joints?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C312",
+      "question": "What's the best method for sealing small penetrations?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C313",
+      "question": "What do you check when investigating a leak at mid-height?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C314",
+      "question": "What expansion gaps stop plaster cracking?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C315",
+      "question": "What airflow is needed near the top of tall facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C316",
+      "question": "What's the best detail for deck-to-wall cladding transitions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C317",
+      "question": "What flashing prevents splashback on tight sites?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C318",
+      "question": "What clearance avoids dirt build-up under weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C319",
+      "question": "What system reduces risk of moisture in dark-coloured cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C320",
+      "question": "What rules apply for installing cladding near fire zones?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C321",
+      "question": "What material is best for crisp modern vertical lines?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C322",
+      "question": "What fasteners suit softwood weatherboards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C323",
+      "question": "What stain keeps cedar from silvering too fast?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C324",
+      "question": "What backing strips work best for fibre cement?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C325",
+      "question": "What corners match modern aluminium plank systems?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C326",
+      "question": "What underlay suits low-perm cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C327",
+      "question": "What paint works best with exposed grain timber?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C328",
+      "question": "What trims support mixed-metal cladding installs?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C329",
+      "question": "What wrap prevents moisture behind composite boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C330",
+      "question": "What cavity batten profile suits vertical metal cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C331",
+      "question": "Why does early fade appear on new-painted boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C332",
+      "question": "Why do vertical joints collect water after storms?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C333",
+      "question": "Why does swell appear on sheet ends after painting?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C334",
+      "question": "Why do siding boards twist in humid regions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C335",
+      "question": "Why do some stains trap dirt?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C336",
+      "question": "Why does wrap fail when installed in heavy rain?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C337",
+      "question": "Why do plywood panels warp when not edge-sealed?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C338",
+      "question": "Why does water track behind shiplap?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C339",
+      "question": "Why does the cavity smell damp after long rain periods?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C340",
+      "question": "Why do battens rattle on high-wind nights?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C341",
+      "question": "How do you fix cladding at tight chimney junctions?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C342",
+      "question": "How do you correct bent aluminium corner flashings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C343",
+      "question": "How do you re-flash a parapet that was built off-plan?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C344",
+      "question": "How do you handle last-minute joinery size changes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C345",
+      "question": "How do you adjust cladding when fascia sits too high?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C346",
+      "question": "How do you straighten boards around a bowed mid-floor band?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C347",
+      "question": "How do you block vermin entry at cavity base?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C348",
+      "question": "How do you fit cladding around oversized hot-water pipes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C349",
+      "question": "How do you keep airflow when adding insulation later?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C350",
+      "question": "How do you identify leak points behind tall cladding panels?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C351",
+      "question": "What checks confirm correct drainage at wall base?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C352",
+      "question": "What ventilation stops mould behind cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C353",
+      "question": "What's the best flashing for internal corners?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C354",
+      "question": "What clearance stops splash marks on lower boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C355",
+      "question": "What's the right drip detail for multi-level corners?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C356",
+      "question": "What protects timber boards from sun cupping?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C357",
+      "question": "What's required for a compliant negative detail?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C358",
+      "question": "What keeps inter-storey junctions from leaking?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C359",
+      "question": "What barrier stops water climbing up battens?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C360",
+      "question": "What clearances are needed near narrow concrete paths?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C361",
+      "question": "What boards resist knocks on busy walkways?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C362",
+      "question": "What stains work best on vertical cedar?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C363",
+      "question": "What wraps handle heat load behind black facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C364",
+      "question": "What fasteners give best hold in wet framing?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C365",
+      "question": "What flashings last longest in coastal air?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C366",
+      "question": "What trims suit deep window reveals?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C367",
+      "question": "What paints handle flexible composite boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C368",
+      "question": "What underlays allow better summer ventilation?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C369",
+      "question": "What battens won't warp after heavy rain?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C370",
+      "question": "What cladding suits houses with large overhangs?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C371",
+      "question": "Why does moisture sit behind rigid air barriers?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C372",
+      "question": "Why do negative details amplify water tracking?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C373",
+      "question": "Why does expansion movement appear mid-wall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C374",
+      "question": "Why do corner flashings leak after repainting?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C375",
+      "question": "Why do vertical panels make popping noises?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C376",
+      "question": "Why does the cladding fade unevenly in shaded areas?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C377",
+      "question": "Why do battens swell behind plaster?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C378",
+      "question": "Why does condensation appear behind metal cladding?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C379",
+      "question": "Why do sheet joints curve over time?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C380",
+      "question": "Why do timber boards cup differently across one wall?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C381",
+      "question": "How do you straighten cladding on bowed framing?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C382",
+      "question": "How do you adapt cladding for a last-minute deck change?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C383",
+      "question": "How do you fix damaged air barrier under installed boards?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C384",
+      "question": "How do you integrate new cladding with old soffits?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C385",
+      "question": "How do you fit cladding around HVAC penetrations?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C386",
+      "question": "How do you re-secure battens after storm damage?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C387",
+      "question": "How do you protect exposed wrap for a delayed install?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C388",
+      "question": "How do you rerun cladding after the joiner changes flashing sizes?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C389",
+      "question": "How do you stop water tracking behind negative details?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C390",
+      "question": "How do you keep lines straight when the slab varies in height?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C391",
+      "question": "What controls water tracking under board laps?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C392",
+      "question": "What airflow prevents condensation behind facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C393",
+      "question": "What slope works best for wide sill flashings?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C394",
+      "question": "What cavity gaps stop moisture bridging?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C395",
+      "question": "What flashing prevents corner leaks on tall elevations?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C396",
+      "question": "What's required for E2 compliance at mid-floor edges?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C397",
+      "question": "What stops wind-driven water at vertical joints?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C398",
+      "question": "What protects wall bases from ground splash?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C399",
+      "question": "What detail prevents moisture rising behind battens?",
+      "intent": "general_help",
+      "trade": "cladding"
+    },
+    {
+      "id": "C400",
+      "question": "What airflow is needed behind large-format facades?",
+      "intent": "general_help",
+      "trade": "cladding"
+    }
   ]
 }
