@@ -1,8 +1,8 @@
 {
   "batch_id": "batch_06",
-  "category": "Concrete / Masonry / Foundations",
+  "category": "Passive Fire / Fire-Stopping",
   "created_at": null,
-  "ingested_at": "2025-11-25T09:53:57.307900",
+  "ingested_at": "2025-06-01T08:45:00",
   "total_items": 100,
   "embedding_model": "text-embedding-3-small",
   "validation_status": "complete",

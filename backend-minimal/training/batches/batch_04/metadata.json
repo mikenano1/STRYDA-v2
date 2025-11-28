@@ -1,8 +1,8 @@
 {
   "batch_id": "batch_04",
-  "category": "Plumbing",
+  "category": "Drainage / Drainlayer",
   "created_at": null,
-  "ingested_at": "2025-11-25T09:28:43.141768",
+  "ingested_at": "2025-06-01T08:35:00",
   "total_items": 100,
   "embedding_model": "text-embedding-3-small",
   "validation_status": "complete",
