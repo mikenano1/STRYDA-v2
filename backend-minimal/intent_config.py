@@ -14,6 +14,13 @@ class Intent(str, Enum):
     PRODUCT_INFO = "product_info"
     COUNCIL_PROCESS = "council_process"
 
+def is_compliance_intent(intent: str) -> bool:
+    """
+    Check if intent is in the compliance bucket (strict or implicit)
+    Both get code-heavy retrieval + citations
+    """
+    return intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]
+
 class IntentPolicy:
     """Citation and retrieval policies for each intent"""
     
