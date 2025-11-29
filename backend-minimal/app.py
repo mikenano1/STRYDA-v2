@@ -739,33 +739,16 @@ def api_chat(req: ChatRequest):
         tokens_out = 0
         
         try:
-            # CITATION POLICY: Only compliance_strict gets citations
-            if final_intent == "chitchat":
-                # High confidence chitchat - NO citations
-                answer = "Kia ora! I'm here to help with building codes and practical guidance. What's on your mind?"
-                citations_reason = "user_general"
-                
-            elif final_intent == "clarify":
-                # Educational response - NO citations
-                if "stud" in user_message.lower():
-                    answer = """Are you asking about:
-• Spacing for wall studs?
-• Sizing for load-bearing walls?
-• Fastening to foundations?
-
-Examples that help me give exact answers:
-• '90mm stud spacing in Very High wind zone'
-• 'Load-bearing wall studs for 6m span'"""
-                else:
-                    answer = """I can help with NZ building standards! To give you the best guidance, could you tell me:
-• What type of building work?
-• Your location's wind zone?
-• Specific component you're working on?"""
-                
-                citations_reason = "user_general"
-                
-            elif final_intent in ["general_help", "product_info"]:
-                # Product/general help - NO citations, but MAY use web search for context
+            # CITATION POLICY V2: Apply IntentPolicy rules
+            policy = context.get("policy", IntentPolicy.get_policy(final_intent))
+            
+            # Determine if citations should be shown
+            show_citations = policy["citations_default"]
+            max_citations = policy["max_citations"]
+            model_preference = policy["model_preference"]
+            
+            if final_intent in ["general_help", "product_info", "council_process"]:
+                # Non-compliance intents - NO citations by default
                 citations_reason = "user_general"
                 use_web = False
                 web_context = ""
@@ -788,26 +771,31 @@ Examples that help me give exact answers:
                 # Generate response with optional web context
                 try:
                     with profiler.timer('t_generate'):
-                        # Build prompt with optional web context
-                        prompt_parts = [f"User question: {user_message}"]
+                        # Build prompt with optional web context and trade context
+                        prompt_parts = [f"User question (Trade: {detected_trade}): {user_message}"]
                         
                         if web_context:
                             prompt_parts.append(f"\nAdditional context from web: {web_context}")
                         
-                        prompt_parts.append("\nProvide a helpful, practical response about general building guidance.")
+                        if final_intent == "product_info":
+                            prompt_parts.append("\nProvide practical product recommendations and guidance for NZ building.")
+                        elif final_intent == "council_process":
+                            prompt_parts.append("\nProvide guidance on council consent and inspection processes for NZ building.")
+                        else:
+                            prompt_parts.append(f"\nProvide helpful, practical {detected_trade} guidance for NZ tradies.")
                         
                         full_prompt = "\n".join(prompt_parts)
                         
                         # Use generate_structured_response with empty docs (no RAG)
                         structured_response = generate_structured_response(
                             user_message=full_prompt,
-                            tier1_snippets=[],  # No RAG for general queries
+                            tier1_snippets=[],  # No RAG for non-compliance queries
                             conversation_history=conversation_history,
                             intent=final_intent
                         )
                         
                         answer = structured_response.get("answer", "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions.")
-                        model_used = structured_response.get("model", OPENAI_MODEL)
+                        model_used = structured_response.get("model", model_preference)
                         tokens_in = structured_response.get("tokens_in", 0)
                         tokens_out = structured_response.get("tokens_out", 0)
                         
@@ -820,15 +808,15 @@ Examples that help me give exact answers:
                         fallback_used_flag = structured_response.get("fallback_used", False)
                         
                         # Log the full decision + metadata
-                        print(f"[chat] intent={final_intent} use_web={use_web} model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
+                        print(f"[chat] intent={final_intent} trade={detected_trade} use_web={use_web} model={model_preference} pills=False raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
                         
                 except Exception as e:
-                    print(f"⚠️ General help generation failed: {e}")
+                    print(f"⚠️ Response generation failed: {e}")
                     answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
                     model_used = "fallback"
                 
-            elif final_intent == "compliance_strict":
-                # ONLY compliance_strict gets citations
+            elif final_intent in ["compliance_strict", "implicit_compliance"]:
+                # Compliance intents - RETRIEVAL + CITATIONS BASED ON POLICY
                 used_retrieval = True
                 citations_reason = "intent"
                 
