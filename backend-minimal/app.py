@@ -892,17 +892,20 @@ def api_chat(req: ChatRequest):
                         # Log the full decision + metadata (compliance uses RAG only, no web search)
                         print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
                         
-                        # SAFE citation building with clause-level enhancement (feature-flagged)
+                        # SAFE citation building with policy-based limits
                 try:
-                    if docs:  # Only build citations if we have retrieval results
+                    if docs and show_citations:  # Only build citations if policy allows
+                        # Apply max_citations from policy
+                        max_cites = min(max_citations, 3)  # Cap at 3 for performance
+                        
                         use_clause_pills = CLAUSE_PILLS_ENABLED  # Local copy for this request
                         
                         if use_clause_pills:
-                            # CLAUSE PILLS ENABLED: Use clause-level citation system for enhanced pills
+                            # CLAUSE PILLS ENABLED: Use clause-level citation system
                             try:
                                 from clause_citations import build_clause_citations
                                 
-                                clause_level_citations = build_clause_citations(docs, user_message, max_citations=3)
+                                clause_level_citations = build_clause_citations(docs, user_message, max_citations=max_cites)
                                 
                                 # Convert to expected format for response
                                 enhanced_citations = []
@@ -932,7 +935,7 @@ def api_chat(req: ChatRequest):
                                 clause_hits = sum(1 for c in clause_level_citations if c.get("clause_id"))
                                 clause_hit_rate = clause_hits / len(clause_level_citations) if clause_level_citations else 0
                                 
-                                print(f"✅ Clause-level citations: {len(enhanced_citations)} total, {clause_hits} with clause IDs ({clause_hit_rate:.1%})")
+                                print(f"✅ Clause-level citations: {len(enhanced_citations)} total (policy max: {max_cites})")
                             except ImportError:
                                 print("⚠️ clause_citations module not found, falling back to page-level citations")
                                 use_clause_pills = False  # Disable for this request if module missing
@@ -940,10 +943,10 @@ def api_chat(req: ChatRequest):
                         if not use_clause_pills:
                             # CLAUSE PILLS DISABLED: Use simple page-level citations (stable production mode)
                             enhanced_citations = []
-                            citations_level_breakdown = {"page": len(docs[:3])}
+                            citations_level_breakdown = {"page": min(len(docs), max_cites)}
                             clause_hit_rate = 0
                             
-                            for idx, doc in enumerate(docs[:3]):  # Max 3 citations
+                            for idx, doc in enumerate(docs[:max_cites]):  # Respect policy max
                                 source = doc.get("source", "Unknown")
                                 page = doc.get("page", 0)
                                 snippet = doc.get("snippet", "")[:200]
