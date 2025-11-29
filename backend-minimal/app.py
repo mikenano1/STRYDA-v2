@@ -651,7 +651,7 @@ def api_chat(req: ChatRequest):
         try:
             with profiler.timer('t_parse'):
                 from intent_classifier_v2 import classify_intent
-                from intent_config import IntentPolicy
+                from intent_config import IntentPolicy, is_compliance_intent
                 
                 # Classify using V2 router
                 intent_result = classify_intent(user_message, conversation_history if 'conversation_history' in locals() else None)
@@ -661,6 +661,11 @@ def api_chat(req: ChatRequest):
                 detected_trade = intent_result["trade"]
                 trade_types = intent_result.get("trade_type_detailed", [])
                 classification_method = intent_result.get("method", "unknown")
+                original_intent = intent_result.get("original_intent", final_intent)
+                was_normalized = intent_result.get("normalized", False)
+                
+                # Check if in compliance bucket
+                is_compliance = is_compliance_intent(final_intent)
                 
                 # Get citation policy for this intent
                 policy = IntentPolicy.get_policy(final_intent)
@@ -672,14 +677,16 @@ def api_chat(req: ChatRequest):
                     "trade": detected_trade,
                     "trade_types": trade_types,
                     "policy": policy,
+                    "is_compliance": is_compliance,
                     "flags": set()
                 }
                 
-                if final_intent == "compliance_strict":
-                    context["flags"].add("strict")
+                if is_compliance:
+                    context["flags"].add("compliance_bucket")
                 
                 # Log intent classification
-                print(f"🎯 Intent V2: {final_intent} | Trade: {detected_trade} | Confidence: {final_confidence:.2f} | Method: {classification_method}")
+                norm_flag = " (normalized)" if was_normalized else ""
+                print(f"🎯 Intent V2: {final_intent}{norm_flag} | Trade: {detected_trade} | Compliance: {is_compliance} | Conf: {final_confidence:.2f} | Method: {classification_method}")
                     
         except Exception as e:
             print(f"❌ Intent classification failed: {e}")
@@ -688,7 +695,8 @@ def api_chat(req: ChatRequest):
             final_confidence = 0.5
             detected_trade = "carpentry"
             trade_types = []
-            context = {"intent": "general_help", "trade": "carpentry", "flags": set(), "policy": IntentPolicy.get_policy("general_help")}
+            is_compliance = False
+            context = {"intent": "general_help", "trade": "carpentry", "is_compliance": False, "flags": set(), "policy": IntentPolicy.get_policy("general_help")}
         
         # Enhanced telemetry with Intent V2
         if os.getenv("ENABLE_TELEMETRY") == "true":
