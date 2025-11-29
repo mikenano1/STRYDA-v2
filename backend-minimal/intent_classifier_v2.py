@@ -8,7 +8,10 @@ import re
 from typing import Dict, List, Optional, Tuple
 from openai import OpenAI
 import os
+from dotenv import load_dotenv
 from intent_config import Intent, IntentPolicy, TRADE_DOMAINS
+
+load_dotenv()
 
 DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
 
