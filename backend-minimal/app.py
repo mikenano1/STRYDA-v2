@@ -690,10 +690,10 @@ def api_chat(req: ChatRequest):
             trade_types = []
             context = {"intent": "general_help", "trade": "carpentry", "flags": set(), "policy": IntentPolicy.get_policy("general_help")}
         
-        # Enhanced telemetry with error safety
+        # Enhanced telemetry with Intent V2
         if os.getenv("ENABLE_TELEMETRY") == "true":
             try:
-                print(f"[telemetry] chat_request session_id={session_id[:8]}... intent_primary={primary_intent}:{confidence:.2f} intent_final={final_intent}:{final_confidence:.2f}")
+                print(f"[telemetry] chat_request session_id={session_id[:8]}... intent={final_intent}:{final_confidence:.2f} trade={detected_trade} method={classification_method}")
             except Exception as e:
                 print(f"⚠️ Telemetry error: {e}")
         
