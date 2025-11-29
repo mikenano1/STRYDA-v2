@@ -87,13 +87,13 @@ class IntentClassifierV2:
         """Fast pattern-based classification"""
         q_lower = question.lower()
         
-        # COMPLIANCE_STRICT patterns
+        # COMPLIANCE_STRICT patterns - explicit code references
         strict_patterns = [
             r'\b(nzs\s*3604|nzs\s*4229)\s+\d+\.\d+',  # NZS 3604 7.1
             r'\b[a-h]\d+/as\d+\b',  # E2/AS1, B1/AS1
             r'\b[a-h]\d+\.\d+\.\d+\b',  # H1.2.3, G5.3.2
             r'\bwhat\s+are\s+the\s+(nzs|b1|e2|h1|f4|g5)\s+requirements\b',
-            r'\bwhat\s+does\s+(nzs|nzbc|building code)\s+say\b',
+            r'\bwhat\s+does\s+(nzs|nzbc|building code)\s+(say|require|specify)\b',
             r'\b(minimum|maximum)\s+.*(per|under|according to)\s+(nzs|e2|b1|h1)\b'
         ]
         
@@ -143,18 +143,26 @@ class IntentClassifierV2:
                     "confidence": 0.85
                 }
         
-        # IMPLICIT_COMPLIANCE patterns (mentions compliance but conversational)
-        if any(term in q_lower for term in ['meets', 'compliant', 'code', 'standard', 'building code']):
-            if any(term in q_lower for term in ['how do i', 'best way', 'should i']):
+        # IMPLICIT_COMPLIANCE patterns - mentions code but conversational/practical
+        implicit_patterns = [
+            r'\b(meets|meet|compliant|comply with|complies with)\s+(nzs|nzbc|building code|code|standard)\b',
+            r'\bhow do i (check|ensure|verify|confirm).*(meets|complies|code|standard)\b',
+            r'\bmy .*(meets|complies).*(but|still|however)\b',  # "My X meets code but still Y"
+            r'\b(does this meet|is this compliant|will this pass)\b',
+            r'\bin .* (how|what).*(meet|comply|code)\b',  # Location-based compliance questions
+        ]
+        
+        for pattern in implicit_patterns:
+            if re.search(pattern, q_lower):
                 trade = self._guess_trade(q_lower)
                 return {
                     "intent": Intent.IMPLICIT_COMPLIANCE.value,
                     "trade": trade,
                     "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
-                    "confidence": 0.80
+                    "confidence": 0.85
                 }
         
-        # GENERAL_HELP (fallback)
+        # GENERAL_HELP (fallback for practical questions)
         trade = self._guess_trade(q_lower)
         return {
             "intent": Intent.GENERAL_HELP.value,
