@@ -823,8 +823,9 @@ def api_chat(req: ChatRequest):
                     answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
                     model_used = "fallback"
                 
-            elif final_intent in ["compliance_strict", "implicit_compliance"]:
-                # Compliance intents - RETRIEVAL + CITATIONS BASED ON POLICY
+            elif is_compliance:
+                # COMPLIANCE BUCKET (compliance_strict + implicit_compliance)
+                # Both get code-heavy retrieval + citations based on policy
                 used_retrieval = True
                 citations_reason = "intent"
                 
