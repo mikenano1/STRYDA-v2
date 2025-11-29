@@ -4,6 +4,9 @@ STRYDA Intent Router V2 - Self-Check Validation
 Tests classifier accuracy against training_questions_v2
 """
 
+import sys
+sys.path.insert(0, '/app/backend-minimal')
+
 import psycopg2
 import json
 from intent_classifier_v2 import classify_intent
