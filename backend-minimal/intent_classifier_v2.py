@@ -68,20 +68,87 @@ class IntentClassifierV2:
                 "trade": str,
                 "trade_type_detailed": List[str],
                 "confidence": float,
-                "method": str  # "pattern" or "llm"
+                "method": str,  # "pattern", "llm", or "hard_rule"
+                "original_intent": str  # Before normalization
             }
         """
+        
+        # STEP 0: Check for hard compliance rules (highest priority)
+        hard_rule_result = self._apply_hard_compliance_rules(question)
+        if hard_rule_result:
+            hard_rule_result["method"] = "hard_rule"
+            hard_rule_result["original_intent"] = hard_rule_result["intent"]
+            return hard_rule_result
         
         # STEP 1: Try pattern-based classification first (fast path)
         pattern_result = self._pattern_classify(question)
         if pattern_result and pattern_result["confidence"] >= 0.85:
             pattern_result["method"] = "pattern"
-            return pattern_result
+            pattern_result["original_intent"] = pattern_result["intent"]
+            
+            # Apply compliance bucket normalization
+            return self._normalize_compliance_bucket(pattern_result)
         
         # STEP 2: Use LLM with few-shot examples (accurate path)
         llm_result = self._llm_classify(question, context)
         llm_result["method"] = "llm"
-        return llm_result
+        llm_result["original_intent"] = llm_result["intent"]
+        
+        # Apply compliance bucket normalization
+        return self._normalize_compliance_bucket(llm_result)
+    
+    def _apply_hard_compliance_rules(self, question: str) -> Optional[Dict]:
+        """
+        Hard rules to force compliance_strict for explicit standard references
+        """
+        q_lower = question.lower()
+        
+        # Standard/code identifiers
+        has_standard = bool(re.search(
+            r'\b(nzs\s*3604|nzs\s*4229|nzbc|e2/as1|b1/as1|g12/as1|g13/as1|'
+            r'h1\s|f4\s|g5\s|c/as2|clause\s+[a-h]\d+|section\s+[a-h]\d+)\b',
+            q_lower
+        ))
+        
+        # Requirement phrases
+        has_requirement = bool(re.search(
+            r'\b(requirements?|minimum|maximum|what does (the code|nzs|nzbc) (say|require|specify)|'
+            r'per (nzs|nzbc|code)|according to (nzs|nzbc))\b',
+            q_lower
+        ))
+        
+        # Force compliance_strict if both present
+        if has_standard and has_requirement:
+            trade = self._guess_trade(q_lower)
+            return {
+                "intent": Intent.COMPLIANCE_STRICT.value,
+                "trade": trade,
+                "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
+                "confidence": 0.95
+            }
+        
+        return None
+    
+    def _normalize_compliance_bucket(self, result: Dict) -> Dict:
+        """
+        Normalize low-confidence compliance intents to implicit_compliance
+        Treats compliance_strict and implicit_compliance as a shared bucket
+        """
+        intent = result["intent"]
+        confidence = result["confidence"]
+        
+        # If it's a compliance intent but low confidence, normalize to implicit
+        if intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]:
+            if confidence < 0.70:
+                result["intent"] = Intent.IMPLICIT_COMPLIANCE.value
+                result["normalized"] = True
+                print(f"   🔄 Normalized {result['original_intent']} → implicit_compliance (confidence: {confidence:.2f})")
+            else:
+                result["normalized"] = False
+        else:
+            result["normalized"] = False
+        
+        return result
     
     def _pattern_classify(self, question: str) -> Optional[Dict]:
         """Fast pattern-based classification"""
