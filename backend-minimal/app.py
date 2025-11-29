@@ -647,42 +647,48 @@ def api_chat(req: ChatRequest):
         session_id = req.session_id or "default"
         user_message = req.message
         
-        # Step 1: SAFE intent classification
+        # Step 1: Intent classification using Intent Router V2
         try:
             with profiler.timer('t_parse'):
-                from intent_router import intent_router
+                from intent_classifier_v2 import classify_intent
+                from intent_config import IntentPolicy
                 
-                # Get primary classification
-                primary_intent, confidence, answer_style = intent_router.classify_intent_and_confidence(user_message)
+                # Classify using V2 router
+                intent_result = classify_intent(user_message, conversation_history if 'conversation_history' in locals() else None)
                 
-                # Use unified decision making - SAFE
-                try:
-                    final_intent, final_confidence, intent_meta = intent_router.decide_intent(
-                        (primary_intent, confidence), 
-                        []  # No secondary classifiers
-                    )
-                except Exception as e:
-                    print(f"⚠️ Intent decision failed: {e}")
-                    # Safe fallback
-                    final_intent, final_confidence = primary_intent, confidence
-                    intent_meta = {"source": "fallback"}
+                final_intent = intent_result["intent"]
+                final_confidence = intent_result["confidence"]
+                detected_trade = intent_result["trade"]
+                trade_types = intent_result.get("trade_type_detailed", [])
+                classification_method = intent_result.get("method", "unknown")
+                
+                # Get citation policy for this intent
+                policy = IntentPolicy.get_policy(final_intent)
                 
                 # Create context for retrieval
                 context = {
                     "intent": final_intent,
                     "intent_conf": final_confidence,
+                    "trade": detected_trade,
+                    "trade_types": trade_types,
+                    "policy": policy,
                     "flags": set()
                 }
                 
                 if final_intent == "compliance_strict":
                     context["flags"].add("strict")
+                
+                # Log intent classification
+                print(f"🎯 Intent V2: {final_intent} | Trade: {detected_trade} | Confidence: {final_confidence:.2f} | Method: {classification_method}")
                     
         except Exception as e:
             print(f"❌ Intent classification failed: {e}")
             # Emergency fallback
-            final_intent = "clarify"
+            final_intent = "general_help"
             final_confidence = 0.5
-            context = {"intent": "clarify", "flags": set()}
+            detected_trade = "carpentry"
+            trade_types = []
+            context = {"intent": "general_help", "trade": "carpentry", "flags": set(), "policy": IntentPolicy.get_policy("general_help")}
         
         # Enhanced telemetry with error safety
         if os.getenv("ENABLE_TELEMETRY") == "true":
