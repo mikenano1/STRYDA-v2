@@ -213,11 +213,16 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
 
 
 
-def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
+def simple_tier1_retrieval(query: str, top_k: int = 4, intent: str = "compliance_strict") -> List[Dict]:
     """
     Optimized Tier-1 retrieval using pgvector similarity search with caching
     PERFORMANCE: Reduced top_k to 4 for faster context assembly and lower token usage
-    IMPROVEMENTS: Canonical source mapping + fallback logic if filtered search returns 0 results
+    IMPROVEMENTS: Canonical source mapping + fallback logic + metadata-aware ranking
+    
+    Args:
+        query: User question
+        top_k: Number of results to return
+        intent: Intent from classifier (compliance_strict, general_help, product_info, etc.)
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
     
