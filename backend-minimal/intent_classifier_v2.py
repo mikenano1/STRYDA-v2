@@ -394,46 +394,65 @@ class IntentClassifierV2:
         return max(trade_scores.items(), key=lambda x: x[1])[0]
     
     def _llm_classify(self, question: str, context: Optional[List[Dict]] = None) -> Dict:
-        """LLM-based classification using expanded few-shot examples"""
+        """
+        V2.4 LLM-based classification with FULL 105 few-shot examples
         
-        # Build few-shot prompt with examples from intent_fewshots_v2
+        Uses optimized prompt with more examples per intent for better accuracy
+        """
+        
+        # Build few-shot prompt with MORE examples (12-15 per intent for high-confidence classification)
         examples_text = ""
         
-        # Add compact examples (6-8 per intent to stay under token limits)
-        examples_text += "\nCOMPLIANCE_STRICT examples (explicit code requirements):\n"
-        for ex in fewshots_compliance_strict[:8]:
+        # COMPLIANCE_STRICT: Use 15 examples (most critical to get right)
+        examples_text += "\n🔵 COMPLIANCE_STRICT (explicit code requirements, asking what code says):\n"
+        for ex in fewshots_compliance_strict[:15]:
             examples_text += f"  - {ex}\n"
         
-        examples_text += "\nIMPLICIT_COMPLIANCE examples (checking if something complies):\n"
-        for ex in fewshots_implicit_compliance[:8]:
+        # IMPLICIT_COMPLIANCE: Use 15 examples (critical for compliance bucket)
+        examples_text += "\n🟠 IMPLICIT_COMPLIANCE (checking if design meets code, verification questions):\n"
+        for ex in fewshots_implicit_compliance[:15]:
             examples_text += f"  - {ex}\n"
         
-        examples_text += "\nGENERAL_HELP examples (practical guidance):\n"
-        for ex in fewshots_general_help[:8]:
+        # GENERAL_HELP: Use 12 examples (practical tradie guidance)
+        examples_text += "\n🟢 GENERAL_HELP (practical tradie guidance, no compliance checking):\n"
+        for ex in fewshots_general_help[:12]:
             examples_text += f"  - {ex}\n"
         
-        examples_text += "\nPRODUCT_INFO examples (product/material recommendations):\n"
-        for ex in fewshots_product_info[:4]:
+        # PRODUCT_INFO: Use 8 examples (less common)
+        examples_text += "\n🟣 PRODUCT_INFO (product/material recommendations):\n"
+        for ex in fewshots_product_info[:8]:
             examples_text += f"  - {ex}\n"
         
-        examples_text += "\nCOUNCIL_PROCESS examples (consents/inspections):\n"
-        for ex in fewshots_council_process[:4]:
+        # COUNCIL_PROCESS: Use 8 examples (less common)
+        examples_text += "\n🟡 COUNCIL_PROCESS (consents, inspections, regulatory process):\n"
+        for ex in fewshots_council_process[:8]:
             examples_text += f"  - {ex}\n"
         
-        prompt = f"""Classify this NZ building trade question into ONE intent category.
+        prompt = f"""You are an expert NZ building code classifier. Classify this question into EXACTLY ONE intent category.
 
-Intents (pick EXACTLY one):
-- compliance_strict: Explicit code/standard requirements ("What does E2/AS1 say", "minimum", "maximum", "required by code")
-- implicit_compliance: Checking if design meets code ("Does this comply", "Is this allowed", "Will this pass")  
-- general_help: Practical tradie guidance (no compliance checking)
-- product_info: Product/material recommendations
-- council_process: Consent/inspection/regulatory process
+**Intent Definitions:**
+- **compliance_strict**: Asks for EXACT code requirements (minimum/maximum values, what code says, specific clauses, table references). User wants precise numbers or rule text.
+- **implicit_compliance**: Asks if a design/approach MEETS code or will be accepted (checking compliance, verification questions). User has a design and wants to check if it's acceptable.
+- **general_help**: Practical tradie guidance, how-to questions, troubleshooting, best practices. NO compliance checking.
+- **product_info**: Product/material/brand recommendations, which product to use.
+- **council_process**: Consent process, inspections, CCC, producer statements, regulatory paperwork.
 
+**Examples from 9,000 real NZ builder questions:**
 {examples_text}
 
-Question: {question}
+**Question to classify:** {question}
 
-Respond with ONLY a JSON object:
+**Classification rules:**
+1. Look for "what does [code] say/require" → compliance_strict
+2. Look for "is this acceptable/compliant/allowed" → implicit_compliance
+3. Look for "how do I" or "why does" (practical) → general_help
+4. Look for "which product/brand" → product_info
+5. Look for "consent/CCC/inspection" → council_process
+6. Legacy questions ("built in 2005", "older code") → implicit_compliance
+7. If asking for NUMBERS from code → compliance_strict
+8. If asking if DESIGN meets code → implicit_compliance
+
+Respond with ONLY a JSON object (no markdown):
 {{"intent": "...", "trade": "...", "confidence": 0.XX}}
 
 Valid trades: carpentry, roofing, plumbing, electrical, cladding, drainage, concrete_foundations, passive_fire, interior_linings, joinery, waterproofing, h1_energy, hvac_ventilation, earthworks_stormwater, council_consent"""
@@ -442,11 +461,15 @@ Valid trades: carpentry, roofing, plumbing, electrical, cladding, drainage, conc
             response = self.client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=100
+                temperature=0.0,  # V2.4: Zero temperature for consistency
+                max_tokens=150
             )
             
-            result_text = response.choices[0].message.content
+            result_text = response.choices[0].message.content.strip()
+            
+            # Clean markdown if present
+            if result_text.startswith("```"):
+                result_text = result_text.replace("```json", "").replace("```", "").strip()
             
             # Extract JSON
             import json
