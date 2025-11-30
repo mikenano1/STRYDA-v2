@@ -14,6 +14,9 @@ from supabase import create_client, Client
 from openai import OpenAI
 import PyPDF2
 from io import BytesIO
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuration
 MANIFEST_PATH = "/app/backend-minimal/training/docs_manifest.jsonl"
@@ -21,14 +24,14 @@ ERROR_LOG_PATH = "/app/backend-minimal/training/logs/pdf_ingest_errors.log"
 SUCCESS_LOG_PATH = "/app/backend-minimal/training/logs/pdf_ingest_success.log"
 
 # Database config
-DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Supabase config
-SUPABASE_URL = "https://qxqisgjhbjwvoxsjibes.supabase.co"
-SUPABASE_SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4cWlzZ2poYmp3dm94c2ppYmVzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjM4NDg2OCwiZXhwIjoyMDQ3OTYwODY4fQ.IWxBqO5vSPxBkN-TQnH7yS-j7q1SwY-RvdBzqVmOCMM"
+# Supabase config from env
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 # OpenAI config
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "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")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 EMBEDDING_MODEL = "text-embedding-3-small"
 
 def log_error(message: str):
