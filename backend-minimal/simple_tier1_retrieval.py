@@ -263,10 +263,11 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
                     results = cur.fetchall()
                     print(f"   🌐 Global search fallback: found {len(results)} chunks")
             else:
-                # No sources detected, search all documents
+                # Fallback global search also includes metadata
                 print(f"   🌐 Searching ALL documents (no source filter)")
                 cur.execute("""
                     SELECT id, source, page, content, section, clause, snippet,
+                           doc_type, trade, status, priority, phase,
                            (embedding <=> %s::vector) as similarity
                     FROM documents 
                     WHERE embedding IS NOT NULL
