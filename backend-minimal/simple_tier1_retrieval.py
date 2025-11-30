@@ -162,6 +162,57 @@ def canonical_source_map(query: str) -> List[str]:
     
     return unique_sources
 
+def score_with_metadata(base_similarity: float, doc_type: str, priority: int, intent: str) -> float:
+    """
+    Metadata-aware scoring that combines similarity + doc_type + priority
+    
+    Scoring formula:
+    - final_score = base_similarity + (priority/1000) + intent_bonus
+    
+    Where:
+    - base_similarity: 0.0-1.0 (from cosine similarity, 1.0 = best match)
+    - priority: 0-100 → contributes 0.0-0.1 to final score
+    - intent_bonus: -0.10 to +0.10 based on doc_type alignment with intent
+    
+    Intent-based bonuses:
+    - compliance_strict/implicit_compliance → favor current standards
+    - general_help/product_info → favor guides and manufacturer docs
+    """
+    score = base_similarity
+    
+    # Priority influence (0-100 → 0.00-0.10)
+    if priority:
+        score += priority / 1000.0
+    
+    # Intent-based bonuses/penalties
+    if intent in ("compliance_strict", "implicit_compliance"):
+        # Compliance queries: favor current official standards
+        if doc_type == "acceptable_solution_current":
+            score += 0.10  # Strong bonus for current AS
+        elif doc_type == "verification_method_current":
+            score += 0.08  # Strong bonus for current VM
+        elif doc_type == "industry_code_of_practice":
+            score += 0.05  # Medium bonus for industry codes
+        elif doc_type == "acceptable_solution_legacy":
+            score += 0.03  # Small bonus for legacy (still official)
+        elif doc_type and doc_type.startswith("manufacturer_manual"):
+            score -= 0.02  # Slight penalty for manufacturer docs
+        elif doc_type == "handbook_guide":
+            score -= 0.01  # Very slight penalty for guides
+            
+    elif intent in ("general_help", "product_info"):
+        # Practical queries: favor guides and manufacturer docs
+        if doc_type and doc_type.startswith("manufacturer_manual"):
+            score += 0.06  # Bonus for manufacturer docs
+        elif doc_type == "handbook_guide":
+            score += 0.04  # Bonus for guides
+        elif doc_type in ("acceptable_solution_current", "verification_method_current"):
+            score += 0.02  # Small bonus (still useful context)
+    
+    return score
+
+
+
 def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
     """
     Optimized Tier-1 retrieval using pgvector similarity search with caching
