@@ -1,33 +1,34 @@
-{"supabase_bucket":"pdfs","supabase_path":"C-AS1_2nd-Edition-Amendment1.pdf","phase":2,"category":"fire_acceptance_current","trade":"fire","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"C-AS2_3rd-Edition-Amendment4-2024.pdf","phase":2,"category":"fire_acceptance_current","trade":"fire","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"C-AS3_Amendment-4_2019-EXPIRED.pdf","phase":2,"category":"fire_acceptance_legacy","trade":"fire","status":"expired","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"CAS3-Amendment4-2019-EXPIRED.pdf","phase":2,"category":"fire_acceptance_legacy","trade":"fire","status":"expired","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"C-AS4_Amendment-4_2019-EXPIRED.pdf","phase":2,"category":"fire_acceptance_legacy","trade":"fire","status":"expired","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"C-AS5_Amendment-4_2019-EXPIRED.pdf","phase":2,"category":"fire_acceptance_legacy","trade":"fire","status":"expired","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"C-AS6_Amendment-4_2019-EXPIRED.pdf","phase":2,"category":"fire_acceptance_legacy","trade":"fire","status":"expired","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"C-AS7_Amendment-4_2019-EXPIRED.pdf","phase":2,"category":"fire_acceptance_legacy","trade":"fire","status":"expired","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"C-VM2_Amendment-6_2020.pdf","phase":2,"category":"fire_verification","trade":"fire","status":"expired","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"E1-AS1_1st-Edition-Amendment12.pdf","phase":1,"category":"nzbc_as","trade":"drainage","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"E2-AS1_4th-Edition-2025.pdf","phase":1,"category":"nzbc_as","trade":"cladding","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"E3-AS1_2nd-Edition.pdf","phase":1,"category":"nzbc_as","trade":"bathroom_internal_moisture","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"F4-AS1_Amendment6-2021.pdf","phase":1,"category":"nzbc_as","trade":"safety_from_falling","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"F6-AS1_Amendment3-2021.pdf","phase":1,"category":"nzbc_as","trade":"egress_lighting","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"F7-AS1_5th-Edition-2023.pdf","phase":1,"category":"nzbc_as","trade":"warning_systems","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"G12-AS1_3rd-Edition.pdf","phase":1,"category":"nzbc_as","trade":"plumbing","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"G13-AS1_3rd-Edition.pdf","phase":1,"category":"nzbc_as","trade":"drainage","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"H1-AS1_6th-Edition.pdf","phase":1,"category":"nzbc_as","trade":"energy","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"H1-VM1_6th-Edition-2025.pdf","phase":1,"category":"nzbc_vm","trade":"energy","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"GIB-Bracing-Supplement-2016.pdf","phase":1,"category":"manufacturer_bracing","trade":"structure","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"GIB-EzyBrace-Systems-2016.pdf","phase":1,"category":"manufacturer_bracing","trade":"structure","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"GIB-Fire-Systems-Manual.pdf","phase":1,"category":"manufacturer_fire","trade":"fire","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-
-{"supabase_bucket":"pdfs","supabase_path":"Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf","phase":3,"category":"internal_wet_area_code","trade":"bathroom_internal_moisture","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
-{"supabase_bucket":"pdfs","supabase_path":"Ardex-Waterproofing-Manual.pdf","phase":3,"category":"manufacturer_waterproofing","trade":"waterproofing","status":"current","source_url":"","pre_uploaded":true,"needs_download":false}
+{"supabase_bucket": "pdfs", "supabase_path": "E3-AS1_2nd-Edition-Amd7-2020.pdf.pdf", "phase": 2, "category": "fire_acceptance_current", "trade": "fire", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "G12-AS1_3rd-Edition-Amd14-2024.pdf.pdf", "phase": 2, "category": "fire_acceptance_current", "trade": "fire", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-AS3_Amendment-4_2019-EXPIRED.pdf.pdf", "phase": 2, "category": "fire_acceptance_legacy", "trade": "fire", "status": "expired", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "CAS3-Amendment4-2019-EXPIRED.pdf.pdf", "phase": 2, "category": "fire_acceptance_legacy", "trade": "fire", "status": "expired", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-AS4_Amendment-4_2019-EXPIRED.pdf.pdf", "phase": 2, "category": "fire_acceptance_legacy", "trade": "fire", "status": "expired", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-AS5_Amendment-4_2019-EXPIRED.pdf.pdf", "phase": 2, "category": "fire_acceptance_legacy", "trade": "fire", "status": "expired", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-AS6_Amendment-4_2019-EXPIRED.pdf.pdf", "phase": 2, "category": "fire_acceptance_legacy", "trade": "fire", "status": "expired", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-AS7_Amendment-4_2019-EXPIRED.pdf.pdf", "phase": 2, "category": "fire_acceptance_legacy", "trade": "fire", "status": "expired", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-VM2_Amendment-6_2020.pdf.pdf", "phase": 2, "category": "fire_verification", "trade": "fire", "status": "expired", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "E1-AS1_1st-Edition-Amd12-2024.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "drainage", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "E2-AS1_4th-Edition-2025.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "cladding", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-AS1_2nd-Edition_2023.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "bathroom_internal_moisture", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "F4-AS1_Amendment-6-2021.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "safety_from_falling", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "F6-AS1_Amendment-3-2021.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "egress_lighting", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "F7-AS1_5th-Edition-2023.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "warning_systems", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "H1-AS1_6th-Edition.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "plumbing", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "G13-AS1_3rd-Edition-Amd14-2024.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "drainage", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "H1-AS1_6th-Edition.pdf.pdf", "phase": 1, "category": "nzbc_as", "trade": "energy", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "H1-VM1_6th-Edition-2025.pdf.pdf", "phase": 1, "category": "nzbc_vm", "trade": "energy", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "GIB-Bracing-Supplement-2016.pdf.pdf", "phase": 1, "category": "manufacturer_bracing", "trade": "structure", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "GIB-EzyBrace-Systems-2016.pdf.pdf", "phase": 1, "category": "manufacturer_bracing", "trade": "structure", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "GIB-Fire-Systems-Manual.pdf.pdf", "phase": 1, "category": "manufacturer_fire", "trade": "fire", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf.pdf", "phase": 3, "category": "internal_wet_area_code", "trade": "bathroom_internal_moisture", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "Ardex-Waterproofing-Manual.pdf.pdf", "phase": 3, "category": "manufacturer_waterproofing", "trade": "waterproofing", "status": "current", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "B1-Structure-Amendment13.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "b1-structure-as1-second-edition.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "building-code.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "C-AS2_2nd-Edition_2025.pdf.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "e2-external-moisture-as1-fourth-edition.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "nz_metal_roofing.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "NZS-36042011.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "NZS-42292013.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "SNZ-HB-3604-2011-Selected-Extracts.pdf.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
+{"supabase_bucket": "pdfs", "supabase_path": "WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf", "phase": 0, "category": "unclassified", "trade": "unknown", "status": "unknown", "source_url": "", "pre_uploaded": true, "needs_download": false}
