@@ -201,13 +201,13 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
             score -= 0.01  # Very slight penalty for guides
             
     elif intent in ("general_help", "product_info"):
-        # Practical queries: favor guides and manufacturer docs
+        # Practical queries: strongly favor guides and manufacturer docs
         if doc_type and doc_type.startswith("manufacturer_manual"):
-            score += 0.06  # Bonus for manufacturer docs
+            score += 0.08  # INCREASED: Strong bonus for manufacturer docs
         elif doc_type == "handbook_guide":
-            score += 0.04  # Bonus for guides
+            score += 0.06  # INCREASED: Strong bonus for guides
         elif doc_type in ("acceptable_solution_current", "verification_method_current"):
-            score += 0.02  # Small bonus (still useful context)
+            score += 0.02  # Keep standards as useful context
     
     return score
 
