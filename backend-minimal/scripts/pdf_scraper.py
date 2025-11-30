@@ -10,15 +10,18 @@ import requests
 from datetime import datetime
 from pathlib import Path
 from supabase import create_client, Client
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuration
 MANIFEST_PATH = "/app/backend-minimal/training/docs_manifest.jsonl"
 LOG_PATH = "/app/backend-minimal/training/logs/pdf_scraper.log"
 TEMP_DIR = "/tmp/pdf_downloads"
 
-# Supabase config (extracted from DATABASE_URL)
-SUPABASE_URL = "https://qxqisgjhbjwvoxsjibes.supabase.co"
-SUPABASE_SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4cWlzZ2poYmp3dm94c2ppYmVzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjM4NDg2OCwiZXhwIjoyMDQ3OTYwODY4fQ.IWxBqO5vSPxBkN-TQnH7yS-j7q1SwY-RvdBzqVmOCMM"
+# Supabase config from env
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 def log(message: str):
     """Write to log file and console"""
