@@ -113,6 +113,62 @@ def generate_embeddings(texts: list, client: OpenAI) -> list:
     except Exception as e:
         raise Exception(f"Embedding generation failed: {e}")
 
+def is_already_ingested(supabase_path: str, conn) -> bool:
+    """Check if PDF is already ingested"""
+    try:
+        with conn.cursor() as cur:
+            # Check if any chunks exist for this source_path
+            # We'll store supabase_path in a metadata field or use source name
+            source_name = supabase_path.replace(".pdf", "")
+            
+            cur.execute("""
+                SELECT COUNT(*) 
+                FROM documents 
+                WHERE source = %s OR source LIKE %s;
+            """, (source_name, f"%{source_name}%"))
+            
+            count = cur.fetchone()[0]
+            return count > 0
+    except Exception as e:
+        log_error(f"Error checking if {supabase_path} is ingested: {e}")
+        return False
+
+def insert_chunks_batched(chunks: list, embeddings: list, conn, supabase_path: str) -> int:
+    """Insert chunks in batches to avoid timeouts"""
+    BATCH_SIZE = 100
+    total_inserted = 0
+    
+    for i in range(0, len(chunks), BATCH_SIZE):
+        batch = chunks[i:i + BATCH_SIZE]
+        batch_embeddings = embeddings[i:i + BATCH_SIZE]
+        
+        try:
+            with conn.cursor() as cur:
+                for idx, chunk in enumerate(batch):
+                    cur.execute("""
+                        INSERT INTO documents 
+                        (source, page, content, snippet, embedding)
+                        VALUES (%s, %s, %s, %s, %s::vector)
+                    """, (
+                        chunk["source"],
+                        chunk["page"],
+                        chunk["text"],
+                        chunk["text"][:200],
+                        batch_embeddings[idx]
+                    ))
+                    total_inserted += 1
+            
+            conn.commit()
+            batch_end = min(i + BATCH_SIZE, len(chunks))
+            log_success(f"   Inserted batch {i+1}-{batch_end} for {supabase_path}")
+            
+        except Exception as e:
+            log_error(f"   ❌ Failed to insert batch {i}-{i+BATCH_SIZE}: {e}")
+            conn.rollback()
+            raise
+    
+    return total_inserted
+
 def ingest_pdf(entry: dict, conn, openai_client: OpenAI) -> dict:
     """Ingest a single PDF into the database"""
     pdf_name = entry["supabase_path"]
