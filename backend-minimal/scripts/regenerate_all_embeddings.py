@@ -10,9 +10,12 @@ import psycopg2.extras
 from openai import OpenAI
 import os
 import time
+from dotenv import load_dotenv
 
-DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
-OPENAI_API_KEY = "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"
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Configuration
 EMBEDDING_MODEL = "text-embedding-3-small"
