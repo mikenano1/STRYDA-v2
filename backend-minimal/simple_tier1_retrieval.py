@@ -377,20 +377,33 @@ def simple_tier1_retrieval(query: str, top_k: int = 4, intent: str = "compliance
             
             formatted_results.append(formatted_result)
         
-        # Apply ranking bias based on query patterns
+        # Apply ranking bias based on query patterns (keep existing B1 Amendment logic)
         bias_weights = detect_b1_amendment_bias(query)
         bias_applied = False
         if bias_weights:
             print(f"🎯 Applying ranking bias: {bias_weights}")
             formatted_results = apply_ranking_bias(formatted_results, bias_weights)
             bias_applied = True
-            
-            # Log telemetry for bias application
-            bias_count = sum(1 for r in formatted_results if r.get('bias_applied', False))
-            print(f"[telemetry] ranking_bias applied={bias_applied} weights={bias_weights} affected_results={bias_count}/{len(formatted_results)}")
         
-        # Sort by score and return top_k
-        final_results = sorted(formatted_results, key=lambda x: x['score'], reverse=True)[:top_k]
+        # Sort by final_score (metadata-aware) instead of base score
+        final_results = sorted(formatted_results, key=lambda x: x['final_score'], reverse=True)[:top_k]
+        
+        # DEBUG LOGGING: Log top 5 unique documents with metadata
+        unique_sources = {}
+        for r in final_results:
+            if r['source'] not in unique_sources:
+                unique_sources[r['source']] = r
+        
+        top_docs_log = []
+        for idx, (source, doc) in enumerate(list(unique_sources.items())[:5], 1):
+            top_docs_log.append(
+                f"{idx}) {source} (doc_type={doc.get('doc_type', 'N/A')}, trade={doc.get('trade', 'N/A')}, "
+                f"priority={doc.get('priority', 0)}, base={doc['base_score']:.3f}, final={doc['final_score']:.3f})"
+            )
+        
+        print(f"[retrieval] intent={intent} top_docs:")
+        for log_line in top_docs_log:
+            print(f"   {log_line}")
         
         tier1_count = sum(1 for r in final_results if r.get('tier1_source', False))
         
