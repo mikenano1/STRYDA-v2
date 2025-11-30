@@ -70,46 +70,20 @@ def is_compliance_tone(question: str) -> bool:
 
 class IntentClassifierV2:
     """
-    Intent classifier using training_questions_v2 as labelled data
-    Combines pattern matching + LLM-based classification
+    V2.4 Intent classifier with 4-step hybrid pipeline
+    
+    Pipeline:
+    1. Fast pattern matching layer (regex-based)
+    2. Compliance tone detector (is_compliance_tone)
+    3. LLM classifier with 105 few-shot examples
+    4. Hybrid scoring model with agreement bonuses and smoothing
+    
+    Target: >90% accuracy with correct compliance bucket routing
     """
     
     def __init__(self):
         self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        self._load_training_samples()
-    
-    def _load_training_samples(self):
-        """Load representative samples from training_questions_v2"""
-        try:
-            conn = psycopg2.connect(DATABASE_URL, sslmode="require")
-            cur = conn.cursor()
-            
-            # Get 3 examples per intent for few-shot classification
-            self.few_shot_examples = {}
-            
-            for intent in [Intent.COMPLIANCE_STRICT, Intent.IMPLICIT_COMPLIANCE, 
-                          Intent.GENERAL_HELP, Intent.PRODUCT_INFO, Intent.COUNCIL_PROCESS]:
-                cur.execute("""
-                    SELECT question, trade, trade_type_detailed
-                    FROM training_questions_v2
-                    WHERE intent = %s
-                    ORDER BY RANDOM()
-                    LIMIT 3;
-                """, (intent.value,))
-                
-                self.few_shot_examples[intent] = [
-                    {"question": q, "trade": t, "trade_type": tt} 
-                    for q, t, tt in cur.fetchall()
-                ]
-            
-            cur.close()
-            conn.close()
-            
-            print(f"✅ Loaded few-shot examples for {len(self.few_shot_examples)} intents")
-            
-        except Exception as e:
-            print(f"⚠️ Failed to load training samples: {e}")
-            self.few_shot_examples = {}
+        print(f"✅ Intent Classifier V2.4 initialized with 105 few-shot examples")
     
     def classify_intent(self, question: str, context: Optional[List[Dict]] = None) -> Dict:
         """
