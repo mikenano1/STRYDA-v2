@@ -1,6 +1,6 @@
 # STRYDA-v2 Backend Validation Report
 
-**Date:** 2025-11-30T08:23:23.645760
+**Date:** 2025-11-30T09:02:10.761377
 **Questions:** 50
 
 ## Overall Stats
@@ -11,17 +11,17 @@
 
 ## Intent Distribution
 
-- **general_help**: 21 questions
+- **general_help**: 20 questions
 - **compliance_strict**: 17 questions
-- **product_info**: 10 questions
-- **implicit_compliance**: 2 questions
+- **product_info**: 9 questions
+- **implicit_compliance**: 4 questions
 
 ## Citations by Intent
 
 - **compliance_strict**: 16/17 (94.1%) showed citations
-- **general_help**: 0/21 (0.0%) showed citations
-- **implicit_compliance**: 0/2 (0.0%) showed citations
-- **product_info**: 0/10 (0.0%) showed citations
+- **general_help**: 0/20 (0.0%) showed citations
+- **implicit_compliance**: 0/4 (0.0%) showed citations
+- **product_info**: 0/9 (0.0%) showed citations
 
 ## Sample Results (First 15)
 
@@ -58,9 +58,8 @@
 
 **Question:** If a house was built in 2005, which version of NZS 3604 applies to bracing design?
 
-- Intent: `compliance_strict`
-- Citations: 3
-- Top sources: NZS 3604:2011, NZS 3604:2011, NZS 3604:2011
+- Intent: `implicit_compliance`
+- Citations: 0
 
 ### Q6: roofing
 
@@ -158,8 +157,7 @@
 ### Legacy/Historical Queries:
 
 - Q5: If a house was built in 2005, which version of NZS 3604 appl...
-  - Intent: compliance_strict
-  - Top source: NZS 3604:2011
+  - Intent: implicit_compliance
 
 - Q15: What was the E2/AS1 requirement for cavity ventilation back ...
   - Intent: compliance_strict

@@ -305,22 +305,38 @@ class IntentClassifierV2:
         return max(trade_scores.items(), key=lambda x: x[1])[0]
     
     def _llm_classify(self, question: str, context: Optional[List[Dict]] = None) -> Dict:
-        """LLM-based classification using few-shot examples"""
+        """LLM-based classification using expanded few-shot examples"""
         
-        # Build few-shot prompt
+        # Build few-shot prompt with examples from intent_fewshots_v2
         examples_text = ""
-        if self.few_shot_examples:
-            for intent, samples in list(self.few_shot_examples.items())[:3]:  # Use 3 intents
-                examples_text += f"\n{intent.value} examples:\n"
-                for sample in samples[:2]:  # 2 per intent
-                    examples_text += f"  - {sample['question']}\n"
         
-        prompt = f"""Classify this NZ building trade question into ONE intent category:
+        # Add compact examples (6-8 per intent to stay under token limits)
+        examples_text += "\nCOMPLIANCE_STRICT examples (explicit code requirements):\n"
+        for ex in fewshots_compliance_strict[:8]:
+            examples_text += f"  - {ex}\n"
+        
+        examples_text += "\nIMPLICIT_COMPLIANCE examples (checking if something complies):\n"
+        for ex in fewshots_implicit_compliance[:8]:
+            examples_text += f"  - {ex}\n"
+        
+        examples_text += "\nGENERAL_HELP examples (practical guidance):\n"
+        for ex in fewshots_general_help[:8]:
+            examples_text += f"  - {ex}\n"
+        
+        examples_text += "\nPRODUCT_INFO examples (product/material recommendations):\n"
+        for ex in fewshots_product_info[:4]:
+            examples_text += f"  - {ex}\n"
+        
+        examples_text += "\nCOUNCIL_PROCESS examples (consents/inspections):\n"
+        for ex in fewshots_council_process[:4]:
+            examples_text += f"  - {ex}\n"
+        
+        prompt = f"""Classify this NZ building trade question into ONE intent category.
 
-Intents:
-- compliance_strict: Explicit code/standard queries requiring precise citations
-- implicit_compliance: Code-aware but conversational
-- general_help: Practical tradie guidance
+Intents (pick EXACTLY one):
+- compliance_strict: Explicit code/standard requirements ("What does E2/AS1 say", "minimum", "maximum", "required by code")
+- implicit_compliance: Checking if design meets code ("Does this comply", "Is this allowed", "Will this pass")  
+- general_help: Practical tradie guidance (no compliance checking)
 - product_info: Product/material recommendations
 - council_process: Consent/inspection/regulatory process
 
