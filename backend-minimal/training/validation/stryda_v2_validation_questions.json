@@ -1,0 +1,61 @@
+[
+  { "id": 1,  "trade_hint": "carpentry",  "question": "What's the NZS 3604 stud spacing for 2.4m wall height in Extra High wind?" },
+  { "id": 2,  "trade_hint": "carpentry",  "question": "Do I need a jack stud under a steel lintel over 2.7m span?" },
+  { "id": 3,  "trade_hint": "carpentry",  "question": "Is double top plate required on a non-loadbearing internal wall?" },
+  { "id": 4,  "trade_hint": "carpentry",  "question": "Can I run ceiling battens directly across trusses or do I need clips?" },
+  { "id": 5,  "trade_hint": "carpentry",  "question": "If a house was built in 2005, which version of NZS 3604 applies to bracing design?" },
+
+  { "id": 6,  "trade_hint": "roofing",  "question": "What fall should I run longrun Colorsteel on in Extra High wind?" },
+  { "id": 7,  "trade_hint": "roofing",  "question": "Where should expansion joints go on a 24m long gable roof?" },
+  { "id": 8,  "trade_hint": "roofing",  "question": "What's the minimum soffit overhang for high wind zones?" },
+  { "id": 9,  "trade_hint": "roofing",  "question": "Is 75mm barge cover enough for Corrugate in Very High wind?" },
+  { "id": 10, "trade_hint": "roofing",  "question": "How do I fix back flashing on a box gutter using NZMRM details?" },
+
+  { "id": 11, "trade_hint": "cladding", "question": "What cavity batten size do I need for bevelback weatherboards in Extra High?" },
+  { "id": 12, "trade_hint": "cladding", "question": "Can I direct fix fibre cement cladding to 20mm battens in High wind?" },
+  { "id": 13, "trade_hint": "cladding", "question": "Do I need a drained cavity on brick veneer for a 2-storey house?" },
+  { "id": 14, "trade_hint": "cladding", "question": "What's the overflashing requirement above a window head on vertical oblique?" },
+  { "id": 15, "trade_hint": "cladding", "question": "What was the E2/AS1 requirement for cavity ventilation back in 2007?" },
+
+  { "id": 16, "trade_hint": "interior_linings", "question": "For a 60min fire wall, which GIB system should I use?" },
+  { "id": 17, "trade_hint": "interior_linings", "question": "Do I need to stagger plasterboard joints on a bracing wall?" },
+  { "id": 18, "trade_hint": "interior_linings", "question": "What screw spacing should I use for GIB on 600mm studs?" },
+  { "id": 19, "trade_hint": "interior_linings", "question": "Which way should I run GIB UltraLine on a ceiling?" },
+  { "id": 20, "trade_hint": "interior_linings", "question": "Is GIB EzyBrace acceptable for a garage conversion into a bedroom?" },
+
+  { "id": 21, "trade_hint": "fire", "question": "What FRR do I need between a garage and a dwelling under C/AS2?" },
+  { "id": 22, "trade_hint": "fire", "question": "For a house built in 2014, which C/AS document applies for internal stairs?" },
+  { "id": 23, "trade_hint": "fire", "question": "Do I need a smoke seal on a 30min fire door?" },
+  { "id": 24, "trade_hint": "fire", "question": "What's the required separation distance for an unprotected opening near a boundary?" },
+  { "id": 25, "trade_hint": "fire", "question": "What did C/AS3 require for exit routes pre-2017?" },
+
+  { "id": 26, "trade_hint": "concrete_foundations", "question": "What cover do I need to reinforcement in a 300x300 strip footing?" },
+  { "id": 27, "trade_hint": "concrete_foundations", "question": "What is the slump requirement for a 50MPa footing pour?" },
+  { "id": 28, "trade_hint": "concrete_foundations", "question": "Can I use 665 mesh instead of HD10 bars in a raft slab?" },
+  { "id": 29, "trade_hint": "concrete_foundations", "question": "Do I need to vibrate a shallow wall pour if using 10mm aggregate?" },
+  { "id": 30, "trade_hint": "concrete_foundations", "question": "How do I seal a cold joint between an old culvert floor and new wing wall?" },
+
+  { "id": 31, "trade_hint": "drainage", "question": "What fall do I need on a stormwater lateral from house to boundary?" },
+  { "id": 32, "trade_hint": "drainage", "question": "What's the minimum gully trap depth?" },
+  { "id": 33, "trade_hint": "drainage", "question": "Can I run a downpipe into a soak pit on a clay site?" },
+  { "id": 34, "trade_hint": "drainage", "question": "What was the E1/AS1 stormwater requirement before the 2024 amendment?" },
+  { "id": 35, "trade_hint": "drainage", "question": "Do I need a backflow preventer on an external bathroom connection?" },
+
+  { "id": 36, "trade_hint": "plumbing", "question": "What's the max fixture unit load on a 100mm stack?" },
+  { "id": 37, "trade_hint": "plumbing", "question": "Do I need a vent pipe on a single-storey ensuite bathroom?" },
+  { "id": 38, "trade_hint": "plumbing", "question": "What temperature does a tempering valve need to be set to?" },
+  { "id": 39, "trade_hint": "plumbing", "question": "Can I use PEX for hot supply lines in a commercial fitout?" },
+  { "id": 40, "trade_hint": "plumbing", "question": "What was the G12 trapping requirement in the older (2010) edition?" },
+
+  { "id": 41, "trade_hint": "energy", "question": "What R-value does a ceiling need in climate zone 2 under H1/AS1 6th edition?" },
+  { "id": 42, "trade_hint": "energy", "question": "What was the roof R-value under the older H1 before the 2022 update?" },
+  { "id": 43, "trade_hint": "energy", "question": "Do I need thermal breaks behind longrun cladding?" },
+  { "id": 44, "trade_hint": "energy", "question": "How do I calculate window performance using H1/VM1?" },
+  { "id": 45, "trade_hint": "energy", "question": "What insulation is acceptable for an unlined garage under the current code?" },
+
+  { "id": 46, "trade_hint": "waterproofing", "question": "How do I waterproof a tiled shower over timber according to the internal wet area code?" },
+  { "id": 47, "trade_hint": "waterproofing", "question": "What Ardex system should I use for a tiled deck over habitable space?" },
+  { "id": 48, "trade_hint": "waterproofing", "question": "Can I use Mapelastic AquaDefense under a cement-based tile adhesive?" },
+  { "id": 49, "trade_hint": "waterproofing", "question": "Do I need a bond breaker in corners when using sheet membrane?" },
+  { "id": 50, "trade_hint": "waterproofing", "question": "What fall should I use on an internal bathroom floor to the channel grate?" }
+]
