@@ -192,12 +192,14 @@ class IntentClassifierV2:
                     "confidence": 0.88
                 }
         
-        # PRODUCT_INFO patterns
+        # PRODUCT_INFO patterns - strengthen for manufacturer/guide references
         product_patterns = [
-            r'\bwhat\s+(product|brand|manufacturer)\b',
-            r'\b(best|recommended)\s+(product|material|brand)\b',
-            r'\b(gib|james hardie|resene|pink batts|metalcraft)\b',  # NZ brands
-            r'\bwhat\s+.*(works best|suits|lasts longest|performs best)\b',
+            r'\bwhat\s+(product|brand|manufacturer|system)\b',
+            r'\b(best|recommended)\s+(product|material|brand|system)\b',
+            r'\b(gib|james hardie|resene|pink batts|metalcraft|ardex)\b',  # NZ brands
+            r'\bwhat\s+.*(works best|suits|lasts longest|performs best|should i use)\b',
+            r'\baccording to\s+(nz metal roofing|wganz|gib|ardex)\b',  # Citing guides/manufacturers
+            r'\bwhich\s+(gib|ardex|metal roofing|manufacturer)\s+system\b',
         ]
         
         for pattern in product_patterns:
