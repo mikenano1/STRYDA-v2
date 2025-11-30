@@ -97,7 +97,7 @@ class IntentClassifierV2:
     
     def classify_intent(self, question: str, context: Optional[List[Dict]] = None) -> Dict:
         """
-        Classify user question into intent + trade
+        Classify user question using hybrid scoring (pattern + LLM)
         
         Returns:
             {
@@ -105,8 +105,8 @@ class IntentClassifierV2:
                 "trade": str,
                 "trade_type_detailed": List[str],
                 "confidence": float,
-                "method": str,  # "pattern", "llm", or "hard_rule"
-                "original_intent": str  # Before normalization
+                "method": str,  # "hard_rule", "pattern", "llm", or "hybrid"
+                "original_intent": str
             }
         """
         
@@ -117,22 +117,70 @@ class IntentClassifierV2:
             hard_rule_result["original_intent"] = hard_rule_result["intent"]
             return hard_rule_result
         
-        # STEP 1: Try pattern-based classification first (fast path)
-        pattern_result = self._pattern_classify(question)
-        if pattern_result and pattern_result["confidence"] >= 0.85:
-            pattern_result["method"] = "pattern"
-            pattern_result["original_intent"] = pattern_result["intent"]
-            
-            # Apply compliance bucket normalization
-            return self._normalize_compliance_bucket(pattern_result)
+        # Detect compliance tone for scoring adjustments
+        has_compliance_tone = is_compliance_tone(question)
         
-        # STEP 2: Use LLM with few-shot examples (accurate path)
+        # STEP 1: Get pattern classification
+        pattern_result = self._pattern_classify(question)
+        pattern_intent = pattern_result["intent"] if pattern_result else None
+        pattern_conf = pattern_result["confidence"] if pattern_result else 0.0
+        
+        # STEP 2: Get LLM classification  
         llm_result = self._llm_classify(question, context)
-        llm_result["method"] = "llm"
-        llm_result["original_intent"] = llm_result["intent"]
+        llm_intent = llm_result["intent"]
+        llm_conf = llm_result["confidence"]
+        
+        # STEP 3: Hybrid scoring
+        # Adjust weights based on compliance tone
+        if has_compliance_tone:
+            pattern_weight = 0.65
+            llm_weight = 0.35
+        else:
+            pattern_weight = 0.55
+            llm_weight = 0.45
+        
+        # CASE 1: Both agree
+        if pattern_intent == llm_intent:
+            final_intent = pattern_intent
+            final_confidence = min(1.0, max(pattern_conf, llm_conf) + 0.05)
+            method = "hybrid_agree"
+        
+        # CASE 2: Disagree - use weighted scoring
+        else:
+            pattern_score = pattern_conf * pattern_weight
+            llm_score = llm_conf * llm_weight
+            
+            # Compliance tone bias
+            if has_compliance_tone:
+                if pattern_intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]:
+                    pattern_score += 0.03
+                if llm_intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]:
+                    llm_score += 0.03
+            
+            # Choose higher score
+            if pattern_score > llm_score:
+                final_intent = pattern_intent
+                final_confidence = pattern_score
+                method = "hybrid_pattern"
+            else:
+                final_intent = llm_intent
+                final_confidence = llm_score
+                method = "hybrid_llm"
+        
+        # Build result
+        trade = pattern_result.get("trade") if pattern_result else llm_result.get("trade", "carpentry")
+        
+        result = {
+            "intent": final_intent,
+            "trade": trade,
+            "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
+            "confidence": final_confidence,
+            "method": method,
+            "original_intent": final_intent
+        }
         
         # Apply compliance bucket normalization
-        return self._normalize_compliance_bucket(llm_result)
+        return self._normalize_compliance_bucket(result)
     
     def _apply_hard_compliance_rules(self, question: str) -> Optional[Dict]:
         """
