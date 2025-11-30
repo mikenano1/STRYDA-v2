@@ -1,27 +1,27 @@
 # STRYDA-v2 Backend Validation Report
 
-**Date:** 2025-11-30T09:02:10.761377
+**Date:** 2025-11-30T19:05:49.453356
 **Questions:** 50
 
 ## Overall Stats
 
 - Total questions: 50
-- Citations shown: 16/50 (32.0%)
-- Citations hidden: 34/50
+- Citations shown: 1/50 (2.0%)
+- Citations hidden: 49/50
 
 ## Intent Distribution
 
-- **general_help**: 20 questions
-- **compliance_strict**: 17 questions
-- **product_info**: 9 questions
-- **implicit_compliance**: 4 questions
+- **implicit_compliance**: 28 questions
+- **general_help**: 15 questions
+- **product_info**: 6 questions
+- **compliance_strict**: 1 questions
 
 ## Citations by Intent
 
-- **compliance_strict**: 16/17 (94.1%) showed citations
-- **general_help**: 0/20 (0.0%) showed citations
-- **implicit_compliance**: 0/4 (0.0%) showed citations
-- **product_info**: 0/9 (0.0%) showed citations
+- **compliance_strict**: 1/1 (100.0%) showed citations
+- **general_help**: 0/15 (0.0%) showed citations
+- **implicit_compliance**: 0/28 (0.0%) showed citations
+- **product_info**: 0/6 (0.0%) showed citations
 
 ## Sample Results (First 15)
 
@@ -29,9 +29,8 @@
 
 **Question:** What's the NZS 3604 stud spacing for 2.4m wall height in Extra High wind?
 
-- Intent: `compliance_strict`
-- Citations: 3
-- Top sources: NZS 3604:2011, NZS 3604:2011, NZS 3604:2011
+- Intent: `implicit_compliance`
+- Citations: 0
 
 ### Q2: carpentry
 
@@ -44,7 +43,7 @@
 
 **Question:** Is double top plate required on a non-loadbearing internal wall?
 
-- Intent: `general_help`
+- Intent: `implicit_compliance`
 - Citations: 0
 
 ### Q4: carpentry
@@ -65,7 +64,7 @@
 
 **Question:** What fall should I run longrun Colorsteel on in Extra High wind?
 
-- Intent: `general_help`
+- Intent: `implicit_compliance`
 - Citations: 0
 
 ### Q7: roofing
@@ -79,15 +78,14 @@
 
 **Question:** What's the minimum soffit overhang for high wind zones?
 
-- Intent: `compliance_strict`
-- Citations: 3
-- Top sources: E2-AS1_4th-Edition-2025, E2-AS1_4th-Edition-2025, nz_metal_roofing
+- Intent: `implicit_compliance`
+- Citations: 0
 
 ### Q9: roofing
 
 **Question:** Is 75mm barge cover enough for Corrugate in Very High wind?
 
-- Intent: `general_help`
+- Intent: `implicit_compliance`
 - Citations: 0
 
 ### Q10: roofing
@@ -101,7 +99,7 @@
 
 **Question:** What cavity batten size do I need for bevelback weatherboards in Extra High?
 
-- Intent: `general_help`
+- Intent: `implicit_compliance`
 - Citations: 0
 
 ### Q12: cladding
@@ -115,16 +113,15 @@
 
 **Question:** Do I need a drained cavity on brick veneer for a 2-storey house?
 
-- Intent: `general_help`
+- Intent: `implicit_compliance`
 - Citations: 0
 
 ### Q14: cladding
 
 **Question:** What's the overflashing requirement above a window head on vertical oblique?
 
-- Intent: `compliance_strict`
-- Citations: 3
-- Top sources: E2/AS1, E2/AS1, E2/AS1
+- Intent: `implicit_compliance`
+- Citations: 0
 
 ### Q15: cladding
 
@@ -151,7 +148,7 @@
 - Q20: Is GIB EzyBrace acceptable for a garage conversion into a be...
   - Citations: 0
 
-- Q28: Can I use 665 mesh instead of HD10 bars in a raft slab?...
+- Q47: What Ardex system should I use for a tiled deck over habitab...
   - Citations: 0
 
 ### Legacy/Historical Queries:
@@ -164,14 +161,11 @@
   - Top source: E2/AS1
 
 - Q22: For a house built in 2014, which C/AS document applies for i...
-  - Intent: compliance_strict
-  - Top source: C-AS4_Amendment-4_2019-EXPIRED
+  - Intent: general_help
 
 - Q25: What did C/AS3 require for exit routes pre-2017?...
-  - Intent: compliance_strict
-  - Top source: C-AS4_Amendment-4_2019-EXPIRED
+  - Intent: implicit_compliance
 
 - Q34: What was the E1/AS1 stormwater requirement before the 2024 a...
-  - Intent: compliance_strict
-  - Top source: E2/AS1
+  - Intent: implicit_compliance
 

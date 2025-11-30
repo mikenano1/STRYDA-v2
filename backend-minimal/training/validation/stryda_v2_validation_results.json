@@ -3,23 +3,10 @@
     "question_id": 1,
     "trade_hint": "carpentry",
     "question": "What's the NZS 3604 stud spacing for 2.4m wall height in Extra High wind?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "NZS 3604:2011",
-        "page": 201
-      },
-      {
-        "source": "NZS 3604:2011",
-        "page": 238
-      },
-      {
-        "source": "NZS 3604:2011",
-        "page": 239
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 2,
@@ -34,7 +21,7 @@
     "question_id": 3,
     "trade_hint": "carpentry",
     "question": "Is double top plate required on a non-loadbearing internal wall?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -61,7 +48,7 @@
     "question_id": 6,
     "trade_hint": "roofing",
     "question": "What fall should I run longrun Colorsteel on in Extra High wind?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -79,29 +66,16 @@
     "question_id": 8,
     "trade_hint": "roofing",
     "question": "What's the minimum soffit overhang for high wind zones?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "E2-AS1_4th-Edition-2025",
-        "page": 143
-      },
-      {
-        "source": "E2-AS1_4th-Edition-2025",
-        "page": 139
-      },
-      {
-        "source": "nz_metal_roofing",
-        "page": 372
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 9,
     "trade_hint": "roofing",
     "question": "Is 75mm barge cover enough for Corrugate in Very High wind?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -119,7 +93,7 @@
     "question_id": 11,
     "trade_hint": "cladding",
     "question": "What cavity batten size do I need for bevelback weatherboards in Extra High?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -137,7 +111,7 @@
     "question_id": 13,
     "trade_hint": "cladding",
     "question": "Do I need a drained cavity on brick veneer for a 2-storey house?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -146,23 +120,10 @@
     "question_id": 14,
     "trade_hint": "cladding",
     "question": "What's the overflashing requirement above a window head on vertical oblique?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "E2/AS1",
-        "page": 100
-      },
-      {
-        "source": "E2/AS1",
-        "page": 24
-      },
-      {
-        "source": "E2/AS1",
-        "page": 23
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 15,
@@ -235,7 +196,7 @@
     "question_id": 21,
     "trade_hint": "fire",
     "question": "What FRR do I need between a garage and a dwelling under C/AS2?",
-    "intent": "compliance_strict",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -244,95 +205,43 @@
     "question_id": 22,
     "trade_hint": "fire",
     "question": "For a house built in 2014, which C/AS document applies for internal stairs?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "C-AS4_Amendment-4_2019-EXPIRED",
-        "page": 61
-      },
-      {
-        "source": "C-AS6_Amendment-4_2019-EXPIRED",
-        "page": 57
-      },
-      {
-        "source": "building-code",
-        "page": 183
-      }
-    ]
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 23,
     "trade_hint": "fire",
     "question": "Do I need a smoke seal on a 30min fire door?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "NZ Building Code",
-        "page": 157
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 174
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 133
-      }
-    ]
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 24,
     "trade_hint": "fire",
     "question": "What's the required separation distance for an unprotected opening near a boundary?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "C-AS6_Amendment-4_2019-EXPIRED",
-        "page": 91
-      },
-      {
-        "source": "C-AS4_Amendment-4_2019-EXPIRED",
-        "page": 58
-      },
-      {
-        "source": "C-AS2_2nd-Edition_2025",
-        "page": 82
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 25,
     "trade_hint": "fire",
     "question": "What did C/AS3 require for exit routes pre-2017?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "C-AS4_Amendment-4_2019-EXPIRED",
-        "page": 36
-      },
-      {
-        "source": "C-AS6_Amendment-4_2019-EXPIRED",
-        "page": 34
-      },
-      {
-        "source": "CAS3-Amendment4-2019-EXPIRED",
-        "page": 31
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 26,
     "trade_hint": "concrete_foundations",
     "question": "What cover do I need to reinforcement in a 300x300 strip footing?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -341,29 +250,16 @@
     "question_id": 27,
     "trade_hint": "concrete_foundations",
     "question": "What is the slump requirement for a 50MPa footing pour?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "B1/AS1",
-        "page": 11
-      },
-      {
-        "source": "B1/AS1",
-        "page": 14
-      },
-      {
-        "source": "B1/AS1",
-        "page": 9
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 28,
     "trade_hint": "concrete_foundations",
     "question": "Can I use 665 mesh instead of HD10 bars in a raft slab?",
-    "intent": "product_info",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -390,7 +286,7 @@
     "question_id": 31,
     "trade_hint": "drainage",
     "question": "What fall do I need on a stormwater lateral from house to boundary?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -399,7 +295,7 @@
     "question_id": 32,
     "trade_hint": "drainage",
     "question": "What's the minimum gully trap depth?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -408,7 +304,7 @@
     "question_id": 33,
     "trade_hint": "drainage",
     "question": "Can I run a downpipe into a soak pit on a clay site?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -417,51 +313,25 @@
     "question_id": 34,
     "trade_hint": "drainage",
     "question": "What was the E1/AS1 stormwater requirement before the 2024 amendment?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "E2/AS1",
-        "page": 1
-      },
-      {
-        "source": "E2/AS1",
-        "page": 47
-      },
-      {
-        "source": "E2/AS1",
-        "page": 86
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 35,
     "trade_hint": "drainage",
     "question": "Do I need a backflow preventer on an external bathroom connection?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "G12-AS1_3rd-Edition-Amd14-2024",
-        "page": 23
-      },
-      {
-        "source": "G12-AS1_3rd-Edition-Amd14-2024",
-        "page": 15
-      },
-      {
-        "source": "G13-AS1_3rd-Edition-Amd14-2024",
-        "page": 19
-      }
-    ]
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 36,
     "trade_hint": "plumbing",
     "question": "What's the max fixture unit load on a 100mm stack?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -470,7 +340,7 @@
     "question_id": 37,
     "trade_hint": "plumbing",
     "question": "Do I need a vent pipe on a single-storey ensuite bathroom?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -479,7 +349,7 @@
     "question_id": 38,
     "trade_hint": "plumbing",
     "question": "What temperature does a tempering valve need to be set to?",
-    "intent": "product_info",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -488,7 +358,7 @@
     "question_id": 39,
     "trade_hint": "plumbing",
     "question": "Can I use PEX for hot supply lines in a commercial fitout?",
-    "intent": "product_info",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -497,67 +367,28 @@
     "question_id": 40,
     "trade_hint": "plumbing",
     "question": "What was the G12 trapping requirement in the older (2010) edition?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "NZ Building Code",
-        "page": 73
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 143
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 207
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 41,
     "trade_hint": "energy",
     "question": "What R-value does a ceiling need in climate zone 2 under H1/AS1 6th edition?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "E2/AS1",
-        "page": 89
-      },
-      {
-        "source": "E2/AS1",
-        "page": 16
-      },
-      {
-        "source": "E2/AS1",
-        "page": 88
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 42,
     "trade_hint": "energy",
     "question": "What was the roof R-value under the older H1 before the 2022 update?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "NZ Building Code",
-        "page": 142
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 85
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 113
-      }
-    ]
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 43,
@@ -572,51 +403,25 @@
     "question_id": 44,
     "trade_hint": "energy",
     "question": "How do I calculate window performance using H1/VM1?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "NZ Building Code",
-        "page": 142
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 113
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 166
-      }
-    ]
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 45,
     "trade_hint": "energy",
     "question": "What insulation is acceptable for an unlined garage under the current code?",
-    "intent": "compliance_strict",
-    "citations_shown": true,
-    "citation_count": 3,
-    "top_docs": [
-      {
-        "source": "NZ Building Code",
-        "page": 113
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 137
-      },
-      {
-        "source": "NZ Building Code",
-        "page": 34
-      }
-    ]
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
   },
   {
     "question_id": 46,
     "trade_hint": "waterproofing",
     "question": "How do I waterproof a tiled shower over timber according to the internal wet area code?",
-    "intent": "implicit_compliance",
+    "intent": "general_help",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
