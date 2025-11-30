@@ -87,7 +87,13 @@ class IntentClassifierV2:
     
     def classify_intent(self, question: str, context: Optional[List[Dict]] = None) -> Dict:
         """
-        Classify user question using hybrid scoring (pattern + LLM)
+        V2.4 - 4-step hybrid pipeline for intent classification
+        
+        STEP 0: Hard compliance rules (highest priority)
+        STEP 1: Fast pattern matching
+        STEP 2: Compliance tone detection  
+        STEP 3: LLM classification with 105 few-shot examples
+        STEP 4: Hybrid scoring model with agreement bonuses
         
         Returns:
             {
@@ -95,8 +101,11 @@ class IntentClassifierV2:
                 "trade": str,
                 "trade_type_detailed": List[str],
                 "confidence": float,
-                "method": str,  # "hard_rule", "pattern", "llm", or "hybrid"
-                "original_intent": str
+                "method": str,  # "hard_rule", "pattern_strong", "hybrid_agree", "hybrid_llm", "hybrid_pattern"
+                "original_intent": str,
+                "pattern_intent": str,  # For debugging
+                "llm_intent": str,  # For debugging
+                "compliance_tone": bool  # For debugging
             }
         """
         
@@ -105,59 +114,93 @@ class IntentClassifierV2:
         if hard_rule_result:
             hard_rule_result["method"] = "hard_rule"
             hard_rule_result["original_intent"] = hard_rule_result["intent"]
+            hard_rule_result["pattern_intent"] = hard_rule_result["intent"]
+            hard_rule_result["llm_intent"] = None
+            hard_rule_result["compliance_tone"] = True
+            print(f"   🔒 Hard rule fired: {hard_rule_result['intent']}")
             return hard_rule_result
-        
-        # Detect compliance tone for scoring adjustments
-        has_compliance_tone = is_compliance_tone(question)
         
         # STEP 1: Get pattern classification
         pattern_result = self._pattern_classify(question)
         pattern_intent = pattern_result["intent"] if pattern_result else None
         pattern_conf = pattern_result["confidence"] if pattern_result else 0.0
         
-        # STEP 2: Get LLM classification  
+        # STEP 2: Detect compliance tone (critical for weighting)
+        has_compliance_tone = is_compliance_tone(question)
+        
+        # STEP 3: Get LLM classification with full few-shot library
         llm_result = self._llm_classify(question, context)
         llm_intent = llm_result["intent"]
         llm_conf = llm_result["confidence"]
         
-        # STEP 3: Hybrid scoring
-        # Adjust weights based on compliance tone
+        # STEP 4: Hybrid scoring model
+        # V2.4 CHANGES:
+        # - Increased pattern_weight when compliance tone detected (0.55 → 0.70)
+        # - Agreement bonus increased from 0.05 → 0.08
+        # - Smoothing for ambiguous cases (both intents < 0.75 confidence)
+        
         if has_compliance_tone:
-            pattern_weight = 0.65
-            llm_weight = 0.35
+            pattern_weight = 0.70  # INCREASED: Trust patterns more for compliance tone
+            llm_weight = 0.30
         else:
             pattern_weight = 0.55
             llm_weight = 0.45
         
-        # CASE 1: Both agree
+        # CASE 1: Both pattern and LLM agree
         if pattern_intent == llm_intent:
             final_intent = pattern_intent
-            final_confidence = min(1.0, max(pattern_conf, llm_conf) + 0.05)
+            final_confidence = min(1.0, max(pattern_conf, llm_conf) + 0.08)  # INCREASED agreement bonus
             method = "hybrid_agree"
         
-        # CASE 2: Disagree - use weighted scoring
+        # CASE 2: Disagree - use weighted scoring with smoothing
         else:
             pattern_score = pattern_conf * pattern_weight
             llm_score = llm_conf * llm_weight
             
-            # Compliance tone bias
+            # V2.4 ADDITION: Compliance tone bias within compliance bucket
             if has_compliance_tone:
+                # Boost whichever one picked a compliance intent
                 if pattern_intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]:
-                    pattern_score += 0.03
+                    pattern_score += 0.05  # INCREASED from 0.03
                 if llm_intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]:
-                    llm_score += 0.03
+                    llm_score += 0.05  # INCREASED from 0.03
             
-            # Choose higher score
-            if pattern_score > llm_score:
-                final_intent = pattern_intent
-                final_confidence = pattern_score
-                method = "hybrid_pattern"
+            # V2.4 ADDITION: Smoothing for ambiguous cases
+            # If both classifiers are uncertain (conf < 0.75), apply smoothing
+            if pattern_conf < 0.75 and llm_conf < 0.75:
+                # Check if both picked intents within same bucket
+                pattern_is_compliance = pattern_intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]
+                llm_is_compliance = llm_intent in [Intent.COMPLIANCE_STRICT.value, Intent.IMPLICIT_COMPLIANCE.value]
+                
+                if pattern_is_compliance and llm_is_compliance:
+                    # Both picked compliance bucket but different types
+                    # Normalize to implicit_compliance (safer choice)
+                    final_intent = Intent.IMPLICIT_COMPLIANCE.value
+                    final_confidence = (pattern_score + llm_score) / 2
+                    method = "hybrid_smoothed_compliance"
+                    print(f"   🔄 Smoothing: Both picked compliance, normalized to implicit_compliance")
+                else:
+                    # Different buckets, low confidence - choose higher score
+                    if pattern_score > llm_score:
+                        final_intent = pattern_intent
+                        final_confidence = pattern_score
+                        method = "hybrid_pattern_ambiguous"
+                    else:
+                        final_intent = llm_intent
+                        final_confidence = llm_score
+                        method = "hybrid_llm_ambiguous"
             else:
-                final_intent = llm_intent
-                final_confidence = llm_score
-                method = "hybrid_llm"
+                # Normal case: choose higher score
+                if pattern_score > llm_score:
+                    final_intent = pattern_intent
+                    final_confidence = pattern_score
+                    method = "hybrid_pattern"
+                else:
+                    final_intent = llm_intent
+                    final_confidence = llm_score
+                    method = "hybrid_llm"
         
-        # Build result
+        # Build result with full debugging metadata
         trade = pattern_result.get("trade") if pattern_result else llm_result.get("trade", "carpentry")
         
         result = {
@@ -166,7 +209,15 @@ class IntentClassifierV2:
             "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
             "confidence": final_confidence,
             "method": method,
-            "original_intent": final_intent
+            "original_intent": final_intent,
+            "pattern_intent": pattern_intent,
+            "llm_intent": llm_intent,
+            "compliance_tone": has_compliance_tone,
+            # Include raw scores for debugging
+            "_pattern_conf": pattern_conf,
+            "_llm_conf": llm_conf,
+            "_pattern_weight": pattern_weight,
+            "_llm_weight": llm_weight
         }
         
         # Apply compliance bucket normalization
