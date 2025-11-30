@@ -14,12 +14,13 @@ try:
     from simple_tier1_retrieval import simple_tier1_retrieval
     
     # Canonical function that all systems use
-    def tier1_retrieval(query: str, top_k: int = 6, **kwargs):
+    def tier1_retrieval(query: str, top_k: int = 6, intent: str = "compliance_strict", **kwargs):
         """
         Canonical Tier-1 retrieval used by chat, selftest, and all other systems
         Ensures consistency across all callers
+        Passes intent through for metadata-aware ranking
         """
-        return simple_tier1_retrieval(query, top_k)
+        return simple_tier1_retrieval(query, top_k, intent=intent)
     
     # Also export with the expected name for compatibility
     tier1_content_search = tier1_retrieval
