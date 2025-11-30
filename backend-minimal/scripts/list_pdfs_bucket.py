@@ -4,10 +4,14 @@ List all objects in Supabase Storage 'pdfs' bucket
 """
 
 from supabase import create_client, Client
+import os
+from dotenv import load_dotenv
 
-# Supabase config
-SUPABASE_URL = "https://qxqisgjhbjwvoxsjibes.supabase.co"
-SUPABASE_SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4cWlzZ2poYmp3dm94c2ppYmVzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMjM4NDg2OCwiZXhwIjoyMDQ3OTYwODY4fQ.IWxBqO5vSPxBkN-TQnH7yS-j7q1SwY-RvdBzqVmOCMM"
+load_dotenv()
+
+# Supabase config from env
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 print("="*80)
 print("SUPABASE STORAGE - 'pdfs' BUCKET LISTING")
