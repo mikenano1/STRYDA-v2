@@ -278,9 +278,15 @@ def main():
         
         print(f"\n[{idx}/{len(entries)}] Processing: {pdf_name}")
         
-        # Skip expired documents (optional)
+        # Skip expired documents
         if status == "expired":
             log_success(f"   ⏭️  Skipping expired document")
+            stats["skipped"] += 1
+            continue
+        
+        # Skip already-ingested documents
+        if is_already_ingested(pdf_name, conn):
+            log_success(f"   ⏭️  SKIP already ingested: {pdf_name}")
             stats["skipped"] += 1
             continue
         
