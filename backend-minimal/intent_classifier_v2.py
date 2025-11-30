@@ -1,6 +1,7 @@
 """
-STRYDA Intent Classifier V2
-Uses training_questions_v2 dataset for accurate intent classification
+STRYDA Intent Classifier V2.4
+Enhanced 4-step hybrid pipeline with full 105 few-shot examples
+Target: >90% intent accuracy with intelligent compliance bucket routing
 """
 
 import psycopg2
@@ -24,33 +25,48 @@ DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-
 
 def is_compliance_tone(question: str) -> bool:
     """
-    Detect if question has compliance tone (checking if something meets code)
-    Returns True for implicit compliance queries
+    V2.4 Enhanced compliance tone detector
+    Detects implicit compliance queries (checking/verifying if something meets code)
     """
     q_lower = question.lower()
     
-    # Has code/standard reference
-    has_code = bool(re.search(
-        r'\b(nzs|nzbc|e2/as1|h1/as1|b1/as1|c/as|building code|code|standard|clause)\b',
+    # STEP 1: Check for code/standard references
+    has_code_ref = bool(re.search(
+        r'\b(nzs|nzbc|e[123]/as\d?|h1/as1|b1/as1|c/as\d?|f[467]/as1|g[1-9]+/as1|'
+        r'building code|code|standard|clause|amendment)\b',
         q_lower
     ))
     
-    # Has compliance checking language
-    has_compliance_lang = bool(re.search(
-        r'\b(does this|is this|will this|can i|do i need|is it).*(comply|meet|pass|fail|acceptable|allowed|legal|permitted|okay|ok)\b',
+    # STEP 2: Compliance verification language (is this allowed/acceptable)
+    has_verification_lang = bool(re.search(
+        r'\b(does this|is this|will this|can i|do i need|is it|am i).*(comply|compliant|'
+        r'meet|meets|satisfy|pass|fail|acceptable|allowed|legal|permitted|okay|ok|fine|safe)\b',
         q_lower
     )) or bool(re.search(
-        r'\b(will council|would council|will inspector).*(accept|allow|approve|sign off|fail|pass)\b',
+        r'\b(will council|would council|will inspector|does the code).*(accept|allow|approve|'
+        r'sign off|fail|pass|require|permit)\b',
         q_lower
     ))
     
-    # NOT strict requirement language
-    not_strict = not bool(re.search(
-        r'\b(minimum|maximum|what does .* say|what is the .* requirement|exact requirement|which table)\b',
+    # STEP 3: Exclude strict requirement language (those are compliance_strict)
+    has_strict_lang = bool(re.search(
+        r'\b(minimum|maximum|what does .* (say|require|specify|state)|what is the .* requirement|'
+        r'exact requirement|which table|what (r-?value|spacing|height|span))\b',
         q_lower
     ))
     
-    return has_code and has_compliance_lang and not_strict
+    # STEP 4: Amplify signal from legacy/version questions
+    has_legacy_context = bool(re.search(
+        r'\b(built in|designed in|constructed in|back in|older|pre-|which version|which edition)\s+\d{4}\b',
+        q_lower
+    ))
+    
+    # Final determination
+    if has_legacy_context:
+        # Legacy questions are implicit compliance (not asking for exact numbers)
+        return True
+    
+    return has_code_ref and has_verification_lang and not has_strict_lang
 
 class IntentClassifierV2:
     """
