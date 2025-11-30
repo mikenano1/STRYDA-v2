@@ -10,10 +10,47 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from intent_config import Intent, IntentPolicy, TRADE_DOMAINS
+from intent_fewshots_v2 import (
+    fewshots_compliance_strict, 
+    fewshots_implicit_compliance,
+    fewshots_general_help,
+    fewshots_product_info,
+    fewshots_council_process
+)
 
 load_dotenv()
 
 DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
+
+def is_compliance_tone(question: str) -> bool:
+    """
+    Detect if question has compliance tone (checking if something meets code)
+    Returns True for implicit compliance queries
+    """
+    q_lower = question.lower()
+    
+    # Has code/standard reference
+    has_code = bool(re.search(
+        r'\b(nzs|nzbc|e2/as1|h1/as1|b1/as1|c/as|building code|code|standard|clause)\b',
+        q_lower
+    ))
+    
+    # Has compliance checking language
+    has_compliance_lang = bool(re.search(
+        r'\b(does this|is this|will this|can i|do i need|is it).*(comply|meet|pass|fail|acceptable|allowed|legal|permitted|okay|ok)\b',
+        q_lower
+    )) or bool(re.search(
+        r'\b(will council|would council|will inspector).*(accept|allow|approve|sign off|fail|pass)\b',
+        q_lower
+    ))
+    
+    # NOT strict requirement language
+    not_strict = not bool(re.search(
+        r'\b(minimum|maximum|what does .* say|what is the .* requirement|exact requirement|which table)\b',
+        q_lower
+    ))
+    
+    return has_code and has_compliance_lang and not_strict
 
 class IntentClassifierV2:
     """
