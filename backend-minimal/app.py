@@ -830,9 +830,9 @@ def api_chat(req: ChatRequest):
                 citations_reason = "intent"
                 
                 with profiler.timer('t_vector_search'):
-                    # Use CANONICAL retrieval with safe error handling
+                    # Use CANONICAL retrieval with safe error handling and intent-aware ranking
                     try:
-                        docs = tier1_retrieval(user_message, top_k=4)
+                        docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)
                         tier1_hit = len(docs) > 0
                     except Exception as e:
                         print(f"⚠️ Retrieval failed: {e}")
