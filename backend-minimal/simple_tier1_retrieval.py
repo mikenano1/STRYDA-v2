@@ -249,11 +249,12 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
                 cur.execute(sql, params)
                 results = cur.fetchall()
                 
-                # FALLBACK LOGIC: If filtered search returns 0 results, retry with global search
+                # FALLBACK LOGIC: If filtered search returns 0 results, retry with global search + metadata
                 if len(results) == 0:
                     print(f"   ⚠️ Filtered search returned 0 results, retrying with GLOBAL search...")
                     cur.execute("""
                         SELECT id, source, page, content, section, clause, snippet,
+                               doc_type, trade, status, priority, phase,
                                (embedding <=> %s::vector) as similarity
                         FROM documents 
                         WHERE embedding IS NOT NULL
