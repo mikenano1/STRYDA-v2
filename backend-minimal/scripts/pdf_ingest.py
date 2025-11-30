@@ -175,6 +175,9 @@ def ingest_pdf(entry: dict, conn, openai_client: OpenAI) -> dict:
     bucket = entry.get("supabase_bucket", "pdfs")
     source_name = pdf_name.replace(".pdf", "")
     
+    # Log start
+    log_success(f"INGEST START: {pdf_name}")
+    
     try:
         # Step 1: Download PDF
         log_success(f"Downloading {bucket}/{pdf_name}")
@@ -202,7 +205,7 @@ def ingest_pdf(entry: dict, conn, openai_client: OpenAI) -> dict:
                     "source": source_name
                 })
         
-        log_success(f"   ✅ Created {len(all_chunks)} chunks")
+        log_success(f"   ✅ Created {len(all_chunks)} chunks (total_chunks={len(all_chunks)})")
         
         # Step 4: Generate embeddings in batches
         log_success(f"Generating embeddings for {len(all_chunks)} chunks")
@@ -217,23 +220,11 @@ def ingest_pdf(entry: dict, conn, openai_client: OpenAI) -> dict:
             
             log_success(f"   [{len(embeddings)}/{len(all_chunks)}] Generated embeddings")
         
-        # Step 5: Insert into database
-        log_success(f"Inserting {len(all_chunks)} chunks into database")
-        with conn.cursor() as cur:
-            for idx, chunk in enumerate(all_chunks):
-                cur.execute("""
-                    INSERT INTO documents 
-                    (source, page, content, snippet, embedding)
-                    VALUES (%s, %s, %s, %s, %s::vector)
-                """, (
-                    chunk["source"],
-                    chunk["page"],
-                    chunk["text"],
-                    chunk["text"][:200],
-                    embeddings[idx]
-                ))
+        # Step 5: Insert chunks in batches to avoid timeouts
+        log_success(f"Inserting {len(all_chunks)} chunks into database (batched)")
+        inserted_count = insert_chunks_batched(all_chunks, embeddings, conn, pdf_name)
         
-        conn.commit()
+        log_success(f"✅ INGEST DONE: {pdf_name}, chunks_inserted={inserted_count}")
         log_success(f"✅ Ingested {pdf_name}: {len(pages)} pages, {len(all_chunks)} chunks")
         
         return {
@@ -243,7 +234,7 @@ def ingest_pdf(entry: dict, conn, openai_client: OpenAI) -> dict:
         }
         
     except Exception as e:
-        log_error(f"❌ Failed to ingest {pdf_name}: {e}")
+        log_error(f"❌ INGEST FAILED: {pdf_name}: {e}")
         return {
             "status": "failed",
             "error": str(e)
