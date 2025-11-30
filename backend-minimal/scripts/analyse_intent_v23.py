@@ -33,7 +33,7 @@ def infer_gold_intent(question):
     
     # Compliance strict: explicit requirements
     if any(word in q for word in ['minimum', 'maximum', 'requirement', 'what does', 'according to', 'clause', 'table']):
-        if any(code in q for word in ['nzs', 'e2/as1', 'h1/as1', 'c/as', 'b1/as1', 'f4/as1']):
+        if any(word in q for word in ['nzs', 'e2/as1', 'h1/as1', 'c/as', 'b1/as1', 'f4/as1']):
             return "compliance_strict"
     
     # Implicit compliance: checking compliance
