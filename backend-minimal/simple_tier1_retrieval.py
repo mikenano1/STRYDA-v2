@@ -339,14 +339,23 @@ def simple_tier1_retrieval(query: str, top_k: int = 4, intent: str = "compliance
         # Return connection to pool
         return_db_connection(conn)
         
-        # Format results
+        # Format results with metadata-aware scoring
         formatted_results = []
         for result in results:
-            # Convert similarity to score (lower similarity = higher score)
+            # Convert similarity to base score (lower similarity = higher score)
             # Similarity ranges from 0 (identical) to 2 (opposite)
             # Convert to 0-1 score where 1 is best match
             similarity = float(result['similarity'])
-            score = max(0.0, 1.0 - (similarity / 2.0))
+            base_score = max(0.0, 1.0 - (similarity / 2.0))
+            
+            # Extract metadata
+            doc_type = result.get('doc_type')
+            priority = result.get('priority', 50)
+            trade_meta = result.get('trade')
+            status_meta = result.get('status')
+            
+            # Apply metadata-aware scoring
+            final_score = score_with_metadata(base_score, doc_type, priority, intent)
             
             formatted_result = {
                 'id': str(result['id']),
@@ -356,8 +365,13 @@ def simple_tier1_retrieval(query: str, top_k: int = 4, intent: str = "compliance
                 'section': result['section'],
                 'clause': result['clause'],
                 'snippet': result['snippet'] or result['content'][:200],
-                'score': score,
+                'base_score': base_score,
+                'final_score': final_score,
                 'similarity': similarity,
+                'doc_type': doc_type,
+                'trade': trade_meta,
+                'status': status_meta,
+                'priority': priority,
                 'tier1_source': True
             }
             
