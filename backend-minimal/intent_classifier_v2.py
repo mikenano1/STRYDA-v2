@@ -151,17 +151,23 @@ class IntentClassifierV2:
         return result
     
     def _pattern_classify(self, question: str) -> Optional[Dict]:
-        """Fast pattern-based classification"""
+        """
+        Enhanced pattern-based classification with stronger rules
+        Returns high confidence for clear patterns, allowing LLM override for ambiguous cases
+        """
         q_lower = question.lower()
         
-        # COMPLIANCE_STRICT patterns - explicit code references
+        # COMPLIANCE_STRICT patterns - explicit code requirements with numeric/technical details
         strict_patterns = [
-            r'\b(nzs\s*3604|nzs\s*4229)\s+\d+\.\d+',  # NZS 3604 7.1
-            r'\b[a-h]\d+/as\d+\b',  # E2/AS1, B1/AS1
-            r'\b[a-h]\d+\.\d+\.\d+\b',  # H1.2.3, G5.3.2
-            r'\bwhat\s+are\s+the\s+(nzs|b1|e2|h1|f4|g5)\s+requirements\b',
-            r'\bwhat\s+does\s+(nzs|nzbc|building code)\s+(say|require|specify)\b',
-            r'\b(minimum|maximum)\s+.*(per|under|according to)\s+(nzs|e2|b1|h1)\b'
+            # Explicit numeric requirements
+            r'\b(minimum|maximum|required|shall|must)\s+\d+',  # "minimum 2.4m", "maximum 600mm"
+            r'\b(what\s+(are|is)\s+the|what\s+does)\s+(nzs|nzbc|e2|h1|c/as|b1|f4|g5|g12|g13)\s+(requirement|say|require|specify|state)',
+            r'\baccording to\s+(nzs|e2|h1|b1|nzbc|code|standard)\b',
+            r'\b(nzs\s*3604|nzs\s*4229|e2/as1|h1/as1|b1/as1|c/as\d)\s+(table|clause|section)\s*\d',
+            r'\bwhat\s+(r-?value|span|spacing|height|width|depth|thickness|cover)\s+(does|is|are).*(require|code|nzs|standard)',
+            # Explicit standard references
+            r'\b[a-h]\d+/as\d+\s+(says?|requires?|states?)\b',
+            r'\b(nzs|nzbc)\s+\d+\s+(clause|table|section|requirements?)\b',
         ]
         
         for pattern in strict_patterns:
@@ -171,16 +177,40 @@ class IntentClassifierV2:
                     "intent": Intent.COMPLIANCE_STRICT.value,
                     "trade": trade,
                     "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
-                    "confidence": 0.90
+                    "confidence": 0.92
+                }
+        
+        # IMPLICIT_COMPLIANCE patterns - "does this comply / is this allowed" style
+        implicit_patterns = [
+            r'\b(does this|is this|will this)\s+(comply|meet|satisfy|acceptable|allowed|legal|ok|acceptable)\b',
+            r'\b(do i need|is .* required|must i)\s+.*\b(code|standard|nzs|nzbc|comply)\b',
+            r'\b(can i|is it ok|is it acceptable|is it legal)\s+.*\b(per|under|code|nzs|nzbc)\b',
+            r'\b(will council|would council)\s+(accept|allow|approve|sign off)\b',
+            r'\b(ccc|code compliance|producer statement|ps\d)\s+(require|needed|necessary)\b',
+            r'\b(is|does).*(acceptable|allowed|permitted|legal)\s+(per|under|in|by)\s+(nzs|code|nzbc)\b',
+            # Historical compliance questions
+            r'\b(built in|designed in|constructed in)\s+\d{4}.*\b(which|what)\s+(version|code|standard|applies)\b',
+            r'\bback in\s+\d{4}.*\b(requirement|code|standard)\b',
+        ]
+        
+        for pattern in implicit_patterns:
+            if re.search(pattern, q_lower):
+                trade = self._guess_trade(q_lower)
+                return {
+                    "intent": Intent.IMPLICIT_COMPLIANCE.value,
+                    "trade": trade,
+                    "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
+                    "confidence": 0.88
                 }
         
         # COUNCIL_PROCESS patterns
         council_patterns = [
             r'\b(ccc|code compliance certificate)\b',
             r'\b(ps1|ps3|ps4|producer statement)\b',
-            r'\bcouncil\s+(inspection|inspector|sign[- ]?off)\b',
+            r'\bcouncil\s+(inspection|inspector|sign[- ]?off|approval)\b',
             r'\b(consent|building consent)\s+(process|application|requirement)\b',
             r'\brfi\b',  # Request for information
+            r'\bschedule\s*1\b',
         ]
         
         for pattern in council_patterns:
@@ -189,16 +219,16 @@ class IntentClassifierV2:
                     "intent": Intent.COUNCIL_PROCESS.value,
                     "trade": "council_consent",
                     "trade_type_detailed": ["consents", "inspections"],
-                    "confidence": 0.88
+                    "confidence": 0.90
                 }
         
-        # PRODUCT_INFO patterns - strengthen for manufacturer/guide references
+        # PRODUCT_INFO patterns - strengthened
         product_patterns = [
             r'\bwhat\s+(product|brand|manufacturer|system)\b',
             r'\b(best|recommended)\s+(product|material|brand|system)\b',
             r'\b(gib|james hardie|resene|pink batts|metalcraft|ardex)\b',  # NZ brands
             r'\bwhat\s+.*(works best|suits|lasts longest|performs best|should i use)\b',
-            r'\baccording to\s+(nz metal roofing|wganz|gib|ardex)\b',  # Citing guides/manufacturers
+            r'\baccording to\s+(nz metal roofing|wganz|gib|ardex|manufacturer)\b',
             r'\bwhich\s+(gib|ardex|metal roofing|manufacturer)\s+system\b',
         ]
         
@@ -209,26 +239,7 @@ class IntentClassifierV2:
                     "intent": Intent.PRODUCT_INFO.value,
                     "trade": trade,
                     "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
-                    "confidence": 0.85
-                }
-        
-        # IMPLICIT_COMPLIANCE patterns - mentions code but conversational/practical
-        implicit_patterns = [
-            r'\b(meets|meet|compliant|comply with|complies with)\s+(nzs|nzbc|building code|code|standard)\b',
-            r'\bhow do i (check|ensure|verify|confirm).*(meets|complies|code|standard)\b',
-            r'\bmy .*(meets|complies).*(but|still|however)\b',  # "My X meets code but still Y"
-            r'\b(does this meet|is this compliant|will this pass)\b',
-            r'\bin .* (how|what).*(meet|comply|code)\b',  # Location-based compliance questions
-        ]
-        
-        for pattern in implicit_patterns:
-            if re.search(pattern, q_lower):
-                trade = self._guess_trade(q_lower)
-                return {
-                    "intent": Intent.IMPLICIT_COMPLIANCE.value,
-                    "trade": trade,
-                    "trade_type_detailed": TRADE_DOMAINS.get(trade, {}).get("trade_types", [])[:2],
-                    "confidence": 0.85
+                    "confidence": 0.87
                 }
         
         # GENERAL_HELP (fallback for practical questions)
