@@ -230,9 +230,10 @@ def simple_tier1_retrieval(query: str, top_k: int = 4) -> List[Dict]:
                 # Generate placeholders for IN clause (%s, %s, %s, ...)
                 placeholders = ', '.join(['%s'] * len(target_sources))
                 
-                # Build SQL with expanded IN clause (psycopg2-safe)
+                # Build SQL with expanded IN clause (psycopg2-safe) + metadata
                 sql = f"""
                     SELECT id, source, page, content, section, clause, snippet,
+                           doc_type, trade, status, priority, phase,
                            (embedding <=> %s::vector) as similarity
                     FROM documents 
                     WHERE source IN ({placeholders})
