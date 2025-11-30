@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 import os
 
-BACKEND_URL = "https://codequery-4.preview.emergentagent.com"
+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 TIMEOUT = 30
 

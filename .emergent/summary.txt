@@ -1,136 +1,79 @@
 <analysis>
-The AI engineer started by clarifying the user's intent for a STRYDA-v2 fresh build to avoid modifying an existing complex application (v1). After confirmation, a minimal Expo React Native shell with three tabs (Chat, Library, Tools) was built, including placeholder UI and a stubbed chat API. Initial deployment revealed conflicts with a pre-existing Expo server, leading the AI to overwrite the main frontend directory with the new  content and adapt to 's file-based routing.
+The trajectory outlines a complex, multi-phase development of the STRYDA-v2 application. The work began with a failed attempt to upgrade to GPT-5, leading to a stabilization effort on GPT-4o. A significant part of the project involved debugging a critical RAG citation failure, which was traced to incompatible embedding models. The engineer successfully resolved this by re-embedding over 800 documents and rebuilding the vector index, temporarily disabling a buggy SQL source filter to restore functionality.
 
-UI polish was implemented per user requests, introducing a dark theme with orange accents, a simplified chat screen with a large logo, and a concise tagline. Voice input with graceful fallback was added. Subsequently, a minimal FastAPI backend was introduced, providing  and stubbed  endpoints, with the frontend wired to use it via an environment flag and a fallback mechanism.
+Subsequent work focused on building a robust data ingestion pipeline. This started with manual, batch-based ingestion of trade-specific Q&A data, which was later deprecated in favor of a manifest-driven system to process a master dataset of 9,000 questions from Supabase Storage. This phase included creating a new  table with a detailed schema.
 
-The latest major work involved integrating a RAG pipeline with Supabase and  into the backend. This phase was challenging due to persistent database connection issues related to usage: openai [-h] [-v] [-b API_BASE] [-k API_KEY] [-p PROXY [PROXY ...]]
-              [-o ORGANIZATION] [-t {openai,azure}]
-              [--api-version API_VERSION] [--azure-endpoint AZURE_ENDPOINT]
-              [--azure-ad-token AZURE_AD_TOKEN] [-V]
-              {api,tools,migrate,grit} ...
+The most recent major feature was the development of a sophisticated . This involved using the new dataset to classify user queries, which in turn controls retrieval strategy and citation visibility. After initial implementation, the classifier's accuracy was improved by adding a compliance bucket for ambiguous queries. The final task was to begin a full V2.4 rewrite of the classifier to use few-shot examples and a hybrid scoring model to reach >90% accuracy. The very last interaction involved resolving a Git push protection error by rotating a compromised API key.
 
-positional arguments:
-  {api,tools,migrate,grit}
-    api                 Direct API calls
-    tools               Client side tools for convenience
-
-options:
-  -h, --help            show this help message and exit
-  -v, --verbose         Set verbosity.
-  -b API_BASE, --api-base API_BASE
-                        What API base url to use.
-  -k API_KEY, --api-key API_KEY
-                        What API key to use.
-  -p PROXY [PROXY ...], --proxy PROXY [PROXY ...]
-                        What proxy to use.
-  -o ORGANIZATION, --organization ORGANIZATION
-                        Which organization to run as (will use your default
-                        organization if not specified)
-  -t {openai,azure}, --api-type {openai,azure}
-                        The backend API to call, must be `openai` or `azure`
-  --api-version API_VERSION
-                        The Azure API version, e.g.
-                        'https://learn.microsoft.com/en-us/azure/ai-
-                        services/openai/reference#rest-api-versioning'
-  --azure-endpoint AZURE_ENDPOINT
-                        The Azure endpoint, e.g.
-                        'https://endpoint.openai.azure.com'
-  --azure-ad-token AZURE_AD_TOKEN
-                        A token from Azure Active Directory,
-                        https://www.microsoft.com/en-
-                        us/security/business/identity-access/microsoft-entra-
-                        id
-  -V, --version         show program's version number and exit library versioning, DNS resolution within the container, and incorrect Supabase  formats, particularly concerning the pooler hostname and username. The AI successfully resolved the usage: openai [-h] [-v] [-b API_BASE] [-k API_KEY] [-p PROXY [PROXY ...]]
-              [-o ORGANIZATION] [-t {openai,azure}]
-              [--api-version API_VERSION] [--azure-endpoint AZURE_ENDPOINT]
-              [--azure-ad-token AZURE_AD_TOKEN] [-V]
-              {api,tools,migrate,grit} ...
-
-positional arguments:
-  {api,tools,migrate,grit}
-    api                 Direct API calls
-    tools               Client side tools for convenience
-
-options:
-  -h, --help            show this help message and exit
-  -v, --verbose         Set verbosity.
-  -b API_BASE, --api-base API_BASE
-                        What API base url to use.
-  -k API_KEY, --api-key API_KEY
-                        What API key to use.
-  -p PROXY [PROXY ...], --proxy PROXY [PROXY ...]
-                        What proxy to use.
-  -o ORGANIZATION, --organization ORGANIZATION
-                        Which organization to run as (will use your default
-                        organization if not specified)
-  -t {openai,azure}, --api-type {openai,azure}
-                        The backend API to call, must be `openai` or `azure`
-  --api-version API_VERSION
-                        The Azure API version, e.g.
-                        'https://learn.microsoft.com/en-us/azure/ai-
-                        services/openai/reference#rest-api-versioning'
-  --azure-endpoint AZURE_ENDPOINT
-                        The Azure endpoint, e.g.
-                        'https://endpoint.openai.azure.com'
-  --azure-ad-token AZURE_AD_TOKEN
-                        A token from Azure Active Directory,
-                        https://www.microsoft.com/en-
-                        us/security/business/identity-access/microsoft-entra-
-                        id
-  -V, --version         show program's version number and exit and DNS issues but is currently debugging a Tenant or user not found error, indicating a username format problem in the Supabase connection string.
+The user's primary language is English. The next agent should respond in English.
 </analysis>
-
 <product_requirements>
-The goal is to build STRYDA-v2, a minimal, stable, chat-first app shell for iOS, Android, and Web using Expo React Native. It must feature three tabs: Chat, Library, and Tools. The Chat screen requires a STRYDA.ai header, a Hi Mike — how can I help? greeting (later simplified to a large STRYDA(ai) logo and a single tagline: Your on-site co-pilot for smarter, safer builds.), a scrollable message list, and an input row with a text field and a voice-ready mic button. The voice input needs graceful fallback if unsupported. Library and Tools screens are placeholders. The app theme is clean, light (later updated to dark with an orange accent ), with system fonts. Backend calls are initially stubbed, returning a canned response with a fake citation (NZMRM COP X.Y). User uploads, LLM/retrieval integration (beyond stub), payment, and analytics are strictly forbidden. Persistence is via GitHub and state checkpoint files ().
+The project is to build and enhance STRYDA-v2, a cross-platform RAG (Retrieval-Augmented Generation) chat application for New Zealand's construction industry professionals. The app must provide fast, accurate, and citable answers based on a corpus of NZ building code documents (e.g., NZS 3604, E2/AS1), manufacturer manuals, and industry guides.
 
-The existing application was eventually overwritten, and a minimal FastAPI backend was introduced with  and  endpoints. The  endpoint was later upgraded to include a Retrieval-Augmented Generation (RAG) pipeline, connecting to Supabase Postgres (with  extension) and utilizing an  for embeddings and chat, with graceful fallback if the DB or LLM key is missing.
+**Core Requirements:**
+- **Functionality**: A multi-turn, intent-aware chat system.
+- **Accuracy**: Provide precise, clause-grounded answers with a maximum of three citations per response. Fabricated citations are not allowed.
+- **Performance**: Maintain an average response latency under 7 seconds.
+- **Intent-Driven Behavior**: The system must differentiate between user intents (, , , , ) to tailor its retrieval strategy and decide whether to show citations. For example,  queries should not return legalistic clause citations, while  queries must.
+
+**Implementation So Far:**
+- The backend is a FastAPI application.
+- The RAG pipeline uses Supabase with the  extension,  for embeddings, and  for generation.
+- A manifest-driven PDF ingestion pipeline has been built to process and tag documents with detailed metadata (doc_type, trade, priority).
+- A master training dataset of 9,000 questions is used to power an .
+- The intent router now controls retrieval and citation logic, but its classification accuracy needs improvement.
 </product_requirements>
-
 <key_technical_concepts>
-- **Expo React Native**: Cross-platform development framework.
-- **React Navigation (Bottom Tabs)**: For primary app navigation.
-- **FastAPI (Python)**: Backend API framework, minimal  and  endpoints.
-- **Supabase Postgres/pgvector**: Database for RAG, vector embeddings.
-- **EMERGENT_LLM_KEY**: Universal key for LLM integrations (OpenAI/Anthropic/Google).
-- **Voice Recognition (STT)**: Integration with Web Speech API or .
-- **Environment Variables**: For API_BASE, USE_BACKEND, DATABASE_URL, EMERGENT_LLM_KEY.
-- **RAG (Retrieval-Augmented Generation)**: Backend system for context-aware LLM responses.
+- **Backend**: FastAPI (Python)
+- **Database**: Supabase PostgreSQL with  for vector similarity search.
+- **RAG Pipeline**:
+    - **Embedding Model**: 
+    - **LLM**: 
+    - **Vector Index**: 
+- **Intent Classification**: A hybrid system using regex patterns and LLM-based classification with few-shot examples.
+- **Metadata-Aware Retrieval**: A custom scoring function that combines vector similarity with document metadata (, ) to rank search results.
+- **Data Ingestion**: A manifest-driven pipeline () to ingest, chunk, embed, and tag PDF documents.
 </key_technical_concepts>
-
 <code_architecture>
-The application structure is primarily split into  (Expo React Native) and  (FastAPI). The  resides at  and the  at .
+The application consists of a  FastAPI service. The frontend is an Expo app, but all work in this trajectory was on the backend.
 
 
 
--   : Configures Expo Router tabs, specifying , ,  and .
--   : This is the main entry for the  tab. It contains the large STRYDA(ai) logo, the single tagline Your on-site co-pilot..., and the chat input with the mic button. It was modified to simplify UI, remove old text, apply dark theme, and integrate voice input and the .
--   : Simplified placeholder screen for the Library tab, applying the dark theme.
--   : Simplified placeholder screen for the Tools tab (originally named 'work'), applying the dark theme.
--   : Defines the application's color palette, including , , ,  (), and . Used consistently across UI components.
--   : Contains the  function that now uses  to call the backend  endpoint, with a fallback to a local stubbed response on network errors or backend issues.
--   : A fetch wrapper responsible for making HTTP POST requests with JSON payloads and handling timeouts.
--   : Manages environment-specific configurations like  and  flags, read from .
--   : The main FastAPI application. Implements  endpoint and  endpoint. The  endpoint orchestrates the RAG pipeline using , , and  modules, with graceful fallback.
--   : Handles PostgreSQL (Supabase) database connections and  for vector similarity search.
--   : Wraps embedding and chat completion calls to an external LLM (via ), including error handling.
--   : Constructs system and user messages for the LLM based on query, context chunks, and history.
--   : Orchestrates the retrieval process: embeds the query, searches the vector database, and returns relevant content.
+- ****: The main FastAPI application. Defines the  endpoint. It was heavily modified to integrate the new , pass the detected intent to the retrieval logic, and apply citation policies based on the final intent.
 
-This structure allows for clear separation of concerns between frontend UI, backend API logic, and RAG components.
+- ****: The core of the RAG retrieval system. It was significantly updated to perform metadata-aware ranking. The SQL queries were altered to fetch document metadata (, ), and a  function was added to re-rank vector search results based on the user's intent.
+
+- ****: The heart of the intent routing system. This file was created and rewritten multiple times. Its final design is a V2.4 hybrid classifier that uses a 4-step pipeline: fast pattern matching, a compliance-tone detector, an LLM call enhanced with few-shot examples, and a hybrid scoring model to produce the final intent.
+
+- ****: A new file created to store 105 high-quality, hand-crafted examples of user questions for each of the five intents. These are used by the LLM layer of the intent classifier to improve its accuracy.
+
+- ****: The primary script for processing documents. It was enhanced to be resumable (skipping already-ingested files) and to use batched database inserts to handle large PDFs without timing out.
+
+- ****: A utility script created to populate the  table with crucial metadata (, , ) based on the  file.
+
+- ****: A key configuration file that defines the list of all PDF documents to be ingested into the system, along with their associated metadata.
+
+- ****: A fixed set of 50 real-world questions used to run automated validation tests on the intent classifier and retrieval system.
+
+- ****: The script that executes the 50-question validation pack against the backend and generates a performance report.
 </code_architecture>
-
 <pending_tasks>
-- Correct the Supabase  format to use the correct username (e.g., ) to resolve the Tenant or user not found error.
-- After successful database connection, ensure the  table schema (with  index) is applied in Supabase.
-- (Implicit) Ingest actual data into the Supabase  table for the RAG system to provide real answers.
+- **Complete Intent Classifier V2.4**: The final user request was to fully implement the V2.4 classifier rewrite, including the hybrid scoring model and integration of the 105 few-shot examples. While the foundation was laid, the full implementation and subsequent validation were not completed.
+- **Tune Source Preference Logic**: Further refine  to ensure the highest-priority, current document is always chosen for a given code family (e.g., E2/AS1, H1/AS1).
 </pending_tasks>
-
 <current_work>
-Currently, the STRYDA-v2 application has its frontend (Expo React Native) fully developed with a dark theme, orange accents, a simplified chat screen featuring a logo and a single tagline, and a voice-ready input (with graceful fallback). The minimal FastAPI backend is also set up, including a RAG pipeline that integrates with Supabase for vector search and an external LLM using  for text generation.
+The AI engineer was in the final stages of a major overhaul of the application's brain: the **Intent Classifier**. The goal was to fix a persistent issue where the system struggled to differentiate between , , and  queries. This was causing inconsistent citation behavior.
 
-The immediate work involves debugging the database connection between the backend and Supabase. While DNS resolution issues were resolved by identifying the correct Supabase connection pooler hostname, the current error is FATAL: Tenant or user not found. This indicates that the username part of the  (currently ) is incorrect for the Supabase pooler, which expects a format like . The LLM client is confirmed to be initialized and working, but the RAG system falls back to a canned response due to the database connection failure.
+The user defined a detailed plan for **Intent Classifier V2.4**, a full rewrite of the classification logic. The plan specified a 4-step pipeline:
+1.  A fast, rule-based pattern layer.
+2.  A compliance tone detector.
+3.  An LLM-based classifier supercharged with a new library of 105 few-shot examples ().
+4.  A hybrid scoring model to weigh and combine the pattern and LLM results.
+
+The last active development tasks were creating the few-shot example file and beginning the rewrite of  to incorporate this new logic. The work was paused just before the full integration and validation of the V2.4 classifier.
+
+Immediately preceding this summary request, the trajectory shows a deviation to solve a  failure caused by exposed API keys in commit history. The engineer successfully guided the user to rotate the API key and updated the  file, resolving the block. The final action was answering a user's platform support question.
 </current_work>
-
 <optional_next_step>
-Correct the  in the backend to use the proper Supabase pooler username format ().
+Complete the implementation and validation of the Intent Classifier V2.4 as per the user's detailed instructions in message 772.
 </optional_next_step>

@@ -4,7 +4,7 @@
 import requests
 import json
 
-BACKEND_URL = "https://codequery-4.preview.emergentagent.com"
+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 query = "nzs 3604 stud spacing requirements"
