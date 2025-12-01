@@ -111,6 +111,7 @@ def should_allow_citations(
         if not has_quality_docs:
             # ADDITIONAL CHECK (Task 3.3): Block manufacturer manuals for non-brand questions
             # Check if docs are manufacturer/handbook only
+            q_lower = question.lower()  # Define q_lower here
             all_non_code = all(
                 doc.get('doc_type', '').startswith('manufacturer_') or 
                 doc.get('doc_type', '') in ['handbook_guide', 'unknown']
