@@ -102,7 +102,7 @@
     "question_id": 12,
     "trade_hint": "cladding",
     "question": "Can I direct fix fibre cement cladding to 20mm battens in High wind?",
-    "intent": "implicit_compliance",
+    "intent": "general_help",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -214,7 +214,7 @@
     "question_id": 23,
     "trade_hint": "fire",
     "question": "Do I need a smoke seal on a 30min fire door?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []
@@ -322,7 +322,7 @@
     "question_id": 35,
     "trade_hint": "drainage",
     "question": "Do I need a backflow preventer on an external bathroom connection?",
-    "intent": "general_help",
+    "intent": "implicit_compliance",
     "citations_shown": false,
     "citation_count": 0,
     "top_docs": []

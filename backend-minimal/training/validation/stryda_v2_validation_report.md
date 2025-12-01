@@ -1,6 +1,6 @@
 # STRYDA-v2 Backend Validation Report
 
-**Date:** 2025-11-30T19:05:49.453356
+**Date:** 2025-11-30T19:13:30.044464
 **Questions:** 50
 
 ## Overall Stats
@@ -11,16 +11,16 @@
 
 ## Intent Distribution
 
-- **implicit_compliance**: 28 questions
-- **general_help**: 15 questions
+- **implicit_compliance**: 29 questions
+- **general_help**: 14 questions
 - **product_info**: 6 questions
 - **compliance_strict**: 1 questions
 
 ## Citations by Intent
 
 - **compliance_strict**: 1/1 (100.0%) showed citations
-- **general_help**: 0/15 (0.0%) showed citations
-- **implicit_compliance**: 0/28 (0.0%) showed citations
+- **general_help**: 0/14 (0.0%) showed citations
+- **implicit_compliance**: 0/29 (0.0%) showed citations
 - **product_info**: 0/6 (0.0%) showed citations
 
 ## Sample Results (First 15)
@@ -106,7 +106,7 @@
 
 **Question:** Can I direct fix fibre cement cladding to 20mm battens in High wind?
 
-- Intent: `implicit_compliance`
+- Intent: `general_help`
 - Citations: 0
 
 ### Q13: cladding
