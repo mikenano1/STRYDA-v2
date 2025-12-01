@@ -760,6 +760,19 @@ def api_chat(req: ChatRequest):
                 use_web = False
                 web_context = ""
                 
+                # V3 CHANGE: Do retrieval even for general_help/product_info
+                # We'll build citations and let can_show_citations decide if they're useful
+                with profiler.timer('t_vector_search'):
+                    try:
+                        docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)
+                        retrieved_docs = docs
+                        tier1_hit = len(docs) > 0
+                    except Exception as e:
+                        print(f"⚠️ Retrieval failed: {e}")
+                        docs = []
+                        retrieved_docs = []
+                        tier1_hit = False
+                
                 # Check if web search should be attempted
                 from web_search import should_use_web_search, web_search, summarize_snippets
                 
@@ -775,10 +788,10 @@ def api_chat(req: ChatRequest):
                         print(f"⚠️ Web search failed (graceful fallback): {e}")
                         web_context = ""
                 
-                # Generate response with optional web context
+                # Generate response with RAG context (if available) + optional web context
                 try:
                     with profiler.timer('t_generate'):
-                        # Build prompt with optional web context and trade context
+                        # Build prompt with RAG and optional web context
                         prompt_parts = [f"User question (Trade: {detected_trade}): {user_message}"]
                         
                         if web_context:
@@ -793,10 +806,10 @@ def api_chat(req: ChatRequest):
                         
                         full_prompt = "\n".join(prompt_parts)
                         
-                        # Use generate_structured_response with empty docs (no RAG)
+                        # Use generate_structured_response WITH docs (changed from empty)
                         structured_response = generate_structured_response(
                             user_message=full_prompt,
-                            tier1_snippets=[],  # No RAG for non-compliance queries
+                            tier1_snippets=docs,  # V3 CHANGE: Include RAG context
                             conversation_history=conversation_history,
                             intent=final_intent
                         )
