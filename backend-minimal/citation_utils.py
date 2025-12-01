@@ -130,7 +130,7 @@ def should_auto_expand_citations(question: str, intent: str) -> bool:
     
     # Pattern 2: Requirement questions (min/max/span/fall/clearance) + code context
     has_requirement_term = bool(re.search(
-        r'\b(what('s| is)?|what('s| is)? the)\s+(minimum|maximum|required|max|min)\b',
+        r'\b(?:what(?:\'s| is)?|what(?:\'s| is)?\s+the)\s+(?:minimum|maximum|required|max|min)\b',
         q_lower
     ))
     
