@@ -738,26 +738,25 @@ def api_chat(req: ChatRequest):
             print(f"⚠️ Chat history retrieval failed: {e}")
             conversation_history = []
         
-        # Step 4: Handle based on FINAL intent with proper citation policy
+        # Step 4: Handle based on FINAL intent with UNIFIED retrieval (no citation suppression)
         enhanced_citations = []
         used_retrieval = False
-        citations_reason = "intent"
+        citations_reason = "available"
         model_used = "server_fallback"
         tokens_in = 0
         tokens_out = 0
+        retrieved_docs = []  # Store docs for can_show_citations logic
         
         try:
-            # CITATION POLICY V2: Apply IntentPolicy rules
+            # Get policy for model preference and retrieval hints
             policy = context.get("policy", IntentPolicy.get_policy(final_intent))
-            
-            # Determine if citations should be shown
-            show_citations = policy["citations_default"]
-            max_citations = policy["max_citations"]
             model_preference = policy["model_preference"]
             
+            # V3 CHANGE: ALWAYS do retrieval for ALL intents (not just compliance)
+            # Let the system decide if the retrieved docs are citation-worthy
             if final_intent in ["general_help", "product_info", "council_process"]:
-                # Non-compliance intents - NO citations by default
-                citations_reason = "user_general"
+                # Non-compliance intents - still do retrieval but with different generation strategy
+                citations_reason = "retrieved"
                 use_web = False
                 web_context = ""
                 
