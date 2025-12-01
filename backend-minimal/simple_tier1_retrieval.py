@@ -105,6 +105,13 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('E2/AS1')
     
+    # E1/AS1 - Internal drainage (Task 3.4)
+    if any(term in query_lower for term in [
+        'e1', 'e1/as1', 'internal gutter', 'gutter fall',
+        'box gutter', 'valley gutter', 'internal drainage'
+    ]):
+        sources.append('E1/AS1')
+    
     # B1 Amendment 13 - Latest structural standard (prioritize over B1/AS1)
     if any(term in query_lower for term in [
         'amendment 13', 'amdt 13', 'b1 amendment', 'b1 amend',
