@@ -103,12 +103,31 @@ def should_allow_citations(
         return False
     
     # RULE 4: For general_help / product_info / council_process, be STRICT
-    # Only show citations if BOTH conditions met:
+    # Only allow citations when:
     # (a) We have quality code documents, AND
-    # (b) Question has code signals OR at least 2 quality docs
+    # (b) Question has code signals OR at least 2 quality docs OR brand explicitly named
     if intent in ["general_help", "product_info", "council_process"]:
         # Must have quality docs as baseline
         if not has_quality_docs:
+            # ADDITIONAL CHECK (Task 3.3): Block manufacturer manuals for non-brand questions
+            # Check if docs are manufacturer/handbook only
+            all_non_code = all(
+                doc.get('doc_type', '').startswith('manufacturer_') or 
+                doc.get('doc_type', '') in ['handbook_guide', 'unknown']
+                for doc in top_docs[:3]
+            )
+            
+            if all_non_code:
+                # Check if brand is explicitly mentioned
+                brands = ['ardex', 'gib', 'james hardie', 'resene', 'pink batts', 
+                         'metalcraft', 'colorsteel', 'placemakers', 'bunnings']
+                has_brand = any(brand in q_lower for brand in brands)
+                
+                if not has_brand:
+                    # No quality docs, only manuals, no brand mentioned → hide
+                    return False
+            
+            # No quality docs at all → hide
             return False
         
         # Check if question has code signals
