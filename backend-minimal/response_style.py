@@ -184,6 +184,84 @@ def _ensure_concise_structure(text: str, intent: str) -> str:
             return f"{direct_answer}\n\n" + "\n".join(bullets)
         else:
             return direct_answer
+
+
+def _remove_dangling_headings(text: str) -> str:
+    """
+    Remove headings with no content following them (Task 3.5)
+    
+    Detects patterns like:
+    - **Common Mistakes:**
+    - **Tips:**
+    - **Summary:**
+    
+    If no bullet points or paragraphs follow, removes the heading.
+    """
+    lines = text.split('\n')
+    cleaned_lines = []
+    
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        
+        # Check if it's a heading (bold markdown or ends with colon)
+        is_heading = (
+            (line.startswith('**') and line.endswith('**:')) or
+            (line.startswith('**') and line.endswith('**')) or
+            (line.endswith(':') and len(line) < 60)
+        )
+        
+        if is_heading:
+            # Look ahead to see if there's content after
+            has_content_after = False
+            for j in range(i + 1, min(i + 5, len(lines))):
+                next_line = lines[j].strip()
+                if next_line and (next_line.startswith('-') or next_line.startswith('•') or len(next_line) > 20):
+                    has_content_after = True
+                    break
+            
+            # Only keep heading if content follows
+            if has_content_after:
+                cleaned_lines.append(line)
+            else:
+                # Skip dangling heading
+                pass
+        else:
+            cleaned_lines.append(line)
+        
+        i += 1
+    
+    return '\n'.join(cleaned_lines)
+
+
+def _truncate_at_last_sentence(text: str) -> str:
+    """
+    Ensure answer doesn't end mid-sentence (Task 3.5)
+    
+    If text ends without proper punctuation, truncate at last full stop.
+    """
+    text = text.strip()
+    
+    if not text:
+        return text
+    
+    # Check if ends with proper punctuation
+    if text[-1] in '.!?':
+        return text
+    
+    # Find last sentence-ending punctuation
+    last_period = max(
+        text.rfind('.'),
+        text.rfind('!'),
+        text.rfind('?')
+    )
+    
+    if last_period > len(text) * 0.5:  # Only truncate if we keep >50% of content
+        return text[:last_period + 1].strip()
+    
+    # If no good truncation point, add a period
+    return text + '.'
+
     
     return text
 
