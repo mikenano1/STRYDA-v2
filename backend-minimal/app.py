@@ -858,7 +858,7 @@ def api_chat(req: ChatRequest):
                         # V3 CHANGE: Build citations from RAG docs (if available)
                         # No longer suppress based on intent
                         if docs and len(docs) > 0:
-                            enhanced_citations = self._build_citations_from_docs(docs, max_cites=3)
+                            enhanced_citations = build_simple_citations(docs, max_citations=3)
                             print(f"✅ Built {len(enhanced_citations)} citations for {final_intent} intent")
                         
                 except Exception as e:
