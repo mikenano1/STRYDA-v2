@@ -1173,6 +1173,11 @@ def api_chat(req: ChatRequest):
             f"citations={len(enhanced_citations)} docs={len(_docs_for_citations)}"
         )
         
+        # Additional debug: log doc types for transparency
+        if _docs_for_citations:
+            doc_types = [d.get('doc_type', 'unknown') for d in _docs_for_citations[:3]]
+            print(f"[citations] top_doc_types={doc_types}")
+        
         print(f"✅ Safe chat response ({final_intent}): {len(enhanced_citations)} citations, {timing_breakdown.get('t_total', 0):.0f}ms, model: {model_used}")
         
         return response
