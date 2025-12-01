@@ -88,8 +88,12 @@ def should_auto_expand_citations(question: str, intent: str) -> bool:
     """
     Determine if citations should be AUTO-EXPANDED (shown by default)
     
-    This is more restrictive than should_allow_citations.
-    Only auto-expand for clear compliance questions.
+    Enhanced to detect compliance-type questions even without explicit code references.
+    Auto-expand for:
+    - compliance_strict intent
+    - Questions with explicit code references
+    - Questions about requirements (min/max/span/fall/clearance/spacing)
+    - Questions using requirement language
     
     Args:
         question: User's question
@@ -103,17 +107,60 @@ def should_auto_expand_citations(question: str, intent: str) -> bool:
     if intent == "compliance_strict":
         return True
     
-    # Auto-expand if question has very explicit code reference
+    # Auto-expand for implicit_compliance with strong compliance signals
+    if intent == "implicit_compliance":
+        q_lower = question.lower()
+        # Check if asking about specific requirements
+        if re.search(r'\b(minimum|maximum|required|span|fall|clearance|spacing|height|width|depth|thickness|cover)\b', q_lower):
+            return True
+    
     q_lower = question.lower()
     
-    explicit_patterns = [
+    # Pattern 1: Explicit code references
+    explicit_code_patterns = [
         r'\bwhat does\s+(nzs|e\d|h\d|b\d|c/as|f\d|g\d+)\s+(say|require|specify|state)',
         r'\baccording to\s+(nzs|nzbc|code|standard)',
+        r'\bper\s+(nzs|nzbc|code|e\d|h\d)',
         r'\b(nzs|nzbc)\s+\d+\s+(table|clause|section)',
-        r'\b(minimum|maximum)\s+.*\b(nzs|code|as\d)',
     ]
     
-    for pattern in explicit_patterns:
+    for pattern in explicit_code_patterns:
+        if re.search(pattern, q_lower):
+            return True
+    
+    # Pattern 2: Requirement questions (min/max/span/fall/clearance) + code context
+    has_requirement_term = bool(re.search(
+        r'\b(what('s| is)?|what('s| is)? the)\s+(minimum|maximum|required|max|min)\b',
+        q_lower
+    ))
+    
+    has_measurement_term = bool(re.search(
+        r'\b(span|fall|clearance|spacing|height|width|depth|thickness|cover|distance|gap)\b',
+        q_lower
+    ))
+    
+    # If asking "what's the minimum X" or "what's the max span", auto-expand
+    if has_requirement_term or has_measurement_term:
+        # Check if it's a building/construction context (not just "what's the minimum age")
+        has_building_context = bool(re.search(
+            r'\b(gutter|joist|stud|beam|wall|roof|floor|deck|cladding|'
+            r'slab|footing|pile|frame|batten|lining|insulation|'
+            r'ground|building|structure|foundation)\b',
+            q_lower
+        ))
+        
+        if has_building_context:
+            return True
+    
+    # Pattern 3: Questions about code requirements (even without naming the standard)
+    requirement_language_patterns = [
+        r'\bwhat('s| is)? (required|needed|necessary)\b',
+        r'\bdo i need\b.*\b(code|comply|requirement)',
+        r'\brequirement for\b',
+        r'\bcode require',
+    ]
+    
+    for pattern in requirement_language_patterns:
         if re.search(pattern, q_lower):
             return True
     
