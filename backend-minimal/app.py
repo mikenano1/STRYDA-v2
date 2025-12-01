@@ -1125,6 +1125,13 @@ def api_chat(req: ChatRequest):
         except (NameError, UnboundLocalError):
             _docs_for_citations = []
         
+        # Apply response style transformation (make answer more conversational)
+        answer = apply_answer_style(
+            raw_answer=answer,
+            intent=final_intent,
+            user_message=user_message
+        )
+        
         # Compute citation visibility flags using helper functions
         can_show_citations = should_allow_citations(
             question=user_message,
