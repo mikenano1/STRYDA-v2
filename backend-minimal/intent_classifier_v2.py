@@ -348,8 +348,14 @@ class IntentClassifierV2:
                     "confidence": 0.90
                 }
         
-        # PRODUCT_INFO patterns - strengthened
+        # PRODUCT_INFO patterns - strengthened for timber treatment
         product_patterns = [
+            # Timber treatment grades (Task 3.2)
+            r'\b(difference|diff)\s+between\s+(h[34](\.\d)?|treated timber|treatment)\b',
+            r'\bh[34](\.\d)?\s+(vs|versus|or)\s+h[34](\.\d)?\b',
+            r'\b(do i need|should i use|which)\s+h[34](\.\d)?\b',
+            r'\bh[34](\.\d)?\s+(timber|pine|treatment|treated)\b',
+            # Product/brand questions
             r'\bwhat\s+(product|brand|manufacturer|system)\b',
             r'\b(best|recommended)\s+(product|material|brand|system)\b',
             r'\b(gib|james hardie|resene|pink batts|metalcraft|ardex)\b',  # NZ brands
