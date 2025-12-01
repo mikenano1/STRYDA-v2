@@ -38,8 +38,13 @@ def should_allow_citations(
     """
     Determine if citations CAN be shown (not whether they SHOULD be auto-shown)
     
-    This is a permissive check - returns True if we have good code sources
-    that the user MIGHT want to reference, regardless of intent.
+    STRICT RULES (Task 2):
+    - Must have citations built (not empty array)
+    - Must have quality code documents in top results
+    - For product_info/general_help: extra strict (must have code signals OR quality docs)
+    - For compliance intents: normal permissive rules
+    
+    This prevents empty citation pills and ensures only real code sources trigger displays.
     
     Args:
         question: User's question
@@ -51,38 +56,64 @@ def should_allow_citations(
         True if citations are available and relevant enough to offer to user
     """
     
-    # No citations built? Can't show them
+    # RULE 1: No citations built? Can't show them (prevents empty pills)
     if not citations or len(citations) == 0:
         return False
     
-    # Check if we have high-quality code documents
+    # RULE 2: Check if we have high-quality code documents
     has_quality_docs = False
     quality_doc_types = [
         "acceptable_solution_current",
         "acceptable_solution_legacy", 
         "verification_method_current",
         "industry_code_of_practice",
-        "nz_standard"
+        "nz_standard",
+        "nzbc_clauses"  # Added for NZBC direct clause references
     ]
     
-    for doc in top_docs[:3]:  # Check top 3 docs only
+    quality_doc_count = 0
+    for doc in top_docs[:4]:  # Check top 4 docs (increased from 3)
         doc_type = doc.get('doc_type', '')
         if doc_type in quality_doc_types:
             has_quality_docs = True
-            break
+            quality_doc_count += 1
     
-    # If we have quality docs, allow citations
-    if has_quality_docs:
-        return True
+    # RULE 3: For compliance intents, be permissive
+    if intent in ["compliance_strict", "implicit_compliance"]:
+        # If we have quality docs, always allow
+        if has_quality_docs:
+            return True
+        # Even without quality doc_type, if question has code signals, allow
+        if has_code_signals(question):
+            return True
+        # No quality docs and no code signals → don't show
+        return False
     
-    # Check if question has explicit code signals
-    # Even if intent is general_help, if they mention "NZS 3604" they might want clauses
-    if has_code_signals(question):
-        return True
+    # RULE 4: For general_help / product_info / council_process, be STRICT
+    # Only show citations if BOTH conditions met:
+    # (a) We have quality code documents, AND
+    # (b) Question has code signals OR at least 2 quality docs
+    if intent in ["general_help", "product_info", "council_process"]:
+        # Must have quality docs as baseline
+        if not has_quality_docs:
+            return False
+        
+        # Check if question has code signals
+        has_signals = has_code_signals(question)
+        
+        # If explicit code signals, allow
+        if has_signals:
+            return True
+        
+        # If 2+ quality docs (strong code match), allow
+        if quality_doc_count >= 2:
+            return True
+        
+        # Otherwise, don't show (e.g., "deck bouncing" shouldn't show citations)
+        return False
     
-    # Otherwise, don't offer citations
-    # (e.g., "How do I stop my deck bouncing?" with no code docs)
-    return False
+    # RULE 5: Fallback for unknown intents - require quality docs
+    return has_quality_docs
 
 def should_auto_expand_citations(question: str, intent: str) -> bool:
     """
