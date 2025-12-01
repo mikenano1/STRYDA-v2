@@ -154,8 +154,8 @@ def should_auto_expand_citations(question: str, intent: str) -> bool:
     
     # Pattern 3: Questions about code requirements (even without naming the standard)
     requirement_language_patterns = [
-        r'\bwhat('s| is)? (required|needed|necessary)\b',
-        r'\bdo i need\b.*\b(code|comply|requirement)',
+        r'\bwhat(?:\'s| is)?\s+(?:required|needed|necessary)\b',
+        r'\bdo i need\b.*\b(?:code|comply|requirement)',
         r'\brequirement for\b',
         r'\bcode require',
     ]
