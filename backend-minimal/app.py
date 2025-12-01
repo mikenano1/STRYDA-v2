@@ -923,7 +923,7 @@ def api_chat(req: ChatRequest):
                         
                     except Exception as e:
                         print(f"⚠️ Compliance checker failed: {e}")
-                        # Fallback to GPT
+                        # Fallback to GPT with simple citations
                         structured_response = generate_structured_response(
                             user_message=user_message,
                             tier1_snippets=docs,
@@ -935,6 +935,11 @@ def api_chat(req: ChatRequest):
                         model_used = structured_response.get("model", "fallback")
                         tokens_in = structured_response.get("tokens_in", 0)
                         tokens_out = structured_response.get("tokens_out", 0)
+                        
+                        # CRITICAL FIX: Build citations when compliance checker fails
+                        if docs and len(docs) > 0:
+                            enhanced_citations = build_simple_citations(docs, max_citations=3)
+                            print(f"✅ Built {len(enhanced_citations)} fallback citations for compliance query")
                         
                         # Extract metadata for logging
                         raw_len = structured_response.get("raw_len", 0)
