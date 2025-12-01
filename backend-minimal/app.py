@@ -43,6 +43,34 @@ from validation import validate_input, validate_output
 from services.retrieval import tier1_retrieval
 from rag.retriever import retrieve_and_answer
 from profiler import profiler
+from citation_utils import should_allow_citations, should_auto_expand_citations
+
+# Helper function for building citations
+def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
+    """
+    Build simple page-level citations from retrieved documents
+    """
+    citations = []
+    for idx, doc in enumerate(docs[:max_citations]):
+        source = doc.get("source", "Unknown")
+        page = doc.get("page", 0)
+        snippet = doc.get("snippet", "")[:200]
+        
+        citation = {
+            "id": f"{source}_{page}_{idx}",
+            "source": source,
+            "page": page,
+            "clause_id": doc.get("clause"),
+            "clause_title": doc.get("section"),
+            "locator_type": "page",
+            "snippet": snippet,
+            "anchor": None,
+            "confidence": doc.get("final_score", 0.8),
+            "pill_text": f"[{source.replace('NZS 3604:2011', 'NZS 3604')}] p.{page}"
+        }
+        citations.append(citation)
+    
+    return citations
 
 # Database configuration
 DATABASE_URL = os.getenv("DATABASE_URL")
