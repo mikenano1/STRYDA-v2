@@ -16,6 +16,8 @@ def apply_answer_style(raw_answer: str, intent: str, user_message: str) -> str:
     - No AI waffle ("As an AI...", "I don't have access to...")
     - Plain NZ English, like a competent tradie
     - Citations stay separate (no clause spam in body)
+    - Remove dangling headings (Task 3.5)
+    - Truncate at last full stop (Task 3.5)
     
     Args:
         raw_answer: Original LLM response
@@ -40,6 +42,10 @@ def apply_answer_style(raw_answer: str, intent: str, user_message: str) -> str:
     
     # Step 4: Remove excessive clause references from body (citations handle this)
     final = _declutter_clause_spam(structured)
+    
+    # Step 5: Remove dangling headings and truncate properly (Task 3.5)
+    final = _remove_dangling_headings(final)
+    final = _truncate_at_last_sentence(final)
     
     return final.strip()
 
