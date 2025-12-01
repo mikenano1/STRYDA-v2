@@ -827,8 +827,11 @@ def api_chat(req: ChatRequest):
                         extraction_path = structured_response.get("extraction_path", "")
                         fallback_used_flag = structured_response.get("fallback_used", False)
                         
-                        # Log the full decision + metadata
-                        print(f"[chat] intent={final_intent} trade={detected_trade} use_web={use_web} model={model_preference} pills=False raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
+                        # V3 CHANGE: Build citations from RAG docs (if available)
+                        # No longer suppress based on intent
+                        if docs and len(docs) > 0:
+                            enhanced_citations = self._build_citations_from_docs(docs, max_cites=3)
+                            print(f"✅ Built {len(enhanced_citations)} citations for {final_intent} intent")
                         
                 except Exception as e:
                     print(f"⚠️ Response generation failed: {e}")
@@ -837,18 +840,20 @@ def api_chat(req: ChatRequest):
                 
             elif is_compliance:
                 # COMPLIANCE BUCKET (compliance_strict + implicit_compliance)
-                # Both get code-heavy retrieval + citations based on policy
+                # Both get code-heavy retrieval + citations
                 used_retrieval = True
-                citations_reason = "intent"
+                citations_reason = "retrieved"
                 
                 with profiler.timer('t_vector_search'):
                     # Use CANONICAL retrieval with safe error handling and intent-aware ranking
                     try:
                         docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)
+                        retrieved_docs = docs
                         tier1_hit = len(docs) > 0
                     except Exception as e:
                         print(f"⚠️ Retrieval failed: {e}")
                         docs = []
+                        retrieved_docs = []
                         tier1_hit = False
                         citations_reason = "no_results"
                 
