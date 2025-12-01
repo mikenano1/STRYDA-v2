@@ -1117,18 +1117,48 @@ def api_chat(req: ChatRequest):
             except Exception as e:
                 print(f"⚠️ Enhanced telemetry failed: {e}")
         
-        # Step 8: Return safe response
+        # Step 8: Compute citation visibility flags
+        # Ensure retrieved_docs is safely available
+        try:
+            _docs_for_citations = retrieved_docs
+        except (NameError, UnboundLocalError):
+            _docs_for_citations = []
+        
+        # Compute citation visibility flags using helper functions
+        can_show_citations = should_allow_citations(
+            question=user_message,
+            intent=final_intent,
+            citations=enhanced_citations,
+            top_docs=_docs_for_citations
+        )
+        
+        auto_expand_citations = should_auto_expand_citations(
+            question=user_message,
+            intent=final_intent
+        )
+        
+        # Step 9: Return safe response with citation flags
         response = {
             "answer": answer,
             "intent": final_intent,
             "citations": enhanced_citations,
+            "can_show_citations": can_show_citations,        # NEW: Frontend can show "View clauses" toggle
+            "auto_expand_citations": auto_expand_citations,  # NEW: Frontend should auto-expand pills
+            "sources_count_by_name": sources_count_by_name,
             "tier1_hit": tier1_hit,
             "model": model_used,
             "latency_ms": round(timing_breakdown.get('t_total', 0)),
             "session_id": session_id,
-            "notes": ["structured", "tier1", "safe_errors", "v1.4.1"],
+            "notes": ["structured", "tier1", "safe_errors", "v1.4.2"],
             "timestamp": int(time.time())
         }
+        
+        # Debug log for citation visibility
+        print(
+            f"[citations] intent={final_intent} "
+            f"can_show={can_show_citations} auto_expand={auto_expand_citations} "
+            f"citations={len(enhanced_citations)} docs={len(_docs_for_citations)}"
+        )
         
         print(f"✅ Safe chat response ({final_intent}): {len(enhanced_citations)} citations, {timing_breakdown.get('t_total', 0):.0f}ms, model: {model_used}")
         
