@@ -9,19 +9,32 @@ from typing import List, Dict
 def has_code_signals(question: str) -> bool:
     """
     Check if question contains obvious code/standard references
+    
+    EXCLUDES timber treatment grades (H3, H3.1, H3.2, H4) which are 
+    product specifications, not building code clauses.
     """
     q_lower = question.lower()
     
     code_patterns = [
         r'\bnzs\s*\d+',  # NZS 3604, NZS 4229
-        r'\b[a-h]\d+/as\d+',  # E2/AS1, H1/AS1, C/AS2
+        r'\b[abcefg]\d+/as\d+',  # E2/AS1, C/AS2, etc. (excludes H3/H4 treatment)
+        r'\bh1/as\d+',  # H1/AS1 (energy code, not H1 treatment)
         r'\b[a-h]\d+/vm\d+',  # H1/VM1, B1/VM1
-        r'\bclause\s+[\da-h]+',  # clause 7.1, clause E2.3
-        r'\bsection\s+[\da-h]+',  # section 5.2
+        r'\bclause\s+[a-z]?\d+',  # clause 7.1, clause E2.3
+        r'\bsection\s+[a-z]?\d+',  # section 5.2
         r'\btable\s+[\d\.]+',  # table 7.1
         r'\b(nzbc|building code|standard|as1|as2|vm1|vm2)\b',
         r'\b(amendment|amdt)\s*\d+',  # amendment 13
+        # Explicit exclusion: NOT H3, H3.1, H3.2, H4 (timber treatment)
     ]
+    
+    # Check if it's a timber treatment question (NOT a code reference)
+    timber_treatment_pattern = r'\bh[34](\.\d)?(?!\s*/\s*as)'
+    if re.search(timber_treatment_pattern, q_lower):
+        # If ONLY timber treatment mentioned (no other code), return False
+        has_other_code = any(re.search(p, q_lower) for p in code_patterns[:-1])  # Exclude amendment pattern
+        if not has_other_code:
+            return False  # Timber treatment alone is NOT a code signal
     
     for pattern in code_patterns:
         if re.search(pattern, q_lower):
