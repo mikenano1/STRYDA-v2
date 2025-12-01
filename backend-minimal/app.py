@@ -44,6 +44,7 @@ from services.retrieval import tier1_retrieval
 from rag.retriever import retrieve_and_answer
 from profiler import profiler
 from citation_utils import should_allow_citations, should_auto_expand_citations
+from response_style import apply_answer_style
 
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
