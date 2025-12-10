@@ -216,9 +216,12 @@ def _check_what_is_missing(question: str, required_items: List[str]) -> List[str
         "work_type": r'\b(new\s+circuit|replacement|alteration|addition)\b',
         "load": r'\b\d+\s*(amp|kw|kilowatt)\b',
         
-        "building_type": r'\b(deck|shed|carport|garage|sleepout)\b',
-        "size": r'\b\d+\s*(m2|m²|square\s+metre|sqm)\b',
-        "height": r'\b\d+(\.\d+)?\s*(m|metre|meter)\s+(high|height)\b',
+        # Schedule 1 specific patterns
+        "building_type": r'\b(deck|shed|carport|garage|sleepout|cabin|studio|verandah|patio)\b',
+        "floor_area_m2": r'\b\d+\s*(m2|m²|square\s+metre|sqm)\b',
+        "height_or_fall": r'\b\d+(\.\d+)?\s*(m|metre|meter)\s+(high|height|fall)\b',
+        "storeys": r'\b(single[- ]?storey|one[- ]?storey|two[- ]?storey|multi[- ]?storey)\b',
+        "plumbing_sanitary": r'\b(toilet|shower|sink|basin|plumbing|sanitary|waste)\b',
     }
     
     # Check each required item
