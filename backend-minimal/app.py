@@ -871,6 +871,22 @@ def api_chat(req: ChatRequest):
             print(f"   Missing items: {context_info['missing_items']}")
             print(f"   Asking for context instead of guessing")
             
+            # CREATE SESSION (Task 2C) - store original question for multi-turn
+            # Extract any fields already present in the original question
+            initial_fields = extract_context_from_message(
+                user_message,
+                context_info['category'],
+                context_info['missing_items']
+            )
+            
+            create_session(
+                session_id=session_id,
+                original_question=user_message,
+                category=context_info['category'],
+                required_fields=CONTEXT_PATTERNS[context_info['category']]['required_context'],
+                initial_fields=initial_fields
+            )
+            
             # Skip to response building (bypass retrieval/generation)
             # Jump to profiling and response
             profiler.finish_request()
