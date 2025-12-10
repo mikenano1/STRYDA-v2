@@ -174,6 +174,71 @@ def detect_missing_context(question: str, intent: str) -> Optional[Dict]:
                 
                 if missing:
                     # Generate follow-up questions
+
+
+
+def extract_context_from_message(message: str, category: str, required_fields: List[str]) -> Dict[str, str]:
+    """
+    Extract context values from a follow-up message.
+    
+    Args:
+        message: User's follow-up message
+        category: Context category from the session
+        required_fields: List of fields to look for
+    
+    Returns:
+        Dict of field_key → extracted value
+    """
+    extracted = {}
+    msg_lower = message.lower()
+    
+    # Define extraction patterns (more lenient than detection)
+    extraction_patterns = {
+        "timber_grade": (r'\b(sg8|sg10|sg6|sg12)\b', lambda m: m.group(1).upper()),
+        "joist_spacing": (r'\b(400|450|600)\b', lambda m: f"{m.group(1)}mm centres"),
+        "use_case": (r'\b(floor|roof|deck)\b', lambda m: m.group(1)),
+        
+        "climate_zone": (r'\bzone\s*([123])\b|climate\s+zone\s+([123])', lambda m: f"zone {m.group(1) or m.group(2)}"),
+        "building_type": (r'\b(new\s+build|rental|existing|retrofit)\b', lambda m: m.group(1)),
+        "element_type": (r'\b(ceiling|wall|floor|roof)\b', lambda m: m.group(1)),
+        
+        "wind_zone": (r'\b(low|medium|high|very\s+high|extra\s+high)\b', lambda m: m.group(1)),
+        "roof_type": (r'\b(metal|tile|corrugated|longrun)\b', lambda m: m.group(1)),
+        "pitch": (r'\b(\d+)\s*(?:degree|°|deg)\b', lambda m: f"{m.group(1)}°"),
+        
+        "fixture_type": (r'\b(basin|shower|toilet|kitchen\s+sink|bath|tub)\b', lambda m: m.group(1)),
+        "location": (r'\b(inside|outside|internal|external|indoor|outdoor)\b', lambda m: m.group(1)),
+        
+        "work_type": (r'\b(new\s+circuit|replacement|alteration|addition)\b', lambda m: m.group(1)),
+        "load": (r'\b(\d+)\s*(?:amp|kw)\b', lambda m: f"{m.group(1)} {('amp' if 'amp' in msg_lower else 'kW')}"),
+        
+        # Schedule 1 fields
+        "floor_area_m2": (r'\b(\d+)\s*(?:m2|m²|sqm|square\s+metres?)\b', lambda m: f"{m.group(1)}m²"),
+        "height_or_fall": (r'\b(\d+(?:\.\d+)?)\s*(?:m|metres?|meters?)\b', lambda m: f"{m.group(1)}m"),
+        "storeys": (r'\b(single[- ]?storey|one[- ]?storey|two[- ]?storey|multi[- ]?storey)\b', lambda m: m.group(1).replace('-', '-')),
+        "plumbing_sanitary": (
+            r'\b(yes|no|shower|toilet|sink|basin|vanity|none|plumbing)\b',
+            lambda m: m.group(1) if m.group(1) in ['yes', 'no', 'none'] else f"has {m.group(1)}"
+        ),
+    }
+    
+    # Try to extract each required field
+    for field in required_fields:
+        if field in extracted:
+            continue  # Already got it
+        
+        pattern_info = extraction_patterns.get(field)
+        if pattern_info:
+            pattern, extractor = pattern_info
+            match = re.search(pattern, msg_lower)
+            if match:
+                try:
+                    extracted[field] = extractor(match)
+                except Exception as e:
+                    print(f"⚠️ Extraction failed for {field}: {e}")
+    
+    return extracted
+
                     follow_ups = [config["questions"][item] for item in missing]
                     
                     return {
