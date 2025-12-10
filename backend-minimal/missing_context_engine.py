@@ -174,7 +174,16 @@ def detect_missing_context(question: str, intent: str) -> Optional[Dict]:
                 
                 if missing:
                     # Generate follow-up questions
-
+                    follow_ups = [config["questions"][item] for item in missing]
+                    
+                    return {
+                        "category": category,
+                        "missing_items": missing,
+                        "follow_up_questions": follow_ups
+                    }
+    
+    # No missing context detected
+    return None
 
 
 def extract_context_from_message(message: str, category: str, required_fields: List[str]) -> Dict[str, str]:
