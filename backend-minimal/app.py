@@ -679,6 +679,87 @@ def api_chat(req: ChatRequest):
         session_id = req.session_id or "default"
         user_message = req.message
         
+        # STEP 0: Check for active context session (Task 2C)
+        active_session = get_session(session_id)
+        
+        if active_session:
+            # This is a follow-up message in a context-gathering flow
+            print(f"🔄 Active context session: {active_session.category} for {session_id[:8]}...")
+            
+            # Extract context from this follow-up message
+            new_context = extract_context_from_message(
+                user_message,
+                active_session.category,
+                active_session.get_missing_fields()
+            )
+            
+            # Update session with newly extracted fields
+            if new_context:
+                active_session.update(new_context)
+                print(f"   Extracted: {list(new_context.keys())}")
+                print(f"   Now have: {list(active_session.filled_fields.keys())}")
+            
+            # Check if all required fields are now filled
+            still_missing = active_session.get_missing_fields()
+            
+            if still_missing:
+                # Still need more info - ask for remaining fields
+                from missing_context_engine import generate_missing_context_response
+                
+                context_info = {
+                    "category": active_session.category,
+                    "missing_items": still_missing,
+                    "follow_up_questions": [
+                        CONTEXT_PATTERNS[active_session.category]["questions"][field]
+                        for field in still_missing
+                    ]
+                }
+                
+                answer = generate_missing_context_response(context_info, active_session.original_question)
+                
+                print(f"   Still need: {still_missing}")
+                print(f"   Asking for more details")
+                
+                # Save assistant message
+                try:
+                    conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                    with conn.cursor() as cur:
+                        cur.execute("""
+                            INSERT INTO chat_messages (session_id, role, content)
+                            VALUES (%s, %s, %s);
+                        """, (session_id, "assistant", answer))
+                        conn.commit()
+                    conn.close()
+                except Exception as e:
+                    print(f"⚠️ Assistant message save failed: {e}")
+                
+                # Return follow-up questions response
+                return {
+                    "answer": answer,
+                    "intent": "missing_context",
+                    "citations": [],
+                    "can_show_citations": False,
+                    "auto_expand_citations": False,
+                    "sources_count_by_name": {},
+                    "tier1_hit": False,
+                    "model": "missing_context_engine",
+                    "latency_ms": 100,
+                    "session_id": session_id,
+                    "notes": ["missing_context", "gathering", "v1.4.2"],
+                    "timestamp": int(time.time())
+                }
+            
+            else:
+                # All fields filled! Build synthetic query and proceed
+                synthetic_query = active_session.build_synthetic_query()
+                user_message = synthetic_query  # Replace user message with synthetic
+                
+                print(f"✅ All context gathered for {active_session.category}")
+                print(f"   Synthetic query: {synthetic_query[:100]}...")
+                
+                # Will clear session after successful answer (at the end)
+                # For now, continue with normal flow using synthetic_query
+        
         # Step 1: Intent classification using Intent Router V2
         try:
             with profiler.timer('t_parse'):
