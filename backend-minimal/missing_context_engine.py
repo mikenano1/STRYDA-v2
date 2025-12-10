@@ -123,14 +123,49 @@ def detect_missing_context(question: str, intent: str) -> Optional[Dict]:
         or None if no context is missing
     """
     
-    # Only enforce for compliance intents
-    if intent not in ["compliance_strict", "implicit_compliance"]:
+    # Only enforce for compliance AND council_process intents
+    if intent not in ["compliance_strict", "implicit_compliance", "council_process"]:
         return None
     
     q_lower = question.lower()
     
-    # Check each pattern category
+    # SPECIAL CASE: Schedule 1 consent questions (two-part pattern)
+    # Check for consent phrase + building keyword
+    schedule1_config = CONTEXT_PATTERNS.get("schedule1_exemptions")
+    if schedule1_config:
+        # Check if has consent trigger
+        has_consent_trigger = any(
+            re.search(trigger, q_lower) 
+            for trigger in schedule1_config["triggers"]
+        )
+        
+        # Check if has building keyword
+        has_building_keyword = any(
+            re.search(keyword, q_lower)
+            for keyword in schedule1_config["building_keywords"]
+        )
+        
+        # If BOTH present, this is a Schedule 1 query
+        if has_consent_trigger and has_building_keyword:
+            # Check what's missing
+            missing = _check_what_is_missing(question, schedule1_config["required_context"])
+            
+            if missing:
+                # Generate follow-up questions
+                follow_ups = [schedule1_config["questions"][item] for item in missing]
+                
+                return {
+                    "category": "schedule1_exemptions",
+                    "missing_items": missing,
+                    "follow_up_questions": follow_ups
+                }
+    
+    # Check other pattern categories (standard single-pattern matching)
     for category, config in CONTEXT_PATTERNS.items():
+        # Skip schedule1 (already handled above with two-part logic)
+        if category == "schedule1_exemptions":
+            continue
+        
         # Check if question matches any trigger
         for trigger_pattern in config["triggers"]:
             if re.search(trigger_pattern, q_lower):
