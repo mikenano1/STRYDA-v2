@@ -415,7 +415,7 @@ async def admin_selftest(request: Request, x_admin_key: str = Header(None)):
                 from services.retrieval import tier1_retrieval
                 from openai_structured import generate_structured_response  
                 from intent_router import intent_router
-                import hashlib
+                query_hash = hashlib.md5(query.encode()).hexdigest()[:12]
                 import re
                 
                 # Generate query hash
