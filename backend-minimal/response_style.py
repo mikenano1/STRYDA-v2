@@ -28,26 +28,35 @@ def apply_answer_style(raw_answer: str, intent: str, user_message: str) -> str:
         Cleaned, conversational answer
     """
     
+    # Safety check: handle None or empty answers
+    if raw_answer is None:
+        return "I can help with NZ building questions. Could you provide more details?"
+    
     if not raw_answer or len(raw_answer.strip()) < 10:
-        return raw_answer
+        return raw_answer if raw_answer else ""
     
-    # Step 1: Remove AI waffle and disclaimers
-    cleaned = _remove_ai_waffle(raw_answer)
-    
-    # Step 2: Apply intent-specific tone
-    styled = _apply_intent_tone(cleaned, intent)
-    
-    # Step 3: Ensure concise structure (direct answer + optional bullets)
-    structured = _ensure_concise_structure(styled, intent)
-    
-    # Step 4: Remove excessive clause references from body (citations handle this)
-    final = _declutter_clause_spam(structured)
-    
-    # Step 5: Remove dangling headings and truncate properly (Task 3.5)
-    final = _remove_dangling_headings(final)
-    final = _truncate_at_last_sentence(final)
-    
-    return final.strip()
+    try:
+        # Step 1: Remove AI waffle and disclaimers
+        cleaned = _remove_ai_waffle(raw_answer)
+        
+        # Step 2: Apply intent-specific tone
+        styled = _apply_intent_tone(cleaned, intent)
+        
+        # Step 3: Ensure concise structure (direct answer + optional bullets)
+        structured = _ensure_concise_structure(styled, intent)
+        
+        # Step 4: Remove excessive clause references from body (citations handle this)
+        final = _declutter_clause_spam(structured)
+        
+        # Step 5: Remove dangling headings and truncate properly (Task 3.5)
+        final = _remove_dangling_headings(final)
+        final = _truncate_at_last_sentence(final)
+        
+        return final.strip()
+    except Exception as e:
+        # If styling fails, return original answer
+        print(f"⚠️ Response styling failed: {e}, returning original")
+        return raw_answer if raw_answer else ""
 
 
 def _remove_ai_waffle(text: str) -> str:
