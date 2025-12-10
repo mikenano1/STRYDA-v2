@@ -775,6 +775,7 @@ def api_chat(req: ChatRequest):
         tokens_in = 0
         tokens_out = 0
         retrieved_docs = []  # Store docs for can_show_citations logic
+        answer = ""  # Initialize to prevent NoneType errors
         
         try:
             # Get policy for model preference and retrieval hints
