@@ -80,15 +80,27 @@ CONTEXT_PATTERNS = {
     
     "schedule1_exemptions": {
         "triggers": [
-            r'\bdo i need\s+(a\s+)?(consent|building consent)\b',
-            r'\b(exempt|exemption|schedule\s*1)\b',
-            r'\b(shed|deck|carport|garage)\s+(consent|building consent)\b',
+            # Consent questions
+            r'\bdo\s+i\s+need\s+(a\s+|an\s+)?(consent|building\s+consent)\b',
+            r'\bneed\s+(a\s+|an\s+)?(consent|building\s+consent)\s+(for|to)\b',
+            r'\b(is\s+this|is\s+it|is\s+that|is\s+a)\s+(exempt|exemption)\b',
+            r'\bexempt\s+building\s+work\b',
+            r'\bschedule\s*1\b',
+            r'\bcan\s+i\s+build\s+without\s+(a\s+)?consent\b',
         ],
-        "required_context": ["building_type", "size", "height"],
+        # Secondary pattern: must also mention small building type
+        "building_keywords": [
+            r'\b(shed|sleepout|cabin|garage|carport|studio|granny\s+flat)\b',
+            r'\b(deck|platform|verandah|veranda|patio)\b',
+            r'\bminor\s+dwelling\b',
+        ],
+        "required_context": ["building_type", "floor_area_m2", "height_or_fall", "storeys", "plumbing_sanitary"],
         "questions": {
-            "building_type": "What are you building (deck, shed, carport, garage)?",
-            "size": "What's the floor area (m²)?",
-            "height": "How high from ground (m)?"
+            "building_type": "What are you building (shed, sleepout, garage, carport, deck)?",
+            "floor_area_m2": "What's the floor area (m²)?",
+            "height_or_fall": "What's the max height from ground level or fall height (metres)?",
+            "storeys": "Is it single-storey?",
+            "plumbing_sanitary": "Are you putting in plumbing (toilet, shower, sink)?"
         }
     },
 }
