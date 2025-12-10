@@ -248,16 +248,6 @@ def extract_context_from_message(message: str, category: str, required_fields: L
     
     return extracted
 
-                    follow_ups = [config["questions"][item] for item in missing]
-                    
-                    return {
-                        "category": category,
-                        "missing_items": missing,
-                        "follow_up_questions": follow_ups
-                    }
-    
-    # No missing context detected
-    return None
 
 
 def _check_what_is_missing(question: str, required_items: List[str]) -> List[str]:
