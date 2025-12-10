@@ -1132,6 +1132,11 @@ def api_chat(req: ChatRequest):
             _docs_for_citations = []
         
         # Apply response style transformation (make answer more conversational)
+        # Safety check: ensure answer exists before styling
+        if answer is None or answer == "":
+            answer = "I can help with NZ building questions. Could you provide more details?"
+            print(f"⚠️ Answer was None/empty, using fallback")
+        
         answer = apply_answer_style(
             raw_answer=answer,
             intent=final_intent,
