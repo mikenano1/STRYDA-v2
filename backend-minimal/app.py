@@ -12,6 +12,7 @@ import os
 import time
 import json
 import re
+import hashlib
 import psycopg2
 import psycopg2.extras
 import asyncio
