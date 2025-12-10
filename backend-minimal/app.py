@@ -1153,7 +1153,7 @@ def api_chat(req: ChatRequest):
             sources_count_by_name[source] = sources_count_by_name.get(source, 0) + 1
         
         # Generate query hash for tracking
-        import hashlib
+        query_hash = hashlib.sha1(user_message.encode()).hexdigest()[:12]
         query_hash = hashlib.sha1(user_message.encode()).hexdigest()[:12]
         
         # Detect and log source bias
