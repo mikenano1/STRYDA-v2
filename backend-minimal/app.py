@@ -768,6 +768,71 @@ def api_chat(req: ChatRequest):
             print(f"⚠️ Chat history retrieval failed: {e}")
             conversation_history = []
         
+        # Step 3.5: Check for missing context (BEFORE retrieval)
+        # Only for compliance intents - ask for required details instead of guessing
+        needs_context, context_info = should_ask_for_context(user_message, final_intent)
+        
+        if needs_context and context_info:
+            # Generate follow-up question instead of retrieving
+            answer = context_info["formatted_response"]
+            model_used = "missing_context_engine"
+            
+            # No retrieval, no citations for context-gathering questions
+            enhanced_citations = []
+            retrieved_docs = []
+            tier1_hit = False
+            used_retrieval = False
+            citations_reason = "missing_context"
+            
+            print(f"🔍 Missing context detected: {context_info['category']}")
+            print(f"   Missing items: {context_info['missing_items']}")
+            print(f"   Asking for context instead of guessing")
+            
+            # Skip to response building (bypass retrieval/generation)
+            # Jump to profiling and response
+            profiler.finish_request()
+            timing_breakdown = profiler.get_breakdown()
+            
+            # Build response with follow-up question
+            sources_count_by_name = {}
+            query_hash = hashlib.sha1(user_message.encode()).hexdigest()[:12]
+            
+            # Try to save assistant message
+            try:
+                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                with conn.cursor() as cur:
+                    cur.execute("""
+                        INSERT INTO chat_messages (session_id, role, content)
+                        VALUES (%s, %s, %s);
+                    """, (session_id, "assistant", answer))
+                    conn.commit()
+                conn.close()
+            except Exception as e:
+                print(f"⚠️ Assistant message save failed: {e}")
+            
+            # Build response
+            _docs_for_citations = []
+            can_show_citations = False
+            auto_expand_citations = False
+            
+            response = {
+                "answer": answer,
+                "intent": final_intent,
+                "citations": [],
+                "can_show_citations": False,
+                "auto_expand_citations": False,
+                "sources_count_by_name": {},
+                "tier1_hit": False,
+                "model": "missing_context_engine",
+                "latency_ms": round(timing_breakdown.get('t_total', 0)),
+                "session_id": session_id,
+                "notes": ["missing_context", "follow_up_question", "v1.4.2"],
+                "timestamp": int(time.time())
+            }
+            
+            print(f"✅ Missing context response ({final_intent}): asking for {len(context_info['missing_items'])} details")
+            return response
+        
         # Step 4: Handle based on FINAL intent with UNIFIED retrieval (no citation suppression)
         enhanced_citations = []
         used_retrieval = False
