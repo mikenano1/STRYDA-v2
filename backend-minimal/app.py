@@ -46,9 +46,10 @@ from rag.retriever import retrieve_and_answer
 from profiler import profiler
 from citation_utils import should_allow_citations, should_auto_expand_citations
 from response_style import apply_answer_style
-from missing_context_engine import should_ask_for_context, extract_context_from_message, CONTEXT_PATTERNS
+from missing_context_engine import should_ask_for_context, extract_context_from_message, CONTEXT_PATTERNS, generate_missing_context_response
 from context_session import create_session, get_session, clear_session, has_active_session
 from simple_conversation_store import bootstrap_conversation, get_conversation, clear_conversation, has_conversation
+from gpt_context_extraction import extract_context_via_gpt, validate_proposed_context
 
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
