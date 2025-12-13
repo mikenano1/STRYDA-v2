@@ -713,15 +713,55 @@ def api_chat(req: ChatRequest):
                 # (Follow-up handling will be added in Task 2D-4-3)
                 # Fall through to existing logic
             else:
-                # TURN 2+: Handle follow-up (will be implemented in Task 2D-4-3)
-                print(f"🔬 Turn {existing_conv.turn_number + 1}: Follow-up detected (not yet implemented)")
-                print(f"   Intent locked: {existing_conv.intent_locked}")
+                # TURN 2+: Handle follow-up with intent locked
+                existing_conv.increment_turn()
+                
+                print(f"🔬 Turn {existing_conv.turn_number}: Follow-up in active conversation")
+                print(f"   Intent locked: {existing_conv.intent_locked} (NO reclassification)")
                 print(f"   State: {existing_conv.conversation_state}")
                 
-                # For now, fall through to existing logic
-                # TODO: Task 2D-4-3 will implement follow-up handling here
+                # Build conversation summary for GPT (structure only, not used yet)
+                conversation_summary = {
+                    "original_question": existing_conv.original_question,
+                    "intent_locked": existing_conv.intent_locked,
+                    "state": existing_conv.conversation_state,
+                    "context_collected": existing_conv.context_collected,
+                    "turn_number": existing_conv.turn_number
+                }
+                
+                print(f"   Context collected so far: {list(existing_conv.context_collected.keys())}")
+                
+                # Log follow-up (as specified)
+                print(f"[conversation_followup] id={session_id[:12]} turn={existing_conv.turn_number} "
+                      f"intent_locked={existing_conv.intent_locked} state={existing_conv.conversation_state} "
+                      f"simple_session=true intent_reclassified=false")
+                
+                # State-based placeholder responses (Task 2D-4-4 will replace with real logic)
+                if existing_conv.conversation_state == "gathering_context":
+                    # Placeholder for context gathering (Task 2D-4-4 will extract context via GPT)
+                    placeholder_answer = f"Got it. I'm still gathering details for your question about: {existing_conv.original_question}. (Task 2D-4-4 will handle this properly.)"
+                else:
+                    # Placeholder for normal/answered state follow-ups
+                    placeholder_answer = f"Follow-up received for: {existing_conv.original_question}. (Task 2D-4-4 will use conversation summary + recent turns.)"
+                
+                # Return placeholder response (bypass old flow entirely)
+                return {
+                    "answer": placeholder_answer,
+                    "intent": existing_conv.intent_locked,
+                    "citations": [],
+                    "can_show_citations": False,
+                    "auto_expand_citations": False,
+                    "sources_count_by_name": {},
+                    "tier1_hit": False,
+                    "model": "simple_session_placeholder",
+                    "latency_ms": 50,
+                    "session_id": session_id,
+                    "notes": ["simple_session", "follow_up_placeholder", "task_2d_4_3"],
+                    "timestamp": int(time.time())
+                }
         
         # EXISTING LOGIC: Context session handling (will be deprecated when SIMPLE_SESSION_MODE=true fully implemented)
+        # IMPORTANT: This section does NOT run when SIMPLE_SESSION_MODE=true and conversation exists
         # STEP 0: Check for active context session (Task 2C)
         active_session = get_session(session_id)
         
