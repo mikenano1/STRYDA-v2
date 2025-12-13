@@ -684,10 +684,44 @@ def api_chat(req: ChatRequest):
         # Feature flag check: Use simplified session mode or existing logic
         if SIMPLE_SESSION_MODE:
             print(f"🔬 SIMPLE_SESSION_MODE enabled - using unified conversation model")
-            # TODO: Implement simplified conversation flow here (Tasks 2D-4-2 through 2D-4-7)
-            # For now, fall through to existing logic
+            
+            # Check if conversation already exists
+            existing_conv = get_conversation(session_id)
+            
+            if not existing_conv:
+                # TURN 1: Bootstrap new conversation
+                print(f"📝 Turn 1: Bootstrapping new conversation for {session_id[:12]}...")
+                
+                # Classify intent ONCE (this is the ONLY time we classify in simple mode)
+                from intent_classifier_v2 import classify_intent
+                
+                intent_result = classify_intent(user_message, context=None)
+                intent_locked = intent_result["intent"]
+                
+                # Bootstrap conversation
+                conversation = bootstrap_conversation(
+                    session_id=session_id,
+                    original_question=user_message,
+                    intent_locked=intent_locked
+                )
+                
+                print(f"   Intent locked: {intent_locked}")
+                print(f"   Original question stored")
+                print(f"   State: {conversation.conversation_state}")
+                
+                # For now, continue with existing flow
+                # (Follow-up handling will be added in Task 2D-4-3)
+                # Fall through to existing logic
+            else:
+                # TURN 2+: Handle follow-up (will be implemented in Task 2D-4-3)
+                print(f"🔬 Turn {existing_conv.turn_number + 1}: Follow-up detected (not yet implemented)")
+                print(f"   Intent locked: {existing_conv.intent_locked}")
+                print(f"   State: {existing_conv.conversation_state}")
+                
+                # For now, fall through to existing logic
+                # TODO: Task 2D-4-3 will implement follow-up handling here
         
-        # EXISTING LOGIC: Context session handling (will be deprecated when SIMPLE_SESSION_MODE=true)
+        # EXISTING LOGIC: Context session handling (will be deprecated when SIMPLE_SESSION_MODE=true fully implemented)
         # STEP 0: Check for active context session (Task 2C)
         active_session = get_session(session_id)
         
