@@ -680,6 +680,13 @@ def api_chat(req: ChatRequest):
         session_id = req.session_id or "default"
         user_message = req.message
         
+        # Feature flag check: Use simplified session mode or existing logic
+        if SIMPLE_SESSION_MODE:
+            print(f"🔬 SIMPLE_SESSION_MODE enabled - using unified conversation model")
+            # TODO: Implement simplified conversation flow here (Tasks 2D-4-2 through 2D-4-7)
+            # For now, fall through to existing logic
+        
+        # EXISTING LOGIC: Context session handling (will be deprecated when SIMPLE_SESSION_MODE=true)
         # STEP 0: Check for active context session (Task 2C)
         active_session = get_session(session_id)
         
