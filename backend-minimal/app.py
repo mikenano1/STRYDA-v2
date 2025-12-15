@@ -1058,6 +1058,14 @@ def api_chat(req: ChatRequest):
                 tokens_in = structured_response.get("tokens_in", 0)
                 tokens_out = structured_response.get("tokens_out", 0)
                 
+                # Apply numeric leak guard (GPT-first only)
+                has_leak, guard_action, guarded_answer = check_numeric_leak(answer, user_message)
+                if has_leak:
+                    answer = guarded_answer
+                    print(f"🛡️ Numeric leak guard: action={guard_action}")
+                else:
+                    print(f"✅ No numeric leak detected")
+                
                 # Build citations if docs exist, but don't force them
                 enhanced_citations = []
                 if docs:
