@@ -1454,11 +1454,11 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                         clause_hit_rate = 0
                     
                 else:
-                # Unknown intent - safe fallback, no citations
-                answer = "I can help with NZ building standards. What specific building question can I help you with?"
-                citations_reason = "user_general"
-                
-        except Exception as e:
+                    # Unknown intent - safe fallback, no citations
+                    answer = "I can help with NZ building standards. What specific building question can I help you with?"
+                    citations_reason = "user_general"
+                    
+            except Exception as e:
             print(f"❌ Response generation failed: {e}")
             # Ultimate safe fallback
             answer = "I encountered an issue processing your question. Please try rephrasing your building code question."
