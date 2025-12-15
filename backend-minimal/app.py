@@ -1029,26 +1029,53 @@ def api_chat(req: ChatRequest):
         # response_mode and trigger_reason are available from line 892-893
         
         if response_mode == "gpt_first":
-            # GPT-FIRST MODE: Natural, conversational, no compliance language
-            print(f"🌊 GPT-first mode: natural answer, no citations")
+            # GPT-FIRST MODE: Natural answers with silent grounding
+            print(f"🌊 GPT-first mode: natural answer with light grounding")
             
             try:
-                # Generate natural answer with simple GPT call (NOT structured compliance generator)
+                # Silent retrieval for factual grounding (not surfaced as citations)
+                docs = []
+                retrieved_docs = []
+                try:
+                    docs = tier1_retrieval(user_message, top_k=2, intent=final_intent)
+                    retrieved_docs = docs
+                    if docs:
+                        print(f"📚 Silent grounding: {len(docs)} docs (not cited)")
+                except Exception as e:
+                    print(f"⚠️ Silent retrieval failed: {e}, proceeding without grounding")
+                    docs = []
+                    retrieved_docs = []
+                
+                # Build background context from retrieved docs (for accuracy only)
+                background_context = ""
+                if docs:
+                    context_snippets = [doc.get('snippet', '')[:300] for doc in docs[:2]]
+                    background_context = "\n\n".join(context_snippets)
+                
+                # Generate natural answer with GPT
                 from openai import OpenAI
                 gpt_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
                 
-                # GPT-first system prompt (practical, conversational)
+                # GPT-first system prompt with grounding instructions
                 system_prompt = """You are a practical NZ builder mate giving helpful guidance.
+
 Keep it short, natural, and conversational.
 NO compliance checklists.
-NO clause numbers.
+NO clause numbers or document names.
 NO "crucial" or formal language.
-If you mention numbers, make them sound like common practice, not legal requirements."""
-                
-                # Build simple conversation context
+If you mention numbers, make them sound like common practice, not legal requirements.
+
+If background material is available below, use it to stay factually accurate,
+but do NOT cite it, mention standards, or name documents."""
+
+                # Build conversation
                 messages = [{"role": "system", "content": system_prompt}]
                 
-                # Add recent history if available
+                # Add background context silently if available
+                if background_context:
+                    messages.append({"role": "system", "content": f"Background (for accuracy only, do not cite):\n{background_context}"})
+                
+                # Add recent history
                 if conversation_history:
                     for msg in conversation_history[-3:]:
                         messages.append({"role": msg['role'], "content": msg['content']})
@@ -1075,12 +1102,12 @@ If you mention numbers, make them sound like common practice, not legal requirem
                 
                 # FORCE citations to empty (no pills in GPT-first mode)
                 enhanced_citations = []
-                retrieved_docs = []
                 tier1_hit = False
                 used_retrieval = False
                 citations_reason = "gpt_first_suppressed"
                 
-                print(f"✅ GPT-first answer: natural tone, citations suppressed")
+                grounding_status = "with grounding" if background_context else "no grounding"
+                print(f"✅ GPT-first answer: natural tone, {grounding_status}, citations suppressed")
                 
                 # SKIP to response building
                 
