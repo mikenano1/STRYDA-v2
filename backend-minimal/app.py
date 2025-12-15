@@ -1099,12 +1099,23 @@ Answer now:"""
                     max_completion_tokens=150  # GPT-5 uses max_completion_tokens, not max_tokens
                 )
                 
-                answer = response.choices[0].message.content.strip()
+                # Debug: Check response structure
+                print(f"🔍 GPT-5.1 response structure: {dir(response.choices[0].message)}")
+                print(f"🔍 Message object: {response.choices[0].message}")
+                
+                answer = response.choices[0].message.content
+                if answer is None:
+                    # Try alternative fields
+                    print(f"⚠️ content is None, checking for text field...")
+                    answer = getattr(response.choices[0].message, 'text', '')
+                
+                answer = answer.strip() if answer else ""
                 model_used = "gpt-5.1-hybrid"
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
                 print(f"🔍 GPT-5.1 raw output ({len(answer)} chars): {answer[:200]}")
+                print(f"tokens_out: {tokens_out}")
                 
                 # Generate build ID
                 import subprocess
