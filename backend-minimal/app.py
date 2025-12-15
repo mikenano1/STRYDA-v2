@@ -916,11 +916,11 @@ def api_chat(req: ChatRequest):
                 # Check required-inputs gate BEFORE generation (Task: threshold questions)
                 gate_result = gate_required_inputs(user_message)
                 
-                if gate_result["should_gate"]:
+                if gate_result["is_gated"]:
                     # Threshold/changeover question without required inputs - ask for them
-                    print(f"🧩 required_inputs_gate=TRUE reason={gate_result['reason']} fields={gate_result['required_fields']}")
+                    print(f"🧩 gate_start key={gate_result['question_key']} required={gate_result['required_fields']}")
                     
-                    answer = gate_result["ask"]
+                    answer = gate_result["prompt"]
                     model_used = "required_inputs_gate"
                     enhanced_citations = []
                     retrieved_docs = []
