@@ -1096,7 +1096,9 @@ Answer now:"""
                     model="gpt-5.1",  # Upgraded to GPT-5.1
                     messages=messages,
                     temperature=0.1,
-                    max_completion_tokens=500  # Increased to allow for reasoning tokens + output
+                    max_completion_tokens=500,  # Increased to allow for reasoning tokens + output
+                    # Disable extended reasoning for simple queries
+                    reasoning={"effort": "none"}  # Prevent reasoning token consumption
                 )
                 
                 # Extract answer with fallback handling
