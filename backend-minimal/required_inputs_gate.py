@@ -71,15 +71,19 @@ def gate_required_inputs(question: str) -> Dict:
         provided_fields.append('roof_profile')
     
     # Check for underlay system
-    if any(term in q_lower for term in ['synthetic', 'permeable', 'rigid', 'membrane', 'underlay type']):
+    if any(term in q_lower for term in ['synthetic', 'permeable', 'rigid', 'membrane', 'self supporting', 'self-supporting']):
         provided_fields.append('underlay_system')
     
     # Check for direction clarification
     if 'roll' in q_lower or 'lap' in q_lower:
         provided_fields.append('clarify_direction')
     
-    # Required fields for roof/underlay threshold questions
-    required_fields = ['roof_profile', 'underlay_system', 'clarify_direction']
+    # Check for pitch value
+    if re.search(r'\b\d+\s*(degree|°|deg)\b', q_lower) or re.search(r'\bpitch\s+is\s+\d+', q_lower):
+        provided_fields.append('roof_pitch_deg')
+    
+    # Required fields for roof/underlay threshold questions (UPDATED: added roof_pitch_deg)
+    required_fields = ['roof_profile', 'underlay_system', 'clarify_direction', 'roof_pitch_deg']
     
     # Check if all required fields are provided
     missing_fields = [f for f in required_fields if f not in provided_fields]
@@ -87,18 +91,20 @@ def gate_required_inputs(question: str) -> Dict:
     if not missing_fields:
         # All inputs provided, allow answering
         return {
-            "should_gate": False,
+            "is_gated": False,
             "reason": "inputs_complete",
-            "ask": "",
-            "required_fields": []
+            "prompt": "",
+            "required_fields": [],
+            "question_key": ""
         }
     
-    # GATE: Missing inputs, ask for them
-    ask_message = "Quick ones: what roof profile is it (corrugate/5-rib/tray) and what underlay system? Also, do you mean roll direction or lap direction?"
+    # GATE: Missing inputs, ask for them (structured payload)
+    ask_message = "Quick ones: what roof profile is it (corrugate/5-rib/tray), what underlay system, roll or lap direction, and what's the pitch (degrees)?"
     
     return {
-        "should_gate": True,
+        "is_gated": True,
         "reason": "threshold_changeover",
-        "ask": ask_message,
-        "required_fields": missing_fields
+        "prompt": ask_message,
+        "required_fields": missing_fields,
+        "question_key": "underlay_changeover_pitch"
     }
