@@ -1068,6 +1068,9 @@ def api_chat(req: ChatRequest):
                 
                 print(f"✅ GPT-first answer: {len(enhanced_citations)} optional citations")
                 
+                # SKIP to response building (don't fall through to strict compliance logic below)
+                # Jump directly to Step 8 (response building)
+                
             except Exception as e:
                 print(f"⚠️ GPT-first generation failed: {e}")
                 answer = "I can help with NZ building questions. Could you provide more details?"
@@ -1076,14 +1079,11 @@ def api_chat(req: ChatRequest):
                 retrieved_docs = []
         
         elif response_mode == "strict_compliance":
-            # STRICT COMPLIANCE MODE: Use existing logic unchanged
+            # STRICT COMPLIANCE MODE: Continue to existing logic below
             print(f"🔒 Strict compliance mode: using existing compliance logic")
-            
-            # Continue to existing "Step 4: Handle based on FINAL intent" section below
-            # This is the EXISTING code path - no changes needed
-            pass
+            # Fall through to existing Step 4 below
         
-        # Step 4 (EXISTING): Handle based on FINAL intent with UNIFIED retrieval (no citation suppression)
+        # Step 4 (EXISTING - only runs when response_mode == "strict_compliance"): Handle based on FINAL intent with UNIFIED retrieval
         enhanced_citations = []
         used_retrieval = False
         citations_reason = "available"
