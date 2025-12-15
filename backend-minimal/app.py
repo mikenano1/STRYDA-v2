@@ -1021,7 +1021,69 @@ def api_chat(req: ChatRequest):
             print(f"✅ Missing context response ({final_intent}): asking for {len(context_info['missing_items'])} details")
             return response
         
-        # Step 4: Handle based on FINAL intent with UNIFIED retrieval (no citation suppression)
+        # Step 4: Route behavior based on response_mode
+        # Mode determines whether to use GPT-first (natural) or strict compliance (precise)
+        
+        # Get response mode (already calculated after intent classification)
+        # response_mode and trigger_reason are available from line 892-893
+        
+        if response_mode == "gpt_first":
+            # GPT-FIRST MODE: Natural, conversational, no strict gates
+            print(f"🌊 GPT-first mode: bypassing strict compliance logic")
+            
+            # Simple natural answer using GPT + optional light RAG
+            # No forced retrieval, no forced citations, no numeric guards
+            try:
+                # Optional light retrieval (not forced)
+                docs = []
+                try:
+                    docs = tier1_retrieval(user_message, top_k=3, intent=final_intent)
+                    retrieved_docs = docs
+                except:
+                    docs = []
+                    retrieved_docs = []
+                
+                # Generate natural answer with GPT
+                from openai_structured import generate_structured_response
+                structured_response = generate_structured_response(
+                    user_message=user_message,
+                    tier1_snippets=docs,  # Optional context
+                    conversation_history=conversation_history,
+                    intent=final_intent
+                )
+                
+                answer = structured_response.get("answer", "I can help with NZ building questions.")
+                model_used = structured_response.get("model", "gpt-4o-mini")
+                tokens_in = structured_response.get("tokens_in", 0)
+                tokens_out = structured_response.get("tokens_out", 0)
+                
+                # Build citations if docs exist, but don't force them
+                enhanced_citations = []
+                if docs:
+                    enhanced_citations = build_simple_citations(docs, max_citations=2)
+                
+                tier1_hit = len(docs) > 0
+                used_retrieval = len(docs) > 0
+                citations_reason = "gpt_first_optional"
+                
+                print(f"✅ GPT-first answer: {len(enhanced_citations)} optional citations")
+                
+            except Exception as e:
+                print(f"⚠️ GPT-first generation failed: {e}")
+                answer = "I can help with NZ building questions. Could you provide more details?"
+                model_used = "fallback"
+                enhanced_citations = []
+                retrieved_docs = []
+        
+        elif response_mode == "strict_compliance":
+            # STRICT COMPLIANCE MODE: Use existing logic unchanged
+            print(f"🔒 Strict compliance mode: using existing compliance logic")
+            
+            # Continue to existing "Step 4: Handle based on FINAL intent" section below
+            # This is the EXISTING code path - no changes needed
+            pass
+        
+        # Step 4 (EXISTING): Handle based on FINAL intent with UNIFIED retrieval (no citation suppression)
         enhanced_citations = []
         used_retrieval = False
         citations_reason = "available"
