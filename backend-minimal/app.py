@@ -1087,8 +1087,8 @@ Answer now in ONE sentence, conversationally:"""
                 response = gpt_client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=messages,
-                    temperature=0.3,
-                    max_tokens=200
+                    temperature=0.1,  # Lower for more consistency with grounding
+                    max_tokens=100  # Increased from 200 to allow fuller answers
                 )
                 
                 answer = response.choices[0].message.content.strip()
