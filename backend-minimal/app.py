@@ -1104,6 +1104,8 @@ Answer now:"""
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
+                print(f"🔍 GPT-5.1 raw output ({len(answer)} chars): {answer[:200]}")
+                
                 # Generate build ID
                 import subprocess
                 try:
@@ -1114,11 +1116,15 @@ Answer now:"""
                 # 🚨 TRIPWIRE: Log that hybrid mode is active
                 print(f"🚨 HYBRID_MODE_ACTIVE (full_retrieval + natural_answer) build_id={build_id}")
                 
-                # Enforce output shape (minimal)
-                raw_answer_before = answer
-                answer = enforce_gpt_first_shape(answer, user_message)
-                sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
-                print(f"📏 Synthesized answer: {sentence_count} sentences, {len(answer)} chars")
+                # Enforce output shape (minimal) - but check if answer exists first
+                if answer and len(answer) > 10:
+                    raw_answer_before = answer
+                    answer = enforce_gpt_first_shape(answer, user_message)
+                    sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
+                    print(f"📏 Synthesized answer: {sentence_count} sentences, {len(answer)} chars")
+                else:
+                    print(f"⚠️ GPT-5.1 returned empty/short answer, skipping enforcer")
+                    sentence_count = 0
                 
                 # NO numeric leak guard for factual questions (they need the numbers)
                 # Guard only for vague "how to" questions
