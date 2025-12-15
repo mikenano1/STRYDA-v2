@@ -1100,13 +1100,17 @@ Answer now:"""
                 )
                 
                 # Debug: Check response structure
-                print(f"🔍 GPT-5.1 response structure: {dir(response.choices[0].message)}")
+                print(f"🔍 GPT-5.1 full response: {response}")
                 print(f"🔍 Message object: {response.choices[0].message}")
+                print(f"🔍 Message dict: {response.choices[0].message.model_dump()}")
                 
                 answer = response.choices[0].message.content
-                if answer is None:
+                if not answer or answer == '':
                     # Try alternative fields
-                    print(f"⚠️ content is None, checking for text field...")
+                    print(f"⚠️ content is empty/None, checking alternatives...")
+                    msg_dict = response.choices[0].message.model_dump()
+                    print(f"🔍 Available fields: {list(msg_dict.keys())}")
+                    print(f"🔍 Full message dict: {msg_dict}")
                     answer = getattr(response.choices[0].message, 'text', '')
                 
                 answer = answer.strip() if answer else ""
