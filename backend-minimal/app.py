@@ -1368,92 +1368,92 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                     # SAFE citation building with policy-based limits
                     try:
                         if docs and show_citations:  # Only build citations if policy allows
-                        # Apply max_citations from policy
-                        max_cites = min(max_citations, 3)  # Cap at 3 for performance
-                        
-                        use_clause_pills = CLAUSE_PILLS_ENABLED  # Local copy for this request
-                        
-                        if use_clause_pills:
-                            # CLAUSE PILLS ENABLED: Use clause-level citation system
-                            try:
-                                from clause_citations import build_clause_citations
-                                
-                                clause_level_citations = build_clause_citations(docs, user_message, max_citations=max_cites)
-                                
-                                # Convert to expected format for response
-                                enhanced_citations = []
-                                citations_level_breakdown = {"clause": 0, "table": 0, "figure": 0, "section": 0, "page": 0}
-                                
-                                for clause_cite in clause_level_citations:
-                                    # Count locator types for telemetry
-                                    locator_type = clause_cite.get("locator_type", "page")
-                                    citations_level_breakdown[locator_type] = citations_level_breakdown.get(locator_type, 0) + 1
+                            # Apply max_citations from policy
+                            max_cites = min(max_citations, 3)  # Cap at 3 for performance
+                            
+                            use_clause_pills = CLAUSE_PILLS_ENABLED  # Local copy for this request
+                            
+                            if use_clause_pills:
+                                # CLAUSE PILLS ENABLED: Use clause-level citation system
+                                try:
+                                    from clause_citations import build_clause_citations
                                     
-                                    # Format for frontend
+                                    clause_level_citations = build_clause_citations(docs, user_message, max_citations=max_cites)
+                                    
+                                    # Convert to expected format for response
+                                    enhanced_citations = []
+                                    citations_level_breakdown = {"clause": 0, "table": 0, "figure": 0, "section": 0, "page": 0}
+                                    
+                                    for clause_cite in clause_level_citations:
+                                        # Count locator types for telemetry
+                                        locator_type = clause_cite.get("locator_type", "page")
+                                        citations_level_breakdown[locator_type] = citations_level_breakdown.get(locator_type, 0) + 1
+                                        
+                                        # Format for frontend
+                                        citation = {
+                                            "id": clause_cite["id"],
+                                            "source": clause_cite["source"],
+                                            "page": clause_cite["page"],
+                                            "clause_id": clause_cite.get("clause_id"),
+                                            "clause_title": clause_cite.get("clause_title"),
+                                            "locator_type": clause_cite["locator_type"],
+                                            "snippet": clause_cite["snippet"],
+                                            "anchor": clause_cite.get("anchor"),
+                                            "confidence": clause_cite["confidence"],
+                                            "pill_text": f"[{clause_cite['source'].replace('NZS 3604:2011', 'NZS 3604')}] {clause_cite.get('clause_id', '')} (p.{clause_cite['page']})"
+                                        }
+                                        enhanced_citations.append(citation)
+                                    
+                                    # Calculate clause hit rate for telemetry
+                                    clause_hits = sum(1 for c in clause_level_citations if c.get("clause_id"))
+                                    clause_hit_rate = clause_hits / len(clause_level_citations) if clause_level_citations else 0
+                                    
+                                    print(f"✅ Clause-level citations: {len(enhanced_citations)} total (policy max: {max_cites})")
+                                except ImportError:
+                                    print("⚠️ clause_citations module not found, falling back to page-level citations")
+                                    use_clause_pills = False  # Disable for this request if module missing
+                            
+                            if not use_clause_pills:
+                                # CLAUSE PILLS DISABLED: Use simple page-level citations (stable production mode)
+                                enhanced_citations = []
+                                citations_level_breakdown = {"page": min(len(docs), max_cites)}
+                                clause_hit_rate = 0
+                                
+                                for idx, doc in enumerate(docs[:max_cites]):  # Respect policy max
+                                    source = doc.get("source", "Unknown")
+                                    page = doc.get("page", 0)
+                                    snippet = doc.get("snippet", "")[:200]
+                                    
                                     citation = {
-                                        "id": clause_cite["id"],
-                                        "source": clause_cite["source"],
-                                        "page": clause_cite["page"],
-                                        "clause_id": clause_cite.get("clause_id"),
-                                        "clause_title": clause_cite.get("clause_title"),
-                                        "locator_type": clause_cite["locator_type"],
-                                        "snippet": clause_cite["snippet"],
-                                        "anchor": clause_cite.get("anchor"),
-                                        "confidence": clause_cite["confidence"],
-                                        "pill_text": f"[{clause_cite['source'].replace('NZS 3604:2011', 'NZS 3604')}] {clause_cite.get('clause_id', '')} (p.{clause_cite['page']})"
+                                        "id": f"{source}_{page}_{idx}",
+                                        "source": source,
+                                        "page": page,
+                                        "clause_id": None,  # No clause-level data in page mode
+                                        "clause_title": None,
+                                        "locator_type": "page",
+                                        "snippet": snippet,
+                                        "anchor": None,
+                                        "confidence": 1.0,
+                                        "pill_text": f"[{source.replace('NZS 3604:2011', 'NZS 3604')}] p.{page}"
                                     }
                                     enhanced_citations.append(citation)
                                 
-                                # Calculate clause hit rate for telemetry
-                                clause_hits = sum(1 for c in clause_level_citations if c.get("clause_id"))
-                                clause_hit_rate = clause_hits / len(clause_level_citations) if clause_level_citations else 0
-                                
-                                print(f"✅ Clause-level citations: {len(enhanced_citations)} total (policy max: {max_cites})")
-                            except ImportError:
-                                print("⚠️ clause_citations module not found, falling back to page-level citations")
-                                use_clause_pills = False  # Disable for this request if module missing
-                        
-                        if not use_clause_pills:
-                            # CLAUSE PILLS DISABLED: Use simple page-level citations (stable production mode)
+                                print(f"✅ Page-level citations: {len(enhanced_citations)} total (CLAUSE_PILLS=false)")
+                            
+                        else:
                             enhanced_citations = []
-                            citations_level_breakdown = {"page": min(len(docs), max_cites)}
+                            citations_reason = "no_results"
+                            citations_level_breakdown = {}
                             clause_hit_rate = 0
                             
-                            for idx, doc in enumerate(docs[:max_cites]):  # Respect policy max
-                                source = doc.get("source", "Unknown")
-                                page = doc.get("page", 0)
-                                snippet = doc.get("snippet", "")[:200]
-                                
-                                citation = {
-                                    "id": f"{source}_{page}_{idx}",
-                                    "source": source,
-                                    "page": page,
-                                    "clause_id": None,  # No clause-level data in page mode
-                                    "clause_title": None,
-                                    "locator_type": "page",
-                                    "snippet": snippet,
-                                    "anchor": None,
-                                    "confidence": 1.0,
-                                    "pill_text": f"[{source.replace('NZS 3604:2011', 'NZS 3604')}] p.{page}"
-                                }
-                                enhanced_citations.append(citation)
-                            
-                            print(f"✅ Page-level citations: {len(enhanced_citations)} total (CLAUSE_PILLS=false)")
-                        
-                    else:
+                    except Exception as e:
+                        print(f"⚠️ Citation building failed: {e}")
                         enhanced_citations = []
-                        citations_reason = "no_results"
+                        citations_reason = "citation_error"
                         citations_level_breakdown = {}
                         clause_hit_rate = 0
-                        
-                except Exception as e:
-                    print(f"⚠️ Citation building failed: {e}")
-                    enhanced_citations = []
-                    citations_reason = "citation_error"
-                    citations_level_breakdown = {}
-                    clause_hit_rate = 0
-                
-            else:
+                    
+                else:
                 # Unknown intent - safe fallback, no citations
                 answer = "I can help with NZ building standards. What specific building question can I help you with?"
                 citations_reason = "user_general"
