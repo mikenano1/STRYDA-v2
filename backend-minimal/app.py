@@ -1190,13 +1190,13 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
             answer = ""  # Initialize to prevent NoneType errors
             
             try:
-            # Get policy for model preference and retrieval hints
-            policy = context.get("policy", IntentPolicy.get_policy(final_intent))
-            model_preference = policy["model_preference"]
-            
-            # V3 CHANGE: ALWAYS do retrieval for ALL intents (not just compliance)
-            # Let the system decide if the retrieved docs are citation-worthy
-            if final_intent in ["general_help", "product_info", "council_process"]:
+                # Get policy for model preference and retrieval hints
+                policy = context.get("policy", IntentPolicy.get_policy(final_intent))
+                model_preference = policy["model_preference"]
+                
+                # V3 CHANGE: ALWAYS do retrieval for ALL intents (not just compliance)
+                # Let the system decide if the retrieved docs are citation-worthy
+                if final_intent in ["general_help", "product_info", "council_process"]:
                 # Non-compliance intents - still do retrieval but with different generation strategy
                 citations_reason = "retrieved"
                 use_web = False
