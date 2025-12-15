@@ -1095,10 +1095,10 @@ Answer now:"""
                 messages.append({"role": "user", "content": user_message})
                 
                 response = gpt_client.chat.completions.create(
-                    model="gpt-5.1",  # Upgraded to GPT-5.1
+                    model=GPT_FIRST_MODEL,  # Use configured GPT-first model (gpt-4o-mini)
                     messages=messages,
-                    temperature=0.1,
-                    max_completion_tokens=500  # Increased to allow for reasoning tokens + output
+                    temperature=0.2,  # Slightly higher for natural variation
+                    max_tokens=90  # Hard cap for short answers
                 )
                 
                 # Extract answer with fallback handling
