@@ -53,6 +53,7 @@ from gpt_context_extraction import extract_context_via_gpt, validate_proposed_co
 from response_mode_router import determine_response_mode
 from numeric_leak_guard import check_numeric_leak
 from gpt_first_enforcer import enforce_gpt_first_shape
+from required_inputs_gate import gate_required_inputs
 
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
