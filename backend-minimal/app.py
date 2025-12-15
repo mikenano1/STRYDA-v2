@@ -885,6 +885,10 @@ def api_chat(req: ChatRequest):
                 # Log intent classification
                 norm_flag = " (normalized)" if was_normalized else ""
                 print(f"🎯 Intent V2: {final_intent}{norm_flag} | Trade: {detected_trade} | Compliance: {is_compliance} | Conf: {final_confidence:.2f} | Method: {classification_method}")
+                
+                # Determine response mode (gpt_first vs strict_compliance)
+                response_mode = determine_response_mode(user_message, final_intent)
+                print(f"🎭 Response mode: {response_mode} (intent={final_intent}, pattern_match={response_mode == 'strict_compliance'})")
                     
         except Exception as e:
             print(f"❌ Intent classification failed: {e}")
