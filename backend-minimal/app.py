@@ -50,6 +50,7 @@ from missing_context_engine import should_ask_for_context, extract_context_from_
 from context_session import create_session, get_session, clear_session, has_active_session
 from simple_conversation_store import bootstrap_conversation, get_conversation, clear_conversation, has_conversation
 from gpt_context_extraction import extract_context_via_gpt, validate_proposed_context
+from response_mode_router import determine_response_mode
 
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
