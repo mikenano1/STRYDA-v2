@@ -912,6 +912,68 @@ def api_chat(req: ChatRequest):
                 response_mode, trigger_reason = determine_response_mode(user_message, final_intent)
                 print(f"🎭 Response mode: {response_mode} | Trigger: {trigger_reason} | Intent: {final_intent}")
                 print(f"🤖 Model selection: mode={response_mode} → model={GPT_FIRST_MODEL if response_mode == 'gpt_first' else STRICT_MODEL}")
+                
+                # Check required-inputs gate BEFORE generation (Task: threshold questions)
+                gate_result = gate_required_inputs(user_message)
+                
+                if gate_result["should_gate"]:
+                    # Threshold/changeover question without required inputs - ask for them
+                    print(f"🧩 required_inputs_gate=TRUE reason={gate_result['reason']} fields={gate_result['required_fields']}")
+                    
+                    answer = gate_result["ask"]
+                    model_used = "required_inputs_gate"
+                    enhanced_citations = []
+                    retrieved_docs = []
+                    tier1_hit = False
+                    used_retrieval = False
+                    tokens_in = 0
+                    tokens_out = 0
+                    citations_reason = "gate_blocked"
+                    
+                    # Skip to response building (bypass all generation)
+                    # Jump directly to Step 8
+                    profiler.finish_request()
+                    timing_breakdown = profiler.get_breakdown()
+                    
+                    # Build minimal response
+                    sources_count_by_name = {}
+                    query_hash = hashlib.sha1(user_message.encode()).hexdigest()[:12]
+                    
+                    # Save assistant message
+                    try:
+                        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                        with conn.cursor() as cur:
+                            cur.execute("""
+                                INSERT INTO chat_messages (session_id, role, content)
+                                VALUES (%s, %s, %s);
+                            """, (session_id, "assistant", answer))
+                            conn.commit()
+                        conn.close()
+                    except Exception as e:
+                        print(f"⚠️ Assistant message save failed: {e}")
+                    
+                    # Jump to response building
+                    _docs_for_citations = []
+                    can_show_citations = False
+                    auto_expand_citations = False
+                    
+                    response = {
+                        "answer": answer,
+                        "intent": final_intent,
+                        "citations": [],
+                        "can_show_citations": False,
+                        "auto_expand_citations": False,
+                        "sources_count_by_name": {},
+                        "tier1_hit": False,
+                        "model": "required_inputs_gate",
+                        "latency_ms": round(timing_breakdown.get('t_total', 0)),
+                        "session_id": session_id,
+                        "notes": ["required_inputs", "threshold_gate", "gathering"],
+                        "timestamp": int(time.time())
+                    }
+                    
+                    print(f"✅ Gated response: {len(gate_result['required_fields'])} inputs needed")
+                    return response
                     
         except Exception as e:
             print(f"❌ Intent classification failed: {e}")
