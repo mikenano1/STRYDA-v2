@@ -1052,6 +1052,7 @@ def api_chat(req: ChatRequest):
                 if docs:
                     context_snippets = [doc.get('snippet', '')[:300] for doc in docs[:2]]
                     background_context = "\n\n".join(context_snippets)
+                    print(f"📄 Background context ({len(background_context)} chars): {background_context[:150]}...")
                 
                 # Generate natural answer with GPT
                 from openai import OpenAI
