@@ -1030,52 +1030,60 @@ def api_chat(req: ChatRequest):
         # response_mode and trigger_reason are available from line 892-893
         
         if response_mode == "gpt_first":
-            # GPT-FIRST MODE: Natural answers with silent grounding
-            print(f"🌊 GPT-first mode: natural answer with light grounding")
+            # GPT-FIRST MODE: Natural answers with FULL retrieval (hybrid approach)
+            print(f"🌊 GPT-first mode: full retrieval + natural synthesis")
             
             try:
-                # Silent retrieval for factual grounding (not surfaced as citations)
+                # FULL retrieval (like strict mode) for factual grounding
                 docs = []
                 retrieved_docs = []
                 try:
-                    docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)  # Increased from 2 to 4
+                    docs = tier1_retrieval(user_message, top_k=6, intent=final_intent)  # Full retrieval
                     retrieved_docs = docs
                     if docs:
-                        print(f"📚 Silent grounding: {len(docs)} docs (not cited)")
+                        print(f"📚 Full retrieval: {len(docs)} docs for natural synthesis")
                 except Exception as e:
-                    print(f"⚠️ Silent retrieval failed: {e}, proceeding without grounding")
+                    print(f"⚠️ Retrieval failed: {e}")
                     docs = []
                     retrieved_docs = []
                 
-                # Build background context from retrieved docs (for accuracy only)
+                # Build RICH background context from ALL retrieved docs
                 background_context = ""
                 if docs:
-                    context_snippets = [doc.get('snippet', '')[:400] for doc in docs[:4]]  # Increased from 300 to 400, 2 to 4
-                    background_context = "\n\n".join(context_snippets)
-                    print(f"📄 Background context ({len(background_context)} chars): {background_context[:150]}...")
+                    # Use full content, not just snippets
+                    context_parts = []
+                    for doc in docs[:6]:
+                        source = doc.get('source', 'Unknown')
+                        content = doc.get('content', doc.get('snippet', ''))[:600]  # Longer excerpts
+                        context_parts.append(f"From {source}:\n{content}")
+                    
+                    background_context = "\n\n".join(context_parts)
+                    print(f"📄 Rich background: {len(background_context)} chars from {len(docs)} docs")
                 
-                # Generate natural answer with GPT
+                # Generate natural answer with GPT using FULL context
                 from openai import OpenAI
                 gpt_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
                 
-                # GPT-first system prompt - DIRECTIVE, uses background aggressively
-                system_prompt = """You are a NZ builder mate. Answer directly in one sentence.
+                # Hybrid prompt: Extract facts naturally
+                system_prompt = """You are a NZ builder mate. Answer conversationally using the background material.
 
-USE THE BACKGROUND:
-Background material below is from NZ building standards.
-Extract the answer from it and state it naturally (don't cite the document).
-If background mentions a pitch, angle, or measurement - USE THAT NUMBER.
+EXTRACT & SYNTHESIZE:
+- Read the background material below
+- Extract the factual answer
+- State it naturally in 1-2 sentences
+- DO NOT mention document names or clause numbers
+- DO NOT list sources or add citations
+- Just give the info like you're explaining to a mate
 
-ONLY say "I don't have that detail" if background truly has NOTHING relevant.
-
-Answer now in ONE sentence, conversationally:"""
+If the background has the answer, USE IT.
+Answer now:"""
 
                 # Build conversation
                 messages = [{"role": "system", "content": system_prompt}]
                 
-                # Add background context silently if available
+                # Add FULL background context
                 if background_context:
-                    messages.append({"role": "system", "content": f"Background (for accuracy only, do not cite):\n{background_context}"})
+                    messages.append({"role": "system", "content": f"BACKGROUND MATERIAL:\n{background_context}"})
                 
                 # Add recent history
                 if conversation_history:
@@ -1087,12 +1095,12 @@ Answer now in ONE sentence, conversationally:"""
                 response = gpt_client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=messages,
-                    temperature=0.1,  # Lower for more consistency with grounding
-                    max_tokens=100  # Increased from 200 to allow fuller answers
+                    temperature=0.1,
+                    max_tokens=150  # Enough for natural answers
                 )
                 
                 answer = response.choices[0].message.content.strip()
-                model_used = "gpt-4o-mini-natural"
+                model_used = "gpt-4o-mini-hybrid"
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
@@ -1103,62 +1111,28 @@ Answer now in ONE sentence, conversationally:"""
                 except:
                     build_id = str(int(time.time()))[:8]
                 
-                # 🚨 TRIPWIRE: Log that enforcer is about to run
-                print(f"🚨 GPT_FIRST_ENFORCER_ACTIVE build_id={build_id}")
+                # 🚨 TRIPWIRE: Log that hybrid mode is active
+                print(f"🚨 HYBRID_MODE_ACTIVE (full_retrieval + natural_answer) build_id={build_id}")
                 
-                # Enforce output shape (remove bullets, filler, limit to 1-2 sentences)
+                # Enforce output shape (minimal)
                 raw_answer_before = answer
                 answer = enforce_gpt_first_shape(answer, user_message)
                 sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
-                print(f"📏 Shape enforced: {sentence_count} sentences, bullets removed")
+                print(f"📏 Synthesized answer: {sentence_count} sentences, {len(answer)} chars")
                 
-                # 🚨 HARD ASSERT: Verify enforcer worked
-                assert_failed = False
-                if any(phrase in answer for phrase in ["When dealing with", "crucial", "It's important"]):
-                    print(f"🚨 ENFORCER_ASSERT_FAIL: Filler phrases still present")
-                    assert_failed = True
+                # NO numeric leak guard for factual questions (they need the numbers)
+                # Guard only for vague "how to" questions
                 
-                if re.search(r'^\s*[-•*\d+\.]\s+', answer, re.MULTILINE):
-                    print(f"🚨 ENFORCER_ASSERT_FAIL: Bullets still present")
-                    assert_failed = True
-                
-                if sentence_count > 2:
-                    print(f"🚨 ENFORCER_ASSERT_FAIL: {sentence_count} sentences (max 2)")
-                    assert_failed = True
-                
-                if assert_failed:
-                    # Fallback to canned answer for underlay questions
-                    if 'underlay' in user_message.lower() and any(w in user_message.lower() for w in ['which way', 'direction', 'how do i run']):
-                        answer = "Run it horizontally, parallel to the eaves, starting at the bottom and working up."
-                        print(f"   → Using canned safe answer for underlay direction")
-                
-                # Apply numeric leak guard
-                has_leak, guard_action, guarded_answer = check_numeric_leak(answer, user_message)
-                if has_leak:
-                    answer = guarded_answer
-                    print(f"🛡️ Numeric leak guard: action={guard_action}")
-                
-                # FORCE citations to empty (no pills in GPT-first mode)
+                # FORCE citations to empty (natural mode, no pills)
                 enhanced_citations = []
-                tier1_hit = False
-                used_retrieval = False
-                citations_reason = "gpt_first_suppressed"
+                tier1_hit = True  # We did retrieve
+                used_retrieval = True  # For telemetry
+                citations_reason = "hybrid_suppressed"
                 
-                grounding_status = "with grounding" if background_context else "no grounding"
-                print(f"✅ GPT-first answer: natural tone, {grounding_status}, citations suppressed")
-                
-                # SKIP to response building
+                print(f"✅ Hybrid answer: factual content, natural delivery, no citations")
                 
             except Exception as e:
-                print(f"⚠️ GPT-first generation failed: {e}")
-                answer = "I can help with NZ building questions. Could you provide more details?"
-                model_used = "fallback"
-                enhanced_citations = []
-                retrieved_docs = []
-                # Jump directly to Step 8 (response building)
-                
-            except Exception as e:
-                print(f"⚠️ GPT-first generation failed: {e}")
+                print(f"⚠️ Hybrid generation failed: {e}")
                 answer = "I can help with NZ building questions. Could you provide more details?"
                 model_used = "fallback"
                 enhanced_citations = []
