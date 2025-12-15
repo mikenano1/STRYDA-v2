@@ -1364,10 +1364,10 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                             
                             # Log the full decision + metadata (compliance uses RAG only, no web search)
                             print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
-                        
-                        # SAFE citation building with policy-based limits
-                try:
-                    if docs and show_citations:  # Only build citations if policy allows
+                    
+                    # SAFE citation building with policy-based limits
+                    try:
+                        if docs and show_citations:  # Only build citations if policy allows
                         # Apply max_citations from policy
                         max_cites = min(max_citations, 3)  # Cap at 3 for performance
                         
