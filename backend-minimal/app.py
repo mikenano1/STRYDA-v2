@@ -1105,15 +1105,15 @@ Answer now:"""
                 answer = response.choices[0].message.content
                 answer = answer.strip() if answer else ""
                 
-                # Log if we hit token limit (reasoning consumed all tokens)
+                # Log if we hit token limit
                 if not answer and response.choices[0].finish_reason == 'length':
-                    print(f"⚠️ GPT-5.1 hit token limit - reasoning consumed all tokens. Consider increasing max_completion_tokens.")
+                    print(f"⚠️ GPT-first hit token limit - consider increasing max_tokens.")
                 
-                model_used = "gpt-5.1-hybrid"
+                model_used = f"{GPT_FIRST_MODEL}-hybrid"
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
-                print(f"🔍 GPT-5.1 output: {len(answer)} chars, {tokens_out} tokens (reasoning: {response.usage.completion_tokens_details.reasoning_tokens})")
+                print(f"🔍 GPT-first output: {len(answer)} chars, {tokens_out} tokens")
                 
                 # Generate build ID
                 import subprocess
