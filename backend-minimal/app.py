@@ -1116,15 +1116,19 @@ Answer now:"""
                 # 🚨 TRIPWIRE: Log that hybrid mode is active
                 print(f"🚨 HYBRID_MODE_ACTIVE (full_retrieval + natural_answer) build_id={build_id}")
                 
+                # TEMPORARILY DISABLE enforcer to debug
                 # Enforce output shape (minimal) - but check if answer exists first
-                if answer and len(answer) > 10:
-                    raw_answer_before = answer
-                    answer = enforce_gpt_first_shape(answer, user_message)
-                    sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
-                    print(f"📏 Synthesized answer: {sentence_count} sentences, {len(answer)} chars")
-                else:
-                    print(f"⚠️ GPT-5.1 returned empty/short answer, skipping enforcer")
-                    sentence_count = 0
+                # if answer and len(answer) > 10:
+                #     raw_answer_before = answer
+                #     answer = enforce_gpt_first_shape(answer, user_message)
+                #     sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
+                #     print(f"📏 Synthesized answer: {sentence_count} sentences, {len(answer)} chars")
+                # else:
+                #     print(f"⚠️ GPT-5.1 returned empty/short answer, skipping enforcer")
+                #     sentence_count = 0
+                
+                sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
+                print(f"📏 Raw answer: {sentence_count} sentences, {len(answer)} chars (enforcer disabled for debug)")
                 
                 # NO numeric leak guard for factual questions (they need the numbers)
                 # Guard only for vague "how to" questions
