@@ -1157,6 +1157,8 @@ Answer now:"""
                 retrieved_docs = []
                 tier1_hit = False
                 used_retrieval = False
+                tokens_in = 0
+                tokens_out = 0
         
         elif response_mode == "strict_compliance":
             # STRICT COMPLIANCE MODE: Use existing logic
