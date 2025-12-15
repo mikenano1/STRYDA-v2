@@ -1097,7 +1097,6 @@ Answer now:"""
                     messages=messages,
                     temperature=0.1,
                     max_completion_tokens=500  # Increased to allow for reasoning tokens + output
-                    # Note: reasoning parameter may not be supported yet in this SDK version
                 )
                 
                 # Extract answer with fallback handling
