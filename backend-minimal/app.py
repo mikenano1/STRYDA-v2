@@ -20,8 +20,8 @@ import requests
 import subprocess
 from datetime import datetime, timezone
 
-# Load environment variables first
-load_dotenv()
+# Load environment variables first (force override=True to reload)
+load_dotenv(override=True)
 
 # Version helpers
 def current_git_sha():
