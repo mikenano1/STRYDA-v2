@@ -1,65 +1,60 @@
 """
 STRYDA Response Mode Router
 Determines whether to use GPT-first or strict compliance mode per turn
+
+PRIMARY SIGNAL: User phrasing (demands precision)
+SECONDARY SIGNAL: Intent (support only, never forces strict)
 """
 
 import re
 
-def determine_response_mode(question: str, intent: str) -> str:
+def determine_response_mode(question: str, intent: str) -> tuple[str, str]:
     """
     Route each question to either 'gpt_first' or 'strict_compliance' mode.
     
-    Rules:
-    - strict_compliance: ONLY when precision or legal risk exists
-    - gpt_first: Default for all other questions
+    CRITICAL: Phrasing is PRIMARY. Intent is SECONDARY support only.
+    Intent alone NEVER triggers strict_compliance.
     
     Args:
         question: User's question
-        intent: Classified intent (locked for conversation)
+        intent: Classified intent (support signal only)
     
     Returns:
-        "gpt_first" or "strict_compliance"
+        (mode: str, trigger_reason: str)
+        mode: "gpt_first" or "strict_compliance"
+        trigger_reason: why this mode was selected
     """
     
     q_lower = question.lower()
     
-    # STRICT COMPLIANCE TRIGGERS (precision/legal risk required)
-    strict_patterns = [
-        # Explicit requirements
-        r'\b(minimum|maximum|required|shall|must)\s+\d+',
-        r'\b(what\s+is|what\'s)\s+the\s+(minimum|maximum|required)\b',
-        r'\bwhat\s+does\s+(nzs|nzbc|e\d|h\d|b\d|c/as|f\d|g\d+)\s+(say|require|specify|state)\b',
-        
-        # Consent/Schedule 1
-        r'\b(do i need|need)\s+(a\s+)?(consent|building\s+consent)\b',
-        r'\b(exempt|exemption|schedule\s*1)\b',
-        
-        # Spans and structural
-        r'\b(span|setback|clearance|spacing)\s+(for|of|with)\b',
-        r'\b(max|maximum)\s+span\b',
-        r'\bjoist\s+span\b',
-        
-        # Fire safety
-        r'\b(fire\s+rating|frr|fire\s+separation)\b',
-        r'\bc/as\d+\b',
-        
-        # Plumbing/drainage limits
-        r'\b(gully\s+trap|waste\s+pipe|cylinder\s+temp|backflow)\b',
-        r'\b(fall|gradient)\s+(for|on|of)\s+(pipe|drain|gutter)\b',
-        
-        # Structural limits
-        r'\b(foundation|footing|slab)\s+(depth|thickness|reinforcement)\b',
-        r'\b(beam|lintel|bearer)\s+(size|sizing)\b',
-    ]
+    # STRICT COMPLIANCE TRIGGERS (phrasing only)
+    # Only when user explicitly asks for precision/legal requirements
     
-    # Check if question matches strict patterns
-    for pattern in strict_patterns:
-        if re.search(pattern, q_lower):
-            return "strict_compliance"
+    # 1. Numeric requirements
+    if re.search(r'\b(minimum|maximum|required|must|shall)\s+\d+', q_lower):
+        return ("strict_compliance", "numeric_requirement")
     
-    # Intent-based routing (additional safety)
-    if intent == "compliance_strict":
-        return "strict_compliance"
+    if re.search(r'\bwhat\s+is\s+the\s+(minimum|maximum|required)\b', q_lower):
+        return ("strict_compliance", "explicit_requirement")
     
-    # Default: GPT can handle naturally
-    return "gpt_first"
+    # 2. Code requirement questions
+    if re.search(r'\bwhat\s+does\s+(nzs|nzbc|e\d|h\d|b\d|c/as|f\d|g\d+)\s+(say|require|specify)\b', q_lower):
+        return ("strict_compliance", "code_lookup")
+    
+    # 3. Consent/Schedule 1
+    if re.search(r'\b(do i need|need)\s+(a\s+)?(consent|building\s+consent)\b', q_lower):
+        return ("strict_compliance", "consent_query")
+    
+    if re.search(r'\b(exempt|exemption|schedule\s*1)\b', q_lower):
+        return ("strict_compliance", "exemption_query")
+    
+    # 4. Specific numeric limits (spans, setbacks, FRR)
+    if re.search(r'\b(span|setback|clearance)\s+(for|of)\b', q_lower) and re.search(r'\b\d+x\d+\b', q_lower):
+        return ("strict_compliance", "structural_sizing")
+    
+    if re.search(r'\bmax\s+span\b', q_lower):
+        return ("strict_compliance", "span_lookup")
+    
+    # DEFAULT: GPT can handle naturally
+    # Intent does NOT override this
+    return ("gpt_first", "default")
