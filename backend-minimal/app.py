@@ -1513,17 +1513,23 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
         except (NameError, UnboundLocalError):
             _docs_for_citations = []
         
-        # Apply response style transformation (make answer more conversational)
+        # Apply response style transformation (SKIP for GPT-first mode)
         # Safety check: ensure answer exists before styling
         if answer is None or answer == "":
             answer = "I can help with NZ building questions. Could you provide more details?"
             print(f"⚠️ Answer was None/empty, using fallback")
         
-        answer = apply_answer_style(
-            raw_answer=answer,
-            intent=final_intent,
-            user_message=user_message
-        )
+        # Only apply humanizer for strict_compliance mode
+        # GPT-first already has minimal shape enforced
+        if response_mode == "strict_compliance":
+            answer = apply_answer_style(
+                raw_answer=answer,
+                intent=final_intent,
+                user_message=user_message
+            )
+            print(f"✍️ Applied response style (strict mode)")
+        else:
+            print(f"⏭️ Skipped response_style (gpt_first mode - already minimal)")
         
         # Compute citation visibility flags using helper functions
         can_show_citations = should_allow_citations(
