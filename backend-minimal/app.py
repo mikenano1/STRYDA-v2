@@ -1093,14 +1093,14 @@ Answer now:"""
                 messages.append({"role": "user", "content": user_message})
                 
                 response = gpt_client.chat.completions.create(
-                    model="gpt-4o-mini",
+                    model="gpt-5.1",  # Upgraded to GPT-5.1
                     messages=messages,
                     temperature=0.1,
                     max_tokens=150  # Enough for natural answers
                 )
                 
                 answer = response.choices[0].message.content.strip()
-                model_used = "gpt-4o-mini-hybrid"
+                model_used = "gpt-5.1-hybrid"
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
