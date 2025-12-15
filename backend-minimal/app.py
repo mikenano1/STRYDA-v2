@@ -1107,6 +1107,11 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
+                # Enforce output shape (remove bullets, filler, limit to 1-2 sentences)
+                answer = enforce_gpt_first_shape(answer, user_message)
+                sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
+                print(f"📏 Shape enforced: {sentence_count} sentences, bullets removed")
+                
                 # Apply numeric leak guard
                 has_leak, guard_action, guarded_answer = check_numeric_leak(answer, user_message)
                 if has_leak:
