@@ -166,6 +166,23 @@ class ChatRequest(BaseModel):
     conversation_history: Optional[List[ChatMessage]] = None
     session_id: Optional[str] = None
 
+@app.get("/admin/config")
+@limiter.limit("10/minute")
+def admin_config(request: Request):
+    """Admin endpoint to view current model configuration"""
+    return {
+        "ok": True,
+        "models": {
+            "gpt_first_model": GPT_FIRST_MODEL,
+            "strict_model": STRICT_MODEL,
+            "openai_model": OPENAI_MODEL,
+            "fallback_model": OPENAI_MODEL_FALLBACK
+        },
+        "build_id": GIT_SHA,
+        "simple_session_mode": SIMPLE_SESSION_MODE,
+        "timestamp": int(time.time())
+    }
+
 @app.get("/health")
 @limiter.limit("10/minute")  # Rate limited health checks
 def health(request: Request):
