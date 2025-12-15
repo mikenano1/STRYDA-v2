@@ -1197,90 +1197,90 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                 # V3 CHANGE: ALWAYS do retrieval for ALL intents (not just compliance)
                 # Let the system decide if the retrieved docs are citation-worthy
                 if final_intent in ["general_help", "product_info", "council_process"]:
-                # Non-compliance intents - still do retrieval but with different generation strategy
-                citations_reason = "retrieved"
-                use_web = False
-                web_context = ""
-                
-                # V3 CHANGE: Do retrieval even for general_help/product_info
-                # We'll build citations and let can_show_citations decide if they're useful
-                with profiler.timer('t_vector_search'):
+                    # Non-compliance intents - still do retrieval but with different generation strategy
+                    citations_reason = "retrieved"
+                    use_web = False
+                    web_context = ""
+                    
+                    # V3 CHANGE: Do retrieval even for general_help/product_info
+                    # We'll build citations and let can_show_citations decide if they're useful
+                    with profiler.timer('t_vector_search'):
+                        try:
+                            docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)
+                            retrieved_docs = docs
+                            tier1_hit = len(docs) > 0
+                        except Exception as e:
+                            print(f"⚠️ Retrieval failed: {e}")
+                            docs = []
+                            retrieved_docs = []
+                            tier1_hit = False
+                    
+                    # Check if web search should be attempted
+                    from web_search import should_use_web_search, web_search, summarize_snippets
+                    
+                    if should_use_web_search(final_intent, ENABLE_WEB_SEARCH):
+                        use_web = True
+                        try:
+                            with profiler.timer('t_web_search'):
+                                snippets = web_search(user_message, max_results=3, timeout=6.0)
+                                web_context = summarize_snippets(snippets)
+                                if web_context:
+                                    print(f"🌐 Web search enrichment: {len(web_context)} chars")
+                        except Exception as e:
+                            print(f"⚠️ Web search failed (graceful fallback): {e}")
+                            web_context = ""
+                    
+                    # Generate response with RAG context (if available) + optional web context
                     try:
-                        docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)
-                        retrieved_docs = docs
-                        tier1_hit = len(docs) > 0
-                    except Exception as e:
-                        print(f"⚠️ Retrieval failed: {e}")
-                        docs = []
-                        retrieved_docs = []
-                        tier1_hit = False
-                
-                # Check if web search should be attempted
-                from web_search import should_use_web_search, web_search, summarize_snippets
-                
-                if should_use_web_search(final_intent, ENABLE_WEB_SEARCH):
-                    use_web = True
-                    try:
-                        with profiler.timer('t_web_search'):
-                            snippets = web_search(user_message, max_results=3, timeout=6.0)
-                            web_context = summarize_snippets(snippets)
+                        with profiler.timer('t_generate'):
+                            # Build prompt with RAG and optional web context
+                            prompt_parts = [f"User question (Trade: {detected_trade}): {user_message}"]
+                            
                             if web_context:
-                                print(f"🌐 Web search enrichment: {len(web_context)} chars")
+                                prompt_parts.append(f"\nAdditional context from web: {web_context}")
+                            
+                            if final_intent == "product_info":
+                                prompt_parts.append("\nProvide practical product recommendations and guidance for NZ building.")
+                            elif final_intent == "council_process":
+                                prompt_parts.append("\nProvide guidance on council consent and inspection processes for NZ building.")
+                            else:
+                                prompt_parts.append(f"\nProvide helpful, practical {detected_trade} guidance for NZ tradies.")
+                            
+                            full_prompt = "\n".join(prompt_parts)
+                            
+                            # Use generate_structured_response WITH docs (changed from empty)
+                            structured_response = generate_structured_response(
+                                user_message=full_prompt,
+                                tier1_snippets=docs,  # V3 CHANGE: Include RAG context
+                                conversation_history=conversation_history,
+                                intent=final_intent
+                            )
+                            
+                            answer = structured_response.get("answer", "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions.")
+                            model_used = structured_response.get("model", model_preference)
+                            tokens_in = structured_response.get("tokens_in", 0)
+                            tokens_out = structured_response.get("tokens_out", 0)
+                            
+                            # Extract metadata for logging
+                            raw_len = structured_response.get("raw_len", 0)
+                            json_ok = structured_response.get("json_ok", False)
+                            retry_reason = structured_response.get("retry_reason", "")
+                            answer_words = structured_response.get("answer_words", 0)
+                            extraction_path = structured_response.get("extraction_path", "")
+                            fallback_used_flag = structured_response.get("fallback_used", False)
+                            
+                            # V3 CHANGE: Build citations from RAG docs (if available)
+                            # No longer suppress based on intent
+                            if docs and len(docs) > 0:
+                                enhanced_citations = build_simple_citations(docs, max_citations=3)
+                                print(f"✅ Built {len(enhanced_citations)} citations for {final_intent} intent")
+                            
                     except Exception as e:
-                        print(f"⚠️ Web search failed (graceful fallback): {e}")
-                        web_context = ""
-                
-                # Generate response with RAG context (if available) + optional web context
-                try:
-                    with profiler.timer('t_generate'):
-                        # Build prompt with RAG and optional web context
-                        prompt_parts = [f"User question (Trade: {detected_trade}): {user_message}"]
-                        
-                        if web_context:
-                            prompt_parts.append(f"\nAdditional context from web: {web_context}")
-                        
-                        if final_intent == "product_info":
-                            prompt_parts.append("\nProvide practical product recommendations and guidance for NZ building.")
-                        elif final_intent == "council_process":
-                            prompt_parts.append("\nProvide guidance on council consent and inspection processes for NZ building.")
-                        else:
-                            prompt_parts.append(f"\nProvide helpful, practical {detected_trade} guidance for NZ tradies.")
-                        
-                        full_prompt = "\n".join(prompt_parts)
-                        
-                        # Use generate_structured_response WITH docs (changed from empty)
-                        structured_response = generate_structured_response(
-                            user_message=full_prompt,
-                            tier1_snippets=docs,  # V3 CHANGE: Include RAG context
-                            conversation_history=conversation_history,
-                            intent=final_intent
-                        )
-                        
-                        answer = structured_response.get("answer", "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions.")
-                        model_used = structured_response.get("model", model_preference)
-                        tokens_in = structured_response.get("tokens_in", 0)
-                        tokens_out = structured_response.get("tokens_out", 0)
-                        
-                        # Extract metadata for logging
-                        raw_len = structured_response.get("raw_len", 0)
-                        json_ok = structured_response.get("json_ok", False)
-                        retry_reason = structured_response.get("retry_reason", "")
-                        answer_words = structured_response.get("answer_words", 0)
-                        extraction_path = structured_response.get("extraction_path", "")
-                        fallback_used_flag = structured_response.get("fallback_used", False)
-                        
-                        # V3 CHANGE: Build citations from RAG docs (if available)
-                        # No longer suppress based on intent
-                        if docs and len(docs) > 0:
-                            enhanced_citations = build_simple_citations(docs, max_citations=3)
-                            print(f"✅ Built {len(enhanced_citations)} citations for {final_intent} intent")
-                        
-                except Exception as e:
-                    print(f"⚠️ Response generation failed: {e}")
-                    answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
-                    model_used = "fallback"
-                
-            elif is_compliance:
+                        print(f"⚠️ Response generation failed: {e}")
+                        answer = "I can provide general building guidance. For specific code requirements, ask about particular building standards or compliance questions."
+                        model_used = "fallback"
+                    
+                elif is_compliance:
                 # COMPLIANCE BUCKET (compliance_strict + implicit_compliance)
                 # Both get code-heavy retrieval + citations
                 used_retrieval = True
