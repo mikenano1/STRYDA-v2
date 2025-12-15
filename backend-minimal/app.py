@@ -1576,6 +1576,22 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
         )
         
         # Step 9: Return safe response with citation flags
+        # Build debug_flags for GPT-first mode
+        debug_flags = {}
+        if response_mode == "gpt_first":
+            import subprocess
+            try:
+                build_id = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd='/app').decode().strip()
+            except:
+                build_id = str(int(time.time()))[:8]
+            
+            debug_flags = {
+                "gpt_first_enforcer": True,
+                "build_id": build_id,
+                "assert_fail": assert_failed if 'assert_failed' in locals() else False,
+                "response_mode": "gpt_first"
+            }
+        
         response = {
             "answer": answer,
             "intent": final_intent,
@@ -1590,6 +1606,10 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
             "notes": ["structured", "tier1", "safe_errors", "v1.4.2"],
             "timestamp": int(time.time())
         }
+        
+        # Add debug_flags if GPT-first mode
+        if debug_flags:
+            response["debug_flags"] = debug_flags
         
         # Debug log for citation visibility
         print(
