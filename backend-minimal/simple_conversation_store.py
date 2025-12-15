@@ -24,6 +24,7 @@ class SimpleConversation:
         self.conversation_state = "normal"  # normal | gathering_context | answered
         self.original_question = original_question
         self.context_collected = {}
+        self.pending_gate = None  # For required-inputs gate
         self.turn_number = 1
         self.created_at = time.time()
         self.updated_at = time.time()
