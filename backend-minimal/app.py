@@ -1029,55 +1029,67 @@ def api_chat(req: ChatRequest):
         # response_mode and trigger_reason are available from line 892-893
         
         if response_mode == "gpt_first":
-            # GPT-FIRST MODE: Natural, conversational, no strict gates
-            print(f"🌊 GPT-first mode: bypassing strict compliance logic")
+            # GPT-FIRST MODE: Natural, conversational, no compliance language
+            print(f"🌊 GPT-first mode: natural answer, no citations")
             
-            # Simple natural answer using GPT + optional light RAG
-            # No forced retrieval, no forced citations, no numeric guards
             try:
-                # Optional light retrieval (not forced)
-                docs = []
-                try:
-                    docs = tier1_retrieval(user_message, top_k=3, intent=final_intent)
-                    retrieved_docs = docs
-                except:
-                    docs = []
-                    retrieved_docs = []
+                # Generate natural answer with simple GPT call (NOT structured compliance generator)
+                from openai import OpenAI
+                gpt_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
                 
-                # Generate natural answer with GPT
-                from openai_structured import generate_structured_response
-                structured_response = generate_structured_response(
-                    user_message=user_message,
-                    tier1_snippets=docs,  # Optional context
-                    conversation_history=conversation_history,
-                    intent=final_intent
+                # GPT-first system prompt (practical, conversational)
+                system_prompt = """You are a practical NZ builder mate giving helpful guidance.
+Keep it short, natural, and conversational.
+NO compliance checklists.
+NO clause numbers.
+NO "crucial" or formal language.
+If you mention numbers, make them sound like common practice, not legal requirements."""
+                
+                # Build simple conversation context
+                messages = [{"role": "system", "content": system_prompt}]
+                
+                # Add recent history if available
+                if conversation_history:
+                    for msg in conversation_history[-3:]:
+                        messages.append({"role": msg['role'], "content": msg['content']})
+                
+                messages.append({"role": "user", "content": user_message})
+                
+                response = gpt_client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=messages,
+                    temperature=0.3,
+                    max_tokens=200
                 )
                 
-                answer = structured_response.get("answer", "I can help with NZ building questions.")
-                model_used = structured_response.get("model", "gpt-4o-mini")
-                tokens_in = structured_response.get("tokens_in", 0)
-                tokens_out = structured_response.get("tokens_out", 0)
+                answer = response.choices[0].message.content.strip()
+                model_used = "gpt-4o-mini-natural"
+                tokens_in = response.usage.prompt_tokens
+                tokens_out = response.usage.completion_tokens
                 
-                # Apply numeric leak guard (GPT-first only)
+                # Apply numeric leak guard
                 has_leak, guard_action, guarded_answer = check_numeric_leak(answer, user_message)
                 if has_leak:
                     answer = guarded_answer
                     print(f"🛡️ Numeric leak guard: action={guard_action}")
-                else:
-                    print(f"✅ No numeric leak detected")
                 
-                # Build citations if docs exist, but don't force them
+                # FORCE citations to empty (no pills in GPT-first mode)
                 enhanced_citations = []
-                if docs:
-                    enhanced_citations = build_simple_citations(docs, max_citations=2)
+                retrieved_docs = []
+                tier1_hit = False
+                used_retrieval = False
+                citations_reason = "gpt_first_suppressed"
                 
-                tier1_hit = len(docs) > 0
-                used_retrieval = len(docs) > 0
-                citations_reason = "gpt_first_optional"
+                print(f"✅ GPT-first answer: natural tone, citations suppressed")
                 
-                print(f"✅ GPT-first answer: {len(enhanced_citations)} optional citations")
+                # SKIP to response building
                 
-                # SKIP to response building (don't fall through to strict compliance logic below)
+            except Exception as e:
+                print(f"⚠️ GPT-first generation failed: {e}")
+                answer = "I can help with NZ building questions. Could you provide more details?"
+                model_used = "fallback"
+                enhanced_citations = []
+                retrieved_docs = []
                 # Jump directly to Step 8 (response building)
                 
             except Exception as e:
