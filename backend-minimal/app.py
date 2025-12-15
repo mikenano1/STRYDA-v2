@@ -893,6 +893,7 @@ def api_chat(req: ChatRequest):
                 # Determine response mode (gpt_first vs strict_compliance)
                 response_mode, trigger_reason = determine_response_mode(user_message, final_intent)
                 print(f"🎭 Response mode: {response_mode} | Trigger: {trigger_reason} | Intent: {final_intent}")
+                print(f"🤖 Model selection: mode={response_mode} → model={GPT_FIRST_MODEL if response_mode == 'gpt_first' else STRICT_MODEL}")
                     
         except Exception as e:
             print(f"❌ Intent classification failed: {e}")
