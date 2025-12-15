@@ -1176,21 +1176,20 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                 retrieved_docs = []
         
         elif response_mode == "strict_compliance":
-            # STRICT COMPLIANCE MODE: Continue to existing logic below
+            # STRICT COMPLIANCE MODE: Use existing logic
             print(f"🔒 Strict compliance mode: using existing compliance logic")
-            # Fall through to existing Step 4 below
-        
-        # Step 4 (EXISTING - only runs when response_mode == "strict_compliance"): Handle based on FINAL intent with UNIFIED retrieval
-        enhanced_citations = []
-        used_retrieval = False
-        citations_reason = "available"
-        model_used = "server_fallback"
-        tokens_in = 0
-        tokens_out = 0
-        retrieved_docs = []  # Store docs for can_show_citations logic
-        answer = ""  # Initialize to prevent NoneType errors
-        
-        try:
+            
+            # Step 4 (EXISTING): Handle based on FINAL intent with UNIFIED retrieval
+            enhanced_citations = []
+            used_retrieval = False
+            citations_reason = "available"
+            model_used = "server_fallback"
+            tokens_in = 0
+            tokens_out = 0
+            retrieved_docs = []  # Store docs for can_show_citations logic
+            answer = ""  # Initialize to prevent NoneType errors
+            
+            try:
             # Get policy for model preference and retrieval hints
             policy = context.get("policy", IntentPolicy.get_policy(final_intent))
             model_preference = policy["model_preference"]
