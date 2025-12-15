@@ -1056,7 +1056,7 @@ def api_chat(req: ChatRequest):
                 from openai import OpenAI
                 gpt_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
                 
-                # GPT-first system prompt with grounding instructions
+                # GPT-first system prompt with STRONG grounding priority
                 system_prompt = """You are a practical NZ builder mate giving helpful guidance.
 
 Keep it short, natural, and conversational.
@@ -1065,8 +1065,12 @@ NO clause numbers or document names.
 NO "crucial" or formal language.
 If you mention numbers, make them sound like common practice, not legal requirements.
 
-If background material is available below, use it to stay factually accurate,
-but do NOT cite it, mention standards, or name documents."""
+CRITICAL GROUNDING RULE:
+If background material is provided, you MUST treat it as authoritative for common practice.
+Do NOT contradict it.
+Do NOT assert a direction or method unless supported by background.
+If unsure, state uncertainty rather than guessing:
+'Typically [method], but follow the specific system you're using'"""
 
                 # Build conversation
                 messages = [{"role": "system", "content": system_prompt}]
