@@ -1137,6 +1137,8 @@ Answer now:"""
                 model_used = "fallback"
                 enhanced_citations = []
                 retrieved_docs = []
+                tier1_hit = False
+                used_retrieval = False
         
         elif response_mode == "strict_compliance":
             # STRICT COMPLIANCE MODE: Use existing logic
