@@ -1096,7 +1096,7 @@ Answer now:"""
                     model="gpt-5.1",  # Upgraded to GPT-5.1
                     messages=messages,
                     temperature=0.1,
-                    max_completion_tokens=150  # GPT-5 uses max_completion_tokens, not max_tokens
+                    max_completion_tokens=500  # Increased to allow for reasoning tokens + output
                 )
                 
                 # Debug: Check response structure
