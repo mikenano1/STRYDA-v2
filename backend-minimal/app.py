@@ -1099,27 +1099,19 @@ Answer now:"""
                     max_completion_tokens=500  # Increased to allow for reasoning tokens + output
                 )
                 
-                # Debug: Check response structure
-                print(f"🔍 GPT-5.1 full response: {response}")
-                print(f"🔍 Message object: {response.choices[0].message}")
-                print(f"🔍 Message dict: {response.choices[0].message.model_dump()}")
-                
+                # Extract answer with fallback handling
                 answer = response.choices[0].message.content
-                if not answer or answer == '':
-                    # Try alternative fields
-                    print(f"⚠️ content is empty/None, checking alternatives...")
-                    msg_dict = response.choices[0].message.model_dump()
-                    print(f"🔍 Available fields: {list(msg_dict.keys())}")
-                    print(f"🔍 Full message dict: {msg_dict}")
-                    answer = getattr(response.choices[0].message, 'text', '')
-                
                 answer = answer.strip() if answer else ""
+                
+                # Log if we hit token limit (reasoning consumed all tokens)
+                if not answer and response.choices[0].finish_reason == 'length':
+                    print(f"⚠️ GPT-5.1 hit token limit - reasoning consumed all tokens. Consider increasing max_completion_tokens.")
+                
                 model_used = "gpt-5.1-hybrid"
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
-                print(f"🔍 GPT-5.1 raw output ({len(answer)} chars): {answer[:200]}")
-                print(f"tokens_out: {tokens_out}")
+                print(f"🔍 GPT-5.1 output: {len(answer)} chars, {tokens_out} tokens (reasoning: {response.usage.completion_tokens_details.reasoning_tokens})")
                 
                 # Generate build ID
                 import subprocess
