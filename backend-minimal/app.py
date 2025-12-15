@@ -1459,12 +1459,12 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                     citations_reason = "user_general"
                     
             except Exception as e:
-            print(f"❌ Response generation failed: {e}")
-            # Ultimate safe fallback
-            answer = "I encountered an issue processing your question. Please try rephrasing your building code question."
-            enhanced_citations = []
-            used_retrieval = False
-            citations_reason = "error_fallback"
+                print(f"❌ Response generation failed: {e}")
+                # Ultimate safe fallback
+                answer = "I encountered an issue processing your question. Please try rephrasing your building code question."
+                enhanced_citations = []
+                used_retrieval = False
+                citations_reason = "error_fallback"
         
         # Step 6: Save assistant response with error safety
         try:
