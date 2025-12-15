@@ -1038,7 +1038,7 @@ def api_chat(req: ChatRequest):
                 docs = []
                 retrieved_docs = []
                 try:
-                    docs = tier1_retrieval(user_message, top_k=2, intent=final_intent)
+                    docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)  # Increased from 2 to 4
                     retrieved_docs = docs
                     if docs:
                         print(f"📚 Silent grounding: {len(docs)} docs (not cited)")
@@ -1050,7 +1050,7 @@ def api_chat(req: ChatRequest):
                 # Build background context from retrieved docs (for accuracy only)
                 background_context = ""
                 if docs:
-                    context_snippets = [doc.get('snippet', '')[:300] for doc in docs[:2]]
+                    context_snippets = [doc.get('snippet', '')[:400] for doc in docs[:4]]  # Increased from 300 to 400, 2 to 4
                     background_context = "\n\n".join(context_snippets)
                     print(f"📄 Background context ({len(background_context)} chars): {background_context[:150]}...")
                 
