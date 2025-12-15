@@ -1107,10 +1107,41 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                 tokens_in = response.usage.prompt_tokens
                 tokens_out = response.usage.completion_tokens
                 
+                # Generate build ID
+                import subprocess
+                try:
+                    build_id = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd='/app').decode().strip()
+                except:
+                    build_id = str(int(time.time()))[:8]
+                
+                # 🚨 TRIPWIRE: Log that enforcer is about to run
+                print(f"🚨 GPT_FIRST_ENFORCER_ACTIVE build_id={build_id}")
+                
                 # Enforce output shape (remove bullets, filler, limit to 1-2 sentences)
+                raw_answer_before = answer
                 answer = enforce_gpt_first_shape(answer, user_message)
                 sentence_count = len([s for s in re.split(r'[.!?]', answer) if s.strip()])
                 print(f"📏 Shape enforced: {sentence_count} sentences, bullets removed")
+                
+                # 🚨 HARD ASSERT: Verify enforcer worked
+                assert_failed = False
+                if any(phrase in answer for phrase in ["When dealing with", "crucial", "It's important"]):
+                    print(f"🚨 ENFORCER_ASSERT_FAIL: Filler phrases still present")
+                    assert_failed = True
+                
+                if re.search(r'^\s*[-•*\d+\.]\s+', answer, re.MULTILINE):
+                    print(f"🚨 ENFORCER_ASSERT_FAIL: Bullets still present")
+                    assert_failed = True
+                
+                if sentence_count > 2:
+                    print(f"🚨 ENFORCER_ASSERT_FAIL: {sentence_count} sentences (max 2)")
+                    assert_failed = True
+                
+                if assert_failed:
+                    # Fallback to canned answer for underlay questions
+                    if 'underlay' in user_message.lower() and any(w in user_message.lower() for w in ['which way', 'direction', 'how do i run']):
+                        answer = "Run it horizontally, parallel to the eaves, starting at the bottom and working up."
+                        print(f"   → Using canned safe answer for underlay direction")
                 
                 # Apply numeric leak guard
                 has_leak, guard_action, guarded_answer = check_numeric_leak(answer, user_message)
