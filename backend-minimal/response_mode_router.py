@@ -28,41 +28,23 @@ def determine_response_mode(question: str, intent: str) -> tuple[str, str]:
     q_lower = question.lower()
     
     # STRICT COMPLIANCE TRIGGERS (phrasing only)
-    # When user asks for specific factual information that needs accurate retrieval
+    # ONLY for legal/consent questions that need citations
     
-    # 1. List/catalogue questions (need comprehensive retrieval)
-    if re.search(r'\b(list|what are|all the|types of)\b.*\b(timber|treatment|grade|type)', q_lower):
-        return ("strict_compliance", "catalogue_query")
-    
-    # 2. Specific pitch/angle requirements
-    if re.search(r'\b(pitch|angle|degrees?)\b.*\b(require|change|underlay|roof)', q_lower):
-        return ("strict_compliance", "pitch_requirement")
-    
-    # 3. Numeric requirements
-    if re.search(r'\b(minimum|maximum|required|must|shall)\s+\d+', q_lower):
-        return ("strict_compliance", "numeric_requirement")
-    
-    if re.search(r'\bwhat\s+is\s+the\s+(minimum|maximum|required)\b', q_lower):
-        return ("strict_compliance", "explicit_requirement")
-    
-    # 4. Code requirement questions
-    if re.search(r'\bwhat\s+does\s+(nzs|nzbc|e\d|h\d|b\d|c/as|f\d|g\d+)\s+(say|require|specify)\b', q_lower):
-        return ("strict_compliance", "code_lookup")
-    
-    # 5. Consent/Schedule 1
+    # 1. Consent/Schedule 1 (legal risk - need citations)
     if re.search(r'\b(do i need|need)\s+(a\s+)?(consent|building\s+consent)\b', q_lower):
         return ("strict_compliance", "consent_query")
     
     if re.search(r'\b(exempt|exemption|schedule\s*1)\b', q_lower):
         return ("strict_compliance", "exemption_query")
     
-    # 6. Specific numeric limits (spans, setbacks, FRR)
-    if re.search(r'\b(span|setback|clearance)\s+(for|of)\b', q_lower) and re.search(r'\b\d+x\d+\b', q_lower):
-        return ("strict_compliance", "structural_sizing")
+    # 2. Explicit "what does code say" (user wants citations)
+    if re.search(r'\bwhat\s+does\s+(nzs|nzbc|e\d|h\d|b\d|c/as|f\d|g\d+)\s+(say|require|specify)\b', q_lower):
+        return ("strict_compliance", "code_lookup")
     
-    if re.search(r'\bmax\s+span\b', q_lower):
-        return ("strict_compliance", "span_lookup")
+    # 3. User explicitly asks for code/standard reference
+    if re.search(r'\b(according to|per|under)\s+(nzs|nzbc|code|e\d|h\d|b\d)\b', q_lower):
+        return ("strict_compliance", "code_reference")
     
-    # DEFAULT: GPT can handle naturally
-    # Intent does NOT override this
+    # DEFAULT: Hybrid mode (full retrieval + natural synthesis, no citations)
+    # This includes: pitch questions, timber lists, spans, etc.
     return ("gpt_first", "default")
