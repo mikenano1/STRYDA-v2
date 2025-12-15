@@ -1281,89 +1281,89 @@ If unsure, say: 'Typically [method], but follow your specific system.'"""
                         model_used = "fallback"
                     
                 elif is_compliance:
-                # COMPLIANCE BUCKET (compliance_strict + implicit_compliance)
-                # Both get code-heavy retrieval + citations
-                used_retrieval = True
-                citations_reason = "retrieved"
-                
-                with profiler.timer('t_vector_search'):
-                    # Use CANONICAL retrieval with safe error handling and intent-aware ranking
-                    try:
-                        docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)
-                        retrieved_docs = docs
-                        tier1_hit = len(docs) > 0
-                    except Exception as e:
-                        print(f"⚠️ Retrieval failed: {e}")
-                        docs = []
-                        retrieved_docs = []
-                        tier1_hit = False
-                        citations_reason = "no_results"
-                
-                with profiler.timer('t_merge_relevance'):
-                    # Safe source mix analysis
-                    try:
-                        source_mix = {}
-                        for doc in docs:
-                            source = doc.get('source', 'Unknown')
-                            source_mix[source] = source_mix.get(source, 0) + 1
-                        
-                        print(f"📊 Compliance query source mix: {source_mix}")
-                    except Exception as e:
-                        print(f"⚠️ Source mix analysis failed: {e}")
-                        source_mix = {}
-                
-                # Generate STRUCTURED compliance response
-                with profiler.timer('t_generate'):
-                    try:
-                        # Use structured compliance checker for compliance_strict queries
-                        from compliance_checker import build_compliance_response
-                        
-                        compliance_result = build_compliance_response(user_message, docs, final_intent)
-                        
-                        answer = compliance_result.get("answer", "")
-                        model_used = "compliance_checker_v2"
-                        tokens_in = 0  # Compliance checker doesn't use tokens
-                        tokens_out = 0
-                        
-                        # Override citations with compliance checker format
-                        enhanced_citations = compliance_result.get("citations", [])
-                        
-                        # Add compliance fields to telemetry
-                        verdict = compliance_result.get("verdict", "COND")
-                        assumptions = compliance_result.get("assumptions", [])
-                        
-                        print(f"✅ Compliance checker result: {verdict}, {len(enhanced_citations)} citations")
-                        
-                    except Exception as e:
-                        print(f"⚠️ Compliance checker failed: {e}")
-                        # Fallback to GPT with simple citations
-                        structured_response = generate_structured_response(
-                            user_message=user_message,
-                            tier1_snippets=docs,
-                            conversation_history=conversation_history,
-                            intent=final_intent
-                        )
-                        
-                        answer = structured_response.get("answer", "")
-                        model_used = structured_response.get("model", "fallback")
-                        tokens_in = structured_response.get("tokens_in", 0)
-                        tokens_out = structured_response.get("tokens_out", 0)
-                        
-                        # CRITICAL FIX: Build citations when compliance checker fails
-                        if docs and len(docs) > 0:
-                            enhanced_citations = build_simple_citations(docs, max_citations=3)
-                            print(f"✅ Built {len(enhanced_citations)} fallback citations for compliance query")
-                        
-                        # Extract metadata for logging
-                        raw_len = structured_response.get("raw_len", 0)
-                        json_ok = structured_response.get("json_ok", False)
-                        retry_reason = structured_response.get("retry_reason", "")
-                        answer_words = structured_response.get("answer_words", 0)
-                        extraction_path = structured_response.get("extraction_path", "")
-                        fallback_used_flag = structured_response.get("fallback_used", False)
-                        
-                        # Log the full decision + metadata (compliance uses RAG only, no web search)
-                        print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
+                    # COMPLIANCE BUCKET (compliance_strict + implicit_compliance)
+                    # Both get code-heavy retrieval + citations
+                    used_retrieval = True
+                    citations_reason = "retrieved"
+                    
+                    with profiler.timer('t_vector_search'):
+                        # Use CANONICAL retrieval with safe error handling and intent-aware ranking
+                        try:
+                            docs = tier1_retrieval(user_message, top_k=4, intent=final_intent)
+                            retrieved_docs = docs
+                            tier1_hit = len(docs) > 0
+                        except Exception as e:
+                            print(f"⚠️ Retrieval failed: {e}")
+                            docs = []
+                            retrieved_docs = []
+                            tier1_hit = False
+                            citations_reason = "no_results"
+                    
+                    with profiler.timer('t_merge_relevance'):
+                        # Safe source mix analysis
+                        try:
+                            source_mix = {}
+                            for doc in docs:
+                                source = doc.get('source', 'Unknown')
+                                source_mix[source] = source_mix.get(source, 0) + 1
+                            
+                            print(f"📊 Compliance query source mix: {source_mix}")
+                        except Exception as e:
+                            print(f"⚠️ Source mix analysis failed: {e}")
+                            source_mix = {}
+                    
+                    # Generate STRUCTURED compliance response
+                    with profiler.timer('t_generate'):
+                        try:
+                            # Use structured compliance checker for compliance_strict queries
+                            from compliance_checker import build_compliance_response
+                            
+                            compliance_result = build_compliance_response(user_message, docs, final_intent)
+                            
+                            answer = compliance_result.get("answer", "")
+                            model_used = "compliance_checker_v2"
+                            tokens_in = 0  # Compliance checker doesn't use tokens
+                            tokens_out = 0
+                            
+                            # Override citations with compliance checker format
+                            enhanced_citations = compliance_result.get("citations", [])
+                            
+                            # Add compliance fields to telemetry
+                            verdict = compliance_result.get("verdict", "COND")
+                            assumptions = compliance_result.get("assumptions", [])
+                            
+                            print(f"✅ Compliance checker result: {verdict}, {len(enhanced_citations)} citations")
+                            
+                        except Exception as e:
+                            print(f"⚠️ Compliance checker failed: {e}")
+                            # Fallback to GPT with simple citations
+                            structured_response = generate_structured_response(
+                                user_message=user_message,
+                                tier1_snippets=docs,
+                                conversation_history=conversation_history,
+                                intent=final_intent
+                            )
+                            
+                            answer = structured_response.get("answer", "")
+                            model_used = structured_response.get("model", "fallback")
+                            tokens_in = structured_response.get("tokens_in", 0)
+                            tokens_out = structured_response.get("tokens_out", 0)
+                            
+                            # CRITICAL FIX: Build citations when compliance checker fails
+                            if docs and len(docs) > 0:
+                                enhanced_citations = build_simple_citations(docs, max_citations=3)
+                                print(f"✅ Built {len(enhanced_citations)} fallback citations for compliance query")
+                            
+                            # Extract metadata for logging
+                            raw_len = structured_response.get("raw_len", 0)
+                            json_ok = structured_response.get("json_ok", False)
+                            retry_reason = structured_response.get("retry_reason", "")
+                            answer_words = structured_response.get("answer_words", 0)
+                            extraction_path = structured_response.get("extraction_path", "")
+                            fallback_used_flag = structured_response.get("fallback_used", False)
+                            
+                            # Log the full decision + metadata (compliance uses RAG only, no web search)
+                            print(f"[chat] intent={final_intent} use_web=False model={OPENAI_MODEL} pills={CLAUSE_PILLS_ENABLED} raw_len={raw_len} json_ok={json_ok} retry={retry_reason} words={answer_words} extraction_path={extraction_path} fallback_used={fallback_used_flag}")
                         
                         # SAFE citation building with policy-based limits
                 try:
