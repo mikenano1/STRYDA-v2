@@ -997,8 +997,16 @@ def api_chat(req: ChatRequest):
                 gate_result = gate_required_inputs(user_message)
                 
                 if gate_result["is_gated"]:
-                    # Threshold/changeover question without required inputs - ask for them
+                    # Threshold/changeover question without required inputs - PERSIST GATE
                     print(f"🧩 gate_start key={gate_result['question_key']} required={gate_result['required_fields']}")
+                    
+                    # Get or create conversation to persist gate
+                    conv = get_conversation(session_id)
+                    if not conv:
+                        conv = bootstrap_conversation(session_id, user_message, final_intent)
+                    
+                    # Persist pending gate
+                    set_pending_gate(session_id, gate_result, user_message)
                     
                     answer = gate_result["prompt"]
                     model_used = "required_inputs_gate"
