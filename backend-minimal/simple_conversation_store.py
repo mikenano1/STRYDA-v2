@@ -105,6 +105,44 @@ def clear_conversation(conversation_id: str):
         del _conversations[conversation_id]
 
 
+
+
+def set_pending_gate(conversation_id: str, gate_payload: Dict, original_question: str):
+    """Set pending gate state for conversation"""
+    conv = get_conversation(conversation_id)
+    if conv:
+        conv.pending_gate = {
+            "question_key": gate_payload.get("question_key"),
+            "required_fields": gate_payload.get("required_fields", []),
+            "collected_fields": {},
+            "started_at": time.time()
+        }
+        if not conv.original_question:
+            conv.original_question = original_question
+        conv.updated_at = time.time()
+
+
+def update_pending_gate(conversation_id: str, field_updates: Dict):
+    """Update collected fields"""
+    conv = get_conversation(conversation_id)
+    if conv and conv.pending_gate:
+        conv.pending_gate["collected_fields"].update(field_updates)
+        conv.updated_at = time.time()
+
+
+def get_pending_gate(conversation_id: str) -> Optional[Dict]:
+    """Get pending gate"""
+    conv = get_conversation(conversation_id)
+    return conv.pending_gate if conv else None
+
+
+def clear_pending_gate(conversation_id: str):
+    """Clear gate"""
+    conv = get_conversation(conversation_id)
+    if conv:
+        conv.pending_gate = None
+        conv.updated_at = time.time()
+
 def has_conversation(conversation_id: str) -> bool:
     """Check if conversation exists"""
     conv = get_conversation(conversation_id)
