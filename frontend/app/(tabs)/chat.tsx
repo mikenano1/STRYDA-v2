@@ -14,6 +14,7 @@ import {
   FlatList
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import * as Speech from 'expo-speech';
 import { API_BASE } from '../../src/internal/config/constants';
 import { chatAPI } from '../../src/internal/lib/api';
 import { DEV_DIAG } from '../../src/internal/diag';
