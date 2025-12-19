@@ -67,23 +67,19 @@ def gate_required_inputs(question: str) -> Dict:
     provided_fields = []
     
     # Check for roof profile
-    if any(term in q_lower for term in ['corrugate', '5-rib', '5 rib', 'tray', 'longrun', 'metal', 'tile']):
+    if any(term in q_lower for term in ['corrugate', '5-rib', '5 rib', '5rib', 'tray', 'longrun', 'metal', 'tile']):
         provided_fields.append('roof_profile')
     
-    # Check for underlay system
-    if any(term in q_lower for term in ['synthetic', 'permeable', 'rigid', 'membrane', 'self supporting', 'self-supporting']):
+    # Check for underlay system (brand/model)
+    if any(term in q_lower for term in ['ru24', 'ru 24', 'dristud', 'thermakraft', 'synthetic', 'permeable', 'rigid', 'self supporting', 'self-supporting']):
         provided_fields.append('underlay_system')
     
     # Check for direction clarification
     if 'roll' in q_lower or 'lap' in q_lower:
         provided_fields.append('clarify_direction')
     
-    # Check for pitch value
-    if re.search(r'\b\d+\s*(degree|°|deg)\b', q_lower) or re.search(r'\bpitch\s+is\s+\d+', q_lower):
-        provided_fields.append('roof_pitch_deg')
-    
-    # Required fields for roof/underlay threshold questions (UPDATED: added roof_pitch_deg)
-    required_fields = ['roof_profile', 'underlay_system', 'clarify_direction', 'roof_pitch_deg']
+    # Required fields for underlay changeover threshold (FIXED: removed roof_pitch_deg - that's the OUTPUT!)
+    required_fields = ['roof_profile', 'underlay_system', 'clarify_direction']
     
     # Check if all required fields are provided
     missing_fields = [f for f in required_fields if f not in provided_fields]
@@ -98,8 +94,8 @@ def gate_required_inputs(question: str) -> Dict:
             "question_key": ""
         }
     
-    # GATE: Missing inputs, ask for them (structured payload)
-    ask_message = "Quick ones: what roof profile is it (corrugate/5-rib/tray), what underlay system, roll or lap direction, and what's the pitch (degrees)?"
+    # GATE: Missing inputs, ask for them (natural wording, no "Quick ones")
+    ask_message = "Before I answer properly: what roof profile is it (corrugate / 5-rib / tray), what underlay (brand/model), and do you mean roll direction or lap direction?"
     
     return {
         "is_gated": True,
