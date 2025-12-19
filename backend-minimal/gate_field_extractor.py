@@ -31,9 +31,15 @@ def extract_gate_fields(message: str, required_fields: list) -> Dict[str, str]:
         elif re.search(r'\blongrun\b', msg_lower):
             extracted["roof_profile"] = "longrun"
     
-    # Extract underlay_system
+    # Extract underlay_system (brand/model recognition)
     if "underlay_system" in required_fields:
-        if re.search(r'\bself[- ]?supporting\b', msg_lower):
+        if re.search(r'\bru\s?24\b', msg_lower):
+            extracted["underlay_system"] = "RU24"
+        elif re.search(r'\bdristud\b', msg_lower):
+            extracted["underlay_system"] = "Dristud"
+        elif re.search(r'\bthermakraft\b', msg_lower):
+            extracted["underlay_system"] = "Thermakraft"
+        elif re.search(r'\bself[- ]?supporting\b', msg_lower):
             extracted["underlay_system"] = "self-supporting"
         elif re.search(r'\bsynthetic\b', msg_lower):
             extracted["underlay_system"] = "synthetic"
@@ -46,16 +52,12 @@ def extract_gate_fields(message: str, required_fields: list) -> Dict[str, str]:
     
     # Extract clarify_direction
     if "clarify_direction" in required_fields:
-        if re.search(r'\broll\s+direction\b', msg_lower):
+        if re.search(r'\broll\s+direction\b', msg_lower) or re.search(r'\broll\b', msg_lower):
             extracted["clarify_direction"] = "roll_direction"
-        elif re.search(r'\blap\s+direction\b', msg_lower):
+        elif re.search(r'\blap\s+direction\b', msg_lower) or re.search(r'\blap\b', msg_lower):
             extracted["clarify_direction"] = "lap_direction"
     
-    # Extract roof_pitch_deg
-    if "roof_pitch_deg" in required_fields:
-        # Match patterns like "3 degrees", "5°", "7.5 deg"
-        pitch_match = re.search(r'(\d+(?:\.\d+)?)\s*(?:degree|°|deg)', msg_lower)
-        if pitch_match:
-            extracted["roof_pitch_deg"] = float(pitch_match.group(1))
+    # DO NOT extract roof_pitch_deg for underlay_changeover_pitch gate
+    # Pitch is the OUTPUT, not an input!
     
     return extracted
