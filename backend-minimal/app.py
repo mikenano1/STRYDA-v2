@@ -914,6 +914,85 @@ def api_chat(req: ChatRequest):
                 print(f"🎭 Response mode: {response_mode} | Trigger: {trigger_reason} | Intent: {final_intent}")
                 print(f"🤖 Model selection: mode={response_mode} → model={GPT_FIRST_MODEL if response_mode == 'gpt_first' else STRICT_MODEL}")
                 
+                # GATE RESUME: Check if there's a pending gate from previous turn
+                pending_gate = get_pending_gate(session_id)
+                
+                if pending_gate:
+                    # This is a follow-up to a gated question
+                    print(f"🧩 gate_followup detected for key={pending_gate['question_key']}")
+                    
+                    # Extract required fields from user's reply
+                    extracted = extract_gate_fields(user_message, pending_gate['required_fields'])
+                    
+                    if extracted:
+                        update_pending_gate(session_id, extracted)
+                        print(f"   Extracted: {list(extracted.keys())}")
+                    
+                    # Get updated collected fields
+                    collected = pending_gate['collected_fields']
+                    collected.update(extracted)
+                    
+                    # Check what's still missing
+                    missing = [f for f in pending_gate['required_fields'] if f not in collected or collected[f] is None]
+                    
+                    if missing:
+                        # Still need more fields - ask for them
+                        print(f"🧩 gate_incomplete missing={missing}")
+                        
+                        # Build short question for missing fields only
+                        field_names = {
+                            "roof_profile": "roof profile (corrugate/5-rib/tray)",
+                            "underlay_system": "underlay system",
+                            "clarify_direction": "roll or lap direction",
+                            "roof_pitch_deg": "pitch (degrees)"
+                        }
+                        
+                        if len(missing) == 1:
+                            answer = f"Quick one: what's the {field_names.get(missing[0], missing[0])}?"
+                        else:
+                            parts = [field_names.get(f, f) for f in missing]
+                            answer = f"Quick ones: {', '.join(parts)}?"
+                        
+                        # Return early
+                        return {
+                            "answer": answer,
+                            "intent": final_intent,
+                            "citations": [],
+                            "can_show_citations": False,
+                            "auto_expand_citations": False,
+                            "sources_count_by_name": {},
+                            "tier1_hit": False,
+                            "model": "gate_followup",
+                            "latency_ms": 50,
+                            "session_id": session_id,
+                            "notes": ["required_inputs", "gathering", pending_gate['question_key']],
+                            "timestamp": int(time.time())
+                        }
+                    else:
+                        # All fields collected! Build resolved question
+                        print(f"🧩 gate_complete key={pending_gate['question_key']} resolved_question_built=true")
+                        
+                        # Get original question from conversation
+                        conv = get_conversation(session_id)
+                        original_q = conv.original_question if conv else user_message
+                        
+                        # Build resolved question
+                        context_str = ", ".join([f"{k}={v}" for k, v in collected.items()])
+                        resolved_question = f"{original_q}\n\nDetails: {context_str}\n\nAnswer the original question directly about the pitch threshold and underlay direction."
+                        
+                        print(f"   Resolved: {resolved_question[:150]}...")
+                        
+                        # Clear gate
+                        clear_pending_gate(session_id)
+                        
+                        # Replace user_message with resolved question
+                        user_message = resolved_question
+                        
+                        # Add anti-drift flag for this turn
+                        context["flags"].add("gate_resolved_no_drift")
+                        
+                        # Continue to normal routing with resolved question
+                
                 # Check required-inputs gate BEFORE generation (Task: threshold questions)
                 gate_result = gate_required_inputs(user_message)
                 
