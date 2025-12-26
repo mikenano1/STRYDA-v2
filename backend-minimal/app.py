@@ -1264,11 +1264,15 @@ Answer now:"""
                 
                 messages.append({"role": "user", "content": user_message})
                 
+                # Determine token budget dynamically
+                max_tokens_budget = pick_max_tokens(response_mode, final_intent, user_message)
+                print(f"💰 token_budget: mode={response_mode} intent={final_intent} max_tokens={max_tokens_budget}")
+                
                 response = gpt_client.chat.completions.create(
                     model=GPT_FIRST_MODEL,  # Use configured GPT-first model (gpt-4o-mini)
                     messages=messages,
                     temperature=0.2,  # Slightly higher for natural variation
-                    max_tokens=90  # Hard cap for short answers
+                    max_tokens=max_tokens_budget  # Dynamic budget
                 )
                 
                 # Extract answer with fallback handling
