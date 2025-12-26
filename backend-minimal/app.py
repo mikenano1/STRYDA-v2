@@ -55,6 +55,7 @@ from numeric_leak_guard import check_numeric_leak
 from gpt_first_enforcer import enforce_gpt_first_shape
 from required_inputs_gate import gate_required_inputs
 from gate_field_extractor import extract_gate_fields
+from token_budget_router import pick_max_tokens
 
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
