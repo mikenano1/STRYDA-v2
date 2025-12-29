@@ -970,6 +970,8 @@ EXTRACT & SYNTHESIZE:
 - DO NOT mention document names or clause numbers
 - DO NOT list sources or add citations
 - Just give the info like you're explaining to a mate
+
+IMPORTANT: For H1/AS1 inquiries, the Schedule Method is no longer permitted for new consents (since Nov 2025). Recommend Calculation or Modelling methods.
 """
                 # Anti-Drift for Gated Questions
                 if "gate_resolved_no_drift" in context.get("flags", set()):
