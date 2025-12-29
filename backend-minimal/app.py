@@ -786,7 +786,7 @@ async def api_chat(req: ChatRequest):
                 from intent_config import IntentPolicy, is_compliance_intent
                 
                 # Classify using V2 router
-                intent_result = classify_intent(user_message, req.conversation_history)
+                intent_result = await classify_intent(user_message, req.conversation_history)
                 
                 final_intent = intent_result["intent"]
                 final_confidence = intent_result["confidence"]
