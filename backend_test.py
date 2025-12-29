@@ -155,7 +155,7 @@ class STRYDABackendTester:
             async with self.session.post(f"{API_BASE}/chat", json=payload) as response:
                 if response.status == 200:
                     data = await response.json()
-                    response_text = data.get('response', '').lower()
+                    response_text = data.get('answer', '').lower()  # Use 'answer' instead of 'response'
                     
                     # Check for warning about schedule method
                     warning_keywords = ['not permitted', 'no longer valid', 'not allowed', 'deprecated', 'warning', 'nov 2025']
