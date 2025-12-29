@@ -13,7 +13,6 @@ export const getPdfUrl = (citationTitle: string | null): { url: string; title: s
   if (lowerTitle.includes('e2/as1') || lowerTitle.includes('e2')) {
     return {
       title: 'E2/AS1 (External Moisture)',
-      // Direct link to MBIE PDF
       url: 'https://codehub.building.govt.nz/assets/Approved-Documents/E2-External-moisture-3rd-edition-Amendment-10.pdf'
     };
   }
@@ -22,7 +21,6 @@ export const getPdfUrl = (citationTitle: string | null): { url: string; title: s
   if (lowerTitle.includes('3604') || lowerTitle.includes('timber')) {
     return {
       title: 'NZS 3604:2011 (Selected Extracts)',
-      // Using a public placeholder for 3604
       url: 'https://www.building.govt.nz/assets/Uploads/building-code-compliance/b-stability/b1-structure/as1-nzs3604-2011-light-timber-framed-buildings.pdf'
     };
   }
@@ -35,9 +33,8 @@ export const getPdfUrl = (citationTitle: string | null): { url: string; title: s
     };
   }
 
-  // 4. Default/Fallback
   return {
       title: citationTitle,
-      url: 'https://codehub.building.govt.nz/' // Fallback to codehub root
+      url: 'https://codehub.building.govt.nz/'
   };
 };
