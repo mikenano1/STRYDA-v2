@@ -8,13 +8,15 @@ import {
   KeyboardAvoidingView, 
   Platform,
   ActivityIndicator,
-  Keyboard
+  Keyboard,
+  Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Send, Mic, FileText, ChevronLeft } from 'lucide-react-native';
+import { Send, Mic, FileText, ChevronLeft, MicOff } from 'lucide-react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { chatAPI, Citation } from '../../src/internal/lib/api';
 import { getPdfUrl } from '../../src/internal/utils/pdfMap';
+import { useSpeechRecognitionEvent, useSpeechRecognitionEventEvent, SpeechRecognition } from 'expo-speech-recognition';
 
 // --- Types ---
 interface Message {
@@ -97,6 +99,7 @@ export default function ChatScreen() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState('');
+  const [isListening, setIsListening] = useState(false);
   const flatListRef = useRef<FlatList>(null);
   
   const router = useRouter();
@@ -118,9 +121,46 @@ export default function ChatScreen() {
     }
   }, [initialQuery, sessionId]);
 
+  // Voice Recognition Hook
+  useSpeechRecognitionEvent("onSpeechResults", (event: any) => {
+    if (event.value && event.value.length > 0) {
+      const spokenText = event.value[0];
+      setInputText(spokenText);
+    }
+  });
+
+  const handleMicPress = async () => {
+    if (isListening) {
+      SpeechRecognition.stop();
+      setIsListening(false);
+      return;
+    }
+
+    // Request permissions
+    const perms = await SpeechRecognition.requestPermissionsAsync();
+    if (!perms.granted) {
+      Alert.alert("Permission Denied", "We need microphone access to hear you.");
+      return;
+    }
+
+    try {
+      SpeechRecognition.start();
+      setIsListening(true);
+    } catch (e) {
+      console.error("Speech start failed", e);
+      Alert.alert("Error", "Could not start microphone.");
+      setIsListening(false);
+    }
+  };
+
   const handleSend = async (textOverride?: string) => {
     const text = textOverride || inputText.trim();
     if (!text || isLoading) return;
+
+    if (isListening) {
+      SpeechRecognition.stop();
+      setIsListening(false);
+    }
 
     // 1. Add User Message
     const userMsg: Message = {
@@ -198,32 +238,37 @@ export default function ChatScreen() {
         <View className="bg-neutral-900 border-t border-neutral-800 p-4 pb-6 flex-row items-end space-x-3">
           
           {/* Text Input */}
-          <View className="flex-1 bg-neutral-950 border border-neutral-800 rounded-2xl min-h-[50px] justify-center px-4 py-2">
+          <View className={`flex-1 border rounded-2xl min-h-[50px] justify-center px-4 py-2 ${isListening ? 'bg-red-900/20 border-red-500' : 'bg-neutral-950 border-neutral-800'}`}>
             <TextInput
               className="text-white text-base max-h-32"
-              placeholder="Ask STRYDA..."
-              placeholderTextColor="#525252"
+              placeholder={isListening ? "Listening..." : "Ask STRYDA..."}
+              placeholderTextColor={isListening ? "#F87171" : "#525252"}
               multiline
               value={inputText}
               onChangeText={setInputText}
+              editable={!isListening} // Lock input while listening
             />
           </View>
 
           {/* Send Button */}
           <TouchableOpacity 
-            className={`w-12 h-12 rounded-full items-center justify-center ${inputText.trim() ? 'bg-orange-600' : 'bg-neutral-800'}`}
+            className={`w-12 h-12 rounded-full items-center justify-center ${inputText.trim() && !isListening ? 'bg-orange-600' : 'bg-neutral-800'}`}
             onPress={() => handleSend()}
-            disabled={!inputText.trim() || isLoading}
+            disabled={!inputText.trim() || isLoading || isListening}
           >
-            <Send size={20} color="white" className={inputText.trim() ? "ml-1" : ""} />
+            <Send size={20} color={inputText.trim() && !isListening ? "white" : "#555"} className={inputText.trim() ? "ml-1" : ""} />
           </TouchableOpacity>
 
           {/* Mic Button */}
           <TouchableOpacity 
-            className="w-12 h-12 bg-neutral-800 rounded-full items-center justify-center"
-            onPress={() => console.log('Mic pressed - UI only for Phase 2')}
+            className={`w-12 h-12 rounded-full items-center justify-center ${isListening ? 'bg-red-500' : 'bg-neutral-800'}`}
+            onPress={handleMicPress}
           >
-            <Mic size={22} color="#A3A3A3" />
+            {isListening ? (
+              <MicOff size={22} color="white" />
+            ) : (
+              <Mic size={22} color="#A3A3A3" />
+            )}
           </TouchableOpacity>
 
         </View>
