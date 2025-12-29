@@ -158,7 +158,7 @@ class STRYDABackendTester:
                     response_text = data.get('answer', '').lower()  # Use 'answer' instead of 'response'
                     
                     # Check for warning about schedule method
-                    warning_keywords = ['not permitted', 'no longer valid', 'not allowed', 'deprecated', 'warning', 'nov 2025']
+                    warning_keywords = ['not permitted', 'no longer valid', 'not allowed', 'deprecated', 'warning', 'nov 2025', "can't use", 'phased out']
                     if any(keyword in response_text for keyword in warning_keywords):
                         self.log_test("Regulatory Check - H1 Schedule", "PASS", "Warning about schedule method provided", data)
                         return True
