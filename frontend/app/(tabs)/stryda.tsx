@@ -205,13 +205,19 @@ export default function ChatScreen() {
   };
 
   const openPdf = (citation: Citation) => {
-    const url = getPdfUrl(citation.source);
-    const title = `${citation.source} ${citation.clause || ''}`;
+    const doc = getPdfUrl(citation.source);
     
-    console.log('Opening PDF:', url);
+    if (!doc || !doc.url) {
+        Alert.alert("Document Unavailable", "We couldn't find a PDF for this citation.");
+        return;
+    }
+
+    const title = `${doc.title || citation.source} ${citation.clause || ''}`;
+    
+    console.log('Opening PDF:', doc.url);
     router.push({
       pathname: '/pdf-viewer',
-      params: { url, title }
+      params: { url: doc.url, title }
     });
   };
 
