@@ -76,17 +76,20 @@ class STRYDABackendTester:
                     data = await response.json()
                     # Check for Gemini models
                     models = data.get('models', {})
-                    if 'gemini-2.5-flash' in str(models) and 'gemini-2.5-pro' in str(models):
-                        self.log_test("Admin Config", "PASS", "Gemini models configured correctly", data)
+                    gemini_flash = models.get('gemini_model', '')
+                    gemini_pro = models.get('gemini_pro_model', '')
+                    
+                    if 'gemini-2.5-flash' in gemini_flash and 'gemini-2.5-pro' in gemini_pro:
+                        self.log_test("Admin Config", "PASS", f"Gemini models configured: flash={gemini_flash}, pro={gemini_pro}", data)
                         return True
                     else:
-                        self.log_test("Admin Config", "FAIL", f"Gemini models not found in config: {models}")
+                        self.log_test("Admin Config", "FAIL", f"Gemini models not properly configured: {models}")
                         return False
                 else:
                     self.log_test("Admin Config", "FAIL", f"Expected 200, got {response.status}")
                     return False
         except Exception as e:
-            self.log_test("Admin Config", "FAIL", f"Endpoint not found or error: {str(e)}")
+            self.log_test("Admin Config", "FAIL", f"Error: {str(e)}")
             return False
     
     async def test_gate_logic_multi_turn(self):
