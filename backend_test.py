@@ -106,7 +106,7 @@ class STRYDABackendTester:
             async with self.session.post(f"{API_BASE}/chat", json=payload) as response:
                 if response.status == 200:
                     data = await response.json()
-                    response_text = data.get('response', '').lower()
+                    response_text = data.get('answer', '').lower()  # Use 'answer' instead of 'response'
                     
                     # Check if response asks for more details (gate trigger)
                     gate_keywords = ['roof profile', 'underlay', 'lap direction', 'more information', 'details']
@@ -122,7 +122,7 @@ class STRYDABackendTester:
                         async with self.session.post(f"{API_BASE}/chat", json=payload2) as response2:
                             if response2.status == 200:
                                 data2 = await response2.json()
-                                response_text2 = data2.get('response', '').lower()
+                                response_text2 = data2.get('answer', '').lower()  # Use 'answer' instead of 'response'
                                 
                                 # Check for specific answer (likely 8 degrees)
                                 if '8' in response_text2 and ('degree' in response_text2 or 'pitch' in response_text2):
