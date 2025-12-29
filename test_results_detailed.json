@@ -1,15 +1,15 @@
 {
   "summary": {
-    "passed": 2,
+    "passed": 3,
     "total": 6,
-    "success_rate": 0.3333333333333333
+    "success_rate": 0.5
   },
   "tests": [
     {
       "test": "Health Check",
       "status": "PASS",
       "details": "Status: 200, OK: True",
-      "timestamp": "2025-12-29 09:53:56",
+      "timestamp": "2025-12-29 09:56:10",
       "response_data": {
         "ok": true,
         "version": "1.5.0",
@@ -20,7 +20,7 @@
       "test": "Admin Config",
       "status": "PASS",
       "details": "Gemini models configured: flash=gemini-2.5-flash, pro=gemini-2.5-pro",
-      "timestamp": "2025-12-29 09:53:57",
+      "timestamp": "2025-12-29 09:56:11",
       "response_data": {
         "ok": true,
         "models": {
@@ -31,35 +31,42 @@
         },
         "build_id": "7177bcc",
         "simple_session_mode": false,
-        "timestamp": 1767002037
+        "timestamp": 1767002171
       }
     },
     {
       "test": "Basic Chat Functionality",
-      "status": "FAIL",
-      "details": "Empty or minimal response",
-      "timestamp": "2025-12-29 09:54:05",
-      "response_data": null
+      "status": "PASS",
+      "details": "Chat endpoint responding",
+      "timestamp": "2025-12-29 09:56:19",
+      "response_data": {
+        "answer": "Yeah, chur, mate! Fire away with your building questions, I'm happy to help you out.",
+        "intent": "general_help",
+        "citations": [],
+        "can_show_citations": false,
+        "model": "gemini-2.5-flash-hybrid",
+        "timestamp": 1767002177
+      }
     },
     {
       "test": "Gate Logic - First Question",
       "status": "FAIL",
-      "details": "Gate not triggered. Response: ",
-      "timestamp": "2025-12-29 09:54:15",
+      "details": "Gate not triggered. Response: for standard corrugated iron, the minimum pitch",
+      "timestamp": "2025-12-29 09:56:28",
       "response_data": null
     },
     {
       "test": "Regulatory Check - H1 Schedule",
       "status": "FAIL",
-      "details": "No warning about schedule method. Response: ",
-      "timestamp": "2025-12-29 09:54:23",
+      "details": "No warning about schedule method. Response: nah, mate, you can't use the schedule method for h1 compliance anymore for new consents. it's been phased out since november 2025. you'll need to go with either the calculation or modelling methods no",
+      "timestamp": "2025-12-29 09:56:36",
       "response_data": null
     },
     {
       "test": "Strict Compliance - Citations",
       "status": "FAIL",
       "details": "No citations provided",
-      "timestamp": "2025-12-29 09:54:32",
+      "timestamp": "2025-12-29 09:56:45",
       "response_data": null
     }
   ]
