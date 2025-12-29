@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Camera, Map, Calculator, Grid, ChevronDown, Clock, Search } from "lucide-react-native";
-import { useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
 
 export default function DashboardScreen() {
   const router = useRouter();
@@ -43,63 +43,57 @@ export default function DashboardScreen() {
         <Text className="text-white text-lg font-bold mb-4">Quick Actions</Text>
         <View className="flex-row flex-wrap justify-between gap-y-4">
           {/* Card 1: Quick Verify */}
-          <TouchableOpacity 
-            className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between"
-            onPress={() => handleQuickAction("I need to verify something on site. What details do you need?")}
-          >
-            <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
-              <Camera size={24} color="#FF6B00" />
-            </View>
-            <Text className="text-white text-lg font-bold">Quick Verify</Text>
-          </TouchableOpacity>
+          <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "I need to verify something on site. What details do you need?" }}} asChild>
+            <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
+              <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
+                <Camera size={24} color="#FF6B00" />
+              </View>
+              <Text className="text-white text-lg font-bold">Quick Verify</Text>
+            </TouchableOpacity>
+          </Link>
 
           {/* Card 2: Wind Zones */}
-          <TouchableOpacity 
-            className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between"
-            onPress={() => handleQuickAction("Help me find the wind zone for a site address.")}
-          >
-            <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
-              <Map size={24} color="#FF6B00" />
-            </View>
-            <Text className="text-white text-lg font-bold">Wind Zones</Text>
-          </TouchableOpacity>
+          <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "Help me find the wind zone for a site address." }}} asChild>
+            <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
+              <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
+                <Map size={24} color="#FF6B00" />
+              </View>
+              <Text className="text-white text-lg font-bold">Wind Zones</Text>
+            </TouchableOpacity>
+          </Link>
 
           {/* Card 3: Bracing Calc */}
-          <TouchableOpacity 
-            className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between"
-            onPress={() => handleQuickAction("I need to calculate bracing. What details do you need?")}
-          >
-            <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
-              <Calculator size={24} color="#FF6B00" />
-            </View>
-            <Text className="text-white text-lg font-bold">Bracing Calc</Text>
-          </TouchableOpacity>
+          <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "I need to calculate bracing. What details do you need?" }}} asChild>
+            <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
+              <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
+                <Calculator size={24} color="#FF6B00" />
+              </View>
+              <Text className="text-white text-lg font-bold">Bracing Calc</Text>
+            </TouchableOpacity>
+          </Link>
 
           {/* Card 4: Flashings Matrix */}
-          <TouchableOpacity 
-            className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between"
-            onPress={() => handleQuickAction("Show me the E2/AS1 Flashing Matrix for cladding junctions.")}
-          >
-            <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
-              <Grid size={24} color="#FF6B00" />
-            </View>
-            <Text className="text-white text-lg font-bold">Flashings</Text>
-          </TouchableOpacity>
+          <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "Show me the E2/AS1 selection tables (Table 7) for flashings" }}} asChild>
+            <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
+              <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
+                <Grid size={24} color="#FF6B00" />
+              </View>
+              <Text className="text-white text-lg font-bold">Flashings</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
 
         {/* Recent History */}
         <Text className="text-white text-lg font-bold mt-8 mb-4">Recent Questions</Text>
         <View className="gap-3 mb-10">
           {recentHistory.map((item, index) => (
-            <TouchableOpacity 
-              key={index} 
-              className="flex-row items-center bg-neutral-800 p-4 rounded-xl border border-neutral-700"
-              onPress={() => handleQuickAction(item)}
-            >
-              <Clock size={20} color="#777" className="mr-3" />
-              <Text className="text-neutral-300 font-medium flex-1">{item}</Text>
-              <ChevronDown size={20} color="#555" style={{ transform: [{ rotate: '-90deg' }] }} />
-            </TouchableOpacity>
+            <Link key={index} href={{ pathname: "/(tabs)/stryda", params: { initialQuery: item }}} asChild>
+              <TouchableOpacity className="flex-row items-center bg-neutral-800 p-4 rounded-xl border border-neutral-700">
+                <Clock size={20} color="#777" className="mr-3" />
+                <Text className="text-neutral-300 font-medium flex-1">{item}</Text>
+                <ChevronDown size={20} color="#555" style={{ transform: [{ rotate: '-90deg' }] }} />
+              </TouchableOpacity>
+            </Link>
           ))}
         </View>
 
