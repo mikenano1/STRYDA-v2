@@ -50,7 +50,7 @@ def gate_required_inputs(question: str) -> Dict:
         }
     
     # Check if roof/underlay context
-    is_roof_underlay = any(term in q_lower for term in ['roof', 'underlay', 'sarking', 'membrane'])
+    is_roof_underlay = any(term in q_lower for term in ['roof', 'underlay', 'sarking', 'membrane', 'corrugate', 'iron', 'tray', 'profile', 'cladding'])
     
     if not is_roof_underlay:
         # Other threshold questions might be fine (not roofing)
