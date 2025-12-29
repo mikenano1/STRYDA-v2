@@ -1,680 +1,207 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { 
-  Text, 
   View, 
-  StyleSheet, 
+  Text, 
   TextInput, 
   TouchableOpacity, 
-  Alert, 
-  ScrollView, 
-  ActivityIndicator,
+  FlatList, 
+  KeyboardAvoidingView, 
   Platform,
-  KeyboardAvoidingView,
-  InputAccessoryView,
-  FlatList
+  ActivityIndicator,
+  Keyboard
 } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import * as Speech from 'expo-speech';
-import { API_BASE } from '../../src/internal/config/constants';
-import { chatAPI } from '../../src/internal/lib/api';
-import { DEV_DIAG } from '../../src/internal/diag';
-import DiagOverlay from '../../src/internal/DiagOverlay';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Send, Mic, FileText, ChevronLeft } from 'lucide-react-native';
+import { chatAPI, Citation } from '../../src/internal/lib/api';
 
-const theme = { 
-  bg: '#111111', 
-  text: '#FFFFFF', 
-  muted: '#A7A7A7', 
-  accent: '#FF7A00', 
-  inputBg: '#1A1A1A' 
-};
-
-const ACCESSORY_ID = 'chatToolbar';
-
-// Add explicit types and safe parsing
-type Msg = { id: string; role: 'user'|'assistant'; text: string; citations?: any[]; timestamp: number };
-
-interface Citation {
-  source: string;
-  page: number;
-  score?: number;
-  snippet?: string;
-  section?: string;
-  clause?: string;
-}
-
-interface ChatMessage {
+// --- Types ---
+interface Message {
   id: string;
   role: 'user' | 'assistant';
   text: string;
   citations?: Citation[];
-  timestamp: number;
 }
 
-export default function ChatScreen() {
-  const insets = useSafeAreaInsets();
-  const [inputText, setInputText] = useState('');
-  const [isSending, setIsSending] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [sessionId, setSessionId] = useState('');
-  const [expandedCitation, setExpandedCitation] = useState<Citation | null>(null);
-  const [healthStatus, setHealthStatus] = useState<'checking' | 'ok' | 'failed' | 'unknown'>('checking');
-  const [healthFailureCount, setHealthFailureCount] = useState(0);
-  const flatListRef = useRef<FlatList>(null);
+// --- Components ---
 
-  // Initialize session (existing code preserved)
-  useEffect(() => {
-    const initializeApp = async () => {
-      // Health check removed - causing JSON parse errors
-      try {
-        const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        setSessionId(newSessionId);
-        console.log('🔄 Chat session initialized:', newSessionId.substring(0, 15) + '...');
-      } catch (error) {
-        console.error('❌ Session init failed:', error);
-      }
-    };
-    
-    initializeApp();
-  }, []);
+const CitationCard = ({ citation, onPress }: { citation: Citation; onPress: () => void }) => (
+  <TouchableOpacity 
+    onPress={onPress}
+    className="bg-neutral-900 border-l-4 border-orange-500 rounded-r-lg p-3 mt-3 mb-1 flex-row items-center"
+  >
+    <View className="bg-neutral-800 p-2 rounded-full mr-3">
+      <FileText size={20} color="#FFA500" />
+    </View>
+    <View className="flex-1">
+      <Text className="text-white font-bold text-sm">
+        {citation.source} {citation.clause ? `(${citation.clause})` : ''}
+      </Text>
+      <Text className="text-neutral-400 text-xs truncate" numberOfLines={1}>
+        {citation.section || `Page ${citation.page}`}
+      </Text>
+      <Text className="text-orange-500 text-[10px] font-bold mt-1 uppercase">Tap to View</Text>
+    </View>
+  </TouchableOpacity>
+);
 
-  const sendMessage = async () => {
-    const userText = inputText.trim();
-    if (!userText || isSending) {
-      console.log('⚠️ Send blocked:', { userText: userText.length, isSending });
-      return;
-    }
-    
-    if (!sessionId) {
-      console.log('❌ No session ID available');
-      return;
-    }
-
-    // Create user message
-    const userMsg: ChatMessage = { 
-      id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`, 
-      role: 'user', 
-      text: userText,
-      timestamp: Date.now()
-    };
-    
-    // Clear input and add user message (functional update)
-    setInputText('');
-    setMessages(prev => [...prev, userMsg]);
-    setIsSending(true);
-    
-    // Auto-scroll to bottom
-    setTimeout(() => {
-      flatListRef.current?.scrollToEnd({ animated: true });
-    }, 100);
-    
-    // Telemetry: chat_send
-    console.log(`[telemetry] chat_send session_id=${sessionId.substring(0, 8)}... input_length=${userText.length}`);
-    
-    try {
-      console.log('🎯 POST /api/chat:', { 
-        session_id: sessionId.substring(0, 10) + '...',
-        message_len: userText.length 
-      });
-      
-      // Use centralized API client with timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 20000); // 20s timeout
-      
-      const res = await chatAPI({
-        session_id: sessionId,
-        message: userText
-      });
-      
-      clearTimeout(timeoutId);
-      
-      // DEBUG: Log complete server response for verification
-      console.log('SERVER_RESPONSE', JSON.stringify(res, null, 2));
-      
-      // Normalize response with fallback chain (ECHO GUARD)
-      const answer = (res && (res.answer || res.message || res?.output?.text || res?.data?.answer)) ?? '';
-      let assistantText = String(answer).trim();
-      
-      // Enhanced echo detection
-      if (assistantText === userText && assistantText !== '') {
-        console.warn('⚠️ Echo detected; replacing with clarification request');
-        assistantText = "I need a bit more detail about your building project to give you the right guidance.";
-      }
-      
-      console.log('🎯 Response parsed:', { 
-        messageLength: assistantText.length,
-        citationsCount: res.citations?.length || 0,
-        intent: res.intent,
-        model: res.model,
-        tokens: res.tokens_in || 0
-      });
-      
-      // Create assistant message with safe parsing
-      const assistantMsg: ChatMessage = {
-        id: `assistant_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        role: 'assistant',
-        text: assistantText || 'I need more information to provide a helpful answer.',
-        citations: res?.citations || res?.data?.citations || [],
-        timestamp: Date.now()
-      };
-      
-      // Telemetry: chat_response
-      console.log(`[telemetry] chat_response timing_ms=${res.timing_ms || 0} citations_count=${res.citations?.length || 0} model=${res.model || 'unknown'}`);
-      
-      setMessages(prev => [...prev, assistantMsg]);
-      
-      // Auto-scroll after response
-      setTimeout(() => {
-        flatListRef.current?.scrollToEnd({ animated: true });
-      }, 100);
-      
-      setHealthStatus('ok');
-      setHealthFailureCount(0);
-      
-    } catch (error: any) {
-      console.error('❌ Chat request failed:', error);
-      
-      // Enhanced error handling based on error type
-      let errorText = "Couldn't reach server.";
-      
-      if (error.name === 'AbortError') {
-        errorText = "Timed out—retry.";
-      } else if (error.message?.includes('502') && error.message?.includes('bad_json')) {
-        errorText = "Model returned invalid output. Try again.";
-      } else if (error.message?.includes('network') || error.message?.includes('fetch')) {
-        errorText = "Couldn't reach the server.";
-      } else {
-        errorText = `Connection error: ${error.message}`;
-      }
-      
-      // Telemetry: chat_error  
-      console.log(`[telemetry] chat_error error=${error.message?.substring(0, 50) || 'unknown'}`);
-      
-      // Add error message with retry
-      const errorMsg: ChatMessage = {
-        id: `error_${Date.now()}`,
-        role: 'assistant',
-        text: errorText,
-        timestamp: Date.now()
-      };
-      
-      setMessages(prev => [...prev, errorMsg]);
-      setHealthStatus('failed');
-      
-      Alert.alert(
-        'Connection Error',
-        `${errorText} Please try again.`,
-        [
-          { text: 'OK' },
-          { text: 'Retry', onPress: () => sendMessage() }
-        ]
-      );
-      
-    } finally {
-      setIsSending(false);
-    }
-  };
-
-  const handleCitationPress = (citation: Citation) => {
-    console.log('[telemetry] citation_pill_opened', {
-      source: citation.source,
-      page: citation.page,
-      score: citation.score
-    });
-    
-    setExpandedCitation(expandedCitation?.page === citation.page ? null : citation);
-  };
-
-  const handleNewChat = () => {
-    Alert.alert(
-      'New Chat',
-      'Start a new conversation? Current chat will be cleared.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { 
-          text: 'New Chat', 
-          onPress: () => {
-            setMessages([]);
-            const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-            setSessionId(newSessionId);
-            console.log('🆕 New chat session started:', newSessionId.substring(0, 15) + '...');
-          }
-        }
-      ]
-    );
-  };
-
-  // Render message item
-  const renderMessage = ({ item }: { item: Msg }) => (
-    <View 
-      style={[
-        styles.messageContainer,
-        item.role === 'user' ? styles.userMessage : styles.assistantMessage
-      ]}
-    >
-      <View style={[
-        styles.messageBubble,
-        item.role === 'user' ? styles.userBubble : styles.assistantBubble
-      ]}>
-        <Text style={[
-          styles.messageText,
-          item.role === 'user' ? styles.userText : styles.assistantText
-        ]}>
-          {item.text}
+const MessageBubble = ({ message }: { message: Message }) => {
+  const isUser = message.role === 'user';
+  
+  return (
+    <View className={`w-full flex-row ${isUser ? 'justify-end' : 'justify-start'} mb-4 px-4`}>
+      <View 
+        className={`max-w-[85%] p-4 rounded-2xl ${
+          isUser 
+            ? 'bg-orange-600 rounded-tr-none' 
+            : 'bg-neutral-800 rounded-tl-none'
+        }`}
+      >
+        <Text className={`text-base leading-6 ${isUser ? 'text-white' : 'text-neutral-200'}`}>
+          {message.text}
         </Text>
-      </View>
-      
-      {/* Citations */}
-      {item.role === 'assistant' && item.citations && item.citations.length > 0 && (
-        <View style={styles.citationsContainer}>
-          {item.citations.map((citation, index) => (
-            <TouchableOpacity
-              key={`${citation.source}-${citation.page}-${index}`}
-              style={styles.citationPill}
-              onPress={() => handleCitationPress(citation)}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-            >
-              <Text style={styles.citationText}>
-                {citation.source} p.{citation.page}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      )}
-      
-      {/* Expanded Citation */}
-      {expandedCitation && expandedCitation.source && 
-       item.citations?.some(c => c.page === expandedCitation.page) && (
-        <View style={styles.expandedCitation}>
-          <Text style={styles.expandedCitationTitle}>
-            {expandedCitation.source} • Page {expandedCitation.page}
-          </Text>
-          
-          {expandedCitation.snippet && (
-            <Text style={styles.expandedCitationSnippet}>
-              {expandedCitation.snippet}
-            </Text>
-          )}
-          
-          <View style={styles.citationMeta}>
-            {expandedCitation.score && (
-              <Text style={styles.metaText}>
-                Relevance: {(expandedCitation.score * 100).toFixed(0)}%
-              </Text>
-            )}
-            {expandedCitation.section && (
-              <Text style={styles.metaText}>
-                Section: {expandedCitation.section.substring(0, 30)}...
-              </Text>
-            )}
-            {expandedCitation.clause && (
-              <Text style={styles.metaText}>
-                Clause: {expandedCitation.clause}
-              </Text>
-            )}
+
+        {/* Render Citations if AI */}
+        {!isUser && message.citations && message.citations.length > 0 && (
+          <View className="mt-2">
+            {message.citations.map((cite, index) => (
+              <CitationCard 
+                key={index} 
+                citation={cite} 
+                onPress={() => console.log('Open PDF:', cite.source)} 
+              />
+            ))}
           </View>
-        </View>
-      )}
+        )}
+      </View>
     </View>
   );
+};
 
-  // Render Send Button
-  const SendButton = ({ onPress }: { onPress: () => void }) => (
-    <TouchableOpacity
-      style={[
-        styles.sendButton,
-        (!inputText.trim() || isSending) && styles.sendButtonDisabled
-      ]}
-      onPress={onPress}
-      disabled={!inputText.trim() || isSending}
-      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-    >
-      {isSending ? (
-        <ActivityIndicator size="small" color="#000000" />
-      ) : (
-        <Text style={styles.sendButtonText}>Send</Text>
-      )}
-    </TouchableOpacity>
-  );
+const LoadingIndicator = () => (
+  <View className="flex-row items-center justify-start px-6 mb-4">
+    <View className="bg-neutral-800 rounded-2xl rounded-tl-none p-4 flex-row items-center">
+      <ActivityIndicator size="small" color="#FF6B00" />
+      <Text className="text-neutral-400 ml-3 text-sm font-medium">
+        Scanning NZBC...
+      </Text>
+    </View>
+  </View>
+);
 
-  const behavior = Platform.OS === 'ios' ? 'padding' : 'height';
+// --- Main Screen ---
+
+export default function ChatScreen() {
+  const [inputText, setInputText] = useState('');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState('');
+  const flatListRef = useRef<FlatList>(null);
+
+  // Initialize Session
+  useEffect(() => {
+    const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    setSessionId(newSessionId);
+  }, []);
+
+  const handleSend = async () => {
+    const text = inputText.trim();
+    if (!text || isLoading) return;
+
+    // 1. Add User Message
+    const userMsg: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      text: text
+    };
+
+    setMessages(prev => [...prev, userMsg]);
+    setInputText('');
+    setIsLoading(true);
+    Keyboard.dismiss();
+
+    try {
+      // 2. Call API
+      const response = await chatAPI({
+        session_id: sessionId,
+        message: text
+      });
+
+      // 3. Add AI Message
+      const aiMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        text: response.answer || response.message || "I couldn't process that.", // Handle varying response keys
+        citations: response.citations || []
+      };
+
+      setMessages(prev => [...prev, aiMsg]);
+
+    } catch (error) {
+      console.error('Chat Error:', error);
+      const errorMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        text: "Connection error. Please check your internet and try again."
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.headerTitle}>STRYDA.ai</Text>
-          <Text style={styles.apiDebug}>API: {(process.env.EXPO_PUBLIC_API_BASE || 'preview').split('//')[1]}</Text>
-          <Text style={styles.routeDebug}>Route: /api/chat</Text>
-        </View>
-        <TouchableOpacity 
-          style={styles.newChatButton}
-          onPress={handleNewChat}
-          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-        >
-          <Text style={styles.newChatText}>New Chat</Text>
-        </TouchableOpacity>
-      </View>
-      
-      <KeyboardAvoidingView style={styles.chatContainer} behavior={behavior} keyboardVerticalOffset={insets.top}>
-        {/* Messages */}
-        {messages.length === 0 ? (
-          <View style={styles.emptyState}>
-            <Text style={styles.emptyTitle}>Ask STRYDA about:</Text>
-            <Text style={styles.emptyHint}>• Flashing cover requirements</Text>
-            <Text style={styles.emptyHint}>• High wind zone standards</Text>
-            <Text style={styles.emptyHint}>• Metal roofing fixings</Text>
-            <Text style={styles.emptyHint}>• Building code compliance</Text>
-          </View>
-        ) : (
-          <FlatList
-            ref={flatListRef}
-            data={messages}
-            keyExtractor={(item) => item.id}
-            renderItem={renderMessage}
-            style={styles.messagesList}
-            contentContainerStyle={{ padding: 16, paddingBottom: 120 }}
-            showsVerticalScrollIndicator={false}
-            onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
-            keyboardShouldPersistTaps="handled"
-          />
-        )}
+    <SafeAreaView className="flex-1 bg-neutral-950" edges={['top']}>
+      {/* Messages List */}
+      <FlatList
+        ref={flatListRef}
+        data={messages} // Standard order for logic
+        renderItem={({ item }) => <MessageBubble message={item} />}
+        keyExtractor={item => item.id}
+        contentContainerStyle={{ paddingVertical: 20, paddingBottom: 40 }}
+        onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+        onLayout={() => flatListRef.current?.scrollToEnd({ animated: true })}
+        ListFooterComponent={isLoading ? <LoadingIndicator /> : null}
+        className="flex-1"
+      />
 
-        {/* INPUT (Android & Web) */}
-        {Platform.OS !== 'ios' && (
-          <View style={[styles.inputContainer, { paddingBottom: Math.max(insets.bottom, 16) }]}>
+      {/* The Cockpit (Input Bar) */}
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
+      >
+        <View className="bg-neutral-900 border-t border-neutral-800 p-4 pb-6 flex-row items-end space-x-3">
+          
+          {/* Text Input */}
+          <View className="flex-1 bg-neutral-950 border border-neutral-800 rounded-2xl min-h-[50px] justify-center px-4 py-2">
             <TextInput
-              style={styles.textInput}
-              placeholder="Ask STRYDA…"
-              placeholderTextColor={theme.muted}
-              value={inputText}
-              onChangeText={setInputText}
+              className="text-white text-base max-h-32"
+              placeholder="Ask STRYDA..."
+              placeholderTextColor="#525252"
               multiline
-              maxLength={4000}
-              editable={!isSending}
-              returnKeyType="send"
-              onSubmitEditing={sendMessage}
-              enablesReturnKeyAutomatically
-              blurOnSubmit={false}
-            />
-            <SendButton onPress={sendMessage} />
-          </View>
-        )}
-
-        {/* iOS: InputAccessoryView for keyboard avoidance */}
-        {Platform.OS === 'ios' && (
-          <>
-            <TextInput
-              style={{ height: 0 }}
               value={inputText}
               onChangeText={setInputText}
-              inputAccessoryViewID={ACCESSORY_ID}
-              onSubmitEditing={sendMessage}
-              returnKeyType="send"
-              enablesReturnKeyAutomatically
-              blurOnSubmit={false}
-              placeholder="Ask STRYDA…"
-              placeholderTextColor={theme.muted}
             />
-            <InputAccessoryView nativeID={ACCESSORY_ID}>
-              <View style={[styles.iosInputContainer, { paddingBottom: Math.max(insets.bottom, 12) }]}>
-                <View style={styles.iosInputRow}>
-                  <TextInput
-                    style={styles.iosTextInput}
-                    value={inputText}
-                    onChangeText={setInputText}
-                    onSubmitEditing={sendMessage}
-                    returnKeyType="send"
-                    enablesReturnKeyAutomatically
-                    blurOnSubmit={false}
-                    placeholder="Ask STRYDA…"
-                    placeholderTextColor={theme.muted}
-                    maxLength={4000}
-                    editable={!isSending}
-                  />
-                  <SendButton onPress={sendMessage} />
-                </View>
-              </View>
-            </InputAccessoryView>
-          </>
-        )}
+          </View>
+
+          {/* Send Button */}
+          <TouchableOpacity 
+            className={`w-12 h-12 rounded-full items-center justify-center ${inputText.trim() ? 'bg-orange-600' : 'bg-neutral-800'}`}
+            onPress={handleSend}
+            disabled={!inputText.trim() || isLoading}
+          >
+            <Send size={20} color="white" className={inputText.trim() ? "ml-1" : ""} />
+          </TouchableOpacity>
+
+          {/* Mic Button */}
+          <TouchableOpacity 
+            className="w-12 h-12 bg-neutral-800 rounded-full items-center justify-center"
+            onPress={() => console.log('Mic pressed - UI only for Phase 2')}
+          >
+            <Mic size={22} color="#A3A3A3" />
+          </TouchableOpacity>
+
+        </View>
       </KeyboardAvoidingView>
-      
-      {/* Diagnostic Overlay (completely disabled for production) */}
-      {false ? <DiagOverlay /> : null}
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.bg,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#333333',
-  },
-  headerTitle: {
-    color: theme.text,
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  apiDebug: {
-    color: '#888888',
-    fontSize: 10,
-    marginTop: 2,
-  },
-  routeDebug: {
-    color: '#666666',
-    fontSize: 9,
-    marginTop: 1,
-  },
-  newChatButton: {
-    backgroundColor: theme.accent,
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  newChatText: {
-    color: '#000000',
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  chatContainer: {
-    flex: 1,
-  },
-  emptyState: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 40,
-  },
-  emptyTitle: {
-    color: theme.text,
-    fontSize: 20,
-    fontWeight: '600',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  emptyHint: {
-    color: theme.muted,
-    fontSize: 16,
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  messagesList: {
-    flex: 1,
-  },
-  messagesContent: {
-    padding: 16,
-  },
-  messageContainer: {
-    marginBottom: 16,
-  },
-  userMessage: {
-    alignItems: 'flex-end',
-  },
-  assistantMessage: {
-    alignItems: 'flex-start',
-  },
-  messageBubble: {
-    maxWidth: '80%',
-    padding: 16,
-    borderRadius: 16,
-  },
-  userBubble: {
-    backgroundColor: theme.accent,
-    borderBottomRightRadius: 4,
-  },
-  assistantBubble: {
-    backgroundColor: '#2A2A2A',
-    borderBottomLeftRadius: 4,
-  },
-  messageText: {
-    fontSize: 16,
-    lineHeight: 22,
-  },
-  userText: {
-    color: '#000000',
-    fontWeight: '500',
-  },
-  assistantText: {
-    color: theme.text,
-  },
-  citationsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 12,
-    maxWidth: '80%',
-  },
-  citationPill: {
-    backgroundColor: theme.accent,
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    marginRight: 8,
-    marginBottom: 6,
-    minHeight: 44,
-  },
-  citationText: {
-    color: '#000000',
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  expandedCitation: {
-    backgroundColor: '#1A1A1A',
-    borderRadius: 12,
-    padding: 16,
-    marginTop: 12,
-    maxWidth: '80%',
-  },
-  expandedCitationTitle: {
-    color: theme.accent,
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 12,
-  },
-  expandedCitationSnippet: {
-    color: theme.muted,
-    fontSize: 14,
-    lineHeight: 20,
-    marginBottom: 12,
-  },
-  citationMeta: {
-    backgroundColor: '#0A0A0A',
-    borderRadius: 8,
-    padding: 12,
-  },
-  metaText: {
-    color: '#888888',
-    fontSize: 12,
-    marginBottom: 4,
-  },
-  loadingContainer: {
-    alignItems: 'flex-start',
-    padding: 16,
-  },
-  loadingBubble: {
-    backgroundColor: '#2A2A2A',
-    borderRadius: 16,
-    borderBottomLeftRadius: 4,
-    padding: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    maxWidth: '80%',
-  },
-  loadingText: {
-    color: theme.muted,
-    fontSize: 14,
-    marginLeft: 8,
-    fontStyle: 'italic',
-  },
-  // Android/Web input styles
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    padding: 20,
-    backgroundColor: '#0A0A0A',
-    borderTopWidth: 1,
-    borderTopColor: '#333333',
-  },
-  textInput: {
-    flex: 1,
-    backgroundColor: theme.inputBg,
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    fontSize: 16,
-    color: theme.text,
-    marginRight: 12,
-    maxHeight: 100,
-    minHeight: 44,
-  },
-  sendButton: {
-    backgroundColor: theme.accent,
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: 44,
-    minWidth: 60,
-  },
-  sendButtonDisabled: {
-    backgroundColor: '#555555',
-  },
-  sendButtonText: {
-    color: '#000000',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  // iOS-specific input styles
-  iosInputContainer: {
-    backgroundColor: '#111111',
-    paddingHorizontal: 16,
-    paddingTop: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#333333',
-  },
-  iosInputRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  iosTextInput: {
-    flex: 1,
-    backgroundColor: theme.inputBg,
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    fontSize: 16,
-    color: theme.text,
-    minHeight: 44,
-  },
-});
