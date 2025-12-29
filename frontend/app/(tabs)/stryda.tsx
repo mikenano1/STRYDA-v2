@@ -14,8 +14,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Send, Mic, FileText, ChevronLeft, MicOff } from 'lucide-react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { chatAPI, Citation } from '../../src/internal/lib/api';
-import { getPdfUrl } from '../../src/internal/utils/pdfMap';
+import { chatAPI, Citation } from '@/src/internal/lib/api';
+import { getPdfUrl } from '@/src/internal/utils/pdfMap';
 import { useSpeechRecognitionEvent, useSpeechRecognitionEventEvent, SpeechRecognition } from 'expo-speech-recognition';
 
 // --- Types ---
