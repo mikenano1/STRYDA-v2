@@ -243,6 +243,7 @@ class IntentClassifierV2:
             r'\bwhat\s+(r-?value|span|spacing|height|width|depth|thickness|cover)\s+(does|is|are).*(require|code|nzs|standard)',
             r'\bwhat\s+is\s+the\s+(stud|joist|rafter|purlin|beam|bearer)\s+spacing\b',
             r'\bwhat\s+is\s+the\s+maximum\s+span\b',
+            r'\b(show|find)\s+(me\s+)?(the\s+)?(matrix|table|chart|diagram|figure)\b',
             r'\b[a-h]\d+/as\d+\s+(says?|requires?|states?)\b',
             r'\b(nzs|nzbc)\s+\d+\s+(clause|table|section|requirements?)\b',
         ]
