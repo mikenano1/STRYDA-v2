@@ -12,7 +12,9 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Send, Mic, FileText, ChevronLeft } from 'lucide-react-native';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { chatAPI, Citation } from '../../src/internal/lib/api';
+import { getPdfUrl } from '../../src/internal/utils/pdfMap';
 
 // --- Types ---
 interface Message {
@@ -44,7 +46,7 @@ const CitationCard = ({ citation, onPress }: { citation: Citation; onPress: () =
   </TouchableOpacity>
 );
 
-const MessageBubble = ({ message }: { message: Message }) => {
+const MessageBubble = ({ message, onCitationPress }: { message: Message; onCitationPress: (c: Citation) => void }) => {
   const isUser = message.role === 'user';
   
   return (
@@ -67,7 +69,7 @@ const MessageBubble = ({ message }: { message: Message }) => {
               <CitationCard 
                 key={index} 
                 citation={cite} 
-                onPress={() => console.log('Open PDF:', cite.source)} 
+                onPress={() => onCitationPress(cite)} 
               />
             ))}
           </View>
@@ -96,6 +98,9 @@ export default function ChatScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState('');
   const flatListRef = useRef<FlatList>(null);
+  
+  const router = useRouter();
+  const { initialQuery } = useLocalSearchParams<{ initialQuery?: string }>();
 
   // Initialize Session
   useEffect(() => {
@@ -103,8 +108,18 @@ export default function ChatScreen() {
     setSessionId(newSessionId);
   }, []);
 
-  const handleSend = async () => {
-    const text = inputText.trim();
+  // Auto-send if initialQuery exists
+  useEffect(() => {
+    if (initialQuery && sessionId && !isLoading && messages.length === 0) {
+      // Small delay for smooth transition
+      setTimeout(() => {
+        handleSend(initialQuery);
+      }, 500);
+    }
+  }, [initialQuery, sessionId]);
+
+  const handleSend = async (textOverride?: string) => {
+    const text = textOverride || inputText.trim();
     if (!text || isLoading) return;
 
     // 1. Add User Message
@@ -149,13 +164,24 @@ export default function ChatScreen() {
     }
   };
 
+  const openPdf = (citation: Citation) => {
+    const url = getPdfUrl(citation.source);
+    const title = `${citation.source} ${citation.clause || ''}`;
+    
+    console.log('Opening PDF:', url);
+    router.push({
+      pathname: '/pdf-viewer',
+      params: { url, title }
+    });
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-neutral-950" edges={['top']}>
       {/* Messages List */}
       <FlatList
         ref={flatListRef}
-        data={messages} // Standard order for logic
-        renderItem={({ item }) => <MessageBubble message={item} />}
+        data={messages} 
+        renderItem={({ item }) => <MessageBubble message={item} onCitationPress={openPdf} />}
         keyExtractor={item => item.id}
         contentContainerStyle={{ paddingVertical: 20, paddingBottom: 40 }}
         onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
@@ -186,7 +212,7 @@ export default function ChatScreen() {
           {/* Send Button */}
           <TouchableOpacity 
             className={`w-12 h-12 rounded-full items-center justify-center ${inputText.trim() ? 'bg-orange-600' : 'bg-neutral-800'}`}
-            onPress={handleSend}
+            onPress={() => handleSend()}
             disabled={!inputText.trim() || isLoading}
           >
             <Send size={20} color="white" className={inputText.trim() ? "ml-1" : ""} />
