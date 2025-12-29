@@ -1,15 +1,25 @@
 
 import os
 import sys
-from dotenv import load_dotenv
+import traceback
 
-# Force reload of .env
-load_dotenv(override=True)
+print(f"Python executable: {sys.executable}")
+print(f"Python path: {sys.path}")
 
 try:
-    from emergentintegrations import EmergentLLM
+    from dotenv import load_dotenv
+    load_dotenv(override=True)
+    print("Dotenv loaded.")
 except ImportError:
-    print("CRITICAL: emergentintegrations library not found!")
+    print("Dotenv not found.")
+
+try:
+    print("Attempting to import emergentintegrations...")
+    from emergentintegrations import EmergentLLM
+    print("Import successful.")
+except ImportError as e:
+    print(f"CRITICAL: emergentintegrations library not found! Error: {e}")
+    traceback.print_exc()
     sys.exit(1)
 
 api_key = os.getenv("EMERGENT_LLM_KEY")
@@ -35,12 +45,9 @@ except Exception as e:
 # Test Generation (Strict Model)
 print(f"Testing generation with {model_strict}...")
 try:
-    # Note: I am guessing the API signature here. Usually it mimics OpenAI or has a simple generate method.
-    # If this fails, I'll need to inspect the library or use standard openai format if it wraps it.
-    # Assuming it wraps OpenAI client structure based on typical patterns:
     response = client.chat.completions.create(
         model=model_strict,
-        messages=[{"role": "user", "content": "Hello, are you Gemini?"}]
+        messages=[{"role": "user", "content": "Hello"}]
     )
     print("SUCCESS: Strict Model Response:")
     print(response.choices[0].message.content)
@@ -52,7 +59,7 @@ print(f"Testing generation with {model_hybrid}...")
 try:
     response = client.chat.completions.create(
         model=model_hybrid,
-        messages=[{"role": "user", "content": "Hello, are you Gemini?"}]
+        messages=[{"role": "user", "content": "Hello"}]
     )
     print("SUCCESS: Hybrid Model Response:")
     print(response.choices[0].message.content)
