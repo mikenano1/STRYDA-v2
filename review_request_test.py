@@ -1,204 +1,189 @@
 #!/usr/bin/env python3
 """
-Specific tests for the review request:
-1. Gate Logic (Multi-turn) with specific session ID
-2. Strict Compliance (Gemini Pro) with specific session ID
+Review Request Testing - Gemini Response Quality Verification
+Testing specific scenarios mentioned in the review request
 """
 
-import requests
+import asyncio
+import aiohttp
 import json
 import time
 from datetime import datetime
 
-# Backend URL from frontend environment
 BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
 
-def test_gate_logic_review_request():
-    """
-    Test Gate Logic exactly as specified in review request:
-    POST /api/chat with {"message": "What is the minimum pitch for corrugated iron?", "session_id": "test-gate-gemini-v2"}
-    Expect: A response asking for roof profile, underlay, etc. (Gate trigger).
-    """
-    print("🔍 Testing Gate Logic (Review Request Specification)...")
+async def test_review_request_scenarios():
+    """Test the specific scenarios from the review request"""
     
-    test_data = {
-        "message": "What is the minimum pitch for corrugated iron?",
-        "session_id": "test-gate-gemini-v2"
-    }
-    
-    try:
-        response = requests.post(
-            f"{BACKEND_URL}/api/chat",
-            json=test_data,
-            headers={"Content-Type": "application/json"},
-            timeout=30
-        )
-        
-        print(f"Status Code: {response.status_code}")
-        
-        if response.status_code == 200:
-            data = response.json()
-            response_text = data.get("answer", "").lower()
-            
-            print(f"Response: {data.get('answer', '')}")
-            print(f"Intent: {data.get('intent', 'N/A')}")
-            print(f"Model: {data.get('model', 'N/A')}")
-            print(f"Session ID: {data.get('session_id', 'N/A')}")
-            
-            # Check for gate logic indicators (asking for more details)
-            gate_indicators = [
-                "roof profile",
-                "underlay", 
-                "lap direction",
-                "what roof profile",
-                "what underlay",
-                "brand/model",
-                "roll direction",
-                "before i answer"
-            ]
-            
-            has_gate_logic = any(indicator in response_text for indicator in gate_indicators)
-            
-            if has_gate_logic:
-                print("✅ PASS: Gate Logic Working - System is asking for roof profile, underlay, etc.")
-                return True
-            else:
-                print("❌ FAIL: Gate Logic Not Working - System provided direct answer instead of asking for details")
-                print(f"Expected: Questions about roof profile, underlay, lap direction")
-                print(f"Actual: {response_text}")
-                return False
-                
-        else:
-            print(f"❌ FAIL: HTTP {response.status_code}")
-            print(f"Response: {response.text}")
-            return False
-            
-    except Exception as e:
-        print(f"❌ ERROR: {e}")
-        return False
-
-def test_strict_compliance_review_request():
-    """
-    Test Strict Compliance exactly as specified in review request:
-    POST /api/chat with {"message": "What is the stud spacing for a 2.4m wall in high wind zone?", "session_id": "test-strict-gemini-v2"}
-    Expect: A detailed answer with citations (citations array not empty) and intent "compliance_strict".
-    """
-    print("\n🔍 Testing Strict Compliance (Review Request Specification)...")
-    
-    test_data = {
-        "message": "What is the stud spacing for a 2.4m wall in high wind zone?",
-        "session_id": "test-strict-gemini-v2"
-    }
-    
-    try:
-        response = requests.post(
-            f"{BACKEND_URL}/api/chat",
-            json=test_data,
-            headers={"Content-Type": "application/json"},
-            timeout=30
-        )
-        
-        print(f"Status Code: {response.status_code}")
-        
-        if response.status_code == 200:
-            data = response.json()
-            
-            print(f"Response: {data.get('answer', '')}")
-            print(f"Intent: {data.get('intent', 'N/A')}")
-            print(f"Model: {data.get('model', 'N/A')}")
-            print(f"Citations Count: {len(data.get('citations', []))}")
-            print(f"Session ID: {data.get('session_id', 'N/A')}")
-            
-            # Check for citations
-            citations = data.get("citations", [])
-            has_citations = len(citations) > 0
-            
-            # Check for intent
-            intent = data.get("intent", "")
-            has_compliance_strict_intent = intent == "compliance_strict"
-            
-            # Check for compliance-related content
-            response_text = data.get("answer", "").lower()
-            compliance_indicators = [
-                "nzs 3604",
-                "building code", 
-                "wind zone",
-                "stud spacing",
-                "600mm",
-                "450mm",
-                "structural",
-                "high wind"
-            ]
-            
-            has_compliance_content = any(indicator in response_text for indicator in compliance_indicators)
-            
-            print(f"Has Citations: {has_citations}")
-            print(f"Has Compliance Strict Intent: {has_compliance_strict_intent}")
-            print(f"Has Compliance Content: {has_compliance_content}")
-            
-            if has_citations and has_compliance_content:
-                print("✅ PASS: Strict Compliance Working - Citations provided with detailed compliance answer")
-                if has_compliance_strict_intent:
-                    print("✅ BONUS: Intent is 'compliance_strict' as expected")
-                else:
-                    print("⚠️  NOTE: Intent is not 'compliance_strict' but citations are working")
-                return True
-            elif not has_citations:
-                print("❌ FAIL: Strict Compliance Failed - No citations provided")
-                print(f"Expected: Citations array with references")
-                print(f"Actual: Empty citations array")
-                return False
-            else:
-                print("❌ FAIL: Strict Compliance Failed - Missing compliance content")
-                return False
-                
-        else:
-            print(f"❌ FAIL: HTTP {response.status_code}")
-            print(f"Response: {response.text}")
-            return False
-            
-    except Exception as e:
-        print(f"❌ ERROR: {e}")
-        return False
-
-def run_review_request_tests():
-    """Run the specific tests mentioned in the review request"""
-    print("=" * 80)
-    print("🚀 STRYDA Backend Testing - Review Request Specific Tests")
-    print("Testing Gemini Migration and Regulation Compliance")
-    print("=" * 80)
+    print("🎯 REVIEW REQUEST TESTING - Gemini Response Quality")
+    print("=" * 60)
     print(f"Backend URL: {BACKEND_URL}")
     print(f"Test Time: {datetime.now().isoformat()}")
     print()
     
-    results = {}
-    
-    # Test 1: Gate Logic (Multi-turn) - Review Request Specification
-    results["gate_logic"] = test_gate_logic_review_request()
-    
-    # Test 2: Strict Compliance (Gemini Pro) - Review Request Specification  
-    results["strict_compliance"] = test_strict_compliance_review_request()
-    
-    # Summary
-    print("\n" + "=" * 80)
-    print("📊 REVIEW REQUEST TEST RESULTS")
-    print("=" * 80)
-    
-    passed = sum(1 for result in results.values() if result)
-    total = len(results)
-    
-    for test_name, result in results.items():
-        status = "✅ PASS" if result else "❌ FAIL"
-        print(f"{test_name.replace('_', ' ').title()}: {status}")
-    
-    print(f"\nOverall: {passed}/{total} tests passed ({passed/total*100:.1f}%)")
-    
-    if passed == total:
-        print("🎉 All review request tests passed!")
-    else:
-        print("⚠️  Some review request tests failed - see details above")
-    
-    return results
+    async with aiohttp.ClientSession() as session:
+        
+        # Test 1: Hybrid/Factual Question (Gemini Flash)
+        print("🔍 TEST 1: Hybrid/Factual Question (Gemini Flash)")
+        print("Question: What is the minimum pitch for corrugated iron?")
+        print("Session ID: test-tokens-flash")
+        print("Expected: Detailed answer > 100 characters")
+        
+        test1_payload = {
+            "message": "What is the minimum pitch for corrugated iron?",
+            "session_id": "test-tokens-flash"
+        }
+        
+        try:
+            async with session.post(f"{BACKEND_URL}/api/chat", json=test1_payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    response_text = data.get("response", "")
+                    response_length = len(response_text)
+                    
+                    print(f"✅ Response received: {response_length} characters")
+                    print(f"📝 Response: {response_text[:300]}...")
+                    
+                    if response_length > 100:
+                        print(f"✅ TEST 1 PASS: Response length {response_length} > 100 characters")
+                        test1_result = "PASS"
+                    else:
+                        print(f"❌ TEST 1 FAIL: Response too short ({response_length} chars)")
+                        test1_result = "FAIL"
+                        
+                    # Check for specific content about 8-degree minimum
+                    if "8" in response_text and ("degree" in response_text.lower() or "pitch" in response_text.lower()):
+                        print("✅ Contains expected technical details about minimum pitch")
+                    else:
+                        print("⚠️  May not contain expected 8-degree minimum information")
+                        
+                else:
+                    print(f"❌ TEST 1 ERROR: HTTP {response.status}")
+                    test1_result = "ERROR"
+                    
+        except Exception as e:
+            print(f"❌ TEST 1 ERROR: {e}")
+            test1_result = "ERROR"
+        
+        print()
+        
+        # Follow-up if needed
+        print("🔍 TEST 1b: Follow-up Question")
+        print("Question: Corrugate, RU24, lap direction")
+        print("Session ID: test-tokens-flash (same session)")
+        
+        test1b_payload = {
+            "message": "Corrugate, RU24, lap direction",
+            "session_id": "test-tokens-flash"
+        }
+        
+        try:
+            async with session.post(f"{BACKEND_URL}/api/chat", json=test1b_payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    response_text = data.get("response", "")
+                    response_length = len(response_text)
+                    
+                    print(f"✅ Follow-up response: {response_length} characters")
+                    print(f"📝 Response: {response_text[:300]}...")
+                    
+                    # Check for 8-degree minimum and conditions
+                    if "8" in response_text and ("degree" in response_text.lower()):
+                        print("✅ Contains 8-degree minimum information")
+                    else:
+                        print("⚠️  May not contain specific 8-degree information")
+                        
+                else:
+                    print(f"❌ Follow-up ERROR: HTTP {response.status}")
+                    
+        except Exception as e:
+            print(f"❌ Follow-up ERROR: {e}")
+        
+        print()
+        print("=" * 60)
+        
+        # Test 2: Strict Compliance Question (Gemini Pro)
+        print("🔍 TEST 2: Strict Compliance Question (Gemini Pro)")
+        print("Question: What is the stud spacing for a 2.4m wall in high wind zone?")
+        print("Session ID: test-tokens-pro")
+        print("Expected: Detailed answer > 300 characters with citations")
+        
+        test2_payload = {
+            "message": "What is the stud spacing for a 2.4m wall in high wind zone?",
+            "session_id": "test-tokens-pro"
+        }
+        
+        try:
+            async with session.post(f"{BACKEND_URL}/api/chat", json=test2_payload) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    response_text = data.get("response", "")
+                    citations = data.get("citations", [])
+                    response_length = len(response_text)
+                    
+                    print(f"✅ Response received: {response_length} characters")
+                    print(f"📚 Citations provided: {len(citations)}")
+                    print(f"📝 Response: {response_text[:400]}...")
+                    
+                    # Check length requirement
+                    if response_length > 300:
+                        print(f"✅ Length requirement met: {response_length} > 300 characters")
+                        length_check = "PASS"
+                    else:
+                        print(f"❌ Length requirement failed: {response_length} < 300 characters")
+                        length_check = "FAIL"
+                    
+                    # Check citations requirement
+                    if len(citations) > 0:
+                        print(f"✅ Citations requirement met: {len(citations)} citations")
+                        citations_check = "PASS"
+                        for i, citation in enumerate(citations[:3]):  # Show first 3
+                            print(f"   Citation {i+1}: {citation.get('title', 'Unknown')}")
+                    else:
+                        print("❌ Citations requirement failed: No citations provided")
+                        citations_check = "FAIL"
+                    
+                    # Overall test 2 result
+                    if length_check == "PASS" and citations_check == "PASS":
+                        test2_result = "PASS"
+                        print("✅ TEST 2 PASS: Both length and citations requirements met")
+                    else:
+                        test2_result = "FAIL"
+                        print("❌ TEST 2 FAIL: Requirements not fully met")
+                        
+                    # Check for complete sentences
+                    if response_text.endswith('.') or response_text.endswith('!') or response_text.endswith('?'):
+                        print("✅ Response appears to complete sentences properly")
+                    else:
+                        print("⚠️  Response may be truncated (doesn't end with proper punctuation)")
+                        
+                else:
+                    print(f"❌ TEST 2 ERROR: HTTP {response.status}")
+                    test2_result = "ERROR"
+                    
+        except Exception as e:
+            print(f"❌ TEST 2 ERROR: {e}")
+            test2_result = "ERROR"
+        
+        print()
+        print("=" * 60)
+        
+        # Summary
+        print("📊 REVIEW REQUEST TEST SUMMARY")
+        print(f"Test 1 (Hybrid/Factual): {test1_result}")
+        print(f"Test 2 (Strict Compliance): {test2_result}")
+        
+        if test1_result == "PASS" and test2_result == "PASS":
+            print("🎉 ALL REVIEW REQUEST TESTS PASSED")
+            print("✅ Gemini is producing longer, more complete answers")
+            overall_result = "SUCCESS"
+        else:
+            print("❌ SOME REVIEW REQUEST TESTS FAILED")
+            print("⚠️  Gemini response quality issues may still exist")
+            overall_result = "ISSUES_FOUND"
+        
+        return overall_result
 
 if __name__ == "__main__":
-    run_review_request_tests()
+    result = asyncio.run(test_review_request_scenarios())
+    print(f"\nFinal Result: {result}")
