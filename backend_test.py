@@ -218,7 +218,7 @@ class STRYDABackendTester:
             async with self.session.post(f"{API_BASE}/chat", json=payload) as response:
                 if response.status == 200:
                     data = await response.json()
-                    response_text = data.get('response', '')
+                    response_text = data.get('answer', '')  # Use 'answer' instead of 'response'
                     
                     if response_text and len(response_text) > 10:
                         self.log_test("Basic Chat Functionality", "PASS", "Chat endpoint responding", data)
