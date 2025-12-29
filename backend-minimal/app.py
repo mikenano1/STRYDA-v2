@@ -989,6 +989,9 @@ IMPORTANT: For H1/AS1 inquiries, the Schedule Method is no longer permitted for 
                 
                 messages_payload.append({"role": "user", "content": user_message})
                 
+                # Determine token budget dynamically
+                max_tokens_budget = pick_max_tokens(response_mode, final_intent, user_message)
+                
                 # Init Client
                 chat_client = LlmChat(
                     api_key=EMERGENT_LLM_KEY,
@@ -997,7 +1000,7 @@ IMPORTANT: For H1/AS1 inquiries, the Schedule Method is no longer permitted for 
                     initial_messages=messages_payload
                 )
                 chat_client.with_model("gemini", GEMINI_MODEL)
-                chat_client.with_params(max_tokens=250, temperature=0.2)
+                chat_client.with_params(max_tokens=max_tokens_budget, temperature=0.2)
                 
                 # Execute
                 print(f"🤖 Calling Gemini Hybrid ({GEMINI_MODEL})...")
