@@ -1,67 +1,64 @@
 
 import os
 import sys
-import traceback
+import asyncio
+from dotenv import load_dotenv
 
-print(f"Python executable: {sys.executable}")
-print(f"Python path: {sys.path}")
+# Force reload of .env
+load_dotenv(override=True)
 
 try:
-    from dotenv import load_dotenv
-    load_dotenv(override=True)
-    print("Dotenv loaded.")
+    from emergentintegrations.llm.chat import LlmChat, UserMessage
 except ImportError:
-    print("Dotenv not found.")
-
-try:
-    print("Attempting to import emergentintegrations...")
-    from emergentintegrations import EmergentLLM
-    print("Import successful.")
-except ImportError as e:
-    print(f"CRITICAL: emergentintegrations library not found! Error: {e}")
-    traceback.print_exc()
+    print("CRITICAL: emergentintegrations.llm.chat not found!")
     sys.exit(1)
 
 api_key = os.getenv("EMERGENT_LLM_KEY")
-model_strict = os.getenv("GEMINI_PRO_MODEL")
-model_hybrid = os.getenv("GEMINI_MODEL")
+# Clean up model names (remove 'gemini/' prefix if user added it, though LlmChat adds it)
+model_strict = os.getenv("GEMINI_PRO_MODEL", "gemini-1.5-pro")
+model_hybrid = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
 
 print(f"DEBUG: Key found: {bool(api_key)}")
 print(f"DEBUG: Model Strict: {model_strict}")
 print(f"DEBUG: Model Hybrid: {model_hybrid}")
 
 if not api_key:
-    print("CRITICAL: No EMERGENT_LLM_KEY found in environment.")
+    print("CRITICAL: No EMERGENT_LLM_KEY found.")
     sys.exit(1)
 
-# Initialize Client
-try:
-    client = EmergentLLM(api_key=api_key)
-    print("SUCCESS: Client initialized.")
-except Exception as e:
-    print(f"CRITICAL: Client init failed: {e}")
-    sys.exit(1)
+async def test_models():
+    # Test Strict
+    print(f"\nTesting Strict Model: {model_strict}")
+    try:
+        # Note: LlmChat expects initial_messages to be a list of dicts
+        client = LlmChat(
+            api_key=api_key, 
+            session_id="test-strict", 
+            system_message="You are a helpful assistant.",
+            initial_messages=[] 
+        )
+        client.with_model("gemini", model_strict)
+        
+        response = await client.send_message(UserMessage(text="Hello, strictly speaking, who are you?"))
+        print(f"SUCCESS Strict: {response[:100]}...")
+    except Exception as e:
+        print(f"ERROR Strict: {e}")
 
-# Test Generation (Strict Model)
-print(f"Testing generation with {model_strict}...")
-try:
-    response = client.chat.completions.create(
-        model=model_strict,
-        messages=[{"role": "user", "content": "Hello"}]
-    )
-    print("SUCCESS: Strict Model Response:")
-    print(response.choices[0].message.content)
-except Exception as e:
-    print(f"ERROR: Strict Model generation failed: {e}")
+    # Test Hybrid
+    print(f"\nTesting Hybrid Model: {model_hybrid}")
+    try:
+        client = LlmChat(
+            api_key=api_key, 
+            session_id="test-hybrid", 
+            system_message="You are a helpful assistant.",
+            initial_messages=[]
+        )
+        client.with_model("gemini", model_hybrid)
+        
+        response = await client.send_message(UserMessage(text="Hello, quickly, who are you?"))
+        print(f"SUCCESS Hybrid: {response[:100]}...")
+    except Exception as e:
+        print(f"ERROR Hybrid: {e}")
 
-# Test Generation (Hybrid Model)
-print(f"Testing generation with {model_hybrid}...")
-try:
-    response = client.chat.completions.create(
-        model=model_hybrid,
-        messages=[{"role": "user", "content": "Hello"}]
-    )
-    print("SUCCESS: Hybrid Model Response:")
-    print(response.choices[0].message.content)
-except Exception as e:
-    print(f"ERROR: Hybrid Model generation failed: {e}")
+if __name__ == "__main__":
+    asyncio.run(test_models())
