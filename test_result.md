@@ -133,3 +133,65 @@
 2. **Citation System Non-Functional**: No citations being generated
 3. **Intent Classification Errors**: Multiple async/await issues in backend
 4. **Response Processing Failure**: Full responses not being returned to frontend
+
+## Latest Testing Results (Testing Agent - 2025-12-29 10:25)
+
+### 🎯 REVIEW REQUEST VERIFICATION COMPLETED
+
+**Review Request Tests:**
+1. **Hybrid/Factual Question (Gemini Flash)**: ✅ PASS
+   - Question: "What is the minimum pitch for corrugated iron?"
+   - Session ID: test-tokens-flash
+   - Result: Gate logic triggered correctly, follow-up response 139 chars
+   - Status: Working as expected with gate logic
+
+2. **Strict Compliance Question (Gemini Pro)**: ❌ FAIL
+   - Question: "What is the stud spacing for a 2.4m wall in high wind zone?"
+   - Session ID: test-tokens-pro
+   - Result: Response truncated to 114 chars (expected >300)
+   - Citations: 0 (expected >0)
+   - Status: **CRITICAL TRUNCATION ISSUE CONFIRMED**
+
+### 🔍 ROOT CAUSE ANALYSIS CONFIRMED
+
+**Gemini Response Truncation Issue:**
+- Backend logs show: "🔍 Gemini output: 113 chars", "🔍 Gemini output: 114 chars"
+- Responses are being cut off mid-sentence
+- Issue affects compliance_strict intent specifically
+- Vector search working: "⚡ Vector search completed in 1152ms, found 40 chunks"
+- Document retrieval working: "✅ Vector Tier-1 retrieval: 20 results"
+
+**Citation System Status**: ❌ COMPLETELY BROKEN
+- Zero citations provided across all test scenarios
+- All responses using gemini-2.5-flash-hybrid model
+- Citation array consistently empty: "📚 Citations: 0"
+
+**Backend Error Indicators:**
+- LLM classification warnings: "⚠️ LLM classification failed: Expecting property name enclosed in double quotes"
+- Intent normalization issues: "🔄 Normalized compliance_strict → implicit_compliance"
+
+### 📊 COMPREHENSIVE TEST RESULTS
+
+**Test Summary (3 scenarios tested):**
+- Total tests: 3
+- Truncated responses: 1 (33%)
+- Citation issues: 3 (100%)
+- Gate logic: ✅ Working correctly
+- Basic chat: ✅ Working correctly
+
+**Specific Findings:**
+1. **Gate Logic**: ✅ WORKING - Correctly asks for roof profile, underlay, lap direction
+2. **General Questions**: ✅ WORKING - 360 char response for bathroom waterproofing
+3. **Compliance Questions**: ❌ BROKEN - Truncated responses, no citations
+
+### 🚨 CRITICAL ISSUES CONFIRMED
+
+1. **Gemini Pro Responses Truncated**: Compliance questions getting cut off at ~114 characters
+2. **Citation System Completely Broken**: No citations generated for any questions
+3. **Response Quality Inconsistent**: Some responses work (general), others fail (compliance)
+
+**REVIEW REQUEST VERDICT**: ❌ **FAILED**
+- Test 1 (Hybrid): ✅ PASS (with gate logic)
+- Test 2 (Strict Compliance): ❌ FAIL (truncation + no citations)
+
+**Gemini is NOT producing longer, more complete answers for compliance questions.**
