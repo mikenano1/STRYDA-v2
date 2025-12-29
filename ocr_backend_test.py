@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 load_dotenv('/app/frontend/.env')
 
 # Get backend URL from environment
-BACKEND_URL = os.getenv('EXPO_PUBLIC_BACKEND_URL', 'https://construct-ai-12.preview.emergentagent.com')
+BACKEND_URL = os.getenv('EXPO_PUBLIC_BACKEND_URL', 'https://nzconstructai.preview.emergentagent.com')
 API_BASE = f"{BACKEND_URL}/api"
 
 class OCRProductIntegrationTester:

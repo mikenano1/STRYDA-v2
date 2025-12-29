@@ -1,6 +1,6 @@
 {
   "test_date": "2025-11-25T07:29:59.981382",
-  "backend_url": "https://construct-ai-12.preview.emergentagent.com",
+  "backend_url": "https://nzconstructai.preview.emergentagent.com",
   "total_queries": 30,
   "passed": 25,
   "pass_rate": 83.3,

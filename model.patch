@@ -1605,7 +1605,7 @@ index 60c853f..e69de29 100644
 ------------+import requests
 ------------+import json
 ------------+
-------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
+------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
 ------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------+
 ------------+query = "nzs 3604 stud spacing requirements"
@@ -2166,7 +2166,7 @@ index 60c853f..e69de29 100644
 -----------------+from typing import Dict, List, Tuple
 -----------------+
 -----------------+# Backend URL
------------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com/api/chat"
+-----------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com/api/chat"
 -----------------+
 -----------------+# Test queries
 -----------------+GENERAL_QUERIES = [
@@ -2560,7 +2560,7 @@ index 60c853f..e69de29 100644
 ------------------+from datetime import datetime
 ------------------+
 ------------------+# Backend URL from environment
-------------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
+------------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
 ------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------------+
 ------------------+# Test queries
@@ -3083,7 +3083,7 @@ index 60c853f..e69de29 100644
 ------------------------+import os
 ------------------------+
 ------------------------+# Backend URL from environment
-------------------------+BACKEND_URL = os.getenv('BACKEND_URL', 'https://construct-ai-12.preview.emergentagent.com')
+------------------------+BACKEND_URL = os.getenv('BACKEND_URL', 'https://nzconstructai.preview.emergentagent.com')
 ------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------------------+
 ------------------------+# Test queries organized by category
@@ -6206,7 +6206,7 @@ index 60c853f..e69de29 100644
 ----------------------------------------------     CORSMiddleware,
 ----------------------------------------------     allow_origins=[
 ----------------------------------------------         "https://app.emergent.sh",
-----------------------------------------------         "https://construct-ai-12.preview.emergentagent.com",
+----------------------------------------------         "https://nzconstructai.preview.emergentagent.com",
 -----------------------------------------------        "http://localhost:3000",
 -----------------------------------------------        "http://localhost:19006",
 -----------------------------------------------        "http://localhost:8001",
@@ -10080,7 +10080,7 @@ index 60c853f..e69de29 100644
 -------------------------------------------------------------------------+        })
 -------------------------------------------------------------------------+        
 -------------------------------------------------------------------------+        # URLs to test
--------------------------------------------------------------------------+        self.production_url = "https://construct-ai-12.preview.emergentagent.com"
+-------------------------------------------------------------------------+        self.production_url = "https://nzconstructai.preview.emergentagent.com"
 -------------------------------------------------------------------------+        self.local_url = "http://localhost:8001"
 -------------------------------------------------------------------------+    
 -------------------------------------------------------------------------+    def log_result(self, test_name: str, success: bool, details: str, url: str = ""):
@@ -12764,7 +12764,7 @@ index 60c853f..e69de29 100644
 ------------------------+
 ------------------------+**Audit Date:** 2025-11-08 15:36:57 UTC
 ------------------------+
-------------------------+**Backend URL:** https://construct-ai-12.preview.emergentagent.com
+------------------------+**Backend URL:** https://nzconstructai.preview.emergentagent.com
 ------------------------+
 ------------------------+**Total Documents Ingested:** 1,742 (NZ Building Code, NZS 3604, E2/AS1, NZMRM, etc.)
 ------------------------+
@@ -12920,7 +12920,7 @@ index 60c853f..e69de29 100644
 -----------------------+## Test Information
 -----------------------+
 -----------------------+- **Test Date**: 2025-11-10 07:04:01 UTC
------------------------+- **Backend URL**: https://construct-ai-12.preview.emergentagent.com
+-----------------------+- **Backend URL**: https://nzconstructai.preview.emergentagent.com
 -----------------------+- **Total Queries**: 20
 -----------------------+- **Fixes Applied**: Intent router clause patterns, comparative query detection
 -----------------------+
@@ -13168,7 +13168,7 @@ index 60c853f..e69de29 100644
 ----------------------+from typing import List, Dict, Any
 ----------------------+
 ----------------------+# Backend URL
-----------------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
+----------------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
 ----------------------+
 ----------------------+# 20 test queries from CITATION_PRECISION_AUDIT.md
 ----------------------+TEST_QUERIES = [
@@ -14680,7 +14680,7 @@ index 60c853f..e69de29 100644
 -----------------+## Test Overview
 -----------------+- **Date**: 2025-11-12 19:09:52
 -----------------+- **Total Queries**: 20 (10 general + 10 compliance)
------------------+- **Backend URL**: https://construct-ai-12.preview.emergentagent.com/api/chat
+-----------------+- **Backend URL**: https://nzconstructai.preview.emergentagent.com/api/chat
 -----------------+
 -----------------+## Before Fix
 -----------------+- **Intent Accuracy**: 60% (12/20)
@@ -15734,7 +15734,7 @@ index 60c853f..e69de29 100644
 -------------+from datetime import datetime
 -------------+
 -------------+# Backend URL
--------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com/api/chat"
+-------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com/api/chat"
 -------------+
 -------------+# Test queries organized by expected source
 -------------+TEST_QUERIES = {
@@ -16131,7 +16131,7 @@ index 60c853f..e69de29 100644
 -------------+
 -------------+**Test Date:** 2025-11-25T06:30:31.409292
 -------------+
--------------+**Backend URL:** https://construct-ai-12.preview.emergentagent.com/api/chat
+-------------+**Backend URL:** https://nzconstructai.preview.emergentagent.com/api/chat
 -------------+
 -------------+**Total Queries Tested:** 20
 -------------+
@@ -16351,7 +16351,7 @@ index 60c853f..e69de29 100644
 ------------+import os
 ------------+
 ------------+# Configuration
-------------+BACKEND_URL = os.getenv("BACKEND_URL", "https://construct-ai-12.preview.emergentagent.com")
+------------+BACKEND_URL = os.getenv("BACKEND_URL", "https://nzconstructai.preview.emergentagent.com")
 ------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------+TIMEOUT = 30  # seconds per query
 ------------+
@@ -16846,7 +16846,7 @@ index 60c853f..e69de29 100644
 ------------+import time
 ------------+from datetime import datetime
 ------------+
-------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
+------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
 ------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------+
 ------------+# 2 queries per category (10 total)
@@ -16945,7 +16945,7 @@ index 60c853f..e69de29 100644
 ------------+import json
 ------------+import time
 ------------+
-------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
+------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
 ------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------+
 ------------+# One query per category
@@ -17022,7 +17022,7 @@ index 60c853f..e69de29 100644
 ------------+from datetime import datetime
 ------------+import os
 ------------+
-------------+BACKEND_URL = "https://construct-ai-12.preview.emergentagent.com"
+------------+BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
 ------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------+TIMEOUT = 30
 ------------+
@@ -17254,7 +17254,7 @@ index 60c853f..e69de29 100644
 ------------+# STRYDA-v2 POST-REGENERATION VALIDATION REPORT
 ------------+
 ------------+**Test Date:** 2025-11-25 07:16:43  
-------------+**Backend URL:** https://construct-ai-12.preview.emergentagent.com  
+------------+**Backend URL:** https://nzconstructai.preview.emergentagent.com  
 ------------+**Total Queries:** 30
 ------------+
 ------------+---
@@ -17400,7 +17400,7 @@ index 60c853f..e69de29 100644
 ------------+# POST-REGENERATION VALIDATION RESULTS
 ------------+
 ------------+**Date:** 2025-11-25 07:29:59  
-------------+**Backend:** https://construct-ai-12.preview.emergentagent.com  
+------------+**Backend:** https://nzconstructai.preview.emergentagent.com  
 ------------+**Total Queries:** 30  
 ------------+**Pass Rate:** 25/30 (83.3%)  
 ------------+**Total Time:** 288.3s
