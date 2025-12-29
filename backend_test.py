@@ -183,7 +183,7 @@ class STRYDABackendTester:
             async with self.session.post(f"{API_BASE}/chat", json=payload) as response:
                 if response.status == 200:
                     data = await response.json()
-                    response_text = data.get('response', '')
+                    response_text = data.get('answer', '')  # Use 'answer' instead of 'response'
                     citations = data.get('citations', [])
                     
                     # Check for detailed answer with citations
