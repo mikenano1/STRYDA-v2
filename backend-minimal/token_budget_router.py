@@ -11,7 +11,7 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
     
     Rules:
     - Strict mode: Always 2048 tokens (comprehensive answers)
-    - GPT-first/hybrid: 800-1024 tokens (dynamic based on complexity)
+    - GPT-first/hybrid: 1024-1500 tokens (dynamic based on complexity)
     
     Args:
         mode: "gpt_first" or "strict_compliance"
@@ -26,8 +26,8 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
     if mode == "strict_compliance":
         return 2048
     
-    # GPT-first starts with base budget
-    base_tokens = 800
+    # GPT-first/Hybrid starts with much higher base
+    base_tokens = 1024
     
     msg_lower = message.lower()
     
@@ -35,19 +35,20 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
     calc_keywords = [
         'calculate', 'work out', 'formula', 'diagonal',
         'span', 'spacing', 'pitch', 'fall', 'degrees',
-        'gradient', 'ratio', 'load', 'bearing'
+        'gradient', 'ratio', 'load', 'bearing',
+        'explain', 'describe', 'how to'
     ]
     
     has_calc_words = any(keyword in msg_lower for keyword in calc_keywords)
     
     if has_calc_words:
-        base_tokens = 1000  # Need more tokens for technical explanations
+        base_tokens = 1200  # Need more tokens for technical explanations
     
     # Longer questions often need longer answers
     if len(message) > 140:
-        base_tokens += 100
+        base_tokens += 300
     
-    # Clamp between 800 and 1024
-    final_tokens = max(800, min(1024, base_tokens))
+    # Clamp between 1024 and 2048
+    final_tokens = max(1024, min(2048, base_tokens))
     
     return final_tokens
