@@ -9,69 +9,69 @@
       "test": "Health Check",
       "status": "FAIL",
       "details": "Expected 200, got 404",
-      "timestamp": "2025-12-29 10:00:59",
+      "timestamp": "2025-12-29 10:19:34",
       "response_data": null
     },
     {
       "test": "Admin Config",
       "status": "FAIL",
       "details": "Expected 200, got 404",
-      "timestamp": "2025-12-29 10:01:00",
+      "timestamp": "2025-12-29 10:19:35",
       "response_data": null
     },
     {
       "test": "Basic Chat Functionality",
       "status": "PASS",
       "details": "Chat endpoint responding",
-      "timestamp": "2025-12-29 10:01:13",
+      "timestamp": "2025-12-29 10:19:47",
       "response_data": {
         "answer": "Yeah, chur, mate! Fire away with your building questions, I'm happy to help you out.",
         "intent": "general_help",
         "citations": [],
         "can_show_citations": false,
         "model": "gemini-2.5-flash-hybrid",
-        "timestamp": 1767002472
+        "timestamp": 1767003585
       }
     },
     {
       "test": "Gate Logic - First Question",
       "status": "PASS",
       "details": "Gate triggered correctly",
-      "timestamp": "2025-12-29 10:01:16",
+      "timestamp": "2025-12-29 10:19:49",
       "response_data": {
         "answer": "Before I answer properly: what roof profile is it (corrugate / 5-rib / tray), what underlay (brand/model), and do you mean roll direction or lap direction?",
         "intent": "implicit_compliance",
         "citations": [],
         "model": "required_inputs_gate",
-        "timestamp": 1767002476
+        "timestamp": 1767003589
       }
     },
     {
       "test": "Gate Logic - Second Question",
       "status": "FAIL",
-      "details": "Expected pitch answer, got: right, mate, for corrugated iron, the minimum",
-      "timestamp": "2025-12-29 10:01:26",
+      "details": "Expected pitch answer, got: right, mate, for corrugated iron, the minimum pitch can be as low as 3 degrees if you're using a 35mm high profile. as for the underlay,",
+      "timestamp": "2025-12-29 10:20:03",
       "response_data": null
     },
     {
       "test": "Regulatory Check - H1 Schedule",
       "status": "PASS",
       "details": "Warning about schedule method provided",
-      "timestamp": "2025-12-29 10:01:36",
+      "timestamp": "2025-12-29 10:20:13",
       "response_data": {
         "answer": "Nah, mate, you can't use the Schedule Method for H1 compliance anymore for new consents. It's been phased out since November 2025. You'll need to go with either the Calculation or Modelling methods now.",
-        "intent": "general_help",
+        "intent": "implicit_compliance",
         "citations": [],
         "can_show_citations": false,
         "model": "gemini-2.5-flash-hybrid",
-        "timestamp": 1767002494
+        "timestamp": 1767003611
       }
     },
     {
       "test": "Strict Compliance - Citations",
       "status": "FAIL",
       "details": "No citations provided",
-      "timestamp": "2025-12-29 10:01:48",
+      "timestamp": "2025-12-29 10:20:26",
       "response_data": null
     }
   ]
