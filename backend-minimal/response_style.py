@@ -29,11 +29,14 @@ def apply_answer_style(raw_answer: str, intent: str, user_message: str) -> str:
     """
     
     # Safety check: handle None or empty answers
-    if raw_answer is None:
-        return "I can help with NZ building questions. Could you provide more details?"
-    
-    if not raw_answer or len(raw_answer.strip()) < 10:
-        return raw_answer if raw_answer else ""
+    if not raw_answer:
+        return ""
+
+    # Ensure string
+    raw_answer = str(raw_answer)
+
+    if len(raw_answer.strip()) < 10:
+        return raw_answer
     
     try:
         # Step 1: Remove AI waffle and disclaimers
