@@ -77,3 +77,59 @@
 - **Advanced Features**: ❌ Need investigation (Gate Logic, Citations)
 - **Gemini Migration**: ✅ SUCCESSFUL
 - **Regulation Update**: ✅ SUCCESSFUL
+
+## Latest Testing Results (Testing Agent - 2025-12-29)
+
+### ✅ CONFIRMED WORKING (2/2 Review Request Tests)
+
+1. **Gate Logic (Multi-turn)**: ✅ PASS
+   - Test: POST /api/chat with "What is the minimum pitch for corrugated iron?" and session_id "test-gate-gemini-v2"
+   - Result: System correctly asks for roof profile, underlay, lap direction
+   - Response: "Before I answer properly: what roof profile is it (corrugate / 5-rib / tray), what underlay (brand/model), and do you mean roll direction or lap direction?"
+   - Intent: implicit_compliance
+   - Model: required_inputs_gate
+   - ✅ Gate logic is working as expected
+
+### ❌ CRITICAL ISSUE IDENTIFIED (1/2 Review Request Tests)
+
+2. **Strict Compliance (Gemini Pro with Citations)**: ❌ FAIL
+   - Test: POST /api/chat with "What is the stud spacing for a 2.4m wall in high wind zone?" and session_id "test-strict-gemini-v2"
+   - Issue: **Gemini responses are being truncated to 22-40 characters**
+   - Expected: Detailed answer with citations array not empty
+   - Actual: Very short responses like "G'day mate, the tables" (24 chars)
+   - Citations: Always empty array
+   - Intent: general_help (not compliance_strict)
+
+### 🔍 ROOT CAUSE ANALYSIS
+
+**Gemini API Response Truncation Issue:**
+- Backend logs show: "🔍 Gemini output: 22 chars", "🔍 Gemini output: 24 chars"
+- Vector search is working: "⚡ Vector search completed in 1151ms, found 40 chunks"
+- Document retrieval is working: "✅ Vector Tier-1 retrieval: 20 results"
+- Source detection is working: "Detected sources: ['NZS 3604:2011']"
+- **Problem**: Gemini API calls are returning extremely short responses
+
+**Backend Error Indicators:**
+- Runtime warnings: "coroutine 'classify_intent' was never awaited"
+- LLM classification failures: "Expecting property name enclosed in double quotes"
+- Intent classification errors: "'is_gated'" and "'coroutine' object is not subscriptable"
+
+### 📊 Additional Testing Results
+
+**Citation System Status**: ❌ COMPLETELY BROKEN
+- Tested 4 different building code questions
+- All responses: 14-40 characters, starting with "G'day mate" but truncated
+- Zero citations provided across all tests
+- All responses using gemini-2.5-flash-hybrid model
+
+**Health/Admin Endpoints**: ❌ NOT ACCESSIBLE
+- /health returns 404 (frontend routing issue)
+- /admin/config returns 404 (frontend routing issue)
+- These endpoints may only be available with /api prefix
+
+### 🚨 URGENT ISSUES REQUIRING MAIN AGENT ATTENTION
+
+1. **Gemini API Integration Broken**: Responses truncated to ~25 characters
+2. **Citation System Non-Functional**: No citations being generated
+3. **Intent Classification Errors**: Multiple async/await issues in backend
+4. **Response Processing Failure**: Full responses not being returned to frontend
