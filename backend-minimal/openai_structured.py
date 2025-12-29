@@ -167,10 +167,10 @@ async def generate_structured_response(user_message: str, tier1_snippets: List[D
         # Determine model
         if intent in ["general_help", "product_info", "chitchat"]:
             model = FALLBACK_MODEL  # Flash for speed
-            max_tokens = 500
+            max_tokens = 1024  # Increased for Gemini Flash
         else:
             model = MODEL  # Pro for strict compliance
-            max_tokens = 1000 # Increased for Gemini Pro
+            max_tokens = 2048 # Increased for Gemini Pro
             
         print(f"🔄 Calling Gemini ({model}) for intent={intent}...")
         
