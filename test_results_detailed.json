@@ -1,0 +1,51 @@
+{
+  "summary": {
+    "passed": 0,
+    "total": 6,
+    "success_rate": 0.0
+  },
+  "tests": [
+    {
+      "test": "Health Check",
+      "status": "FAIL",
+      "details": "Expected 200, got 404",
+      "timestamp": "2025-12-29 09:46:30",
+      "response_data": null
+    },
+    {
+      "test": "Admin Config",
+      "status": "FAIL",
+      "details": "Expected 200, got 404",
+      "timestamp": "2025-12-29 09:46:32",
+      "response_data": null
+    },
+    {
+      "test": "Basic Chat Functionality",
+      "status": "FAIL",
+      "details": "Empty or minimal response",
+      "timestamp": "2025-12-29 09:46:46",
+      "response_data": null
+    },
+    {
+      "test": "Gate Logic - First Question",
+      "status": "FAIL",
+      "details": "Gate not triggered. Response: ",
+      "timestamp": "2025-12-29 09:46:57",
+      "response_data": null
+    },
+    {
+      "test": "Regulatory Check - H1 Schedule",
+      "status": "FAIL",
+      "details": "No warning about schedule method. Response: ",
+      "timestamp": "2025-12-29 09:47:06",
+      "response_data": null
+    },
+    {
+      "test": "Strict Compliance - Citations",
+      "status": "FAIL",
+      "details": "No citations provided",
+      "timestamp": "2025-12-29 09:47:16",
+      "response_data": null
+    }
+  ]
+}
