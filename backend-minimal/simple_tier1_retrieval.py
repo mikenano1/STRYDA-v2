@@ -220,7 +220,7 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
 
 
 
-def simple_tier1_retrieval(query: str, top_k: int = 4, intent: str = "compliance_strict") -> List[Dict]:
+def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "compliance_strict") -> List[Dict]:
     """
     Optimized Tier-1 retrieval using pgvector similarity search with caching
     PERFORMANCE: Reduced top_k to 4 for faster context assembly and lower token usage
