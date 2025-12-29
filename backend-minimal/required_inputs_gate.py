@@ -43,7 +43,7 @@ def gate_required_inputs(question: str) -> Dict:
     
     if not is_threshold_question:
         return {
-            "should_gate": False,
+            "is_gated": False,
             "reason": "not_threshold",
             "ask": "",
             "required_fields": []
@@ -55,7 +55,7 @@ def gate_required_inputs(question: str) -> Dict:
     if not is_roof_underlay:
         # Other threshold questions might be fine (not roofing)
         return {
-            "should_gate": False,
+            "is_gated": False,
             "reason": "not_roof_underlay",
             "ask": "",
             "required_fields": []
