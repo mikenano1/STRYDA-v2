@@ -55,25 +55,18 @@ class STRYDABackendTester:
             async with self.session.get(f"{BACKEND_URL}/health") as response:
                 if response.status == 200:
                     data = await response.json()
-                    self.log_test("Health Check", "PASS", f"Status: {response.status}", data)
-                    return True
+                    if data.get('ok') == True:
+                        self.log_test("Health Check", "PASS", f"Status: {response.status}, OK: {data.get('ok')}", data)
+                        return True
+                    else:
+                        self.log_test("Health Check", "FAIL", f"Health check returned false: {data}")
+                        return False
                 else:
                     self.log_test("Health Check", "FAIL", f"Expected 200, got {response.status}")
                     return False
         except Exception as e:
-            # Try alternative health endpoints
-            try:
-                async with self.session.get(f"{API_BASE}/") as response:
-                    if response.status == 200:
-                        data = await response.json()
-                        self.log_test("Health Check (Alternative)", "PASS", f"Root endpoint working: {response.status}", data)
-                        return True
-                    else:
-                        self.log_test("Health Check", "FAIL", f"Root endpoint failed: {response.status}")
-                        return False
-            except Exception as e2:
-                self.log_test("Health Check", "FAIL", f"Connection error: {str(e2)}")
-                return False
+            self.log_test("Health Check", "FAIL", f"Connection error: {str(e)}")
+            return False
     
     async def test_admin_config(self):
         """Test 2: Admin Config - GET /admin/config"""
