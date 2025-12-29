@@ -7,10 +7,12 @@ export default function DashboardScreen() {
   const router = useRouter();
 
   const handleQuickAction = (query: string) => {
-    router.push({
-      pathname: "/(tabs)/stryda",
-      params: { initialQuery: query }
-    });
+    // Navigate to the tab first
+    router.push('/(tabs)/stryda');
+    // Use a short timeout to ensure the component is mounted before setting params
+    setTimeout(() => {
+      router.setParams({ initialQuery: query });
+    }, 100);
   };
 
   const recentHistory = [
