@@ -1,79 +1,77 @@
 {
   "summary": {
-    "passed": 4,
+    "passed": 2,
     "total": 6,
-    "success_rate": 0.6666666666666666
+    "success_rate": 0.3333333333333333
   },
   "tests": [
     {
       "test": "Health Check",
-      "status": "PASS",
-      "details": "Status: 200, OK: True",
-      "timestamp": "2025-12-29 09:57:52",
-      "response_data": {
-        "ok": true,
-        "version": "1.5.0",
-        "uptime_s": 0
-      }
+      "status": "FAIL",
+      "details": "Expected 200, got 404",
+      "timestamp": "2025-12-29 10:00:59",
+      "response_data": null
     },
     {
       "test": "Admin Config",
-      "status": "PASS",
-      "details": "Gemini models configured: flash=gemini-2.5-flash, pro=gemini-2.5-pro",
-      "timestamp": "2025-12-29 09:57:53",
-      "response_data": {
-        "ok": true,
-        "models": {
-          "gpt_first_model": "gemini-2.5-flash",
-          "strict_model": "gemini-2.5-pro",
-          "gemini_model": "gemini-2.5-flash",
-          "gemini_pro_model": "gemini-2.5-pro"
-        },
-        "build_id": "7177bcc",
-        "simple_session_mode": false,
-        "timestamp": 1767002273
-      }
+      "status": "FAIL",
+      "details": "Expected 200, got 404",
+      "timestamp": "2025-12-29 10:01:00",
+      "response_data": null
     },
     {
       "test": "Basic Chat Functionality",
       "status": "PASS",
       "details": "Chat endpoint responding",
-      "timestamp": "2025-12-29 09:58:02",
+      "timestamp": "2025-12-29 10:01:13",
       "response_data": {
         "answer": "Yeah, chur, mate! Fire away with your building questions, I'm happy to help you out.",
         "intent": "general_help",
         "citations": [],
         "can_show_citations": false,
         "model": "gemini-2.5-flash-hybrid",
-        "timestamp": 1767002280
+        "timestamp": 1767002472
       }
     },
     {
       "test": "Gate Logic - First Question",
+      "status": "PASS",
+      "details": "Gate triggered correctly",
+      "timestamp": "2025-12-29 10:01:16",
+      "response_data": {
+        "answer": "Before I answer properly: what roof profile is it (corrugate / 5-rib / tray), what underlay (brand/model), and do you mean roll direction or lap direction?",
+        "intent": "implicit_compliance",
+        "citations": [],
+        "model": "required_inputs_gate",
+        "timestamp": 1767002476
+      }
+    },
+    {
+      "test": "Gate Logic - Second Question",
       "status": "FAIL",
-      "details": "Gate not triggered. Response: g'day mate, for corrugated iron, the",
-      "timestamp": "2025-12-29 09:58:11",
+      "details": "Expected pitch answer, got: right, mate, for corrugated iron, the minimum",
+      "timestamp": "2025-12-29 10:01:26",
       "response_data": null
     },
     {
       "test": "Regulatory Check - H1 Schedule",
       "status": "PASS",
       "details": "Warning about schedule method provided",
-      "timestamp": "2025-12-29 09:58:20",
+      "timestamp": "2025-12-29 10:01:36",
       "response_data": {
         "answer": "Nah, mate, you can't use the Schedule Method for H1 compliance anymore for new consents. It's been phased out since November 2025. You'll need to go with either the Calculation or Modelling methods now.",
         "intent": "general_help",
         "citations": [],
         "can_show_citations": false,
         "model": "gemini-2.5-flash-hybrid",
-        "timestamp": 1767002298
+        "timestamp": 1767002494
       }
     },
     {
       "test": "Strict Compliance - Citations",
       "status": "FAIL",
       "details": "No citations provided",
-      "timestamp": "2025-12-29 09:58:29",
+      "timestamp": "2025-12-29 10:01:48",
       "response_data": null
     }
   ]
