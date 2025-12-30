@@ -1,14 +1,15 @@
 /**
  * Centralized STRYDA API Client
- * All chat requests go through this single endpoint
+ * Fixed for Mobile Connection (No Localhost)
  */
 
-import { API_BASE } from '../config/constants';
+import { Platform } from 'react-native';
 
-export interface ChatRequest {
-  session_id: string;
-  message: string;
-}
+// AUTOMATIC URL DETECTION
+// 1. If Web: Use relative path (proxied)
+// 2. If Native: Use explicit production URL
+const PROD_URL = 'https://nzconstructai.preview.emergentagent.com'; 
+const API_BASE_URL = Platform.OS === 'web' ? '' : PROD_URL;
 
 export interface Citation {
   source: string;
@@ -17,27 +18,37 @@ export interface Citation {
   snippet?: string;
   section?: string;
   clause?: string;
+  // Support both title and source keys
+  title?: string; 
+}
+
+export interface ChatRequest {
+  session_id: string;
+  message: string;
 }
 
 export interface ChatResponse {
   message: string;
+  answer?: string;
   citations: Citation[];
   session_id: string;
   intent?: string;
-  confidence?: number;
-  notes?: string[];
-  timing_ms?: number;
+  model?: string;
+  tokens_in?: number;
 }
 
 export async function chatAPI(request: ChatRequest): Promise<ChatResponse> {
-  console.log('🚀 STRYDA API Request:', { 
-    endpoint: `${API_BASE}/api/chat`,
-    session_id: request.session_id.substring(0, 8) + '...',
-    message_length: request.message.length 
-  });
+  // Construct target URL
+  // Ensure we don't have double slashes if base is empty
+  const baseUrl = API_BASE_URL.replace(/\/$/, "");
+  const targetUrl = `${baseUrl}/api/chat`;
   
+  console.log(`🚀 STRYDA API Request to: ${targetUrl}`, {
+    session: request.session_id.substring(0, 8) + '...'
+  });
+
   try {
-    const response = await fetch(`${API_BASE}/api/chat`, {
+    const response = await fetch(targetUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,26 +58,33 @@ export async function chatAPI(request: ChatRequest): Promise<ChatResponse> {
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`HTTP ${response.status}: ${response.statusText}. ${errorText.substring(0, 120)}`);
+      throw new Error(`HTTP ${response.status}: ${errorText.substring(0, 100)}`);
     }
 
     const data = await response.json();
     
-    console.log('✅ STRYDA API Response:', {
-      message_length: data.message?.length,
-      citations_count: data.citations?.length,
+    // Normalize response for frontend
+    const finalResponse: ChatResponse = {
+      message: data.answer || data.message || data.response || "",
+      answer: data.answer,
+      citations: data.citations || [],
+      session_id: request.session_id,
       intent: data.intent,
-      timing_ms: data.timing_ms
+      model: data.model
+    };
+
+    console.log('✅ API Success:', { 
+      len: finalResponse.message.length, 
+      cites: finalResponse.citations.length 
     });
 
-    return data;
-    
+    return finalResponse;
+
   } catch (error) {
-    console.error('❌ STRYDA API Error:', error);
+    console.error('❌ Chat API Error:', error);
     throw error;
   }
 }
 
-// Legacy compatibility
+// Legacy compatibility exports
 export const sendChat = chatAPI;
-export const postChat = chatAPI;
