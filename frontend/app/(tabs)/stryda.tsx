@@ -5,6 +5,8 @@ import { Send, FileText, ChevronRight } from 'lucide-react-native'; // Removed M
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { chatAPI, Citation } from '../../src/internal/lib/api';
 
+console.log("🚀 STRYDA CHAT v3.0 - SAFE MODE LOADED");
+
 // --- INLINED HELPER (Fixes the "Missing Module" error) ---
 const getPdfUrl = (citationTitle: string | null): { url: string; title: string } | null => {
   if (!citationTitle) return null;
@@ -47,10 +49,12 @@ export default function StrydaChat() {
     setIsLoading(true);
 
     try {
+      console.log("Sending message...", textToSend);
       const response = await chatAPI({
           session_id: sessionIdRef.current,
           message: textToSend
       });
+      console.log("Received response:", response);
       
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
@@ -60,6 +64,7 @@ export default function StrydaChat() {
       };
       setMessages(prev => [...prev, aiMsg]);
     } catch (error) {
+      console.error("Chat error:", error);
       setMessages(prev => [...prev, { id: Date.now().toString(), role: 'assistant', text: "Error connecting to backend." }]);
     } finally {
       setIsLoading(false);
