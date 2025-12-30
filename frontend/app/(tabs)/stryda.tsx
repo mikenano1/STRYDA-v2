@@ -1,234 +1,80 @@
-import { useState, useRef, useEffect } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  FlatList, 
-  KeyboardAvoidingView, 
-  Platform,
-  ActivityIndicator,
-  Keyboard,
-  Alert
-} from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, TextInput, TouchableOpacity, FlatList, KeyboardAvoidingView, Platform, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Send, Mic, FileText, ChevronLeft, MicOff } from 'lucide-react-native';
+import { Mic, Send, FileText, ChevronRight } from 'lucide-react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { chatAPI, Citation } from '../../src/internal/lib/api';
-import { useSpeechRecognitionEvent, useSpeechRecognitionEventEvent, SpeechRecognition } from 'expo-speech-recognition';
 
-// --- INLINED HELPER FUNCTION (No Import Needed) ---
+// --- 1. INLINED PDF HELPER (No Imports needed) ---
 const getPdfUrl = (citationTitle: string | null): { url: string; title: string } | null => {
   if (!citationTitle) return null;
   const lowerTitle = citationTitle.toLowerCase();
-
-  // 1. E2/AS1 (External Moisture)
   if (lowerTitle.includes('e2/as1') || lowerTitle.includes('e2')) {
-    return {
-      title: 'E2/AS1 (External Moisture)',
-      url: 'https://codehub.building.govt.nz/assets/Approved-Documents/E2-External-moisture-3rd-edition-Amendment-10.pdf'
-    };
+    return { title: 'E2/AS1 (External Moisture)', url: 'https://codehub.building.govt.nz/assets/Approved-Documents/E2-External-moisture-3rd-edition-Amendment-10.pdf' };
   }
-
-  // 2. NZS 3604
   if (lowerTitle.includes('3604') || lowerTitle.includes('timber')) {
-    return {
-      title: 'NZS 3604:2011 (Selected Extracts)',
-      url: 'https://www.building.govt.nz/assets/Uploads/building-code-compliance/b-stability/b1-structure/as1-nzs3604-2011-light-timber-framed-buildings.pdf'
-    };
+    return { title: 'NZS 3604:2011 (Selected Extracts)', url: 'https://www.building.govt.nz/assets/Uploads/building-code-compliance/b-stability/b1-structure/as1-nzs3604-2011-light-timber-framed-buildings.pdf' };
   }
-
-  // 3. H1 (Energy Efficiency)
   if (lowerTitle.includes('h1') || lowerTitle.includes('energy')) {
-    return {
-      title: 'H1/AS1 (Energy Efficiency)',
-      url: 'https://www.building.govt.nz/assets/Uploads/building-code-compliance/h-energy-efficiency/h1-energy-efficiency/as1-h1-energy-efficiency-5th-edition-amendment-1.pdf'
-    };
+    return { title: 'H1/AS1 (Energy Efficiency)', url: 'https://www.building.govt.nz/assets/Uploads/building-code-compliance/h-energy-efficiency/h1-energy-efficiency/as1-h1-energy-efficiency-5th-edition-amendment-1.pdf' };
   }
   return null;
 };
-// --------------------------------------------------
 
-// --- Types ---
-interface Message {
-  id: string;
-  role: 'user' | 'assistant';
-  text: string;
-  citations?: Citation[];
-}
+// --- 2. TYPES ---
+type Message = { id: string; role: 'user' | 'assistant'; text: string; citations?: Citation[]; };
 
-// --- Components ---
-
-const CitationCard = ({ citation, onPress }: { citation: Citation; onPress: () => void }) => (
-  <TouchableOpacity 
-    onPress={onPress}
-    className="bg-neutral-900 border-l-4 border-orange-500 rounded-r-lg p-3 mt-3 mb-1 flex-row items-center"
-  >
-    <View className="bg-neutral-800 p-2 rounded-full mr-3">
-      <FileText size={20} color="#FFA500" />
-    </View>
-    <View className="flex-1">
-      <Text className="text-white font-bold text-sm">
-        {citation.source} {citation.clause ? `(${citation.clause})` : ''}
-      </Text>
-      <Text className="text-neutral-400 text-xs truncate" numberOfLines={1}>
-        {citation.section || `Page ${citation.page}`}
-      </Text>
-      <Text className="text-orange-500 text-[10px] font-bold mt-1 uppercase">Tap to View</Text>
-    </View>
-  </TouchableOpacity>
-);
-
-const MessageBubble = ({ message, onCitationPress }: { message: Message; onCitationPress: (c: Citation) => void }) => {
-  const isUser = message.role === 'user';
-  
-  return (
-    <View className={`w-full flex-row ${isUser ? 'justify-end' : 'justify-start'} mb-4 px-4`}>
-      <View 
-        className={`max-w-[85%] p-4 rounded-2xl ${
-          isUser 
-            ? 'bg-orange-600 rounded-tr-none' 
-            : 'bg-neutral-800 rounded-tl-none'
-        }`}
-      >
-        <Text className={`text-base leading-6 ${isUser ? 'text-white' : 'text-neutral-200'}`}>
-          {message.text}
-        </Text>
-
-        {/* Render Citations if AI */}
-        {!isUser && message.citations && message.citations.length > 0 && (
-          <View className="mt-2">
-            {message.citations.map((cite, index) => (
-              <CitationCard 
-                key={index} 
-                citation={cite} 
-                onPress={() => onCitationPress(cite)} 
-              />
-            ))}
-          </View>
-        )}
-      </View>
-    </View>
-  );
-};
-
-const LoadingIndicator = () => (
-  <View className="flex-row items-center justify-start px-6 mb-4">
-    <View className="bg-neutral-800 rounded-2xl rounded-tl-none p-4 flex-row items-center">
-      <ActivityIndicator size="small" color="#FF6B00" />
-      <Text className="text-neutral-400 ml-3 text-sm font-medium">
-        Scanning NZBC...
-      </Text>
-    </View>
-  </View>
-);
-
-// --- Main Screen ---
-
-export default function ChatScreen() {
-  const [inputText, setInputText] = useState('');
+export default function StrydaChat() {
+  const router = useRouter();
+  const params = useLocalSearchParams();
+  const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId, setSessionId] = useState('');
-  const [isListening, setIsListening] = useState(false);
   const flatListRef = useRef<FlatList>(null);
   
-  const router = useRouter();
-  const { initialQuery } = useLocalSearchParams<{ initialQuery?: string }>();
+  // Create a stable session ID
+  const sessionIdRef = useRef(`session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
 
-  // Initialize Session
+  // Auto-Send Logic (from Dashboard)
   useEffect(() => {
-    const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    setSessionId(newSessionId);
-  }, []);
-
-  // Auto-send if initialQuery exists
-  useEffect(() => {
-    if (initialQuery && sessionId && !isLoading && messages.length === 0) {
-      // Small delay for smooth transition
+    if (params.initialQuery) {
+      const query = params.initialQuery as string;
+      // We need to wait for layout/render before sending or just send immediately
+      // Adding a small delay to ensure UI is ready
       setTimeout(() => {
-        handleSend(initialQuery);
+          handleSend(query);
       }, 500);
+      router.setParams({ initialQuery: '' }); // Clear param to prevent double-send
     }
-  }, [initialQuery, sessionId]);
-
-  // Voice Recognition Hook
-  useSpeechRecognitionEvent("onSpeechResults", (event: any) => {
-    if (event.value && event.value.length > 0) {
-      const spokenText = event.value[0];
-      setInputText(spokenText);
-    }
-  });
-
-  const handleMicPress = async () => {
-    if (isListening) {
-      SpeechRecognition.stop();
-      setIsListening(false);
-      return;
-    }
-
-    // Request permissions
-    const perms = await SpeechRecognition.requestPermissionsAsync();
-    if (!perms.granted) {
-      Alert.alert("Permission Denied", "We need microphone access to hear you.");
-      return;
-    }
-
-    try {
-      SpeechRecognition.start();
-      setIsListening(true);
-    } catch (e) {
-      console.error("Speech start failed", e);
-      Alert.alert("Error", "Could not start microphone.");
-      setIsListening(false);
-    }
-  };
+  }, [params.initialQuery]);
 
   const handleSend = async (textOverride?: string) => {
-    const text = textOverride || inputText.trim();
-    if (!text || isLoading) return;
+    const textToSend = textOverride || input;
+    if (!textToSend.trim()) return;
 
-    if (isListening) {
-      SpeechRecognition.stop();
-      setIsListening(false);
-    }
-
-    // 1. Add User Message
-    const userMsg: Message = {
-      id: Date.now().toString(),
-      role: 'user',
-      text: text
-    };
-
+    const userMsg: Message = { id: Date.now().toString(), role: 'user', text: textToSend };
     setMessages(prev => [...prev, userMsg]);
-    setInputText('');
+    setInput('');
     setIsLoading(true);
-    Keyboard.dismiss();
 
     try {
-      // 2. Call API
+      // Call Centralized API
+      // Using the function signature: chatAPI(request: ChatRequest)
       const response = await chatAPI({
-        session_id: sessionId,
-        message: text
+          session_id: sessionIdRef.current,
+          message: textToSend
       });
-
-      // 3. Add AI Message
+      
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        text: response.answer || response.message || "I couldn't process that.", // Handle varying response keys
-        citations: response.citations || []
+        role: 'assistant', // Changed from 'ai' to 'assistant' to match Message type
+        text: response.message || "I couldn't process that response.",
+        citations: response.citations
       };
-
       setMessages(prev => [...prev, aiMsg]);
-
     } catch (error) {
-      console.error('Chat Error:', error);
-      const errorMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        text: "Connection error. Please check your internet and try again."
-      };
+      console.error(error);
+      const errorMsg: Message = { id: Date.now().toString(), role: 'assistant', text: "Sorry mate, having trouble connecting to the site server." };
       setMessages(prev => [...prev, errorMsg]);
     } finally {
       setIsLoading(false);
@@ -236,78 +82,89 @@ export default function ChatScreen() {
   };
 
   const openPdf = (citation: Citation) => {
-    const doc = getPdfUrl(citation.source);
-    
-    if (!doc || !doc.url) {
-        Alert.alert("Document Unavailable", "We couldn't find a PDF for this citation.");
-        return;
+    // Citation has source, not title in our interface, but let's check
+    // In api.ts: interface Citation { source: string; ... }
+    const pdfData = getPdfUrl(citation.source);
+    if (pdfData) {
+      router.push({ pathname: '/pdf-viewer', params: { url: pdfData.url, title: pdfData.title } });
+    } else {
+      Alert.alert("Document Not Synced", "This document isn't in the mobile library yet.");
     }
-
-    const title = `${doc.title || citation.source} ${citation.clause || ''}`;
-    
-    console.log('Opening PDF:', doc.url);
-    router.push({
-      pathname: '/pdf-viewer',
-      params: { url: doc.url, title }
-    });
   };
+
+  // --- RENDER HELPERS ---
+  const renderItem = ({ item }: { item: Message }) => (
+    <View className={`mb-4 w-full flex-row ${item.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+      <View className={`max-w-[85%] p-4 ${item.role === 'user' ? 'bg-orange-600 rounded-2xl rounded-tr-sm' : 'bg-neutral-800 rounded-2xl rounded-tl-sm'}`}>
+        <Text className={`${item.role === 'user' ? 'text-white' : 'text-neutral-200'} text-base leading-6`}>{item.text}</Text>
+        
+        {/* Citation Cards */}
+        {item.citations && item.citations.length > 0 && (
+          <View className="mt-3 pt-3 border-t border-neutral-700">
+            {item.citations.map((cite, index) => (
+              <TouchableOpacity key={index} onPress={() => openPdf(cite)} className="flex-row items-center bg-neutral-900 p-2 rounded border-l-4 border-orange-500 mb-2">
+                <FileText size={20} color="#F97316" />
+                <View className="ml-2 flex-1">
+                  <Text className="text-orange-500 font-bold text-sm">{cite.source} {cite.clause ? `(${cite.clause})` : ''}</Text>
+                  <Text className="text-neutral-500 text-xs">Tap to view document</Text>
+                </View>
+                <ChevronRight size={16} color="#525252" />
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
+      </View>
+    </View>
+  );
 
   return (
     <SafeAreaView className="flex-1 bg-neutral-950" edges={['top']}>
-      {/* Messages List */}
-      <FlatList
-        ref={flatListRef}
-        data={messages} 
-        renderItem={({ item }) => <MessageBubble message={item} onCitationPress={openPdf} />}
-        keyExtractor={item => item.id}
-        contentContainerStyle={{ paddingVertical: 20, paddingBottom: 40 }}
-        onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
-        onLayout={() => flatListRef.current?.scrollToEnd({ animated: true })}
-        ListFooterComponent={isLoading ? <LoadingIndicator /> : null}
-        className="flex-1"
-      />
-
-      {/* The Cockpit (Input Bar) */}
-      <KeyboardAvoidingView 
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
-      >
-        <View className="bg-neutral-900 border-t border-neutral-800 p-4 pb-6 flex-row items-end space-x-3">
-          
-          {/* Text Input */}
-          <View className={`flex-1 border rounded-2xl min-h-[50px] justify-center px-4 py-2 ${isListening ? 'bg-red-900/20 border-red-500' : 'bg-neutral-950 border-neutral-800'}`}>
-            <TextInput
-              className="text-white text-base max-h-32"
-              placeholder={isListening ? "Listening..." : "Ask STRYDA..."}
-              placeholderTextColor={isListening ? "#F87171" : "#525252"}
-              multiline
-              value={inputText}
-              onChangeText={setInputText}
-              editable={!isListening} // Lock input while listening
-            />
+      <View className="flex-1">
+        <FlatList
+          ref={flatListRef}
+          data={messages}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          contentContainerStyle={{ padding: 16, paddingBottom: 100 }}
+          onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+        />
+        {isLoading && (
+          <View className="absolute bottom-24 left-0 right-0 items-center">
+            <View className="bg-neutral-800 px-4 py-2 rounded-full flex-row items-center">
+              <ActivityIndicator size="small" color="#F97316" />
+              <Text className="text-neutral-400 ml-2 text-xs">Scanning NZBC...</Text>
+            </View>
           </View>
+        )}
+      </View>
 
-          {/* Send Button */}
+      {/* INPUT COCKPIT */}
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}>
+        <View className="bg-neutral-900 border-t border-neutral-800 p-4 pb-8 flex-row items-end">
+          <TextInput
+            className="flex-1 bg-neutral-950 text-white rounded-xl px-4 py-3 min-h-[50px] max-h-[120px] text-base border border-neutral-800 mr-2"
+            placeholder="Ask STRYDA..."
+            placeholderTextColor="#525252"
+            multiline
+            value={input}
+            onChangeText={setInput}
+          />
+          
+          {/* SAFE MODE MIC BUTTON (Disabled for Expo Go) */}
           <TouchableOpacity 
-            className={`w-12 h-12 rounded-full items-center justify-center ${inputText.trim() && !isListening ? 'bg-orange-600' : 'bg-neutral-800'}`}
+            onPress={() => Alert.alert("Dev Build Required", "Voice features require a custom Development Build. They are disabled in Expo Go.")}
+            className="w-12 h-12 bg-neutral-800 rounded-full items-center justify-center mr-2"
+          >
+            <Mic size={24} color="#525252" />
+          </TouchableOpacity>
+
+          <TouchableOpacity 
             onPress={() => handleSend()}
-            disabled={!inputText.trim() || isLoading || isListening}
+            disabled={!input.trim()}
+            className={`w-12 h-12 rounded-full items-center justify-center ${input.trim() ? 'bg-orange-500' : 'bg-neutral-800'}`}
           >
-            <Send size={20} color={inputText.trim() && !isListening ? "white" : "#555"} className={inputText.trim() ? "ml-1" : ""} />
+            <Send size={24} color={input.trim() ? '#000' : '#525252'} />
           </TouchableOpacity>
-
-          {/* Mic Button */}
-          <TouchableOpacity 
-            className={`w-12 h-12 rounded-full items-center justify-center ${isListening ? 'bg-red-500' : 'bg-neutral-800'}`}
-            onPress={handleMicPress}
-          >
-            {isListening ? (
-              <MicOff size={22} color="white" />
-            ) : (
-              <Mic size={22} color="#A3A3A3" />
-            )}
-          </TouchableOpacity>
-
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
