@@ -34,7 +34,6 @@
     "expo-media-library": "~18.2.1",
     "expo-router": "~6.0.21",
     "expo-speech": "~14.0.8",
-    "expo-speech-recognition": "^3.0.1",
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
     "expo-symbols": "~1.0.8",
