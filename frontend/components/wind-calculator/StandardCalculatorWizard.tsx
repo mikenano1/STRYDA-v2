@@ -7,8 +7,13 @@ import { Council } from '../../constants/CouncilData';
 
 // Import Steps and Data Interfaces
 import WizardStep1Region, { RegionData } from './steps/WizardStep1Region';
-import WizardStep2Terrain, { TerrainData } from './steps/WizardStep2Terrain'; // NEW
-import WizardStep3Topography, { TopographyData } from './steps/WizardStep3Topography'; // NEW
+import WizardStep2Terrain, { TerrainData } from './steps/WizardStep2Terrain';
+import WizardStep3Topography, { TopographyData } from './steps/WizardStep3Topography';
+import WizardStep4Shelter, { ShelterData } from './steps/WizardStep4Shelter'; // NEW
+import WizardStep5Result from './steps/WizardStep5Result'; // NEW
+
+// Import Calculation Engine
+import { calculateWindZone, WindZoneResult } from '../../src/internal/utils/WindZoneEngine';
 
 // Enable LayoutAnimation for Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -23,15 +28,16 @@ interface Props {
 // Master interface for all collected data
 export interface CalculatorData {
   regionData?: RegionData;
-  terrainData?: TerrainData; // NEW
-  topographyData?: TopographyData; // NEW
-  // Next Step: shelterData?: ShelterData;
+  terrainData?: TerrainData;
+  topographyData?: TopographyData;
+  shelterData?: ShelterData;
 }
 
 const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 5; 
   const [calculatorData, setCalculatorData] = useState<CalculatorData>({});
+  const [finalResult, setFinalResult] = useState<WindZoneResult | null>(null);
 
   // Helper to smooth transition between steps
   const advanceStep = () => {
@@ -44,22 +50,58 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
   // Step 1: Region
   const handleStep1Next = (data: RegionData) => {
     setCalculatorData(prev => ({ ...prev, regionData: data }));
-    advanceStep(); // Go to Step 2
+    advanceStep();
   };
 
-  // Step 2: Terrain (NEW)
+  // Step 2: Terrain
   const handleStep2Next = (data: TerrainData) => {
     setCalculatorData(prev => ({ ...prev, terrainData: data }));
-    advanceStep(); // Go to Step 3
+    advanceStep();
   };
 
-  // Step 3: Topography (NEW)
+  // Step 3: Topography
   const handleStep3Next = (data: TopographyData) => {
     setCalculatorData(prev => ({ ...prev, topographyData: data }));
-    // advanceStep(); // Go to Step 4 (Shelter - Coming next)
-    Alert.alert("Progress Saved", "Step 3 data collected. Step 4 (Shelter) is coming next.");
+    
+    // Check if Topography forces SED (Steep)
+    if (data.type === 'steep') {
+        // Short-circuit to result if steep (it's SED anyway)
+        // But we still need shelter data for completeness? 
+        // Actually, let's just proceed to shelter to complete the picture, 
+        // or jump to result if we want fail-fast. 
+        // Let's proceed to shelter for consistency.
+        advanceStep();
+    } else {
+        advanceStep();
+    }
   };
 
+  // Step 4: Shelter (Final Input)
+  const handleStep4Next = (data: ShelterData) => {
+    const finalData = { ...calculatorData, shelterData: data };
+    setCalculatorData(finalData);
+    
+    // PERFORM CALCULATION
+    if (finalData.regionData && finalData.terrainData && finalData.topographyData) {
+        const result = calculateWindZone({
+            region: finalData.regionData,
+            terrain: finalData.terrainData,
+            topography: finalData.topographyData,
+            shelter: data
+        });
+        setFinalResult(result);
+        advanceStep(); // Go to Step 5 (Result)
+    } else {
+        Alert.alert("Error", "Missing data from previous steps.");
+    }
+  };
+
+  // Step 5: Result (Restart/Exit)
+  const handleRestart = () => {
+    setCalculatorData({});
+    setFinalResult(null);
+    setCurrentStep(1);
+  };
 
   // General Back Handler
   const handleBack = () => {
@@ -92,7 +134,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
             onBack={handleBack}
             initialData={calculatorData.terrainData}
           />
-        )
+        );
       case 3:
         return (
           <WizardStep3Topography
@@ -100,8 +142,23 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
             onBack={handleBack}
             initialData={calculatorData.topographyData}
           />
-        )
-      // case 4: return <WizardStep4Shelter ... />
+        );
+      case 4:
+        return (
+          <WizardStep4Shelter
+            onNext={handleStep4Next}
+            onBack={handleBack}
+            initialData={calculatorData.shelterData}
+          />
+        );
+      case 5:
+        return (
+          <WizardStep5Result
+            result={finalResult || 'SED Required'}
+            onRestart={handleRestart}
+            onExit={onExit}
+          />
+        );
       default:
         return <View style={styles.centerMsg}><Text style={styles.errorText}>Step implementation pending.</Text></View>;
     }
