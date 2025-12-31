@@ -1,7 +1,7 @@
 // app/frontend/components/wind-calculator/StandardCalculatorWizard.tsx
 
-import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Alert, LayoutAnimation, Platform, UIManager, Animated } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Alert, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Council } from '../../constants/CouncilData';
 
@@ -15,17 +15,11 @@ import WizardStep5Result from './steps/WizardStep5Result';
 // --- IMPORT: LOGIC ENGINE ---
 import { calculateWindZone, WindZoneResult } from '../../src/internal/utils/WindZoneEngine';
 
-// Enable LayoutAnimation for Android smooth transitions
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
-
 interface Props {
   selectedCouncil: Council;
-  onExit: () => void; // Function to exit back to main council selection
+  onExit: () => void;
 }
 
-// Master interface holding all collected data
 export interface CalculatorData {
   regionData?: RegionData;
   terrainData?: TerrainData;
@@ -34,8 +28,7 @@ export interface CalculatorData {
 }
 
 const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) => {
-  // --- STATE MANAGEMENT ---
-  const [currentStep, setCurrentStep] = useState(1); // Steps 1-4 are inputs, 5 is result
+  const [currentStep, setCurrentStep] = useState(1);
   const totalInputSteps = 4; 
   const [calculatorData, setCalculatorData] = useState<CalculatorData>({});
   const [finalResult, setFinalResult] = useState<WindZoneResult | null>(null);
@@ -45,23 +38,29 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   // --- HELPER FUNCTIONS ---
 
-  // Smooth transition effect between steps
+  // Simplified transition to prevent "Blank Screen" bugs
   const transitionToStep = (nextStep: number) => {
-    Animated.sequence([
-      Animated.timing(fadeAnim, { toValue: 0, duration: 150, useNativeDriver: true }),
-      Animated.timing(fadeAnim, { toValue: 1, duration: 250, useNativeDriver: true })
-    ]).start();
-
-    setTimeout(() => {
-       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-       setCurrentStep(nextStep);
-    }, 150);
+    // 1. Fade Out
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 100,
+      useNativeDriver: true,
+    }).start(() => {
+      // 2. Change Step (while invisible)
+      setCurrentStep(nextStep);
+      
+      // 3. Fade In
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+    });
   };
 
   // The Final Calculation Trigger
   const runCalculation = (completeData: CalculatorData) => {
      if (completeData.regionData && completeData.terrainData && completeData.topographyData && completeData.shelterData) {
-       // --- THE BRAIN IS CALLED HERE ---
        const result = calculateWindZone({
          region: completeData.regionData,
          terrain: completeData.terrainData,
@@ -74,7 +73,6 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
        Alert.alert("Error", "Missing data needed for calculation.");
      }
   };
-
 
   // --- STEP "NEXT" HANDLERS ---
 
@@ -90,17 +88,15 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   const handleStep3Next = (data: TopographyData) => {
     setCalculatorData(prev => ({ ...prev, topographyData: data }));
+    // If steep, it's SED, but we finish the flow for completeness
     transitionToStep(4);
   };
 
-  // Final Input Step: Triggers calculation
   const handleStep4Next = (data: ShelterData) => {
     const completeData = { ...calculatorData, shelterData: data };
     setCalculatorData(completeData);
-    // Run the engine!
     runCalculation(completeData);
   };
-
 
   // --- BACK / NAVIGATION HANDLERS ---
 
@@ -108,10 +104,9 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
     if (currentStep > 1 && currentStep <= totalInputSteps) {
       transitionToStep(currentStep - 1);
     } else if (currentStep === 5) {
-       // If on result screen, go back to edit last step
+       // From result, go back to last input
        transitionToStep(4);
     } else {
-      // On Step 1, confirm exit
       Alert.alert("Exit Calculator?", "Your current progress will be lost.", [
         { text: "Cancel", style: "cancel" },
         { text: "Exit", style: "destructive", onPress: onExit }
@@ -120,6 +115,8 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
   };
 
   const handleStartOver = () => {
+     // Reset logic: Clear result, but maybe keep region? 
+     // For now, full reset is safer.
      setCalculatorData({});
      setFinalResult(null);
      transitionToStep(1);
@@ -135,10 +132,10 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
       case 3: return <WizardStep3Topography onNext={handleStep3Next} onBack={handleBack} initialData={calculatorData.topographyData} />;
       case 4: return <WizardStep4Shelter onNext={handleStep4Next} onBack={handleBack} initialData={calculatorData.shelterData} />;
       case 5: 
-         // Pass data prop explicitly to fix type error
          return (
            <WizardStep5Result 
-             data={calculatorData} // Pass the full data object
+             data={calculatorData} 
+             result={finalResult || 'SED Required'}
              onRestart={handleStartOver} 
              onExit={onExit} 
              onEdit={handleBack} 
@@ -150,7 +147,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      {/* Header - Only show progress bar on input steps */}
+      {/* Header */}
       {!isResultScreen && (
         <View style={styles.wizardHeader}>
           <View>
@@ -159,7 +156,6 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
           </View>
           <View style={styles.progressContainer}>
             <View style={styles.progressBarBg}>
-              {/* Calculate progress based on current input step */}
               <View style={[styles.progressBarFill, { width: `${((currentStep-1) / totalInputSteps) * 100}%` }]} />
             </View>
             <Text style={styles.stepIndicator}>Step {currentStep}/{totalInputSteps}</Text>
@@ -170,8 +166,12 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
         </View>
       )}
       
-      {/* Animated Content Container */}
-      <Animated.View style={[styles.contentContainer, { opacity: fadeAnim }]}>
+      {/* Animated Content */}
+      <Animated.View 
+        style={[styles.contentContainer, { opacity: fadeAnim }]}
+        // Force re-render on step change to ensure clean state
+        key={`step-${currentStep}`}
+      >
         {renderStepContent()}
       </Animated.View>
     </SafeAreaView>
