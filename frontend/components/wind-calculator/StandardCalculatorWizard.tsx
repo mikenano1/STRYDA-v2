@@ -36,17 +36,15 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   // --- HELPER FUNCTIONS ---
 
-  // Removed Animation Logic entirely to prevent blank screens
   const advanceStep = (nextStep: number) => {
     setCurrentStep(nextStep);
   };
 
-  // The Final Calculation Trigger
   const runCalculation = (completeData: CalculatorData) => {
      setIsCalculating(true);
      
-     // 500ms delay to show "Calculating" state
-     setTimeout(() => {
+     // Use requestAnimationFrame to ensure smooth UI transition without blocking
+     requestAnimationFrame(() => {
          try {
            if (completeData.regionData && completeData.terrainData && completeData.topographyData && completeData.shelterData) {
              const result = calculateWindZone({
@@ -56,9 +54,9 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
                shelter: completeData.shelterData
              });
              
-             console.log("Calculation Success:", result);
+             console.log("Calculation Result:", result);
              
-             // Update all state synchronously
+             // Update state in a single batch if possible (React 18+ does this auto)
              setFinalResult(result);
              setIsCalculating(false);
              setCurrentStep(5);
@@ -72,10 +70,10 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
            console.error("Calculation Error:", error);
            Alert.alert("Calculation Error", "Something went wrong.");
          }
-     }, 500);
+     });
   };
 
-  // --- STEP "NEXT" HANDLERS ---
+  // --- STEP HANDLERS ---
 
   const handleStep1Next = (data: RegionData) => {
     setCalculatorData(prev => ({ ...prev, regionData: data }));
@@ -98,13 +96,12 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
     runCalculation(completeData);
   };
 
-  // --- BACK / NAVIGATION HANDLERS ---
+  // --- NAVIGATION ---
 
   const handleBack = () => {
     if (currentStep > 1 && currentStep <= totalInputSteps) {
       setCurrentStep(prev => prev - 1);
     } else if (currentStep === 5) {
-       // Reset result when going back to edit
        setFinalResult(null);
        setCurrentStep(4);
     } else {
@@ -121,24 +118,16 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
      setCurrentStep(1);
   };
 
-  // --- RENDER CONTENT ---
-  
-  if (isCalculating) {
-      return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.centerMsg}>
-                <ActivityIndicator size="large" color="#F97316" />
-                <Text style={styles.loadingText}>Calculating Wind Zone...</Text>
-            </View>
-        </SafeAreaView>
-      );
-  }
+  // --- RENDER ---
 
-  // Direct conditional rendering (No Animations)
+  // Determine if we show the wizard header (not on result screen)
+  const showHeader = !isCalculating && currentStep !== 5;
+
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      {/* Header (Hidden on Result Screen) */}
-      {currentStep !== 5 && (
+      
+      {/* Fixed Header */}
+      {showHeader && (
         <View style={styles.wizardHeader}>
           <View>
              <Text style={styles.councilLabel}>{selectedCouncil.name}</Text>
@@ -156,20 +145,30 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
         </View>
       )}
       
-      {/* Content Area - Simple Swapping */}
+      {/* Stable Content Container */}
       <View style={styles.contentContainer}>
-        {currentStep === 1 && <WizardStep1Region onNext={handleStep1Next} onBack={handleBack} initialData={calculatorData.regionData} />}
-        {currentStep === 2 && <WizardStep2Terrain onNext={handleStep2Next} onBack={handleBack} initialData={calculatorData.terrainData} />}
-        {currentStep === 3 && <WizardStep3Topography onNext={handleStep3Next} onBack={handleBack} initialData={calculatorData.topographyData} />}
-        {currentStep === 4 && <WizardStep4Shelter onNext={handleStep4Next} onBack={handleBack} initialData={calculatorData.shelterData} />}
-        {currentStep === 5 && (
-           <WizardStep5Result 
-             data={calculatorData} 
-             result={finalResult || 'SED Required'}
-             onRestart={handleStartOver} 
-             onExit={onExit} 
-             onEdit={handleBack} 
-           />
+        {isCalculating ? (
+            <View style={styles.centerMsg}>
+                <ActivityIndicator size="large" color="#F97316" />
+                <Text style={styles.loadingText}>Calculating Wind Zone...</Text>
+            </View>
+        ) : (
+            <>
+                {currentStep === 1 && <WizardStep1Region onNext={handleStep1Next} onBack={handleBack} initialData={calculatorData.regionData} />}
+                {currentStep === 2 && <WizardStep2Terrain onNext={handleStep2Next} onBack={handleBack} initialData={calculatorData.terrainData} />}
+                {currentStep === 3 && <WizardStep3Topography onNext={handleStep3Next} onBack={handleBack} initialData={calculatorData.topographyData} />}
+                {currentStep === 4 && <WizardStep4Shelter onNext={handleStep4Next} onBack={handleBack} initialData={calculatorData.shelterData} />}
+                {currentStep === 5 && (
+                   <WizardStep5Result 
+                     key="result-screen" // Force fresh mount
+                     data={calculatorData} 
+                     result={finalResult || 'SED Required'}
+                     onRestart={handleStartOver} 
+                     onExit={onExit} 
+                     onEdit={handleBack} 
+                   />
+                )}
+            </>
         )}
       </View>
     </SafeAreaView>
