@@ -1,7 +1,7 @@
 // app/frontend/components/wind-calculator/StandardCalculatorWizard.tsx
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Alert, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Council } from '../../constants/CouncilData';
 
@@ -15,11 +15,17 @@ import WizardStep5Result from './steps/WizardStep5Result';
 // --- IMPORT: LOGIC ENGINE ---
 import { calculateWindZone, WindZoneResult } from '../../src/internal/utils/WindZoneEngine';
 
-interface Props {
-  selectedCouncil: Council;
-  onExit: () => void;
+// Enable LayoutAnimation for Android smooth transitions
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
+interface Props {
+  selectedCouncil: Council;
+  onExit: () => void; // Function to exit back to main council selection
+}
+
+// Master interface holding all collected data
 export interface CalculatorData {
   regionData?: RegionData;
   terrainData?: TerrainData;
@@ -28,86 +34,75 @@ export interface CalculatorData {
 }
 
 const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  // --- STATE MANAGEMENT ---
+  const [currentStep, setCurrentStep] = useState(1); // Steps 1-4 are inputs, 5 is result
   const totalInputSteps = 4; 
   const [calculatorData, setCalculatorData] = useState<CalculatorData>({});
   const [finalResult, setFinalResult] = useState<WindZoneResult | null>(null);
-  const [isCalculating, setIsCalculating] = useState(false);
-
+  
   // --- HELPER FUNCTIONS ---
 
-  const advanceStep = (nextStep: number) => {
-    setCurrentStep(nextStep);
+  // SIMPLIFIED TRANSITION: Removed the complex Animated.sequence and setTimeout.
+  // Just uses robust LayoutAnimation now.
+  const transitionToStep = (nextStep: number) => {
+       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+       setCurrentStep(nextStep);
   };
 
+  // The Final Calculation Trigger
   const runCalculation = (completeData: CalculatorData) => {
-     setIsCalculating(true);
-     
-     // 1. Force a small delay to allow the loading spinner to render
-     setTimeout(() => {
-         try {
-           if (completeData.regionData && completeData.terrainData && completeData.topographyData && completeData.shelterData) {
-             const result = calculateWindZone({
-               region: completeData.regionData,
-               terrain: completeData.terrainData,
-               topography: completeData.topographyData,
-               shelter: completeData.shelterData
-             });
-             
-             console.log("Calculation Result:", result);
-             setFinalResult(result);
-
-             // 2. Another small delay before switching to the result screen
-             // This helps React Native's layout engine catch up
-             setTimeout(() => {
-                 setIsCalculating(false);
-                 setCurrentStep(5);
-             }, 100);
-             
-           } else {
-             setIsCalculating(false);
-             Alert.alert("Error", "Missing data needed for calculation.");
-           }
-         } catch (error) {
-           setIsCalculating(false);
-           console.error("Calculation Error:", error);
-           Alert.alert("Calculation Error", "Something went wrong.");
-         }
-     }, 100);
+     if (completeData.regionData && completeData.terrainData && completeData.topographyData && completeData.shelterData) {
+       // --- THE BRAIN IS CALLED HERE ---
+       const result = calculateWindZone({
+         region: completeData.regionData,
+         terrain: completeData.terrainData,
+         topography: completeData.topographyData,
+         shelter: completeData.shelterData
+       });
+       setFinalResult(result);
+       transitionToStep(5); // Move to result screen
+     } else {
+       Alert.alert("Error", "Missing data needed for calculation.");
+     }
   };
 
-  // --- STEP HANDLERS ---
+
+  // --- STEP "NEXT" HANDLERS ---
 
   const handleStep1Next = (data: RegionData) => {
     setCalculatorData(prev => ({ ...prev, regionData: data }));
-    advanceStep(2);
+    transitionToStep(2);
   };
 
   const handleStep2Next = (data: TerrainData) => {
     setCalculatorData(prev => ({ ...prev, terrainData: data }));
-    advanceStep(3);
+    transitionToStep(3);
   };
 
   const handleStep3Next = (data: TopographyData) => {
     setCalculatorData(prev => ({ ...prev, topographyData: data }));
-    advanceStep(4);
+    transitionToStep(4);
   };
 
+  // Final Input Step: Triggers calculation
   const handleStep4Next = (data: ShelterData) => {
     const completeData = { ...calculatorData, shelterData: data };
     setCalculatorData(completeData);
+    // Run the engine!
     runCalculation(completeData);
   };
 
-  // --- NAVIGATION ---
+
+  // --- BACK / NAVIGATION HANDLERS ---
 
   const handleBack = () => {
     if (currentStep > 1 && currentStep <= totalInputSteps) {
-      setCurrentStep(prev => prev - 1);
+      transitionToStep(currentStep - 1);
     } else if (currentStep === 5) {
-       setFinalResult(null);
-       setCurrentStep(4);
+       // If on result screen, go back to edit last step
+       transitionToStep(4);
     } else {
+      // On Step 1, confirm exit
       Alert.alert("Exit Calculator?", "Your current progress will be lost.", [
         { text: "Cancel", style: "cancel" },
         { text: "Exit", style: "destructive", onPress: onExit }
@@ -118,74 +113,65 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
   const handleStartOver = () => {
      setCalculatorData({});
      setFinalResult(null);
-     setCurrentStep(1);
+     transitionToStep(1);
   };
 
-  // --- RENDER CONTENT ---
-  
-  if (isCalculating) {
-      return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.centerMsg}>
-                <ActivityIndicator size="large" color="#F97316" />
-                <Text style={styles.loadingText}>Calculating Wind Zone...</Text>
-            </View>
-        </SafeAreaView>
-      );
-  }
+  // --- MAIN RENDER ---
+  const isResultScreen = currentStep === 5;
 
-  // Result Screen (Step 5)
-  if (currentStep === 5) {
-      return (
-        <View style={styles.fullScreenContainer}>
-           <SafeAreaView style={{ flex: 1 }}>
-             <WizardStep5Result 
-               data={calculatorData} 
-               result={finalResult || 'SED Required'}
-               onRestart={handleStartOver} 
-               onExit={onExit} 
-               onEdit={handleBack} 
-             />
-           </SafeAreaView>
-        </View>
-      );
-  }
+  const renderStepContent = () => {
+    switch (currentStep) {
+      case 1: return <WizardStep1Region onNext={handleStep1Next} onBack={handleBack} initialData={calculatorData.regionData} />;
+      case 2: return <WizardStep2Terrain onNext={handleStep2Next} onBack={handleBack} initialData={calculatorData.terrainData} />;
+      case 3: return <WizardStep3Topography onNext={handleStep3Next} onBack={handleBack} initialData={calculatorData.topographyData} />;
+      case 4: return <WizardStep4Shelter onNext={handleStep4Next} onBack={handleBack} initialData={calculatorData.shelterData} />;
+      case 5: 
+         // Pass result to the result component
+         // Fix type error: pass result prop if finalResult exists, otherwise fallback
+         return (
+           <WizardStep5Result 
+             data={calculatorData} // Pass full data
+             result={finalResult || 'SED Required'} 
+             onRestart={handleStartOver} 
+             onExit={onExit} 
+             onEdit={handleBack} 
+           />
+         );
+      default: return <Text style={{color:'red'}}>Step Error</Text>;
+    }
+  };
 
-  // Input Steps (1-4)
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      
-      {/* Header */}
-      <View style={styles.wizardHeader}>
-        <View>
-            <Text style={styles.councilLabel}>{selectedCouncil.name}</Text>
-            <Text style={styles.headerSubtext}>NZS 3604 Calculation</Text>
-        </View>
-        <View style={styles.progressContainer}>
+      {/* Header - Only show progress bar on input steps */}
+      {!isResultScreen && (
+        <View style={styles.wizardHeader}>
+          <View>
+             <Text style={styles.councilLabel}>{selectedCouncil.name}</Text>
+             <Text style={styles.headerSubtext}>NZS 3604 Calculation</Text>
+          </View>
+          <View style={styles.progressContainer}>
             <View style={styles.progressBarBg}>
-            <View style={[styles.progressBarFill, { width: `${((currentStep-1) / totalInputSteps) * 100}%` }]} />
+              {/* Calculate progress based on current input step */}
+              <View style={[styles.progressBarFill, { width: `${((currentStep-1) / totalInputSteps) * 100}%` }]} />
             </View>
             <Text style={styles.stepIndicator}>Step {currentStep}/{totalInputSteps}</Text>
             <TouchableOpacity onPress={handleBack} style={styles.closeBtn} activeOpacity={0.7}>
-                <Ionicons name="close" size={24} color="#A0A0A0" />
+               <Ionicons name="close" size={24} color="#A0A0A0" />
             </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      )}
       
-      {/* Content */}
+      {/* Content Container - Removed Animated.View wrapper */}
       <View style={styles.contentContainer}>
-        {currentStep === 1 && <WizardStep1Region onNext={handleStep1Next} onBack={handleBack} initialData={calculatorData.regionData} />}
-        {currentStep === 2 && <WizardStep2Terrain onNext={handleStep2Next} onBack={handleBack} initialData={calculatorData.terrainData} />}
-        {currentStep === 3 && <WizardStep3Topography onNext={handleStep3Next} onBack={handleBack} initialData={calculatorData.topographyData} />}
-        {currentStep === 4 && <WizardStep4Shelter onNext={handleStep4Next} onBack={handleBack} initialData={calculatorData.shelterData} />}
+        {renderStepContent()}
       </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  // Use explicit 100% dimensions to force layout
-  fullScreenContainer: { width: '100%', height: '100%', backgroundColor: '#0A0A0A' },
   container: { flex: 1, backgroundColor: '#0A0A0A' },
   wizardHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 15, paddingHorizontal: 20, borderBottomWidth: 1, borderBottomColor: '#1F1F1F', backgroundColor: '#0A0A0A' },
   councilLabel: { color: 'white', fontWeight: '700', fontSize: 16 },
@@ -195,9 +181,7 @@ const styles = StyleSheet.create({
   progressBarFill: { height: '100%', backgroundColor: '#F97316' },
   stepIndicator: { color: '#A0A0A0', fontWeight: '600', marginRight: 15, fontSize: 14 },
   closeBtn: { padding: 4 },
-  contentContainer: { flex: 1, width: '100%' }, // Explicit width
-  centerMsg: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  loadingText: { color: '#F97316', fontSize: 18, fontWeight: 'bold', marginTop: 20 }
+  contentContainer: { flex: 1 },
 });
 
 export default StandardCalculatorWizard;
