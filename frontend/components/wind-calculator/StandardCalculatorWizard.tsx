@@ -38,12 +38,18 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   // --- HELPER FUNCTIONS ---
 
-  // Simplified transition to prevent "Blank Screen" bugs
-  const transitionToStep = (nextStep: number) => {
+  // Simplified transition
+  // We disable animation for the final result step to prevent blank screen issues
+  const transitionToStep = (nextStep: number, animate: boolean = true) => {
+    if (!animate) {
+      setCurrentStep(nextStep);
+      return;
+    }
+
     // 1. Fade Out
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 150,
+      duration: 100,
       useNativeDriver: true,
     }).start(() => {
       // 2. Change Step (while invisible)
@@ -52,7 +58,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
       // 3. Fade In
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 250,
+        duration: 200,
         useNativeDriver: true,
       }).start();
     });
@@ -70,7 +76,9 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
          });
          console.log("Calculated Result:", result);
          setFinalResult(result);
-         transitionToStep(5); // Move to result screen
+         
+         // DIRECT TRANSITION: No fade animation for the result to ensure it renders immediately
+         transitionToStep(5, false); 
        } else {
          Alert.alert("Error", "Missing data needed for calculation.");
        }
@@ -94,7 +102,6 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   const handleStep3Next = (data: TopographyData) => {
     setCalculatorData(prev => ({ ...prev, topographyData: data }));
-    // If steep, it's SED, but we finish the flow for completeness
     transitionToStep(4);
   };
 
@@ -121,8 +128,6 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
   };
 
   const handleStartOver = () => {
-     // Reset logic: Clear result, but maybe keep region? 
-     // For now, full reset is safer.
      setCalculatorData({});
      setFinalResult(null);
      transitionToStep(1);
@@ -175,7 +180,6 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
       {/* Animated Content */}
       <Animated.View 
         style={[styles.contentContainer, { opacity: fadeAnim }]}
-        // Force re-render on step change to ensure clean state
         key={`step-${currentStep}`}
       >
         {renderStepContent()}
