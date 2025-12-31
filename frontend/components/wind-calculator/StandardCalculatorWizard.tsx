@@ -43,7 +43,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
     // 1. Fade Out
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 100,
+      duration: 150,
       useNativeDriver: true,
     }).start(() => {
       // 2. Change Step (while invisible)
@@ -52,7 +52,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
       // 3. Fade In
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 200,
+        duration: 250,
         useNativeDriver: true,
       }).start();
     });
@@ -60,17 +60,23 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   // The Final Calculation Trigger
   const runCalculation = (completeData: CalculatorData) => {
-     if (completeData.regionData && completeData.terrainData && completeData.topographyData && completeData.shelterData) {
-       const result = calculateWindZone({
-         region: completeData.regionData,
-         terrain: completeData.terrainData,
-         topography: completeData.topographyData,
-         shelter: completeData.shelterData
-       });
-       setFinalResult(result);
-       transitionToStep(5); // Move to result screen
-     } else {
-       Alert.alert("Error", "Missing data needed for calculation.");
+     try {
+       if (completeData.regionData && completeData.terrainData && completeData.topographyData && completeData.shelterData) {
+         const result = calculateWindZone({
+           region: completeData.regionData,
+           terrain: completeData.terrainData,
+           topography: completeData.topographyData,
+           shelter: completeData.shelterData
+         });
+         console.log("Calculated Result:", result);
+         setFinalResult(result);
+         transitionToStep(5); // Move to result screen
+       } else {
+         Alert.alert("Error", "Missing data needed for calculation.");
+       }
+     } catch (error) {
+       console.error("Calculation Error:", error);
+       Alert.alert("Calculation Error", "Something went wrong calculating the wind zone.");
      }
   };
 
