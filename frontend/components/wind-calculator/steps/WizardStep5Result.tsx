@@ -1,41 +1,21 @@
 // app/frontend/components/wind-calculator/steps/WizardStep5Result.tsx
 
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { CalculatorData } from '../StandardCalculatorWizard';
-import { calculateWindZone, WindZoneResult } from '../../../src/internal/utils/WindZoneEngine';
+import { WindZoneResult } from '../../../src/internal/utils/WindZoneEngine';
 
 interface Props {
-  data: CalculatorData; // Full data collected from previous steps
-  onExit: () => void;   // Exit wizard (Done)
-  onRestart: () => void; // Restart calculation
+  data: CalculatorData; // Full data for summary
+  result: WindZoneResult; // The calculated result passed from parent
+  onExit: () => void;
+  onRestart: () => void;
+  onEdit: () => void;
 }
 
-const WizardStep5Result: React.FC<Props> = ({ data, onExit, onRestart }) => {
-  const [calculating, setCalculating] = useState(true);
-  const [result, setResult] = useState<WindZoneResult | null>(null);
-
-  useEffect(() => {
-    // Run calculation engine
-    // Add small delay for UX "thinking" effect
-    setTimeout(() => {
-      if (data.regionData && data.terrainData && data.topographyData && data.shelterData) {
-         const finalZone = calculateWindZone({
-           region: data.regionData,
-           terrain: data.terrainData,
-           topography: data.topographyData,
-           shelter: data.shelterData
-         });
-         setResult(finalZone);
-      } else {
-         setResult('SED Required'); // Fallback if data missing
-      }
-      setCalculating(false);
-    }, 800);
-  }, []);
-
-
+const WizardStep5Result: React.FC<Props> = ({ data, result, onExit, onRestart, onEdit }) => {
+  
   const getResultStyle = (zone: WindZoneResult) => {
     switch (zone) {
       case 'Low': return { color: '#22c55e', icon: 'shield-check', bg: 'rgba(34, 197, 94, 0.1)' };
@@ -47,17 +27,8 @@ const WizardStep5Result: React.FC<Props> = ({ data, onExit, onRestart }) => {
     }
   };
 
-  if (calculating) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#F97316" />
-        <Text style={styles.loadingText}>Calculating Wind Zone...</Text>
-      </View>
-    );
-  }
-
-  const isSED = result === 'SED Required';
   const styleMeta = getResultStyle(result || 'SED Required');
+  const isSED = result === 'SED Required';
 
   return (
     <View style={styles.container}>
@@ -68,7 +39,7 @@ const WizardStep5Result: React.FC<Props> = ({ data, onExit, onRestart }) => {
         <View style={[styles.resultCard, { backgroundColor: styleMeta.bg, borderColor: styleMeta.color }]}>
            <MaterialCommunityIcons name={styleMeta.icon as any} size={60} color={styleMeta.color} style={{marginBottom: 15}} />
            <Text style={styles.resultLabel}>Calculated Wind Zone:</Text>
-           <Text style={[styles.resultValue, { color: styleMeta.color }]}>{result?.toUpperCase()}</Text>
+           <Text style={[styles.resultValue, { color: styleMeta.color }]}>{result?.toUpperCase() || "UNKNOWN"}</Text>
            
            {isSED && (
              <Text style={styles.sedSubtext}>
@@ -78,19 +49,19 @@ const WizardStep5Result: React.FC<Props> = ({ data, onExit, onRestart }) => {
         </View>
 
         {/* SUMMARY OF INPUTS */}
-        {!isSED && (
-          <View style={styles.summaryContainer}>
-            <Text style={styles.summaryHeader}>Based on Site Inputs:</Text>
-            <SummaryRow label="Region" value={`Region ${data.regionData?.region} ${data.regionData?.isLeeZone === 'yes' ? '(Lee Zone)' : ''}`} />
-            <SummaryRow label="Terrain" value={capitalize(data.terrainData?.roughness)} />
-            <SummaryRow label="Topography" value={capitalize(data.topographyData?.type)} />
-            <SummaryRow label="Shelter" value={capitalize(data.shelterData?.shelterType)} />
-          </View>
-        )}
+        <View style={styles.summaryContainer}>
+          <Text style={styles.summaryHeader}>Based on Site Inputs:</Text>
+          <SummaryRow label="Region" value={`Region ${data.regionData?.region || '-'} ${data.regionData?.isLeeZone === 'yes' ? '(Lee Zone)' : ''}`} />
+          <SummaryRow label="Terrain" value={capitalize(data.terrainData?.roughness)} />
+          <SummaryRow label="Topography" value={capitalize(data.topographyData?.type)} />
+          <SummaryRow label="Shelter" value={capitalize(data.shelterData?.shelterType)} />
+        </View>
 
         <View style={styles.disclaimerBox}>
-          <Ionicons name="information-circle" size={20} color="#A0A0A0" style={{marginRight: 8}}/>
-          <Text style={styles.disclaimerText}>This is an indicative calculation based on NZS 3604 Method 2. Always verify with the local building consent authority before commencing work.</Text>
+          <Ionicons name="information-circle" size={20} color="#A0A0A0" style={{marginRight: 8}} />
+          <Text style={styles.disclaimerText}>
+            This is an indicative calculation based on NZS 3604 Method 2. Always verify with the local building consent authority.
+          </Text>
         </View>
 
       </ScrollView>
@@ -123,8 +94,6 @@ const capitalize = (s?: string | null) => s ? s.charAt(0).toUpperCase() + s.slic
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#0A0A0A' },
-  loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#0A0A0A' },
-  loadingText: { color: 'white', marginTop: 20, fontSize: 16 },
   scrollContent: { padding: 20, paddingBottom: 30, alignItems: 'center' },
   headerTitle: { color: 'white', fontSize: 22, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
   resultCard: {
