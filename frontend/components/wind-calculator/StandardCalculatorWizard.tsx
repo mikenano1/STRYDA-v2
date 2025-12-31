@@ -132,16 +132,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
       case 4: return <WizardStep4Shelter onNext={handleStep4Next} onBack={handleBack} initialData={calculatorData.shelterData} />;
       case 5: 
          // Add a key to force a fresh re-render every time
-         return (
-           <WizardStep5Result 
-             key={finalResult} 
-             data={calculatorData} // Pass the data prop here!
-             result={finalResult || 'SED Required'} // Fallback if null
-             onRestart={handleStartOver} 
-             onExit={onExit} 
-             onEdit={handleBack} // Map onEdit to handleBack
-           />
-         );
+         return <WizardStep5Result key={finalResult} result={finalResult || 'SED Required'} onRestart={handleStartOver} onExit={onExit} onEdit={handleBack} data={calculatorData} />;
       default: return <Text style={{color:'red'}}>Step Error</Text>;
     }
   };
