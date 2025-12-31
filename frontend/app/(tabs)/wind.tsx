@@ -1,7 +1,7 @@
 // app/frontend/app/(tabs)/wind.tsx
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -26,14 +26,21 @@ export default function WindZoneTab() {
   };
 
   // Function to launch the external browser with the council's map URL
-  const openOverrideMap = () => {
+  const openOverrideMap = async () => {
     if (selectedCouncil?.mapUrl) {
-      Linking.openURL(selectedCouncil.mapUrl).catch(err => {
+      try {
+        const supported = await Linking.canOpenURL(selectedCouncil.mapUrl);
+        if (supported) {
+          await Linking.openURL(selectedCouncil.mapUrl);
+        } else {
+          Alert.alert("Error", "Cannot open this URL format: " + selectedCouncil.mapUrl);
+        }
+      } catch (err) {
         console.error("Failed to open URL:", err);
-        alert("Could not open the map URL. Please check your internet connection.");
-      });
+        Alert.alert("Error", "Could not launch the map viewer. Please check your internet connection.");
+      }
     } else {
-      alert("Error: No map URL found for this council.");
+      Alert.alert("Configuration Error", "No map URL found for this council.");
     }
   };
 
@@ -60,7 +67,7 @@ export default function WindZoneTab() {
             
             <View style={styles.infoBox}>
                <Text style={styles.infoBoxText}>
-                  This authority has specific wind zone maps that **override** manual NZS 3604 calculations. You must use their official viewer to determine the site's zone.
+                  This authority has specific wind zone maps that **override** manual NZS 3604 calculations in most areas. You must use their official viewer to determine the site's zone.
                </Text>
             </View>
             

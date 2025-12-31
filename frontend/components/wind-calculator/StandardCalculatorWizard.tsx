@@ -24,7 +24,7 @@ export interface CalculatorData {
 const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) => {
   // State to track current step number (Starts at 1)
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 5; // Total anticipated steps
+  const totalSteps = 5; // Total anticipated steps for NZS 3604
 
   // State to hold all data collected from the steps
   const [calculatorData, setCalculatorData] = useState<CalculatorData>({});
@@ -40,7 +40,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
     // Advance to next step
     // For now, since Step 2 isn't built, we show a temporary alert.
     // setCurrentStep(2); 
-    Alert.alert("Progress Saved", "Step 1 data collected. Step 2 (Terrain) is coming next.");
+    Alert.alert("Progress Saved", "Step 1 data collected. Step 2 (Terrain/Roughness) is coming next.");
   };
 
   // Handler for back button within the wizard
@@ -51,7 +51,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
       // If on Step 1, confirm exit back to council selection
       Alert.alert(
         "Exit Calculator?",
-        "Your progress will be lost.",
+        "Your current progress will be lost.",
         [
           { text: "Cancel", style: "cancel" },
           { text: "Exit", style: "destructive", onPress: onExit }
@@ -69,7 +69,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
           <WizardStep1Region 
             onNext={handleStep1Next} 
             onBack={handleBack}
-            initialData={calculatorData.regionData} // Pass back saved data if existing
+            initialData={calculatorData.regionData} // Pass back saved data if returning to this step
           />
         );
       // Future steps will be added here:
@@ -94,7 +94,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
         </View>
         <View style={styles.progressContainer}>
           <Text style={styles.stepIndicator}>Step {currentStep} <Text style={{color:'#555'}}>/ {totalSteps}</Text></Text>
-          <TouchableOpacity onPress={handleBack} style={styles.closeBtn}>
+          <TouchableOpacity onPress={handleBack} style={styles.closeBtn} activeOpacity={0.7}>
              <Ionicons name="close" size={24} color="#A0A0A0" />
           </TouchableOpacity>
         </View>

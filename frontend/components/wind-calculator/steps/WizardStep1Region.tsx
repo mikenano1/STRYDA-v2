@@ -113,7 +113,7 @@ const WizardStep1Region: React.FC<Props> = ({ onNext, onBack, initialData }) => 
           <View style={styles.sedWarningBox}>
             <Ionicons name="alert-triangle" size={20} color="#DC2626" style={{marginRight: 8}}/>
             <Text style={styles.sedWarningText}>
-              <Text style={{fontWeight: 'bold'}}>Warning:</Text> 'Yes' indicates Specific Engineering Design (SED) is likely required. You may proceed, but the final calculation will reflect this.
+              <Text style={{fontWeight: 'bold'}}>Warning:</Text> 'Yes' indicates Specific Engineering Design (SED) is likely required. You may proceed, but the final calculation will reflect this requirement.
             </Text>
           </View>
         )}
@@ -123,7 +123,7 @@ const WizardStep1Region: React.FC<Props> = ({ onNext, onBack, initialData }) => 
       {/* NAVIGATION FOOTER */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
-          <Text style={styles.backButtonText}>Back</Text>
+          <Text style={styles.backButtonText}>Exit</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={[styles.nextButton, !isFormComplete && styles.nextButtonDisabled]} 
