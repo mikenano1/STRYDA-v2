@@ -4,64 +4,86 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
-import Step1CouncilSelect from '../../components/wind-calculator/Step1CouncilSelect';
-import StandardCalculatorWizard from '../../components/wind-calculator/StandardCalculatorWizard'; // Import the new Wizard
-import { Council } from '../../constants/CouncilData';
 import { Ionicons } from '@expo/vector-icons';
 
+// Import components and data
+import Step1CouncilSelect from '../../components/wind-calculator/Step1CouncilSelect';
+import StandardCalculatorWizard from '../../components/wind-calculator/StandardCalculatorWizard'; // The new Wizard
+import { Council } from '../../constants/CouncilData';
+
 export default function WindZoneTab() {
+  // State to manage which council has been selected from Step 1
   const [selectedCouncil, setSelectedCouncil] = useState<Council | null>(null);
 
+  // Handler: User selects a council from the list
   const handleCouncilSelect = (council: Council) => {
     setSelectedCouncil(council);
   };
 
+  // Handler: User wants to go back and change council selection
   const handleReset = () => {
     setSelectedCouncil(null);
   };
 
-  // Function to open external council maps
+  // Function to launch the external browser with the council's map URL
   const openOverrideMap = () => {
     if (selectedCouncil?.mapUrl) {
-      Linking.openURL(selectedCouncil.mapUrl);
+      Linking.openURL(selectedCouncil.mapUrl).catch(err => {
+        console.error("Failed to open URL:", err);
+        alert("Could not open the map URL. Please check your internet connection.");
+      });
+    } else {
+      alert("Error: No map URL found for this council.");
     }
   };
 
-  // RENDER STATE: Council Selected
+  // MAIN RENDER LOGIC based on state
   if (selectedCouncil) {
     const isOverride = selectedCouncil.type === 'override';
 
     if (isOverride) {
-      // --- PATH B: OVERRIDE SCREEN ---
-      // (Keeping this temporary UI for now, will beautify later)
+      // ============================================================
+      // PATH B: OVERRIDE SCREEN (For councils like Wellington)
+      // Displays warning and button to open external map viewer.
+      // ============================================================
       return (
         <SafeAreaView style={styles.container}>
           <Stack.Screen options={{ headerShown: false }} />
-          <View style={styles.resultContainer}>
-            <Ionicons name="alert-circle" size={80} color="#DC2626" style={{marginBottom: 20}}/>
+          <View style={styles.overrideContainer}>
+            <View style={styles.iconHeader}>
+               <Ionicons name="map" size={50} color="#DC2626" />
+               <Ionicons name="alert-circle" size={30} color="#DC2626" style={styles.alertBadge}/>
+            </View>
+            
             <Text style={styles.resultTitle}>Mandatory Map Required</Text>
             <Text style={styles.councilName}>{selectedCouncil.name}</Text>
-            <Text style={styles.nextStepText}>
-              This council has specific wind zone maps that override manual calculations. You must use their viewer.
-            </Text>
             
-            <TouchableOpacity style={[styles.actionButton, styles.overrideButton]} onPress={openOverrideMap}>
-              <Text style={styles.actionButtonText}>Open Council Map Viewer</Text>
-              <Ionicons name="open-outline" size={20} color="white" style={{marginLeft: 8}}/>
+            <View style={styles.infoBox}>
+               <Text style={styles.infoBoxText}>
+                  This authority has specific wind zone maps that **override** manual NZS 3604 calculations. You must use their official viewer to determine the site's zone.
+               </Text>
+            </View>
+            
+            <TouchableOpacity style={[styles.actionButton, styles.overrideButton]} onPress={openOverrideMap} activeOpacity={0.8}>
+              <Text style={styles.actionButtonText}>Open Official Map Viewer</Text>
+              <Ionicons name="open-outline" size={22} color="white" style={{marginLeft: 10}}/>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-              <Text style={styles.resetButtonText}>Back to Selection</Text>
+              <Text style={styles.resetButtonText}>Back to Council Selection</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
       );
     } else {
-      // --- PATH A: STANDARD CALCULATOR WIZARD ---
-      // Inject the new Wizard component here
+      // ============================================================
+      // PATH A: STANDARD CALCULATOR WIZARD (For standard councils)
+      // Injects the multi-step wizard component.
+      // ============================================================
       return (
          <>
            <Stack.Screen options={{ headerShown: false }} />
+           {/* The Wizard handles its own internal navigation and state */}
            <StandardCalculatorWizard 
               selectedCouncil={selectedCouncil} 
               onExit={handleReset} 
@@ -71,7 +93,10 @@ export default function WindZoneTab() {
     }
   }
 
-  // RENDER STATE 1: Show the Selection List (Default)
+  // ============================================================
+  // DEFAULT STATE: STEP 1 COUNCIL SELECTION LIST
+  // Show this when no council is selected yet.
+  // ============================================================
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
@@ -82,27 +107,37 @@ export default function WindZoneTab() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#0A0A0A' },
-  resultContainer: { 
+  // Styles for Override Screen
+  overrideContainer: { 
     flex: 1, 
     justifyContent: 'center', 
     alignItems: 'center', 
-    padding: 30 
+    padding: 30,
+    paddingBottom: 50
   },
-  resultTitle: { color: '#DC2626', fontSize: 22, fontWeight:'bold', marginBottom: 10 },
-  councilName: { color: 'white', fontSize: 20, marginBottom: 25 },
-  nextStepText: { color: '#A0A0A0', fontSize: 16, textAlign: 'center', marginBottom: 40 },
+  iconHeader: { marginBottom: 25, position: 'relative' },
+  alertBadge: { position: 'absolute', top: -5, right: -5, backgroundColor: '#0A0A0A', borderRadius: 15 },
+  resultTitle: { color: '#DC2626', fontSize: 24, fontWeight:'bold', marginBottom: 10, letterSpacing: 0.5 },
+  councilName: { color: 'white', fontSize: 22, marginBottom: 30, fontWeight: '500' },
+  infoBox: { backgroundColor: 'rgba(220, 38, 38, 0.1)', padding: 20, borderRadius: 12, marginBottom: 30, width: '100%' },
+  infoBoxText: { color: '#A0A0A0', fontSize: 16, textAlign: 'center', lineHeight: 24 },
   actionButton: {
     flexDirection: 'row',
-    paddingVertical: 16,
+    paddingVertical: 18,
     paddingHorizontal: 30,
-    borderRadius: 8,
+    borderRadius: 12,
     marginBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    shadowColor: '#DC2626',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 5,
   },
   overrideButton: { backgroundColor: '#DC2626' },
   actionButtonText: { color: 'white', fontSize: 18, fontWeight: 'bold' },
-  resetButton: { padding: 15 },
-  resetButtonText: { color: '#A0A0A0', fontSize: 16 }
+  resetButton: { padding: 15, marginTop: 10 },
+  resetButtonText: { color: '#777', fontSize: 16, fontWeight: '600' }
 });
