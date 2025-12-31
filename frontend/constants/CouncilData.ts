@@ -9,19 +9,12 @@ export interface Council {
   mapUrl?: string; // Optional URL for override maps
 }
 
-export interface RegionGroup {
-  title: string;
-  data: Council[];
-}
-
-// Keep the existing interface for compatibility but update data structure
 export interface Region {
   id: string;
   name: string;
   councils: Council[];
 }
 
-// New Region-based structure
 export const NZ_REGIONS: Region[] = [
   {
     id: 'northland',
@@ -84,9 +77,3 @@ export const NZ_REGIONS: Region[] = [
     ]
   }
 ];
-
-// Map back to SectionList format for compatibility with existing components
-export const NZ_COUNCILS_GROUPED: RegionGroup[] = NZ_REGIONS.map(region => ({
-  title: region.name,
-  data: region.councils
-}));
