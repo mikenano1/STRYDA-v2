@@ -22,10 +22,9 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 
 interface Props {
   selectedCouncil: Council;
-  onExit: () => void; // Function to exit back to main council selection
+  onExit: () => void;
 }
 
-// Master interface holding all collected data
 export interface CalculatorData {
   regionData?: RegionData;
   terrainData?: TerrainData;
@@ -34,33 +33,41 @@ export interface CalculatorData {
 }
 
 const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) => {
-  // --- STATE MANAGEMENT ---
-  const [currentStep, setCurrentStep] = useState(1); // Steps 1-4 are inputs, 5 is result
+  const [currentStep, setCurrentStep] = useState(1);
   const totalInputSteps = 4; 
   const [calculatorData, setCalculatorData] = useState<CalculatorData>({});
   const [finalResult, setFinalResult] = useState<WindZoneResult | null>(null);
   
   // --- HELPER FUNCTIONS ---
 
-  // SIMPLIFIED TRANSITION: Removed the complex Animated.sequence and setTimeout.
-  // Just uses robust LayoutAnimation now.
+  // Standard smooth transition for inputs
   const transitionToStep = (nextStep: number) => {
        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
        setCurrentStep(nextStep);
   };
 
+  // THE FIX: Immediate transition for the final result to prevent blank screen glitches.
+  const jumpToResultScreen = () => {
+      // NO LayoutAnimation here. Just render it instantly.
+      setCurrentStep(5);
+  };
+
   // The Final Calculation Trigger
   const runCalculation = (completeData: CalculatorData) => {
      if (completeData.regionData && completeData.terrainData && completeData.topographyData && completeData.shelterData) {
-       // --- THE BRAIN IS CALLED HERE ---
        const result = calculateWindZone({
          region: completeData.regionData,
          terrain: completeData.terrainData,
          topography: completeData.topographyData,
          shelter: completeData.shelterData
        });
-       setFinalResult(result);
-       transitionToStep(5); // Move to result screen
+       
+       // Small delay to ensure state updates don't clash, then jump instantly.
+       setTimeout(() => {
+          setFinalResult(result);
+          jumpToResultScreen(); // Use the instant jump, not the animated transition
+       }, 50);
+       
      } else {
        Alert.alert("Error", "Missing data needed for calculation.");
      }
@@ -84,7 +91,6 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
     transitionToStep(4);
   };
 
-  // Final Input Step: Triggers calculation
   const handleStep4Next = (data: ShelterData) => {
     const completeData = { ...calculatorData, shelterData: data };
     setCalculatorData(completeData);
@@ -99,10 +105,9 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
     if (currentStep > 1 && currentStep <= totalInputSteps) {
       transitionToStep(currentStep - 1);
     } else if (currentStep === 5) {
-       // If on result screen, go back to edit last step
-       transitionToStep(4);
+       // If on result screen, go back to edit last step instantly
+       setCurrentStep(4);
     } else {
-      // On Step 1, confirm exit
       Alert.alert("Exit Calculator?", "Your current progress will be lost.", [
         { text: "Cancel", style: "cancel" },
         { text: "Exit", style: "destructive", onPress: onExit }
@@ -126,15 +131,15 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
       case 3: return <WizardStep3Topography onNext={handleStep3Next} onBack={handleBack} initialData={calculatorData.topographyData} />;
       case 4: return <WizardStep4Shelter onNext={handleStep4Next} onBack={handleBack} initialData={calculatorData.shelterData} />;
       case 5: 
-         // Pass result to the result component
-         // Fix type error: pass result prop if finalResult exists, otherwise fallback
+         // Add a key to force a fresh re-render every time
          return (
            <WizardStep5Result 
-             data={calculatorData} // Pass full data
-             result={finalResult || 'SED Required'} 
+             key={finalResult} 
+             data={calculatorData} // Pass the data prop here!
+             result={finalResult || 'SED Required'} // Fallback if null
              onRestart={handleStartOver} 
              onExit={onExit} 
-             onEdit={handleBack} 
+             onEdit={handleBack} // Map onEdit to handleBack
            />
          );
       default: return <Text style={{color:'red'}}>Step Error</Text>;
@@ -143,7 +148,7 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-      {/* Header - Only show progress bar on input steps */}
+      {/* Header - Only show on input steps */}
       {!isResultScreen && (
         <View style={styles.wizardHeader}>
           <View>
@@ -152,7 +157,6 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
           </View>
           <View style={styles.progressContainer}>
             <View style={styles.progressBarBg}>
-              {/* Calculate progress based on current input step */}
               <View style={[styles.progressBarFill, { width: `${((currentStep-1) / totalInputSteps) * 100}%` }]} />
             </View>
             <Text style={styles.stepIndicator}>Step {currentStep}/{totalInputSteps}</Text>
@@ -163,8 +167,8 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
         </View>
       )}
       
-      {/* Content Container - Removed Animated.View wrapper */}
-      <View style={styles.contentContainer}>
+      {/* Content Container with explicit layout props to prevent collapse */}
+      <View style={[styles.contentContainer, isResultScreen && styles.fullScreenContainer]}>
         {renderStepContent()}
       </View>
     </SafeAreaView>
@@ -181,7 +185,9 @@ const styles = StyleSheet.create({
   progressBarFill: { height: '100%', backgroundColor: '#F97316' },
   stepIndicator: { color: '#A0A0A0', fontWeight: '600', marginRight: 15, fontSize: 14 },
   closeBtn: { padding: 4 },
-  contentContainer: { flex: 1 },
+  contentContainer: { flex: 1, width: '100%' },
+  // Ensure result screen takes full space
+  fullScreenContainer: { flex: 1, backgroundColor: '#0A0A0A' }
 });
 
 export default StandardCalculatorWizard;
