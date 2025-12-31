@@ -6,13 +6,9 @@ import { useRouter, Link } from "expo-router";
 export default function DashboardScreen() {
   const router = useRouter();
 
+  // Keep for legacy imperative use if needed, but Links are preferred
   const handleQuickAction = (query: string) => {
-    // Navigate to the tab first
-    router.push('/(tabs)/stryda');
-    // Use a short timeout to ensure the component is mounted before setting params
-    setTimeout(() => {
-      router.setParams({ initialQuery: query });
-    }, 100);
+    router.push({ pathname: "/(tabs)/stryda", params: { initialQuery: query }});
   };
 
   const recentHistory = [
@@ -42,7 +38,7 @@ export default function DashboardScreen() {
         {/* Primary Action Grid */}
         <Text className="text-white text-lg font-bold mb-4">Quick Actions</Text>
         <View className="flex-row flex-wrap justify-between gap-y-4">
-          {/* Card 1: Quick Verify */}
+          {/* Card 1: Quick Verify - Goes to Chat */}
           <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "I need to verify something on site. What details do you need?" }}} asChild>
             <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
               <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
@@ -52,8 +48,8 @@ export default function DashboardScreen() {
             </TouchableOpacity>
           </Link>
 
-          {/* Card 2: Wind Zones */}
-          <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "Help me find the wind zone for a site address." }}} asChild>
+          {/* Card 2: Wind Zones - GOES TO VISUAL CALCULATOR (Not Chat) */}
+          <Link href="/(tabs)/wind" asChild>
             <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
               <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
                 <Map size={24} color="#FF6B00" />
@@ -62,7 +58,7 @@ export default function DashboardScreen() {
             </TouchableOpacity>
           </Link>
 
-          {/* Card 3: Bracing Calc */}
+          {/* Card 3: Bracing Calc - Goes to Chat */}
           <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "I need to calculate bracing. What details do you need?" }}} asChild>
             <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
               <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">
@@ -72,7 +68,7 @@ export default function DashboardScreen() {
             </TouchableOpacity>
           </Link>
 
-          {/* Card 4: Flashings Matrix */}
+          {/* Card 4: Flashings Matrix - Goes to Chat */}
           <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "Show me the E2/AS1 selection tables (Table 7) for flashings" }}} asChild>
             <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
               <View className="bg-neutral-700/50 w-12 h-12 rounded-full items-center justify-center">

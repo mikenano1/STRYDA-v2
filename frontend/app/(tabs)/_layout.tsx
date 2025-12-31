@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import { View, Platform } from "react-native";
-import { LayoutDashboard, FolderOpen, MessageSquare, BookOpen } from "lucide-react-native";
+import { LayoutDashboard, FolderOpen, MessageSquare, BookOpen, Wind } from "lucide-react-native";
 
 export default function TabLayout() {
   return (
@@ -61,6 +61,15 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => <BookOpen color={color} size={size} />,
         }}
       />
+      {/* Wind tab hidden from bar but registered as a route */}
+      <Tabs.Screen 
+        name="wind" 
+        options={{ 
+          href: null,
+          title: "Wind Calc"
+        }} 
+      />
+      {/* Remove 'work' if it's unused, or keep hidden */}
       <Tabs.Screen name="work" options={{ href: null }} />
     </Tabs>
   );
