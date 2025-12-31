@@ -1,67 +1,80 @@
 // app/frontend/components/wind-calculator/StandardCalculatorWizard.tsx
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Alert, LayoutAnimation, Platform, UIManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Council } from '../../constants/CouncilData';
-// Import Step 1 and its data interface
+
+// Import Steps and Data Interfaces
 import WizardStep1Region, { RegionData } from './steps/WizardStep1Region';
+import WizardStep2Terrain, { TerrainData } from './steps/WizardStep2Terrain'; // NEW
+import WizardStep3Topography, { TopographyData } from './steps/WizardStep3Topography'; // NEW
+
+// Enable LayoutAnimation for Android
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 interface Props {
   selectedCouncil: Council;
-  onExit: () => void; // Function to go back to council selection screen
+  onExit: () => void;
 }
 
-// Define the master interface for all collected data across all steps
+// Master interface for all collected data
 export interface CalculatorData {
   regionData?: RegionData;
-  // Future steps will add data here:
-  // terrainData?: TerrainData;
-  // topographyData?: TopographyData;
-  // shelterData?: ShelterData;
+  terrainData?: TerrainData; // NEW
+  topographyData?: TopographyData; // NEW
+  // Next Step: shelterData?: ShelterData;
 }
 
 const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) => {
-  // State to track current step number (Starts at 1)
   const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 5; // Total anticipated steps for NZS 3604
-
-  // State to hold all data collected from the steps
+  const totalSteps = 5; 
   const [calculatorData, setCalculatorData] = useState<CalculatorData>({});
+
+  // Helper to smooth transition between steps
+  const advanceStep = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setCurrentStep(prev => prev + 1);
+  }
 
   // --- STEP HANDLERS ---
 
-  // Handler for Step 1 Completion
+  // Step 1: Region
   const handleStep1Next = (data: RegionData) => {
-    console.log('Step 1 Data Collected:', data);
-    // Save data to master state
     setCalculatorData(prev => ({ ...prev, regionData: data }));
-    
-    // Advance to next step
-    // For now, since Step 2 isn't built, we show a temporary alert.
-    // setCurrentStep(2); 
-    Alert.alert("Progress Saved", "Step 1 data collected. Step 2 (Terrain/Roughness) is coming next.");
+    advanceStep(); // Go to Step 2
   };
 
-  // Handler for back button within the wizard
+  // Step 2: Terrain (NEW)
+  const handleStep2Next = (data: TerrainData) => {
+    setCalculatorData(prev => ({ ...prev, terrainData: data }));
+    advanceStep(); // Go to Step 3
+  };
+
+  // Step 3: Topography (NEW)
+  const handleStep3Next = (data: TopographyData) => {
+    setCalculatorData(prev => ({ ...prev, topographyData: data }));
+    // advanceStep(); // Go to Step 4 (Shelter - Coming next)
+    Alert.alert("Progress Saved", "Step 3 data collected. Step 4 (Shelter) is coming next.");
+  };
+
+
+  // General Back Handler
   const handleBack = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     } else {
-      // If on Step 1, confirm exit back to council selection
-      Alert.alert(
-        "Exit Calculator?",
-        "Your current progress will be lost.",
-        [
-          { text: "Cancel", style: "cancel" },
-          { text: "Exit", style: "destructive", onPress: onExit }
-        ]
-      );
+      Alert.alert("Exit Calculator?", "Your current progress will be lost.", [
+        { text: "Cancel", style: "cancel" },
+        { text: "Exit", style: "destructive", onPress: onExit }
+      ]);
     }
   };
 
-  // --- RENDER CURRENT STEP FUNCTION ---
-  // Switches based on currentStep state
+  // --- RENDER CURRENT STEP ---
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -69,38 +82,51 @@ const StandardCalculatorWizard: React.FC<Props> = ({ selectedCouncil, onExit }) 
           <WizardStep1Region 
             onNext={handleStep1Next} 
             onBack={handleBack}
-            initialData={calculatorData.regionData} // Pass back saved data if returning to this step
+            initialData={calculatorData.regionData}
           />
         );
-      // Future steps will be added here:
-      // case 2: return <WizardStep2Terrain onNext={...} onBack={...} />;
-      // case 3: return <WizardStep3Topography onNext={...} onBack={...} />;
-      default:
+      case 2:
         return (
-          <View style={styles.centerMsg}>
-            <Text style={styles.errorText}>Step {currentStep} not yet implemented.</Text>
-          </View>
-        );
+          <WizardStep2Terrain
+            onNext={handleStep2Next}
+            onBack={handleBack}
+            initialData={calculatorData.terrainData}
+          />
+        )
+      case 3:
+        return (
+          <WizardStep3Topography
+            onNext={handleStep3Next}
+            onBack={handleBack}
+            initialData={calculatorData.topographyData}
+          />
+        )
+      // case 4: return <WizardStep4Shelter ... />
+      default:
+        return <View style={styles.centerMsg}><Text style={styles.errorText}>Step implementation pending.</Text></View>;
     }
   };
 
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
-       {/* Wizard Header with Progress Info */}
+       {/* Wizard Header */}
       <View style={styles.wizardHeader}>
         <View>
            <Text style={styles.councilLabel}>{selectedCouncil.name}</Text>
            <Text style={styles.headerSubtext}>NZS 3604 Calculation</Text>
         </View>
         <View style={styles.progressContainer}>
-          <Text style={styles.stepIndicator}>Step {currentStep} <Text style={{color:'#555'}}>/ {totalSteps}</Text></Text>
+          {/* Simple visual progress bar */}
+          <View style={styles.progressBarBg}>
+            <View style={[styles.progressBarFill, { width: `${(currentStep / totalSteps) * 100}%` }]} />
+          </View>
+          <Text style={styles.stepIndicator}>Step {currentStep}/{totalSteps}</Text>
           <TouchableOpacity onPress={handleBack} style={styles.closeBtn} activeOpacity={0.7}>
              <Ionicons name="close" size={24} color="#A0A0A0" />
           </TouchableOpacity>
         </View>
       </View>
       
-      {/* Main Content Area Rendered by Step Component */}
       <View style={styles.contentContainer}>
         {renderStep()}
       </View>
@@ -114,7 +140,9 @@ const styles = StyleSheet.create({
   councilLabel: { color: 'white', fontWeight: '700', fontSize: 16 },
   headerSubtext: { color: '#A0A0A0', fontSize: 12 },
   progressContainer: { flexDirection: 'row', alignItems: 'center' },
-  stepIndicator: { color: '#F97316', fontWeight: 'bold', marginRight: 15, fontSize: 16 },
+  progressBarBg: { width: 60, height: 6, backgroundColor: '#222', borderRadius: 3, marginRight: 10, overflow: 'hidden' },
+  progressBarFill: { height: '100%', backgroundColor: '#F97316' },
+  stepIndicator: { color: '#A0A0A0', fontWeight: '600', marginRight: 15, fontSize: 14 },
   closeBtn: { padding: 4 },
   contentContainer: { flex: 1 },
   centerMsg: { flex: 1, justifyContent: 'center', alignItems: 'center' },
