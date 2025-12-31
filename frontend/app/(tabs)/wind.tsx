@@ -6,23 +6,35 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
-// Import components and data
-import Step1CouncilSelect from '../../components/wind-calculator/Step1CouncilSelect';
-import StandardCalculatorWizard from '../../components/wind-calculator/StandardCalculatorWizard'; // The new Wizard
-import { Council } from '../../constants/CouncilData';
+// Import new components and data types
+import Step1RegionSelect from '../../components/wind-calculator/Step1RegionSelect';
+import Step1bCouncilSelect from '../../components/wind-calculator/Step1bCouncilSelect';
+import StandardCalculatorWizard from '../../components/wind-calculator/StandardCalculatorWizard';
+import { Council, Region } from '../../constants/CouncilData';
 
 export default function WindZoneTab() {
-  // State to manage which council has been selected from Step 1
+  // State to manage selection flow
+  const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
   const [selectedCouncil, setSelectedCouncil] = useState<Council | null>(null);
 
-  // Handler: User selects a council from the list
+  // --- Handlers ---
+
+  const handleRegionSelect = (region: Region) => {
+    setSelectedRegion(region);
+  };
+
   const handleCouncilSelect = (council: Council) => {
     setSelectedCouncil(council);
   };
 
-  // Handler: User wants to go back and change council selection
+  const handleBackToRegions = () => {
+    setSelectedRegion(null);
+  };
+
+  // Full reset back to region selection
   const handleReset = () => {
     setSelectedCouncil(null);
+    setSelectedRegion(null);
   };
 
   // Function to launch the external browser with the council's map URL
@@ -44,15 +56,13 @@ export default function WindZoneTab() {
     }
   };
 
-  // MAIN RENDER LOGIC based on state
+
+  // --- RENDER LOGIC ---
+
+  // State 3: Council Selected -> Show Wizard or Override Screen
   if (selectedCouncil) {
     const isOverride = selectedCouncil.type === 'override';
-
     if (isOverride) {
-      // ============================================================
-      // PATH B: OVERRIDE SCREEN (For councils like Wellington)
-      // Displays warning and button to open external map viewer.
-      // ============================================================
       return (
         <SafeAreaView style={styles.container}>
           <Stack.Screen options={{ headerShown: false }} />
@@ -77,37 +87,43 @@ export default function WindZoneTab() {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-              <Text style={styles.resetButtonText}>Back to Council Selection</Text>
+              <Text style={styles.resetButtonText}>Back to Region Selection</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
       );
     } else {
-      // ============================================================
-      // PATH A: STANDARD CALCULATOR WIZARD (For standard councils)
-      // Injects the multi-step wizard component.
-      // ============================================================
       return (
          <>
            <Stack.Screen options={{ headerShown: false }} />
-           {/* The Wizard handles its own internal navigation and state */}
-           <StandardCalculatorWizard 
-              selectedCouncil={selectedCouncil} 
-              onExit={handleReset} 
+           <StandardCalculatorWizard
+              selectedCouncil={selectedCouncil}
+              onExit={handleReset}
            />
          </>
       );
     }
   }
 
-  // ============================================================
-  // DEFAULT STATE: STEP 1 COUNCIL SELECTION LIST
-  // Show this when no council is selected yet.
-  // ============================================================
+  // State 2: Region Selected -> Show Council List for that Region
+  if (selectedRegion) {
+    return (
+      <>
+        <Stack.Screen options={{ headerShown: false }} />
+        <Step1bCouncilSelect
+          region={selectedRegion}
+          onCouncilSelect={handleCouncilSelect}
+          onBack={handleBackToRegions}
+        />
+      </>
+    );
+  }
+
+  // State 1 (Default): No Selection -> Show Region List
   return (
     <>
       <Stack.Screen options={{ headerShown: false }} />
-      <Step1CouncilSelect onCouncilSelect={handleCouncilSelect} />
+      <Step1RegionSelect onRegionSelect={handleRegionSelect} />
     </>
   );
 }
