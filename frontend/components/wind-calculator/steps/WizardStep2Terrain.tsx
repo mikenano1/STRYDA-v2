@@ -47,7 +47,6 @@ const WizardStep2Terrain: React.FC<Props> = ({ onNext, onBack, initialData }) =>
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        {/* Step number updated to reflect position in wizard */}
         <Text style={styles.questionTitle}>3. Ground Roughness</Text>
         <Text style={styles.questionSubtitle}>Choose the category that best describes the land for 500m upwind of the site. Obstructions slow the wind down.</Text>
 
