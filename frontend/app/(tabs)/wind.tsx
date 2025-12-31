@@ -1,64 +1,74 @@
 // app/frontend/app/(tabs)/wind.tsx
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import Step1CouncilSelect from '../../components/wind-calculator/Step1CouncilSelect';
+import StandardCalculatorWizard from '../../components/wind-calculator/StandardCalculatorWizard'; // Import the new Wizard
 import { Council } from '../../constants/CouncilData';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function WindZoneTab() {
-  // State to manage which council has been selected
   const [selectedCouncil, setSelectedCouncil] = useState<Council | null>(null);
 
-  // Handler for when a user taps a council in the list
   const handleCouncilSelect = (council: Council) => {
-    console.log('Attempting to select council:', council.name);
-    // In the future, this will trigger navigation to the next step.
-    // For now, it updates state to show the temporary confirmation screen.
     setSelectedCouncil(council);
   };
 
-  // Handler to reset selection and go back to the list
   const handleReset = () => {
     setSelectedCouncil(null);
   };
 
-  // RENDER STATE 2: Council Selected (Temporary Placeholder)
+  // Function to open external council maps
+  const openOverrideMap = () => {
+    if (selectedCouncil?.mapUrl) {
+      Linking.openURL(selectedCouncil.mapUrl);
+    }
+  };
+
+  // RENDER STATE: Council Selected
   if (selectedCouncil) {
     const isOverride = selectedCouncil.type === 'override';
-    return (
-      <SafeAreaView style={styles.container}>
-        <Stack.Screen options={{ headerShown: false }} />
-        <View style={styles.resultContainer}>
-          <Ionicons 
-            name={isOverride ? "alert-circle" : "checkmark-circle"} 
-            size={80} 
-            color={isOverride ? "#DC2626" : "#F97316"} 
-            style={{marginBottom: 20}}
-          />
-          <Text style={styles.resultTitle}>Selection Confirmed</Text>
-          <Text style={styles.councilName}>{selectedCouncil.name}</Text>
-          
-          <View style={[styles.typeBadge, isOverride ? styles.badgeOverride : styles.badgeStandard]}>
-             <Text style={styles.typeText}>
-               TYPE: {isOverride ? 'OVERRIDE MAP REQUIRED' : 'STANDARD CALCULATION'}
-             </Text>
+
+    if (isOverride) {
+      // --- PATH B: OVERRIDE SCREEN ---
+      // (Keeping this temporary UI for now, will beautify later)
+      return (
+        <SafeAreaView style={styles.container}>
+          <Stack.Screen options={{ headerShown: false }} />
+          <View style={styles.resultContainer}>
+            <Ionicons name="alert-circle" size={80} color="#DC2626" style={{marginBottom: 20}}/>
+            <Text style={styles.resultTitle}>Mandatory Map Required</Text>
+            <Text style={styles.councilName}>{selectedCouncil.name}</Text>
+            <Text style={styles.nextStepText}>
+              This council has specific wind zone maps that override manual calculations. You must use their viewer.
+            </Text>
+            
+            <TouchableOpacity style={[styles.actionButton, styles.overrideButton]} onPress={openOverrideMap}>
+              <Text style={styles.actionButtonText}>Open Council Map Viewer</Text>
+              <Ionicons name="open-outline" size={20} color="white" style={{marginLeft: 8}}/>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
+              <Text style={styles.resetButtonText}>Back to Selection</Text>
+            </TouchableOpacity>
           </View>
-
-          <Text style={styles.nextStepText}>
-            {isOverride 
-              ? "Next Step: Redirect to Council Map Viewer." 
-              : "Next Step: Begin NZS 3604 Calculator Wizard."}
-          </Text>
-
-          <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-            <Text style={styles.resetButtonText}>Change Selection</Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    );
+        </SafeAreaView>
+      );
+    } else {
+      // --- PATH A: STANDARD CALCULATOR WIZARD ---
+      // Inject the new Wizard component here
+      return (
+         <>
+           <Stack.Screen options={{ headerShown: false }} />
+           <StandardCalculatorWizard 
+              selectedCouncil={selectedCouncil} 
+              onExit={handleReset} 
+           />
+         </>
+      );
+    }
   }
 
   // RENDER STATE 1: Show the Selection List (Default)
@@ -78,25 +88,21 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     padding: 30 
   },
-  resultTitle: { color: '#A0A0A0', fontSize: 18, marginBottom: 10 },
-  councilName: { color: 'white', fontSize: 28, fontWeight: 'bold', textAlign: 'center', marginBottom: 25 },
-  typeBadge: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    marginBottom: 40,
-  },
-  badgeStandard: { backgroundColor: 'rgba(249, 115, 22, 0.2)' },
-  badgeOverride: { backgroundColor: 'rgba(220, 38, 38, 0.2)' },
-  typeText: { color: 'white', fontWeight: '700', letterSpacing: 1 },
-  nextStepText: { color: 'gray', fontSize: 16, textAlign: 'center', marginBottom: 50 },
-  resetButton: {
-    paddingVertical: 12,
+  resultTitle: { color: '#DC2626', fontSize: 22, fontWeight:'bold', marginBottom: 10 },
+  councilName: { color: 'white', fontSize: 20, marginBottom: 25 },
+  nextStepText: { color: '#A0A0A0', fontSize: 16, textAlign: 'center', marginBottom: 40 },
+  actionButton: {
+    flexDirection: 'row',
+    paddingVertical: 16,
     paddingHorizontal: 30,
-    backgroundColor: '#1F1F1F',
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#333'
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
   },
-  resetButtonText: { color: 'white', fontSize: 16, fontWeight: '600' }
+  overrideButton: { backgroundColor: '#DC2626' },
+  actionButtonText: { color: 'white', fontSize: 18, fontWeight: 'bold' },
+  resetButton: { padding: 15 },
+  resetButtonText: { color: '#A0A0A0', fontSize: 16 }
 });
