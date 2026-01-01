@@ -1186,6 +1186,37 @@ IMPORTANT: For H1/AS1 inquiries, the Schedule Method is no longer permitted for 
                 "timestamp": int(time.time())
             }
 
+
+        # Update Thread Metadata (Session Management)
+        try:
+            conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+            with conn.cursor() as cur:
+                # Check if thread exists
+                cur.execute("SELECT title FROM threads WHERE session_id = %s", (session_id,))
+                existing_thread = cur.fetchone()
+                
+                preview = user_message[:100]
+                
+                if existing_thread:
+                    # Update existing
+                    cur.execute("""
+                        UPDATE threads 
+                        SET updated_at = NOW(), preview_text = %s 
+                        WHERE session_id = %s
+                    """, (preview, session_id))
+                else:
+                    # Create new
+                    title = user_message[:40] + "..." if len(user_message) > 40 else user_message
+                    cur.execute("""
+                        INSERT INTO threads (session_id, title, preview_text, updated_at)
+                        VALUES (%s, %s, %s, NOW())
+                    """, (session_id, title, preview))
+                
+                conn.commit()
+            conn.close()
+        except Exception as e:
+            print(f"⚠️ Thread update failed: {e}")
+
         # Save assistant answer
         try:
             conn = psycopg2.connect(DATABASE_URL, sslmode="require")
