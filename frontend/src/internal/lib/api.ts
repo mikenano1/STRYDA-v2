@@ -88,3 +88,43 @@ export async function chatAPI(request: ChatRequest): Promise<ChatResponse> {
 
 // Legacy compatibility exports
 export const sendChat = chatAPI;
+
+
+export interface Project {
+  id: string;
+  name: string;
+  address?: string;
+  created_at?: string;
+}
+
+export interface ProjectsResponse {
+  ok: boolean;
+  projects: Project[];
+}
+
+export async function getProjects(): Promise<Project[]> {
+  const baseUrl = API_BASE_URL.replace(/\/$/, "");
+  const targetUrl = `${baseUrl}/api/projects`;
+
+  console.log(`🚀 Fetching projects from: ${targetUrl}`);
+
+  try {
+    const response = await fetch(targetUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data: ProjectsResponse = await response.json();
+    return data.projects;
+
+  } catch (error) {
+    console.error('❌ Get Projects Error:', error);
+    return [];
+  }
+}
