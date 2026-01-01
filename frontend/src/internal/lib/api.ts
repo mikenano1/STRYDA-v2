@@ -151,6 +151,63 @@ export async function getThreads(): Promise<Thread[]> {
 
   try {
     const response = await fetch(targetUrl, {
+export interface UpdateThreadRequest {
+  project_id: string;
+}
+
+export interface UpdateThreadResponse {
+  ok: boolean;
+  project_name: string;
+  title: string;
+}
+
+export async function assignThreadToProject(session_id: string, project_id: string): Promise<UpdateThreadResponse> {
+  const baseUrl = API_BASE_URL.replace(/\/$/, "");
+  const targetUrl = `${baseUrl}/api/threads/${session_id}`;
+
+  console.log(`🚀 Assigning thread ${session_id} to project ${project_id}`);
+
+  try {
+    const response = await fetch(targetUrl, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ project_id }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('❌ Assign Thread Error:', error);
+    throw error;
+  }
+}
+
+export interface ThreadDetailResponse {
+    ok: boolean;
+    thread: Thread | null;
+}
+
+export async function getThreadDetails(session_id: string): Promise<Thread | null> {
+    const baseUrl = API_BASE_URL.replace(/\/$/, "");
+    const targetUrl = `${baseUrl}/api/threads/${session_id}`;
+    
+    try {
+        const response = await fetch(targetUrl);
+        if (!response.ok) return null;
+        
+        const data: ThreadDetailResponse = await response.json();
+        return data.thread;
+    } catch (e) {
+        console.error("Failed to get thread details", e);
+        return null;
+    }
+}
+
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
