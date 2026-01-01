@@ -46,6 +46,60 @@ export default function DashboardScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-stryda-dark">
+      {/* Project Selection Modal - Moved to Root */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View className="flex-1 justify-end bg-black/50">
+          <View className="bg-neutral-900 rounded-t-3xl h-[50%] border-t border-neutral-700">
+            <View className="flex-row justify-between items-center p-4 border-b border-neutral-800">
+              <Text className="text-white text-lg font-bold">Select Project</Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)} className="p-2">
+                <X size={24} color="#999" />
+              </TouchableOpacity>
+            </View>
+            
+            {loading ? (
+              <ActivityIndicator color="#FF6B00" size="large" className="mt-10" />
+            ) : (
+              <FlatList
+                data={projects}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={{ padding: 16 }}
+                ListEmptyComponent={
+                  <View className="items-center mt-10">
+                    <Text className="text-neutral-400">No projects found</Text>
+                    <TouchableOpacity onPress={loadProjects} className="mt-4 bg-orange-600 px-4 py-2 rounded-full">
+                       <Text className="text-white font-bold">Retry</Text>
+                    </TouchableOpacity>
+                  </View>
+                }
+                renderItem={({ item }) => (
+                  <TouchableOpacity 
+                    className={`p-4 mb-3 rounded-xl border ${selectedProject?.id === item.id ? 'bg-orange-900/20 border-orange-500' : 'bg-neutral-800 border-neutral-700'}`}
+                    onPress={() => {
+                      setSelectedProject(item);
+                      setModalVisible(false);
+                    }}
+                  >
+                    <View className="flex-row justify-between items-center">
+                      <View>
+                          <Text className={`font-bold text-lg ${selectedProject?.id === item.id ? 'text-orange-500' : 'text-white'}`}>{item.name}</Text>
+                          {item.address && <Text className="text-neutral-400 text-sm">{item.address}</Text>}
+                      </View>
+                      {selectedProject?.id === item.id && <Check size={20} color="#F97316" />}
+                    </View>
+                  </TouchableOpacity>
+                )}
+              />
+            )}
+          </View>
+        </View>
+      </Modal>
+
       <ScrollView className="flex-1 p-6">
         
         {/* Header */}
@@ -67,52 +121,6 @@ export default function DashboardScreen() {
              <Search size={24} color="white" />
           </TouchableOpacity>
         </View>
-
-        {/* Project Selection Modal */}
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => setModalVisible(false)}
-        >
-          <View className="flex-1 justify-end bg-black/50">
-            <View className="bg-neutral-900 rounded-t-3xl h-[50%] border-t border-neutral-700">
-              <View className="flex-row justify-between items-center p-4 border-b border-neutral-800">
-                <Text className="text-white text-lg font-bold">Select Project</Text>
-                <TouchableOpacity onPress={() => setModalVisible(false)} className="p-2">
-                  <X size={24} color="#999" />
-                </TouchableOpacity>
-              </View>
-              
-              {loading ? (
-                <ActivityIndicator color="#FF6B00" size="large" className="mt-10" />
-              ) : (
-                <FlatList
-                  data={projects}
-                  keyExtractor={(item) => item.id}
-                  contentContainerStyle={{ padding: 16 }}
-                  renderItem={({ item }) => (
-                    <TouchableOpacity 
-                      className={`p-4 mb-3 rounded-xl border ${selectedProject?.id === item.id ? 'bg-orange-900/20 border-orange-500' : 'bg-neutral-800 border-neutral-700'}`}
-                      onPress={() => {
-                        setSelectedProject(item);
-                        setModalVisible(false);
-                      }}
-                    >
-                      <View className="flex-row justify-between items-center">
-                        <View>
-                            <Text className={`font-bold text-lg ${selectedProject?.id === item.id ? 'text-orange-500' : 'text-white'}`}>{item.name}</Text>
-                            {item.address && <Text className="text-neutral-400 text-sm">{item.address}</Text>}
-                        </View>
-                        {selectedProject?.id === item.id && <Check size={20} color="#F97316" />}
-                      </View>
-                    </TouchableOpacity>
-                  )}
-                />
-              )}
-            </View>
-          </View>
-        </Modal>
 
         {/* Primary Action Grid */}
         <Text className="text-white text-lg font-bold mb-4">Quick Actions</Text>
