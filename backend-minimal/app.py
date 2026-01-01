@@ -199,6 +199,45 @@ def admin_config(request: Request):
         "timestamp": int(time.time())
     }
 
+class Project(BaseModel):
+    id: str
+    name: str
+    address: Optional[str] = None
+    created_at: Optional[datetime] = None
+
+@app.get("/api/projects")
+@limiter.limit("30/minute")
+def get_projects(request: Request):
+    """Fetch all available projects"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            cur.execute("""
+                SELECT id, name, address, created_at 
+                FROM projects 
+                ORDER BY created_at DESC;
+            """)
+            rows = cur.fetchall()
+            
+            projects = []
+            for row in rows:
+                projects.append({
+                    "id": str(row["id"]),
+                    "name": row["name"],
+                    "address": row["address"],
+                    "created_at": row["created_at"]
+                })
+        conn.close()
+        
+        return {
+            "ok": True,
+            "projects": projects
+        }
+    except Exception as e:
+        print(f"❌ Get projects error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/health")
 @limiter.limit("10/minute")  # Rate limited health checks
 def health(request: Request):
