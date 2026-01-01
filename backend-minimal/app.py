@@ -1245,6 +1245,7 @@ class UpdateThreadRequest(BaseModel):
 @limiter.limit("30/minute")
 def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
     """Update thread metadata (title, project)"""
+    print(f"🔄 PATCH thread: {session_id} | Body: {req}")
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
         with conn.cursor() as cur:
