@@ -1235,3 +1235,85 @@ IMPORTANT: For H1/AS1 inquiries, the Schedule Method is no longer permitted for 
     except Exception as e:
         print(f"❌ Top-level error: {e}")
         return JSONResponse(status_code=500, content={"error": str(e)})
+
+
+class UpdateThreadRequest(BaseModel):
+    project_id: str
+
+@app.patch("/api/threads/{session_id}")
+@limiter.limit("30/minute")
+def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
+    """Assign a thread to a project"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor() as cur:
+            # Verify project exists
+            cur.execute("SELECT name FROM projects WHERE id = %s", (req.project_id,))
+            project = cur.fetchone()
+            if not project:
+                raise HTTPException(status_code=404, detail="Project not found")
+            
+            # Update thread
+            cur.execute("""
+                UPDATE threads 
+                SET project_id = %s, updated_at = NOW() 
+                WHERE session_id = %s
+                RETURNING title, project_id
+            """, (req.project_id, session_id))
+            
+            if cur.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Thread not found")
+                
+            updated = cur.fetchone()
+            conn.commit()
+            
+        conn.close()
+        
+        return {
+            "ok": True,
+            "project_name": project[0],
+            "title": updated[0]
+        }
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        print(f"❌ Update thread error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/threads/{session_id}")
+@limiter.limit("30/minute")
+def get_thread_details(session_id: str, request: Request):
+    """Get metadata for a specific thread"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            cur.execute("""
+                SELECT 
+                    t.session_id, 
+                    t.title, 
+                    t.project_id, 
+                    p.name as project_name, 
+                    t.updated_at
+                FROM threads t
+                LEFT JOIN projects p ON t.project_id = p.id
+                WHERE t.session_id = %s
+            """, (session_id,))
+            
+            row = cur.fetchone()
+            if not row:
+                # If thread doesn't exist yet (new chat), return empty default
+                return {"ok": True, "thread": None}
+                
+            thread = {
+                "session_id": row["session_id"],
+                "title": row["title"],
+                "project_id": str(row["project_id"]) if row["project_id"] else None,
+                "project_name": row["project_name"],
+                "updated_at": row["updated_at"]
+            }
+            
+        conn.close()
+        return {"ok": True, "thread": thread}
+    except Exception as e:
+        print(f"❌ Get thread detail error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
