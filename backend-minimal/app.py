@@ -1279,9 +1279,23 @@ def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
             cur.execute(query, tuple(params))
             
             if cur.rowcount == 0:
-                raise HTTPException(status_code=404, detail="Thread not found")
+                # Thread not found - Create it (Upsert)
+                print(f"🧵 Thread {session_id} not found, creating new.")
                 
-            updated = cur.fetchone()
+                # Determine initial values
+                init_title = req.title if req.title else "New Chat"
+                init_project = req.project_id if req.project_id else None
+                
+                cur.execute("""
+                    INSERT INTO threads (session_id, title, project_id, preview_text, updated_at)
+                    VALUES (%s, %s, %s, 'Draft', NOW())
+                    RETURNING title, project_id
+                """, (session_id, init_title, init_project))
+                
+                updated = cur.fetchone()
+            else:
+                updated = cur.fetchone()
+                
             conn.commit()
             
             # Fetch updated project name if needed
