@@ -105,11 +105,15 @@ export default function DashboardScreen() {
         {/* Header */}
         <View className="flex-row justify-between items-center mb-8">
           <View>
-            <Text className="text-neutral-400 text-sm font-medium">Kia Ora, Builder</Text>
+            <Text className="text-neutral-400 text-sm font-medium">Kia Ora, Pro Builder</Text>
             
             <TouchableOpacity 
               className="flex-row items-center mt-1"
-              onPress={() => setModalVisible(true)}
+              onPress={() => {
+                console.log("🔘 Header Project Press");
+                setModalVisible(true);
+              }}
+              hitSlop={{ top: 20, bottom: 20, left: 20, right: 50 }}
             >
               <Text className="text-white text-xl font-bold mr-2">
                 {selectedProject ? selectedProject.name : "Select Project"}
