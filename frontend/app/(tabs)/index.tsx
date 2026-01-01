@@ -154,17 +154,6 @@ export default function DashboardScreen() {
         <Text className="text-white text-lg font-bold mb-4">Quick Actions</Text>
         <View className="flex-row flex-wrap justify-between gap-y-4">
           
-          {/* Main "New Chat" Action - Now Prominent */}
-          <TouchableOpacity 
-            className="w-full bg-orange-600 p-4 rounded-2xl border border-orange-500 h-24 flex-row items-center justify-center mb-2"
-            onPress={handleNewChat}
-          >
-              <View className="bg-white/20 w-12 h-12 rounded-full items-center justify-center mr-4">
-                <Plus size={28} color="white" />
-              </View>
-              <Text className="text-white text-xl font-bold">Start New Chat</Text>
-          </TouchableOpacity>
-
           {/* Card 1: Quick Verify */}
           <Link href={{ pathname: "/(tabs)/stryda", params: { initialQuery: "I need to verify something on site. What details do you need?" }}} asChild>
             <TouchableOpacity className="w-[48%] bg-neutral-800 p-4 rounded-2xl border border-neutral-700 h-40 justify-between">
