@@ -729,6 +729,38 @@ async def search_documents(request: Request, search_request: dict):
         print(f"❌ Search endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/api/transcribe")
+async def transcribe_audio(file: UploadFile = File(...)):
+    """
+    Transcribe audio using OpenAI Whisper
+    """
+    try:
+        from openai import OpenAI
+        client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        
+        # Save temp file
+        temp_filename = f"temp_{int(time.time())}.m4a"
+        with open(temp_filename, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+            
+        # Transcribe
+        with open(temp_filename, "rb") as audio_file:
+            transcript = client.audio.transcriptions.create(
+                model="whisper-1", 
+                file=audio_file
+            )
+            
+        # Cleanup
+        if os.path.exists(temp_filename):
+            os.remove(temp_filename)
+        
+        print(f"🎙️ Transcription: {transcript.text}")
+        return {"text": transcript.text}
+        
+    except Exception as e:
+        print(f"❌ Transcription error: {e}")
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
 @app.post("/api/chat")
 async def api_chat(req: ChatRequest):
     """
