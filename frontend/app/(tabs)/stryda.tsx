@@ -32,9 +32,21 @@ export default function StrydaChat() {
   const [isTranscribing, setIsTranscribing] = useState(false);
 
   const flatListRef = useRef<FlatList>(null);
-  const sessionIdRef = useRef(`session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  const sessionIdRef = useRef(
+      params.session_id 
+        ? (params.session_id as string) 
+        : `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+  );
 
   useEffect(() => {
+    // If a session ID is passed later (e.g. deep link), update ref
+    if (params.session_id && params.session_id !== sessionIdRef.current) {
+        console.log("🔄 Switching to session:", params.session_id);
+        sessionIdRef.current = params.session_id as string;
+        setMessages([]); // Clear previous messages
+        // TODO: Fetch message history for this session from backend
+    }
+
     if (params.initialQuery) {
         setTimeout(() => {
             handleSend(params.initialQuery as string);
