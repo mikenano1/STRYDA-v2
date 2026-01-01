@@ -7,7 +7,7 @@ import asyncio
 import aiohttp
 import json
 
-BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
+BACKEND_URL = "https://wind-calc.preview.emergentagent.com"
 
 async def final_comprehensive_test():
     """Run comprehensive test to confirm issues"""

@@ -13,7 +13,7 @@ import sys
 import os
 
 # Backend URL from environment
-BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
+BACKEND_URL = "https://wind-calc.preview.emergentagent.com"
 API_BASE = f"{BACKEND_URL}/api"
 
 class STRYDABackendTester:

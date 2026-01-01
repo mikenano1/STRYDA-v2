@@ -10,7 +10,7 @@ import json
 import time
 from datetime import datetime
 
-BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
+BACKEND_URL = "https://wind-calc.preview.emergentagent.com"
 
 async def test_review_request_scenarios():
     """Test the specific scenarios from the review request"""

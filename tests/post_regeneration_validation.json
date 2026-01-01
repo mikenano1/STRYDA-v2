@@ -1,6 +1,6 @@
 {
   "test_date": "2025-11-25T07:16:43.898198",
-  "backend_url": "https://nzconstructai.preview.emergentagent.com",
+  "backend_url": "https://wind-calc.preview.emergentagent.com",
   "summary": {
     "total_queries": 30,
     "passed_queries": 10,

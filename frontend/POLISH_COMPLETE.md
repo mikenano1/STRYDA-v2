@@ -38,7 +38,7 @@
 
 **Local URL:** http://localhost:3000  
 **Tunnel Subdomain:** nzbuilder-ai  
-**Preview URL:** https://nzconstructai.preview.emergentagent.com  
+**Preview URL:** https://wind-calc.preview.emergentagent.com  
 
 **QR Code:** Generate from Expo Dev Tools at http://localhost:3000
 

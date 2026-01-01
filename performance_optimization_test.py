@@ -11,7 +11,7 @@ from datetime import datetime
 from typing import List, Dict, Any
 
 # Backend URL
-BACKEND_URL = "https://nzconstructai.preview.emergentagent.com"
+BACKEND_URL = "https://wind-calc.preview.emergentagent.com"
 
 # 20 test queries from CITATION_PRECISION_AUDIT.md
 TEST_QUERIES = [

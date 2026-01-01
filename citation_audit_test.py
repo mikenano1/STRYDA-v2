@@ -12,7 +12,7 @@ from typing import Dict, List, Any
 import os
 
 # Backend URL from environment
-BACKEND_URL = os.getenv('BACKEND_URL', 'https://nzconstructai.preview.emergentagent.com')
+BACKEND_URL = os.getenv('BACKEND_URL', 'https://wind-calc.preview.emergentagent.com')
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # Test queries organized by category
