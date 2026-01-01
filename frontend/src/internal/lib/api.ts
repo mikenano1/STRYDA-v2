@@ -106,6 +106,48 @@ export async function getProjects(): Promise<Project[]> {
   const baseUrl = API_BASE_URL.replace(/\/$/, "");
   const targetUrl = `${baseUrl}/api/projects`;
 
+export interface Thread {
+  session_id: string;
+  title: string;
+  project_id?: string;
+  project_name?: string;
+  preview_text?: string;
+  updated_at?: string;
+}
+
+export interface ThreadsResponse {
+  ok: boolean;
+  threads: Thread[];
+}
+
+export async function getThreads(): Promise<Thread[]> {
+  const baseUrl = API_BASE_URL.replace(/\/$/, "");
+  const targetUrl = `${baseUrl}/api/threads`;
+
+  console.log(`🚀 Fetching threads from: ${targetUrl}`);
+
+  try {
+    const response = await fetch(targetUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data: ThreadsResponse = await response.json();
+    return data.threads;
+
+  } catch (error) {
+    console.error('❌ Get Threads Error:', error);
+    return [];
+  }
+}
+
+
   console.log(`🚀 Fetching projects from: ${targetUrl}`);
 
   try {
