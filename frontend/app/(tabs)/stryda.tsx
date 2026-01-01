@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList, KeyboardAvoidingView, Platform, ActivityIndicator, Alert, Modal } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, FlatList, KeyboardAvoidingView, Platform, ActivityIndicator, Alert, Modal, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Send, FileText, ChevronRight, Mic, Square, Folder, X, Plus, Check } from 'lucide-react-native';
+import { Send, FileText, ChevronRight, Mic, Square, MoreVertical, X, Plus, Check, Edit2, Trash2 } from 'lucide-react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { chatAPI, Citation, getProjects, assignThreadToProject, getThreadDetails, Project, Thread } from '../../src/internal/lib/api';
+import { chatAPI, Citation, getProjects, assignThreadToProject, getThreadDetails, updateThread, deleteThread, Project, Thread } from '../../src/internal/lib/api';
 import { Audio } from 'expo-av';
 
-console.log("🚀 STRYDA CHAT v3.0 - FILE TO PROJECT ENABLED");
+console.log("🚀 STRYDA CHAT v3.0 - CHAT SETTINGS ENABLED");
 
 const getPdfUrl = (citationTitle: string | null): { url: string; title: string } | null => {
   if (!citationTitle) return null;
@@ -39,9 +39,13 @@ export default function StrydaChat() {
   );
   
   const [currentThread, setCurrentThread] = useState<Thread | null>(null);
-  const [assignModalVisible, setAssignModalVisible] = useState(false);
+  const [settingsModalVisible, setSettingsModalVisible] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loadingProjects, setLoadingProjects] = useState(false);
+  
+  // Edit State
+  const [editTitle, setEditTitle] = useState("");
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
   useEffect(() => {
     if (params.session_id && params.session_id !== sessionIdRef.current) {
@@ -70,8 +74,11 @@ export default function StrydaChat() {
       }
   };
 
-  const openAssignModal = async () => {
-      setAssignModalVisible(true);
+  const openSettingsModal = async () => {
+      setSettingsModalVisible(true);
+      setEditTitle(currentThread?.title || "New Chat");
+      setSelectedProjectId(currentThread?.project_id || null);
+      
       setLoadingProjects(true);
       try {
           const data = await getProjects();
@@ -83,21 +90,53 @@ export default function StrydaChat() {
       }
   };
 
-  const handleAssignProject = async (project: Project) => {
+  const handleSaveChanges = async () => {
       try {
-          // Optimistic update
-          const updated = await assignThreadToProject(sessionIdRef.current, project.id);
-          setAssignModalVisible(false);
-          setCurrentThread(prev => prev ? { ...prev, project_name: project.name, project_id: project.id } : { 
+          const updated = await updateThread(sessionIdRef.current, {
+              title: editTitle,
+              project_id: selectedProjectId || undefined
+          });
+          
+          setCurrentThread(prev => prev ? { 
+              ...prev, 
+              title: updated.title,
+              project_name: updated.project_name, 
+              project_id: updated.project_id 
+          } : { 
               session_id: sessionIdRef.current, 
               title: updated.title, 
-              project_name: project.name, 
-              project_id: project.id 
+              project_name: updated.project_name, 
+              project_id: updated.project_id 
           });
-          Alert.alert("Saved", `Chat filed to ${project.name}`);
+          
+          setSettingsModalVisible(false);
+          Alert.alert("Success", "Chat updated successfully");
       } catch (e) {
-          Alert.alert("Error", "Failed to assign project");
+          Alert.alert("Error", "Failed to update chat");
       }
+  };
+
+  const handleDeleteChat = async () => {
+      Alert.alert(
+          "Delete Chat",
+          "Are you sure? This cannot be undone.",
+          [
+              { text: "Cancel", style: "cancel" },
+              { 
+                  text: "Delete", 
+                  style: "destructive", 
+                  onPress: async () => {
+                      try {
+                          await deleteThread(sessionIdRef.current);
+                          setSettingsModalVisible(false);
+                          router.replace("/(tabs)/");
+                      } catch(e) {
+                          Alert.alert("Error", "Failed to delete chat");
+                      }
+                  }
+              }
+          ]
+      );
   };
 
   // --- AUDIO LOGIC ---
@@ -236,8 +275,8 @@ export default function StrydaChat() {
                   </Text>
               </View>
           </View>
-          <TouchableOpacity onPress={openAssignModal} className="p-2 bg-neutral-800 rounded-full border border-neutral-700">
-              <Folder size={20} color={currentThread?.project_name ? "#3B82F6" : "#9CA3AF"} />
+          <TouchableOpacity onPress={openSettingsModal} className="p-2 bg-neutral-800 rounded-full border border-neutral-700">
+              <MoreVertical size={20} color="#9CA3AF" />
           </TouchableOpacity>
       </View>
 
@@ -276,49 +315,88 @@ export default function StrydaChat() {
         </View>
       </KeyboardAvoidingView>
 
-      {/* Assign Project Modal */}
+      {/* Chat Settings Modal */}
       <Modal
         animationType="slide"
         transparent={true}
-        visible={assignModalVisible}
-        onRequestClose={() => setAssignModalVisible(false)}
+        visible={settingsModalVisible}
+        onRequestClose={() => setSettingsModalVisible(false)}
       >
         <View className="flex-1 justify-end bg-black/50">
-          <View className="bg-neutral-900 rounded-t-3xl max-h-[70%] border-t border-neutral-700">
+          <View className="bg-neutral-900 rounded-t-3xl max-h-[90%] border-t border-neutral-700">
             <View className="flex-row justify-between items-center p-5 border-b border-neutral-800">
-              <Text className="text-white text-xl font-bold">Save Chat to Project</Text>
-              <TouchableOpacity onPress={() => setAssignModalVisible(false)} className="p-2 bg-neutral-800 rounded-full">
+              <Text className="text-white text-xl font-bold">Chat Settings</Text>
+              <TouchableOpacity onPress={() => setSettingsModalVisible(false)} className="p-2 bg-neutral-800 rounded-full">
                 <X size={20} color="#999" />
               </TouchableOpacity>
             </View>
             
-            {loadingProjects ? (
-              <View className="p-10"><ActivityIndicator color="#FF6B00" size="large" /></View>
-            ) : (
-              <FlatList
-                data={projects}
-                keyExtractor={(item) => item.id}
-                contentContainerStyle={{ padding: 20 }}
-                ListHeaderComponent={
-                    <TouchableOpacity className="flex-row items-center p-4 mb-4 bg-orange-600/10 border border-orange-500/50 rounded-xl">
-                        <Plus size={20} color="#F97316" className="mr-3" />
-                        <Text className="text-orange-500 font-bold">Create New Project</Text>
-                    </TouchableOpacity>
-                }
-                renderItem={({ item }) => (
-                  <TouchableOpacity 
-                    className={`p-4 mb-3 rounded-xl border flex-row justify-between items-center ${currentThread?.project_id === item.id ? 'bg-blue-900/20 border-blue-500' : 'bg-neutral-800 border-neutral-700'}`}
-                    onPress={() => handleAssignProject(item)}
-                  >
-                    <View>
-                        <Text className="text-white font-bold text-lg">{item.name}</Text>
-                        {item.address && <Text className="text-neutral-400 text-sm">{item.address}</Text>}
+            <ScrollView contentContainerStyle={{ padding: 20 }}>
+                {/* Section 1: Rename */}
+                <Text className="text-neutral-400 text-xs font-bold uppercase mb-2">Rename Chat</Text>
+                <View className="bg-neutral-800 rounded-xl p-4 mb-6 border border-neutral-700 flex-row items-center">
+                    <Edit2 size={18} color="#666" className="mr-3" />
+                    <TextInput 
+                        className="flex-1 text-white font-medium text-base"
+                        value={editTitle}
+                        onChangeText={setEditTitle}
+                        placeholder="Chat Title"
+                        placeholderTextColor="#555"
+                    />
+                </View>
+
+                {/* Section 2: Assign Project */}
+                <Text className="text-neutral-400 text-xs font-bold uppercase mb-2">Assign to Project</Text>
+                {loadingProjects ? (
+                    <ActivityIndicator color="#FF6B00" />
+                ) : (
+                    <View className="bg-neutral-800 rounded-xl border border-neutral-700 overflow-hidden mb-6">
+                        <TouchableOpacity 
+                            className="p-4 border-b border-neutral-700 bg-orange-600/10 flex-row items-center"
+                            onPress={() => Alert.alert("Create Project", "Navigating to create project...")}
+                        >
+                            <Plus size={18} color="#F97316" className="mr-3" />
+                            <Text className="text-orange-500 font-bold">Create New Project</Text>
+                        </TouchableOpacity>
+                        
+                        {projects.map((project) => (
+                            <TouchableOpacity 
+                                key={project.id}
+                                className={`p-4 border-b border-neutral-700 flex-row justify-between items-center ${selectedProjectId === project.id ? 'bg-blue-900/20' : ''}`}
+                                onPress={() => setSelectedProjectId(project.id)}
+                            >
+                                <Text className={`font-medium ${selectedProjectId === project.id ? 'text-blue-400' : 'text-neutral-300'}`}>{project.name}</Text>
+                                {selectedProjectId === project.id && <Check size={18} color="#3B82F6" />}
+                            </TouchableOpacity>
+                        ))}
+                        
+                        <TouchableOpacity 
+                            className={`p-4 flex-row justify-between items-center ${selectedProjectId === null ? 'bg-blue-900/20' : ''}`}
+                            onPress={() => setSelectedProjectId(null)}
+                        >
+                            <Text className={`font-medium ${selectedProjectId === null ? 'text-blue-400' : 'text-neutral-300'}`}>Unfiled (No Project)</Text>
+                            {selectedProjectId === null && <Check size={18} color="#3B82F6" />}
+                        </TouchableOpacity>
                     </View>
-                    {currentThread?.project_id === item.id && <Check size={20} color="#3B82F6" />}
-                  </TouchableOpacity>
                 )}
-              />
-            )}
+
+                {/* Section 3: Actions */}
+                <TouchableOpacity 
+                    className="bg-orange-600 p-4 rounded-xl items-center mb-3"
+                    onPress={handleSaveChanges}
+                >
+                    <Text className="text-white font-bold text-lg">Save Changes</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                    className="bg-red-500/10 p-4 rounded-xl items-center border border-red-500/30 flex-row justify-center"
+                    onPress={handleDeleteChat}
+                >
+                    <Trash2 size={18} color="#EF4444" className="mr-2" />
+                    <Text className="text-red-500 font-bold text-lg">Delete Chat</Text>
+                </TouchableOpacity>
+
+            </ScrollView>
           </View>
         </View>
       </Modal>
