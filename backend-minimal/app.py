@@ -240,6 +240,58 @@ def get_projects(request: Request):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+class Thread(BaseModel):
+    session_id: str
+    title: str
+    project_id: Optional[str] = None
+    project_name: Optional[str] = None
+    preview_text: Optional[str] = None
+    updated_at: Optional[datetime] = None
+
+@app.get("/api/threads")
+@limiter.limit("30/minute")
+def get_threads(request: Request):
+    """Fetch recent conversation threads"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            # Join with projects to get project name
+            cur.execute("""
+                SELECT 
+                    t.session_id, 
+                    t.title, 
+                    t.project_id, 
+                    p.name as project_name, 
+                    t.preview_text, 
+                    t.updated_at
+                FROM threads t
+                LEFT JOIN projects p ON t.project_id = p.id
+                ORDER BY t.updated_at DESC
+                LIMIT 20;
+            """)
+            rows = cur.fetchall()
+            
+            threads = []
+            for row in rows:
+                threads.append({
+                    "session_id": row["session_id"],
+                    "title": row["title"],
+                    "project_id": str(row["project_id"]) if row["project_id"] else None,
+                    "project_name": row["project_name"],
+                    "preview_text": row["preview_text"],
+                    "updated_at": row["updated_at"]
+                })
+        conn.close()
+        
+        return {
+            "ok": True,
+            "threads": threads
+        }
+    except Exception as e:
+        print(f"❌ Get threads error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/health")
 @limiter.limit("10/minute")  # Rate limited health checks
 def health(request: Request):
