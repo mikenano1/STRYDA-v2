@@ -1287,7 +1287,9 @@ def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
             # Fetch updated project name if needed
             project_name = None
             if req.project_id:
-                project_name = project[0]
+                cur.execute("SELECT name FROM projects WHERE id = %s", (req.project_id,))
+                row = cur.fetchone()
+                if row: project_name = row[0]
             elif updated[1]:
                 cur.execute("SELECT name FROM projects WHERE id = %s", (updated[1],))
                 row = cur.fetchone()
