@@ -1,0 +1,103 @@
+{
+  "summary": {
+    "passed": 3,
+    "total": 5,
+    "success_rate": 60.0,
+    "timestamp": "2026-01-01T16:08:58.596184"
+  },
+  "results": [
+    {
+      "test_name": "Health Check",
+      "success": false,
+      "timestamp": "2026-01-01T16:08:28.379926",
+      "details": {
+        "status_code": 404,
+        "error": "Unexpected status code: 404"
+      }
+    },
+    {
+      "test_name": "Admin Config",
+      "success": false,
+      "timestamp": "2026-01-01T16:08:29.236744",
+      "details": {
+        "status_code": 404,
+        "error": "HTTP 404: <!DOCTYPE html><html  lang=\"en\"><head><title data-rh=\"true\"></title><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"/><meta http-equiv=\"X-UA"
+      }
+    },
+    {
+      "test_name": "Projects Endpoint",
+      "success": true,
+      "timestamp": "2026-01-01T16:08:30.848450",
+      "details": {
+        "status_code": 200,
+        "project_count": 3,
+        "valid_projects": 3,
+        "response": {
+          "ok": true,
+          "projects": [
+            {
+              "id": "52c92770-fb11-4604-91cd-15c0902d59e1",
+              "name": "Queen Street Reno",
+              "address": "123 Queen St, Auckland",
+              "created_at": "2026-01-01T16:04:39.634297+00:00"
+            },
+            {
+              "id": "67be58b5-ec16-47d7-b4c6-ca34e1eb7e1c",
+              "name": "Ponsonby Villa",
+              "address": "45 Ponsonby Rd, Auckland",
+              "created_at": "2026-01-01T16:04:39.634297+00:00"
+            },
+            {
+              "id": "1bc43598-569d-4b3f-8c4a-94dd87261774",
+              "name": "New Lynn Build",
+              "address": "12 Great North Rd, Auckland",
+              "created_at": "2026-01-01T16:04:39.634297+00:00"
+            }
+          ]
+        },
+        "summary": "Found 3 projects, 3 valid"
+      }
+    },
+    {
+      "test_name": "Chat Basic Functionality",
+      "success": true,
+      "timestamp": "2026-01-01T16:08:45.128470",
+      "details": {
+        "status_code": 200,
+        "answer_length": 231,
+        "intent": "general_help",
+        "model": "gemini-2.5-flash-hybrid",
+        "response": {
+          "answer": "G'day mate, for corrugated iron roofing, the minimum pitch actually depends on the profile you're using. You can get it down to 3 degrees if it's a 35mm high profile, 4 degrees for a 21mm high one, or 8 degrees if it's 16.5mm high.",
+          "intent": "general_help",
+          "citations": [],
+          "can_show_citations": false,
+          "model": "gemini-2.5-flash-hybrid",
+          "timestamp": 1767283723
+        },
+        "summary": "Chat working - 231 chars, intent: general_help, model: gemini-2.5-flash-hybrid"
+      }
+    },
+    {
+      "test_name": "Chat Compliance Question",
+      "success": true,
+      "timestamp": "2026-01-01T16:08:58.595197",
+      "details": {
+        "status_code": 200,
+        "answer_length": 188,
+        "intent": "general_help",
+        "model": "gemini-2.5-flash-hybrid",
+        "citation_count": 0,
+        "response": {
+          "answer": "Alright mate, for a 2.4m wall in a high wind zone, the stud spacing isn't a single answer, it depends on a few things like whether the wall is loadbearing or not, and what timber grade you",
+          "intent": "general_help",
+          "citations": [],
+          "can_show_citations": false,
+          "model": "gemini-2.5-flash-hybrid",
+          "timestamp": 1767283736
+        },
+        "summary": "Compliance chat working - 188 chars, 0 citations"
+      }
+    }
+  ]
+}
