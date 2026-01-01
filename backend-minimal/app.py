@@ -1238,28 +1238,41 @@ IMPORTANT: For H1/AS1 inquiries, the Schedule Method is no longer permitted for 
 
 
 class UpdateThreadRequest(BaseModel):
-    project_id: str
+    project_id: Optional[str] = None
+    title: Optional[str] = None
 
 @app.patch("/api/threads/{session_id}")
 @limiter.limit("30/minute")
 def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
-    """Assign a thread to a project"""
+    """Update thread metadata (title, project)"""
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
         with conn.cursor() as cur:
-            # Verify project exists
-            cur.execute("SELECT name FROM projects WHERE id = %s", (req.project_id,))
-            project = cur.fetchone()
-            if not project:
-                raise HTTPException(status_code=404, detail="Project not found")
+            updates = []
+            params = []
             
-            # Update thread
-            cur.execute("""
-                UPDATE threads 
-                SET project_id = %s, updated_at = NOW() 
-                WHERE session_id = %s
-                RETURNING title, project_id
-            """, (req.project_id, session_id))
+            if req.project_id is not None:
+                # Verify project
+                cur.execute("SELECT name FROM projects WHERE id = %s", (req.project_id,))
+                project = cur.fetchone()
+                if not project:
+                    raise HTTPException(status_code=404, detail="Project not found")
+                updates.append("project_id = %s")
+                params.append(req.project_id)
+            
+            if req.title is not None:
+                updates.append("title = %s")
+                params.append(req.title)
+                
+            if not updates:
+                return {"ok": True, "message": "No changes requested"}
+                
+            updates.append("updated_at = NOW()")
+            
+            query = f"UPDATE threads SET {', '.join(updates)} WHERE session_id = %s RETURNING title, project_id"
+            params.append(session_id)
+            
+            cur.execute(query, tuple(params))
             
             if cur.rowcount == 0:
                 raise HTTPException(status_code=404, detail="Thread not found")
@@ -1267,12 +1280,22 @@ def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
             updated = cur.fetchone()
             conn.commit()
             
+            # Fetch updated project name if needed
+            project_name = None
+            if req.project_id:
+                project_name = project[0]
+            elif updated[1]:
+                cur.execute("SELECT name FROM projects WHERE id = %s", (updated[1],))
+                row = cur.fetchone()
+                if row: project_name = row[0]
+            
         conn.close()
         
         return {
             "ok": True,
-            "project_name": project[0],
-            "title": updated[0]
+            "title": updated[0],
+            "project_id": updated[1],
+            "project_name": project_name
         }
     except HTTPException as he:
         raise he
