@@ -1,6 +1,6 @@
-import { View, Text, ScrollView, TouchableOpacity, Modal, FlatList, ActivityIndicator } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Modal, FlatList, ActivityIndicator, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Camera, Map, Calculator, Grid, ChevronDown, Clock, Search, X, Check } from "lucide-react-native";
+import { Camera, Map, Calculator, Grid, ChevronDown, Clock, Search, X, Check, Plus, Archive, ChevronRight } from "lucide-react-native";
 import { useRouter, Link } from "expo-router";
 import { useState, useEffect } from "react";
 import { getProjects, Project } from "../../src/internal/lib/api";
@@ -33,9 +33,16 @@ export default function DashboardScreen() {
     }
   };
 
-  const handleProjectPress = () => {
-    console.log("🔘 Project selector pressed");
-    setModalVisible(true);
+  const handleAddNewProject = () => {
+      setModalVisible(false);
+      // Future: Navigate to Create Project screen
+      Alert.alert("Create Project", "This feature will be available soon.");
+  };
+
+  const handleViewHistory = () => {
+      setModalVisible(false);
+      // Future: Navigate to Project List/History screen
+      router.push("/(tabs)/projects");
   };
 
   const recentHistory = [
@@ -54,47 +61,81 @@ export default function DashboardScreen() {
         onRequestClose={() => setModalVisible(false)}
       >
         <View className="flex-1 justify-end bg-black/50">
-          <View className="bg-neutral-900 rounded-t-3xl h-[50%] border-t border-neutral-700">
-            <View className="flex-row justify-between items-center p-4 border-b border-neutral-800">
-              <Text className="text-white text-lg font-bold">Select Project</Text>
-              <TouchableOpacity onPress={() => setModalVisible(false)} className="p-2">
-                <X size={24} color="#999" />
+          <View className="bg-neutral-900 rounded-t-3xl max-h-[80%] border-t border-neutral-700">
+            {/* Modal Header */}
+            <View className="flex-row justify-between items-center p-5 border-b border-neutral-800">
+              <Text className="text-white text-xl font-bold">Select Project</Text>
+              <TouchableOpacity onPress={() => setModalVisible(false)} className="p-2 bg-neutral-800 rounded-full">
+                <X size={20} color="#999" />
               </TouchableOpacity>
             </View>
             
             {loading ? (
-              <ActivityIndicator color="#FF6B00" size="large" className="mt-10" />
+              <View className="p-10">
+                  <ActivityIndicator color="#FF6B00" size="large" />
+              </View>
             ) : (
-              <FlatList
-                data={projects}
-                keyExtractor={(item) => item.id}
-                contentContainerStyle={{ padding: 16 }}
-                ListEmptyComponent={
-                  <View className="items-center mt-10">
-                    <Text className="text-neutral-400">No projects found</Text>
-                    <TouchableOpacity onPress={loadProjects} className="mt-4 bg-orange-600 px-4 py-2 rounded-full">
-                       <Text className="text-white font-bold">Retry</Text>
-                    </TouchableOpacity>
-                  </View>
-                }
-                renderItem={({ item }) => (
-                  <TouchableOpacity 
-                    className={`p-4 mb-3 rounded-xl border ${selectedProject?.id === item.id ? 'bg-orange-900/20 border-orange-500' : 'bg-neutral-800 border-neutral-700'}`}
-                    onPress={() => {
-                      setSelectedProject(item);
-                      setModalVisible(false);
-                    }}
-                  >
-                    <View className="flex-row justify-between items-center">
-                      <View>
-                          <Text className={`font-bold text-lg ${selectedProject?.id === item.id ? 'text-orange-500' : 'text-white'}`}>{item.name}</Text>
-                          {item.address && <Text className="text-neutral-400 text-sm">{item.address}</Text>}
+              <View>
+                  <Text className="text-neutral-400 text-xs font-bold uppercase tracking-wider px-5 pt-4 pb-2">Active Projects</Text>
+                  
+                  <FlatList
+                    data={projects}
+                    keyExtractor={(item) => item.id}
+                    contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 10 }}
+                    style={{ maxHeight: 300 }}
+                    ListEmptyComponent={
+                      <View className="items-center py-6">
+                        <Text className="text-neutral-400 mb-3">No active projects found</Text>
+                        <TouchableOpacity onPress={loadProjects} className="bg-neutral-800 px-4 py-2 rounded-full">
+                           <Text className="text-white font-medium text-sm">Retry Loading</Text>
+                        </TouchableOpacity>
                       </View>
-                      {selectedProject?.id === item.id && <Check size={20} color="#F97316" />}
-                    </View>
-                  </TouchableOpacity>
-                )}
-              />
+                    }
+                    renderItem={({ item }) => (
+                      <TouchableOpacity 
+                        className={`p-4 mb-3 rounded-xl border flex-row justify-between items-center ${selectedProject?.id === item.id ? 'bg-orange-900/10 border-orange-500' : 'bg-neutral-800 border-neutral-700'}`}
+                        onPress={() => {
+                          setSelectedProject(item);
+                          setModalVisible(false);
+                        }}
+                      >
+                        <View className="flex-1 mr-4">
+                            <Text className={`font-bold text-lg mb-0.5 ${selectedProject?.id === item.id ? 'text-orange-500' : 'text-white'}`} numberOfLines={1}>{item.name}</Text>
+                            {item.address && <Text className="text-neutral-400 text-sm" numberOfLines={1}>{item.address}</Text>}
+                        </View>
+                        {selectedProject?.id === item.id && (
+                            <View className="bg-orange-500/20 p-1.5 rounded-full">
+                                <Check size={16} color="#F97316" />
+                            </View>
+                        )}
+                      </TouchableOpacity>
+                    )}
+                  />
+
+                  {/* Modal Footer Actions */}
+                  <View className="p-5 border-t border-neutral-800 gap-3 pb-8">
+                      {/* History Button */}
+                      <TouchableOpacity 
+                        className="flex-row items-center justify-between bg-neutral-800 p-4 rounded-xl border border-neutral-700"
+                        onPress={handleViewHistory}
+                      >
+                          <View className="flex-row items-center">
+                              <Archive size={20} color="#999" className="mr-3" />
+                              <Text className="text-neutral-300 font-semibold text-base">View Project History</Text>
+                          </View>
+                          <ChevronRight size={20} color="#666" />
+                      </TouchableOpacity>
+
+                      {/* Add New Button */}
+                      <TouchableOpacity 
+                        className="flex-row items-center justify-center bg-orange-600 p-4 rounded-xl shadow-sm"
+                        onPress={handleAddNewProject}
+                      >
+                          <Plus size={24} color="white" className="mr-2" />
+                          <Text className="text-white font-bold text-lg">Add New Project</Text>
+                      </TouchableOpacity>
+                  </View>
+              </View>
             )}
           </View>
         </View>
