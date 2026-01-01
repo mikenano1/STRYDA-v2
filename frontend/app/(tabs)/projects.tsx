@@ -31,6 +31,9 @@ export default function ProjectsScreen() {
       // router.push(`/project/${project.id}`);
       // For now, just reload to refresh
       loadProjects();
+      router.push(`/project/${project.id}`);
+      // For now, just reload to refresh
+      // loadProjects();
   };
 
   return (
