@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, FlatList, KeyboardAvoidingView, Platform, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Send, FileText, ChevronRight } from 'lucide-react-native'; // Removed Mic
+import { Send, FileText, ChevronRight, Mic, Square } from 'lucide-react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { chatAPI, Citation } from '../../src/internal/lib/api';
+import { Audio } from 'expo-av';
 
-console.log("🚀 STRYDA CHAT v3.0 - SAFE MODE LOADED");
+console.log("🚀 STRYDA CHAT v3.0 - VOICE ENABLED");
 
-// --- INLINED HELPER (Fixes the "Missing Module" error) ---
+// --- INLINED HELPER ---
 const getPdfUrl = (citationTitle: string | null): { url: string; title: string } | null => {
   if (!citationTitle) return null;
   const lowerTitle = citationTitle.toLowerCase();
@@ -24,20 +25,112 @@ export default function StrydaChat() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const flatListRef = useRef<FlatList>(null);
   
-  // Create a stable session ID
+  // Voice State
+  const [recording, setRecording] = useState<Audio.Recording | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isTranscribing, setIsTranscribing] = useState(false);
+
+  const flatListRef = useRef<FlatList>(null);
   const sessionIdRef = useRef(`session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
 
   useEffect(() => {
     if (params.initialQuery) {
-        // Adding a small delay to ensure UI is ready
         setTimeout(() => {
             handleSend(params.initialQuery as string);
         }, 500);
         router.setParams({ initialQuery: '' });
     }
   }, [params.initialQuery]);
+
+  // --- AUDIO LOGIC ---
+  async function startRecording() {
+    try {
+      const permission = await Audio.requestPermissionsAsync();
+      if (permission.status === 'granted') {
+        await Audio.setAudioModeAsync({
+          allowsRecordingIOS: true,
+          playsInSilentModeIOS: true,
+        });
+        
+        console.log('Starting recording...');
+        const { recording } = await Audio.Recording.createAsync(
+           Audio.RecordingOptionsPresets.HIGH_QUALITY
+        );
+        setRecording(recording);
+        setIsRecording(true);
+      } else {
+        Alert.alert("Permission required", "Please grant microphone permission to use voice.");
+      }
+    } catch (err) {
+      console.error('Failed to start recording', err);
+      Alert.alert("Error", "Could not start recording.");
+    }
+  }
+
+  async function stopRecording() {
+    console.log('Stopping recording...');
+    if (!recording) return;
+    
+    setIsRecording(false);
+    
+    try {
+      await recording.stopAndUnloadAsync();
+      const uri = recording.getURI(); 
+      setRecording(null); // Clear ref
+      
+      if(uri) {
+          console.log('Recording stopped and stored at', uri);
+          await uploadAudio(uri);
+      }
+    } catch(err) {
+        console.error('Failed to stop recording', err);
+    }
+  }
+
+  async function uploadAudio(uri: string) {
+      setIsTranscribing(true);
+      
+      const formData = new FormData();
+      formData.append('file', {
+          uri: Platform.OS === 'ios' ? uri.replace('file://', '') : uri,
+          type: 'audio/m4a',
+          name: 'recording.m4a'
+      } as any);
+
+      try {
+          // Get Base URL logic (same as api.ts)
+          // For Expo Go on Device, we MUST use the prod URL, not localhost
+          const API_BASE_URL = Platform.OS === 'web' ? '' : 'https://wind-calc.preview.emergentagent.com';
+          const targetUrl = `${API_BASE_URL.replace(/\/$/, "")}/api/transcribe`;
+          
+          console.log(`🎙️ Uploading audio to: ${targetUrl}`);
+
+          const response = await fetch(targetUrl, {
+              method: 'POST',
+              body: formData,
+              // Note: Do NOT set Content-Type header for multipart/form-data in React Native
+          });
+          
+          if (!response.ok) {
+              const txt = await response.text();
+              throw new Error(`Server error: ${txt}`);
+          }
+
+          const data = await response.json();
+          console.log("📝 Transcript:", data.text);
+          
+          if(data.text) {
+              // Append to input
+              setInput(prev => (prev ? prev + " " + data.text : data.text));
+          }
+      } catch (e) {
+          console.error("Transcribe failed", e);
+          Alert.alert("Transcription Failed", "Sorry, I couldn't hear that properly.");
+      } finally {
+          setIsTranscribing(false);
+      }
+  }
 
   const handleSend = async (textOverride?: string) => {
     const textToSend = textOverride || input;
@@ -54,7 +147,6 @@ export default function StrydaChat() {
           session_id: sessionIdRef.current,
           message: textToSend
       });
-      console.log("Received response:", response);
       
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
@@ -98,10 +190,37 @@ export default function StrydaChat() {
       )}
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={90}>
         <View className="bg-neutral-900 border-t border-neutral-800 p-4 pb-8 flex-row items-end">
-          <TextInput className="flex-1 bg-neutral-950 text-white rounded-xl px-4 py-3 min-h-[50px] border border-neutral-800 mr-2" placeholder="Ask STRYDA..." placeholderTextColor="#525252" multiline value={input} onChangeText={setInput} />
-          <TouchableOpacity onPress={() => handleSend()} className={`w-12 h-12 rounded-full items-center justify-center ${input.trim() ? 'bg-orange-500' : 'bg-neutral-800'}`}>
-            <Send size={24} color={input.trim() ? '#000' : '#525252'} />
-          </TouchableOpacity>
+          {/* Input Field */}
+          <TextInput 
+            className="flex-1 bg-neutral-950 text-white rounded-xl px-4 py-3 min-h-[50px] border border-neutral-800 mr-2" 
+            placeholder={isRecording ? "Listening..." : (isTranscribing ? "Transcribing..." : "Ask STRYDA...")}
+            placeholderTextColor={isRecording ? "#F97316" : "#525252"} 
+            multiline 
+            value={input} 
+            onChangeText={setInput} 
+            editable={!isRecording && !isTranscribing}
+          />
+          
+          {/* Mic/Send Button Logic */}
+          {input.trim().length > 0 ? (
+             <TouchableOpacity onPress={() => handleSend()} className="w-12 h-12 rounded-full bg-orange-500 items-center justify-center">
+                <Send size={24} color="#000" />
+             </TouchableOpacity>
+          ) : (
+             <TouchableOpacity 
+                onPress={isRecording ? stopRecording : startRecording} 
+                className={`w-12 h-12 rounded-full items-center justify-center ${isRecording ? 'bg-red-500 animate-pulse' : (isTranscribing ? 'bg-neutral-700' : 'bg-neutral-800')}`}
+                disabled={isTranscribing}
+             >
+                {isTranscribing ? (
+                    <ActivityIndicator size="small" color="#FFF" />
+                ) : isRecording ? (
+                    <Square size={20} color="#FFF" fill="white" />
+                ) : (
+                    <Mic size={24} color="#F97316" />
+                )}
+             </TouchableOpacity>
+          )}
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
