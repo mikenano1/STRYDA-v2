@@ -151,6 +151,25 @@ export async function getThreads(): Promise<Thread[]> {
 
   try {
     const response = await fetch(targetUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data: ThreadsResponse = await response.json();
+    return data.threads;
+
+  } catch (error) {
+    console.error('❌ Get Threads Error:', error);
+    return [];
+  }
+}
+
 export interface UpdateThreadRequest {
   project_id: string;
 }
@@ -206,23 +225,4 @@ export async function getThreadDetails(session_id: string): Promise<Thread | nul
         console.error("Failed to get thread details", e);
         return null;
     }
-}
-
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const data: ThreadsResponse = await response.json();
-    return data.threads;
-
-  } catch (error) {
-    console.error('❌ Get Threads Error:', error);
-    return [];
-  }
 }
