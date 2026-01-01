@@ -171,20 +171,26 @@ export async function getThreads(): Promise<Thread[]> {
 }
 
 export interface UpdateThreadRequest {
-  project_id: string;
+  project_id?: string;
+  title?: string;
 }
 
 export interface UpdateThreadResponse {
   ok: boolean;
-  project_name: string;
-  title: string;
+  project_name?: string;
+  project_id?: string;
+  title?: string;
 }
 
 export async function assignThreadToProject(session_id: string, project_id: string): Promise<UpdateThreadResponse> {
+  return updateThread(session_id, { project_id });
+}
+
+export async function updateThread(session_id: string, updates: UpdateThreadRequest): Promise<UpdateThreadResponse> {
   const baseUrl = API_BASE_URL.replace(/\/$/, "");
   const targetUrl = `${baseUrl}/api/threads/${session_id}`;
 
-  console.log(`🚀 Assigning thread ${session_id} to project ${project_id}`);
+  console.log(`🚀 Updating thread ${session_id}`, updates);
 
   try {
     const response = await fetch(targetUrl, {
@@ -192,16 +198,38 @@ export async function assignThreadToProject(session_id: string, project_id: stri
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ project_id }),
+      body: JSON.stringify(updates),
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`HTTP ${response.status}: ${errorText}`);
       throw new Error(`HTTP ${response.status}`);
     }
 
     return await response.json();
   } catch (error) {
-    console.error('❌ Assign Thread Error:', error);
+    console.error('❌ Update Thread Error:', error);
+    throw error;
+  }
+}
+
+export async function deleteThread(session_id: string): Promise<void> {
+  const baseUrl = API_BASE_URL.replace(/\/$/, "");
+  const targetUrl = `${baseUrl}/api/threads/${session_id}`;
+
+  console.log(`🚀 Deleting thread ${session_id}`);
+
+  try {
+    const response = await fetch(targetUrl, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+  } catch (error) {
+    console.error('❌ Delete Thread Error:', error);
     throw error;
   }
 }
