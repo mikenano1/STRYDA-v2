@@ -38,6 +38,11 @@
    - Response: "Nah, mate, you can't use the Schedule Method for H1 compliance anymore for new consents. It's been phased out since November 2025."
    - ✅ Correctly warns about schedule method deprecation
 
+
+5. **Project List**:
+   - Endpoint: GET /api/projects
+   - Expected: 200 OK, list of projects with at least 1 item
+
 ### ❌ FAILING TESTS (2/6)
 
 5. **Gate Logic (Multi-turn)**: ❌ FAIL
