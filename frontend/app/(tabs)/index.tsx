@@ -17,13 +17,25 @@ export default function DashboardScreen() {
   }, []);
 
   const loadProjects = async () => {
+    console.log("🔄 Loading projects...");
     setLoading(true);
-    const data = await getProjects();
-    setProjects(data);
-    if (data.length > 0) {
-      setSelectedProject(data[0]);
+    try {
+        const data = await getProjects();
+        console.log("✅ Projects loaded:", data.length);
+        setProjects(data);
+        if (data.length > 0) {
+        setSelectedProject(data[0]);
+        }
+    } catch (e) {
+        console.error("❌ Failed to load projects:", e);
+    } finally {
+        setLoading(false);
     }
-    setLoading(false);
+  };
+
+  const handleProjectPress = () => {
+    console.log("🔘 Project selector pressed");
+    setModalVisible(true);
   };
 
   const recentHistory = [
