@@ -1246,7 +1246,6 @@ class UpdateThreadRequest(BaseModel):
 def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
     """Update thread metadata (title, project)"""
     try:
-        print(f"🔧 Update thread request: session_id={session_id}, project_id={req.project_id}, title={req.title}")
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
         with conn.cursor() as cur:
             updates = []
