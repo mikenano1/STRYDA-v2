@@ -1,14 +1,29 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Modal, FlatList, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Camera, Map, Calculator, Grid, ChevronDown, Clock, Search } from "lucide-react-native";
+import { Camera, Map, Calculator, Grid, ChevronDown, Clock, Search, X, Check } from "lucide-react-native";
 import { useRouter, Link } from "expo-router";
+import { useState, useEffect } from "react";
+import { getProjects, Project } from "../../src/internal/lib/api";
 
 export default function DashboardScreen() {
   const router = useRouter();
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // Keep for legacy imperative use if needed, but Links are preferred
-  const handleQuickAction = (query: string) => {
-    router.push({ pathname: "/(tabs)/stryda", params: { initialQuery: query }});
+  useEffect(() => {
+    loadProjects();
+  }, []);
+
+  const loadProjects = async () => {
+    setLoading(true);
+    const data = await getProjects();
+    setProjects(data);
+    if (data.length > 0) {
+      setSelectedProject(data[0]);
+    }
+    setLoading(false);
   };
 
   const recentHistory = [
@@ -25,8 +40,14 @@ export default function DashboardScreen() {
         <View className="flex-row justify-between items-center mb-8">
           <View>
             <Text className="text-neutral-400 text-sm font-medium">Kia Ora, Builder</Text>
-            <TouchableOpacity className="flex-row items-center mt-1">
-              <Text className="text-white text-xl font-bold mr-2">123 Queen St</Text>
+            
+            <TouchableOpacity 
+              className="flex-row items-center mt-1"
+              onPress={() => setModalVisible(true)}
+            >
+              <Text className="text-white text-xl font-bold mr-2">
+                {selectedProject ? selectedProject.name : "Select Project"}
+              </Text>
               <ChevronDown size={20} color="#FF6B00" />
             </TouchableOpacity>
           </View>
@@ -34,6 +55,52 @@ export default function DashboardScreen() {
              <Search size={24} color="white" />
           </TouchableOpacity>
         </View>
+
+        {/* Project Selection Modal */}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View className="flex-1 justify-end bg-black/50">
+            <View className="bg-neutral-900 rounded-t-3xl h-[50%] border-t border-neutral-700">
+              <View className="flex-row justify-between items-center p-4 border-b border-neutral-800">
+                <Text className="text-white text-lg font-bold">Select Project</Text>
+                <TouchableOpacity onPress={() => setModalVisible(false)} className="p-2">
+                  <X size={24} color="#999" />
+                </TouchableOpacity>
+              </View>
+              
+              {loading ? (
+                <ActivityIndicator color="#FF6B00" size="large" className="mt-10" />
+              ) : (
+                <FlatList
+                  data={projects}
+                  keyExtractor={(item) => item.id}
+                  contentContainerStyle={{ padding: 16 }}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity 
+                      className={`p-4 mb-3 rounded-xl border ${selectedProject?.id === item.id ? 'bg-orange-900/20 border-orange-500' : 'bg-neutral-800 border-neutral-700'}`}
+                      onPress={() => {
+                        setSelectedProject(item);
+                        setModalVisible(false);
+                      }}
+                    >
+                      <View className="flex-row justify-between items-center">
+                        <View>
+                            <Text className={`font-bold text-lg ${selectedProject?.id === item.id ? 'text-orange-500' : 'text-white'}`}>{item.name}</Text>
+                            {item.address && <Text className="text-neutral-400 text-sm">{item.address}</Text>}
+                        </View>
+                        {selectedProject?.id === item.id && <Check size={20} color="#F97316" />}
+                      </View>
+                    </TouchableOpacity>
+                  )}
+                />
+              )}
+            </View>
+          </View>
+        </Modal>
 
         {/* Primary Action Grid */}
         <Text className="text-white text-lg font-bold mb-4">Quick Actions</Text>
