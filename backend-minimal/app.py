@@ -1252,13 +1252,17 @@ def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
             params = []
             
             if req.project_id is not None:
-                # Verify project
-                cur.execute("SELECT name FROM projects WHERE id = %s", (req.project_id,))
-                project = cur.fetchone()
-                if not project:
-                    raise HTTPException(status_code=404, detail="Project not found")
-                updates.append("project_id = %s")
-                params.append(req.project_id)
+                if req.project_id: # If not empty string
+                    # Verify project
+                    cur.execute("SELECT name FROM projects WHERE id = %s", (req.project_id,))
+                    project = cur.fetchone()
+                    if not project:
+                        raise HTTPException(status_code=404, detail="Project not found")
+                    updates.append("project_id = %s")
+                    params.append(req.project_id)
+                else:
+                    # Setting to null (unfile)
+                    updates.append("project_id = NULL")
             
             if req.title is not None:
                 updates.append("title = %s")
