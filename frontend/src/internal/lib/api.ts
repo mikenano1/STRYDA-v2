@@ -106,6 +106,29 @@ export async function getProjects(): Promise<Project[]> {
   const baseUrl = API_BASE_URL.replace(/\/$/, "");
   const targetUrl = `${baseUrl}/api/projects`;
 
+  console.log(`🚀 Fetching projects from: ${targetUrl}`);
+
+  try {
+    const response = await fetch(targetUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data: ProjectsResponse = await response.json();
+    return data.projects;
+
+  } catch (error) {
+    console.error('❌ Get Projects Error:', error);
+    return [];
+  }
+}
+
 export interface Thread {
   session_id: string;
   title: string;
@@ -143,30 +166,6 @@ export async function getThreads(): Promise<Thread[]> {
 
   } catch (error) {
     console.error('❌ Get Threads Error:', error);
-    return [];
-  }
-}
-
-
-  console.log(`🚀 Fetching projects from: ${targetUrl}`);
-
-  try {
-    const response = await fetch(targetUrl, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const data: ProjectsResponse = await response.json();
-    return data.projects;
-
-  } catch (error) {
-    console.error('❌ Get Projects Error:', error);
     return [];
   }
 }
