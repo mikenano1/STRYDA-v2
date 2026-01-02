@@ -119,12 +119,15 @@ export default function StrydaChat() {
                   text: "Delete", 
                   style: "destructive", 
                   onPress: async () => {
+                      console.log(`🗑️ User confirmed delete for session: ${sessionIdRef.current}`);
                       try {
                           await deleteThread(sessionIdRef.current);
+                          console.log(`✅ Delete successful, navigating home`);
                           setSettingsModalVisible(false);
                           router.replace("/(tabs)/");
                       } catch(e) {
-                          Alert.alert("Error", "Failed to delete chat");
+                          console.error(`❌ Delete failed:`, e);
+                          Alert.alert("Error", `Failed to delete chat: ${e}`);
                       }
                   }
               }
