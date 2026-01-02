@@ -41,7 +41,7 @@ export default function ProjectsScreen() {
         <Text className="text-white text-3xl font-bold">My Projects</Text>
         <TouchableOpacity 
             className="bg-orange-600 p-3 rounded-full"
-            onPress={() => console.log("New Project")}
+            onPress={() => router.push('/project/create')}
         >
             <Plus size={24} color="white" />
         </TouchableOpacity>
