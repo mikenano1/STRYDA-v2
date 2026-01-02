@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { FileText, CheckCircle, X } from 'lucide-react-native';
 
 interface ComplianceModalProps {
