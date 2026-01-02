@@ -12,10 +12,11 @@ import ComplianceModal from './ComplianceModal';
 interface ChatMessageProps {
   message: ChatMessage;
   onCitationPress: (citation: Citation) => void;
+  onOpenDocument: (source: string, clause: string, page: string, filePath: string) => void;
   onRetry?: (messageId: string) => void;
 }
 
-export function ChatMessageComponent({ message, onCitationPress, onRetry }: ChatMessageProps) {
+export function ChatMessageComponent({ message, onCitationPress, onOpenDocument, onRetry }: ChatMessageProps) {
   const isUser = message.role === 'user';
   const isAssistant = message.role === 'assistant';
   
