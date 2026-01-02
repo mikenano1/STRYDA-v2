@@ -1,3 +1,8 @@
+/**
+ * Chat Message Component
+ * Renders user/assistant messages with citations and error states
+ */
+
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ChatMessage, Citation } from '../types/chat';
@@ -35,88 +40,90 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
     }
   };
 
+  const handlePillPress = (source: string, clause: string, page: string) => {
+      console.log(`>>> BUTTON TAPPED: ${source}`);
+      setSelectedMatch({ source, clause, page });
+      setModalVisible(true);
+  };
+
   // Regex to parse the hybrid citation format
   const citationRegex = /\[\[Source:\s*(.*?)\s*\|\s*Clause:\s*(.*?)\s*\|\s*Page:\s*(.*?)\]\]/g;
   const matches = [...(message.text || '').matchAll(citationRegex)];
   const cleanText = (message.text || '').replace(citationRegex, '').trim();
 
   return (
-    <View style={[styles.messageContainer, isUser ? styles.userContainer : styles.assistantContainer]}>
-      {/* Message bubble */}
-      <View style={[
-        styles.messageBubble,
-        isUser ? styles.userBubble : styles.assistantBubble,
-        message.error && styles.errorBubble
-      ]}>
-        {/* Loading indicator */}
-        {message.loading && isAssistant && (
-          <View style={styles.loadingContainer}>
-            <Text style={styles.loadingText}>STRYDA is thinking...</Text>
-          </View>
-        )}
-        
-        {/* Message text */}
-        {!message.loading && (
-          <View>
-              <Text style={[
-                styles.messageText,
-                isUser ? styles.userText : styles.assistantText
-              ]}>
-                {cleanText}
-              </Text>
+    <>
+        <View style={[styles.messageContainer, isUser ? styles.userContainer : styles.assistantContainer]}>
+        {/* Message bubble */}
+        <View style={[
+            styles.messageBubble,
+            isUser ? styles.userBubble : styles.assistantBubble,
+            message.error && styles.errorBubble
+        ]}>
+            {/* Loading indicator */}
+            {message.loading && isAssistant && (
+            <View style={styles.loadingContainer}>
+                <Text style={styles.loadingText}>STRYDA is thinking...</Text>
+            </View>
+            )}
+            
+            {/* Message text */}
+            {!message.loading && (
+            <View>
+                <Text style={[
+                    styles.messageText,
+                    isUser ? styles.userText : styles.assistantText
+                ]}>
+                    {cleanText}
+                </Text>
 
-              {/* Parsed Citation Pills */}
-              {matches.map((match, i) => (
-                <TouchableOpacity 
-                    key={`parsed-${i}`} 
-                    onPress={() => {
-                        setSelectedMatch({
-                            source: match[1].trim(),
-                            clause: match[2].trim(),
-                            page: match[3].trim()
-                        });
-                        setModalVisible(true);
-                    }} 
-                    style={styles.pillButton}
-                >
-                    <Text style={styles.pillText}>
-                        View Source: {match[1].trim()} {match[2].trim()}
-                    </Text>
-                </TouchableOpacity>
-              ))}
-          </View>
-        )}
+                {/* Parsed Citation Pills */}
+                {matches.map((match, i) => (
+                    <TouchableOpacity 
+                        key={`parsed-${i}`} 
+                        onPress={() => handlePillPress(match[1].trim(), match[2].trim(), match[3].trim())} 
+                        style={styles.pillButton}
+                        activeOpacity={0.5}
+                    >
+                        <Text style={styles.pillText}>
+                            View Source: {match[1].trim()} {match[2].trim()}
+                        </Text>
+                    </TouchableOpacity>
+                ))}
+            </View>
+            )}
+            
+            {/* Error state with retry */}
+            {message.error && (
+            <TouchableOpacity 
+                style={styles.retryButton}
+                onPress={handleRetry}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+                <Text style={styles.retryText}>Retry</Text>
+            </TouchableOpacity>
+            )}
+        </View>
         
-        {/* Error state with retry */}
-        {message.error && (
-          <TouchableOpacity 
-            style={styles.retryButton}
-            onPress={handleRetry}
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-          >
-            <Text style={styles.retryText}>Retry</Text>
-          </TouchableOpacity>
-        )}
-      </View>
-      
-      {/* Timestamp */}
-      <View style={[styles.timestampContainer, isUser ? styles.userTimestamp : styles.assistantTimestamp]}>
-        <Text style={styles.timestampText}>
-          {formatTime(message.ts)}
-        </Text>
-      </View>
+        {/* Timestamp */}
+        <View style={[styles.timestampContainer, isUser ? styles.userTimestamp : styles.assistantTimestamp]}>
+            <Text style={styles.timestampText}>
+            {formatTime(message.ts)}
+            </Text>
+        </View>
+        </View>
 
-      {/* Compliance Modal */}
-      {selectedMatch && (
-          <ComplianceModal 
-            visible={modalVisible}
-            onClose={() => setModalVisible(false)}
-            source={selectedMatch.source}
-            clause={selectedMatch.clause}
-            page={selectedMatch.page}
-          />
-      )}
-    </View>
+        {/* Compliance Modal - MOVED OUTSIDE BUBBLE, INSIDE FRAGMENT */}
+        {selectedMatch && (
+            <ComplianceModal 
+                visible={modalVisible}
+                onClose={() => setModalVisible(false)}
+                source={selectedMatch.source}
+                clause={selectedMatch.clause}
+                page={selectedMatch.page}
+            />
+        )}
+    </>
   );
 }
 
@@ -199,6 +206,8 @@ const styles = StyleSheet.create({
       paddingHorizontal: 16,
       borderRadius: 12,
       alignSelf: 'flex-start',
+      zIndex: 9999, // Force top
+      elevation: 10, // Android shadow/z-index
   },
   pillText: {
       color: 'white',
