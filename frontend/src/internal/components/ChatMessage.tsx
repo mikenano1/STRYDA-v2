@@ -87,7 +87,8 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
                         key={`parsed-${i}`} 
                         onPress={() => handlePillPress(match[1].trim(), match[2].trim(), match[3].trim())} 
                         style={styles.pillButton}
-                        activeOpacity={0.5}
+                        activeOpacity={0.6}
+                        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     >
                         <Text style={styles.pillText}>
                             View Source: {match[1].trim()} {match[2].trim()}
