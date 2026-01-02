@@ -3,7 +3,7 @@
  * Hardcoded preview URL for production deployment
  */
 
-export const API_BASE = "https://wind-calc.preview.emergentagent.com";
+export const API_BASE = "https://gemini-stryda.preview.emergentagent.com";
 export const FEATURE_TIER1 = true;
 
 export const CONFIG = {

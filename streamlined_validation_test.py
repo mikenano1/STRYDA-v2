@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 import os
 
-BACKEND_URL = "https://wind-calc.preview.emergentagent.com"
+BACKEND_URL = "https://gemini-stryda.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 TIMEOUT = 30
 

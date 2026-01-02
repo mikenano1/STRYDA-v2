@@ -2,7 +2,7 @@
 
 **Test Date:** 2025-11-25T06:30:31.409292
 
-**Backend URL:** https://wind-calc.preview.emergentagent.com/api/chat
+**Backend URL:** https://gemini-stryda.preview.emergentagent.com/api/chat
 
 **Total Queries Tested:** 20
 

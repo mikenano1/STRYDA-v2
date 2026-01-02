@@ -10,7 +10,7 @@ import time
 from typing import Dict, List, Tuple
 
 # Backend URL
-BACKEND_URL = "https://wind-calc.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://gemini-stryda.preview.emergentagent.com/api/chat"
 
 # Test queries
 GENERAL_QUERIES = [

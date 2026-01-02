@@ -18,7 +18,7 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 # Backend URL
-BACKEND_URL = "https://wind-calc.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://gemini-stryda.preview.emergentagent.com/api/chat"
 
 # Test queries organized by expected source
 TEST_QUERIES = {
