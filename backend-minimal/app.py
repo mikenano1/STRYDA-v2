@@ -1075,14 +1075,24 @@ async def api_chat(req: ChatRequest):
                 background_context = ""
                 if docs:
                     context_parts = []
-                    # Increase context window for better table reading
-                    for doc in docs[:10]:  # Expanded from 8 to 10 for better table coverage
+                    
+                    # Detect table-related queries that need more context
+                    table_query_terms = ['stud', 'joist', 'span', 'lintel', 'bearer', 'spacing', 'table 8', 'table 7', 'table 6']
+                    is_table_query = any(term in user_message.lower() for term in table_query_terms)
+                    
+                    # Use more docs for table queries (need multiple pages for complete tables)
+                    doc_limit = 15 if is_table_query else 10
+                    content_limit = 2000 if is_table_query else 1500  # Larger window for tables
+                    
+                    for doc in docs[:doc_limit]:
                         source = doc.get('source', 'Unknown')
                         page = doc.get('page', 'N/A')
-                        # Expand content window for tables (from 800 to 1500)
-                        content = doc.get('content', doc.get('snippet', ''))[:1500]
+                        content = doc.get('content', doc.get('snippet', ''))[:content_limit]
                         context_parts.append(f"[{source} | Page {page}]\n{content}")
                     background_context = "\n\n---\n\n".join(context_parts)
+                    
+                    if is_table_query:
+                        print(f"📊 Table query detected - using {doc_limit} docs with {content_limit} char window")
                     background_context = "\n\n".join(context_parts)
                 
                 # Initialize Gemini Client
