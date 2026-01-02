@@ -50,10 +50,26 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
       console.log(`>>> Modal state set to TRUE`);
   };
 
+  // Function to clean markdown artifacts from AI responses
+  const cleanMarkdown = (text: string): string => {
+      return text
+          .replace(/\*\*(.*?)\*\*/g, '$1')  // **bold** → bold
+          .replace(/\*(.*?)\*/g, '$1')       // *italic* → italic
+          .replace(/__(.*?)__/g, '$1')       // __underline__ → underline
+          .replace(/~~(.*?)~~/g, '$1')       // ~~strikethrough~~ → strikethrough
+          .replace(/^#+\s*/gm, '')           // # headers → plain text
+          .replace(/^[-*]\s+/gm, '• ')       // - bullets → • bullets
+          .replace(/^>\s*/gm, '')            // > blockquotes → plain
+          .replace(/`([^`]+)`/g, '$1')       // `code` → code
+          .replace(/^['"`]|['"`]$/g, '')     // Remove wrapping quotes
+          .trim();
+  };
+
   // Regex to parse the hybrid citation format
   const citationRegex = /\[\[Source:\s*(.*?)\s*\|\s*Clause:\s*(.*?)\s*\|\s*Page:\s*(.*?)\]\]/g;
   const matches = [...(message.text || '').matchAll(citationRegex)];
-  const cleanText = (message.text || '').replace(citationRegex, '').trim();
+  const rawText = (message.text || '').replace(citationRegex, '').trim();
+  const cleanText = cleanMarkdown(rawText);
 
   return (
     <>
