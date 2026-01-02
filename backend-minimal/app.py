@@ -1075,10 +1075,14 @@ async def api_chat(req: ChatRequest):
                 background_context = ""
                 if docs:
                     context_parts = []
-                    for doc in docs[:8]: # Expanded context for Gemini
+                    # Increase context window for better table reading
+                    for doc in docs[:10]:  # Expanded from 8 to 10 for better table coverage
                         source = doc.get('source', 'Unknown')
-                        content = doc.get('content', doc.get('snippet', ''))[:800]
-                        context_parts.append(f"From {source}:\n{content}")
+                        page = doc.get('page', 'N/A')
+                        # Expand content window for tables (from 800 to 1500)
+                        content = doc.get('content', doc.get('snippet', ''))[:1500]
+                        context_parts.append(f"[{source} | Page {page}]\n{content}")
+                    background_context = "\n\n---\n\n".join(context_parts)
                     background_context = "\n\n".join(context_parts)
                 
                 # Initialize Gemini Client
