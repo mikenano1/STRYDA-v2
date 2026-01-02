@@ -2,7 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from "rea
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState, useEffect } from "react";
-import { ChevronLeft, Edit, MessageSquare, MapPin } from "lucide-react-native";
+import { ChevronLeft, Edit, MessageSquare, MapPin, ChevronRight } from "lucide-react-native";
 import { getProjects, getThreads, Project, Thread } from "../../src/internal/lib/api";
 
 export default function ProjectDetailScreen() {
