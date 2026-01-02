@@ -237,11 +237,21 @@ export default function StrydaChat() {
     }
   };
 
+  // Handler to navigate to PDF viewer
+  const handleOpenDocument = (source: string, clause: string, page: string, filePath: string) => {
+      console.log(`📄 Navigating to PDF Viewer: ${source} | Clause ${clause} | Page ${page}`);
+      router.push({
+          pathname: '/pdf-viewer',
+          params: { source, clause, page, filePath }
+      });
+  };
+
   const renderItem = ({ item }: { item: Message }) => {
     return (
       <ChatMessageComponent 
         message={item} 
         onCitationPress={() => {}} 
+        onOpenDocument={handleOpenDocument}
         onRetry={() => handleSend(item.text)}
       />
     );
