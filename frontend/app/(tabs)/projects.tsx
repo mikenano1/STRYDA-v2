@@ -31,6 +31,8 @@ export default function ProjectsScreen() {
       router.push({ pathname: "/project/[id]", params: { id: project.id } });
       // For now, just reload to refresh
       // loadProjects();
+      // router.push(`/project/${project.id}`);
+      router.push({ pathname: "/project/[id]", params: { id: project.id } });
   };
 
   return (
