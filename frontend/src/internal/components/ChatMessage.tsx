@@ -41,9 +41,13 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
   };
 
   const handlePillPress = (source: string, clause: string, page: string) => {
-      console.log(`>>> BUTTON TAPPED: ${source}`);
+      console.log(`🟠🟠🟠 CITATION BUTTON PRESSED 🟠🟠🟠`);
+      console.log(`>>> Source: ${source}`);
+      console.log(`>>> Clause: ${clause}`);
+      console.log(`>>> Page: ${page}`);
       setSelectedMatch({ source, clause, page });
       setModalVisible(true);
+      console.log(`>>> Modal state set to TRUE`);
   };
 
   // Regex to parse the hybrid citation format
