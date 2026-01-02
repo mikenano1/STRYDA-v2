@@ -1364,3 +1364,64 @@ def get_thread_details(session_id: str, request: Request):
     except Exception as e:
         print(f"❌ Get thread detail error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/documents")
+@limiter.limit("30/minute")
+def get_documents(request: Request):
+    """List available reference documents"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor() as cur:
+            cur.execute("SELECT DISTINCT source FROM documents ORDER BY source;")
+            rows = cur.fetchall()
+            documents = [{"id": f"doc_{i}", "title": r[0], "source": r[0]} for i, r in enumerate(rows)]
+            
+            # If empty, return standard list
+            if not documents:
+                documents = [
+                    {"id": "doc_1", "title": "NZS 3604:2011", "source": "NZS 3604:2011"},
+                    {"id": "doc_2", "title": "E2/AS1 External Moisture", "source": "E2/AS1"},
+                    {"id": "doc_3", "title": "B1/AS1 Structure", "source": "B1/AS1"},
+                    {"id": "doc_4", "title": "G13/AS1 Foul Water", "source": "G13/AS1"}
+                ]
+        conn.close()
+        return {"ok": True, "documents": documents}
+    except Exception as e:
+        print(f"❌ Get documents error: {e}")
+        # Fallback
+        return {"ok": True, "documents": [
+            {"id": "doc_1", "title": "NZS 3604:2011", "source": "NZS 3604:2011"},
+            {"id": "doc_2", "title": "E2/AS1 External Moisture", "source": "E2/AS1"}
+        ]}
+
+class CreateProjectRequest(BaseModel):
+    name: str
+    address: Optional[str] = None
+
+@app.post("/api/projects")
+@limiter.limit("10/minute")
+def create_project(req: CreateProjectRequest, request: Request):
+    """Create a new project"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor() as cur:
+            cur.execute("""
+                INSERT INTO projects (name, address, created_at)
+                VALUES (%s, %s, NOW())
+                RETURNING id, name, address, created_at
+            """, (req.name, req.address))
+            row = cur.fetchone()
+            conn.commit()
+            
+            project = {
+                "id": str(row[0]),
+                "name": row[1],
+                "address": row[2],
+                "created_at": row[3]
+            }
+        conn.close()
+        return {"ok": True, "project": project}
+    except Exception as e:
+        print(f"❌ Create project error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
