@@ -81,7 +81,7 @@ export default function ComplianceModal({ visible, onClose, onOpenDocument, sour
 
           <TouchableOpacity 
             style={[styles.openButton, !isAvailable && styles.disabledButton]}
-            onPress={() => console.log(`Opening ${localPath} at page ${page}`)}
+            onPress={handleOpenDocument}
             disabled={!isAvailable}
           >
               <FileText size={20} color="white" style={{marginRight: 8}} />
