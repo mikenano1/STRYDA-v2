@@ -274,6 +274,8 @@ export default function StrydaChat() {
         keyExtractor={i => i.id} 
         contentContainerStyle={{ padding: 16 }} 
         onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+        keyboardShouldPersistTaps="handled"
+        removeClippedSubviews={false}
       />
       
       {isLoading && (
