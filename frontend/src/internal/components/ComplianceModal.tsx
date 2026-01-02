@@ -5,12 +5,13 @@ import { FileText, CheckCircle, X } from 'lucide-react-native';
 interface ComplianceModalProps {
   visible: boolean;
   onClose: () => void;
+  onOpenDocument: (source: string, clause: string, page: string, filePath: string) => void;
   source: string;
   clause: string;
   page: string;
 }
 
-export default function ComplianceModal({ visible, onClose, source, clause, page }: ComplianceModalProps) {
+export default function ComplianceModal({ visible, onClose, onOpenDocument, source, clause, page }: ComplianceModalProps) {
   
   // Hardcoded map for MVP (In reality this would be dynamic or in a config file)
   const getLocalPath = (src: string) => {
@@ -23,6 +24,12 @@ export default function ComplianceModal({ visible, onClose, source, clause, page
 
   const localPath = getLocalPath(source);
   const isAvailable = localPath.startsWith('assets');
+
+  const handleOpenDocument = () => {
+      console.log(`🔗 Opening PDF Viewer: ${source} | ${clause} | Page ${page}`);
+      onClose(); // Close the modal first
+      onOpenDocument(source, clause, page, localPath);
+  };
 
   return (
     <Modal
