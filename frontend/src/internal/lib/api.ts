@@ -243,16 +243,28 @@ export async function deleteThread(session_id: string): Promise<void> {
   const baseUrl = API_BASE_URL.replace(/\/$/, "");
   const targetUrl = `${baseUrl}/api/threads/${session_id}`;
 
-  console.log(`🚀 Deleting thread ${session_id}`);
+  console.log(`🗑️ DELETE REQUEST:`);
+  console.log(`   Session ID: ${session_id}`);
+  console.log(`   Target URL: ${targetUrl}`);
+  console.log(`   Platform: ${Platform.OS}`);
 
   try {
     const response = await fetch(targetUrl, {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
+    console.log(`🗑️ DELETE RESPONSE: ${response.status} ${response.statusText}`);
+
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+      const errorText = await response.text();
+      console.error(`❌ Delete failed: ${errorText}`);
+      throw new Error(`HTTP ${response.status}: ${errorText}`);
     }
+    
+    console.log(`✅ Thread deleted successfully`);
   } catch (error) {
     console.error('❌ Delete Thread Error:', error);
     throw error;
