@@ -149,26 +149,30 @@ def fast_text_search(query: str, conn, limit: int = 50) -> List[Dict]:
         print(f"❌ Fast text search failed: {e}")
         return []
 
-def vector_search_optimized(query: str, conn, source_filter: List[str] = None, limit: int = 20) -> List[Dict]:
-    """Optimized vector search with explicit type casting"""
+def vector_search_optimized(query: str, conn, source_filter: List[str] = None, limit: int = 20, embedding_vector: List[float] = None) -> List[Dict]:
+    """Optimized vector search with proper OpenAI embeddings"""
     try:
-        # Generate Tier-1 aware embedding pattern (known working approach)
-        query_lower = query.lower()
+        # Use provided embedding or generate new one
+        if embedding_vector is None:
+            try:
+                import openai
+                client = openai.OpenAI()
+                response = client.embeddings.create(
+                    model='text-embedding-3-small',
+                    input=query
+                )
+                embedding_vector = response.data[0].embedding
+                print(f"   📐 Generated query embedding ({len(embedding_vector)} dimensions)")
+            except Exception as e:
+                print(f"   ⚠️ Embedding generation failed: {e}, using fallback")
+                # Fallback to pattern-based if embedding fails
+                query_lower = query.lower()
+                if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber']):
+                    embedding_vector = [0.7, 0.3, 0.1] * 512
+                else:
+                    embedding_vector = [0.5, 0.3, 0.7] * 512
         
-        if any(term in query_lower for term in ['stud', 'spacing', 'nzs 3604', 'timber']):
-            # NZS 3604 pattern
-            pattern = [0.7, 0.3, 0.1] * 512  # 1536 dimensions
-        elif any(term in query_lower for term in ['roof', 'pitch', 'flashing', 'e2', 'moisture']):
-            # E2/AS1 pattern
-            pattern = [0.2, 0.6, 0.4] * 512
-        elif any(term in query_lower for term in ['brace', 'bracing', 'b1', 'structure']):
-            # B1/AS1 pattern
-            pattern = [0.9, 0.1, 0.5] * 512
-        else:
-            # General pattern
-            pattern = [0.5, 0.3, 0.7] * 512
-        
-        vector_str = '[' + ','.join(map(str, pattern)) + ']'
+        vector_str = '[' + ','.join(map(str, embedding_vector)) + ']'
         
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             if source_filter:
