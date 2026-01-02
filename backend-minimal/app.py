@@ -1348,6 +1348,21 @@ def update_thread(session_id: str, req: UpdateThreadRequest, request: Request):
         print(f"❌ Update thread error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.delete("/api/threads/{session_id}")
+@limiter.limit("10/minute")
+def delete_thread(session_id: str, request: Request):
+    """Delete a thread - Idempotent"""
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+        with conn.cursor() as cur:
+            cur.execute("DELETE FROM threads WHERE session_id = %s", (session_id,))
+            conn.commit()
+        conn.close()
+        return {"ok": True}
+    except Exception as e:
+        print(f"❌ Delete thread error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.get("/api/threads/{session_id}")
 @limiter.limit("30/minute")
 def get_thread_details(session_id: str, request: Request):
