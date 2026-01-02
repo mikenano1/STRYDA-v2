@@ -11,7 +11,7 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
     
     Rules:
     - Strict mode: Always 2048 tokens (comprehensive answers)
-    - GPT-first/hybrid: 1024-1500 tokens (dynamic based on complexity)
+    - GPT-first/hybrid: 1024-2048 tokens (dynamic based on complexity)
     
     Args:
         mode: "gpt_first" or "strict_compliance"
@@ -26,8 +26,8 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
     if mode == "strict_compliance":
         return 2048
     
-    # GPT-first/Hybrid starts with much higher base
-    base_tokens = 1024
+    # GPT-first/Hybrid starts with higher base
+    base_tokens = 1200  # Increased from 1024
     
     msg_lower = message.lower()
     
@@ -39,16 +39,28 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
         'explain', 'describe', 'how to'
     ]
     
-    has_calc_words = any(keyword in msg_lower for keyword in calc_keywords)
+    # Table-related keywords that need comprehensive responses
+    table_keywords = [
+        'stud', 'joist', 'bearer', 'lintel', 'rafter',
+        'table 8', 'table 7', 'table 6', 'table 5',
+        'wind zone', 'sg8', 'sg10', 'sg6',
+        'loadbearing', 'non-loadbearing', 'single storey', 'top storey',
+        'loaded dimension', 'maximum span'
+    ]
     
-    if has_calc_words:
-        base_tokens = 1200  # Need more tokens for technical explanations
+    has_calc_words = any(keyword in msg_lower for keyword in calc_keywords)
+    has_table_words = any(keyword in msg_lower for keyword in table_keywords)
+    
+    if has_calc_words or has_table_words:
+        base_tokens = 1500  # Increased for technical/table explanations
     
     # Longer questions often need longer answers
-    if len(message) > 140:
+    if len(message) > 100:
+        base_tokens += 200
+    if len(message) > 200:
         base_tokens += 300
     
-    # Clamp between 1024 and 2048
-    final_tokens = max(1024, min(2048, base_tokens))
+    # Clamp between 1200 and 2048
+    final_tokens = max(1200, min(2048, base_tokens))
     
     return final_tokens
