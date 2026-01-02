@@ -23,7 +23,11 @@ export default function CreateProjectScreen() {
         Alert.alert("Success", "Project created successfully!");
         
         // Navigate to the new project
-        router.replace({ pathname: "/project/[id]", params: { id: project.id } });
+        // Use string path with dynamic parameter replacement to avoid serialization issues
+        router.replace({
+            pathname: "/project/[id]",
+            params: { id: project.id }
+        });
     } catch (e) {
         Alert.alert("Error", "Failed to create project. Please try again.");
     } finally {
