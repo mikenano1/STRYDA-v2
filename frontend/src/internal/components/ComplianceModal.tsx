@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
       textAlign: 'right',
   },
   pathText: {
-      fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+      fontFamily: 'monospace',
       fontSize: 12,
       color: '#F97316', // Orange
   },
