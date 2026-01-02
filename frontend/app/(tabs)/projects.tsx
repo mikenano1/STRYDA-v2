@@ -1,3 +1,4 @@
+
 import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Plus, ArrowRight, Folder } from "lucide-react-native";
@@ -27,11 +28,7 @@ export default function ProjectsScreen() {
   };
 
   const handleProjectPress = (project: Project) => {
-      // Navigate to project detail screen (will create this route next)
-      // router.push(`/project/${project.id}`);
-      // For now, just reload to refresh
-      loadProjects();
-      router.push(`/project/${project.id}`);
+      router.push({ pathname: "/project/[id]", params: { id: project.id } });
       // For now, just reload to refresh
       // loadProjects();
   };
