@@ -5,18 +5,11 @@ import { Send, FileText, ChevronRight, Mic, Square, MoreVertical, X, Plus, Check
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { chatAPI, Citation, getProjects, assignThreadToProject, getThreadDetails, updateThread, deleteThread, Project, Thread } from '../../src/internal/lib/api';
 import { Audio } from 'expo-av';
+import ChatMessageComponent from '../../src/internal/components/ChatMessage';
 
 console.log("🚀 STRYDA CHAT v3.0 - CHAT SETTINGS ENABLED");
 
-const getPdfUrl = (citationTitle: string | null): { url: string; title: string } | null => {
-  if (!citationTitle) return null;
-  const lowerTitle = citationTitle.toLowerCase();
-  if (lowerTitle.includes('e2/as1') || lowerTitle.includes('e2')) return { title: 'E2/AS1 (External Moisture)', url: 'https://codehub.building.govt.nz/assets/Approved-Documents/E2-External-moisture-3rd-edition-Amendment-10.pdf' };
-  if (lowerTitle.includes('3604') || lowerTitle.includes('timber')) return { title: 'NZS 3604:2011 (Selected Extracts)', url: 'https://www.building.govt.nz/assets/Uploads/building-code-compliance/b-stability/b1-structure/as1-nzs3604-2011-light-timber-framed-buildings.pdf' };
-  return null;
-};
-
-type Message = { id: string; role: 'user' | 'assistant'; text: string; citations?: Citation[]; };
+type Message = { id: string; role: 'user' | 'assistant'; text: string; citations?: Citation[]; loading?: boolean; error?: boolean; ts: number; };
 
 export default function StrydaChat() {
   const router = useRouter();
@@ -213,7 +206,7 @@ export default function StrydaChat() {
     const textToSend = textOverride || input;
     if (!textToSend.trim()) return;
 
-    const userMsg: Message = { id: Date.now().toString(), role: 'user', text: textToSend };
+    const userMsg: Message = { id: Date.now().toString(), role: 'user', text: textToSend, ts: Date.now() };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
     setIsLoading(true);
@@ -232,53 +225,25 @@ export default function StrydaChat() {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
         text: response.message || "I couldn't process that response.",
-        citations: response.citations
+        citations: response.citations,
+        ts: Date.now()
       };
       setMessages(prev => [...prev, aiMsg]);
     } catch (error) {
       console.error("Chat error:", error);
-      setMessages(prev => [...prev, { id: Date.now().toString(), role: 'assistant', text: "Error connecting to backend." }]);
+      setMessages(prev => [...prev, { id: Date.now().toString(), role: 'assistant', text: "Error connecting to backend.", error: true, ts: Date.now() }]);
     } finally {
       setIsLoading(false);
     }
   };
 
   const renderItem = ({ item }: { item: Message }) => {
-    // Regex to parse the hybrid citation format: [[Source: ... | Clause: ... | Page: ...]]
-    const citationRegex = /\[\[Source:\s*(.*?)\s*\|\s*Clause:\s*(.*?)\s*\|\s*Page:\s*(.*?)\]\]/g;
-    const matches = [...(item.text || '').matchAll(citationRegex)];
-    const cleanText = (item.text || '').replace(citationRegex, '').trim();
-
     return (
-      <View className={`mb-4 w-full flex-row ${item.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-        <View className={`max-w-[85%] p-4 ${item.role === 'user' ? 'bg-orange-600 rounded-2xl rounded-tr-sm' : 'bg-neutral-800 rounded-2xl rounded-tl-sm'}`}>
-          <Text className={`${item.role === 'user' ? 'text-white' : 'text-neutral-200'} text-base leading-6`}>{cleanText}</Text>
-          
-          {/* Render Parsed Citation Pills */}
-          {matches.map((match, i) => (
-            <TouchableOpacity 
-                key={`parsed-${i}`} 
-                onPress={() => console.log(`Opening PDF: ${match[3].trim()}`)} 
-                className="mt-3 bg-orange-500 py-3 px-4 rounded-xl active:bg-orange-600"
-            >
-                <Text className="text-white font-bold text-center text-sm">
-                    View Source: {match[1].trim()} {match[2].trim()}
-                </Text>
-            </TouchableOpacity>
-          ))}
-
-          {/* Legacy Citation Support (Keep existing logic as fallback) */}
-          {item.citations?.map((cite, i) => (
-            <TouchableOpacity key={i} onPress={() => {
-               const data = getPdfUrl(cite.source);
-               if(data) router.push({ pathname: '/pdf-viewer', params: { url: data.url, title: data.title } });
-            }} className="mt-3 pt-3 border-t border-neutral-700 flex-row items-center">
-              <FileText size={20} color="#F97316" />
-              <Text className="text-orange-500 font-bold text-sm ml-2">{cite.source} {cite.clause}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </View>
+      <ChatMessageComponent 
+        message={item} 
+        onCitationPress={() => {}} 
+        onRetry={() => handleSend(item.text)}
+      />
     );
   };
 
@@ -302,7 +267,14 @@ export default function StrydaChat() {
           </TouchableOpacity>
       </View>
 
-      <FlatList ref={flatListRef} data={messages} renderItem={renderItem} keyExtractor={i => i.id} contentContainerStyle={{ padding: 16 }} />
+      <FlatList 
+        ref={flatListRef} 
+        data={messages} 
+        renderItem={renderItem} 
+        keyExtractor={i => i.id} 
+        contentContainerStyle={{ padding: 16 }} 
+        onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+      />
       
       {isLoading && (
         <View className="flex-row justify-center py-4">
