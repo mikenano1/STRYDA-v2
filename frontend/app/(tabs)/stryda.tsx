@@ -353,7 +353,10 @@ export default function StrydaChat() {
                     <View className="bg-neutral-800 rounded-xl border border-neutral-700 overflow-hidden mb-6">
                         <TouchableOpacity 
                             className="p-4 border-b border-neutral-700 bg-orange-600/10 flex-row items-center"
-                            onPress={() => Alert.alert("Create Project", "Navigating to create project...")}
+                            onPress={() => {
+                                setSettingsModalVisible(false);
+                                router.push('/project/create');
+                            }}
                         >
                             <Plus size={18} color="#F97316" className="mr-3" />
                             <Text className="text-orange-500 font-bold">Create New Project</Text>
