@@ -140,6 +140,7 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
             <ComplianceModal 
                 visible={modalVisible}
                 onClose={() => setModalVisible(false)}
+                onOpenDocument={onOpenDocument}
                 source={selectedMatch.source}
                 clause={selectedMatch.clause}
                 page={selectedMatch.page}
