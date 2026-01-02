@@ -1,12 +1,8 @@
-/**
- * Chat Message Component
- * Renders user/assistant messages with citations and error states
- */
-
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ChatMessage, Citation } from '../types/chat';
 import CitationPill from './CitationPill';
+import ComplianceModal from './ComplianceModal';
 
 interface ChatMessageProps {
   message: ChatMessage;
@@ -18,6 +14,9 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
   const isUser = message.role === 'user';
   const isAssistant = message.role === 'assistant';
   
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedMatch, setSelectedMatch] = useState<{source: string, clause: string, page: string} | null>(null);
+
   // Format timestamp
   const formatTime = (ts: number) => {
     const date = new Date(ts);
@@ -36,6 +35,11 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
     }
   };
 
+  // Regex to parse the hybrid citation format
+  const citationRegex = /\[\[Source:\s*(.*?)\s*\|\s*Clause:\s*(.*?)\s*\|\s*Page:\s*(.*?)\]\]/g;
+  const matches = [...(message.text || '').matchAll(citationRegex)];
+  const cleanText = (message.text || '').replace(citationRegex, '').trim();
+
   return (
     <View style={[styles.messageContainer, isUser ? styles.userContainer : styles.assistantContainer]}>
       {/* Message bubble */}
@@ -44,7 +48,7 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
         isUser ? styles.userBubble : styles.assistantBubble,
         message.error && styles.errorBubble
       ]}>
-        {/* Loading indicator for assistant */}
+        {/* Loading indicator */}
         {message.loading && isAssistant && (
           <View style={styles.loadingContainer}>
             <Text style={styles.loadingText}>STRYDA is thinking...</Text>
@@ -53,12 +57,34 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
         
         {/* Message text */}
         {!message.loading && (
-          <Text style={[
-            styles.messageText,
-            isUser ? styles.userText : styles.assistantText
-          ]}>
-            {message.text}
-          </Text>
+          <View>
+              <Text style={[
+                styles.messageText,
+                isUser ? styles.userText : styles.assistantText
+              ]}>
+                {cleanText}
+              </Text>
+
+              {/* Parsed Citation Pills */}
+              {matches.map((match, i) => (
+                <TouchableOpacity 
+                    key={`parsed-${i}`} 
+                    onPress={() => {
+                        setSelectedMatch({
+                            source: match[1].trim(),
+                            clause: match[2].trim(),
+                            page: match[3].trim()
+                        });
+                        setModalVisible(true);
+                    }} 
+                    style={styles.pillButton}
+                >
+                    <Text style={styles.pillText}>
+                        View Source: {match[1].trim()} {match[2].trim()}
+                    </Text>
+                </TouchableOpacity>
+              ))}
+          </View>
         )}
         
         {/* Error state with retry */}
@@ -73,32 +99,23 @@ export function ChatMessageComponent({ message, onCitationPress, onRetry }: Chat
         )}
       </View>
       
-      {/* Citations (assistant only) */}
-      {isAssistant && message.citations && message.citations.length > 0 && !message.loading && (
-        <View style={styles.citationsContainer}>
-          {message.citations.map((citation, index) => (
-            <CitationPill
-              key={`${citation.source}-${citation.page}-${index}`}
-              citation={citation}
-              onPress={onCitationPress}
-            />
-          ))}
-        </View>
-      )}
-      
       {/* Timestamp */}
       <View style={[styles.timestampContainer, isUser ? styles.userTimestamp : styles.assistantTimestamp]}>
         <Text style={styles.timestampText}>
           {formatTime(message.ts)}
         </Text>
-        
-        {/* Debug timing (development only) */}
-        {__DEV__ && isAssistant && message.timing_ms && (
-          <Text style={styles.debugTiming}>
-            ({(message.timing_ms / 1000).toFixed(1)}s)
-          </Text>
-        )}
       </View>
+
+      {/* Compliance Modal */}
+      {selectedMatch && (
+          <ComplianceModal 
+            visible={modalVisible}
+            onClose={() => setModalVisible(false)}
+            source={selectedMatch.source}
+            clause={selectedMatch.clause}
+            page={selectedMatch.page}
+          />
+      )}
     </View>
   );
 }
@@ -115,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   messageBubble: {
-    maxWidth: '80%',
+    maxWidth: '85%',
     padding: 12,
     borderRadius: 16,
   },
@@ -162,12 +179,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
   },
-  citationsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 8,
-    maxWidth: '80%',
-  },
   timestampContainer: {
     marginTop: 4,
   },
@@ -181,10 +192,18 @@ const styles = StyleSheet.create({
     color: '#888888',
     fontSize: 12,
   },
-  debugTiming: {
-    color: '#666666',
-    fontSize: 10,
-    marginTop: 2,
+  pillButton: {
+      marginTop: 12,
+      backgroundColor: '#F97316',
+      paddingVertical: 10,
+      paddingHorizontal: 16,
+      borderRadius: 12,
+      alignSelf: 'flex-start',
+  },
+  pillText: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 14,
   }
 });
 
