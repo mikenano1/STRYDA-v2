@@ -129,6 +129,31 @@ export async function getProjects(): Promise<Project[]> {
   }
 }
 
+export async function createProject(name: string, address?: string): Promise<Project> {
+  const baseUrl = API_BASE_URL.replace(/\/$/, "");
+  const targetUrl = `${baseUrl}/api/projects`;
+
+  try {
+    const response = await fetch(targetUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, address }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.project;
+  } catch (error) {
+    console.error('❌ Create Project Error:', error);
+    throw error;
+  }
+}
+
 export interface Thread {
   session_id: string;
   title: string;
@@ -252,5 +277,32 @@ export async function getThreadDetails(session_id: string): Promise<Thread | nul
     } catch (e) {
         console.error("Failed to get thread details", e);
         return null;
+    }
+}
+
+export interface Document {
+    id: string;
+    title: string;
+    source: string;
+}
+
+export interface DocumentsResponse {
+    ok: boolean;
+    documents: Document[];
+}
+
+export async function getDocuments(): Promise<Document[]> {
+    const baseUrl = API_BASE_URL.replace(/\/$/, "");
+    const targetUrl = `${baseUrl}/api/documents`;
+    
+    try {
+        const response = await fetch(targetUrl);
+        if (!response.ok) throw new Error('Failed to fetch documents');
+        
+        const data: DocumentsResponse = await response.json();
+        return data.documents;
+    } catch (e) {
+        console.error("Failed to get documents", e);
+        return [];
     }
 }
