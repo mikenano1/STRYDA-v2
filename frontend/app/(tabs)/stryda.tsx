@@ -243,22 +243,44 @@ export default function StrydaChat() {
     }
   };
 
-  const renderItem = ({ item }: { item: Message }) => (
-    <View className={`mb-4 w-full flex-row ${item.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-      <View className={`max-w-[85%] p-4 ${item.role === 'user' ? 'bg-orange-600 rounded-2xl rounded-tr-sm' : 'bg-neutral-800 rounded-2xl rounded-tl-sm'}`}>
-        <Text className={`${item.role === 'user' ? 'text-white' : 'text-neutral-200'} text-base leading-6`}>{item.text}</Text>
-        {item.citations?.map((cite, i) => (
-          <TouchableOpacity key={i} onPress={() => {
-             const data = getPdfUrl(cite.source);
-             if(data) router.push({ pathname: '/pdf-viewer', params: { url: data.url, title: data.title } });
-          }} className="mt-3 pt-3 border-t border-neutral-700 flex-row items-center">
-            <FileText size={20} color="#F97316" />
-            <Text className="text-orange-500 font-bold text-sm ml-2">{cite.source} {cite.clause}</Text>
-          </TouchableOpacity>
-        ))}
+  const renderItem = ({ item }: { item: Message }) => {
+    // Regex to parse the hybrid citation format: [[Source: ... | Clause: ... | Page: ...]]
+    const citationRegex = /\[\[Source:\s*(.*?)\s*\|\s*Clause:\s*(.*?)\s*\|\s*Page:\s*(.*?)\]\]/g;
+    const matches = [...(item.text || '').matchAll(citationRegex)];
+    const cleanText = (item.text || '').replace(citationRegex, '').trim();
+
+    return (
+      <View className={`mb-4 w-full flex-row ${item.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+        <View className={`max-w-[85%] p-4 ${item.role === 'user' ? 'bg-orange-600 rounded-2xl rounded-tr-sm' : 'bg-neutral-800 rounded-2xl rounded-tl-sm'}`}>
+          <Text className={`${item.role === 'user' ? 'text-white' : 'text-neutral-200'} text-base leading-6`}>{cleanText}</Text>
+          
+          {/* Render Parsed Citation Pills */}
+          {matches.map((match, i) => (
+            <TouchableOpacity 
+                key={`parsed-${i}`} 
+                onPress={() => console.log(`Opening PDF: ${match[3].trim()}`)} 
+                className="mt-3 bg-orange-500 py-3 px-4 rounded-xl active:bg-orange-600"
+            >
+                <Text className="text-white font-bold text-center text-sm">
+                    View Source: {match[1].trim()} {match[2].trim()}
+                </Text>
+            </TouchableOpacity>
+          ))}
+
+          {/* Legacy Citation Support (Keep existing logic as fallback) */}
+          {item.citations?.map((cite, i) => (
+            <TouchableOpacity key={i} onPress={() => {
+               const data = getPdfUrl(cite.source);
+               if(data) router.push({ pathname: '/pdf-viewer', params: { url: data.url, title: data.title } });
+            }} className="mt-3 pt-3 border-t border-neutral-700 flex-row items-center">
+              <FileText size={20} color="#F97316" />
+              <Text className="text-orange-500 font-bold text-sm ml-2">{cite.source} {cite.clause}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
-    </View>
-  );
+    );
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-neutral-950" edges={['top']}>
