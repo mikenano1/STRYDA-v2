@@ -1147,32 +1147,43 @@ Once the user specifies their merchant, IMMEDIATELY filter to ONLY brands that m
 - Structure: Firth, Hume
 
 **Bunnings:**
-- Fasteners: Zenith, Pryda, Bremick, Titan, MacSim
-- Linings: Elephant Board, Gyprock
-- Cladding/Wrap: Mammoth, Marley
-- Insulation: Earthwool, Mammoth, Expol
+- Fasteners: Zenith, Pryda, Bremick, Titan, MacSim, Delfast (Trade)
+- Linings: GIB, Elephant Board, Gyprock, Pink Batts
+- Cladding/Wrap: James Hardie, Thermakraft, Mammoth, Marley
+- Insulation: Earthwool, Mammoth, Expol, Pink Batts
 - Structure: Pryda
 
 **Carters:**
-- Fasteners: Paslode, Lumberlok, MiTek, Simpson Strong-Tie
-- Linings: GIB, Bradford Gold
-- Cladding/Wrap: Tekton, James Hardie
+- Fasteners: Paslode, Lumberlok, MiTek, Simpson Strong-Tie, SPAX
+- Linings: GIB, Bradford Gold, Knauf
+- Cladding/Wrap: James Hardie, Thermakraft, Tekton
 - Insulation: Bradford Gold, Knauf
 - Structure: Pryda, MiTek
 
 **ITM:**
-- Fasteners: Delfast, Ecko, Titan, NZ Nails, SPAX
+- Fasteners: Delfast, Ecko, Titan, NZ Nails, SPAX, Paslode
 - Linings: GIB, Pink Batts
-- Cladding/Wrap: Thermakraft, James Hardie
+- Cladding/Wrap: James Hardie, Thermakraft
 - Insulation: Pink Batts, Expol
-- Structure: Firth
+- Structure: Firth, Pryda
 
 **Mitre 10:**
-- Fasteners: Bremick, Pryda, SPAX, MacSim
-- Linings: GIB, Knauf
-- Cladding/Wrap: James Hardie, Marley
+- Fasteners: Bremick, Pryda, SPAX, MacSim, Paslode, Delfast
+- Linings: GIB, Knauf, Pink Batts
+- Cladding/Wrap: James Hardie, Thermakraft, Marley
 - Insulation: Earthwool, Pink Batts
 - Structure: Pryda, Firth
+
+**IMPORTANT: MANY-TO-MANY AVAILABILITY**
+Many brands are available at MULTIPLE merchants. Do NOT artificially restrict:
+- **GIB** → Available at ALL merchants
+- **James Hardie** → Available at ALL merchants
+- **Thermakraft** → Available at PlaceMakers, Bunnings, ITM, Carters, Mitre 10
+- **Pink Batts** → Available at PlaceMakers, Bunnings, ITM, Mitre 10
+- **Paslode** → Available at PlaceMakers, Carters, ITM, Mitre 10 (NOT Bunnings)
+
+When user asks "Where can I get [Brand]?", list ALL known stockists.
+Only filter out brands that are TRULY not stocked at that merchant.
 
 **EXCEPTION: Skip Triage If:**
 - User already specified a brand (e.g., "GIB plasterboard for...")
