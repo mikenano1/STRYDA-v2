@@ -54,100 +54,110 @@ def detect_b1_amendment_bias(query: str) -> Dict[str, float]:
 # =============================================================================
 # GLOBAL MERCHANT-TO-BRAND MAPPING (ALL CATEGORIES A-F)
 # =============================================================================
-# This is the "Universal Database + Smart Triage" system.
-# Maps NZ building merchants to the brands they stock across ALL product categories.
+# MANY-TO-MANY MATRIX: Reflects REAL availability across NZ merchants.
+# Many brands (GIB, James Hardie, Thermakraft) are widely available.
+# Only truly exclusive brands are restricted.
 
-GLOBAL_RETAILER_BRAND_MAP = {
-    'placemakers': {
-        # Category F: Fasteners
-        'fasteners': ['Ecko', 'Paslode', 'Delfast', 'SPAX'],
-        # Category C: Interiors / Linings
-        'interiors': ['GIB', 'Pink Batts', 'Autex'],
-        # Category B: Enclosure / Cladding
-        'enclosure': ['James Hardie', 'Thermakraft', 'Marley'],
-        # Category A: Structure
-        'structure': ['Firth', 'Hume', 'CHH Woodproducts'],
-        # Category E: Insulation
-        'insulation': ['Pink Batts', 'Expol'],
-    },
-    'carters': {
-        'fasteners': ['Paslode', 'Lumberlok', 'MiTek', 'Simpson Strong-Tie'],
-        'interiors': ['GIB', 'Bradford Gold'],
-        'enclosure': ['Tekton', 'James Hardie'],
-        'structure': ['Pryda', 'MiTek'],
-        'insulation': ['Bradford Gold', 'Knauf'],
-    },
-    'bunnings': {
-        'fastifyeners': ['Zenith', 'Pryda', 'Bremick', 'Titan', 'MacSim'],
-        'interiors': ['Elephant Board', 'Gyprock'],
-        'enclosure': ['Mammoth', 'Marley'],
-        'structure': ['Pryda'],
-        'insulation': ['Earthwool', 'Mammoth', 'Expol'],
-    },
-    'itm': {
-        'fasteners': ['Delfast', 'Ecko', 'Titan', 'NZ Nails', 'SPAX'],
-        'interiors': ['GIB', 'Pink Batts'],
-        'enclosure': ['Thermakraft', 'James Hardie'],
-        'structure': ['Firth', 'CHH Woodproducts'],
-        'insulation': ['Pink Batts', 'Expol'],
-    },
-    'mitre 10': {
-        'fasteners': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
-        'interiors': ['GIB', 'Knauf'],
-        'enclosure': ['James Hardie', 'Marley'],
-        'structure': ['Pryda', 'Firth'],
-        'insulation': ['Earthwool', 'Pink Batts'],
-    },
-}
+# =============================================================================
+# BRAND -> RETAILERS (Many-to-Many "Store Locator" Matrix)
+# =============================================================================
+# This is the SOURCE OF TRUTH for availability.
+# If a brand is in a retailer's list, it's available there.
 
-# Flatten for quick lookup - Retailer -> All Brands (any category)
-RETAILER_BRAND_MAP = {
-    'placemakers': ['Ecko', 'Paslode', 'Delfast', 'SPAX', 'GIB', 'Pink Batts', 'Autex', 
-                    'James Hardie', 'Thermakraft', 'Marley', 'Firth', 'Hume', 'Expol'],
-    'carters': ['Paslode', 'Lumberlok', 'MiTek', 'Simpson Strong-Tie', 'GIB', 
-                'Bradford Gold', 'Tekton', 'James Hardie', 'Pryda', 'Knauf'],
-    'bunnings': ['Zenith', 'Pryda', 'Bremick', 'Titan', 'MacSim', 'Elephant Board', 
-                 'Gyprock', 'Mammoth', 'Marley', 'Earthwool', 'Expol'],
-    'itm': ['Delfast', 'Ecko', 'Titan', 'NZ Nails', 'SPAX', 'GIB', 'Pink Batts',
-            'Thermakraft', 'James Hardie', 'Firth', 'Expol'],
-    'mitre 10': ['Bremick', 'Pryda', 'SPAX', 'MacSim', 'GIB', 'Knauf',
-                 'James Hardie', 'Marley', 'Earthwool', 'Pink Batts', 'Firth'],
-    'mitre10': ['Bremick', 'Pryda', 'SPAX', 'MacSim', 'GIB', 'Knauf',
-                'James Hardie', 'Marley', 'Earthwool', 'Pink Batts', 'Firth'],
-}
-
-# Global Brand -> Retailer mapping (for triage responses)
 BRAND_RETAILER_MAP = {
-    # Fasteners (Category F)
+    # =========================================================================
+    # CATEGORY F: FASTENERS
+    # =========================================================================
+    # Widely Available (Most Merchants)
+    'Paslode': ['PlaceMakers', 'Carters', 'ITM', 'Mitre 10'],  # NOT Bunnings
+    'Delfast': ['PlaceMakers', 'ITM', 'Bunnings Trade', 'Mitre 10'],
+    'SPAX': ['PlaceMakers', 'ITM', 'Mitre 10', 'Carters'],
+    
+    # PlaceMakers/ITM Focus
     'Ecko': ['PlaceMakers', 'ITM'],
-    'Paslode': ['PlaceMakers', 'Carters'],
-    'Delfast': ['PlaceMakers', 'ITM'],
-    'Zenith': ['Bunnings'],
-    'Pryda': ['Bunnings', 'Mitre 10', 'Carters'],
-    'Bremick': ['Bunnings', 'Mitre 10'],
-    'Titan': ['Bunnings', 'ITM'],
-    'MacSim': ['Bunnings', 'Mitre 10'],
-    'SPAX': ['ITM', 'Mitre 10', 'PlaceMakers'],
-    'Lumberlok': ['Carters'],
-    'MiTek': ['Carters'],
-    'Simpson Strong-Tie': ['Carters'],
-    'NZ Nails': ['ITM'],
-    # Interiors (Category C)
-    'GIB': ['PlaceMakers', 'ITM', 'Carters', 'Mitre 10'],
+    'NZ Nails': ['ITM', 'PlaceMakers'],
+    'Titan': ['Bunnings', 'ITM', 'Mitre 10'],
+    
+    # Bunnings/Mitre 10 Focus
+    'Zenith': ['Bunnings', 'Mitre 10'],
+    'Pryda': ['Bunnings', 'Mitre 10', 'Carters', 'ITM'],
+    'Bremick': ['Bunnings', 'Mitre 10', 'Trade Suppliers'],
+    'MacSim': ['Bunnings', 'Mitre 10', 'PlaceMakers'],
+    
+    # Carters/Trade Focus
+    'Lumberlok': ['Carters', 'ITM', 'Trade Suppliers'],
+    'MiTek': ['Carters', 'ITM', 'PlaceMakers'],
+    'Simpson Strong-Tie': ['Carters', 'PlaceMakers', 'ITM', 'Trade Suppliers'],
+    
+    # =========================================================================
+    # CATEGORY C: INTERIORS / LININGS
+    # =========================================================================
+    # Universal Availability
+    'GIB': ['PlaceMakers', 'Carters', 'ITM', 'Mitre 10', 'Bunnings'],  # ALL MERCHANTS
+    
+    # Bunnings Exclusives
     'Elephant Board': ['Bunnings'],
-    'Gyprock': ['Bunnings'],
-    'Pink Batts': ['PlaceMakers', 'ITM', 'Mitre 10'],
-    'Bradford Gold': ['Carters'],
-    'Autex': ['PlaceMakers'],
-    'Knauf': ['Carters', 'Mitre 10'],
-    # Enclosure (Category B)
-    'James Hardie': ['PlaceMakers', 'ITM', 'Carters', 'Mitre 10'],
-    'Thermakraft': ['PlaceMakers', 'ITM'],
-    'Tekton': ['Carters'],
-    'Marley': ['PlaceMakers', 'Bunnings', 'Mitre 10'],
-    'Mammoth': ['Bunnings'],
-    # Structure (Category A)
-    'Firth': ['PlaceMakers', 'ITM', 'Mitre 10'],
+    'Gyprock': ['Bunnings', 'Mitre 10'],
+    
+    # Widely Available Insulation
+    'Pink Batts': ['PlaceMakers', 'ITM', 'Mitre 10', 'Bunnings'],
+    'Earthwool': ['Bunnings', 'Mitre 10', 'PlaceMakers'],
+    'Bradford Gold': ['Carters', 'Mitre 10', 'ITM'],
+    'Knauf': ['Carters', 'Mitre 10', 'ITM', 'PlaceMakers'],
+    'Expol': ['PlaceMakers', 'ITM', 'Bunnings', 'Mitre 10'],
+    
+    # Specialty
+    'Autex': ['PlaceMakers', 'Carters', 'Specialty Acoustic'],
+    
+    # =========================================================================
+    # CATEGORY B: ENCLOSURE / CLADDING / UNDERLAY
+    # =========================================================================
+    # Universal Availability
+    'James Hardie': ['PlaceMakers', 'Carters', 'ITM', 'Mitre 10', 'Bunnings'],  # ALL MERCHANTS
+    'Thermakraft': ['PlaceMakers', 'ITM', 'Bunnings', 'Carters', 'Mitre 10'],  # WIDELY AVAILABLE
+    'Marley': ['PlaceMakers', 'Bunnings', 'Mitre 10', 'ITM'],
+    
+    # More Limited
+    'Tekton': ['Carters', 'ITM'],
+    'Mammoth': ['Bunnings', 'Mitre 10'],
+    'Sika': ['PlaceMakers', 'Carters', 'ITM', 'Bunnings', 'Mitre 10'],  # ALL MERCHANTS
+    
+    # =========================================================================
+    # CATEGORY A: STRUCTURE
+    # =========================================================================
+    'Firth': ['PlaceMakers', 'ITM', 'Mitre 10', 'Allied Concrete'],
+    'Hume': ['PlaceMakers', 'Specialist'],
+    'CHH Woodproducts': ['PlaceMakers', 'ITM', 'Carters'],
+}
+
+# =============================================================================
+# RETAILER -> BRANDS (Derived from above - for quick lookup)
+# =============================================================================
+# Auto-generated reverse mapping
+
+def _build_retailer_brand_map():
+    """Build retailer->brands map from brand->retailers map"""
+    retailer_map = {}
+    for brand, retailers in BRAND_RETAILER_MAP.items():
+        for retailer in retailers:
+            retailer_key = retailer.lower().replace(' ', '')
+            if retailer_key not in retailer_map:
+                retailer_map[retailer_key] = []
+            if brand not in retailer_map[retailer_key]:
+                retailer_map[retailer_key].append(brand)
+    return retailer_map
+
+RETAILER_BRAND_MAP = _build_retailer_brand_map()
+
+# Also add common variations
+RETAILER_BRAND_MAP['mitre10'] = RETAILER_BRAND_MAP.get('mitre10', [])
+RETAILER_BRAND_MAP['bunnings'] = RETAILER_BRAND_MAP.get('bunnings', [])
+RETAILER_BRAND_MAP['placemakers'] = RETAILER_BRAND_MAP.get('placemakers', [])
+RETAILER_BRAND_MAP['carters'] = RETAILER_BRAND_MAP.get('carters', [])
+RETAILER_BRAND_MAP['itm'] = RETAILER_BRAND_MAP.get('itm', [])
+
+# All known brands (for universal access)
+ALL_KNOWN_BRANDS = list(BRAND_RETAILER_MAP.keys())
     'Hume': ['PlaceMakers'],
     'CHH Woodproducts': ['PlaceMakers', 'ITM'],
     # Insulation (Category E)
