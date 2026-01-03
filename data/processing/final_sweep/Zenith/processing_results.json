@@ -1,0 +1,30 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Zenith",
+  "processed_at": "2026-01-03T07:07:41.631818",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2017.pdf",
+      "chunks": 674,
+      "tables": 447,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2020.pdf",
+      "chunks": 715,
+      "tables": 510,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 1389,
+  "table_chunks": 957,
+  "text_chunks": 432,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 217,
+    "images_found": 4,
+    "images_captioned": 0,
+    "tables_extracted": 957,
+    "vision_errors": 0
+  }
+}
