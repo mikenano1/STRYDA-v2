@@ -356,6 +356,18 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('NZS 4229:2013')
     
+    # Firth - Concrete & Masonry Products (Brand Deep Dive)
+    if any(term in query_lower for term in [
+        'firth', 'ribraft', 'rib raft', 'x-pod', 'xpod',
+        'concrete block', '20 series', '25 series',
+        'masonry block', 'hollow block', 'bond beam',
+        'ecopave', 'paving', 'paver', 'holland paver',
+        'keystone', 'retaining wall', 'masonry veneer',
+        'foundation slab', 'tc3', 'canterbury foundation',
+        'dricon', 'mortar', 'grout'
+    ]):
+        sources.append('Firth Deep Dive (Universal)')
+    
     # NZ Metal Roofing
     if any(term in query_lower for term in [
         'metal roof', 'corrugated', 'profiled', 'longrun',
