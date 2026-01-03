@@ -180,6 +180,17 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('James Hardie Full Suite')
     
+    # Fasteners - Category F (Big Brain Integration)
+    if any(term in query_lower for term in [
+        'paslode', 'senco', 'ramset', 'buildex', 'mitek',
+        'lumberlok', 'bowmac', 'simpson strong-tie', 'strong-tie',
+        'nail', 'screw', 'fastener', 'anchor', 'bolt',
+        'framing nail', 'purlin nail', 'collated', 'coil nail',
+        'chemset', 'dynabolt', 'ankascrew', 'connector',
+        'joist hanger', 'post anchor', 'load capacity'
+    ]):
+        sources.append('Fasteners Full Suite')
+    
     # Remove duplicates while preserving order
     seen = set()
     unique_sources = []
