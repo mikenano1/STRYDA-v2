@@ -1,0 +1,24 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Ecko",
+  "processed_at": "2026-01-03T06:18:08.741430",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Ecko/ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf",
+      "chunks": 5,
+      "tables": 2,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 5,
+  "table_chunks": 2,
+  "text_chunks": 3,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 2,
+    "images_found": 0,
+    "images_captioned": 0,
+    "tables_extracted": 2,
+    "vision_errors": 0
+  }
+}
