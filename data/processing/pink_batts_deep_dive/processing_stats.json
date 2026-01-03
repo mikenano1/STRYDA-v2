@@ -1,0 +1,220 @@
+{
+  "timestamp": "2026-01-03T23:50:50.716768",
+  "total_files": 33,
+  "total_chunks": 660,
+  "chunker_stats": {
+    "pages_processed": 231,
+    "images_found": 78,
+    "images_captioned": 0,
+    "tables_extracted": 143,
+    "vision_errors": 0
+  },
+  "file_stats": [
+    {
+      "filename": "632_2023.pdf",
+      "chunks": 16,
+      "trade": "general_insulation",
+      "doc_type": "BRANZ_Appraisal"
+    },
+    {
+      "filename": "Acoustic-Silencer-Product-Sheet-FEB20-RevD.pdf",
+      "chunks": 16,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Manual"
+    },
+    {
+      "filename": "Climaflex-XT-pipe-insulation-data-sheet.pdf",
+      "chunks": 3,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Manual"
+    },
+    {
+      "filename": "Comfortech-Climaflex-BPIR-dec-v1.0.pdf",
+      "chunks": 4,
+      "trade": "general_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Comfortech-H1-A4-Multipage-2nd-Amends-v2-1.pdf",
+      "chunks": 13,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Manual"
+    },
+    {
+      "filename": "Comfortech-Pink-Batts-Acoustic-Insulation-BPIR-dec-v1.0.pdf",
+      "chunks": 7,
+      "trade": "general_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Comfortech-Pink-Batts-Insulation-BPIR-dec-v1.0.pdf",
+      "chunks": 7,
+      "trade": "general_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Customer-Safety-Fact-Sheet-1-Ingredient.pdf",
+      "chunks": 3,
+      "trade": "general_insulation",
+      "doc_type": "Safety_Data_Sheet"
+    },
+    {
+      "filename": "Customer-Safety-Fact-Sheet-2-Fibre-Dust.pdf",
+      "chunks": 2,
+      "trade": "general_insulation",
+      "doc_type": "Safety_Data_Sheet"
+    },
+    {
+      "filename": "Customer-Safety-Fact-Sheet-3-Biosolubility.pdf",
+      "chunks": 4,
+      "trade": "general_insulation",
+      "doc_type": "Safety_Data_Sheet"
+    },
+    {
+      "filename": "EPD-IES-0020965-001-Comfortech-Ceiling-Insulation-Products-2025-05-07-v4.pdf",
+      "chunks": 72,
+      "trade": "ceiling_insulation",
+      "doc_type": "EPD_Declaration"
+    },
+    {
+      "filename": "EPD-IES-0020966-001-Comfortech-Wall-Insulation-Products-2025-05-07.pdf",
+      "chunks": 70,
+      "trade": "wall_insulation",
+      "doc_type": "EPD_Declaration"
+    },
+    {
+      "filename": "EPD-IES-0020967-001-Comfortech-Underfloor-Insulation-Products-2025-05-07.pdf",
+      "chunks": 69,
+      "trade": "underfloor_insulation",
+      "doc_type": "EPD_Declaration"
+    },
+    {
+      "filename": "EPD-IES-0020968-001-Comfortech-Board-Insulation-Products-2025-05-07.pdf",
+      "chunks": 64,
+      "trade": "general_insulation",
+      "doc_type": "EPD_Declaration"
+    },
+    {
+      "filename": "EPD-IES-0020969-001-Comfortech-FEI-and-Other-Insulation-Products-2025-05-07.pdf",
+      "chunks": 63,
+      "trade": "general_insulation",
+      "doc_type": "EPD_Declaration"
+    },
+    {
+      "filename": "Greenguard-Certification-Pink-Superbatts-R7.0.pdf",
+      "chunks": 4,
+      "trade": "ceiling_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "Pink-Batts-BIB-Product-and-Installation-Guide-January-2025.pdf",
+      "chunks": 19,
+      "trade": "general_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Pink-Batts-Ceiling-Product-and-Installation-Guide-June-2025-copy.-pdf.pdf",
+      "chunks": 24,
+      "trade": "ceiling_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Pink-Batts-Insulation-238.pdf",
+      "chunks": 22,
+      "trade": "general_insulation",
+      "doc_type": "BRANZ_Appraisal"
+    },
+    {
+      "filename": "Pink-Batts-Insulation-SDS-v-1.6.pdf",
+      "chunks": 11,
+      "trade": "general_insulation",
+      "doc_type": "Safety_Data_Sheet"
+    },
+    {
+      "filename": "Pink-Batts-Product-Information-Unitised-Packs.pdf",
+      "chunks": 22,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Manual"
+    },
+    {
+      "filename": "Pink-Batts-Skillion-Product-and-Installation-Guide-January-2025.pdf",
+      "chunks": 22,
+      "trade": "roof_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Pink-Batts-Skillion-Roof-767.pdf",
+      "chunks": 19,
+      "trade": "roof_insulation",
+      "doc_type": "BRANZ_Appraisal"
+    },
+    {
+      "filename": "Pink-Batts-Thermal-Solutions-Product-Guide-2025-v2.pdf",
+      "chunks": 16,
+      "trade": "general_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Pink-Batts-Underfloor-Product-and-Installation-Guide-January-2025-v2.pdf",
+      "chunks": 19,
+      "trade": "underfloor_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Pink-Batts-Wall-Product-and-Installation-Guide-April-2025.pdf",
+      "chunks": 21,
+      "trade": "wall_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Pink-Superbatts-Installation-Guide-January-2025.pdf",
+      "chunks": 11,
+      "trade": "general_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "PinkBatts-Lifetime-Warranty-Certificate_Oct24.pdf",
+      "chunks": 8,
+      "trade": "general_insulation",
+      "doc_type": "Warranty"
+    },
+    {
+      "filename": "Silencer-acoustic-Installation-instructions-2.pdf",
+      "chunks": 7,
+      "trade": "acoustic_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Tasman-InsulationEMS-14001CerVer3692023.pdf",
+      "chunks": 3,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "Tasman-InsulationHS-45001CerVer3692023.pdf",
+      "chunks": 3,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Manual"
+    },
+    {
+      "filename": "Tasman-InsulationQA-9001CerVer28692023.pdf",
+      "chunks": 3,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "TSM0192-Brochure-Printing_Sustainability-Brochure_May2025_WEB.pdf",
+      "chunks": 13,
+      "trade": "general_insulation",
+      "doc_type": "Product_Guide"
+    }
+  ],
+  "trade_distribution": {
+    "general_insulation": 317,
+    "acoustic_insulation": 23,
+    "ceiling_insulation": 100,
+    "wall_insulation": 91,
+    "underfloor_insulation": 88,
+    "roof_insulation": 41
+  }
+}
