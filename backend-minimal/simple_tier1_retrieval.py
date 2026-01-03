@@ -160,8 +160,68 @@ RETAILER_BRAND_MAP['itm'] = RETAILER_BRAND_MAP.get('itm', [])
 ALL_KNOWN_BRANDS = list(BRAND_RETAILER_MAP.keys())
 
 # =============================================================================
-# PRODUCT CATEGORY DETECTION
+# PRODUCT FUNCTION / TRADE DETECTION FOR RETRIEVAL
 # =============================================================================
+# Detects product-specific keywords to filter by trade
+
+TRADE_DETECTION_KEYWORDS = {
+    'foundations': [
+        'foundation', 'slab', 'ribraft', 'rib raft', 'x-pod', 'xpod', 
+        'footing', 'pile', 'tc3', 'canterbury', 'ground beam'
+    ],
+    'paving': [
+        'paving', 'paver', 'pavers', 'holland', 'ecopave', 'driveway', 
+        'pathway', 'permeable paving', 'cobble'
+    ],
+    'masonry': [
+        'masonry', 'block wall', 'blockwork', 'concrete block', '20 series', 
+        '25 series', 'bond beam', 'grout', 'mortar', 'blocklayer'
+    ],
+    'cladding': [
+        'cladding', 'weatherboard', 'linea', 'axon', 'stria', 'facade',
+        'underlay', 'building wrap', 'wall wrap', 'exterior wall'
+    ],
+    'roofing': [
+        'roof', 'roofing', 'purlin', 'ridge', 'hip', 'valley', 
+        'roof underlay', 'sarking'
+    ],
+    'interior_linings': [
+        'plasterboard', 'gib', 'lining', 'drywall', 'ceiling', 'stopping',
+        'cornice', 'fyreline', 'aqualine', 'braceline', 'noiseline'
+    ],
+    'fasteners': [
+        'nail', 'screw', 'fastener', 'anchor', 'bolt', 'connector', 
+        'bracket', 'joist hanger', 'hanger nail', 't-rex', 'collated'
+    ],
+    'insulation': [
+        'insulation', 'batts', 'pink batts', 'earthwool', 'r-value',
+        'thermal insulation', 'acoustic insulation', 'bradford'
+    ],
+    'retaining': [
+        'retaining wall', 'keystone', 'garden wall', 'landscape wall'
+    ],
+}
+
+def detect_trade_from_query(query: str) -> Optional[str]:
+    """
+    Detect the specific trade/product function from a query.
+    Returns the trade name if detected, None otherwise.
+    """
+    query_lower = query.lower()
+    
+    # Score each trade by keyword matches
+    trade_scores = {}
+    for trade, keywords in TRADE_DETECTION_KEYWORDS.items():
+        score = sum(1 for kw in keywords if kw in query_lower)
+        if score > 0:
+            trade_scores[trade] = score
+    
+    if trade_scores:
+        # Return the trade with highest score
+        best_trade = max(trade_scores, key=trade_scores.get)
+        return best_trade
+    
+    return None
 
 CATEGORY_KEYWORDS = {
     'fasteners': [
