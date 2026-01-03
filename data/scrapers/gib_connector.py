@@ -31,39 +31,25 @@ GIB_BASE_URL = "https://www.gib.co.nz"
 # Known GIB Technical Documents (verified URLs)
 GIB_DOCUMENTS = [
     {
-        "name": "GIB Site Guide",
-        "url": "https://www.gib.co.nz/assets/Uploads/GIB-Site-Guide-Feb-2024.pdf",
+        "name": "GIB Site Guide 2024",
+        "url": "https://www.gib.co.nz/assets/Uploads/GIB0107_GIB_Site_Guide_PAGES_WEB.pdf",
         "doc_type": "Installation_Guide",
         "product_family": "GIB Plasterboard",
-        "description": "Complete installation guide for GIB plasterboard systems"
+        "description": "Complete installation guide for GIB plasterboard systems - 2024 Edition"
     },
     {
-        "name": "GIB EzyBrace System",
-        "url": "https://www.gib.co.nz/assets/Uploads/GIB-EzyBrace-System-Literature.pdf",
+        "name": "GIB Performance Systems",
+        "url": "https://www.gib.co.nz/assets/Site-Guide-2024/6-GIB-PERFORMANCE-SYSTEMS_GIB0107_GIB_Site_Guide_v11.pdf",
         "doc_type": "Technical_Data_Sheet",
-        "product_family": "GIB EzyBrace",
-        "description": "Bracing system for residential buildings"
+        "product_family": "GIB Performance",
+        "description": "GIB performance systems including bracing and fire ratings"
     },
     {
-        "name": "GIB Weatherline System",
-        "url": "https://www.gib.co.nz/assets/Uploads/GIB-Weatherline-System-Literature.pdf",
-        "doc_type": "Technical_Data_Sheet", 
-        "product_family": "GIB Weatherline",
-        "description": "External lining system for weather protection"
-    },
-    {
-        "name": "GIB Fire Rated Systems",
-        "url": "https://www.gib.co.nz/assets/Uploads/GIB-Fire-Rated-Systems-Literature.pdf",
-        "doc_type": "Technical_Data_Sheet",
+        "name": "GIB Fire Rated Systems BRANZ Appraisal",
+        "url": "https://productspec.co.nz/media/o01djoqd/branz-appraisal-289_2024.pdf",
+        "doc_type": "BRANZ_Appraisal", 
         "product_family": "GIB Fire Rated",
-        "description": "Fire rated wall and ceiling systems"
-    },
-    {
-        "name": "GIB Noise Control Systems",
-        "url": "https://www.gib.co.nz/assets/Uploads/GIB-Noise-Control-Systems-Literature.pdf",
-        "doc_type": "Technical_Data_Sheet",
-        "product_family": "GIB Noise Control",
-        "description": "Acoustic solutions for walls and ceilings"
+        "description": "BRANZ Appraisal 289 for GIB Fire Rated Systems"
     }
 ]
 
