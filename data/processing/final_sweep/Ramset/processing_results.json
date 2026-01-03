@@ -1,0 +1,24 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Ramset",
+  "processed_at": "2026-01-03T06:51:32.036860",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Ramset/Ramset_Technical_Product_Guide.pdf",
+      "chunks": 26,
+      "tables": 5,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 26,
+  "table_chunks": 5,
+  "text_chunks": 21,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 14,
+    "images_found": 14,
+    "images_captioned": 0,
+    "tables_extracted": 5,
+    "vision_errors": 0
+  }
+}
