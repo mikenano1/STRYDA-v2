@@ -207,25 +207,45 @@ def canonical_source_map(query: str) -> List[str]:
         sources.append('James Hardie Full Suite')
     
     # Fasteners - Category F (Big Brain Integration - Full Suite + Final Sweep)
+    # Detect specific brands and add their Final Sweep sources
+    fastener_brands = {
+        'pryda': 'Final Sweep - Pryda',
+        'zenith': 'Final Sweep - Zenith',
+        'macsim': 'Final Sweep - MacSim',
+        'bremick': 'Final Sweep - Bremick',
+        'spax': 'Final Sweep - SPAX',
+        'delfast': 'Final Sweep - Delfast',
+        'ecko': 'Final Sweep - Ecko',
+        't-rex': 'Final Sweep - Ecko',
+        'titan': 'Final Sweep - Titan',
+        'simpson': 'Final Sweep - Simpson_Strong_Tie',
+        'strong-tie': 'Final Sweep - Simpson_Strong_Tie',
+        'paslode': 'Final Sweep - Paslode',
+        'buildex': 'Final Sweep - Buildex',
+        'ramset': 'Final Sweep - Ramset',
+        'mitek': 'Final Sweep - MiTek',
+        'mainland': 'Final Sweep - Mainland_Fasteners',
+        'nz nails': 'Final Sweep - NZ_Nails',
+    }
+    
+    # Check for specific brand mentions first
+    brand_matched = False
+    for brand_key, source_name in fastener_brands.items():
+        if brand_key in query_lower:
+            sources.append(source_name)
+            brand_matched = True
+    
+    # Also add generic fastener detection
     if any(term in query_lower for term in [
-        # Original brands (Hardware Store Operation)
-        'paslode', 'senco', 'ramset', 'buildex', 'mitek',
-        'lumberlok', 'bowmac', 'simpson strong-tie', 'strong-tie',
-        # Final Sweep brands (NZ Local + Bunnings/ITM Ecosystem)
-        'delfast', 'ecko', 't-rex', 'pryda', 'bremick',
-        'zenith', 'titan', 'nz nails', 'macsim', 'spax',
-        'blacks', 'mainland fasteners', 'placemakers fastenings',
-        # Generic fastener terms
         'nail', 'screw', 'fastener', 'anchor', 'bolt',
         'framing nail', 'purlin nail', 'collated', 'coil nail',
         'chemset', 'dynabolt', 'ankascrew', 'connector',
         'joist hanger', 'post anchor', 'load capacity',
-        # Final Sweep product-specific terms
         'bracing', 'bracket', 'tie-down', 'nailplate',
         'decking screw', 'timber screw', 'stainless fastener',
         'masonry anchor', 'drop-in anchor', 'socket screw',
-        'packer', 'window packer'
-    ]):
+        'packer', 'window packer', 'lumberlok', 'bowmac'
+    ]) or brand_matched:
         sources.append('Fasteners Full Suite')
     
     # Remove duplicates while preserving order
