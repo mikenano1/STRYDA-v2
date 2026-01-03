@@ -1,0 +1,42 @@
+{
+  "input_dir": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie",
+  "processed_at": "2026-01-03T03:46:20.863652",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Direct_Fix_Technical_Specification.pdf",
+      "chunks": 107,
+      "tables": 35,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Installation_Checklist.pdf",
+      "chunks": 17,
+      "tables": 11,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/James_Hardie_Facades_Installation_Manual.pdf",
+      "chunks": 29,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Installation_Guide.pdf",
+      "chunks": 71,
+      "tables": 23,
+      "diagrams": 4
+    }
+  ],
+  "total_chunks": 224,
+  "table_chunks": 69,
+  "text_chunks": 151,
+  "diagram_chunks": 4,
+  "stats": {
+    "pages_processed": 75,
+    "images_found": 73,
+    "images_captioned": 4,
+    "tables_extracted": 78,
+    "vision_errors": 0
+  }
+}
