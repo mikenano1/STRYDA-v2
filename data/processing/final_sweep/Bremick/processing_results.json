@@ -1,0 +1,42 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick",
+  "processed_at": "2026-01-03T06:02:42.924800",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Stainless_Steel_Catalogue.pdf",
+      "chunks": 93,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Masonry_Anchor_Catalogue.pdf",
+      "chunks": 227,
+      "tables": 25,
+      "diagrams": 2
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Industrial_Fasteners_Catalogue.pdf",
+      "chunks": 285,
+      "tables": 135,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Socket_Screws_Catalogue.pdf",
+      "chunks": 127,
+      "tables": 0,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 732,
+  "table_chunks": 160,
+  "text_chunks": 570,
+  "diagram_chunks": 2,
+  "stats": {
+    "pages_processed": 481,
+    "images_found": 132,
+    "images_captioned": 2,
+    "tables_extracted": 229,
+    "vision_errors": 0
+  }
+}
