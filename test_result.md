@@ -494,3 +494,24 @@
 3. **Document Prioritization**: Ensure Final Sweep documents are properly prioritized for brand-specific queries
 
 4. **Content Audit**: Verify that all expected NZ brands are properly represented in the Final Sweep ingestion
+
+
+## Latest Testing Results - Product Function/Trade-Aware Retrieval (2025-01-04)
+
+### 🎯 TESTING REQUEST: Verify Product Function/Trade-Aware Retrieval for Firth Brand
+
+**Context**: Implemented trade-aware retrieval to distinguish between product lines within a brand (e.g., Firth paving vs Firth foundations)
+
+**Implementation Changes**:
+1. Updated `ingestor_v2.py` with granular product function detection
+2. Updated `simple_tier1_retrieval.py` with trade-based filtering  
+3. Re-tagged 341 Firth documents with correct trade metadata:
+   - foundations: 189 chunks
+   - paving: 74 chunks
+   - masonry: 41 chunks
+   - general: 37 chunks
+
+### Test Queries to Verify:
+1. "How do I install Firth Holland Pavers?" → Should return PAVING docs only
+2. "What is the steel spacing for a Firth 20 Series block wall?" → Should return MASONRY docs only
+3. "RibRaft edge detail reinforcement" → Should return FOUNDATIONS docs only
