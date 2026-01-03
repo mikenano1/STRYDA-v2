@@ -169,6 +169,15 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('GIB Site Guide 2024')
     
+    # James Hardie - Cladding/Exterior (Big Brain Integration)
+    if any(term in query_lower for term in [
+        'james hardie', 'hardie', 'linea', 'weatherboard',
+        'axon', 'stria', 'hardieflex', 'fibre cement',
+        'cladding', 'head flashing', 'apron flashing',
+        'cavity batten', 'direct fix', 'wall cladding'
+    ]):
+        sources.append('James Hardie Installation Guides')
+    
     # Remove duplicates while preserving order
     seen = set()
     unique_sources = []
