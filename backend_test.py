@@ -138,7 +138,26 @@ class STRYDABackendTester:
             self.test_results.append(result)
             return result
     
-    def _check_brand_mention(self, query: str, response: str) -> bool:
+    def _extract_inline_citations(self, text: str) -> list:
+        """Extract inline citations from response text"""
+        import re
+        # Look for patterns like [[Source: Final Sweep - SPAX | Page: 64]]
+        pattern = r'\[\[Source: ([^|]+)(?:\|[^\]]+)?\]\]'
+        matches = re.findall(pattern, text)
+        return matches
+    
+    def _check_brand_in_inline_citations(self, query: str, inline_citations: list) -> bool:
+        """Check if the expected brand appears in inline citations"""
+        query_lower = query.lower()
+        citations_str = " ".join(str(citation) for citation in inline_citations).lower()
+        
+        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
+        
+        for brand in brands:
+            if brand in query_lower:
+                return brand in citations_str
+        
+        return False
         """Check if the expected brand from the query is mentioned in the response"""
         query_lower = query.lower()
         response_lower = response.lower()
