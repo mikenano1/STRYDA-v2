@@ -378,142 +378,119 @@
 - Technical product information being retrieved
 - Professional NZ building terminology maintained
 
-## Latest Testing Results (Testing Agent - 2026-01-03 08:15)
+## Latest Testing Results (Testing Agent - 2026-01-03 08:34)
 
 ### 🎯 OPERATION FINAL SWEEP VERIFICATION COMPLETED
 
-**Review Request: Test the STRYDA RAG backend after Operation Final Sweep completion to verify all brands have been fully ingested**
+**Review Request: Test the STRYDA RAG backend to confirm Operation Final Sweep is fully working**
 
-### ✅ CONFIRMED WORKING (Backend API & Final Sweep Document Integration)
+### ✅ CONFIRMED WORKING (3/6 Review Request Tests)
 
-1. **Backend API Functionality**: ✅ PASS
-   - Endpoint: POST /api/chat working correctly
-   - Response times: 10-15 seconds per query
-   - Status: All 6 test queries processed successfully
-   - Model: gemini-2.5-flash-hybrid responding appropriately
+1. **SPAX Decking Query**: ✅ PASS
+   - Query: "What SPAX screws should I use for decking?"
+   - Result: Comprehensive 1003-character response with detailed SPAX product specifications
+   - Brand Detection: ✅ "SPAX" mentioned in response
+   - Final Sweep Source: ✅ "Final Sweep - SPAX" cited
+   - Inline Citations: ✅ [[Source: Final Sweep - SPAX | Page: X]]
+   - Response Time: 11.4 seconds
 
-2. **Final Sweep Document Integration**: ✅ PASS
-   - Document: "Fasteners Full Suite" successfully integrated
-   - Source citations: Working correctly with inline references [[Source: Fasteners Full Suite | Page: X]]
-   - Vector search: Retrieving relevant chunks from Final Sweep document
-   - Backend logs confirm: "📊 Retrieval source mix: {'Fasteners Full Suite': 20}"
+2. **Zenith Hardware Query**: ✅ PASS
+   - Query: "What Zenith butt hinges are in the catalogue?"
+   - Result: Specific hinge sizes listed (35mm, 50mm, 70mm, 85mm, 100mm)
+   - Brand Detection: ✅ "Zenith" mentioned in response
+   - Final Sweep Source: ✅ "Final Sweep - Zenith" cited
+   - Inline Citations: ✅ [[Source: Final Sweep - Zenith | Page: 9]]
+   - Response Time: 9.4 seconds
 
-3. **RAG System Performance**: ✅ PASS
-   - Vector search completing in ~1000ms
-   - Document retrieval working correctly
-   - Gemini model integration functional
-   - Response generation working with proper context
+3. **Bremick Masonry Query**: ✅ PASS
+   - Query: "What Bremick masonry anchors are available?"
+   - Result: Detailed information about Bremfix™ Poly Injection System
+   - Brand Detection: ✅ "Bremick" mentioned in response
+   - Final Sweep Source: ✅ "Final Sweep - Bremick" cited
+   - Inline Citations: ✅ [[Source: Final Sweep - Bremick | Page: X]]
+   - Response Time: 9.3 seconds
 
-### ❌ CRITICAL FINDING: Brand Mismatch Issue
+### ⚠️ PARTIAL SUCCESS (2/6 Review Request Tests)
 
-**Expected vs Actual Brand Content:**
+4. **Pryda Bracing Query**: ⚠️ PARTIAL PASS
+   - Query: "What Pryda bracing anchors and connectors are available?"
+   - Result: Response mentions Pryda products but no Final Sweep citation
+   - Brand Detection: ✅ "Pryda" mentioned in response
+   - Final Sweep Source: ❌ No Final Sweep citation
+   - Issue: Response appears to be from general knowledge, not Final Sweep document
+   - Response Time: 13.9 seconds
 
-**Expected Brands (from review request):**
-- ❌ Pryda bracing anchors
-- ❌ Zenith hinges  
-- ❌ MacSim drop-in anchors
-- ❌ SPAX screws for timber framing
-- ❌ Ecko T-Rex screws
+5. **MacSim Anchor Query**: ⚠️ PARTIAL PASS
+   - Query: "What MacSim drop-in anchors are available?"
+   - Result: System cannot find specific MacSim product information
+   - Brand Detection: ✅ "MacSim" mentioned in response
+   - Final Sweep Source: ❌ No Final Sweep citation
+   - Issue: MacSim products may not be in Final Sweep document
+   - Response Time: 9.8 seconds
 
-**Actual Brands Found in Final Sweep:**
-- ✅ Simpson Strong-Tie (comprehensive product range)
-- ✅ Lumberlok (mentioned in responses)
-- ✅ Various fastener specifications by diameter/TPI
+### ❌ FAILED TEST (1/6 Review Request Tests)
 
-### 🔍 DETAILED TEST RESULTS
-
-**Test Summary: 6/7 tests passed (85.7%)**
-
-1. **Pryda Bracing Query**: ✅ PASS (API working)
-   - Query: "What is the load capacity of a Pryda bracing anchor?"
-   - Result: System responds but cannot find Pryda-specific information
-   - Response: "I cannot find a specific clause for the load capacity of a Pryda bracing anchor"
-
-2. **Zenith Hardware Query**: ✅ PASS (API working)
-   - Query: "What Zenith hinges are available for builders?"
-   - Result: System responds but cannot find Zenith-specific information
-   - Response: "I cannot find a specific clause or product information for Zenith hinges"
-
-3. **MacSim Anchors Query**: ✅ PASS (API working)
-   - Query: "What drop-in anchors does MacSim make and what are their sizes?"
-   - Result: System responds but no MacSim-specific data found
-
-4. **SPAX Timber Query**: ✅ PASS (API working)
-   - Query: "What SPAX screws should I use for timber framing?"
-   - Result: System responds but recommends Simpson Strong-Tie SDWS screws instead
-   - Response: "I cannot find a specific clause or product information for SPAX screws"
-
-5. **Retailer Bias Test**: ✅ PASS (API working)
+6. **Retailer Bias Test**: ❌ FAIL
    - Query: "I'm at Bunnings, what brackets should I use for deck posts?"
-   - Result: System provides general guidance but no Bunnings brand preference detected
-
-6. **Ecko T-Rex Query**: ✅ PASS (API working)
-   - Query: "What is the pull-out capacity of Ecko T-Rex screws?"
-   - Result: System responds but no Ecko T-Rex specific data found
-
-7. **Health Check**: ❌ FAIL
-   - Issue: /health endpoint returns 404 (routing configuration issue)
-   - Note: Non-critical, core functionality working
+   - Result: Generic response without Bunnings brand preference
+   - Brand Detection: ❌ No Bunnings brands mentioned
+   - Final Sweep Source: ❌ No Final Sweep citation
+   - Issue: Retailer bias logic not implemented or not working
+   - Response Time: 16.3 seconds
 
 ### 🔍 TECHNICAL ANALYSIS
 
-**Final Sweep Document Status**: ✅ SUCCESSFULLY INTEGRATED
-- Document name: "Fasteners Full Suite"
-- Document type: Technical_Data_Sheet
-- Trade category: fasteners
-- Priority: 80 (high priority retrieval)
-- Source citations: Working with page references
-- Content: Comprehensive Simpson Strong-Tie product catalog
-
 **Backend Performance**: ✅ EXCELLENT
-- Vector search: ~1000ms response times
-- Document retrieval: 20 chunks per query
-- Gemini integration: Working correctly
-- Source detection: Properly identifying relevant documents
-- Response generation: Appropriate length and quality
+- All 6 API calls successful (100% success rate)
+- Response times: 9-16 seconds (acceptable for complex RAG queries)
+- Backend logs show proper vector search and document retrieval
+- Gemini model integration working correctly
 
-**Citation System**: ⚠️ PARTIAL WORKING
-- Inline citations: ✅ Working [[Source: Fasteners Full Suite | Page: X]]
-- Formal citations array: ❌ Still empty in API responses
-- Source references: ✅ Properly formatted in response text
+**Final Sweep Document Integration**: ✅ PARTIALLY SUCCESSFUL
+- **Successfully integrated brands**: SPAX, Zenith, Bremick (3/5 = 60%)
+- **Missing or incomplete brands**: Pryda, MacSim (2/5 = 40%)
+- Vector search correctly identifies and retrieves Final Sweep documents
+- Inline citations working properly with page references
 
-### 🚨 CRITICAL ISSUE IDENTIFIED
+**Brand Detection Analysis**:
+- Brand Mention Rate: 83.3% (5/6 tests)
+- Brand in Sources Rate: 50.0% (3/6 tests)
+- Final Sweep Usage Rate: 50.0% (3/6 tests)
 
-**Operation Final Sweep Brand Mismatch:**
-The "Operation Final Sweep" appears to have successfully ingested a comprehensive fasteners catalog, but it contains Simpson Strong-Tie products rather than the specific NZ brands mentioned in the review request (Pryda, Zenith, MacSim, SPAX, Ecko T-Rex).
+**Backend Logs Confirm**:
+- Vector search working: "⚡ Vector search completed in 1000-2000ms"
+- Final Sweep documents being retrieved: "Final Sweep - SPAX", "Final Sweep - Zenith", "Final Sweep - Bremick"
+- Document retrieval mix showing proper prioritization
+- Gemini responses generating appropriate character counts
 
-**Possible Explanations:**
-1. The Final Sweep document may be a Simpson Strong-Tie catalog rather than a multi-brand NZ fasteners catalog
-2. The expected brands may be in a different document that wasn't part of this Final Sweep
-3. The brand-specific content may be in different sections not being retrieved effectively
+### 📊 REVIEW REQUEST VERDICT: ⚠️ **PARTIALLY SUCCESSFUL**
 
-### 📊 REVIEW REQUEST VERDICT: ⚠️ **PARTIAL SUCCESS**
-
-**✅ Technical Success:**
-- Final Sweep document successfully ingested and integrated
-- RAG system working correctly with proper source citations
-- Backend API responding appropriately to all queries
+**✅ What's Working:**
+- Operation Final Sweep document ingestion successful for 3/5 expected brands
+- RAG system correctly retrieving brand-specific information from Final Sweep
+- Inline citations working with proper source references
+- Backend API responding correctly to all queries
 - Vector search and document retrieval performing well
 
-**❌ Content Gap:**
-- Expected brands (Pryda, Zenith, MacSim, SPAX, Ecko T-Rex) not found in Final Sweep
-- System defaulting to Simpson Strong-Tie products instead
-- Retailer bias for Bunnings brands not detected
+**❌ What's Not Working:**
+- Pryda and MacSim brand information not properly integrated from Final Sweep
+- Retailer bias for Bunnings not implemented
+- Some responses falling back to general knowledge instead of Final Sweep
+
+### 🚨 CRITICAL FINDINGS
+
+1. **Final Sweep Content Gap**: The Operation Final Sweep appears to contain only 3 of the 5 expected brands (SPAX, Zenith, Bremick), missing Pryda and MacSim specific content
+
+2. **Retailer Bias Missing**: No logic implemented to prefer Bunnings-stocked brands when Bunnings is mentioned
+
+3. **Inconsistent Source Usage**: Some brand queries (Pryda, MacSim) not utilizing Final Sweep documents effectively
 
 ### 🔍 RECOMMENDATIONS FOR MAIN AGENT
 
-1. **Verify Final Sweep Content**: Check if the "Fasteners Full Suite" document contains the expected NZ brands or if additional brand-specific documents need to be ingested
+1. **Verify Final Sweep Content**: Check if Pryda and MacSim catalogs are included in the Final Sweep document or need separate ingestion
 
-2. **Brand-Specific Ingestion**: Consider ingesting separate catalogs for Pryda, Zenith, MacSim, SPAX, and Ecko T-Rex if not included in current Final Sweep
+2. **Implement Retailer Bias**: Add logic to detect retailer mentions (Bunnings) and prioritize appropriate brands
 
-3. **Retailer Bias Configuration**: Implement or configure retailer bias logic to prefer Bunnings-stocked brands when Bunnings is mentioned
+3. **Document Prioritization**: Ensure Final Sweep documents are properly prioritized for brand-specific queries
 
-4. **Citation Array Fix**: Address the formal citations array being empty (though inline citations are working)
-
-### 🎯 FINAL ASSESSMENT
-
-**Operation Final Sweep Technical Implementation**: ✅ **SUCCESSFUL**
-**Expected Brand Content Availability**: ❌ **NOT FOUND**
-**Overall RAG System Health**: ✅ **EXCELLENT**
-
-The backend is technically sound and the Final Sweep integration is working perfectly, but the content doesn't match the expected brand specifications from the review request.
+4. **Content Audit**: Verify that all expected NZ brands are properly represented in the Final Sweep ingestion
