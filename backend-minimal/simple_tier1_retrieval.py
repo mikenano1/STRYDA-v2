@@ -159,6 +159,16 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('NZ Metal Roofing')
     
+    # GIB / Winstone Wallboards - Interior linings (Big Brain Integration)
+    if any(term in query_lower for term in [
+        'gib', 'plasterboard', 'gib board', 'gypsum',
+        'braceline', 'ezybrace', 'fyreline', 'aqualine',
+        'gib stopping', 'gib fixing', 'gib fastener',
+        'interior lining', 'wall lining', 'ceiling lining',
+        'fire rating', 'frl', 'fire resistance', 'frr'
+    ]):
+        sources.append('GIB Site Guide 2024')
+    
     # Remove duplicates while preserving order
     seen = set()
     unique_sources = []
