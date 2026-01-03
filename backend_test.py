@@ -17,7 +17,7 @@ import os
 # Get backend URL from environment
 BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com/api"
 
-class STRYDABackendTester:
+class TradeAwareRetrievalTester:
     def __init__(self):
         self.backend_url = BACKEND_URL
         self.session = None
@@ -32,62 +32,66 @@ class STRYDABackendTester:
         if self.session:
             await self.session.close()
     
-    def _extract_inline_citations(self, text: str) -> list:
-        """Extract inline citations from response text"""
-        # Look for patterns like [[Source: Final Sweep - SPAX | Page: 64]]
-        pattern = r'\[\[Source: ([^|]+)(?:\|[^\]]+)?\]\]'
-        matches = re.findall(pattern, text)
-        return matches
-    
-    def _check_brand_mention(self, query: str, response: str) -> bool:
-        """Check if the expected brand from the query is mentioned in the response"""
-        query_lower = query.lower()
-        response_lower = response.lower()
+    def _extract_trade_keywords(self, text: str, expected_trade: str) -> dict:
+        """Extract trade-specific keywords from response text"""
+        text_lower = text.lower()
         
-        # Extract brand from query
-        brands = {
-            "pryda": "pryda",
-            "zenith": "zenith", 
-            "macsim": "macsim",
-            "spax": "spax",
-            "bremick": "bremick",
-            "bunnings": ["bunnings", "zenith", "pryda", "bremick"]  # Bunnings should mention these brands
+        # Define trade-specific keywords
+        trade_keywords = {
+            "paving": [
+                "paver", "pavers", "paving", "pathway", "pathways", "driveway", "driveways",
+                "laying pattern", "laying patterns", "holland", "ecopave", "bedding sand",
+                "joint sand", "compaction", "base course", "sub-base"
+            ],
+            "masonry": [
+                "block", "blocks", "masonry", "steel spacing", "reinforcement", "grout",
+                "20 series", "25 series", "mortar", "concrete block", "block wall",
+                "steel reinforcement", "vertical reinforcement", "horizontal reinforcement"
+            ],
+            "foundations": [
+                "ribraft", "foundation", "foundations", "edge detail", "edge beam", "x-pod",
+                "slab", "concrete slab", "beam", "footing", "footings", "reinforcement",
+                "starter bars", "foundation system"
+            ]
         }
         
-        for brand, expected in brands.items():
-            if brand in query_lower:
-                if isinstance(expected, list):
-                    return any(exp in response_lower for exp in expected)
-                else:
-                    return expected in response_lower
+        # Get keywords for expected trade
+        expected_keywords = trade_keywords.get(expected_trade.lower(), [])
+        found_keywords = [kw for kw in expected_keywords if kw in text_lower]
         
-        return False
+        # Check for wrong trade keywords
+        wrong_trade_keywords = []
+        for trade, keywords in trade_keywords.items():
+            if trade != expected_trade.lower():
+                wrong_keywords = [kw for kw in keywords if kw in text_lower]
+                if wrong_keywords:
+                    wrong_trade_keywords.extend([(trade, kw) for kw in wrong_keywords])
+        
+        return {
+            "found_keywords": found_keywords,
+            "wrong_trade_keywords": wrong_trade_keywords,
+            "keyword_count": len(found_keywords),
+            "wrong_keyword_count": len(wrong_trade_keywords)
+        }
     
-    def _check_brand_in_sources(self, query: str, sources_used: list) -> bool:
-        """Check if the expected brand appears in the sources used"""
-        query_lower = query.lower()
-        sources_str = " ".join(str(source) for source in sources_used).lower()
-        
-        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
-        
-        for brand in brands:
-            if brand in query_lower:
-                return brand in sources_str
-        
-        return False
+    def _check_firth_brand_mention(self, response: str) -> bool:
+        """Check if Firth brand is mentioned in the response"""
+        return "firth" in response.lower()
     
-    def _check_brand_in_inline_citations(self, query: str, inline_citations: list) -> bool:
-        """Check if the expected brand appears in inline citations"""
-        query_lower = query.lower()
-        citations_str = " ".join(str(citation) for citation in inline_citations).lower()
+    def _extract_backend_logs_info(self, response_data: dict) -> dict:
+        """Extract any backend log information from response metadata"""
+        # Look for any debug or log information in the response
+        log_info = {
+            "trade_detected": None,
+            "brand_filter": None,
+            "vector_search_info": None
+        }
         
-        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
+        # Check if there's any metadata about trade detection
+        # This would typically be in response headers or debug info
+        # For now, we'll infer from the response content
         
-        for brand in brands:
-            if brand in query_lower:
-                return brand in citations_str
-        
-        return False
+        return log_info
             
     async def test_chat_endpoint(self, message: str, session_id: str, test_name: str):
         """Test the /api/chat endpoint with a specific message"""
