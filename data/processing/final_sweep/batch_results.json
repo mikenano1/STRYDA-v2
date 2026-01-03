@@ -1,0 +1,152 @@
+{
+  "started_at": "2026-01-03T06:02:42.484158",
+  "brands": [
+    {
+      "brand": "Bremick",
+      "pdf_count": 4,
+      "chunk_count": 732,
+      "ingested": 732,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Buildex",
+      "pdf_count": 3,
+      "chunk_count": 275,
+      "ingested": 275,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Delfast",
+      "pdf_count": 3,
+      "chunk_count": 94,
+      "ingested": 94,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Ecko",
+      "pdf_count": 1,
+      "chunk_count": 5,
+      "ingested": 5,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "MacSim",
+      "pdf_count": 1,
+      "chunk_count": 1499,
+      "ingested": 0,
+      "success": false,
+      "errors": [
+        "Ingestion failed"
+      ]
+    },
+    {
+      "brand": "Mainland_Fasteners",
+      "pdf_count": 1,
+      "chunk_count": 106,
+      "ingested": 106,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "MiTek",
+      "pdf_count": 2,
+      "chunk_count": 41,
+      "ingested": 41,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "NZSIP",
+      "pdf_count": 1,
+      "chunk_count": 109,
+      "ingested": 109,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "NZ_Nails",
+      "pdf_count": 1,
+      "chunk_count": 5,
+      "ingested": 5,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Paslode",
+      "pdf_count": 5,
+      "chunk_count": 121,
+      "ingested": 121,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "PlaceMakers",
+      "pdf_count": 1,
+      "chunk_count": 172,
+      "ingested": 172,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Pryda",
+      "pdf_count": 5,
+      "chunk_count": 533,
+      "ingested": 533,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Ramset",
+      "pdf_count": 1,
+      "chunk_count": 26,
+      "ingested": 26,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "SPAX",
+      "pdf_count": 2,
+      "chunk_count": 226,
+      "ingested": 226,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Simpson_Strong_Tie",
+      "pdf_count": 3,
+      "chunk_count": 591,
+      "ingested": 591,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Titan",
+      "pdf_count": 1,
+      "chunk_count": 7,
+      "ingested": 7,
+      "success": true,
+      "errors": []
+    },
+    {
+      "brand": "Zenith",
+      "pdf_count": 2,
+      "chunk_count": 1389,
+      "ingested": 0,
+      "success": false,
+      "errors": [
+        "Ingestion failed"
+      ]
+    }
+  ],
+  "completed_at": "2026-01-03T07:18:19.542035",
+  "summary": {
+    "total_brands": 17,
+    "total_pdfs": 37,
+    "total_chunks": 5931,
+    "total_ingested": 3043
+  }
+}
