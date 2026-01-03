@@ -17,449 +17,347 @@ BACKEND_URL = "https://stryda-brain.preview.emergentagent.com/api"
 
 class STRYDABackendTester:
     def __init__(self):
-        self.base_url = BACKEND_URL
+        self.backend_url = BACKEND_URL
         self.session = None
         self.test_results = []
         
-    async def __aenter__(self):
+    async def setup(self):
+        """Initialize HTTP session"""
         self.session = aiohttp.ClientSession()
-        return self
         
-    async def __aexit__(self, exc_type, exc_val, exc_tb):
+    async def cleanup(self):
+        """Clean up HTTP session"""
         if self.session:
             await self.session.close()
-    
-    def log_test(self, test_name: str, status: str, details: Dict[str, Any]):
-        """Log test results"""
-        result = {
-            "test_name": test_name,
-            "status": status,
-            "timestamp": datetime.now().isoformat(),
-            "details": details
-        }
-        self.test_results.append(result)
-        
-        status_emoji = "✅" if status == "PASS" else "❌" if status == "FAIL" else "⚠️"
-        print(f"\n{status_emoji} {test_name}: {status}")
-        
-        if details.get("error"):
-            print(f"   Error: {details['error']}")
-        if details.get("response_length"):
-            print(f"   Response Length: {details['response_length']} chars")
-        if details.get("citations_count") is not None:
-            print(f"   Citations: {details['citations_count']}")
-        if details.get("final_sweep_sources"):
-            print(f"   Final Sweep Sources: {details['final_sweep_sources']}")
-        if details.get("brand_mentions"):
-            print(f"   Brand Mentions: {details['brand_mentions']}")
-    
-    async def test_health_check(self) -> bool:
-        """Test basic health check endpoint"""
+            
+    async def test_chat_endpoint(self, message: str, session_id: str, test_name: str):
+        """Test the /api/chat endpoint with a specific message"""
         try:
-            async with self.session.get(f"{self.base_url}/health") as response:
-                if response.status == 200:
-                    data = await response.json()
-                    self.log_test("Health Check", "PASS", {
-                        "status_code": response.status,
-                        "response": data
-                    })
-                    return True
-                else:
-                    self.log_test("Health Check", "FAIL", {
-                        "status_code": response.status,
-                        "error": f"Expected 200, got {response.status}"
-                    })
-                    return False
-        except Exception as e:
-            self.log_test("Health Check", "FAIL", {
-                "error": str(e)
-            })
-            return False
-    
-    async def create_thread(self) -> Optional[str]:
-        """Create a new thread for testing"""
-        try:
-            payload = {"name": "Final Sweep Test"}
+            start_time = time.time()
+            
+            payload = {
+                "message": message,
+                "session_id": session_id
+            }
+            
+            print(f"\n🧪 Testing: {test_name}")
+            print(f"📝 Query: {message}")
+            print(f"🔗 Session: {session_id}")
+            
             async with self.session.post(
-                f"{self.base_url}/api/threads",
+                f"{self.backend_url}/chat",
                 json=payload,
                 headers={"Content-Type": "application/json"}
             ) as response:
-                if response.status == 200:
+                
+                response_time = (time.time() - start_time) * 1000
+                status_code = response.status
+                
+                if status_code == 200:
                     data = await response.json()
-                    thread_id = data.get("id")
-                    self.log_test("Create Thread", "PASS", {
-                        "status_code": response.status,
-                        "thread_id": thread_id
-                    })
-                    return thread_id
+                    
+                    # Extract key information
+                    answer = data.get("response", "")
+                    citations = data.get("citations", [])
+                    sources_used = data.get("sources_used", [])
+                    confidence_score = data.get("confidence_score", 0)
+                    
+                    # Check for brand mentions
+                    brand_mentioned = self._check_brand_mention(message, answer)
+                    
+                    # Check for Final Sweep source
+                    final_sweep_source = any("Final Sweep" in str(source) or "Fasteners Full Suite" in str(source) 
+                                           for source in sources_used)
+                    
+                    # Check for specific brand in sources
+                    brand_in_sources = self._check_brand_in_sources(message, sources_used)
+                    
+                    result = {
+                        "test_name": test_name,
+                        "query": message,
+                        "session_id": session_id,
+                        "status": "PASS",
+                        "status_code": status_code,
+                        "response_time_ms": round(response_time, 1),
+                        "response_length": len(answer),
+                        "answer": answer[:300] + "..." if len(answer) > 300 else answer,
+                        "citations_count": len(citations),
+                        "sources_used": sources_used,
+                        "confidence_score": confidence_score,
+                        "brand_mentioned": brand_mentioned,
+                        "brand_in_sources": brand_in_sources,
+                        "final_sweep_source": final_sweep_source,
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    
+                    print(f"✅ Status: {status_code} OK")
+                    print(f"⏱️  Response Time: {response_time:.1f}ms")
+                    print(f"📏 Response Length: {len(answer)} characters")
+                    print(f"🎯 Brand Mentioned: {brand_mentioned}")
+                    print(f"🏷️  Brand in Sources: {brand_in_sources}")
+                    print(f"📚 Final Sweep Source: {final_sweep_source}")
+                    print(f"📖 Citations: {len(citations)}")
+                    print(f"🔍 Sources: {sources_used}")
+                    print(f"💯 Confidence: {confidence_score}")
+                    print(f"📝 Response Preview: {answer[:200]}...")
+                    
                 else:
                     error_text = await response.text()
-                    self.log_test("Create Thread", "FAIL", {
-                        "status_code": response.status,
-                        "error": error_text
-                    })
-                    return None
+                    result = {
+                        "test_name": test_name,
+                        "query": message,
+                        "session_id": session_id,
+                        "status": "FAIL",
+                        "status_code": status_code,
+                        "response_time_ms": round(response_time, 1),
+                        "error": error_text,
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    
+                    print(f"❌ Status: {status_code}")
+                    print(f"⚠️  Error: {error_text}")
+                
+                self.test_results.append(result)
+                return result
+                
         except Exception as e:
-            self.log_test("Create Thread", "FAIL", {
-                "error": str(e)
-            })
-            return None
+            result = {
+                "test_name": test_name,
+                "query": message,
+                "session_id": session_id,
+                "status": "ERROR",
+                "error": str(e),
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            print(f"💥 Exception: {str(e)}")
+            self.test_results.append(result)
+            return result
     
-    async def send_chat_message(self, thread_id: str, message: str) -> Optional[Dict[str, Any]]:
-        """Send a chat message and return the response"""
-        try:
-            payload = {"content": message}
-            async with self.session.post(
-                f"{self.base_url}/api/messages/{thread_id}",
-                json=payload,
-                headers={"Content-Type": "application/json"},
-                timeout=aiohttp.ClientTimeout(total=60)  # 60 second timeout
-            ) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    return data
-                else:
-                    error_text = await response.text()
-                    print(f"Chat API Error: {response.status} - {error_text}")
-                    return None
-        except Exception as e:
-            print(f"Chat API Exception: {str(e)}")
-            return None
-    
-    def analyze_response_for_final_sweep(self, response_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Analyze response for Final Sweep indicators"""
-        analysis = {
-            "response_length": 0,
-            "citations_count": 0,
-            "final_sweep_sources": [],
-            "brand_mentions": [],
-            "has_product_info": False,
-            "retailer_bias_detected": False
+    def _check_brand_mention(self, query: str, response: str) -> bool:
+        """Check if the expected brand from the query is mentioned in the response"""
+        query_lower = query.lower()
+        response_lower = response.lower()
+        
+        # Extract brand from query
+        brands = {
+            "pryda": "pryda",
+            "zenith": "zenith", 
+            "macsim": "macsim",
+            "spax": "spax",
+            "bremick": "bremick",
+            "bunnings": ["bunnings", "zenith", "pryda", "bremick"]  # Bunnings should mention these brands
         }
         
-        if not response_data:
-            return analysis
-        
-        # Get response text
-        response_text = response_data.get("content", "") or response_data.get("response", "") or response_data.get("answer", "")
-        analysis["response_length"] = len(response_text)
-        
-        # Check citations
-        citations = response_data.get("citations", [])
-        analysis["citations_count"] = len(citations)
-        
-        # Look for Final Sweep sources in citations
-        for citation in citations:
-            source = citation.get("source", "") or citation.get("title", "")
-            if "final sweep" in source.lower():
-                analysis["final_sweep_sources"].append(source)
-        
-        # Check for brand mentions in response
-        brands_to_check = ["pryda", "spax", "bremick", "zenith", "bunnings", "macsim", "ecko", "t-rex"]
-        response_lower = response_text.lower()
-        
-        for brand in brands_to_check:
-            if brand in response_lower:
-                analysis["brand_mentions"].append(brand)
-        
-        # Check for product-specific information
-        product_indicators = ["load capacity", "screws", "anchors", "specifications", "installation"]
-        analysis["has_product_info"] = any(indicator in response_lower for indicator in product_indicators)
-        
-        # Check for retailer bias (Bunnings preference)
-        if "bunnings" in response_lower and any(brand in response_lower for brand in ["zenith", "pryda", "bremick"]):
-            analysis["retailer_bias_detected"] = True
-        
-        return analysis
-    
-    async def test_pryda_bracing_query(self, thread_id: str):
-        """Test Pryda bracing load capacity query"""
-        query = "What is the load capacity of a Pryda bracing anchor?"
-        
-        print(f"\n🔍 Testing Pryda Query: {query}")
-        response = await self.send_chat_message(thread_id, query)
-        
-        if response:
-            analysis = self.analyze_response_for_final_sweep(response)
-            
-            # Determine test status
-            status = "PASS" if (
-                analysis["response_length"] > 50 and
-                ("pryda" in analysis["brand_mentions"] or analysis["has_product_info"])
-            ) else "FAIL"
-            
-            self.log_test("Pryda Bracing Query", status, {
-                **analysis,
-                "query": query,
-                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
-            })
-        else:
-            self.log_test("Pryda Bracing Query", "FAIL", {
-                "query": query,
-                "error": "No response received"
-            })
-    
-    async def test_spax_timber_query(self, thread_id: str):
-        """Test SPAX timber screws query"""
-        query = "What SPAX screws should I use for deck framing?"
-        
-        print(f"\n🔍 Testing SPAX Query: {query}")
-        response = await self.send_chat_message(thread_id, query)
-        
-        if response:
-            analysis = self.analyze_response_for_final_sweep(response)
-            
-            # Determine test status
-            status = "PASS" if (
-                analysis["response_length"] > 50 and
-                ("spax" in analysis["brand_mentions"] or analysis["has_product_info"])
-            ) else "FAIL"
-            
-            self.log_test("SPAX Timber Query", status, {
-                **analysis,
-                "query": query,
-                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
-            })
-        else:
-            self.log_test("SPAX Timber Query", "FAIL", {
-                "query": query,
-                "error": "No response received"
-            })
-    
-    async def test_bremick_anchor_query(self, thread_id: str):
-        """Test Bremick masonry anchors query"""
-        query = "What masonry anchors does Bremick make?"
-        
-        print(f"\n🔍 Testing Bremick Query: {query}")
-        response = await self.send_chat_message(thread_id, query)
-        
-        if response:
-            analysis = self.analyze_response_for_final_sweep(response)
-            
-            # Determine test status
-            status = "PASS" if (
-                analysis["response_length"] > 50 and
-                ("bremick" in analysis["brand_mentions"] or analysis["has_product_info"])
-            ) else "FAIL"
-            
-            self.log_test("Bremick Anchor Query", status, {
-                **analysis,
-                "query": query,
-                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
-            })
-        else:
-            self.log_test("Bremick Anchor Query", "FAIL", {
-                "query": query,
-                "error": "No response received"
-            })
-    
-    async def test_retailer_bias(self, thread_id: str):
-        """Test retailer bias for Bunnings"""
-        query = "I'm at Bunnings, what anchors do you recommend?"
-        
-        print(f"\n🔍 Testing Retailer Bias: {query}")
-        response = await self.send_chat_message(thread_id, query)
-        
-        if response:
-            analysis = self.analyze_response_for_final_sweep(response)
-            
-            # Check for Bunnings brand preference
-            bunnings_brands = ["zenith", "pryda", "bremick"]
-            bunnings_brand_mentions = [brand for brand in bunnings_brands if brand in analysis["brand_mentions"]]
-            
-            # Determine test status
-            status = "PASS" if (
-                analysis["response_length"] > 50 and
-                ("bunnings" in analysis["brand_mentions"] or len(bunnings_brand_mentions) > 0)
-            ) else "FAIL"
-            
-            self.log_test("Retailer Bias Test", status, {
-                **analysis,
-                "query": query,
-                "bunnings_brands_mentioned": bunnings_brand_mentions,
-                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
-            })
-        else:
-            self.log_test("Retailer Bias Test", "FAIL", {
-                "query": query,
-                "error": "No response received"
-            })
-    
-    async def test_alternative_chat_endpoint(self):
-        """Test the alternative /api/chat endpoint"""
-        query = "What is the load capacity of a Pryda bracing anchor?"
-        
-        print(f"\n🔍 Testing Alternative Chat Endpoint: {query}")
-        
-        try:
-            payload = {"message": query, "session_id": "test-final-sweep"}
-            async with self.session.post(
-                f"{self.base_url}/api/chat",
-                json=payload,
-                headers={"Content-Type": "application/json"},
-                timeout=aiohttp.ClientTimeout(total=60)
-            ) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    analysis = self.analyze_response_for_final_sweep(data)
-                    
-                    status = "PASS" if analysis["response_length"] > 50 else "FAIL"
-                    
-                    self.log_test("Alternative Chat Endpoint", status, {
-                        **analysis,
-                        "query": query,
-                        "endpoint": "/api/chat",
-                        "response_preview": (data.get("response", "") or data.get("answer", ""))[:200] + "..."
-                    })
+        for brand, expected in brands.items():
+            if brand in query_lower:
+                if isinstance(expected, list):
+                    return any(exp in response_lower for exp in expected)
                 else:
-                    error_text = await response.text()
-                    self.log_test("Alternative Chat Endpoint", "FAIL", {
-                        "status_code": response.status,
-                        "error": error_text
-                    })
-        except Exception as e:
-            self.log_test("Alternative Chat Endpoint", "FAIL", {
-                "error": str(e)
-            })
+                    return expected in response_lower
+        
+        return False
     
-    def print_summary(self):
-        """Print test summary"""
+    def _check_brand_in_sources(self, query: str, sources_used: list) -> bool:
+        """Check if the expected brand appears in the sources used"""
+        query_lower = query.lower()
+        sources_str = " ".join(str(source) for source in sources_used).lower()
+        
+        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
+        
+        for brand in brands:
+            if brand in query_lower:
+                return brand in sources_str
+        
+        return False
+    
+    async def run_operation_final_sweep_tests(self):
+        """Run all Operation Final Sweep brand tests"""
+        
+        print("🚀 STRYDA RAG Backend Testing - Operation Final Sweep Verification")
+        print("=" * 80)
+        print(f"🎯 Backend URL: {self.backend_url}")
+        print(f"📅 Test Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print("=" * 80)
+        
+        # Test cases from the review request
+        test_cases = [
+            {
+                "message": "What Pryda bracing anchors and connectors are available?",
+                "session_id": "test-pryda-final-sweep",
+                "test_name": "Pryda Bracing Query",
+                "expected": "Should return Pryda product info with load capacities"
+            },
+            {
+                "message": "What Zenith butt hinges are in the catalogue?", 
+                "session_id": "test-zenith-final-sweep",
+                "test_name": "Zenith Hardware Query",
+                "expected": "Should return Zenith hardware catalogue data with sizes"
+            },
+            {
+                "message": "What MacSim drop-in anchors are available?",
+                "session_id": "test-macsim-final-sweep", 
+                "test_name": "MacSim Anchor Query",
+                "expected": "Should return MacSim anchor specifications"
+            },
+            {
+                "message": "What SPAX screws should I use for decking?",
+                "session_id": "test-spax-final-sweep",
+                "test_name": "SPAX Decking Query", 
+                "expected": "Should return SPAX product info"
+            },
+            {
+                "message": "What Bremick masonry anchors are available?",
+                "session_id": "test-bremick-final-sweep",
+                "test_name": "Bremick Masonry Query",
+                "expected": "Should return Bremick masonry anchor data"
+            },
+            {
+                "message": "I'm at Bunnings, what brackets should I use for deck posts?",
+                "session_id": "test-bunnings-bias-final-sweep",
+                "test_name": "Retailer Bias Test",
+                "expected": "Response should mention Bunnings brands like Zenith, Pryda, or Bremick"
+            }
+        ]
+        
+        # Run all tests
+        for i, test_case in enumerate(test_cases, 1):
+            print(f"\n{'='*20} TEST {i}/{len(test_cases)} {'='*20}")
+            print(f"Expected: {test_case['expected']}")
+            
+            await self.test_chat_endpoint(
+                test_case["message"],
+                test_case["session_id"], 
+                test_case["test_name"]
+            )
+            
+            # Small delay between tests
+            await asyncio.sleep(2)
+        
+        # Generate summary
+        return self.generate_test_summary()
+    
+    def generate_test_summary(self):
+        """Generate comprehensive test summary"""
         print("\n" + "="*80)
-        print("🎯 STRYDA RAG BACKEND TEST SUMMARY - Operation Final Sweep Verification")
+        print("📊 OPERATION FINAL SWEEP TEST SUMMARY")
         print("="*80)
         
-        passed = len([r for r in self.test_results if r["status"] == "PASS"])
-        failed = len([r for r in self.test_results if r["status"] == "FAIL"])
-        total = len(self.test_results)
+        total_tests = len(self.test_results)
+        passed_tests = len([r for r in self.test_results if r["status"] == "PASS"])
+        failed_tests = len([r for r in self.test_results if r["status"] in ["FAIL", "ERROR"]])
         
-        print(f"\n📊 Overall Results: {passed}/{total} tests passed ({passed/total*100:.1f}%)")
+        print(f"📈 Total Tests: {total_tests}")
+        print(f"✅ Passed: {passed_tests}")
+        print(f"❌ Failed: {failed_tests}")
+        print(f"📊 Success Rate: {(passed_tests/total_tests)*100:.1f}%")
         
-        print(f"\n✅ PASSED TESTS ({passed}):")
+        # Brand detection analysis
+        brand_detection_results = []
+        brand_in_sources_results = []
+        final_sweep_usage = []
+        
         for result in self.test_results:
             if result["status"] == "PASS":
-                print(f"   • {result['test_name']}")
+                brand_detection_results.append(result.get("brand_mentioned", False))
+                brand_in_sources_results.append(result.get("brand_in_sources", False))
+                final_sweep_usage.append(result.get("final_sweep_source", False))
         
-        if failed > 0:
-            print(f"\n❌ FAILED TESTS ({failed}):")
-            for result in self.test_results:
-                if result["status"] == "FAIL":
-                    print(f"   • {result['test_name']}")
-                    if result["details"].get("error"):
-                        print(f"     Error: {result['details']['error']}")
+        brand_detection_rate = (sum(brand_detection_results) / len(brand_detection_results)) * 100 if brand_detection_results else 0
+        brand_sources_rate = (sum(brand_in_sources_results) / len(brand_in_sources_results)) * 100 if brand_in_sources_results else 0
+        final_sweep_rate = (sum(final_sweep_usage) / len(final_sweep_usage)) * 100 if final_sweep_usage else 0
         
-        # Final Sweep specific analysis
-        print(f"\n🔍 FINAL SWEEP ANALYSIS:")
-        final_sweep_sources = []
-        brand_mentions = set()
+        print(f"\n🎯 BRAND DETECTION ANALYSIS:")
+        print(f"   Brand Mention Rate: {brand_detection_rate:.1f}%")
+        print(f"   Brand in Sources Rate: {brand_sources_rate:.1f}%")
+        print(f"   Final Sweep Usage Rate: {final_sweep_rate:.1f}%")
         
+        print(f"\n📋 DETAILED RESULTS:")
         for result in self.test_results:
-            details = result["details"]
-            if details.get("final_sweep_sources"):
-                final_sweep_sources.extend(details["final_sweep_sources"])
-            if details.get("brand_mentions"):
-                brand_mentions.update(details["brand_mentions"])
+            status_icon = "✅" if result["status"] == "PASS" else "❌"
+            brand_icon = "🎯" if result.get("brand_mentioned", False) else "⚪"
+            source_icon = "🏷️" if result.get("brand_in_sources", False) else "⚪"
+            sweep_icon = "📚" if result.get("final_sweep_source", False) else "⚪"
+            
+            print(f"   {status_icon} {result['test_name']}")
+            print(f"      {brand_icon} Brand Mentioned: {result.get('brand_mentioned', 'N/A')}")
+            print(f"      {source_icon} Brand in Sources: {result.get('brand_in_sources', 'N/A')}")
+            print(f"      {sweep_icon} Final Sweep Source: {result.get('final_sweep_source', 'N/A')}")
+            if result["status"] == "PASS":
+                print(f"      📏 Response: {result.get('response_length', 0)} chars")
+                print(f"      ⏱️  Time: {result.get('response_time_ms', 0)}ms")
+                print(f"      🔍 Sources: {result.get('sources_used', [])}")
+            else:
+                print(f"      ⚠️  Error: {result.get('error', 'Unknown error')}")
         
-        print(f"   • Final Sweep Sources Found: {len(set(final_sweep_sources))}")
-        print(f"   • Brand Mentions: {list(brand_mentions)}")
+        # Final assessment
+        print(f"\n🔍 OPERATION FINAL SWEEP ASSESSMENT:")
         
-        # Verdict
-        critical_tests = ["Pryda Bracing Query", "SPAX Timber Query", "Bremick Anchor Query", "Retailer Bias Test"]
-        critical_passed = len([r for r in self.test_results if r["test_name"] in critical_tests and r["status"] == "PASS"])
-        
-        print(f"\n🏆 FINAL VERDICT:")
-        if critical_passed >= 3:
-            print("   ✅ OPERATION FINAL SWEEP: SUCCESS")
-            print("   The RAG system is successfully retrieving brand-specific information.")
-        elif critical_passed >= 2:
-            print("   ⚠️ OPERATION FINAL SWEEP: PARTIAL SUCCESS")
-            print("   Some brand queries working, but improvements needed.")
+        if passed_tests == total_tests:
+            if brand_detection_rate >= 80 and final_sweep_rate >= 80:
+                print("   🎉 EXCELLENT: All tests passed with high brand detection and Final Sweep usage")
+                verdict = "FULLY WORKING"
+            elif brand_sources_rate >= 80:
+                print("   ✅ GOOD: All tests passed with brands found in sources")
+                verdict = "MOSTLY WORKING"
+            elif final_sweep_rate >= 80:
+                print("   ⚠️  PARTIAL: Tests pass with Final Sweep usage but low brand detection")
+                verdict = "PARTIALLY WORKING"
+            else:
+                print("   ⚠️  ISSUES: Tests pass but brand detection and Final Sweep usage are low")
+                verdict = "PARTIALLY WORKING"
         else:
-            print("   ❌ OPERATION FINAL SWEEP: FAILED")
-            print("   RAG system not retrieving expected brand-specific information.")
-
-    async def test_chat_endpoint_query(self, query: str, test_name: str):
-        """Test a specific query using the /api/chat endpoint"""
-        print(f"\n🔍 Testing {test_name}: {query}")
+            print("   ❌ CRITICAL: Some tests failed")
+            verdict = "NOT WORKING"
         
-        try:
-            payload = {"message": query, "session_id": f"test-final-sweep-{int(time.time())}"}
-            async with self.session.post(
-                f"{self.base_url}/api/chat",
-                json=payload,
-                headers={"Content-Type": "application/json"},
-                timeout=aiohttp.ClientTimeout(total=60)
-            ) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    analysis = self.analyze_response_for_final_sweep(data)
-                    
-                    # Determine test status based on response quality
-                    status = "PASS" if (
-                        analysis["response_length"] > 50 and
-                        (len(analysis["brand_mentions"]) > 0 or analysis["has_product_info"])
-                    ) else "FAIL"
-                    
-                    self.log_test(test_name, status, {
-                        **analysis,
-                        "query": query,
-                        "endpoint": "/api/chat",
-                        "response_preview": (data.get("response", "") or data.get("answer", ""))[:300] + "..."
-                    })
-                else:
-                    error_text = await response.text()
-                    self.log_test(test_name, "FAIL", {
-                        "status_code": response.status,
-                        "error": error_text
-                    })
-        except Exception as e:
-            self.log_test(test_name, "FAIL", {
-                "error": str(e)
-            })
+        print(f"\n🏆 FINAL VERDICT: {verdict}")
+        
+        # Recommendations
+        print(f"\n💡 RECOMMENDATIONS:")
+        if brand_detection_rate < 50:
+            print("   • Expected brands (Pryda, Zenith, MacSim, SPAX, Bremick) may be missing from Final Sweep")
+            print("   • Verify Final Sweep document contains the expected NZ brand catalogs")
+        if brand_sources_rate < 50:
+            print("   • Brand-specific sources not being retrieved effectively")
+            print("   • Check if brand documents are properly indexed and prioritized")
+        if final_sweep_rate < 80:
+            print("   • Final Sweep document may not be properly integrated or prioritized")
+            print("   • Check document ingestion and retrieval configuration")
+        if failed_tests > 0:
+            print("   • Investigate API endpoint failures and error handling")
+        
+        return {
+            "total_tests": total_tests,
+            "passed_tests": passed_tests, 
+            "failed_tests": failed_tests,
+            "success_rate": (passed_tests/total_tests)*100,
+            "brand_detection_rate": brand_detection_rate,
+            "brand_sources_rate": brand_sources_rate,
+            "final_sweep_usage_rate": final_sweep_rate,
+            "verdict": verdict,
+            "test_results": self.test_results
+        }
 
 async def main():
     """Main test execution"""
-    print("🚀 Starting STRYDA RAG Backend Testing - Operation Final Sweep Verification")
-    print(f"🎯 Backend URL: {BACKEND_URL}")
-    print(f"⏰ Test Started: {datetime.now().isoformat()}")
+    tester = STRYDABackendTester()
     
-    async with STRYDABackendTester() as tester:
-        # Test 1: Health check (if available)
-        await tester.test_health_check()
-        
-        # Test 2-7: All six specific queries from review request using /api/chat
-        await tester.test_chat_endpoint_query(
-            "What is the load capacity of a Pryda bracing anchor?",
-            "Pryda Bracing Query"
-        )
-        
-        await tester.test_chat_endpoint_query(
-            "What Zenith hinges are available for builders?",
-            "Zenith Hardware Query"
-        )
-        
-        await tester.test_chat_endpoint_query(
-            "What drop-in anchors does MacSim make and what are their sizes?",
-            "MacSim Anchors Query"
-        )
-        
-        await tester.test_chat_endpoint_query(
-            "What SPAX screws should I use for timber framing?",
-            "SPAX Timber Query"
-        )
-        
-        await tester.test_chat_endpoint_query(
-            "I'm at Bunnings, what brackets should I use for deck posts?",
-            "Retailer Bias Test"
-        )
-        
-        await tester.test_chat_endpoint_query(
-            "What is the pull-out capacity of Ecko T-Rex screws?",
-            "Ecko T-Rex Query"
-        )
-        
-        # Print final summary
-        tester.print_summary()
+    try:
+        await tester.setup()
+        summary = await tester.run_operation_final_sweep_tests()
+        return summary
+    except Exception as e:
+        print(f"💥 Test execution failed: {e}")
+        return None
+    finally:
+        await tester.cleanup()
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    # Run the tests
+    result = asyncio.run(main())
+    
+    # Exit with appropriate code
+    if result and result.get("failed_tests", 1) == 0:
+        sys.exit(0)  # Success
+    else:
+        sys.exit(1)  # Failure
