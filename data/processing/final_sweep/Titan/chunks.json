@@ -1,0 +1,118 @@
+[
+  {
+    "chunk_id": "Titan Framing Nails BPIR Declaration_p1_table0",
+    "source": "Titan Framing Nails BPIR Declaration",
+    "page": 1,
+    "content": "TABLE DATA:\n| Name    | Airco Fasteners Pty Ltd t/a Airco Brands   |\n|:--------|:-------------------------------------------|\n| Role    | Supplier                                   |\n| NZBN    | 9429051797348                              |\n| Address | 3 Kiwi St, Otahuhu, Auckland               |\n| Website | www.aircobrands.com.au                     |\n| Email   | orders@aircobrands.com.au                  |\n| Phone   | +61 300 365 800                            |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Name",
+        "Airco Fasteners Pty Ltd t/a Airco Brands"
+      ],
+      "row_count": 6,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Titan Framing Nails BPIR Declaration_p1_table1",
+    "source": "Titan Framing Nails BPIR Declaration",
+    "page": 1,
+    "content": "TABLE DATA:\n| Code       |                         | Item (length x diameter)              |    | Shank   | Box Qty   |\n|:-----------|:------------------------|:--------------------------------------|:---|:--------|:----------|\n| FN2950HDW  |                         | Titan Framing Nail, 50 x 2.87 mm HDG  |    | Smooth  | 1,000     |\n| FN2965RHDW |                         | Titan Framing Nail, 65 x 2.87 mm HDG  |    | Ring    | 1,000     |\n| FN3175HDX  |                         | Titan Framing Nail, 75 x 3.06 mm HDG  |    | Smooth  | 3,000     |\n| FN3290HDW  |                         | Titan Framing Nail, 90 x 3.15 mm HDG  |    | Smooth  | 1,000     |\n| FN3290HDX  |                         | Titan Framing Nail, 90 x 3.15 mm HDG  |    | Smooth  | 3,000     |\n| FN3175BSX  |                         | TITAN Framing Nail 3.06 x 75mm Bright |    | Smooth  | 3,000     |\n| FN3290BSW  |                         | TITAN Framing Nail 3.15 x 90mm Bright |    | Smooth  | 1,000     |\n| FN3290BSX  |                         | TITAN Framing Nail 3.15 x 90mm Bright |    | Smooth  | 3,000     |\n|            | KLAND                   |                                       |    |         |           |\n|            | cobrands.com.au         |                                       |    |         |           |\n|            | Uncontrolled in printed |                                       |    |         |           |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Code",
+        "",
+        "Item (length x diameter)",
+        "",
+        "Shank",
+        "Box Qty"
+      ],
+      "row_count": 9,
+      "col_count": 6
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Titan Framing Nails BPIR Declaration_p1_c0",
+    "source": "Titan Framing Nails BPIR Declaration",
+    "page": 1,
+    "content": "TITAN FRAMING NAILS BPIR DECLARATION Version 2.0 October 2024 DESIGNATED BUILDING PRODUCT: Class 1 DECLARATION Airco Fasteners Pty Ltd t/a Airco Brands has provided this declaration to satisfy the provisions of Building (Building Product Information Requirements) Regulations 2022. COMPANY DETAILS Name Airco Fasteners Pty Ltd t/a Airco Brands Role Supplier NZBN 9429051797348 Address 3 Kiwi St, Otahuhu, Auckland Website www.aircobrands.com.au Email orders@aircobrands.com.au Phone +61 300 365 800 DESCRIPTION OF BUILDING PRODUCT Airco Brands supplies collated, bright finish (uncoated), and HDG finished framing nails under the Titan brand. The bright nails are only intended for use in interior fixing applications, including framing, that will be fully enclosed. HDG nails are suitable for outdoor use. Titan collated framing nails are manufactured from hardened steel wire with a typical tensile strength of 840MPa. The framing nails: \u2022 are collated with paper at an angle of 34\u00b0, \u2022 have Flat D-head (clipped) diamond point, smooth shank, \u2022 are either bright (uncoated) or finished with a hot dipped galvanised coating (typically 55 - 60 micron Zn coating thickness).",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1173
+    }
+  },
+  {
+    "chunk_id": "Titan Framing Nails BPIR Declaration_p1_c1",
+    "source": "Titan Framing Nails BPIR Declaration",
+    "page": 1,
+    "content": "angle of 34\u00b0, \u2022 have Flat D-head (clipped) diamond point, smooth shank, \u2022 are either bright (uncoated) or finished with a hot dipped galvanised coating (typically 55 - 60 micron Zn coating thickness). Nails covered by this BPIR are: Code Item (length x diameter) Shank Box Qty FN2950HDW Titan Framing Nail, 50 x 2.87 mm HDG Smooth 1,000 FN2965RHDW Titan Framing Nail, 65 x 2.87 mm HDG Ring 1,000 FN3175HDX Titan Framing Nail, 75 x 3.06 mm HDG Smooth 3,000 FN3290HDW Titan Framing Nail, 90 x 3.15 mm HDG Smooth 1,000 FN3290HDX Titan Framing Nail, 90 x 3.15 mm HDG Smooth 3,000 FN3175BSX TITAN Framing Nail 3.06 x 75mm Bright Smooth 3,000 FN3290BSW TITAN Framing Nail 3.15 x 90mm Bright Smooth 1,000 FN3290BSX TITAN Framing Nail 3.15 x 90mm Bright Smooth 3,000 AIRCO BRANDS 3 KIWI ST, OTAHUHU, AUCKLAND +61 300 365 800 | www.aircobrands.com.au Uncontrolled in printed format TOUGH DONE DIFFERENT",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 893
+    }
+  },
+  {
+    "chunk_id": "Titan Framing Nails BPIR Declaration_p2_table0",
+    "source": "Titan Framing Nails BPIR Declaration",
+    "page": 2,
+    "content": "TABLE DATA:\n| Clause                       | Evidence                                                                   |\n|:-----------------------------|:---------------------------------------------------------------------------|\n| B1 (Structure)               | Titan nails are manufactured from hardened nail wire and finished hot      |\n| B1.3.1, B1.3.2               | dipped galvanised or bright coated.                                        |\n| B1.3.3 (a, f, h, i, j, m, q) | Section 4, NZS3604:2011, table 4.1 defines coating requirements for        |\n|                              | structural fixings for given environments.                                 |\n|                              | Sheltered environments requires a minimum of hot dipped galvanised.        |\n|                              | Exposed environments requirements a minimum of 304 stainless steel.        |\n|                              | Table 4.3 provides coating requirements for non-structural fixings.        |\n|                              | Tables 4.1 and 4.3 allow for allow non-galvanised, mild steel in all zones |\n|                              | where used in closed environments.                                         |\n| B2 (Durability)              |                                                                            |\n| B2.3.1 (a, b)                |                                                                            |\n| F2 (Hazardous Building       |                                                                            |\n| Materials)                   |                                                                            |\n| F2.3.1                       |                                                                            |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Clause",
+        "Evidence"
+      ],
+      "row_count": 3,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Titan Framing Nails BPIR Declaration_p2_c0",
+    "source": "Titan Framing Nails BPIR Declaration",
+    "page": 2,
+    "content": "CONTRIBUTION TO BUILDING WORK CODE OBLIGATIONS Titan collated framing nails comply with the following building code clauses: Clause Evidence B1 (Structure) Titan nails are manufactured from hardened nail wire and finished hot dipped galvanised or bright coated. B1.3.1, B1.3.2 Section 4, NZS3604:2011, table 4.1 defines coating requirements for B1.3.3 (a, f, h, i, j, m, q) structural fixings for given environments. B2 (Durability) Sheltered environments requires a minimum of hot dipped galvanised. B2.3.1 (a, b) Exposed environments requirements a minimum of 304 stainless steel. F2 (Hazardous Building Table 4.3 provides coating requirements for non-structural fixings. Materials) Tables 4.1 and 4.3 allow for allow non-galvanised, mild steel in all zones F2.3.1 where used in closed environments. FOR FURTHER INFORMATION Titan collated framing nails must be used in accordance with all information supplied by Airco Brands Pty Ltd. For supporting information refer to www.aircobrands.com.au. RESPONSIBLE PERSON In accordance with Regulation 8, as the responsible person, I confirm that the information supplied in this declaration is based on information supplied to the company as well as the company\u2019s processes and is, therefore, to the best of my knowledge, correct. I can also confirm Titan collated framing nails, as referred to in this statement, are not subject to a warning or ban under s26 of the Building Act.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1426
+    }
+  },
+  {
+    "chunk_id": "Titan Framing Nails BPIR Declaration_p2_c1",
+    "source": "Titan Framing Nails BPIR Declaration",
+    "page": 2,
+    "content": ", therefore, to the best of my knowledge, correct. I can also confirm Titan collated framing nails, as referred to in this statement, are not subject to a warning or ban under s26 of the Building Act. Signed for and on behalf Airco Fasteners Pty Ltd t/a Airco Brands: Andrew Goode Andrew Goode BRAND AND QUALITY MANAGER October 2024 AIRCO BRANDS 3 KIWI ST, OTAHUHU, AUCKLAND +61 300 365 800 | www.aircobrands.com.au Uncontrolled in printed format TOUGH DONE DIFFERENT",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 467
+    }
+  }
+]
