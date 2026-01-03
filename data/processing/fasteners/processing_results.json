@@ -1,0 +1,108 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners",
+  "processed_at": "2026-01-03T05:14:06.568665",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/MiTek/MiTek_Stud-to-Top-Plate_Fixing_Schedule_2024.pdf",
+      "chunks": 1,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/MiTek/MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf",
+      "chunks": 40,
+      "tables": 22,
+      "diagrams": 1
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Buildex/Buildex_Low_Profile_Roof_Clip_Fastener_Guide.pdf",
+      "chunks": 14,
+      "tables": 9,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Buildex/ITW_Buildex_2020_Catalog.pdf",
+      "chunks": 121,
+      "tables": 62,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Buildex/ITW_Buildex_Catalog_2024-25.pdf",
+      "chunks": 140,
+      "tables": 79,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Mass_Timber_Connectors_AUNZ.pdf",
+      "chunks": 158,
+      "tables": 42,
+      "diagrams": 1
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Timber_Construction_Connectors_Catalog.pdf",
+      "chunks": 304,
+      "tables": 68,
+      "diagrams": 7
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_NZS_3604_Timber_Connectors.pdf",
+      "chunks": 128,
+      "tables": 50,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/NZSIP/NZ_SIP_Technical_Manual_Fasteners_Section.pdf",
+      "chunks": 109,
+      "tables": 19,
+      "diagrams": 17
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Ramset/Ramset_Technical_Product_Guide.pdf",
+      "chunks": 26,
+      "tables": 5,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_Fastener_Selection_Chart.pdf",
+      "chunks": 3,
+      "tables": 2,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_NZ_Nails_BRANZ_Appraisal_546.pdf",
+      "chunks": 18,
+      "tables": 4,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_Impulse_Purlin_Nails_Technical.pdf",
+      "chunks": 8,
+      "tables": 4,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_Purlin_Nails_BRANZ_Appraisal.pdf",
+      "chunks": 8,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_2020_Full_Catalog.pdf",
+      "chunks": 84,
+      "tables": 26,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 1162,
+  "table_chunks": 392,
+  "text_chunks": 744,
+  "diagram_chunks": 26,
+  "stats": {
+    "pages_processed": 391,
+    "images_found": 335,
+    "images_captioned": 26,
+    "tables_extracted": 399,
+    "vision_errors": 0
+  }
+}
