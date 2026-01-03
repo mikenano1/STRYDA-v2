@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-STRYDA RAG Backend Testing - Operation Final Sweep Verification
-Testing specific brand queries to verify Final Sweep document integration
+STRYDA RAG Backend Testing - Product Function/Trade-Aware Retrieval
+Testing the new trade-aware retrieval feature that distinguishes between product lines within brands.
+Focus: Firth brand with granular trade metadata (paving, masonry, foundations)
 """
 
 import asyncio
