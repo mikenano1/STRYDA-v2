@@ -8,6 +8,7 @@ import asyncio
 import aiohttp
 import json
 import time
+import re
 from datetime import datetime
 import sys
 import os
@@ -29,6 +30,63 @@ class STRYDABackendTester:
         """Clean up HTTP session"""
         if self.session:
             await self.session.close()
+    
+    def _extract_inline_citations(self, text: str) -> list:
+        """Extract inline citations from response text"""
+        # Look for patterns like [[Source: Final Sweep - SPAX | Page: 64]]
+        pattern = r'\[\[Source: ([^|]+)(?:\|[^\]]+)?\]\]'
+        matches = re.findall(pattern, text)
+        return matches
+    
+    def _check_brand_mention(self, query: str, response: str) -> bool:
+        """Check if the expected brand from the query is mentioned in the response"""
+        query_lower = query.lower()
+        response_lower = response.lower()
+        
+        # Extract brand from query
+        brands = {
+            "pryda": "pryda",
+            "zenith": "zenith", 
+            "macsim": "macsim",
+            "spax": "spax",
+            "bremick": "bremick",
+            "bunnings": ["bunnings", "zenith", "pryda", "bremick"]  # Bunnings should mention these brands
+        }
+        
+        for brand, expected in brands.items():
+            if brand in query_lower:
+                if isinstance(expected, list):
+                    return any(exp in response_lower for exp in expected)
+                else:
+                    return expected in response_lower
+        
+        return False
+    
+    def _check_brand_in_sources(self, query: str, sources_used: list) -> bool:
+        """Check if the expected brand appears in the sources used"""
+        query_lower = query.lower()
+        sources_str = " ".join(str(source) for source in sources_used).lower()
+        
+        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
+        
+        for brand in brands:
+            if brand in query_lower:
+                return brand in sources_str
+        
+        return False
+    
+    def _check_brand_in_inline_citations(self, query: str, inline_citations: list) -> bool:
+        """Check if the expected brand appears in inline citations"""
+        query_lower = query.lower()
+        citations_str = " ".join(str(citation) for citation in inline_citations).lower()
+        
+        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
+        
+        for brand in brands:
+            if brand in query_lower:
+                return brand in citations_str
+        
+        return False
             
     async def test_chat_endpoint(self, message: str, session_id: str, test_name: str):
         """Test the /api/chat endpoint with a specific message"""
@@ -102,6 +160,7 @@ class STRYDABackendTester:
                     print(f"🏷️  Brand in Sources: {brand_in_sources}")
                     print(f"📚 Final Sweep Source: {final_sweep_source}")
                     print(f"📖 Citations: {len(citations)}")
+                    print(f"🔗 Inline Citations: {inline_citations}")
                     print(f"🔍 Sources: {sources_used}")
                     print(f"💯 Confidence: {confidence_score}")
                     print(f"📝 Response Preview: {answer[:200]}...")
@@ -138,84 +197,6 @@ class STRYDABackendTester:
             print(f"💥 Exception: {str(e)}")
             self.test_results.append(result)
             return result
-    
-    def _check_brand_mention(self, query: str, response: str) -> bool:
-        """Check if the expected brand from the query is mentioned in the response"""
-        query_lower = query.lower()
-        response_lower = response.lower()
-        
-        # Extract brand from query
-        brands = {
-            "pryda": "pryda",
-            "zenith": "zenith", 
-            "macsim": "macsim",
-            "spax": "spax",
-            "bremick": "bremick",
-            "bunnings": ["bunnings", "zenith", "pryda", "bremick"]  # Bunnings should mention these brands
-        }
-        
-        for brand, expected in brands.items():
-            if brand in query_lower:
-                if isinstance(expected, list):
-                    return any(exp in response_lower for exp in expected)
-                else:
-                    return expected in response_lower
-        
-        return False
-        """Extract inline citations from response text"""
-        import re
-        # Look for patterns like [[Source: Final Sweep - SPAX | Page: 64]]
-        pattern = r'\[\[Source: ([^|]+)(?:\|[^\]]+)?\]\]'
-        matches = re.findall(pattern, text)
-        return matches
-    
-    def _check_brand_in_inline_citations(self, query: str, inline_citations: list) -> bool:
-        """Check if the expected brand appears in inline citations"""
-        query_lower = query.lower()
-        citations_str = " ".join(str(citation) for citation in inline_citations).lower()
-        
-        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
-        
-        for brand in brands:
-            if brand in query_lower:
-                return brand in citations_str
-        
-        return False
-        """Check if the expected brand from the query is mentioned in the response"""
-        query_lower = query.lower()
-        response_lower = response.lower()
-        
-        # Extract brand from query
-        brands = {
-            "pryda": "pryda",
-            "zenith": "zenith", 
-            "macsim": "macsim",
-            "spax": "spax",
-            "bremick": "bremick",
-            "bunnings": ["bunnings", "zenith", "pryda", "bremick"]  # Bunnings should mention these brands
-        }
-        
-        for brand, expected in brands.items():
-            if brand in query_lower:
-                if isinstance(expected, list):
-                    return any(exp in response_lower for exp in expected)
-                else:
-                    return expected in response_lower
-        
-        return False
-    
-    def _check_brand_in_sources(self, query: str, sources_used: list) -> bool:
-        """Check if the expected brand appears in the sources used"""
-        query_lower = query.lower()
-        sources_str = " ".join(str(source) for source in sources_used).lower()
-        
-        brands = ["pryda", "zenith", "macsim", "spax", "bremick"]
-        
-        for brand in brands:
-            if brand in query_lower:
-                return brand in sources_str
-        
-        return False
     
     async def run_operation_final_sweep_tests(self):
         """Run all Operation Final Sweep brand tests"""
@@ -332,7 +313,7 @@ class STRYDABackendTester:
             if result["status"] == "PASS":
                 print(f"      📏 Response: {result.get('response_length', 0)} chars")
                 print(f"      ⏱️  Time: {result.get('response_time_ms', 0)}ms")
-                print(f"      🔍 Sources: {result.get('sources_used', [])}")
+                print(f"      🔗 Inline Citations: {result.get('inline_citations', [])}")
             else:
                 print(f"      ⚠️  Error: {result.get('error', 'Unknown error')}")
         
