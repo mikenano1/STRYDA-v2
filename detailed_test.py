@@ -9,7 +9,7 @@ import json
 import time
 from datetime import datetime
 
-BACKEND_URL = "https://stryda-brain.preview.emergentagent.com"
+BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com"
 
 async def test_detailed_final_sweep():
     """Test the Final Sweep queries and capture detailed responses"""

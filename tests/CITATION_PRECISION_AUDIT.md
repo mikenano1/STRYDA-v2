@@ -2,7 +2,7 @@
 
 **Audit Date:** 2025-11-08 15:36:57 UTC
 
-**Backend URL:** https://stryda-brain.preview.emergentagent.com
+**Backend URL:** https://trade-aware-rag.preview.emergentagent.com
 
 **Total Documents Ingested:** 1,742 (NZ Building Code, NZS 3604, E2/AS1, NZMRM, etc.)
 

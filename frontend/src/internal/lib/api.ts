@@ -8,7 +8,7 @@ import { Platform } from 'react-native';
 // AUTOMATIC URL DETECTION
 // 1. If Web: Use relative path (proxied)
 // 2. If Native: Use explicit production URL
-const PROD_URL = 'https://stryda-brain.preview.emergentagent.com'; 
+const PROD_URL = 'https://trade-aware-rag.preview.emergentagent.com'; 
 const API_BASE_URL = Platform.OS === 'web' ? '' : PROD_URL;
 
 export interface Citation {

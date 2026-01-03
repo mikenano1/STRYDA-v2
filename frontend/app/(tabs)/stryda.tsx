@@ -184,7 +184,7 @@ export default function StrydaChat() {
       } as any);
 
       try {
-          const API_BASE_URL = Platform.OS === 'web' ? '' : 'https://stryda-brain.preview.emergentagent.com';
+          const API_BASE_URL = Platform.OS === 'web' ? '' : 'https://trade-aware-rag.preview.emergentagent.com';
           const targetUrl = `${API_BASE_URL.replace(/\/$/, "")}/api/transcribe`;
           
           const response = await fetch(targetUrl, {

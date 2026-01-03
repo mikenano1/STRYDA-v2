@@ -14,7 +14,7 @@ import sys
 import os
 
 # Get backend URL from environment
-BACKEND_URL = "https://stryda-brain.preview.emergentagent.com/api"
+BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com/api"
 
 class STRYDABackendTester:
     def __init__(self):

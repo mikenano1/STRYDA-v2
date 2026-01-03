@@ -1,7 +1,7 @@
 # STRYDA-v2 POST-REGENERATION VALIDATION REPORT
 
 **Test Date:** 2025-11-25 07:16:43  
-**Backend URL:** https://stryda-brain.preview.emergentagent.com  
+**Backend URL:** https://trade-aware-rag.preview.emergentagent.com  
 **Total Queries:** 30
 
 ---

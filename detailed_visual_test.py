@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv('/app/frontend/.env')
 
-BACKEND_URL = os.getenv('EXPO_PUBLIC_BACKEND_URL', 'https://stryda-brain.preview.emergentagent.com')
+BACKEND_URL = os.getenv('EXPO_PUBLIC_BACKEND_URL', 'https://trade-aware-rag.preview.emergentagent.com')
 API_BASE = f"{BACKEND_URL}/api"
 
 def test_specific_queries():
