@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 STRYDA RAG Backend Testing - Operation Final Sweep Verification
-Testing the specific queries mentioned in the review request to verify
-the "Operation Final Sweep" ingestion was successful.
+Testing specific brand queries to verify Final Sweep document integration
 """
 
 import asyncio
@@ -10,10 +9,11 @@ import aiohttp
 import json
 import time
 from datetime import datetime
-from typing import Dict, List, Any, Optional
+import sys
+import os
 
-# Backend URL from frontend .env
-BACKEND_URL = "https://stryda-brain.preview.emergentagent.com"
+# Get backend URL from environment
+BACKEND_URL = "https://stryda-brain.preview.emergentagent.com/api"
 
 class STRYDABackendTester:
     def __init__(self):
