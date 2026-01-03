@@ -1,12 +1,51 @@
 {
-  "operation": "FINAL_SWEEP",
+  "operation": "FINAL_SWEEP_CORRECTED",
   "category": {
     "category_code": "F_Manufacturers",
     "trade": "fasteners",
     "country": "New Zealand",
-    "operation": "FINAL_SWEEP"
+    "operation": "FINAL_SWEEP_CORRECTED",
+    "target_brands": [
+      "Delfast",
+      "Blacks",
+      "Ecko",
+      "Pryda",
+      "Bremick",
+      "Zenith",
+      "Titan",
+      "NZ Nails",
+      "MacSim",
+      "SPAX"
+    ],
+    "retailer_ecosystem": {
+      "Bunnings": [
+        "Zenith",
+        "Pryda",
+        "Bremick",
+        "Titan",
+        "MacSim"
+      ],
+      "Mitre 10": [
+        "Bremick",
+        "Pryda",
+        "SPAX",
+        "MacSim"
+      ],
+      "PlaceMakers": [
+        "Delfast",
+        "Ecko",
+        "SPAX"
+      ],
+      "ITM": [
+        "Delfast",
+        "Ecko",
+        "Titan",
+        "NZ Nails",
+        "SPAX"
+      ]
+    }
   },
-  "fetch_date": "2026-01-03T05:49:51.880540",
+  "fetch_date": "2026-01-03T06:00:54.423787",
   "documents": [
     {
       "source": "Delfast PlaceMakers Nail Guide 2023",
@@ -24,7 +63,7 @@
         "ITM"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:25.725290",
+      "ingested_at": "2026-01-03T06:00:13.291206",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -43,7 +82,7 @@
         "PlaceMakers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:25.782112",
+      "ingested_at": "2026-01-03T06:00:13.340174",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -64,7 +103,27 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:25.975711",
+      "ingested_at": "2026-01-03T06:00:13.905232",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Mainland Fasteners Mini Catalogue",
+      "brand_name": "Mainland Fasteners",
+      "category_code": "F_Manufacturers",
+      "product_family": "South Island Range",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.mainlandfasteners.co.nz/downloads/MiniCatalogue.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Mainland_Fasteners/Mainland_Fasteners_Mini_Catalogue.pdf",
+      "file_hash": "33fe0f83719c5037714a73468db9507667fa883e1339d87ed32fe5f21ce2c3ca",
+      "file_size_bytes": 21936078,
+      "retailer_availability": [
+        "Mainland Fasteners",
+        "South Island Trade"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:17.634983",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -84,7 +143,7 @@
         "ITM"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:27.151684",
+      "ingested_at": "2026-01-03T06:00:18.541904",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -104,7 +163,7 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:30.720294",
+      "ingested_at": "2026-01-03T06:00:18.783652",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -124,7 +183,7 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:33.795564",
+      "ingested_at": "2026-01-03T06:00:18.826493",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -143,7 +202,7 @@
         "Bunnings"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:35.639579",
+      "ingested_at": "2026-01-03T06:00:18.841904",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -163,7 +222,7 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:36.591772",
+      "ingested_at": "2026-01-03T06:00:19.804169",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -183,7 +242,7 @@
         "Trade"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:40.029613",
+      "ingested_at": "2026-01-03T06:00:23.834529",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -203,7 +262,7 @@
         "Trade Suppliers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:45.098062",
+      "ingested_at": "2026-01-03T06:00:25.817108",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -223,7 +282,7 @@
         "Trade Suppliers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:46.921915",
+      "ingested_at": "2026-01-03T06:00:27.578396",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -243,7 +302,7 @@
         "Trade Suppliers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:49.396984",
+      "ingested_at": "2026-01-03T06:00:27.814901",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -264,7 +323,146 @@
         "Trade"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:51.631206",
+      "ingested_at": "2026-01-03T06:00:30.116713",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Zenith Hardware Catalogue 2020",
+      "brand_name": "Zenith",
+      "category_code": "F_Manufacturers",
+      "product_family": "Hardware",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.itwproline.com.au/wp-content/uploads/2019/11/03121_Zenith-Hardware_Catalogue-2020-V12-LR.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2020.pdf",
+      "file_hash": "578e21cc124c3d1af5033165c48819b7d8a1a59e6acbc8fe316e6cb57e0c8139",
+      "file_size_bytes": 7044909,
+      "retailer_availability": [
+        "Bunnings"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:32.484418",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Zenith Hardware Catalogue 2017",
+      "brand_name": "Zenith",
+      "category_code": "F_Manufacturers",
+      "product_family": "Hardware",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.itwproline.com.au/wp-content/uploads/2019/11/Zenith-Hardware-Catalogue-2017.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2017.pdf",
+      "file_hash": "0c860268bd938b2399cf343c9930b644d7184d5ed99a3f8eacfb9c4e0989bb87",
+      "file_size_bytes": 10930034,
+      "retailer_availability": [
+        "Bunnings"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:33.435206",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Titan Framing Nails BPIR Declaration",
+      "brand_name": "Titan",
+      "category_code": "F_Manufacturers",
+      "product_family": "Framing Nails",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.titanfasteners.co.nz/wp-content/uploads/2024/12/Airco-Brands-Titan-Framing-Nails-BPIR-Decl-v2.0.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Titan/Titan_Framing_Nails_BPIR_Declaration.pdf",
+      "file_hash": "8a0ad57698c6d305bbd1c7c57c1ed5d2d40f137fd482fb0c114ad4d4d1c44ca5",
+      "file_size_bytes": 136652,
+      "retailer_availability": [
+        "ITM",
+        "Bunnings",
+        "PlaceMakers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:34.760711",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "NZ Nails Building Product Information Sheet",
+      "brand_name": "NZ Nails",
+      "category_code": "F_Manufacturers",
+      "product_family": "Loose Nails",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.nznails.co.nz/download_file/view/428/162/",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/NZ_Nails/NZ_Nails_Building_Product_Information_Sheet.pdf",
+      "file_hash": "08bd201435ea2afaffa0ffda659e3e84a3444ca73a047dc69366dbf232f41565",
+      "file_size_bytes": 163275,
+      "retailer_availability": [
+        "ITM",
+        "Trade"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:39.454388",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Fasteners Direct Catalogue (MacSim Products)",
+      "brand_name": "MacSim",
+      "category_code": "F_Manufacturers",
+      "product_family": "Anchors Fasteners",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://fastenersdirect.com.au/wp-content/uploads/2024/05/2140_HM_Fasteners-Direct-Catalogue-Updates_Aug22_INHOUSE-Lores.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/MacSim/Fasteners_Direct_Catalogue_MacSim_Products.pdf",
+      "file_hash": "df577703eea0b51824a9dc64749f243815556037a8c0c68e30e3e17eb6578525",
+      "file_size_bytes": 32676868,
+      "retailer_availability": [
+        "Trade Suppliers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:45.949961",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "SPAX Pacific Product Catalogue 2018-2019",
+      "brand_name": "SPAX",
+      "category_code": "F_Manufacturers",
+      "product_family": "Full Range",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.spaxpacific.com/SPAX_Pacific_ProductCAT_2018-2019.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/SPAX/SPAX_Pacific_Product_Catalogue_2018-2019.pdf",
+      "file_hash": "e66983fe2d4c39f2858b445d19c84ed7ec997cea813cfc83a3ca05f54b8e649c",
+      "file_size_bytes": 32731700,
+      "retailer_availability": [
+        "ITM",
+        "Mitre 10",
+        "Trade"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:50.269886",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "SPAX Decking Screw Guide",
+      "brand_name": "SPAX",
+      "category_code": "F_Manufacturers",
+      "product_family": "Decking Screws",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.placemakers.co.nz/medias/sys_master/root/h37/he6/10202660470814/spax-decking-screw-guide/spax-decking-screw-guide.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/SPAX/SPAX_Decking_Screw_Guide.pdf",
+      "file_hash": "4327bd1700b3eaae8df225f7e61613b3b25fa996122856373f7551369a7d4e5c",
+      "file_size_bytes": 406238,
+      "retailer_availability": [
+        "PlaceMakers",
+        "ITM"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T06:00:51.839962",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -283,19 +481,59 @@
         "PlaceMakers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:49:51.880463",
+      "ingested_at": "2026-01-03T06:00:54.423709",
       "status": "downloaded",
       "has_diagrams": true
     }
   ],
   "failed": [
-    "ECKO Fasteners Catalogue 2024 Screws",
-    "ECKO Fasteners Full Catalogue 2024",
-    "ECKO Fasteners Catalogue 2022"
+    {
+      "name": "Blacks Fasteners Handbook Complete",
+      "brand": "Blacks",
+      "url": "https://www.blacksfasteners.co.nz/img/catalogue/Blacks_Fasteners_-_Handbook_2013_Compressed.pdf"
+    },
+    {
+      "name": "ECKO Fasteners Catalogue 2024 Screws",
+      "brand": "Ecko",
+      "url": "https://www.ecko.co.nz/wp-content/uploads/0.-ECKO-Fasteners-Catalogue-2024-SCREWS.pdf"
+    },
+    {
+      "name": "ECKO Fasteners Full Catalogue 2024",
+      "brand": "Ecko",
+      "url": "https://www.ecko.co.nz/wp-content/uploads/0.-ECKO-Fasteners-Catalogue-2024-1.pdf"
+    },
+    {
+      "name": "ECKO Fasteners Catalogue 2022",
+      "brand": "Ecko",
+      "url": "https://www.ecko.co.nz/wp-content/uploads/ECKO-Fasteners-Catalogue-2022.pdf"
+    },
+    {
+      "name": "Zenith Fasteners Bolts Catalogue 2017",
+      "brand": "Zenith",
+      "url": "https://www.itwlyp.proline.com.au/wp-content/uploads/2019/11/Zenith_Fasteners_New_Bolts_Catalogue_2017.pdf"
+    },
+    {
+      "name": "MacSim Fill Fix Bond Foam TDS",
+      "brand": "MacSim",
+      "url": "https://shop.cnw.com.au/medias/MAC53MPF750.pdf"
+    },
+    {
+      "name": "SPAX Timber Construction NZS 3603 Design Guide",
+      "brand": "SPAX",
+      "url": "https://www.spaxpacific.com/SPAXTimberConstBroNZS-3603-Email.pdf"
+    }
   ],
   "brand_stats": {
     "Delfast": {
       "success": 3,
+      "failed": 0
+    },
+    "Blacks": {
+      "success": 0,
+      "failed": 1
+    },
+    "Mainland Fasteners": {
+      "success": 1,
       "failed": 0
     },
     "Ecko": {
@@ -310,14 +548,34 @@
       "success": 4,
       "failed": 0
     },
+    "Zenith": {
+      "success": 2,
+      "failed": 1
+    },
+    "Titan": {
+      "success": 1,
+      "failed": 0
+    },
+    "NZ Nails": {
+      "success": 1,
+      "failed": 0
+    },
+    "MacSim": {
+      "success": 1,
+      "failed": 1
+    },
+    "SPAX": {
+      "success": 2,
+      "failed": 1
+    },
     "PlaceMakers": {
       "success": 1,
       "failed": 0
     }
   },
   "stats": {
-    "total_attempted": 17,
-    "successful": 14,
-    "failed": 3
+    "total_attempted": 29,
+    "successful": 22,
+    "failed": 7
   }
 }
