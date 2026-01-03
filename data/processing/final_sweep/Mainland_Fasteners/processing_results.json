@@ -1,0 +1,24 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Mainland_Fasteners",
+  "processed_at": "2026-01-03T06:30:32.807884",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Mainland_Fasteners/Mainland_Fasteners_Mini_Catalogue.pdf",
+      "chunks": 106,
+      "tables": 3,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 106,
+  "table_chunks": 3,
+  "text_chunks": 103,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 104,
+    "images_found": 90,
+    "images_captioned": 0,
+    "tables_extracted": 4,
+    "vision_errors": 0
+  }
+}
