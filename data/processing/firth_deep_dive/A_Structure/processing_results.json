@@ -1,0 +1,54 @@
+{
+  "input_dir": "/app/data/ingestion/A_Structure/Firth/A_Structure",
+  "processed_at": "2026-01-03T21:27:50.269036",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/A_Structure/Structural_Masonry_Product_Technical_Statement.pdf",
+      "chunks": 3,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/A_Structure/RibRaft_Technical_Manual_CodeMark_2024.pdf",
+      "chunks": 92,
+      "tables": 18,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/A_Structure/X-Pod_Structural_Designers_Guide_July_2025.pdf",
+      "chunks": 46,
+      "tables": 5,
+      "diagrams": 2
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/A_Structure/X-Pod_Installers_Guide_Dec_2018.pdf",
+      "chunks": 32,
+      "tables": 2,
+      "diagrams": 1
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/A_Structure/Hollow_Masonry_Brochure_2023.pdf",
+      "chunks": 18,
+      "tables": 4,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/A_Structure/X-Pod_Installation_Guide_July_2025.pdf",
+      "chunks": 38,
+      "tables": 2,
+      "diagrams": 1
+    }
+  ],
+  "total_chunks": 229,
+  "table_chunks": 31,
+  "text_chunks": 194,
+  "diagram_chunks": 4,
+  "stats": {
+    "pages_processed": 97,
+    "images_found": 66,
+    "images_captioned": 4,
+    "tables_extracted": 42,
+    "vision_errors": 0
+  }
+}

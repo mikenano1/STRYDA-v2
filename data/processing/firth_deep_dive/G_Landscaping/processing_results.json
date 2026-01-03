@@ -1,0 +1,42 @@
+{
+  "input_dir": "/app/data/ingestion/A_Structure/Firth/G_Landscaping",
+  "processed_at": "2026-01-03T21:29:39.611230",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/Firth_Paving_Installation_Guide_2025.pdf",
+      "chunks": 23,
+      "tables": 0,
+      "diagrams": 2
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/Firth_Paving_Concepts_Brochure.pdf",
+      "chunks": 20,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/Firth_Paving_Category_Flyer_2025.pdf",
+      "chunks": 2,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/EcoPave_Installation_Guide_Aug_2024.pdf",
+      "chunks": 44,
+      "tables": 8,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 89,
+  "table_chunks": 8,
+  "text_chunks": 79,
+  "diagram_chunks": 2,
+  "stats": {
+    "pages_processed": 54,
+    "images_found": 48,
+    "images_captioned": 2,
+    "tables_extracted": 10,
+    "vision_errors": 0
+  }
+}
