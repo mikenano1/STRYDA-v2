@@ -1,0 +1,363 @@
+{
+  "operation": "HARDWARE_STORE",
+  "category": {
+    "category_code": "F_Manufacturers",
+    "trade": "fasteners",
+    "country": "New Zealand"
+  },
+  "fetch_date": "2026-01-03T05:13:55.309218",
+  "documents": [
+    {
+      "source": "Paslode NZ Nails BRANZ Appraisal 546",
+      "brand_name": "Paslode",
+      "category_code": "F_Manufacturers",
+      "product_family": "Collated Nails",
+      "doc_type": "BRANZ_Appraisal",
+      "trade": "fasteners",
+      "original_url": "https://www.paslode.co.nz/wp-content/uploads/546_2022.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_NZ_Nails_BRANZ_Appraisal_546.pdf",
+      "file_hash": "b7088edd18e6e0abff3563f05bc9bc064d5c2104e0896004d4af2b69b1db820b",
+      "file_size_bytes": 806513,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:33.671218",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Paslode Purlin Nails BRANZ Appraisal",
+      "brand_name": "Paslode",
+      "category_code": "F_Manufacturers",
+      "product_family": "Purlin Nails",
+      "doc_type": "BRANZ_Appraisal",
+      "trade": "fasteners",
+      "original_url": "https://www.paslode.co.nz/wp-content/uploads/1249-202-Latest-Purlin-BRANZ-Aug23.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_Purlin_Nails_BRANZ_Appraisal.pdf",
+      "file_hash": "98f060062ee9bbe25be018311944327c6f22b3cecee2f6997f8e559cc3cd548a",
+      "file_size_bytes": 726394,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:35.709213",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Paslode 2020 Full Catalog",
+      "brand_name": "Paslode",
+      "category_code": "F_Manufacturers",
+      "product_family": "Full Range",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://itwconstruction.ca/wp-content/uploads/2020/09/Paslode-2020-Catalog.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_2020_Full_Catalog.pdf",
+      "file_hash": "7bc97fe84f6b891c2004e493b40fdd9d65d0c30c385aaf22a37a73854a940eeb",
+      "file_size_bytes": 2919432,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:36.028626",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Paslode Impulse Purlin Nails Technical",
+      "brand_name": "Paslode",
+      "category_code": "F_Manufacturers",
+      "product_family": "Impulse Purlin",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.miproducts.co.nz/MasterspecPTS_Paslode-Impulse-Purlin-Nails_112946.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_Impulse_Purlin_Nails_Technical.pdf",
+      "file_hash": "cc59e8e5fca37e925e7c9d7de53d208416ff453f63f07392dcc6c97e6027c44f",
+      "file_size_bytes": 121699,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:38.979601",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Paslode Fastener Selection Chart",
+      "brand_name": "Paslode",
+      "category_code": "F_Manufacturers",
+      "product_family": "Fastener Guide",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://paslode.ca/wp-content/uploads/sites/3/2020/07/918150-Fastener-Selection-Chart.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Paslode/Paslode_Fastener_Selection_Chart.pdf",
+      "file_hash": "837082a70059a72332c1c6f161ef49ec8f9b4074f54890264e384f45399caa34",
+      "file_size_bytes": 133270,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:39.217219",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+      "brand_name": "MiTek",
+      "category_code": "F_Manufacturers",
+      "product_family": "LUMBERLOK",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://miteknz.co.nz/wp-content/uploads/2021/06/LUMBERLOK-Timber-Connectors-Characteristic-Loadings-Data.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/MiTek/MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf",
+      "file_hash": "bfbe5ee0b75ac87a3c3ce0848e5e40b96caa4b8041904cc9f5871798fe725954",
+      "file_size_bytes": 5575962,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:39.614501",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "MiTek Stud-to-Top-Plate Fixing Schedule 2024",
+      "brand_name": "MiTek",
+      "category_code": "F_Manufacturers",
+      "product_family": "Fixing Schedules",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://miteknz.co.nz/wp-content/uploads/2024/03/Stud-to-Top-Plate-Fixing-Schedule_2024-v1.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/MiTek/MiTek_Stud-to-Top-Plate_Fixing_Schedule_2024.pdf",
+      "file_hash": "5f33f05f7a398635c43c4beeef96d9bfb034579d8e85d01a35580151fbc81f07",
+      "file_size_bytes": 254941,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:39.704849",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Simpson Strong-Tie NZS 3604 Timber Connectors",
+      "brand_name": "Simpson Strong-Tie",
+      "category_code": "F_Manufacturers",
+      "product_family": "Timber Connectors",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://strongtie.com.au/sites/default/files/F-C-NZS3604-19_Timber_Connectors_NZS3604.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_NZS_3604_Timber_Connectors.pdf",
+      "file_hash": "8709a9fcc19b2140a2548cc2b3fa7391e35db63b824cb44b16306489492d49ff",
+      "file_size_bytes": 4269126,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Bunnings",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:42.180610",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Simpson Strong-Tie Timber Construction Connectors Catalog",
+      "brand_name": "Simpson Strong-Tie",
+      "category_code": "F_Manufacturers",
+      "product_family": "Full Catalog",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://strongtie.com.au/sites/default/files/brochure_catalogues/C-C-AU16_Timber_Construction_Connectors.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Timber_Construction_Connectors_Catalog.pdf",
+      "file_hash": "777dd718098a1d446abf518392c1cb9bdb611ec98bde9a993ecc24fdb3bc027c",
+      "file_size_bytes": 39430819,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Bunnings",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:46.862743",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Simpson Strong-Tie Mass Timber Connectors AUNZ",
+      "brand_name": "Simpson Strong-Tie",
+      "category_code": "F_Manufacturers",
+      "product_family": "Mass Timber",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.eboss.co.nz/assets/literature/449/34921/C-MT-AUNZ23.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Mass_Timber_Connectors_AUNZ.pdf",
+      "file_hash": "6d9243304132559213f93d694aed6af80de081195a9287b706ab32bddc4ee624",
+      "file_size_bytes": 17271955,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Bunnings"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:50.043493",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "ITW Buildex Catalog 2024-25",
+      "brand_name": "Buildex",
+      "category_code": "F_Manufacturers",
+      "product_family": "Roofing Screws",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.itwbuildex.com/pdf/Buildex_Catalog_2024_25.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Buildex/ITW_Buildex_Catalog_2024-25.pdf",
+      "file_hash": "c0c948917251c445fd3c890295c7e6f19e4228ca8c0fc70dd3765a7faed769e2",
+      "file_size_bytes": 2765681,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "Bunnings",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:50.305236",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "ITW Buildex 2020 Catalog",
+      "brand_name": "Buildex",
+      "category_code": "F_Manufacturers",
+      "product_family": "Full Range",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://itwconstruction.ca/wp-content/uploads/2020/09/Buildex-2020-Catalog.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Buildex/ITW_Buildex_2020_Catalog.pdf",
+      "file_hash": "0b82976ea7638bf7579efe87b440a41ab65961a473ae9270cea04d9ce6747f82",
+      "file_size_bytes": 2877426,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "Bunnings"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:50.358774",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Buildex Low Profile Roof Clip Fastener Guide",
+      "brand_name": "Buildex",
+      "category_code": "F_Manufacturers",
+      "product_family": "Roof Clips",
+      "doc_type": "Installation_Guide",
+      "trade": "fasteners",
+      "original_url": "https://buildex.ca/wp-content/uploads/sites/8/2020/11/Low-Profile-Architectural-Metal-Roof-Clip-Fastener-TEKS-in-Catalog.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Buildex/Buildex_Low_Profile_Roof_Clip_Fastener_Guide.pdf",
+      "file_hash": "68a3df84b78c9a208715dda519645ecdeb6a50d8dc02153be8838231ababdcda",
+      "file_size_bytes": 410376,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:50.597838",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Ramset Technical Product Guide",
+      "brand_name": "Ramset",
+      "category_code": "F_Manufacturers",
+      "product_family": "Anchors",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://ramset.com.hk/wp-content/uploads/2021/04/1287984851_2925.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Ramset/Ramset_Technical_Product_Guide.pdf",
+      "file_hash": "2b14a2dcc3ad36222f687617a94a1fe68ee3810ec13756aa5f2375f94d0f6dd6",
+      "file_size_bytes": 3261084,
+      "retailer_availability": [
+        "Bunnings",
+        "Mitre 10",
+        "PlaceMakers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:52.429281",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "NZ SIP Technical Manual Fasteners Section",
+      "brand_name": "NZSIP",
+      "category_code": "F_Manufacturers",
+      "product_family": "SIP Fasteners",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://nzsip.co.nz/wp-content/uploads/2023/08/NZSIPTechnicalManualV2Aug2023.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/NZSIP/NZ_SIP_Technical_Manual_Fasteners_Section.pdf",
+      "file_hash": "4e7bc5f6f180b42b490c7f7ca7221a1be5002e37772b5f947f8c42a145133daa",
+      "file_size_bytes": 10898602,
+      "retailer_availability": [
+        "Specialist"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:13:55.309154",
+      "status": "downloaded",
+      "has_diagrams": true
+    }
+  ],
+  "failed": [
+    "Senco Fastener Catalog"
+  ],
+  "brand_stats": {
+    "Paslode": {
+      "success": 5,
+      "failed": 0
+    },
+    "MiTek": {
+      "success": 2,
+      "failed": 0
+    },
+    "Simpson Strong-Tie": {
+      "success": 3,
+      "failed": 0
+    },
+    "Buildex": {
+      "success": 3,
+      "failed": 0
+    },
+    "Ramset": {
+      "success": 1,
+      "failed": 0
+    },
+    "Senco": {
+      "success": 0,
+      "failed": 1
+    },
+    "NZSIP": {
+      "success": 1,
+      "failed": 0
+    }
+  },
+  "stats": {
+    "total_attempted": 16,
+    "successful": 15,
+    "failed": 1
+  }
+}
