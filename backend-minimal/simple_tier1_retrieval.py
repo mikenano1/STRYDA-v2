@@ -617,9 +617,14 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         # Use canonical source mapping for better source detection
         target_sources = canonical_source_map(query)
         
+        # NEW: Detect specific trade/product function from query
+        detected_trade = detect_trade_from_query(query)
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
+        if detected_trade:
+            print(f"   🏷️ Detected trade/product function: {detected_trade}")
         
         results = []
         search_time = 0
@@ -632,8 +637,49 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                 # Check if we have any Final Sweep sources or fastener-related sources
                 has_final_sweep = any('Final Sweep' in s for s in target_sources)
                 has_fasteners_suite = 'Fasteners Full Suite' in target_sources
+                has_firth = any('Firth' in s for s in target_sources)
+                has_brand_deep_dive = any('Deep Dive' in s for s in target_sources)
                 
-                if has_final_sweep or has_fasteners_suite:
+                # NEW: Brand Deep Dive with trade filter (e.g., Firth paving vs Firth foundations)
+                if has_brand_deep_dive and detected_trade:
+                    brand_sources = [s for s in target_sources if 'Deep Dive' in s]
+                    other_sources = [s for s in target_sources if 'Deep Dive' not in s]
+                    
+                    sql = """
+                        SELECT id, source, page, content, section, clause, snippet,
+                               doc_type, trade, status, priority, phase, brand_name, product_family,
+                               (embedding <=> %s::vector) as similarity
+                        FROM documents 
+                        WHERE embedding IS NOT NULL
+                          AND (
+                            (source LIKE %s AND trade = %s)
+                    """
+                    # Use LIKE pattern for brand deep dive sources
+                    brand_pattern = brand_sources[0].replace('(', '%').replace(')', '%') if brand_sources else '%Deep Dive%'
+                    params = [query_embedding, f"%{brand_pattern.split(' - ')[0]}%", detected_trade]
+                    
+                    if other_sources:
+                        other_placeholders = ', '.join(['%s'] * len(other_sources))
+                        sql += f" OR source IN ({other_placeholders})"
+                        params.extend(other_sources)
+                    
+                    sql += """
+                          )
+                        ORDER BY similarity ASC
+                        LIMIT %s;
+                    """
+                    params.append(top_k * 2)
+                    
+                    print(f"   🔎 Brand Deep Dive + Trade filter: {detected_trade}")
+                    cur.execute(sql, params)
+                    results = cur.fetchall()
+                    
+                    # Fallback if trade filter returned no results
+                    if not results:
+                        print(f"   ⚠️ No results with trade filter, falling back to brand-only search")
+                        detected_trade = None  # Reset to allow broader search
+                
+                elif has_final_sweep or has_fasteners_suite:
                     # Use special query that searches Final Sweep sources and brand names
                     # Extract brand names from Final Sweep sources
                     final_sweep_sources = [s for s in target_sources if 'Final Sweep' in s]
