@@ -132,7 +132,7 @@ FASTENER_DOCUMENTS = [
         "brand": "Buildex",
         "product_family": "Roof Clips",
         "doc_type": "Installation_Guide",
-        "retailers": ["PlachecMakers", "Carters"]
+        "retailers": ["PlaceMakers", "Carters"]
     },
     
     # ========== RAMSET ==========
