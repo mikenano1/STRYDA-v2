@@ -51,35 +51,158 @@ def detect_b1_amendment_bias(query: str) -> Dict[str, float]:
     
     return bias_weights
 
-# Retailer ecosystem brand mapping (Final Sweep + Smart Triage)
-RETAILER_BRAND_MAP = {
-    'bunnings': ['Zenith', 'Pryda', 'Bremick', 'Titan', 'MacSim'],
-    'mitre 10': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
-    'mitre10': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
-    'placemakers': ['Ecko', 'Paslode', 'Delfast', 'SPAX'],
-    'itm': ['Delfast', 'Ecko', 'Titan', 'NZ Nails', 'SPAX'],
-    'carters': ['Paslode', 'Lumberlok', 'MiTek', 'Simpson Strong-Tie'],
+# =============================================================================
+# GLOBAL MERCHANT-TO-BRAND MAPPING (ALL CATEGORIES A-F)
+# =============================================================================
+# This is the "Universal Database + Smart Triage" system.
+# Maps NZ building merchants to the brands they stock across ALL product categories.
+
+GLOBAL_RETAILER_BRAND_MAP = {
+    'placemakers': {
+        # Category F: Fasteners
+        'fasteners': ['Ecko', 'Paslode', 'Delfast', 'SPAX'],
+        # Category C: Interiors / Linings
+        'interiors': ['GIB', 'Pink Batts', 'Autex'],
+        # Category B: Enclosure / Cladding
+        'enclosure': ['James Hardie', 'Thermakraft', 'Marley'],
+        # Category A: Structure
+        'structure': ['Firth', 'Hume', 'CHH Woodproducts'],
+        # Category E: Insulation
+        'insulation': ['Pink Batts', 'Expol'],
+    },
+    'carters': {
+        'fasteners': ['Paslode', 'Lumberlok', 'MiTek', 'Simpson Strong-Tie'],
+        'interiors': ['GIB', 'Bradford Gold'],
+        'enclosure': ['Tekton', 'James Hardie'],
+        'structure': ['Pryda', 'MiTek'],
+        'insulation': ['Bradford Gold', 'Knauf'],
+    },
+    'bunnings': {
+        'fastifyeners': ['Zenith', 'Pryda', 'Bremick', 'Titan', 'MacSim'],
+        'interiors': ['Elephant Board', 'Gyprock'],
+        'enclosure': ['Mammoth', 'Marley'],
+        'structure': ['Pryda'],
+        'insulation': ['Earthwool', 'Mammoth', 'Expol'],
+    },
+    'itm': {
+        'fasteners': ['Delfast', 'Ecko', 'Titan', 'NZ Nails', 'SPAX'],
+        'interiors': ['GIB', 'Pink Batts'],
+        'enclosure': ['Thermakraft', 'James Hardie'],
+        'structure': ['Firth', 'CHH Woodproducts'],
+        'insulation': ['Pink Batts', 'Expol'],
+    },
+    'mitre 10': {
+        'fasteners': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
+        'interiors': ['GIB', 'Knauf'],
+        'enclosure': ['James Hardie', 'Marley'],
+        'structure': ['Pryda', 'Firth'],
+        'insulation': ['Earthwool', 'Pink Batts'],
+    },
 }
 
-# Reverse mapping: Brand -> Retailers (for triage responses)
+# Flatten for quick lookup - Retailer -> All Brands (any category)
+RETAILER_BRAND_MAP = {
+    'placemakers': ['Ecko', 'Paslode', 'Delfast', 'SPAX', 'GIB', 'Pink Batts', 'Autex', 
+                    'James Hardie', 'Thermakraft', 'Marley', 'Firth', 'Hume', 'Expol'],
+    'carters': ['Paslode', 'Lumberlok', 'MiTek', 'Simpson Strong-Tie', 'GIB', 
+                'Bradford Gold', 'Tekton', 'James Hardie', 'Pryda', 'Knauf'],
+    'bunnings': ['Zenith', 'Pryda', 'Bremick', 'Titan', 'MacSim', 'Elephant Board', 
+                 'Gyprock', 'Mammoth', 'Marley', 'Earthwool', 'Expol'],
+    'itm': ['Delfast', 'Ecko', 'Titan', 'NZ Nails', 'SPAX', 'GIB', 'Pink Batts',
+            'Thermakraft', 'James Hardie', 'Firth', 'Expol'],
+    'mitre 10': ['Bremick', 'Pryda', 'SPAX', 'MacSim', 'GIB', 'Knauf',
+                 'James Hardie', 'Marley', 'Earthwool', 'Pink Batts', 'Firth'],
+    'mitre10': ['Bremick', 'Pryda', 'SPAX', 'MacSim', 'GIB', 'Knauf',
+                'James Hardie', 'Marley', 'Earthwool', 'Pink Batts', 'Firth'],
+}
+
+# Global Brand -> Retailer mapping (for triage responses)
 BRAND_RETAILER_MAP = {
+    # Fasteners (Category F)
     'Ecko': ['PlaceMakers', 'ITM'],
     'Paslode': ['PlaceMakers', 'Carters'],
     'Delfast': ['PlaceMakers', 'ITM'],
     'Zenith': ['Bunnings'],
-    'Pryda': ['Bunnings', 'Mitre 10'],
+    'Pryda': ['Bunnings', 'Mitre 10', 'Carters'],
     'Bremick': ['Bunnings', 'Mitre 10'],
     'Titan': ['Bunnings', 'ITM'],
     'MacSim': ['Bunnings', 'Mitre 10'],
     'SPAX': ['ITM', 'Mitre 10', 'PlaceMakers'],
     'Lumberlok': ['Carters'],
     'MiTek': ['Carters'],
-    'Simpson Strong-Tie': ['Carters', 'Trade Suppliers'],
+    'Simpson Strong-Tie': ['Carters'],
     'NZ Nails': ['ITM'],
+    # Interiors (Category C)
+    'GIB': ['PlaceMakers', 'ITM', 'Carters', 'Mitre 10'],
+    'Elephant Board': ['Bunnings'],
+    'Gyprock': ['Bunnings'],
+    'Pink Batts': ['PlaceMakers', 'ITM', 'Mitre 10'],
+    'Bradford Gold': ['Carters'],
+    'Autex': ['PlaceMakers'],
+    'Knauf': ['Carters', 'Mitre 10'],
+    # Enclosure (Category B)
+    'James Hardie': ['PlaceMakers', 'ITM', 'Carters', 'Mitre 10'],
+    'Thermakraft': ['PlaceMakers', 'ITM'],
+    'Tekton': ['Carters'],
+    'Marley': ['PlaceMakers', 'Bunnings', 'Mitre 10'],
+    'Mammoth': ['Bunnings'],
+    # Structure (Category A)
+    'Firth': ['PlaceMakers', 'ITM', 'Mitre 10'],
+    'Hume': ['PlaceMakers'],
+    'CHH Woodproducts': ['PlaceMakers', 'ITM'],
+    # Insulation (Category E)
+    'Earthwool': ['Bunnings', 'Mitre 10'],
+    'Expol': ['PlaceMakers', 'ITM', 'Bunnings'],
 }
 
-# All fastener brands in the database
-ALL_FASTENER_BRANDS = list(BRAND_RETAILER_MAP.keys())
+# All known brands (for universal access)
+ALL_KNOWN_BRANDS = list(BRAND_RETAILER_MAP.keys())
+
+# =============================================================================
+# PRODUCT CATEGORY DETECTION
+# =============================================================================
+
+CATEGORY_KEYWORDS = {
+    'fasteners': [
+        'nail', 'screw', 'fastener', 'anchor', 'bolt', 'bracket', 'hanger',
+        'connector', 'strap', 'tie-down', 'bracing', 'collated', 'framing nail',
+        'joist hanger', 'post anchor', 'masonry anchor', 'dynabolt', 'chemset'
+    ],
+    'interiors': [
+        'plasterboard', 'gib', 'lining', 'drywall', 'ceiling', 'cornice',
+        'stopping', 'fibrous plaster', 'acoustic', 'fire rating', 'wall lining',
+        'interior wall', 'internal wall', 'gypsum'
+    ],
+    'enclosure': [
+        'cladding', 'weatherboard', 'underlay', 'wrap', 'membrane', 'flashing',
+        'roofing', 'soffit', 'fascia', 'james hardie', 'hardie', 'linea',
+        'axon', 'stria', 'titan board', 'exterior', 'weather tight'
+    ],
+    'insulation': [
+        'insulation', 'batts', 'pink batts', 'earthwool', 'polyester', 'r-value',
+        'thermal', 'acoustic insulation', 'underfloor', 'ceiling insulation',
+        'wall insulation', 'bradford', 'mammoth', 'expol'
+    ],
+    'structure': [
+        'concrete', 'steel', 'timber', 'foundation', 'pile', 'bearer', 'joist',
+        'rafter', 'truss', 'lintel', 'beam', 'post', 'stud', 'framing',
+        'structural', 'load bearing', 'firth', 'hume'
+    ],
+}
+
+def detect_product_category(query: str) -> Optional[str]:
+    """Detect which product category the query relates to."""
+    query_lower = query.lower()
+    
+    category_scores = {}
+    for category, keywords in CATEGORY_KEYWORDS.items():
+        score = sum(1 for kw in keywords if kw in query_lower)
+        if score > 0:
+            category_scores[category] = score
+    
+    if category_scores:
+        return max(category_scores, key=category_scores.get)
+    return None
 
 def detect_retailer_context(query: str) -> Optional[str]:
     """
