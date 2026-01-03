@@ -1,0 +1,53 @@
+{
+  "brand": {
+    "brand_name": "GIB",
+    "brand_full_name": "Winstone Wallboards Ltd",
+    "category_code": "C_Interiors",
+    "trade": "interior_linings",
+    "country": "New Zealand",
+    "website": "https://www.gib.co.nz"
+  },
+  "fetch_date": "2026-01-03T01:11:15.217422",
+  "documents": [
+    {
+      "source": "GIB Site Guide 2024",
+      "brand_name": "GIB",
+      "category_code": "C_Interiors",
+      "product_family": "GIB Plasterboard",
+      "doc_type": "Installation_Guide",
+      "trade": "interior_linings",
+      "original_url": "https://www.gib.co.nz/assets/Uploads/GIB0107_GIB_Site_Guide_PAGES_WEB.pdf",
+      "local_path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Site_Guide_2024.pdf",
+      "file_hash": "09205c3621c9dede60d04e62b86b57bdd9dddd233adcdc7993e7e7760b4fdb5d",
+      "file_size_bytes": 9790262,
+      "description": "Complete installation guide for GIB plasterboard systems - 2024 Edition",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T01:11:14.894140",
+      "status": "downloaded"
+    },
+    {
+      "source": "GIB Performance Systems",
+      "brand_name": "GIB",
+      "category_code": "C_Interiors",
+      "product_family": "GIB Performance",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "interior_linings",
+      "original_url": "https://www.gib.co.nz/assets/Site-Guide-2024/6-GIB-PERFORMANCE-SYSTEMS_GIB0107_GIB_Site_Guide_v11.pdf",
+      "local_path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Performance_Systems.pdf",
+      "file_hash": "aef9a21215609d5fc42baeebf447852766c4414e04b82afc6437424f2852d169",
+      "file_size_bytes": 1952919,
+      "description": "GIB performance systems including bracing and fire ratings",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T01:11:15.136223",
+      "status": "downloaded"
+    }
+  ],
+  "failed": [
+    "GIB Fire Rated Systems BRANZ Appraisal"
+  ],
+  "stats": {
+    "total_attempted": 3,
+    "successful": 2,
+    "failed": 1
+  }
+}
