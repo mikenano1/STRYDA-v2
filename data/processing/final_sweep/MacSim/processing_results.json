@@ -1,0 +1,24 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/MacSim",
+  "processed_at": "2026-01-03T06:18:15.720541",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/MacSim/Fasteners_Direct_Catalogue_MacSim_Products.pdf",
+      "chunks": 1499,
+      "tables": 1193,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 1499,
+  "table_chunks": 1193,
+  "text_chunks": 306,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 336,
+    "images_found": 104,
+    "images_captioned": 0,
+    "tables_extracted": 1193,
+    "vision_errors": 0
+  }
+}
