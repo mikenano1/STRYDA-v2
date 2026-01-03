@@ -1,0 +1,30 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/SPAX",
+  "processed_at": "2026-01-03T06:52:06.319620",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/SPAX/SPAX_Decking_Screw_Guide.pdf",
+      "chunks": 7,
+      "tables": 5,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/SPAX/SPAX_Pacific_Product_Catalogue_2018-2019.pdf",
+      "chunks": 219,
+      "tables": 110,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 226,
+  "table_chunks": 115,
+  "text_chunks": 111,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 109,
+    "images_found": 192,
+    "images_captioned": 0,
+    "tables_extracted": 136,
+    "vision_errors": 0
+  }
+}
