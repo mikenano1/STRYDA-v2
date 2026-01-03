@@ -57,10 +57,13 @@ class STRYDABackendTester:
                     data = await response.json()
                     
                     # Extract key information
-                    answer = data.get("response", "")
+                    answer = data.get("answer", "")
                     citations = data.get("citations", [])
                     sources_used = data.get("sources_used", [])
                     confidence_score = data.get("confidence_score", 0)
+                    
+                    # Check for inline source citations in the answer
+                    inline_citations = self._extract_inline_citations(answer)
                     
                     # Check for brand mentions
                     brand_mentioned = self._check_brand_mention(message, answer)
