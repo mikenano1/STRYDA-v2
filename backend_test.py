@@ -1,359 +1,410 @@
 #!/usr/bin/env python3
 """
-Backend Testing Suite for STRYDA.ai
-Tests the /api/projects endpoint and standard chat functionality
+STRYDA RAG Backend Testing - Operation Final Sweep Verification
+Testing the specific queries mentioned in the review request to verify
+the "Operation Final Sweep" ingestion was successful.
 """
 
-import requests
+import asyncio
+import aiohttp
 import json
 import time
-import sys
 from datetime import datetime
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
-# Configuration
-BACKEND_URL = "https://stryda-brain.preview.emergentagent.com"  # From frontend/.env
-API_BASE = f"{BACKEND_URL}/api"
+# Backend URL from frontend .env
+BACKEND_URL = "https://stryda-brain.preview.emergentagent.com"
 
-class BackendTester:
+class STRYDABackendTester:
     def __init__(self):
-        self.results = []
-        self.session_id = f"test-session-{int(time.time())}"
+        self.base_url = BACKEND_URL
+        self.session = None
+        self.test_results = []
         
-    def log_result(self, test_name: str, success: bool, details: Dict[str, Any]):
-        """Log test result"""
+    async def __aenter__(self):
+        self.session = aiohttp.ClientSession()
+        return self
+        
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        if self.session:
+            await self.session.close()
+    
+    def log_test(self, test_name: str, status: str, details: Dict[str, Any]):
+        """Log test results"""
         result = {
             "test_name": test_name,
-            "success": success,
+            "status": status,
             "timestamp": datetime.now().isoformat(),
             "details": details
         }
-        self.results.append(result)
+        self.test_results.append(result)
         
-        status = "✅ PASS" if success else "❌ FAIL"
-        print(f"{status} {test_name}")
-        if not success:
-            print(f"   Error: {details.get('error', 'Unknown error')}")
+        status_emoji = "✅" if status == "PASS" else "❌" if status == "FAIL" else "⚠️"
+        print(f"\n{status_emoji} {test_name}: {status}")
+        
+        if details.get("error"):
+            print(f"   Error: {details['error']}")
+        if details.get("response_length"):
+            print(f"   Response Length: {details['response_length']} chars")
+        if details.get("citations_count") is not None:
+            print(f"   Citations: {details['citations_count']}")
+        if details.get("final_sweep_sources"):
+            print(f"   Final Sweep Sources: {details['final_sweep_sources']}")
+        if details.get("brand_mentions"):
+            print(f"   Brand Mentions: {details['brand_mentions']}")
+    
+    async def test_health_check(self) -> bool:
+        """Test basic health check endpoint"""
+        try:
+            async with self.session.get(f"{self.base_url}/health") as response:
+                if response.status == 200:
+                    data = await response.json()
+                    self.log_test("Health Check", "PASS", {
+                        "status_code": response.status,
+                        "response": data
+                    })
+                    return True
+                else:
+                    self.log_test("Health Check", "FAIL", {
+                        "status_code": response.status,
+                        "error": f"Expected 200, got {response.status}"
+                    })
+                    return False
+        except Exception as e:
+            self.log_test("Health Check", "FAIL", {
+                "error": str(e)
+            })
+            return False
+    
+    async def create_thread(self) -> Optional[str]:
+        """Create a new thread for testing"""
+        try:
+            payload = {"name": "Final Sweep Test"}
+            async with self.session.post(
+                f"{self.base_url}/api/threads",
+                json=payload,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    thread_id = data.get("id")
+                    self.log_test("Create Thread", "PASS", {
+                        "status_code": response.status,
+                        "thread_id": thread_id
+                    })
+                    return thread_id
+                else:
+                    error_text = await response.text()
+                    self.log_test("Create Thread", "FAIL", {
+                        "status_code": response.status,
+                        "error": error_text
+                    })
+                    return None
+        except Exception as e:
+            self.log_test("Create Thread", "FAIL", {
+                "error": str(e)
+            })
+            return None
+    
+    async def send_chat_message(self, thread_id: str, message: str) -> Optional[Dict[str, Any]]:
+        """Send a chat message and return the response"""
+        try:
+            payload = {"content": message}
+            async with self.session.post(
+                f"{self.base_url}/api/messages/{thread_id}",
+                json=payload,
+                headers={"Content-Type": "application/json"},
+                timeout=aiohttp.ClientTimeout(total=60)  # 60 second timeout
+            ) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    return data
+                else:
+                    error_text = await response.text()
+                    print(f"Chat API Error: {response.status} - {error_text}")
+                    return None
+        except Exception as e:
+            print(f"Chat API Exception: {str(e)}")
+            return None
+    
+    def analyze_response_for_final_sweep(self, response_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Analyze response for Final Sweep indicators"""
+        analysis = {
+            "response_length": 0,
+            "citations_count": 0,
+            "final_sweep_sources": [],
+            "brand_mentions": [],
+            "has_product_info": False,
+            "retailer_bias_detected": False
+        }
+        
+        if not response_data:
+            return analysis
+        
+        # Get response text
+        response_text = response_data.get("content", "") or response_data.get("response", "") or response_data.get("answer", "")
+        analysis["response_length"] = len(response_text)
+        
+        # Check citations
+        citations = response_data.get("citations", [])
+        analysis["citations_count"] = len(citations)
+        
+        # Look for Final Sweep sources in citations
+        for citation in citations:
+            source = citation.get("source", "") or citation.get("title", "")
+            if "final sweep" in source.lower():
+                analysis["final_sweep_sources"].append(source)
+        
+        # Check for brand mentions in response
+        brands_to_check = ["pryda", "spax", "bremick", "zenith", "bunnings"]
+        response_lower = response_text.lower()
+        
+        for brand in brands_to_check:
+            if brand in response_lower:
+                analysis["brand_mentions"].append(brand)
+        
+        # Check for product-specific information
+        product_indicators = ["load capacity", "screws", "anchors", "specifications", "installation"]
+        analysis["has_product_info"] = any(indicator in response_lower for indicator in product_indicators)
+        
+        # Check for retailer bias (Bunnings preference)
+        if "bunnings" in response_lower and any(brand in response_lower for brand in ["zenith", "pryda", "bremick"]):
+            analysis["retailer_bias_detected"] = True
+        
+        return analysis
+    
+    async def test_pryda_bracing_query(self, thread_id: str):
+        """Test Pryda bracing load capacity query"""
+        query = "What is the load capacity of a Pryda bracing anchor?"
+        
+        print(f"\n🔍 Testing Pryda Query: {query}")
+        response = await self.send_chat_message(thread_id, query)
+        
+        if response:
+            analysis = self.analyze_response_for_final_sweep(response)
+            
+            # Determine test status
+            status = "PASS" if (
+                analysis["response_length"] > 50 and
+                ("pryda" in analysis["brand_mentions"] or analysis["has_product_info"])
+            ) else "FAIL"
+            
+            self.log_test("Pryda Bracing Query", status, {
+                **analysis,
+                "query": query,
+                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
+            })
         else:
-            print(f"   Details: {details.get('summary', 'Success')}")
-        print()
-
-    def test_health_endpoint(self):
-        """Test basic health endpoint"""
-        try:
-            response = requests.get(f"{BACKEND_URL}/health", timeout=10)
-            
-            if response.status_code == 200:
-                data = response.json()
-                self.log_result("Health Check", True, {
-                    "status_code": response.status_code,
-                    "response": data,
-                    "summary": f"Health OK - Version: {data.get('version', 'unknown')}"
-                })
-                return True
-            else:
-                self.log_result("Health Check", False, {
-                    "status_code": response.status_code,
-                    "error": f"Unexpected status code: {response.status_code}"
-                })
-                return False
-                
-        except Exception as e:
-            self.log_result("Health Check", False, {
-                "error": f"Request failed: {str(e)}"
+            self.log_test("Pryda Bracing Query", "FAIL", {
+                "query": query,
+                "error": "No response received"
             })
-            return False
-
-    def test_projects_endpoint(self):
-        """Test the /api/projects endpoint"""
-        try:
-            response = requests.get(f"{API_BASE}/projects", timeout=15)
+    
+    async def test_spax_timber_query(self, thread_id: str):
+        """Test SPAX timber screws query"""
+        query = "What SPAX screws should I use for deck framing?"
+        
+        print(f"\n🔍 Testing SPAX Query: {query}")
+        response = await self.send_chat_message(thread_id, query)
+        
+        if response:
+            analysis = self.analyze_response_for_final_sweep(response)
             
-            if response.status_code == 200:
-                data = response.json()
-                
-                # Validate response structure
-                if not isinstance(data, dict):
-                    self.log_result("Projects Endpoint", False, {
-                        "error": "Response is not a JSON object",
-                        "response_type": type(data).__name__
-                    })
-                    return False
-                
-                # Check for expected fields
-                if "ok" not in data:
-                    self.log_result("Projects Endpoint", False, {
-                        "error": "Missing 'ok' field in response",
-                        "response": data
-                    })
-                    return False
-                
-                if not data.get("ok"):
-                    self.log_result("Projects Endpoint", False, {
-                        "error": "API returned ok=false",
-                        "response": data
-                    })
-                    return False
-                
-                # Check projects array
-                projects = data.get("projects", [])
-                if not isinstance(projects, list):
-                    self.log_result("Projects Endpoint", False, {
-                        "error": "Projects field is not an array",
-                        "projects_type": type(projects).__name__
-                    })
-                    return False
-                
-                # Validate project structure if projects exist
-                project_count = len(projects)
-                valid_projects = 0
-                
-                for project in projects:
-                    if isinstance(project, dict) and "id" in project and "name" in project:
-                        valid_projects += 1
-                
-                self.log_result("Projects Endpoint", True, {
-                    "status_code": response.status_code,
-                    "project_count": project_count,
-                    "valid_projects": valid_projects,
-                    "response": data,
-                    "summary": f"Found {project_count} projects, {valid_projects} valid"
-                })
-                return True
-                
-            else:
-                self.log_result("Projects Endpoint", False, {
-                    "status_code": response.status_code,
-                    "error": f"HTTP {response.status_code}: {response.text[:200]}"
-                })
-                return False
-                
-        except Exception as e:
-            self.log_result("Projects Endpoint", False, {
-                "error": f"Request failed: {str(e)}"
+            # Determine test status
+            status = "PASS" if (
+                analysis["response_length"] > 50 and
+                ("spax" in analysis["brand_mentions"] or analysis["has_product_info"])
+            ) else "FAIL"
+            
+            self.log_test("SPAX Timber Query", status, {
+                **analysis,
+                "query": query,
+                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
             })
-            return False
-
-    def test_chat_basic_functionality(self):
-        """Test basic chat functionality"""
-        try:
-            chat_payload = {
-                "message": "What is the minimum pitch for corrugated iron roofing?",
-                "session_id": self.session_id
-            }
+        else:
+            self.log_test("SPAX Timber Query", "FAIL", {
+                "query": query,
+                "error": "No response received"
+            })
+    
+    async def test_bremick_anchor_query(self, thread_id: str):
+        """Test Bremick masonry anchors query"""
+        query = "What masonry anchors does Bremick make?"
+        
+        print(f"\n🔍 Testing Bremick Query: {query}")
+        response = await self.send_chat_message(thread_id, query)
+        
+        if response:
+            analysis = self.analyze_response_for_final_sweep(response)
             
-            response = requests.post(
-                f"{API_BASE}/chat",
-                json=chat_payload,
+            # Determine test status
+            status = "PASS" if (
+                analysis["response_length"] > 50 and
+                ("bremick" in analysis["brand_mentions"] or analysis["has_product_info"])
+            ) else "FAIL"
+            
+            self.log_test("Bremick Anchor Query", status, {
+                **analysis,
+                "query": query,
+                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
+            })
+        else:
+            self.log_test("Bremick Anchor Query", "FAIL", {
+                "query": query,
+                "error": "No response received"
+            })
+    
+    async def test_retailer_bias(self, thread_id: str):
+        """Test retailer bias for Bunnings"""
+        query = "I'm at Bunnings, what anchors do you recommend?"
+        
+        print(f"\n🔍 Testing Retailer Bias: {query}")
+        response = await self.send_chat_message(thread_id, query)
+        
+        if response:
+            analysis = self.analyze_response_for_final_sweep(response)
+            
+            # Check for Bunnings brand preference
+            bunnings_brands = ["zenith", "pryda", "bremick"]
+            bunnings_brand_mentions = [brand for brand in bunnings_brands if brand in analysis["brand_mentions"]]
+            
+            # Determine test status
+            status = "PASS" if (
+                analysis["response_length"] > 50 and
+                ("bunnings" in analysis["brand_mentions"] or len(bunnings_brand_mentions) > 0)
+            ) else "FAIL"
+            
+            self.log_test("Retailer Bias Test", status, {
+                **analysis,
+                "query": query,
+                "bunnings_brands_mentioned": bunnings_brand_mentions,
+                "response_preview": (response.get("content", "") or response.get("response", ""))[:200] + "..."
+            })
+        else:
+            self.log_test("Retailer Bias Test", "FAIL", {
+                "query": query,
+                "error": "No response received"
+            })
+    
+    async def test_alternative_chat_endpoint(self):
+        """Test the alternative /api/chat endpoint"""
+        query = "What is the load capacity of a Pryda bracing anchor?"
+        
+        print(f"\n🔍 Testing Alternative Chat Endpoint: {query}")
+        
+        try:
+            payload = {"message": query, "session_id": "test-final-sweep"}
+            async with self.session.post(
+                f"{self.base_url}/api/chat",
+                json=payload,
                 headers={"Content-Type": "application/json"},
-                timeout=30
-            )
-            
-            if response.status_code == 200:
-                data = response.json()
-                
-                # Validate response structure
-                required_fields = ["answer", "intent"]
-                missing_fields = [field for field in required_fields if field not in data]
-                
-                if missing_fields:
-                    self.log_result("Chat Basic Functionality", False, {
-                        "error": f"Missing required fields: {missing_fields}",
-                        "response": data
+                timeout=aiohttp.ClientTimeout(total=60)
+            ) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    analysis = self.analyze_response_for_final_sweep(data)
+                    
+                    status = "PASS" if analysis["response_length"] > 50 else "FAIL"
+                    
+                    self.log_test("Alternative Chat Endpoint", status, {
+                        **analysis,
+                        "query": query,
+                        "endpoint": "/api/chat",
+                        "response_preview": (data.get("response", "") or data.get("answer", ""))[:200] + "..."
                     })
-                    return False
-                
-                answer = data.get("answer", "")
-                intent = data.get("intent", "")
-                model = data.get("model", "unknown")
-                
-                # Check if answer is meaningful (not empty or too short)
-                if len(answer.strip()) < 10:
-                    self.log_result("Chat Basic Functionality", False, {
-                        "error": f"Answer too short: {len(answer)} characters",
-                        "answer": answer,
-                        "response": data
+                else:
+                    error_text = await response.text()
+                    self.log_test("Alternative Chat Endpoint", "FAIL", {
+                        "status_code": response.status,
+                        "error": error_text
                     })
-                    return False
-                
-                self.log_result("Chat Basic Functionality", True, {
-                    "status_code": response.status_code,
-                    "answer_length": len(answer),
-                    "intent": intent,
-                    "model": model,
-                    "response": data,
-                    "summary": f"Chat working - {len(answer)} chars, intent: {intent}, model: {model}"
-                })
-                return True
-                
-            else:
-                self.log_result("Chat Basic Functionality", False, {
-                    "status_code": response.status_code,
-                    "error": f"HTTP {response.status_code}: {response.text[:200]}"
-                })
-                return False
-                
         except Exception as e:
-            self.log_result("Chat Basic Functionality", False, {
-                "error": f"Request failed: {str(e)}"
+            self.log_test("Alternative Chat Endpoint", "FAIL", {
+                "error": str(e)
             })
-            return False
-
-    def test_chat_compliance_question(self):
-        """Test chat with a compliance-focused question"""
-        try:
-            chat_payload = {
-                "message": "What is the stud spacing for a 2.4m wall in high wind zone?",
-                "session_id": f"{self.session_id}-compliance"
-            }
-            
-            response = requests.post(
-                f"{API_BASE}/chat",
-                json=chat_payload,
-                headers={"Content-Type": "application/json"},
-                timeout=30
-            )
-            
-            if response.status_code == 200:
-                data = response.json()
-                
-                answer = data.get("answer", "")
-                intent = data.get("intent", "")
-                citations = data.get("citations", [])
-                model = data.get("model", "unknown")
-                
-                # Check if answer is meaningful
-                if len(answer.strip()) < 20:
-                    self.log_result("Chat Compliance Question", False, {
-                        "error": f"Answer too short for compliance question: {len(answer)} characters",
-                        "answer": answer,
-                        "response": data
-                    })
-                    return False
-                
-                # Note: Citations might be empty due to known issues, but we'll report it
-                citation_count = len(citations) if isinstance(citations, list) else 0
-                
-                self.log_result("Chat Compliance Question", True, {
-                    "status_code": response.status_code,
-                    "answer_length": len(answer),
-                    "intent": intent,
-                    "model": model,
-                    "citation_count": citation_count,
-                    "response": data,
-                    "summary": f"Compliance chat working - {len(answer)} chars, {citation_count} citations"
-                })
-                return True
-                
-            else:
-                self.log_result("Chat Compliance Question", False, {
-                    "status_code": response.status_code,
-                    "error": f"HTTP {response.status_code}: {response.text[:200]}"
-                })
-                return False
-                
-        except Exception as e:
-            self.log_result("Chat Compliance Question", False, {
-                "error": f"Request failed: {str(e)}"
-            })
-            return False
-
-    def test_admin_config(self):
-        """Test admin config endpoint to verify model configuration"""
-        try:
-            response = requests.get(f"{BACKEND_URL}/admin/config", timeout=10)
-            
-            if response.status_code == 200:
-                data = response.json()
-                
-                models = data.get("models", {})
-                gemini_model = models.get("gemini_model", "unknown")
-                gemini_pro_model = models.get("gemini_pro_model", "unknown")
-                
-                self.log_result("Admin Config", True, {
-                    "status_code": response.status_code,
-                    "models": models,
-                    "response": data,
-                    "summary": f"Config OK - Gemini: {gemini_model}, Pro: {gemini_pro_model}"
-                })
-                return True
-                
-            else:
-                self.log_result("Admin Config", False, {
-                    "status_code": response.status_code,
-                    "error": f"HTTP {response.status_code}: {response.text[:200]}"
-                })
-                return False
-                
-        except Exception as e:
-            self.log_result("Admin Config", False, {
-                "error": f"Request failed: {str(e)}"
-            })
-            return False
-
-    def run_all_tests(self):
-        """Run all backend tests"""
-        print("🧪 Starting Backend Testing Suite")
-        print(f"🎯 Target: {BACKEND_URL}")
-        print(f"📅 Time: {datetime.now().isoformat()}")
-        print("=" * 60)
-        print()
-        
-        # Run tests in order
-        tests = [
-            self.test_health_endpoint,
-            self.test_admin_config,
-            self.test_projects_endpoint,
-            self.test_chat_basic_functionality,
-            self.test_chat_compliance_question
-        ]
-        
-        passed = 0
-        total = len(tests)
-        
-        for test in tests:
-            try:
-                if test():
-                    passed += 1
-            except Exception as e:
-                print(f"❌ Test {test.__name__} crashed: {e}")
-        
-        print("=" * 60)
-        print(f"📊 Test Results: {passed}/{total} passed ({passed/total*100:.1f}%)")
-        
-        # Summary of critical issues
-        failed_tests = [r for r in self.results if not r["success"]]
-        if failed_tests:
-            print("\n🚨 Failed Tests:")
-            for test in failed_tests:
-                print(f"   • {test['test_name']}: {test['details'].get('error', 'Unknown error')}")
-        
-        print(f"\n✅ Successful Tests: {passed}")
-        print(f"❌ Failed Tests: {total - passed}")
-        
-        return passed, total, self.results
-
-def main():
-    """Main test runner"""
-    tester = BackendTester()
-    passed, total, results = tester.run_all_tests()
     
-    # Write detailed results to file
-    with open("/app/backend_test_results.json", "w") as f:
-        json.dump({
-            "summary": {
-                "passed": passed,
-                "total": total,
-                "success_rate": passed / total * 100,
-                "timestamp": datetime.now().isoformat()
-            },
-            "results": results
-        }, f, indent=2)
+    def print_summary(self):
+        """Print test summary"""
+        print("\n" + "="*80)
+        print("🎯 STRYDA RAG BACKEND TEST SUMMARY - Operation Final Sweep Verification")
+        print("="*80)
+        
+        passed = len([r for r in self.test_results if r["status"] == "PASS"])
+        failed = len([r for r in self.test_results if r["status"] == "FAIL"])
+        total = len(self.test_results)
+        
+        print(f"\n📊 Overall Results: {passed}/{total} tests passed ({passed/total*100:.1f}%)")
+        
+        print(f"\n✅ PASSED TESTS ({passed}):")
+        for result in self.test_results:
+            if result["status"] == "PASS":
+                print(f"   • {result['test_name']}")
+        
+        if failed > 0:
+            print(f"\n❌ FAILED TESTS ({failed}):")
+            for result in self.test_results:
+                if result["status"] == "FAIL":
+                    print(f"   • {result['test_name']}")
+                    if result["details"].get("error"):
+                        print(f"     Error: {result['details']['error']}")
+        
+        # Final Sweep specific analysis
+        print(f"\n🔍 FINAL SWEEP ANALYSIS:")
+        final_sweep_sources = []
+        brand_mentions = set()
+        
+        for result in self.test_results:
+            details = result["details"]
+            if details.get("final_sweep_sources"):
+                final_sweep_sources.extend(details["final_sweep_sources"])
+            if details.get("brand_mentions"):
+                brand_mentions.update(details["brand_mentions"])
+        
+        print(f"   • Final Sweep Sources Found: {len(set(final_sweep_sources))}")
+        print(f"   • Brand Mentions: {list(brand_mentions)}")
+        
+        # Verdict
+        critical_tests = ["Pryda Bracing Query", "SPAX Timber Query", "Bremick Anchor Query", "Retailer Bias Test"]
+        critical_passed = len([r for r in self.test_results if r["test_name"] in critical_tests and r["status"] == "PASS"])
+        
+        print(f"\n🏆 FINAL VERDICT:")
+        if critical_passed >= 3:
+            print("   ✅ OPERATION FINAL SWEEP: SUCCESS")
+            print("   The RAG system is successfully retrieving brand-specific information.")
+        elif critical_passed >= 2:
+            print("   ⚠️ OPERATION FINAL SWEEP: PARTIAL SUCCESS")
+            print("   Some brand queries working, but improvements needed.")
+        else:
+            print("   ❌ OPERATION FINAL SWEEP: FAILED")
+            print("   RAG system not retrieving expected brand-specific information.")
+
+async def main():
+    """Main test execution"""
+    print("🚀 Starting STRYDA RAG Backend Testing - Operation Final Sweep Verification")
+    print(f"🎯 Backend URL: {BACKEND_URL}")
+    print(f"⏰ Test Started: {datetime.now().isoformat()}")
     
-    print(f"\n📄 Detailed results saved to: /app/backend_test_results.json")
-    
-    # Exit with appropriate code
-    sys.exit(0 if passed == total else 1)
+    async with STRYDABackendTester() as tester:
+        # Test 1: Health check (if available)
+        await tester.test_health_check()
+        
+        # Test 2: Try alternative chat endpoint first
+        await tester.test_alternative_chat_endpoint()
+        
+        # Test 3: Create thread for message-based testing
+        thread_id = await tester.create_thread()
+        
+        if thread_id:
+            # Test 4-7: The four specific queries from review request
+            await tester.test_pryda_bracing_query(thread_id)
+            await tester.test_spax_timber_query(thread_id)
+            await tester.test_bremick_anchor_query(thread_id)
+            await tester.test_retailer_bias(thread_id)
+        else:
+            print("⚠️ Could not create thread, skipping message-based tests")
+        
+        # Print final summary
+        tester.print_summary()
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
