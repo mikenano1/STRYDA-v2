@@ -1,0 +1,36 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie",
+  "processed_at": "2026-01-03T06:56:22.959691",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Mass_Timber_Connectors_AUNZ.pdf",
+      "chunks": 158,
+      "tables": 42,
+      "diagrams": 1
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Timber_Construction_Connectors_Catalog.pdf",
+      "chunks": 305,
+      "tables": 68,
+      "diagrams": 8
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_NZS_3604_Timber_Connectors.pdf",
+      "chunks": 128,
+      "tables": 50,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 591,
+  "table_chunks": 160,
+  "text_chunks": 422,
+  "diagram_chunks": 9,
+  "stats": {
+    "pages_processed": 184,
+    "images_found": 206,
+    "images_captioned": 9,
+    "tables_extracted": 166,
+    "vision_errors": 0
+  }
+}
