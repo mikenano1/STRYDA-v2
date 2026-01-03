@@ -1,0 +1,48 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda",
+  "processed_at": "2026-01-03T06:41:31.138990",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Anchor_PDS.pdf",
+      "chunks": 16,
+      "tables": 5,
+      "diagrams": 2
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/SP_Fasteners_Pryda_Product_Catalogue.pdf",
+      "chunks": 103,
+      "tables": 33,
+      "diagrams": 3
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf",
+      "chunks": 159,
+      "tables": 72,
+      "diagrams": 9
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Design_Guide_V1.02.pdf",
+      "chunks": 107,
+      "tables": 38,
+      "diagrams": 10
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/Pryda_Builders_Guide_NZ.pdf",
+      "chunks": 148,
+      "tables": 22,
+      "diagrams": 1
+    }
+  ],
+  "total_chunks": 533,
+  "table_chunks": 170,
+  "text_chunks": 338,
+  "diagram_chunks": 25,
+  "stats": {
+    "pages_processed": 227,
+    "images_found": 79,
+    "images_captioned": 25,
+    "tables_extracted": 182,
+    "vision_errors": 0
+  }
+}
