@@ -379,27 +379,74 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             
             # STRATEGY: Try filtered search first, fallback to global if no results
             if target_sources and len(target_sources) > 0:
-                # Generate placeholders for IN clause (%s, %s, %s, ...)
-                placeholders = ', '.join(['%s'] * len(target_sources))
+                # Check if we have any Final Sweep sources or fastener-related sources
+                has_final_sweep = any('Final Sweep' in s for s in target_sources)
+                has_fasteners_suite = 'Fasteners Full Suite' in target_sources
                 
-                # Build SQL with expanded IN clause (psycopg2-safe) + metadata
-                sql = f"""
-                    SELECT id, source, page, content, section, clause, snippet,
-                           doc_type, trade, status, priority, phase,
-                           (embedding <=> %s::vector) as similarity
-                    FROM documents 
-                    WHERE source IN ({placeholders})
-                      AND embedding IS NOT NULL
-                    ORDER BY similarity ASC
-                    LIMIT %s;
-                """
-                
-                # Bind parameters: embedding, then each source individually, then limit
-                params = [query_embedding] + target_sources + [top_k * 2]
-                
-                print(f"   🔎 Searching {len(target_sources)} sources: {target_sources}")
-                cur.execute(sql, params)
-                results = cur.fetchall()
+                if has_final_sweep or has_fasteners_suite:
+                    # Use special query that searches Final Sweep sources and brand names
+                    # Extract brand names from Final Sweep sources
+                    final_sweep_sources = [s for s in target_sources if 'Final Sweep' in s]
+                    other_sources = [s for s in target_sources if 'Final Sweep' not in s and s != 'Fasteners Full Suite']
+                    
+                    # Build flexible query for fastener content
+                    sql = """
+                        SELECT id, source, page, content, section, clause, snippet,
+                               doc_type, trade, status, priority, phase, brand_name,
+                               (embedding <=> %s::vector) as similarity
+                        FROM documents 
+                        WHERE embedding IS NOT NULL
+                          AND (
+                            source LIKE 'Final Sweep%%'
+                            OR trade = 'fasteners'
+                            OR category_code = 'F_Manufacturers'
+                    """
+                    params = [query_embedding]
+                    
+                    # Add any specific brand name filters extracted from the query
+                    if final_sweep_sources:
+                        brand_placeholders = ', '.join(['%s'] * len(final_sweep_sources))
+                        sql += f" OR source IN ({brand_placeholders})"
+                        params.extend(final_sweep_sources)
+                    
+                    if other_sources:
+                        other_placeholders = ', '.join(['%s'] * len(other_sources))
+                        sql += f" OR source IN ({other_placeholders})"
+                        params.extend(other_sources)
+                    
+                    sql += """
+                          )
+                        ORDER BY similarity ASC
+                        LIMIT %s;
+                    """
+                    params.append(top_k * 2)
+                    
+                    print(f"   🔎 Fastener-optimized search: Final Sweep + fasteners trade")
+                    cur.execute(sql, params)
+                    results = cur.fetchall()
+                else:
+                    # Standard source-filtered search
+                    # Generate placeholders for IN clause (%s, %s, %s, ...)
+                    placeholders = ', '.join(['%s'] * len(target_sources))
+                    
+                    # Build SQL with expanded IN clause (psycopg2-safe) + metadata
+                    sql = f"""
+                        SELECT id, source, page, content, section, clause, snippet,
+                               doc_type, trade, status, priority, phase, brand_name,
+                               (embedding <=> %s::vector) as similarity
+                        FROM documents 
+                        WHERE source IN ({placeholders})
+                          AND embedding IS NOT NULL
+                        ORDER BY similarity ASC
+                        LIMIT %s;
+                    """
+                    
+                    # Bind parameters: embedding, then each source individually, then limit
+                    params = [query_embedding] + target_sources + [top_k * 2]
+                    
+                    print(f"   🔎 Searching {len(target_sources)} sources: {target_sources}")
+                    cur.execute(sql, params)
+                    results = cur.fetchall()
                 
                 # FALLBACK LOGIC: If filtered search returns 0 results, retry with global search + metadata
                 if len(results) == 0:
