@@ -156,7 +156,7 @@ class STRYDABackendTester:
                 analysis["final_sweep_sources"].append(source)
         
         # Check for brand mentions in response
-        brands_to_check = ["pryda", "spax", "bremick", "zenith", "bunnings"]
+        brands_to_check = ["pryda", "spax", "bremick", "zenith", "bunnings", "macsim", "ecko", "t-rex"]
         response_lower = response_text.lower()
         
         for brand in brands_to_check:
