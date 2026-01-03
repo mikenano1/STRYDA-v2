@@ -180,14 +180,25 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('James Hardie Full Suite')
     
-    # Fasteners - Category F (Big Brain Integration)
+    # Fasteners - Category F (Big Brain Integration - Full Suite + Final Sweep)
     if any(term in query_lower for term in [
+        # Original brands (Hardware Store Operation)
         'paslode', 'senco', 'ramset', 'buildex', 'mitek',
         'lumberlok', 'bowmac', 'simpson strong-tie', 'strong-tie',
+        # Final Sweep brands (NZ Local + Bunnings/ITM Ecosystem)
+        'delfast', 'ecko', 't-rex', 'pryda', 'bremick',
+        'zenith', 'titan', 'nz nails', 'macsim', 'spax',
+        'blacks', 'mainland fasteners', 'placemakers fastenings',
+        # Generic fastener terms
         'nail', 'screw', 'fastener', 'anchor', 'bolt',
         'framing nail', 'purlin nail', 'collated', 'coil nail',
         'chemset', 'dynabolt', 'ankascrew', 'connector',
-        'joist hanger', 'post anchor', 'load capacity'
+        'joist hanger', 'post anchor', 'load capacity',
+        # Final Sweep product-specific terms
+        'bracing', 'bracket', 'tie-down', 'nailplate',
+        'decking screw', 'timber screw', 'stainless fastener',
+        'masonry anchor', 'drop-in anchor', 'socket screw',
+        'packer', 'window packer'
     ]):
         sources.append('Fasteners Full Suite')
     
