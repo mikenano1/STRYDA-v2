@@ -201,7 +201,7 @@ BRAND_TRADE_RULES = {
     # =========================================================================
     'macsim': {
         'screws': {
-            'keywords': screw', 'timber', 'decking', 'bugle', 'countersunk',
+            'keywords': ['screw', 'timber', 'decking', 'bugle', 'countersunk',
                          'wafer', 'hex', 'self-drill'],
             'product_families': {
                 'timber': 'Timber Screws',
