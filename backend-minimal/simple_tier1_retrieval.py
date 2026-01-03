@@ -158,15 +158,6 @@ RETAILER_BRAND_MAP['itm'] = RETAILER_BRAND_MAP.get('itm', [])
 
 # All known brands (for universal access)
 ALL_KNOWN_BRANDS = list(BRAND_RETAILER_MAP.keys())
-    'Hume': ['PlaceMakers'],
-    'CHH Woodproducts': ['PlaceMakers', 'ITM'],
-    # Insulation (Category E)
-    'Earthwool': ['Bunnings', 'Mitre 10'],
-    'Expol': ['PlaceMakers', 'ITM', 'Bunnings'],
-}
-
-# All known brands (for universal access)
-ALL_KNOWN_BRANDS = list(BRAND_RETAILER_MAP.keys())
 
 # =============================================================================
 # PRODUCT CATEGORY DETECTION
