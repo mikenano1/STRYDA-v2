@@ -51,14 +51,68 @@ def detect_b1_amendment_bias(query: str) -> Dict[str, float]:
     
     return bias_weights
 
-# Retailer ecosystem brand mapping (Final Sweep)
+# Retailer ecosystem brand mapping (Final Sweep + Smart Triage)
 RETAILER_BRAND_MAP = {
     'bunnings': ['Zenith', 'Pryda', 'Bremick', 'Titan', 'MacSim'],
     'mitre 10': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
     'mitre10': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
-    'placemakers': ['Delfast', 'Ecko', 'SPAX'],
+    'placemakers': ['Ecko', 'Paslode', 'Delfast', 'SPAX'],
     'itm': ['Delfast', 'Ecko', 'Titan', 'NZ Nails', 'SPAX'],
+    'carters': ['Paslode', 'Lumberlok', 'MiTek', 'Simpson Strong-Tie'],
 }
+
+# Reverse mapping: Brand -> Retailers (for triage responses)
+BRAND_RETAILER_MAP = {
+    'Ecko': ['PlaceMakers', 'ITM'],
+    'Paslode': ['PlaceMakers', 'Carters'],
+    'Delfast': ['PlaceMakers', 'ITM'],
+    'Zenith': ['Bunnings'],
+    'Pryda': ['Bunnings', 'Mitre 10'],
+    'Bremick': ['Bunnings', 'Mitre 10'],
+    'Titan': ['Bunnings', 'ITM'],
+    'MacSim': ['Bunnings', 'Mitre 10'],
+    'SPAX': ['ITM', 'Mitre 10', 'PlaceMakers'],
+    'Lumberlok': ['Carters'],
+    'MiTek': ['Carters'],
+    'Simpson Strong-Tie': ['Carters', 'Trade Suppliers'],
+    'NZ Nails': ['ITM'],
+}
+
+# All fastener brands in the database
+ALL_FASTENER_BRANDS = list(BRAND_RETAILER_MAP.keys())
+
+def detect_retailer_context(query: str) -> Optional[str]:
+    """
+    Detect if user has specified a merchant/retailer context.
+    Returns the retailer name if found, None otherwise.
+    """
+    query_lower = query.lower()
+    
+    retailer_keywords = {
+        'placemakers': 'PlaceMakers',
+        'place makers': 'PlaceMakers',
+        'bunnings': 'Bunnings',
+        'mitre 10': 'Mitre 10',
+        'mitre10': 'Mitre 10',
+        'carters': 'Carters',
+        'itm': 'ITM',
+    }
+    
+    for keyword, retailer in retailer_keywords.items():
+        if keyword in query_lower:
+            return retailer
+    
+    return None
+
+def get_brands_for_retailer(retailer: str) -> List[str]:
+    """Get the list of brands available at a specific retailer."""
+    retailer_key = retailer.lower().replace(' ', '')
+    
+    for key, brands in RETAILER_BRAND_MAP.items():
+        if key.replace(' ', '') == retailer_key:
+            return brands
+    
+    return ALL_FASTENER_BRANDS  # Fallback to all brands
 
 def detect_retailer_bias(query: str) -> Dict[str, float]:
     """
