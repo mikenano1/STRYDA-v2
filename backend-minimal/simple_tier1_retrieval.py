@@ -51,6 +51,32 @@ def detect_b1_amendment_bias(query: str) -> Dict[str, float]:
     
     return bias_weights
 
+# Retailer ecosystem brand mapping (Final Sweep)
+RETAILER_BRAND_MAP = {
+    'bunnings': ['Zenith', 'Pryda', 'Bremick', 'Titan', 'MacSim'],
+    'mitre 10': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
+    'mitre10': ['Bremick', 'Pryda', 'SPAX', 'MacSim'],
+    'placemakers': ['Delfast', 'Ecko', 'SPAX'],
+    'itm': ['Delfast', 'Ecko', 'Titan', 'NZ Nails', 'SPAX'],
+}
+
+def detect_retailer_bias(query: str) -> Dict[str, float]:
+    """
+    Detect if user mentions a retailer and bias towards brands they stock.
+    e.g., "I'm at Bunnings looking for anchors" → boost Zenith, Pryda, Bremick
+    """
+    query_lower = query.lower()
+    bias_weights = {}
+    
+    for retailer, brands in RETAILER_BRAND_MAP.items():
+        if retailer in query_lower:
+            # Boost all brands that retailer carries
+            for brand in brands:
+                bias_weights[brand] = 1.3  # 30% boost for retailer-stocked brands
+            break
+    
+    return bias_weights
+
 def apply_ranking_bias(results: List[Dict], bias_weights: Dict[str, float]) -> List[Dict]:
     """
     Apply ranking bias to search results based on source
