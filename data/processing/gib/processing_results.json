@@ -1,0 +1,19 @@
+{
+  "input_dir": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB",
+  "processed_at": "2026-01-03T03:19:24.667230",
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Site_Guide_2024.pdf",
+      "chunks": 350,
+      "tables": 104
+    },
+    {
+      "path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Performance_Systems.pdf",
+      "chunks": 74,
+      "tables": 25
+    }
+  ],
+  "total_chunks": 424,
+  "table_chunks": 129,
+  "text_chunks": 295
+}
