@@ -59,7 +59,7 @@ class TradeAwareRetrievalTester:
                     data = await response.json()
                     
                     # Extract response details
-                    ai_response = data.get("response", "")
+                    ai_response = data.get("answer", "")
                     citations = data.get("citations", [])
                     sources_used = data.get("sources_used", [])
                     
