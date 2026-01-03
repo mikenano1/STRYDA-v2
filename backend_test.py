@@ -139,7 +139,29 @@ class STRYDABackendTester:
             self.test_results.append(result)
             return result
     
-    def _extract_inline_citations(self, text: str) -> list:
+    def _check_brand_mention(self, query: str, response: str) -> bool:
+        """Check if the expected brand from the query is mentioned in the response"""
+        query_lower = query.lower()
+        response_lower = response.lower()
+        
+        # Extract brand from query
+        brands = {
+            "pryda": "pryda",
+            "zenith": "zenith", 
+            "macsim": "macsim",
+            "spax": "spax",
+            "bremick": "bremick",
+            "bunnings": ["bunnings", "zenith", "pryda", "bremick"]  # Bunnings should mention these brands
+        }
+        
+        for brand, expected in brands.items():
+            if brand in query_lower:
+                if isinstance(expected, list):
+                    return any(exp in response_lower for exp in expected)
+                else:
+                    return expected in response_lower
+        
+        return False
         """Extract inline citations from response text"""
         import re
         # Look for patterns like [[Source: Final Sweep - SPAX | Page: 64]]
