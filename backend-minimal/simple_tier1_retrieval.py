@@ -645,6 +645,12 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     brand_sources = [s for s in target_sources if 'Deep Dive' in s]
                     other_sources = [s for s in target_sources if 'Deep Dive' not in s]
                     
+                    # Extract brand name from source (e.g., "Firth Deep Dive" -> "Firth")
+                    brand_name = None
+                    if brand_sources:
+                        parts = brand_sources[0].split(' ')
+                        brand_name = parts[0] if parts else None
+                    
                     sql = """
                         SELECT id, source, page, content, section, clause, snippet,
                                doc_type, trade, status, priority, phase, brand_name, product_family,
@@ -652,11 +658,9 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         FROM documents 
                         WHERE embedding IS NOT NULL
                           AND (
-                            (source LIKE %s AND trade = %s)
+                            (brand_name ILIKE %s AND trade = %s)
                     """
-                    # Use LIKE pattern for brand deep dive sources
-                    brand_pattern = brand_sources[0].replace('(', '%').replace(')', '%') if brand_sources else '%Deep Dive%'
-                    params = [query_embedding, f"%{brand_pattern.split(' - ')[0]}%", detected_trade]
+                    params = [query_embedding, f"%{brand_name}%" if brand_name else "%", detected_trade]
                     
                     if other_sources:
                         other_placeholders = ', '.join(['%s'] * len(other_sources))
@@ -670,14 +674,27 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     """
                     params.append(top_k * 2)
                     
-                    print(f"   🔎 Brand Deep Dive + Trade filter: {detected_trade}")
+                    print(f"   🔎 Brand Deep Dive + Trade filter: brand={brand_name}, trade={detected_trade}")
                     cur.execute(sql, params)
                     results = cur.fetchall()
                     
                     # Fallback if trade filter returned no results
                     if not results:
-                        print(f"   ⚠️ No results with trade filter, falling back to brand-only search")
-                        detected_trade = None  # Reset to allow broader search
+                        print(f"   ⚠️ No results with trade filter '{detected_trade}', falling back to brand-only search")
+                        # Try brand-only search without trade filter
+                        sql_brand_only = """
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name, product_family,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE embedding IS NOT NULL
+                              AND brand_name ILIKE %s
+                            ORDER BY similarity ASC
+                            LIMIT %s;
+                        """
+                        cur.execute(sql_brand_only, [query_embedding, f"%{brand_name}%", top_k * 2])
+                        results = cur.fetchall()
+                        detected_trade = None  # Reset for logging
                 
                 elif has_final_sweep or has_fasteners_suite:
                     # Use special query that searches Final Sweep sources and brand names
