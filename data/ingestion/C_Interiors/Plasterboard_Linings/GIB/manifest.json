@@ -7,7 +7,7 @@
     "country": "New Zealand",
     "website": "https://www.gib.co.nz"
   },
-  "fetch_date": "2026-01-03T01:11:15.217422",
+  "fetch_date": "2026-01-03T04:02:47.270512",
   "documents": [
     {
       "source": "GIB Site Guide 2024",
@@ -22,8 +22,9 @@
       "file_size_bytes": 9790262,
       "description": "Complete installation guide for GIB plasterboard systems - 2024 Edition",
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T01:11:14.894140",
-      "status": "downloaded"
+      "ingested_at": "2026-01-03T04:02:41.272510",
+      "status": "downloaded",
+      "has_diagrams": true
     },
     {
       "source": "GIB Performance Systems",
@@ -38,16 +39,73 @@
       "file_size_bytes": 1952919,
       "description": "GIB performance systems including bracing and fire ratings",
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T01:11:15.136223",
-      "status": "downloaded"
+      "ingested_at": "2026-01-03T04:02:41.526310",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "GIB Weatherline Design and Construction Manual",
+      "brand_name": "GIB",
+      "category_code": "C_Interiors",
+      "product_family": "GIB Weatherline",
+      "doc_type": "Installation_Guide",
+      "trade": "interior_linings",
+      "original_url": "https://www.gib.co.nz/assets/Uploads/GIB-Weatherline-Design-and-Construction-Manual-0522.pdf",
+      "local_path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Weatherline_Design_and_Construction_Manual.pdf",
+      "file_hash": "46b56ec3e2d137fe388354cced29e6d3dc80869007267a2119e5cf4be2e55715",
+      "file_size_bytes": 6109729,
+      "description": "Design and construction manual for GIB Weatherline rigid air barrier systems",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T04:02:41.920393",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "GIB Aqualine Wet Wall System Installation",
+      "brand_name": "GIB",
+      "category_code": "C_Interiors",
+      "product_family": "GIB Aqualine",
+      "doc_type": "Installation_Guide",
+      "trade": "interior_linings",
+      "original_url": "https://builderscrack.co.nz/blog/wp-content/uploads/2023/06/09-Approved-Documents-Supporting_Documentation_-_GIB_Aqualine_wet_wall_system_installation_instruction_Cat.pdf",
+      "local_path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Aqualine_Wet_Wall_System_Installation.pdf",
+      "file_hash": "a493fc1363ad7660ef800b67697161713e9828d6fe17de363b5fe246b2535844",
+      "file_size_bytes": 5057291,
+      "description": "Installation instructions for GIB Aqualine wet area systems",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T04:02:44.455769",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "GIB Fire and Noise Rated System Tables",
+      "brand_name": "GIB",
+      "category_code": "C_Interiors",
+      "product_family": "GIB Fire Rated",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "interior_linings",
+      "original_url": "https://s.hougarden.com/ps/file/7d3f0cb6d317441bacd3fc2e5dd53879.pdf",
+      "local_path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Fire_and_Noise_Rated_System_Tables.pdf",
+      "file_hash": "b7c40f71759acf82ee4c3131659550fe1fd1e26b82dee9ab8b313c5fb03e602c",
+      "file_size_bytes": 546019,
+      "description": "Fire and noise rating tables for GIB systems",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T04:02:46.205580",
+      "status": "downloaded",
+      "has_diagrams": true
     }
   ],
   "failed": [
-    "GIB Fire Rated Systems BRANZ Appraisal"
+    "GIB Intertenancy Barrier System Manual",
+    "GIB Fire Rated Systems",
+    "GIB Noise Control Systems",
+    "GIB Rondo Wall and Ceiling Systems",
+    "GIB EzyBrace System Literature",
+    "GIB Fyreline Overview"
   ],
   "stats": {
-    "total_attempted": 3,
-    "successful": 2,
-    "failed": 1
+    "total_attempted": 11,
+    "successful": 5,
+    "failed": 6
   }
 }
