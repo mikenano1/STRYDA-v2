@@ -1,0 +1,726 @@
+[
+  {
+    "chunk_id": "MiTek Stud-to-Top-Plate Fixing Schedule 2024_p1_c0",
+    "source": "MiTek Stud-to-Top-Plate Fixing Schedule 2024",
+    "page": 1,
+    "content": "FIXING SELECTION CHART Wind Zones L, M, H, VH, EH, as per NZS 3604:2011 Loaded Dimension (m) M H VH M H VH A A B B B A A B B B A A B B B A A B B B A B B B B A A B B B A B B B B A A B B B A B B B B A A B B B A B B B B A A B B B 6.8 B B B B B A A B B B B B B B B A A B B B B B B B B A A B B B B B B B B A A B B B",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 311
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p1_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 1,
+    "content": "TABLE DATA:\n| LUMBERLOK                                                           |\n| TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA                      |\n| Left Hand Shown                                                     |\n| SCREW DETAIL                                                        |\n| Concrete Nail 75 x 4 dia.                                           |\n|:--------------------------------------------------------------------|\n| www.miteknz.co.nz                                                   |\n| \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020 |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "LUMBERLOK\nTIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA\nLeft Hand Shown\nSCREW DETAIL\nConcrete Nail 75 x 4 dia."
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p1_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 1,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA Left Hand Shown SCREW DETAIL Concrete Nail 75 x 4 dia. www.miteknz.co.nz \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 198
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p2_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 2,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA Characteristic Loads Characteristic loads that are shown are used to derive a connector capacity. The connector capacity is the figure used to directly compare against the loads/actions in AS/NZS 1170 and NZS 3604. The characteristic strength as defined in NZS 3603 is an estimate of the lower 5th percentile value determined with 75% confidence \u2013 typically determined by tests on representative samples. Characteristic loads can be converted to connector capacities as defined in NZS 3604:2011 by applying the appropriate load duration and material strength reduction factors; Connector Capacity R (kN) = \u03c6 x k x Q k \u03c6 = material strength reduction factor k = modification factors from NZS 3603:1993 (Section 4) as appropriate to the specific application Q = Characteristic loads as published in this brochure k Standards LUMBERLOK\u00ae Timber Connectors have been tested to conform to relevant codes of practice including: NZS 3603:1993 Timber Structures Standard NZS 3604:2011 Timber-framed buildings Durability The use of LUMBERLOK\u00ae Timber Connectors in specific environments may affect durability requirements. Refer to the LUMBERLOK\u00ae Product Statement and MiTek\u00ae Durability Flow Chart in the MiTek\u00ae Structural Fixings On-site Guide for Building Code Compliance for further information. NOTE: Standard LUMBERLOK\u00ae Timber Connectors are intended for dry use in a closed environment. For exterior situations use stainless steel.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1484
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p2_c1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 2,
+    "content": "e Guide for Building Code Compliance for further information. NOTE: Standard LUMBERLOK\u00ae Timber Connectors are intended for dry use in a closed environment. For exterior situations use stainless steel. Timber Specification Loads published have been derived from joint testing using Pinus Radiata (some with Douglas Fir) and are applicable for MSG8/VSG8 and/or better grades. Tension Compression Shear \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 467
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p3_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 3,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA CONTENTS MiTek\u00ae ENGINEERING SERVICES MiTek\u00ae Engineering leads the industry in credibility, Angle Brace 1 speed, accuracy and efficiency. Bottom Plate Fixing Anchor 2 With Professional Design Engineers, MiTek Engineering provides design expertise for our Accredited MiTek Truss and Frame Fabricators throughout New Zealand as well Ceiling Tie 4 as industry professionals and builders. Concealed Purlin Cleat 4 We solve our customer\u2019s timber engineering design problems when they have exceeded the limitations of NZS 3604 with designs in accordance with NZS 3603 and Concrete Fixing Cleat 2 AS/NZS 1170. Cyclone Tie 4 We specialise in timber truss designs for residential and commercial projects. Diagonal Cleat N21 3 ENGINEERING QUESTIONS Header Block Anchor 2 I-Beam Hangers 7 Joist Hangers 6 LVL Hangers 8 Auckland +64 (9) 274 7109 Multi-Brace 1 Mon - Fri, 8:00 am - 5:00 pm Christchurch Multigrip 4 +64 (3) 348 8691 Mon - Fri, 8:00 am - 5:00 pm Nailon Plate 3 Sheet Brace Strap 2 Split Hanger 6 Strap Nail 1 Strip Brace 1 Tylok Plates 5 Wire Dog 8 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1175
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p4_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 4,
+    "content": "TABLE DATA:\n| Characteristic Load            |       | Tested at 450   |\n|:-------------------------------|:------|:----------------|\n| End nail fixing:               |       | 3.9 kN          |\n| 3/ 75mm x 3.15 dia. F.H. nails |       |                 |\n| Steel Tension                  |       | 8.4 kN          |\n| Compression                    | 600mm | 4.2 kN          |\n|                                | 800mm | 3.0 kN          |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        "",
+        "Tested at 450"
+      ],
+      "row_count": 4,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p4_table1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 4,
+    "content": "TABLE DATA:\n| Characteristic Load                                              | Multi-Brace   | Multi-Brace   |\n|                                                                  |               | with          |\n|                                                                  |               | Tensioner*    |\n|:-----------------------------------------------------------------|:--------------|:--------------|\n| Tension                                                          | 14.8 kN       | 14.8 kN       |\n| Elongation 0.2mm/m/kN including nail slip.                       |               |               |\n| End nail fixing as shown: 11 x LUMBERLOK Product Nails           |               |               |\n| 30mm x 3.15 dia.                                                 |               |               |\n| *Stainless Steel tensioners are not available so tension must be |               |               |\n| provided during installation phase.                              |               |               |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        "Multi-Brace",
+        "Multi-Brace\nwith\nTensioner*"
+      ],
+      "row_count": 2,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p4_table3",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 4,
+    "content": "TABLE DATA:\n| Type                                                             | Characteristic   | Strip Brace   | Strip        |\n|                                                                  | Load             |               | Brace with   |\n|                                                                  |                  |               | Tensioner*   |\n|:-----------------------------------------------------------------|:-----------------|:--------------|:-------------|\n| Zinc                                                             | Tension          | 7.2 kN        | 7.2 kN       |\n| Stainless                                                        | Tension          | 6.2 kN        | -            |\n| Elongation 0.5mm/m/kN including nail slip.                       |                  |               |              |\n| End nail fixing as shown: 5 x LUMBERLOK Product Nails            |                  |               |              |\n| 30mm x 3.15 dia.                                                 |                  |               |              |\n| *Stainless Steel tensioners are not available so tension must be |                  |               |              |\n| provided during installation phase.                              |                  |               |              |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Type",
+        "Characteristic\nLoad",
+        "Strip Brace",
+        "Strip\nBrace with\nTensioner*"
+      ],
+      "row_count": 3,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p4_table4",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 4,
+    "content": "TABLE DATA:\n| Characteristic Load   | Type 1        | Type 3        |\n|:----------------------|:--------------|:--------------|\n| Tension               | 9.1 kN / pair | 6.0 kN / pair |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        "Type 1",
+        "Type 3"
+      ],
+      "row_count": 1,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p4_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 4,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA ANGLE BRACE 1.2mm G300 Z275 GALVANISED STEEL Supplementary block required for 90mm x 35mm framing only Characteristic Load Tested at 450 End nail fixing: 3.9 kN 4/ 60mm x 3.15 dia. nails 3/ 75mm x 3.15 dia. F.H. nails Steel Tension 8.4 kN 600mm 4.2 kN Compression 800mm 3.0 kN MULTI-BRACE 0.91mm x 53mm G300 Z275 GALVANISED STEEL 0.9mm x 53mm STAINLESS STEEL 304-2B Multi-Brace 35mm optimum* 3 nails top edge Characteristic Load Multi-Brace with 8 nails vertical face Tensioner* Tension 14.8 kN 14.8 kN Elongation 0.2mm/m/kN including nail slip. End nail fixing as shown: 11 x LUMBERLOK Product Nails 30mm x 3.15 dia. *Stainless Steel tensioners are not available so tension must be provided during installation phase. STRIP BRACE 0.55mm x 27mm G550 Z275 GALVANISED STEEL 0.9mm x 25mm STAINLESS STEEL 304-2B Strip Characteristic Type Strip Brace Brace with 2 nails top edge Load Tensioner* Zinc Tension 7.2 kN 7.2 kN 20mm Stainless Tension 6.2 kN - Elongation 0.5mm/m/kN including nail slip. 3 nails vertical face End nail fixing as shown: 5 x LUMBERLOK Product Nails (not in same line) 30mm x 3.15 dia. *Stainless Steel tensioners are not available so tension must be provided during installation phase. STRAP NAIL 0.95mm G300 Z275 GALVANISED STEEL Type 1 Characteristic Load Type 1 Type 3 Tension 9.1 kN / pair 6.0 kN / pair Type 3 1 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1461
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p5_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 5,
+    "content": "TABLE DATA:\n| Characteristic Load                                                   |        |\n|:----------------------------------------------------------------------|:-------|\n| Vertical                                                              | 8.0 kN |\n| In the Plane Horizontal                                               | 7.0 kN |\n| Out of Plane Horizontal                                               | 4.0 kN |\n| Nail as shown: 6 x LUMBERLOK Product Nails 30mm x 3.15 dia. AND       |        |\n| a 75mm x 4 dia. concrete nail adjacent to Bottom Plate Fixing Anchor. |        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        ""
+      ],
+      "row_count": 4,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p5_table1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 5,
+    "content": "TABLE DATA:\n| Characteristic Load                                             |        |\n|:----------------------------------------------------------------|:-------|\n| Vertical                                                        | 9.0 kN |\n| In the Plane Horizontal                                         | 7.0 kN |\n| Out of Plane Horizontal                                         | 4.0 kN |\n| Nail as shown: 5 x LUMBERLOK Product Nails 30mm x 3.15 dia. AND |        |\n| a 75mm x 4 dia. concrete nail adjacent to Header Block Anchor.  |        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        ""
+      ],
+      "row_count": 4,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p5_table2",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 5,
+    "content": "TABLE DATA:\n| Characteristic   | CF1 (Single Cleat)          |                   | CF2X (Single Cleat)         |                  |\n| Load             |                             |                   |                             |                  |\n|:-----------------|:----------------------------|:------------------|:----------------------------|:-----------------|\n| No. of Bolts     | 1 x M12 Bolt with washer    |                   | 2 x M12 Bolt with washer    |                  |\n|                  | (in steel beam or concrete) |                   | (in steel beam or concrete) |                  |\n| Fixings          | 18 x LUMBERLOK              | 6 x Type 17-14g x | 30 x LUMBERLOK              | 10 x Type 17-14g |\n|                  | Product Nails               | 35mm Hex Head     | Product Nails               | x 35mm Hex Head  |\n|                  | 30mm x 3.15 dia.            | Screws            | 30mm x 3.15 dia.            | Screws           |\n| Tension          | 13.5 kN                     | 13.5 kN           | 27.0 kN                     | 27.0 kN          |\n| Shear            | 9.5 kN                      | 11.0 kN           | 16.0 kN                     | 18.5 kN          |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic\nLoad",
+        "CF1 (Single Cleat)",
+        "",
+        "CF2X (Single Cleat)",
+        ""
+      ],
+      "row_count": 4,
+      "col_count": 5
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p5_table3",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 5,
+    "content": "TABLE DATA:\n| Type                                                            | Characteristic Load   |        |\n|:----------------------------------------------------------------|:----------------------|:-------|\n| Zinc                                                            | Tension               | 7.7 kN |\n| Stainless                                                       | Tension               | 6.2 kN |\n| Nail as shown: 6 x LUMBERLOK Product Nails 30mm x 3.15 dia. per |                       |        |\n| end.                                                            |                       |        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Type",
+        "Characteristic Load",
+        ""
+      ],
+      "row_count": 3,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p5_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 5,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA BOTTOM PLATE FIXING ANCHOR 0.95mm G300 Z450 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B Concrete nail 75mm x 4 dia. Vertical Concrete Nail 75 x 4 dia. Characteristic Load Vertical 8.0 kN In the Plane In the Plane Horizontal 7.0 kN Horizontal Out of Plane Horizontal 4.0 kN Nail as shown: 6 x LUMBERLOK Product Nails 30mm x 3.15 dia. AND Out of Plane a 75mm x 4 dia. concrete nail adjacent to Bottom Plate Fixing Anchor. Horizontal HEADER BLOCK ANCHOR 1.15mm G250 Z275 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B Vertical Characteristic Load Vertical 9.0 kN In the Plane In the Plane Horizontal 7.0 kN Horizontal Out of Plane Horizontal 4.0 kN Nail as shown: 5 x LUMBERLOK Product Nails 30mm x 3.15 dia. AND Out of Plane a 75mm x 4 dia. concrete nail adjacent to Header Block Anchor. Horizontal Concrete Nail 75 x 4 dia. Concrete nail 75mm x 4 dia. CONCRETE FIXING CLEATS 1.55mm G300 Z275 GALVANISED STEEL Characteristic Tension CF1 (Single Cleat) CF2X (Single Cleat) Load 1 x M12 Bolt with washer 2 x M12 Bolt with washer No. of Bolts (in steel beam or concrete) (in steel beam or concrete) CF1 18 x LUMBERLOK 6 x Type 17-14g x 30 x LUMBERLOK 10 x Type 17-14g Fixings Product Nails 35mm Hex Head Product Nails x 35mm Hex Head Shear 30mm x 3.15 dia. Screws 30mm x 3.15 dia.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1334
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p5_c1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 5,
+    "content": "beam or concrete) CF1 18 x LUMBERLOK 6 x Type 17-14g x 30 x LUMBERLOK 10 x Type 17-14g Fixings Product Nails 35mm Hex Head Product Nails x 35mm Hex Head Shear 30mm x 3.15 dia. Screws 30mm x 3.15 dia. Screws Tension 13.5 kN 13.5 kN 27.0 kN 27.0 kN Shear 9.5 kN 11.0 kN 16.0 kN 18.5 kN CF2X SHEET BRACE STRAPS 200, 300, 400, 600mm 0.91mm x 25mm G300 Z275 GALVANISED STEEL 0.9mm x 25mm STAINLESS STEEL 304-2B Type Characteristic Load Zinc Tension 7.7 kN Stainless Tension 6.2 kN Nail as shown: 6 x LUMBERLOK Product Nails 30mm x 3.15 dia. per end. 2 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 615
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p6_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 6,
+    "content": "TABLE DATA:\n| Characteristic Load (Fastener in single shear)   |                    |        |\n|:-------------------------------------------------|:-------------------|:-------|\n| Nail                                             | 30mm x 3.15 dia.   | 1.0 kN |\n| Screw                                            | Type 17-14g x 35mm | 3.0 kN |\n|                                                  | Stainless Steel    | 2.5 kN |\n|                                                  | Type 17-12g x 35mm |        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load (Fastener in single shear)",
+        "",
+        ""
+      ],
+      "row_count": 3,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p6_table1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 6,
+    "content": "TABLE DATA:\n| Characteristic Load (Plate)                             |         |                    |\n|:--------------------------------------------------------|:--------|:-------------------|\n| 1mm Plate Zinc                                          | Tension | 200 N/mm per plate |\n|                                                         | Shear   | 140 N/mm per plate |\n| 1mm Plate                                               | Tension | 140 N/mm per plate |\n| Stainless Steel                                         | Shear   | 110 N/mm per plate |\n| 2mm Plate                                               | Tension | 340 N/mm per plate |\n|                                                         | Shear   | 240 N/mm per plate |\n| 3mm Plate                                               | Tension | 570 N/mm per plate |\n|                                                         | Shear   | 360 N/mm per plate |\n| 110mm wide \u2013 8 nails OR 3 screws per 40mm plate length  |         |                    |\n| 113mm wide \u2013 8 nails OR 3 screws per 40mm plate length  |         |                    |\n| 130mm wide \u2013 10 nails OR 3 screws per 40mm plate length |         |                    |\n| 150mm wide - 11 nails OR 4 screws per 40mm plate length |         |                    |\n| 240mm wide - 19 nails OR 5 screws per 40mm plate length |         |                    |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load (Plate)",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p6_table4",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 6,
+    "content": "TABLE DATA:\n| Characteristic Load   |                      |                 |\n|:----------------------|:---------------------|:----------------|\n| Nail                  | 30mm x 3.15 dia.     | 1.0 kN          |\n| Screw                 | Type 17-14g x 35mm   | 3.0 kN          |\n|                       | Stainless Steel      | 2.5 kN          |\n|                       | Type 17-12g x 35mm   |                 |\n| Shear                 | 20 nails OR 5 screws | 25 kN / pair of |\n|                       | per flange           | cleats          |\n| Uplift                | 15 nails OR 4 screws | 20 kN / pair of |\n|                       | per flange           | cleats          |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p6_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 6,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA NAILON PLATES 1mm x 110mm wide - 0.91mm G300 Z275 GALVANISED STEEL 1mm x 110mm wide - 0.9mm STAINLESS STEEL 304-2B 2mm x 113mm wide - 1.55mm G300 Z275 GALVANISED STEEL 2mm x 150mm wide - 1.55mm G300 Z275 GALVANISED STEEL 3mm x 130mm wide - 3.0mm NZCC-SD UNGALVANISED BLACK STEEL 3mm x 240mm wide - 3.0mm NZCC-SD UNGALVANISED BLACK STEEL Characteristic Load (Fastener in single shear) Nail 30mm x 3.15 dia. 1.0 kN Type 17-14g x 35mm 3.0 kN Tension Shear Screw Stainless Steel 2.5 kN Type 17-12g x 35mm Characteristic Load (Plate) Tension 200 N/mm per plate 1mm Plate Zinc Shear 140 N/mm per plate 1mm Plate Tension 140 N/mm per plate Stainless Steel Shear 110 N/mm per plate Shear Tension 340 N/mm per plate Tension 2mm Plate Shear 240 N/mm per plate Tension ShSheeaarr Tension 570 N/mm per plate 3mm Plate Shear 360 N/mm per plate 110mm wide \u2013 8 nails OR 3 screws per 40mm plate length 20 Nails OR 113mm wide \u2013 8 nails OR 3 screws per 40mm plate length 5 Screws per flange 130mm wide \u2013 10 nails OR 3 screws per 40mm plate length Pair of Diagonal Cleat N21 150mm wide - 11 nails OR 4 screws per 40mm plate length 240mm wide - 19 nails OR 5 screws per 40mm plate length Shear Shear DIAGONAL CLEAT N21 0.91mm G300 Z275 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B Characteristic Load Nail 30mm x 3.15 dia.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1361
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p6_c1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 6,
+    "content": "e length 240mm wide - 19 nails OR 5 screws per 40mm plate length Shear Shear DIAGONAL CLEAT N21 0.91mm G300 Z275 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B Characteristic Load Nail 30mm x 3.15 dia. 1.0 kN Type 17-14g x 35mm 3.0 kN Screw Stainless Steel 2.5 kN Type 17-12g x 35mm TTeennssioionn 20 nails OR 5 screws 25 kN / pair of Shear per flange cleats 15 nails OR 4 screws 20 kN / pair of Uplift per flange cleats 15 Nails OR 4 Screws per flange Pair Diagonal Cleat N21 3 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 545
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p6_diagram",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 6,
+    "content": "DIAGRAM DESCRIPTION:\nThe document presents technical details regarding Lumberlok timber connectors and associated nailon plates. \n\n1. **Components Shown**:\n   - **Nailon Plates**: Various sizes and materials including Galvanised Steel and Stainless Steel.\n   - **Timber Connectors**: Specific to connections between timber elements.\n   - **Fasteners**: Screws specified with dimensions for securing the connectors.\n\n2. **Key Measurements/Spacings**:\n   - Nailon plate sizes include:\n     - 1mm x 110mm (Galvanised and Stainless Steel)\n     - 2mm x 113mm (G300 Galvanised Steel)\n   - Screw dimensions: 3.0mm x 15.0mm, indicating threading and length.\n\n3. **Assembly Order/Installation Sequence**:\n   - Fasteners are to be installed prior to securing the timber members, with a specified number of screws and their locations per plate indicated.\n\n4. **Critical Details**:\n   - Minimum spacing of screws and overlaps between plates must be observed as per installation guidelines.\n   - Clearances and installation tolerances should ensure proper load distribution and structural integrity.\n\nThis concise description focuses on the essential technical elements found in the construction detail provided.\n\nPage context: LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA NAILON PLATES 1mm x 110mm wide - 0.91mm G300 Z275 GALVANISED STEEL 1mm x 110mm wide - 0.9mm STAINLESS STEEL 304-2B 2mm x 113mm wide - 1.55mm G3",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 1178
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p7_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 7,
+    "content": "TABLE DATA:\n| Characteristic Load   |                  |                 |\n|:----------------------|:-----------------|:----------------|\n| Fixings               | Nails:           | Screws:         |\n|                       | All holes filled | 3 x Type 17-14g |\n|                       | with 30mm x      | x 35mm per      |\n|                       | 3.15 dia.        | flange          |\n| Shear                 | 11.9 kN / pair   | 10.9 kN / pair  |\n| Tension               | 4.0 kN / each    | -               |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        "",
+        ""
+      ],
+      "row_count": 3,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p7_table1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 7,
+    "content": "TABLE DATA:\n| Characteristic Load                      | CPC40S   | CPC40    | CPC80     |\n|:-----------------------------------------|:---------|:---------|:----------|\n| Uplift / Tension                         | 4.0 kN / | 8.0 kN / | 16.0 kN / |\n|                                          | pair     | pair     | pair      |\n| Fix as shown with:                       |          |          |           |\n| LUMBERLOK Product Nails 30mm x 3.15 dia. |          |          |           |\n| AND Type 17-14g x 35mm Hex Head Screws   |          |          |           |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        "CPC40S",
+        "CPC40",
+        "CPC80"
+      ],
+      "row_count": 2,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p7_table2",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 7,
+    "content": "TABLE DATA:\n| Characteristic Load                             | CT200 (pair)   | CT400, CT600   |\n|:------------------------------------------------|:---------------|:---------------|\n| Uplift / Tension                                | 10.5 kN        | 10.5 kN        |\n| (4 nails each end)                              |                |                |\n| Uplift / Tension                                | -              | 12.0 kN        |\n| (6 nails each end)                              |                |                |\n| Nails: LUMBERLOK Product Nails 30mm x 3.15 dia. |                |                |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        "CT200 (pair)",
+        "CT400, CT600"
+      ],
+      "row_count": 3,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p7_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 7,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA MULTIGRIP 0.91mm G300 Z275 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B Characteristic Load Nails: Screws: All holes filled 3 x Type 17-14g Fixings with 30mm x x 35mm per 3.15 dia. flange Shear 11.9 kN / pair 10.9 kN / pair Shear Tension Tension Tension 4.0 kN / each - CPC40S CPC40 4 x LUMBERLOK 2 x LUMBERLOK Product Nails CONCEALED PURLIN CLEATS Product Nails OR 1 Screw OR 2 Screws 1.55mm G300 Z275 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B (SSCPC40S) 1.5mm STAINLESS STEEL 304-2B (SSCPC40 & SSCPC80) Characteristic Load CPC40S CPC40 CPC80 4.0 kN / 8.0 kN / 16.0 kN / Uplift / Tension 2 x Screws 2 x Screws pair pair pair 8 x LUMBERLOK Fix as shown with: Product Nails LUMBERLOK Product Nails 30mm x 3.15 dia. CPC80 OR 4 Screws AND Type 17-14g x 35mm Hex Head Screws 4 x Screws CEILING TIE CT200 & CYCLONE TIES CT400, CT600 0.91mm G300 Z275 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B Ceiling Tie CT200 L.H Characteristic Load CT200 (pair) CT400, CT600 R.H Uplift / Tension 10.5 kN 10.5 kN (4 nails each end) Cyclone Tie CT400, CT600 Uplift / Tension - 12.0 kN (6 nails each end) Nails: LUMBERLOK Product Nails 30mm x 3.15 dia. 4 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1266
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p8_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 8,
+    "content": "TABLE DATA:\n| Width   | Length   | Code     |\n|:--------|:---------|:---------|\n| 34mm    | 60mm     | 2T5      |\n|         | 120mm    | 4T5      |\n|         | 180mm    | 6T5      |\n|         | 240mm    | 8T5      |\n|         | 300mm    | 10T5     |\n|         | 360mm    | 12T5     |\n|         | 420mm    | 14T5     |\n|         | 480mm    | 16T5     |\n|         | 15m      | Coil T5  |\n| 68mm    | 60mm     | 2T10     |\n|         | 120mm    | 4T10     |\n|         | 180mm    | 6T10     |\n|         | 240mm    | 8T10     |\n|         | 300mm    | 10T10    |\n|         | 360mm    | 12T10    |\n|         | 420mm    | 14T10    |\n|         | 480mm    | 16T10    |\n|         | 15m      | Coil T10 |\n| 102mm   | 120mm    | 4T15     |\n|         | 180mm    | 6T15     |\n|         | 240mm    | 8T15     |\n|         | 300mm    | 10T15    |\n|         | 360mm    | 12T15    |\n|         | 15m      | Coil T15 |\n| 136mm   | 180mm    | 6T20     |\n|         | 240mm    | 8T20     |\n|         | 300mm    | 10T20    |\n|         | 360mm    | 12T20    |\n|         | 420mm    | 14T20    |\n|         | 15m      | Coil T20 |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Width",
+        "Length",
+        "Code"
+      ],
+      "row_count": 30,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p8_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 8,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA TYLOK PLATES 0.95mm G300 Z275 GALVANISED STEEL Joint Configuration Characteristic Load Example: Tylok 6T10 6 rows x 10 teeth wide (60 Teeth) 180mm long x 68mm wide TOOTH LOAD Type 1 505 N/tooth/pair Width Length Code 60mm 2T5 120mm 4T5 Type 2 580 N/tooth/pair 180mm 6T5 240mm 8T5 34mm 300mm 10T5 Type 3 465 N/tooth/pair 360mm 12T5 420mm 14T5 Type 4 560 N/tooth/pair 480mm 16T5 15m Coil T5 60mm 2T10 120mm 4T10 PLATE SHEAR STRENGTH 180mm 6T10 240mm 8T10 Type 5 90 N/mm/pair 68mm 300mm 10T10 360mm 12T10 420mm 14T10 Type 6 75 N/mm/pair 480mm 16T10 15m Coil T10 120mm 4T15 PLATE TENSILE STRENGTH 180mm 6T15 240mm 8T15 102mm Type 7 335 N/mm/pair 300mm 10T15 360mm 12T15 15m Coil T15 Type 8 125 N/mm/pair 180mm 6T20 240mm 8T20 300mm 10T20 136mm 360mm 12T20 420mm 14T20 15m Coil T20 Worked example for a pair of Tylok 6T10: 1) TYPE 1 Characteristic Tooth Load = 0.505 x 60/2 = 15.15 kN/pair 2) TYPE 7 Characteristic Tension = 0.335 x 68 = 22.78 kN/pair 3) TYPE 5 Characteristic Shear = 0.090 x 180 = 16.20 kN/pair 4) TYPE 6 Characteristic Shear = 0.075 x 68 = 5.10 kN/pair Note: \u03c6 = 0.8 (for Ultimate Limit State design) k = from Table 2.4 NZS 3603:1993 1 5 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1277
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p9_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 9,
+    "content": "TABLE DATA:\n|              | Characteristic Load - Nails                     |         |         | Characteristic Load - Screws        |         |         |\n|:-------------|:------------------------------------------------|:--------|:--------|:------------------------------------|:--------|:--------|\n| Joist Hanger | No. of Nails                                    | Down    | Uplift  | No. of Screws                       | Down    | Uplift  |\n| Type         | per Flange*                                     |         |         | per Flange*                         |         |         |\n| JH 47 x 90   | 3                                               | 9.0 kN  | 6.0 kN  | 1                                   | 7.0 kN  | 4.7 kN  |\n| JH 47 x 120  | 5                                               | 15.0 kN | 10.0 kN | 2                                   | 14.0 kN | 12.0 kN |\n| JH 47 x 190  | 9                                               | 27.0 kN | 18.0 kN | 3                                   | 21.0 kN | 18.0 kN |\n| JH 95 x 165  | 8                                               | 24.0 kN | 16.0 kN | 3                                   | 21.0 kN | 18.0 kN |\n| JH 70 x 180  | 8                                               | 24.0 kN | 16.0 kN | 3                                   | 21.0 kN | 18.0 kN |\n|              | Nails: LUMBERLOK Product Nails 30mm x 3.15 dia. |         |         | Screws: Type 17-12g x 35mm Hex Head |         |         |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "",
+        "Characteristic Load - Nails",
+        "",
+        "",
+        "Characteristic Load - Screws",
+        "",
+        ""
+      ],
+      "row_count": 7,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p9_table1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 9,
+    "content": "TABLE DATA:\n| Characteristic Load (per pair) - Screws   |         |         |                                             |         |         |\n|:------------------------------------------|:--------|:--------|:--------------------------------------------|:--------|:--------|\n| No. of Screws                             | Down    | Uplift  | No. of Screws                               | Down    | Uplift  |\n| per Flange                                |         |         | per Flange                                  |         |         |\n| 3                                         | 15.0 kN | 15.0 kN | 6                                           | 36.0 kN | 30.0 kN |\n| 4                                         | 24.0 kN | 20.0 kN | 8                                           | 48.0 kN | 40.0 kN |\n| 5                                         | 30.0 kN | 25.0 kN | 10                                          | 60.0 kN | 50.0 kN |\n| Fill all round holes with screws          |         |         | Fill all round and square holes with screws |         |         |\n| Screws: Type 17-14g x 35mm Hex Head       |         |         | Screws: Type 17-14g x 35mm Hex Head         |         |         |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load (per pair) - Screws",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 6
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p9_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 9,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA JOIST HANGERS 0.91mm G300 Z275 GALVANISED STEEL 0.9mm STAINLESS STEEL 304-2B UP DOWN Nail Detail Screw Detail Characteristic Load - Nails Characteristic Load - Screws Joist Hanger No. of Nails Down Uplift No. of Screws Down Uplift Type per Flange* per Flange* JH 47 x 90 3 9.0 kN 6.0 kN 1 7.0 kN 4.7 kN JH 47 x 120 5 15.0 kN 10.0 kN 2 14.0 kN 12.0 kN JH 47 x 190 9 27.0 kN 18.0 kN 3 21.0 kN 18.0 kN JH 95 x 165 8 24.0 kN 16.0 kN 3 21.0 kN 18.0 kN JH 70 x 180 8 24.0 kN 16.0 kN 3 21.0 kN 18.0 kN Nails: LUMBERLOK Product Nails 30mm x 3.15 dia. Screws: Type 17-12g x 35mm Hex Head *4 Flanges per hanger Note: Loads for 47mm Joist Hangers also apply to 52mm. For roof trusses, Joist Hangers shall be fully nailed or screw fixed. SPLIT HANGERS 1.55 G300 Z275 GALVANISED STEEL Left and right hand 52mm hangers Split Hangers are available in heights of: required SPH140 - 137mm actual size 72mm for each SPH180 - 177mm actual size connection SPH220 - 217mm actual size Height* Characteristic Load (per pair) - Screws Split Hanger No. of Screws Down Uplift No. of Screws Down Uplift Type per Flange per Flange SPH140 3 15.0 kN 15.0 kN 6 36.0 kN 30.0 kN SPH180 4 24.0 kN 20.0 kN 8 48.0 kN 40.0 kN SPH220 5 30.0 kN 25.0 kN 10 60.0 kN 50.0 kN Fill all round holes with screws Fill all round and square holes with screws Screws: Type 17-14g x 35mm Hex Head Screws: Type 17-14g x 35mm Hex Head 6 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1500
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p9_c1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 9,
+    "content": "round holes with screws Fill all round and square holes with screws Screws: Type 17-14g x 35mm Hex Head Screws: Type 17-14g x 35mm Hex Head 6 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 209
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p10_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 10,
+    "content": "TABLE DATA:\n|               | Characteristic Load - Nails     |         | Characteristic Load - Screws    |          |\n|:--------------|:--------------------------------|:--------|:--------------------------------|:---------|\n| I-Beam Hanger | No. of Nails                    | Down    | No. of                          | Down     |\n| Type          | per Flange                      |         | Screws per                      |          |\n|               |                                 |         | Flange                          |          |\n| IBHF20090     | 4                               | 9.6 kN  | 2                               | 10.0 kN  |\n| IBHF24050     | 5                               | 12.0 kN | 3                               | 15.0 kN  |\n| IBHF24055     | 5                               | 12.0 kN | 3                               | 15.0 kN  |\n| IBHF24065     | 5                               | 12.0 kN | 3                               | 15.0 kN  |\n| IBHF24090     | 5                               | 12.0 kN | 3                               | 15.0 kN  |\n| IBHF30050     | 6                               | 14.4 kN | 4                               | 20.0 kN  |\n| IBHF30065     | 6                               | 14.4 kN | 4                               | 20.0 kN  |\n| IBHF30090     | 6                               | 14.4 kN | 4                               | 20.0 kN  |\n| IBHF36065     | 7                               | 16.8 kN | 5                               | 24.0 kN* |\n| IBHF36090     | 7                               | 16.8 kN | 5                               | 24.0 kN* |\n| IBHF40090     | 8                               | 19.2 kN | 6                               | 24.0 kN* |\n|               | Nails: 40mm x 3.75 dia. nails.  |         | Screws: Type 17-12g x 35mm      |          |\n|               | Additional 2 nails required for |         | Hex Head Screws.                |          |\n|               | fixing bottom flange            |         | Additional 2 nails required for |          |\n|               |                                 |         | fixing bottom flange            |          |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "",
+        "Characteristic Load - Nails",
+        "",
+        "Characteristic Load - Screws",
+        ""
+      ],
+      "row_count": 13,
+      "col_count": 5
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p10_table1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 10,
+    "content": "TABLE DATA:\n|             | Characteristic Load - Nails     |         |\n|:------------|:--------------------------------|:--------|\n| I-Beam      | No. of Nails                    | Down    |\n| Hanger Type |                                 |         |\n| IBHT20050   | 6 (3 per flange)                | 13.8 kN |\n| IBHT24065   | 6 (3 per flange)                | 13.8 kN |\n| IBHT24090   | 6 (3 per flange)                | 13.8 kN |\n| IBHT30065   | 6 (3 per flange)                | 13.8 kN |\n| IBHT30090   | 6 (3 per flange)                | 13.8 kN |\n| IBHT36065   | 6 (3 per flange)                | 13.8 kN |\n| IBHT36090   | 6 (3 per flange)                | 13.8 kN |\n| IBHT40090   | 6 (3 per flange)                | 13.8 kN |\n|             | Nails: 40mm x 3.75 dia. nails.  |         |\n|             | Additional 2 nails required for |         |\n|             | fixing bottom flange            |         |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "",
+        "Characteristic Load - Nails",
+        ""
+      ],
+      "row_count": 10,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p10_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 10,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA I-BEAM HANGERS - FACE FIX 1.15mm G300 Z275 GALVANISED STEEL Fix bottom Flange flange with 1 skew nail to each side Example: IBHF30065 IBHF = Face Fix A 20mm min. 300 = Height (A) edge distance 65 = Width (B) B Nail or screw each flange Characteristic Load - Nails Characteristic Load - Screws No. of I-Beam Hanger No. of Nails Down Screws per Down Type per Flange Flange IBHF20090 4 9.6 kN 2 10.0 kN IBHF24050 5 12.0 kN 3 15.0 kN IBHF24055 5 12.0 kN 3 15.0 kN IBHF24065 5 12.0 kN 3 15.0 kN IBHF24090 5 12.0 kN 3 15.0 kN IBHF30050 6 14.4 kN 4 20.0 kN IBHF30065 6 14.4 kN 4 20.0 kN IBHF30090 6 14.4 kN 4 20.0 kN IBHF36065 7 16.8 kN 5 24.0 kN* IBHF36090 7 16.8 kN 5 24.0 kN* IBHF40090 8 19.2 kN 6 24.0 kN* Nails: 40mm x 3.75 dia. nails. Screws: Type 17-12g x 35mm Additional 2 nails required for Hex Head Screws. fixing bottom flange Additional 2 nails required for fixing bottom flange *Maximum hanger load I-BEAM HANGERS - TOP FIX Characteristic Load - Nails 1.15mm G300 Z275 GALVANISED STEEL I-Beam No. of Nails Down Hanger Type 45mm Top Plate IBHT20050 6 (3 per flange) 13.8 kN bolted to Steel Beam IBHT24065 6 (3 per flange) 13.8 kN 3 nails to IBHT24090 6 (3 per flange) 13.8 kN each flange IBHT30065 6 (3 per flange) 13.8 kN Example: IBHT30065 20mm IBHT30090 6 (3 per flange) 13.8 kN A IBHT = Top Fix min.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1366
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p10_c1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 10,
+    "content": "5 6 (3 per flange) 13.8 kN 3 nails to IBHT24090 6 (3 per flange) 13.8 kN each flange IBHT30065 6 (3 per flange) 13.8 kN Example: IBHT30065 20mm IBHT30090 6 (3 per flange) 13.8 kN A IBHT = Top Fix min. edge IBHT36065 6 (3 per flange) 13.8 kN 300 = Height (A) distance 65 = Width (B) IBHT36090 6 (3 per flange) 13.8 kN B IBHT40090 6 (3 per flange) 13.8 kN Nails: 40mm x 3.75 dia. nails. Additional 2 nails required for Fix bottom flange with 1 fixing bottom flange skew nail to each side 7 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 555
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p11_table0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 11,
+    "content": "TABLE DATA:\n| Characteristic Load - Nails                     |         |         | Characteristic Load - Screws               |         |         |\n|:------------------------------------------------|:--------|:--------|:-------------------------------------------|:--------|:--------|\n| No. of Nail                                     | s Down  | Uplift  | No. of                                     | Down    | Uplift  |\n| per Flange                                      | *       |         | Screws per                                 |         |         |\n|                                                 |         |         | Flange*                                    |         |         |\n| 12                                              | 36.0 kN | 24.0 kN | 6                                          | 36.0 kN | 30.0 kN |\n| 12                                              | 36.0 kN | 24.0 kN | 6                                          | 36.0 kN | 30.0 kN |\n| 12                                              | 36.0 kN | 24.0 kN | 6                                          | 36.0 kN | 30.0 kN |\n| Nails: LUMBERLOK Product Nails 30mm x 3.15 dia. |         |         | Screws: Type 17-14g x 35mm Hex Head Screws |         |         |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load - Nails",
+        "",
+        "",
+        "Characteristic Load - Screws",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 6
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p11_table1",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 11,
+    "content": "TABLE DATA:\n| Characteristic Load   |                |\n|:----------------------|:---------------|\n| Uplift                | 3.58 kN / pair |\n| Uplift                | 3.42 kN / pair |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load",
+        ""
+      ],
+      "row_count": 2,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p11_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 11,
+    "content": "LUMBERLOK TIMBER CONNECTORS CHARACTERISTIC LOADINGS DATA LVL HANGERS 0.91mm G300 Z275 GALVANISED STEEL B Example: JH 95 X 270 270 = Height (A) 95 = Width (B) A JH47270 JH65270 JH95270 Characteristic Load - Nails Characteristic Load - Screws LVL Hanger No. of Nails Down Uplift No. of Down Uplift Type per Flange* Screws per Flange* JH 47 x 270 12 36.0 kN 24.0 kN 6 36.0 kN 30.0 kN JH 65 x 270 12 36.0 kN 24.0 kN 6 36.0 kN 30.0 kN JH 95 x 270 12 36.0 kN 24.0 kN 6 36.0 kN 30.0 kN Nails: LUMBERLOK Product Nails 30mm x 3.15 dia. Screws: Type 17-14g x 35mm Hex Head Screws *4 Flanges per Hanger Add pair of LUMBERLOK\u00ae Multigrips for LVL depths \u2265400mm Nail or Screw each flange WIRE DOGS 4.9mm DIAMETER GALVANISED WIRE 4.76mm DIAMETER STAINLESS STEEL 304 WIRE Staple Left Hand Right Hand Type Characteristic Load Zinc Uplift 3.58 kN / pair Uplift Uplift Stainless Uplift 3.42 kN / pair Additional 2/ 90mm x 3.15 dia. skew nails required 8 \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1003
+    }
+  },
+  {
+    "chunk_id": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings_p12_c0",
+    "source": "MiTek LUMBERLOK Timber Connectors Characteristic Loadings",
+    "page": 12,
+    "content": "AKL +64 9 2747 109 CHC +64 3 3488 691 www.miteknz.co.nz \u00a9 Copyright 2020 MiTek Holdings, Inc. All rights reserved. Apr 2020",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 124
+    }
+  }
+]

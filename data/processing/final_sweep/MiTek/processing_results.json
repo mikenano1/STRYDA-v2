@@ -1,0 +1,30 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/MiTek",
+  "processed_at": "2026-01-03T06:33:11.173663",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/MiTek/MiTek_Stud-to-Top-Plate_Fixing_Schedule_2024.pdf",
+      "chunks": 1,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/MiTek/MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf",
+      "chunks": 40,
+      "tables": 22,
+      "diagrams": 1
+    }
+  ],
+  "total_chunks": 41,
+  "table_chunks": 22,
+  "text_chunks": 18,
+  "diagram_chunks": 1,
+  "stats": {
+    "pages_processed": 13,
+    "images_found": 2,
+    "images_captioned": 1,
+    "tables_extracted": 23,
+    "vision_errors": 0
+  }
+}
