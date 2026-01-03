@@ -1,0 +1,24 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/PlaceMakers",
+  "processed_at": "2026-01-03T06:38:42.496362",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/PlaceMakers/PlaceMakers_Fastenings_Catalogue_2020.pdf",
+      "chunks": 172,
+      "tables": 57,
+      "diagrams": 1
+    }
+  ],
+  "total_chunks": 172,
+  "table_chunks": 57,
+  "text_chunks": 114,
+  "diagram_chunks": 1,
+  "stats": {
+    "pages_processed": 104,
+    "images_found": 35,
+    "images_captioned": 1,
+    "tables_extracted": 101,
+    "vision_errors": 0
+  }
+}
