@@ -174,9 +174,11 @@ def canonical_source_map(query: str) -> List[str]:
         'james hardie', 'hardie', 'linea', 'weatherboard',
         'axon', 'stria', 'hardieflex', 'fibre cement',
         'cladding', 'head flashing', 'apron flashing',
-        'cavity batten', 'direct fix', 'wall cladding'
+        'cavity batten', 'direct fix', 'wall cladding',
+        'rab board', 'homerab', 'rigid air barrier',
+        'villaboard', 'secura', 'oblique'
     ]):
-        sources.append('James Hardie Installation Guides')
+        sources.append('James Hardie Full Suite')
     
     # Remove duplicates while preserving order
     seen = set()
