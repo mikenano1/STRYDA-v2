@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "created_at": "2026-01-03T01:09:37.133294",
+  "categories": {
+    "A_Structure": {
+      "description": "Structural components - framing, fasteners, steel, concrete",
+      "subcategories": [
+        "Timber_Framing",
+        "Steel_Framing",
+        "Fasteners_Fixings",
+        "Concrete_Masonry",
+        "Foundation_Systems",
+        "Structural_Hardware"
+      ],
+      "example_brands": [
+        "Paslode",
+        "Mitek",
+        "Pryda",
+        "Hyne",
+        "Carter Holt Harvey"
+      ]
+    },
+    "B_Enclosure": {
+      "description": "Building envelope - roofing, cladding, windows, insulation",
+      "subcategories": [
+        "Roofing_Metal",
+        "Roofing_Tiles",
+        "Wall_Cladding",
+        "Windows_Doors",
+        "Insulation",
+        "Membranes_Wraps",
+        "Flashings_Trim"
+      ],
+      "example_brands": [
+        "Colorsteel",
+        "Monier",
+        "James Hardie",
+        "Thermakraft",
+        "Knauf"
+      ]
+    },
+    "C_Interiors": {
+      "description": "Interior systems - plasterboard, flooring, ceilings",
+      "subcategories": [
+        "Plasterboard_Linings",
+        "Flooring_Systems",
+        "Ceiling_Systems",
+        "Interior_Doors",
+        "Wet_Area_Systems",
+        "Acoustic_Systems"
+      ],
+      "example_brands": [
+        "GIB",
+        "Forman",
+        "Armstrong",
+        "Tarkett",
+        "Altro"
+      ]
+    },
+    "D_Landscaping": {
+      "description": "External works - decking, fencing, retaining, drainage",
+      "subcategories": [
+        "Decking_Outdoor",
+        "Fencing_Gates",
+        "Retaining_Walls",
+        "Drainage_Systems",
+        "Paving_Hardscape",
+        "Garden_Structures"
+      ],
+      "example_brands": [
+        "Firth",
+        "Keystone",
+        "Ezydeck",
+        "Marley",
+        "Naylor"
+      ]
+    },
+    "E_Specialty": {
+      "description": "Specialty systems - fire, HVAC, plumbing, electrical",
+      "subcategories": [
+        "Fire_Protection",
+        "HVAC_Ventilation",
+        "Plumbing_Systems",
+        "Electrical_Systems",
+        "Security_Access",
+        "Renewable_Energy"
+      ],
+      "example_brands": [
+        "Tyco",
+        "Daikin",
+        "Marley",
+        "Clipsal",
+        "Rheem"
+      ]
+    },
+    "F_Manufacturers": {
+      "description": "Major manufacturer technical libraries",
+      "subcategories": [
+        "Installation_Guides",
+        "Technical_Data_Sheets",
+        "BRANZ_Appraisals",
+        "Safety_Data_Sheets",
+        "Warranty_Documents",
+        "CAD_BIM_Files"
+      ],
+      "example_brands": [
+        "Multi-brand technical documentation"
+      ]
+    },
+    "G_Merchants": {
+      "description": "Merchant-specific product information",
+      "subcategories": [
+        "PlaceMakers",
+        "Mitre10",
+        "Bunnings",
+        "ITM",
+        "Carters",
+        "Regional_Merchants"
+      ],
+      "example_brands": [
+        "Merchant-specific catalogs and guides"
+      ]
+    }
+  },
+  "doc_types": [
+    "Installation_Guide",
+    "Technical_Data_Sheet",
+    "BRANZ_Appraisal",
+    "Safety_Data_Sheet",
+    "Warranty_Document",
+    "Product_Catalog",
+    "Training_Material",
+    "Compliance_Certificate"
+  ],
+  "paths": {
+    "ingestion": "/app/data/ingestion",
+    "processing": "/app/data/processing",
+    "archive": "/app/data/archive",
+    "logs": "/app/data/logs",
+    "scrapers": "/app/data/scrapers"
+  }
+}
