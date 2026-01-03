@@ -370,11 +370,11 @@ class TradeAwareRetrievalTester:
 
 async def main():
     """Main test execution"""
-    tester = STRYDABackendTester()
+    tester = TradeAwareRetrievalTester()
     
     try:
         await tester.setup()
-        summary = await tester.run_operation_final_sweep_tests()
+        summary = await tester.run_trade_aware_retrieval_tests()
         return summary
     except Exception as e:
         print(f"💥 Test execution failed: {e}")
