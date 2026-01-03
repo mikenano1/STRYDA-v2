@@ -1,0 +1,48 @@
+{
+  "input_dir": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB",
+  "processed_at": "2026-01-03T04:11:34.652982",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Weatherline_Design_and_Construction_Manual.pdf",
+      "chunks": 216,
+      "tables": 61,
+      "diagrams": 6
+    },
+    {
+      "path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Site_Guide_2024.pdf",
+      "chunks": 353,
+      "tables": 104,
+      "diagrams": 3
+    },
+    {
+      "path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Fire_and_Noise_Rated_System_Tables.pdf",
+      "chunks": 32,
+      "tables": 3,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Aqualine_Wet_Wall_System_Installation.pdf",
+      "chunks": 4,
+      "tables": 0,
+      "diagrams": 4
+    },
+    {
+      "path": "/app/data/ingestion/C_Interiors/Plasterboard_Linings/GIB/GIB_Performance_Systems.pdf",
+      "chunks": 74,
+      "tables": 25,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 679,
+  "table_chunks": 193,
+  "text_chunks": 473,
+  "diagram_chunks": 13,
+  "stats": {
+    "pages_processed": 257,
+    "images_found": 56,
+    "images_captioned": 13,
+    "tables_extracted": 217,
+    "vision_errors": 0
+  }
+}
