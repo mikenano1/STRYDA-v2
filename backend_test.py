@@ -86,6 +86,7 @@ class STRYDABackendTester:
                         "response_length": len(answer),
                         "answer": answer[:300] + "..." if len(answer) > 300 else answer,
                         "citations_count": len(citations),
+                        "inline_citations": inline_citations,
                         "sources_used": sources_used,
                         "confidence_score": confidence_score,
                         "brand_mentioned": brand_mentioned,
