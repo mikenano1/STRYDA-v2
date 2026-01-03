@@ -92,9 +92,8 @@ class TradeAwareRetrievalTester:
         # For now, we'll infer from the response content
         
         return log_info
-            
-    async def test_chat_endpoint(self, message: str, session_id: str, test_name: str):
-        """Test the /api/chat endpoint with a specific message"""
+    async def test_trade_aware_chat(self, message: str, session_id: str, test_name: str, expected_trade: str):
+        """Test the /api/chat endpoint for trade-aware retrieval"""
         try:
             start_time = time.time()
             
@@ -105,6 +104,7 @@ class TradeAwareRetrievalTester:
             
             print(f"\n🧪 Testing: {test_name}")
             print(f"📝 Query: {message}")
+            print(f"🎯 Expected Trade: {expected_trade}")
             print(f"🔗 Session: {session_id}")
             
             async with self.session.post(
@@ -120,63 +120,76 @@ class TradeAwareRetrievalTester:
                     data = await response.json()
                     
                     # Extract key information
-                    answer = data.get("answer", "")
+                    answer = data.get("response", data.get("answer", ""))
                     citations = data.get("citations", [])
                     sources_used = data.get("sources_used", [])
                     confidence_score = data.get("confidence_score", 0)
                     
-                    # Check for inline source citations in the answer
-                    inline_citations = self._extract_inline_citations(answer)
+                    # Analyze trade-specific content
+                    trade_analysis = self._extract_trade_keywords(answer, expected_trade)
                     
-                    # Check for brand mentions
-                    brand_mentioned = self._check_brand_mention(message, answer)
+                    # Check for Firth brand mention
+                    firth_mentioned = self._check_firth_brand_mention(answer)
                     
-                    # Check for Final Sweep source
-                    final_sweep_source = any("Final Sweep" in str(source) or "Fasteners Full Suite" in str(source) 
-                                           for source in sources_used) or "Final Sweep" in answer
+                    # Check for trade-specific sources
+                    trade_sources = [source for source in sources_used if "firth" in str(source).lower()]
                     
-                    # Check for specific brand in sources or inline citations
-                    brand_in_sources = self._check_brand_in_sources(message, sources_used) or \
-                                     self._check_brand_in_inline_citations(message, inline_citations)
+                    # Determine test result based on trade relevance
+                    if trade_analysis["keyword_count"] >= 2 and trade_analysis["wrong_keyword_count"] == 0:
+                        test_status = "PASS"
+                        status_detail = f"Strong trade relevance: {trade_analysis['keyword_count']} relevant keywords"
+                    elif trade_analysis["keyword_count"] >= 1 and trade_analysis["wrong_keyword_count"] <= 1:
+                        test_status = "PARTIAL"
+                        status_detail = f"Moderate trade relevance: {trade_analysis['keyword_count']} relevant, {trade_analysis['wrong_keyword_count']} wrong"
+                    elif trade_analysis["keyword_count"] == 0 and trade_analysis["wrong_keyword_count"] == 0:
+                        test_status = "UNCLEAR"
+                        status_detail = "No clear trade-specific content detected"
+                    else:
+                        test_status = "FAIL"
+                        status_detail = f"Wrong trade content: {trade_analysis['wrong_keyword_count']} wrong keywords"
                     
                     result = {
                         "test_name": test_name,
                         "query": message,
+                        "expected_trade": expected_trade,
                         "session_id": session_id,
-                        "status": "PASS",
+                        "status": test_status,
+                        "status_detail": status_detail,
                         "status_code": status_code,
                         "response_time_ms": round(response_time, 1),
                         "response_length": len(answer),
-                        "answer": answer[:300] + "..." if len(answer) > 300 else answer,
+                        "answer": answer[:400] + "..." if len(answer) > 400 else answer,
                         "citations_count": len(citations),
-                        "inline_citations": inline_citations,
                         "sources_used": sources_used,
+                        "trade_sources": trade_sources,
                         "confidence_score": confidence_score,
-                        "brand_mentioned": brand_mentioned,
-                        "brand_in_sources": brand_in_sources,
-                        "final_sweep_source": final_sweep_source,
+                        "firth_mentioned": firth_mentioned,
+                        "trade_analysis": trade_analysis,
                         "timestamp": datetime.now().isoformat()
                     }
                     
                     print(f"✅ Status: {status_code} OK")
                     print(f"⏱️  Response Time: {response_time:.1f}ms")
                     print(f"📏 Response Length: {len(answer)} characters")
-                    print(f"🎯 Brand Mentioned: {brand_mentioned}")
-                    print(f"🏷️  Brand in Sources: {brand_in_sources}")
-                    print(f"📚 Final Sweep Source: {final_sweep_source}")
+                    print(f"🏷️  Firth Mentioned: {firth_mentioned}")
+                    print(f"🎯 Trade Keywords Found: {trade_analysis['found_keywords']}")
+                    print(f"❌ Wrong Trade Keywords: {[f'{t}:{k}' for t,k in trade_analysis['wrong_trade_keywords']]}")
+                    print(f"📚 Trade Sources: {trade_sources}")
                     print(f"📖 Citations: {len(citations)}")
-                    print(f"🔗 Inline Citations: {inline_citations}")
-                    print(f"🔍 Sources: {sources_used}")
+                    print(f"🔍 All Sources: {sources_used}")
                     print(f"💯 Confidence: {confidence_score}")
-                    print(f"📝 Response Preview: {answer[:200]}...")
+                    print(f"🏆 Test Result: {test_status} - {status_detail}")
+                    print(f"📝 Response Preview: {answer[:300]}...")
                     
                 else:
                     error_text = await response.text()
                     result = {
                         "test_name": test_name,
                         "query": message,
+                        "expected_trade": expected_trade,
                         "session_id": session_id,
                         "status": "FAIL",
+                        "status_detail": f"HTTP Error {status_code}",
                         "status_code": status_code,
                         "response_time_ms": round(response_time, 1),
                         "error": error_text,
@@ -193,8 +206,10 @@ class TradeAwareRetrievalTester:
             result = {
                 "test_name": test_name,
                 "query": message,
+                "expected_trade": expected_trade,
                 "session_id": session_id,
                 "status": "ERROR",
+                "status_detail": f"Exception: {str(e)}",
                 "error": str(e),
                 "timestamp": datetime.now().isoformat()
             }
