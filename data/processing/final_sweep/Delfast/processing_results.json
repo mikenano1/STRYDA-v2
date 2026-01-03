@@ -1,0 +1,36 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Delfast",
+  "processed_at": "2026-01-03T06:16:36.696366",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Delfast/Delfast_Nails_BRANZ_Appraisal_1154.pdf",
+      "chunks": 17,
+      "tables": 4,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Rural_Range_2021.pdf",
+      "chunks": 40,
+      "tables": 20,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Nail_Guide_2023.pdf",
+      "chunks": 37,
+      "tables": 25,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 94,
+  "table_chunks": 49,
+  "text_chunks": 45,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 44,
+    "images_found": 36,
+    "images_captioned": 0,
+    "tables_extracted": 51,
+    "vision_errors": 0
+  }
+}
