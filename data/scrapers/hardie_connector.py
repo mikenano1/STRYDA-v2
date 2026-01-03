@@ -23,39 +23,32 @@ HARDIE_BASE_URL = "https://www.jameshardie.com.au"
 # Known James Hardie Technical Documents (NZ/AU versions)
 HARDIE_DOCUMENTS = [
     {
-        "name": "Linea Weatherboard Installation Guide",
-        "url": "https://www.jameshardie.com.au/siteassets/product-literature/linea-weatherboard-technical-guide.pdf",
+        "name": "Linea Weatherboard Direct Fix Technical Specification",
+        "url": "https://www.jameshardie.co.nz/web/assets/general/Linea-Weatherboard-Direct-Fix-Technical-Specification.pdf",
         "doc_type": "Installation_Guide",
         "product_family": "Linea Weatherboard",
-        "description": "Complete installation guide for Linea Weatherboard cladding system"
+        "description": "Technical specification for Linea Weatherboard direct fix installation"
     },
     {
-        "name": "Axon Cladding Installation Guide", 
-        "url": "https://www.jameshardie.com.au/siteassets/product-literature/axon-cladding-technical-guide.pdf",
+        "name": "Linea Weatherboard Installation Guide",
+        "url": "https://agnew-cdn.n2erp.co.nz/cdn/images/productdocument/LineaWeatherboardsInstallationGuideApr23.pdf",
         "doc_type": "Installation_Guide",
-        "product_family": "Axon Cladding",
-        "description": "Installation guide for Axon panel cladding system"
+        "product_family": "Linea Weatherboard",
+        "description": "Practical installation guide for Linea Weatherboard April 2023"
     },
     {
-        "name": "Stria Cladding Installation Guide",
-        "url": "https://www.jameshardie.com.au/siteassets/product-literature/stria-cladding-technical-guide.pdf",
+        "name": "Linea Weatherboard Installation Checklist",
+        "url": "https://www.jameshardie.co.nz/web/assets/general/INSTALLATION-Checklist-Linea-Weatherboard.pdf",
         "doc_type": "Installation_Guide",
-        "product_family": "Stria Cladding",
-        "description": "Installation guide for Stria panel cladding system"
+        "product_family": "Linea Weatherboard",
+        "description": "Step-by-step installation checklist for NZBC E2/AS1 compliance"
     },
     {
-        "name": "HardieFlex Sheet Installation Guide",
-        "url": "https://www.jameshardie.com.au/siteassets/product-literature/hardieflex-sheet-technical-guide.pdf",
-        "doc_type": "Installation_Guide",
-        "product_family": "HardieFlex",
-        "description": "Installation guide for HardieFlex fibre cement sheets"
-    },
-    {
-        "name": "James Hardie Fibre Cement Facades Installation Guide",
-        "url": "https://www.jameshardie.co.nz/-/media/jameshardie-apac/files/nz/brochures/hardie-fibre-cement-facades-installation-manual.pdf",
+        "name": "James Hardie Facades Installation Manual",
+        "url": "https://d39d3mj7qio96p.cloudfront.net/media/documents/446.pdf",
         "doc_type": "Installation_Guide",
         "product_family": "Facades",
-        "description": "NZ-specific installation manual for fibre cement facades"
+        "description": "General installation manual for James Hardie fibre cement facades"
     }
 ]
 
