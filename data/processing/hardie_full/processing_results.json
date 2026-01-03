@@ -1,0 +1,84 @@
+{
+  "input_dir": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie",
+  "processed_at": "2026-01-03T04:03:05.573134",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Direct_Fix_Technical_Specification.pdf",
+      "chunks": 107,
+      "tables": 35,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Installation_Guide_Apr23.pdf",
+      "chunks": 73,
+      "tables": 23,
+      "diagrams": 6
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Installation_Checklist.pdf",
+      "chunks": 17,
+      "tables": 11,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Stria_Cladding_Vertical_Installation_Technical_Specification.pdf",
+      "chunks": 129,
+      "tables": 45,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/HomeRAB_Pre-Cladding_and_RAB_Board_Installation_Manual.pdf",
+      "chunks": 151,
+      "tables": 52,
+      "diagrams": 2
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Stria_Cladding_Vertical_40mm_Structural_Cavity_Batten.pdf",
+      "chunks": 124,
+      "tables": 45,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/RAB_Board_Installation_Guide_Legacy.pdf",
+      "chunks": 62,
+      "tables": 23,
+      "diagrams": 4
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Hardie_Oblique_and_Stria_Cladding_Vertical_Installation_Guide.pdf",
+      "chunks": 74,
+      "tables": 29,
+      "diagrams": 4
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/James_Hardie_Fire_and_Acoustic_Design_Manual.pdf",
+      "chunks": 29,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/James_Hardie_Facades_Installation_Manual.pdf",
+      "chunks": 29,
+      "tables": 0,
+      "diagrams": 0
+    },
+    {
+      "path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Installation_Guide.pdf",
+      "chunks": 71,
+      "tables": 23,
+      "diagrams": 4
+    }
+  ],
+  "total_chunks": 866,
+  "table_chunks": 286,
+  "text_chunks": 560,
+  "diagram_chunks": 20,
+  "stats": {
+    "pages_processed": 317,
+    "images_found": 255,
+    "images_captioned": 20,
+    "tables_extracted": 353,
+    "vision_errors": 0
+  }
+}
