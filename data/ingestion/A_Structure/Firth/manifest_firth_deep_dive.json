@@ -1,0 +1,304 @@
+{
+  "operation": "FIRTH_DEEP_DIVE",
+  "brand": {
+    "brand": "Firth",
+    "trade": "concrete",
+    "retailer_availability": [
+      "PlaceMakers",
+      "Carters",
+      "ITM",
+      "Bunnings",
+      "Allied Concrete",
+      "Universal"
+    ],
+    "country": "New Zealand",
+    "operation": "BRAND_DEEP_DIVE"
+  },
+  "fetch_date": "2026-01-03T21:27:30.926885",
+  "documents": [
+    {
+      "source": "Firth - RibRaft Technical Manual CodeMark 2024",
+      "brand_name": "Firth",
+      "category_code": "A_Structure",
+      "product_family": "RibRaft Foundations",
+      "doc_type": "Technical_Manual",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Documents/RibRaft-Technical-Manual-CodeMark-2024-web.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/A_Structure/RibRaft_Technical_Manual_CodeMark_2024.pdf",
+      "file_hash": "8539067ebffd94d306226eab260474dafe557d5553b248738c45bd410a19175c",
+      "file_size_bytes": 4159741,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "HIGH",
+      "ingested_at": "2026-01-03T21:26:46.837244",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - X-Pod Structural Designers Guide July 2025",
+      "brand_name": "Firth",
+      "category_code": "A_Structure",
+      "product_family": "X-Pod TC3",
+      "doc_type": "Design_Guide",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Documents/RR-X-Pod-Structural-Designers-Guide-July-2025-Web.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/A_Structure/X-Pod_Structural_Designers_Guide_July_2025.pdf",
+      "file_hash": "d1fc0e1ff20a2f0b77ede9ac1dfbed1c1ef87d907c5808a2534399fea9cdf754",
+      "file_size_bytes": 2517911,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "HIGH",
+      "ingested_at": "2026-01-03T21:26:51.836740",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - X-Pod Installation Guide July 2025",
+      "brand_name": "Firth",
+      "category_code": "A_Structure",
+      "product_family": "X-Pod TC3",
+      "doc_type": "Installation_Guide",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Documents/RibRaft-X-Pod-Installation-Guide-PRINT-July-2025.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/A_Structure/X-Pod_Installation_Guide_July_2025.pdf",
+      "file_hash": "bf9a90d81a2fe64a4c673d7354082167a3df89d3d6c1f89bf82932aacc110f96",
+      "file_size_bytes": 10515550,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "HIGH",
+      "ingested_at": "2026-01-03T21:27:08.131537",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - X-Pod Installers Guide Dec 2018",
+      "brand_name": "Firth",
+      "category_code": "A_Structure",
+      "product_family": "X-Pod TC3",
+      "doc_type": "Installation_Guide",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Brochures/X-Pod-Installers-Guide-Dec-2018.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/A_Structure/X-Pod_Installers_Guide_Dec_2018.pdf",
+      "file_hash": "60218f47df9a701b4c09913e330926e4d1326fd7bd153bfd8e7a4e1701efc827",
+      "file_size_bytes": 3186958,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "NORMAL",
+      "ingested_at": "2026-01-03T21:27:13.174628",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - Structural Masonry Product Technical Statement",
+      "brand_name": "Firth",
+      "category_code": "A_Structure",
+      "product_family": "Structural Masonry",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Documents/Structural-Masonry-PTS.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/A_Structure/Structural_Masonry_Product_Technical_Statement.pdf",
+      "file_hash": "8572d6d9283755c6addba81e6866756b38eee5a76c924ccd8c432b0d1bf777ae",
+      "file_size_bytes": 29119,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "HIGH",
+      "ingested_at": "2026-01-03T21:27:13.382670",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - Hollow Masonry Brochure 2023",
+      "brand_name": "Firth",
+      "category_code": "A_Structure",
+      "product_family": "Hollow Masonry",
+      "doc_type": "Product_Catalog",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Brochures/Hollow-Masonry-Brochure_16102023.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/A_Structure/Hollow_Masonry_Brochure_2023.pdf",
+      "file_hash": "49bb5ae1e33f145929aeddd778f1ccb1d3e7553b8377d221d918ef6077370e1c",
+      "file_size_bytes": 567977,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "NORMAL",
+      "ingested_at": "2026-01-03T21:27:14.392195",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - Two Storey Masonry Veneer Solutions",
+      "brand_name": "Firth",
+      "category_code": "B_Enclosure",
+      "product_family": "Masonry Veneer",
+      "doc_type": "Technical_Manual",
+      "trade": "concrete",
+      "original_url": "https://d39d3mj7qio96p.cloudfront.net/media/documents/967.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/B_Enclosure/Two_Storey_Masonry_Veneer_Solutions.pdf",
+      "file_hash": "3d2861f429028b875064bdf78de975435d68e31dbec7ba5b162e67beed374699",
+      "file_size_bytes": 710209,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "NORMAL",
+      "ingested_at": "2026-01-03T21:27:15.953735",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - Firth Paving Installation Guide 2025",
+      "brand_name": "Firth",
+      "category_code": "G_Landscaping",
+      "product_family": "Paving",
+      "doc_type": "Installation_Guide",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Documents/FIRTH-Paving-Installation-Guide-2025-web-v2.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/Firth_Paving_Installation_Guide_2025.pdf",
+      "file_hash": "d58fbb54f61d2f7ec7ccf8ca6666aed99e718bceeb73854b43e33ac6b33ca34a",
+      "file_size_bytes": 1528040,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "HIGH",
+      "ingested_at": "2026-01-03T21:27:18.404422",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - EcoPave Installation Guide Aug 2024",
+      "brand_name": "Firth",
+      "category_code": "G_Landscaping",
+      "product_family": "EcoPave Permeable",
+      "doc_type": "Installation_Guide",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Documents/Firth-EcoPave-Installation-Guide-Aug-2024_WEB.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/EcoPave_Installation_Guide_Aug_2024.pdf",
+      "file_hash": "ba861cecbe43dc07a728d4826c68fd7060e63e20346d5b6d2067cac1804d1f59",
+      "file_size_bytes": 4638252,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "HIGH",
+      "ingested_at": "2026-01-03T21:27:25.634897",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - Firth Paving Category Flyer 2025",
+      "brand_name": "Firth",
+      "category_code": "G_Landscaping",
+      "product_family": "Paving",
+      "doc_type": "Product_Catalog",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Documents/Firth-Paving-Category-Flyer-2025-web.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/Firth_Paving_Category_Flyer_2025.pdf",
+      "file_hash": "be7045e9df5067c971461b4215987941b3ab2043e52272d648c6b37a6e627422",
+      "file_size_bytes": 243993,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "NORMAL",
+      "ingested_at": "2026-01-03T21:27:26.286306",
+      "status": "downloaded"
+    },
+    {
+      "source": "Firth - Firth Paving Concepts Brochure",
+      "brand_name": "Firth",
+      "category_code": "G_Landscaping",
+      "product_family": "Paving",
+      "doc_type": "Product_Catalog",
+      "trade": "concrete",
+      "original_url": "https://www.firth.co.nz/assets/Uploads/Resources/Brochures/Firth-Paving-Concepts-Brochure.pdf",
+      "local_path": "/app/data/ingestion/A_Structure/Firth/G_Landscaping/Firth_Paving_Concepts_Brochure.pdf",
+      "file_hash": "2b90add6f568754bb5f7984cffaf84379649ced8679ba58e04b93790b49b846a",
+      "file_size_bytes": 2987281,
+      "retailer_availability": [
+        "PlaceMakers",
+        "Carters",
+        "ITM",
+        "Bunnings",
+        "Allied Concrete",
+        "Universal"
+      ],
+      "has_diagrams": true,
+      "vision_priority": "NORMAL",
+      "ingested_at": "2026-01-03T21:27:30.909906",
+      "status": "downloaded"
+    }
+  ],
+  "failed": [
+    {
+      "name": "RibRaft HotEdge Installation Guide",
+      "url": "https://productspec.co.nz/media/fuqndu0x/rr-hotedge-installation-guide-interim_web.pdf"
+    },
+    {
+      "name": "EcoPave Designers Guide",
+      "url": "https://productspec.co.nz/media/kp5aibsp/fir0378-ecopave-designers-guide.pdf"
+    },
+    {
+      "name": "Paving and Retaining Outdoor Concepts",
+      "url": "https://productspec.co.nz/media/idrhp1qs/firth-paving-retaining-outdoor-concepts-brochure.pdf"
+    }
+  ],
+  "stats": {
+    "total_attempted": 14,
+    "successful": 11,
+    "failed": 3,
+    "high_priority_vision": 6
+  }
+}
