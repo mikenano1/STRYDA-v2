@@ -106,7 +106,7 @@ FASTENER_DOCUMENTS = [
         "brand": "Simpson Strong-Tie",
         "product_family": "Mass Timber",
         "doc_type": "Technical_Data_Sheet",
-["PlaceMakers", "Bunnings"]
+        "retailers": ["PlaceMakers", "Bunnings"]
     },
     
     # ========== ITW BUILDEX (Roofing/Cladding Screws) ==========
