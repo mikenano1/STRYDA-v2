@@ -1,0 +1,24 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/NZSIP",
+  "processed_at": "2026-01-03T06:33:52.052901",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/NZSIP/NZ_SIP_Technical_Manual_Fasteners_Section.pdf",
+      "chunks": 109,
+      "tables": 19,
+      "diagrams": 17
+    }
+  ],
+  "total_chunks": 109,
+  "table_chunks": 19,
+  "text_chunks": 73,
+  "diagram_chunks": 17,
+  "stats": {
+    "pages_processed": 63,
+    "images_found": 51,
+    "images_captioned": 17,
+    "tables_extracted": 19,
+    "vision_errors": 0
+  }
+}

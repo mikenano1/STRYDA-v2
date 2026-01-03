@@ -1,0 +1,24 @@
+{
+  "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/NZ_Nails",
+  "processed_at": "2026-01-03T06:36:58.062454",
+  "vision_enabled": true,
+  "files_processed": [
+    {
+      "path": "/app/data/ingestion/F_Manufacturers/Fasteners/NZ_Nails/NZ_Nails_Building_Product_Information_Sheet.pdf",
+      "chunks": 5,
+      "tables": 0,
+      "diagrams": 0
+    }
+  ],
+  "total_chunks": 5,
+  "table_chunks": 0,
+  "text_chunks": 5,
+  "diagram_chunks": 0,
+  "stats": {
+    "pages_processed": 3,
+    "images_found": 0,
+    "images_captioned": 0,
+    "tables_extracted": 0,
+    "vision_errors": 0
+  }
+}

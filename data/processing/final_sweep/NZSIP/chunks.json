@@ -1,0 +1,1656 @@
+[
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p1_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 1,
+    "content": "NZSIP Smart Panel Construction System Version: 2.0 2021 Cromwell, Central Otago, New Zealand 0800 2 NZSIP / 0800 269 747 www.nzsip.co.nz",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 137
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p2_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 2,
+    "content": "Table of Contents RELATED DOCUMENTS 6 New Zealand Standards 6 Foreword 7 BACKGROUND INFORMATION 8 SCOPE, INTERPRETATION AND DEFINITIONS 9 The scope of use \u2013 Buildings up to 10 m height 9 Specifier 10 Installer 10 Interpretation 10 General 11 Workmanship 11 Tolerances 11 Co-Operation 12 Weather Exposure 12 Maintenance 12 Durability 13 Materials 13 Description 13 Standard Panel Types 14 Timber Grade and Quality 21 Timber Treatment 21 Polyurethane insulation 21 Formaldehyde 22 Strandboard 22 SOLITEX EXTASANA Wall Underlay 22 Air sealing tapes and fittings 22 Hardware and Sundry Items 23 Design 23 Design Procedure 23 General Design Rules 24 Building Geometry 24 Panel Geometry 24 Engineering 26 Steelwork 26 Detailing 26 Design Stage Checklists 26 Architect/Designer 26 Engineer 27",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 786
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p3_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 3,
+    "content": "Documentation Requirements 27 Site Requirements 28 Preparation 28 Storage & Handling 28 Concrete Separation 28 Panel Protection 28 Preparation 29 Installation 29 General Panel Installation 29 Panel Erection Sequence 29 Alignment 29 Joints 29 Flashing Tapes and Fittings 29 Air sealing tapes and fittings 30 Blower door testing 30 Faster, Safer & Better Construction 30 Safe Work Practices 30 Bracing Design 31 Bracing Criteria 31 Panel Bracing Values 31 Maximum Bracing Limits 31 Bracing Hold Down 31 Foundation & Subfloor Framing 32 Foundation and Subfloor Construction 32 Floors 32 Floor Construction 32 Timber Floors 32 Smart Panel Wall to Mid-Floor Connections 33 Joist Hangers 33 Beam Pocket 34 Fixings Required 34 Walls 36 General 36 Vertical Load Resistance 36 Horizontal Load Resistance 36 Bottom Plate Details 36 Concrete Floors Wall connection details 37 Timber Floors Wall Panel Connection details 37",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 912
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p4_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 4,
+    "content": "Smart Panel Wall Fixings 39 Smart wall junction Nail Fixings 39 Smart Wall Junction Nail Fixings (External) 39 Cam Locking Wall Junction Connections 40 Horizontal Smart wall Panel Connections 41 Smart Walls to Roof Junctions 43 Lintels 44 NZSIP Smart Panel Roof 45 Building Envelope \u2013 Walls & Roof Cladding 48 General 48 Exterior Wall Cladding 48 Roof Cladding Details 49 Interior Linings 49 Ceilings 49 Services 49 Electrical 49 Plumbing 49 Thermal Performance 50 Building code compliance 50 Compliance with the Passive House Standard and use in Passive House Planning Package (PHPP) software 50 R - Values 50 Moisture transport 51 Indoor air quality 51 Appendices 52 Appendix 1 Installation Manual 52",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 703
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p5_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 5,
+    "content": "RELATED DOCUMENTS New Zealand Standards \u25cf NZS 3601:1973 Metric dimensions for timber \u25cf NZS 3602:2003 Timber and Wood Based Products for Use in Building. \u25cf NZS 3603:1993 Timber Structures Standard. \u25cf NZS 3604:2011 Timber Framed Buildings. \u25cf NZS 3622:2004 Verification of timber properties \u25cf NZS 3631:1988 New Zealand timber grading rules \u25cf NZS 3640:2003 Chemical preservation of round and sawn timber \u25cf AS/NZS 1170:2002 Structural Design Actions. \u25cf NZS 4218:1996 Energy Efficiency \u2013 Housing and Small Building Envelope \u25cf DC13434-02-1 Report on Property Retention of NZSIP Smart Panel Building System after 90 days Natural Weather Exposure \u25cf ST13909-001-01 NZSIP Building Analysis Laminex Strandboard\u2122 Skins \u25cf Other test reports as applicable",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 741
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p6_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 6,
+    "content": "Foreword NZSIP Ltd manufacture, supply and install Structural Insulated Panels (SIPs) to form walls and roof structures for residential buildings in New Zealand. Typical NZSIP Smart Panels comprise of StrandBoard (SB) nominally 12mm thick foamed and bonded to a core of Polyurethane Insulation (PUR). Panels are nominally 1205mm wide with varying lengths and heights depending on the design location of the panel. Flexible roof and wall underlays must comply with NZBC Acceptable Solution E2/AS1 Table 23 or a breather-type membrane covered by a valid BRANZ Appraisal for use as a roof and wall underlays. Sealing tapes must be compatible with roof and wall underlays and SB substrate. Individual wall panels have a wall underlay vapour control layer adhered to the external face. The external wall envelope is clad over a drained cavity, the internal face is lined over a cavity to provide for electrical services. Roof Purlin Fixing. Roof purlins are 70mm x 45mm SG8 H1.2 and fixed using 8g x 75mm square drive stainless steel screws. The fixing spacing and purlin spacing can be selected for different wind zones using the relevant tables included in the technical literature in this document.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1197
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p6_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 6,
+    "content": "5mm square drive stainless steel screws. The fixing spacing and purlin spacing can be selected for different wind zones using the relevant tables included in the technical literature in this document. Joints between adjacent panels are taped and foamed with Gorilla Pro Expanding foam A simple to use cam lock system quickly pulls the Smart Panels together during the construction process, making for an easy, fast install and a strong bond between each panel, allowing you to create an airtight SIPs building envelope. The continuous PUR insulation ensures that thermal bridging is kept to a minimum. Once the windows are installed \u2013 the Smart walls, roof and or floors provide a structure that is weather resistant and vapour permeable. Service channels and structural timber can be installed in the panels when and where required as each Smart Panel is custom manufactured for the home. We are proud to be New Zealand\u2019s manufacturer of structural insulated panels.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 967
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p7_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 7,
+    "content": "BACKGROUND INFORMATION Innovation in the building industry over the last fifty years has focussed on improving the thermal performance of buildings, reducing building waste, using more lightweight materials and enabling faster methods of construction. First developed in the 1930\u2019s, Structural Insulated Panels (or SIPs) delivers all of these benefits and offers a real alternative to traditional timber framing. SIPs are a high-performance building system for low rise construction. They are manufactured under factory controlled conditions and can be fabricated to suit most building designs. The end result is a building system that is extremely strong, energy efficient and cost-effective Highly insulated and airtight, the Smart SIP Building System is an affordable, next- generation solution to building a comfortable, healthy, energy-efficient home.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 857
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p8_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 8,
+    "content": "SCOPE,INTERPRETATION AND DEFINITIONS The scope of use \u2013 Buildings up to 10 m height NZSIP Smart Panel up to NZS 3604 Extra High Wind Zone (Note site specific factors may require adjustments) The NZSIP Smart Panel Building System is suitable for single or multi-unit (detached) Risk Group SH housing which meets the scope of Clause 1.1.2 of NZS3604 with the following limitations: \u25cf detached housing 1m or more from the relevant boundary, and, \u25cf the ground floor construction platform must compromise of a concrete slab on ground constructed in accordance with NZS 3604, or a suspended timber framed floor supported on a concrete wall or piled foundation constructed in accordance with NZS 3604; and, \u25cf the first (upper) floor is a suspended timber floor constructed in accordance with NZS 3604; and, \u25cf the first-floor live load does not exceed 1.5 kPa; and, \u25cf roof construction comprising trusses and roof framing which meet the provisions of NZS 3604; and/or, \u25cf where the roof is constructed solely using NZSIP Smart Panel\u2019s supported on beams these are specific engineering design, SED, and, \u25cf situated in NZS 3604 Wind Zones, up to and including \u2018Extra High\u2019 or as evaluated by testing/assessment; and \u25cf in all NZS 3604 Earthquake Zones; and \u25cf with a NZS 3604 classified Light Roof of profiled metal roof cladding; and \u25cf roof and wall claddings must comply with NZBC E2/AS1 or a current BRANZ Appraised system; and, \u25cf with a roof pitch between 3\u00b0 and 30\u00b0.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1459
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p8_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 8,
+    "content": "3604 classified Light Roof of profiled metal roof cladding; and \u25cf roof and wall claddings must comply with NZBC E2/AS1 or a current BRANZ Appraised system; and, \u25cf with a roof pitch between 3\u00b0 and 30\u00b0. \u25cf refer to Figure 1.1 Flowchart for limitations and scope of NZS 3604. \u25cf the use of NZSIP Smart Panels in locations where they may be affected by high levels of moisture and/or heat, such as indoor pools, saunas and steam rooms, is not permitted. The scope of application of all designs and construction shall be within the limits set out in the November 2021 V2 technical manual and shall be within the requirements and the tables set out in this manual. Always check that you have the latest version of this manual. Updates or version number is available at www.nzsip.co.nz or email enquiries@nzsip.co.nz. Any changes in design or construction from the information contained herein must be confirmed in writing to an NZSIP representative or relevant engineer and signed off by an NZSIP representative and will be outside the scope of this technical manual. All action for",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1074
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p9_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 9,
+    "content": "remedial work to rectify problems with non-conforming panels/components must be notified and confirmed in writing NZSIP prior to action being carried out. Specifier If you are a specifier or other responsible party for a project, ensure that the information in this document is appropriate for the application you are planning and that you undertake specific design and detailing for areas which fall outside the scope of these specifications. Please note, NZSIP Smart Panels must be considered as one part of a wider strategy of improving energy efficiency in construction. Windows, foundation systems and ventilation strategy all play an important role in achieving energy efficiency. For this reason, we recommend the engagement of suitably qualified consultants to provide advice on how to best employ our product in your project. Please refer to our website for details. Installer If you are an installer ensure that you follow the NZSIP installation manual, design principles, moisture management, associated details and material selection provided by the designer. All the details in this document must be read in conjunction with the specifier\u2019s specification. As the installer, you must be a licensed building practitioner or have one supervising. Interpretation Interpretation shall be as detailed in NZS 3604:2011, clause 1.2. \u25cf Refer to Figure 1.2 Buildings covered by NZS3604. 1.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1393
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p9_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 9,
+    "content": "ust be a licensed building practitioner or have one supervising. Interpretation Interpretation shall be as detailed in NZS 3604:2011, clause 1.2. \u25cf Refer to Figure 1.2 Buildings covered by NZS3604. 1. General Supply and install Structural Insulated Panels (SIPs) to form the walls and roofs as identified and detailed on the drawings. All aspects of this work shall be in accordance",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 382
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p10_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 10,
+    "content": "with product manufacturers recommendations, and as shown on the drawings and the specification. 1.1 Workmanship Where required by the NZ Building Amendment Act 2012 it is the building contractors responsibility to ensure that all restricted building work is carried out by a Licensed Building Practitioner. All work shall be carried out to current best trade practise by experienced and competent tradesmen, familiar with the materials and installation techniques and as shown on the drawings. 1.2 Tolerances Floor platforms must be constructed such that they are the correct dimensions, flat, straight, parallel, square and set to the exact level. A guide to the recommended tolerances based on NZS 3604 Table 2.1 is given below: 1.3 Co-Operation Cooperate with other trades to ensure that all preliminary and preparatory works are completed to specification and as shown on the drawings prior to installation. Coordinate with other trades as required.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 954
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p11_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 11,
+    "content": "1.4 Weather Exposure The building envelope must be fully enclosed and weatherproof, with any timber framing exposed at or below the required moisture content, before membrane installation commences. Once the wall panels have been erected the roof panels should be put on as soon as possible, preferably with the purlins and roof underlay and roofing, alternatively tarpaulins to mitigate the SB getting wet. If there is a delay in putting the wall underlay up then an assessment of the SB should be made before applying it. Although there is a notional 90 day exposure for the SB this should be kept to the absolute minimum if possible and the SB kept dry before installing the underlay. 1.5 Maintenance NZSIP Smartpanels must be kept dry after close-in. The external envelope must be maintained to prevent ingress of water and internal water sources such as leaks must be repaired promptly. If damage due to prolonged wetting does occur, contact NZSIP Limited for guidance with repair or replacement methods. A document detailing the maintenance requirements should be placed in a suitable location in every SIP Smart panel house. To the homeowner/occupier. This house is constructed using the NZSIP Smart panel Building System. Like all houses it requires regular maintenance. Regular maintenance is required to meet the performance requirements of the New Zealand Building Code and will enhance the serviceable life of the building materials used.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1451
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p11_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 11,
+    "content": "equires regular maintenance. Regular maintenance is required to meet the performance requirements of the New Zealand Building Code and will enhance the serviceable life of the building materials used. Attention to the following is required: \u2022 Ensure adequate ventilation to wet areas is maintained. \u2022 Ensure internal linings, floor covering and finishing, including joints, openings and the perimeters are maintained to provide protection from internal moisture. Ensure that Smartpanel wall and ceiling surfaces are not exposed to sustained high humidity, liquid water or high temperatures. \u2022 Regularly inspect (at least yearly) the external cladding and roofing systems and repair any damage or deterioration to prevent water ingress. \u2022 Maintain minimum floor clearances: concrete floors \u2013 150mm to permanent paving \u2013 225mm to unprotected ground. Refer to the New Zealand Building Code Acceptable Solution E2/AS1. Contact NZSIP Limited, the suppliers of Smart Panel, for further detail.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 987
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p12_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 12,
+    "content": "TABLE DATA:\n|                    |                       | R Values   |            | Typical   |\n|:-------------------|:----------------------|:-----------|:-----------|:----------|\n| SmartPanel Size    | Components            |            |            |           |\n|                    |                       |            | Panel      | Panel     |\n|                    |                       | (centre\\   |            |           |\n|                    |                       |            | Dimensions | Weight/   |\n|                    |                       | panel)     |            |           |\n|                    |                       |            |            | sqm       |\n| 115mmSmart         | 12mm SB/90mm of High  | R value 4  | 1.2x3.6m   | 20kg      |\n| Wall Panels        | Density PUR           |            |            | (wall)    |\n|                    | foam core/12mm SB     |            |            |           |\n| 165mm Smart        | 12mm SB/140mm of High | R value 6  | 1.2x3.6m   | 22kg      |\n| Wall & Roof Panels | Density PUR foam      |            |            | (wall)    |\n|                    | core/12mm SB          |            |            | 25kg      |\n|                    |                       |            |            | (roof)    |\n| 215mm Smart Roof   | 12mm SB/190mm of High | R value 8  | 1.2x3.6m   | ~28kg     |\n| Panels             | Density PUR foam      |            |            | (roof)    |\n|                    | core/12mm SB          |            |            |           |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "",
+        "",
+        "R Values",
+        "",
+        "Typical"
+      ],
+      "row_count": 9,
+      "col_count": 5
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p12_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 12,
+    "content": "1.6 Durability Durability is covered in the New Zealand Building code (NZBC) in section B2 \u2013 Durability and Section E2 \u2013 External moisture. NZSIP Smart Panels are designed to meet these NZBC conditions, with Smart Panel Panel material consistency and specifications being checked in the factory according to the Manufacturing Quality Manual which is maintained by the Factory management team. Providing that panels are then constructed according to the supplied panel plan and under conditions and requirements defined in NZSIP Ltd Installation Manual, Smart Panels will function for a specified intended life of not less than 50 years. An acceptable solution to the building code is referenced in B2/AS1 where the New Zealand standards NZS3604 and NZS3602 specify the level of treatment and the application respectively. Alternative solutions may be accepted by Territorial Authorities if the solution meets the durability requirements of the Building Code. *For further information please refer to our durability statement a copy of which can be emailed to you upon request. 2.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1080
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p12_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 12,
+    "content": "orities if the solution meets the durability requirements of the Building Code. *For further information please refer to our durability statement a copy of which can be emailed to you upon request. 2. Materials 2.1 Description Typical R Values Panel Panel SmartPanel Size Components (centre\\ Dimensions Weight/ panel) sqm 12mm SB/90mm of High 20kg 115mmSmart Density PUR R value 4 1.2x3.6m (wall) Wall Panels foam core/12mm SB 22kg (wall) 165mm Smart 12mm SB/140mm of High R value 6 1.2x3.6m 25kg Wall & Roof Panels Density PUR foam (roof) core/12mm SB 12mm SB/190mm of High 215mm Smart Roof ~28kg Density PUR foam R value 8 1.2x3.6m Panels (roof) core/12mm SB *R values shown allow for time dependent effects. To determine the installed (i.e. construction) R-value, assume a value of 4% timber in the PUR layer to account for typical thermal bridging.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 852
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p13_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 13,
+    "content": "2.2 Standard Panel Types Wall Panel: 115mm thick with camlocks on both sides (Denoted with \u2018M\u2019 & \u2018F\u2019)",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 102
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p14_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 14,
+    "content": "DIAGRAM DESCRIPTION:\nThe image provides details of two types of footer panels used in construction, specifically structural insulated panels (SIPs):\n\n1. **Components Shown**:\n   - **Footer Panels**: Two types are depicted:\n     - **165mm thick** panel with compound splines.\n     - **115mm thick** panel with solid splines.\n\n2. **Key Measurements**:\n   - Thickness of the footer panels is specified: 165mm and 115mm.\n\n3. **Assembly Order**:\n   - While the specific installation sequence is not directly illustrated, it is implied that the panels would be installed on a base or foundation, ensuring interlocking with splines for structural integrity.\n\n4. **Critical Details**:\n   - **Spline Types**: The difference in spline types (compound vs. solid) may suggest variations in compatibility and assembly methods, possibly influencing structural performance.\n   - Given the lack of visible gaps or overlaps in the diagram, specific minimum clearances are not indicated but are generally important in actual installation to ensure proper fit and performance.\n\nThis summary conveys the essential technical details relevant to the installation of the footer panels shown.\n\nPage context: Footer Panel: 165mm thick with compound splines Footer Panel: 115mm thick with solid splines",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 1147
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p15_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 15,
+    "content": "Header Panel: 115mm thick with solid splines. Bottom chord thickness can be adjusted to suit span requirements. Header Panel: 165mm thick with compound splines. Bottom chord thickness can be adjusted to suit span requirements.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 227
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p16_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 16,
+    "content": "Solid Lintel Panel: 115mm thick. Beam depth/grade can be adjusted to suit span requirements. Compound Lintel Panel: 165mm thick. Beam depth/grade can be adjusted to suit span requirements.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 189
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p17_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 17,
+    "content": "DIAGRAM DESCRIPTION:\n1. **Components Shown**: \n   - Gable panels (115mm and 165mm thick)\n   - Solid splines (for the 115mm panel)\n   - Compound splines (for the 165mm panel)\n\n2. **Key Measurements or Spacings**: \n   - Panel thickness: 115mm and 165mm\n\n3. **Assembly Order or Installation Sequence**: \n   - Not specifically indicated, but typically involves securing the splines between gable panels and ensuring alignment.\n\n4. **Critical Details**: \n   - Overlaps or connections between splines and panels are not specified, but ensuring a tight fit to prevent gaps is essential. Minimum clearances are not indicated in the provided context. \n\nThis description captures the technical components involved in the gable panel installation as described in the manual.\n\nPage context: Gable Panel: 115mm thick with solid splines. Gable Panel: 165mm thick with compound splines.",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 742
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p19_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 19,
+    "content": "2.3 Timber Grade and Quality Unless otherwise noted or specified on the drawings or specification, all framing timber shall be minimum structural grade SG8 Radiata pine in accordance with NZS 3622. Panels are manufactured with embedded framing at locations as required by the building specific engineering design (SED). The timber framing is LVL, treated to meet the requirements of H1.2 and with a stress grade dependent on location and SED. Embedded framing is used as supports for load bearing elements at openings such as windows and doors. Header panels and solid lintel panels are used at openings. Bottom plates are sized to suit the wall panel size and are solid timber SG8 or LVL8, treated H1.2. For 115mm Smart walls bottom plate is 90 x 45mm. For 165mm Smart walls bottom plate is 140mm x 45mm. Bottom plate may include a H3.1 treated plywood strip to raise the wall SB edges off the floor. For details refer to the Technical Literature. Framing timber shall be seasoned or kiln dried, and be straight and true and free from wind, warp and distortion, and in lengths suitable for the members required, and shall",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1123
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p20_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 20,
+    "content": "have a moisture content of between 12% and 18% before installation. Do not use damaged, faulty or defective materials. 2.4 Timber Treatment All non-durable timber framing shall be appropriately treated against moisture and/or insect decay by treatment plants with recognised quality assurance systems that are administered by the Timber Preservation Council (NZTPC). Treatment of timber and wood-based building products shall be to the requirements of NZS 3602 as an absolute minimum, and all treated timber shall be identified and marked as required. Carefully manage treated framing during installation to avoid accidental use of timber with a lower performance or durability treatment than that required or specified. 2.5 Polyurethane insulation Injection formed during panel fabrication. The PUR core is low VOC, zero Ozone depletion potential and low Global Warming Potential (GWP). Structural insulated panels are one of the most environmentally responsible building systems available. A SIP building envelope provides: \u25cf higher levels of insulation \u25cf greater reduction of thermal bridging \u25cf is extremely airtight \u25cf allows for better control over indoor air quality \u25cf reduces construction waste, and helps save natural resources. Life cycle analysis has shown that SIP homes have a tremendous positive environmental impact by reducing energy use and greenhouse gas emissions throughout the home\u2019s life cycle.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1415
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p20_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 20,
+    "content": "ve natural resources. Life cycle analysis has shown that SIP homes have a tremendous positive environmental impact by reducing energy use and greenhouse gas emissions throughout the home\u2019s life cycle. Rigid Closed Cell PolyUrethane Foam (PUR) foam insulation is thermoset into each of our custom built Smart Panels. When cured it becomes chemically inert & will not outgas any harmful chemicals; there is also no formaldehyde in PUR foam. The HFC blowing agent that helps to generate the closed cell bubbles in the foam has Low Global Warming Potential (GWP) and Zero Ozone Depletion Potential (ODP) - The Thermal Conductivity of the PUR foam (allowing for time dependent effects) is - 0.023 W/mK-1. Polyurethane foam insulation, due to its non sagging, water- phobic and adhesive qualities it will perform at optimal levels for the foreseeable life of the building",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 865
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p21_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 21,
+    "content": "2.6 Formaldehyde Strandboard\u00ae complies with the E0 category of AS/NZS 1859.1:2017 when tested to AS/NZS 4266.16. During construction and after close-in formaldehyde emission levels can be best controlled by room ventilation and sealing or covering the surface facing the habitable space. 2.7 Strand Board (SB) Strandboard\u00ae is a versatile reconstituted wood panel manufactured entirely from renewable plantation pine timber. It is designed specifically for a range of building and furniture & joinery applications. Strandboard\u00ae is identified by its characteristic wood strand surface. The resin used has been developed to resist the effects of moisture in areas of high humidity and reduce the emission of formaldehyde. Timber shall be straight and true and free from wind, warp and distortion, and shall have a moisture content of between 12% and 18% before installation. Do not use damaged, faulty or defective materials. 2.8 Wall Underlay Flexible roof and wall underlays must comply with NZBC acceptable solution E2/AS1 Table 23 or breather-type membranes covered by a valid BRANZ Appraisal for use as roof or wall underlays. The NZSIP Smart Panel Building System will contribute to the cladding system compliance with NZBC Clause E2.3.2. Sealing tapes must be compatible with roof and wall underlays and SB substrate. 2.9 Joints & Penetrations The Smart Panel system delivers superior airtightness and durability over traditional timber frame construction.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1461
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p21_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 21,
+    "content": "be compatible with roof and wall underlays and SB substrate. 2.9 Joints & Penetrations The Smart Panel system delivers superior airtightness and durability over traditional timber frame construction. A key component of this system is the sealing of all internal panel joints and penetrations with compatible air sealing products.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 330
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p22_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 22,
+    "content": "TABLE DATA:\n| Table 2.1                       |                         |\n|:--------------------------------|:------------------------|\n| Smart Panel Thickness           | Screw                   |\n| 115mm Smart Panels - square     |                         |\n| connection                      | 160mm x 8mm SPAX Screw  |\n| corner, internal wall or gable  |                         |\n| 165mm Smart Panels - square     |                         |\n| connection                      |                         |\n|                                 | 220mm x 8mm SPAX Screw  |\n| corner, internal wall, gable or |                         |\n| square roof beam                |                         |\n| 165mm Smart Panels - angled     |                         |\n| connection (30\u00b0 max pitch)      | 280mm x 10mm SPAX Screw |\n| eave or angled roof beam        |                         |\n| 215mm Smart Panels - angled     |                         |\n| connection (30\u00b0 max pitch)      | 320mm x 10mm SPAX Screw |\n| eave or angled roof beam        |                         |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Table 2.1",
+        ""
+      ],
+      "row_count": 15,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p22_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 22,
+    "content": "Air sealing tapes, adhesives and pipe and cable sealing grommets are to be installed to the inside face of structural insulated wall and roof panels at all joint and penetration locations. 2.10 Hardware and Sundry Items The following items are used to assemble the structure \u00b7 Adhesive tapes / Foam \u00b7 Anchors or hold down bolts \u00b7 SG8 45 mm x 45 mm H3.1 Timber cavity battens \u00b7 Cavity Batten fixings (see table for fixing centres) 75mm x 3.25 annular groove stainless steel nails o 65mm x 2.8mm ring shank power driven Paslode nails o 8g x 65mm square drive Fortress stainless steel screws o \u00b7 Roof purlin fixings Fortress 8g x 75 mm square drive stainless steel screws \u00b7 SPAX Delta Seal Washer Head screws (see table below for correct sizing) Table 2.1 Smart Panel Thickness Screw 115mm Smart Panels - square connection 160mm x 8mm SPAX Screw corner, internal wall or gable 165mm Smart Panels - square connection 220mm x 8mm SPAX Screw corner, internal wall, gable or square roof beam 165mm Smart Panels - angled connection (30\u00b0 max pitch) 280mm x 10mm SPAX Screw eave or angled roof beam 215mm Smart Panels - angled connection (30\u00b0 max pitch) 320mm x 10mm SPAX Screw eave or angled roof beam",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1193
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p23_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 23,
+    "content": "3. Design Design Procedure When designing a NZSIP Smart Panel structure, the following process is recommended: \u2022 Draw the floor layout plan as desired within the scope of the particular District Scheme. \u2022 Choose the roof and wall cladding systems to be used \u2022 Choose the level of insulation required for the site location. \u2022 Design the foundations and the building platform in accordance with NZS 3604, NZS 4229. \u2022 Determine the bracing requirements from NZS 3604:2011 and calculate the bracing values of the panels (refer to the relevant Section (Bracing) of this manual). \u2022 Design the roof construction and/or trusses to comply with the truss designer\u2019s requirements and NZS 3604:2011. General Design Rules Building Geometry Gable, Monopitch and lean-to roof forms are the most straightforward geometry for designing with SIPs. These forms can be combined to provide more design options whilst maintaining simplicity.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 920
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p24_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 24,
+    "content": "More complex roof forms such as hips, valleys, dormers and flat roofs will require careful consideration and detailing and should be discussed first with NZSIP. If roof overhangs are required, these should be formed using purlins and/or outriggers as per NZS3604 10.2.1.15 or SED Panel Geometry While panels are 100% customisable, the best panel production efficiency is achieved by considering stock panel sizes; namely the 1200 x 3600mm module. Roof spans longer than 3600mm should be reduced by employing additional lines of support in the form of beams or load bearing walls.Roof panels can be joined in the factory to create a longer span however this falls under SED At the other end of the scale, minimum panel sizes should be considered. When setting out openings, ensure there is sufficient space to form lintels above windows.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 837
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p25_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 25,
+    "content": "Structural considerations around lintels sizes/grades will normally determine minimum dimensions in these areas. Also ensure there is sufficient space to form panels between windows and between windows and corners/other obstructions. Normally we recommend at least 300mm. If less space is required, please note that the supplied panels may be solid timber, or we may recommend a supporting timber post is installed onsite. Engineering To resolve all structural requirements for a project, engage an engineer as soon as possible in the design process. When it is practical and cost effective, structural components (such as timber beam pockets and posts) can be included in the panel manufacture. Steelwork We recommend that any steel structure (beams, columns or portals) be located to the interior of the building, as opposed to inline, or in the same plane as the panels. This eliminates any potential thermal bridging and condensation issues and ensures construction sequence flows smoothly. If steelwork within the panels is being considered, discuss with NZSIP prior to inclusion in documentation. Detailing Please refer to the standard details during the design process and when assembling documentation for construction. The standard details represent best practice and ensure that your project will achieve all the benefits of speed of assembly and thermal performance.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1378
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p25_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 25,
+    "content": "nd when assembling documentation for construction. The standard details represent best practice and ensure that your project will achieve all the benefits of speed of assembly and thermal performance. A downloadable version of our standard details can be accessed via our website www.nzsip.co.nz *If non standard construction or detailing is proposed, please discuss this with NZSIP prior to inclusion in documentation. Design Stage Checklists Architect/Designer Sufficient space to form lintels above windows \u2751 Sufficient space to form panels between windows and between windows and \u2751 corners/other obstructions Max roof panel length \u2751 Max wall panel height \u2751",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 660
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p26_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 26,
+    "content": "Check standard panel construction. If non standard construction is proposed, \u2751 please discuss this NZSIP prior to inclusion in documentation. Check standard details. If non standard connections are proposed, please discuss \u2751 these NZSIP prior to inclusion in documentation. If steelwork within the panels is proposed, please discuss with NZSIP prior to \u2751 inclusion in documentation. Engineer Max roof panel length \u2751 Max wall panel height (Design additional support if over height) \u2751 Check standard panel construction. If non standard construction is proposed, \u2751 please discuss this with NZSIP prior to inclusion in documentation. Check standard details. If non standard connections are proposed, please discuss \u2751 these with NZSIP prior to inclusion in documentation. If steelwork within the panels is proposed, please discuss with NZSIP prior to \u2751 inclusion in documentation. Lintel sizes and grades \u2751 Roofing/Cladding fixings \u2751 Wall panel wind & axial load \u2751 Roof panel span and cantilever \u2751 Bracing \u2751 For inclusion in Producer statement scope of work Lintel sizes and grades \u2751 Roofing/Cladding fixings \u2751 Wall panel wind & axial load \u2751 Roof panel span and cantilever \u2751 Bracing \u2751 Documentation Requirements Architectural and Engineering drawings and models are the key inputs into creating the panel documentation for the Smart Panels. Proper planning requires the location of all panel joints and structural components to be identified and correctly located on the plans.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1473
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p26_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 26,
+    "content": "uts into creating the panel documentation for the Smart Panels. Proper planning requires the location of all panel joints and structural components to be identified and correctly located on the plans. This planning and review process ensures that panels delivered to site match your design intent and satisfy engineering requirements. It is therefore very important that the person signing off on the drawings is experienced with shop drawings and comfortable with the review process. The panel plan and shop drawings can be produced efficiently if all the relevant information is submitted to NZSIP. This includes, but is not limited to the following:",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 652
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p27_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 27,
+    "content": "\u25cf Foundation plans including details and dimensions \u25cf Detailed Floor plans and dimensions \u25cf Dimensioned Sections \u25cf Elevations with floor to floor dimensions \u25cf Window & Door schedules with clear indication of structural opening sizes (opening required in the panels) including lintel and sill heights. \u25cf Structural Engineering Design and calculations \u25cf Clear indication of any situations where the NZSIP Standard methodology and/or details have not been employed The above inputs will ensure that approved shop drawings contain all the correct elements prior to manufacture commencing. Documentation should be provided in the following format: A set of all consent documentation in PDF format. Preferably a 3D RVT or IFC format file or 2D DWG plans, sections and elevations, 3D PANEL PLANS and SHOP DRAWINGS are available from NZSIP. 4. Site Requirements 4.1 Preparation 4.1.1 Storage & Handling Check SIPs upon delivery and reject sub-standard or damaged material. Store panels dry under cover, fillet stacked and well clear of the ground, and protect from damage, moisture, and contamination. Ensure all appropriate personal protection equipment is worn at all times when handling. 4.1.2 Concrete Separation Confirm whether there is or could possibly be a requirement to separate SIPs with an approved continuous damp proof course when in direct contact with concrete or masonry. Ensure that the DPC material is compatible with the timber treatment.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1451
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p27_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 27,
+    "content": "y be a requirement to separate SIPs with an approved continuous damp proof course when in direct contact with concrete or masonry. Ensure that the DPC material is compatible with the timber treatment. 4.1.3 Panel Protection Protect panels as required during installation against damage and moisture, and against significant variation of moisture content until ready for lining. Avoid ponding of water around floor plates.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 421
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p28_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 28,
+    "content": "4.1.4 Preparation Cooperate with other trades to ensure that all preliminary and preparatory works are completed to specification and as shown on the drawings. Coordinate with other trades to install products as required. All installation work shall be carried out by experienced and competent installers, familiar with the specified products and installation techniques, in accordance with the manufacturer\u2019s installation requirements and as shown on the drawings. Store products undercover on a flat dry surface off the floor. Keep dry and out of direct sunlight and protect from damage at all times. Handle products in accordance with the manufacturers requirements. The building envelope must be fully enclosed and weatherproof, with timber framing at or below the required moisture content, before membrane installation commences. Check that the framing construction is complete with all necessary insulation, plumbing, wiring and ducting services installed and complete, ready for pro clima installation. Check framing for fixings, splinters and other unnecessary protrusions likely to cause punctures. 5. Installation 5.1 General Panel Installation Please refer to the install manual at the end of this document. Downloadable version is available via our website www.nzsip.co.nz 5.2 Panel Erection Sequence Please refer to the panel plan drawings provided in your site pack.All panels are clearly numbered. Refer to our install manual which you will also find in the site pack.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1485
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p28_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 28,
+    "content": "z 5.2 Panel Erection Sequence Please refer to the panel plan drawings provided in your site pack.All panels are clearly numbered. Refer to our install manual which you will also find in the site pack. 5.3 Alignment Please refer to the install manual. 5.4 Flashing Tapes and Fittings Flexible roof and wall underlays must comply with NZBC acceptable solution E2/AS1 Table 23 or breather -type membranes covered by a valid BRANZ Appraisal for use as roof or wall underlays. The Smart Panel system will contribute to the cladding system compliance with NZBC Clause E2.3.2. Sealing tapes must be compatible with roof and wall underlays and SB substrate.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 649
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p29_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 29,
+    "content": "5.5 Joints & Penetrations The Smart Panel system delivers superior airtightness and durability over traditional timber frame construction. A key component of this system is the sealing of all internal panel joints and penetrations with compatible air sealing products. Air sealing tapes, adhesives and pipe and cable sealing grommets are to be installed to the inside face of structural insulated wall and roof panels at all joint and penetration locations. All aspects of this work shall be in accordance with the standard details and manufacturers instructions. Walls panels \u25cf Panel joints - all junctions between wall panels, headers, footers & gables, \u25cf corner junctions - all internal and external corners \u25cf floor junctions - ensure coverage of packing under bottom plate and seal to concrete for concrete slab floors \u25cf window and door openings \u25cf service penetrations - ensure all penetrations are completed at the pre lining stage Roof panels \u25cf Panel joints - all junction between roof panels \u25cf Ridge & beam junctions - ensure full coverage of beams, including joint between built up members and pocket to wall panels. \u25cf Gable and eave junctions - ensure coverage of timber wedge at eave. \u25cf Roof light openings \u25cf service penetrations - ensure all penetrations are completed at the pre lining stage 5.6 Blower door testing As a check on the quality of construction, we recommend blower door testing at the pre-lining stage.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1429
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p29_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 29,
+    "content": "enetrations - ensure all penetrations are completed at the pre lining stage 5.6 Blower door testing As a check on the quality of construction, we recommend blower door testing at the pre-lining stage. Blower door testing is performed using a special fan and frame that fits within an external door frame, The building is then pressurized and unpressurized with the airflow results logged against the building\u2019s volume. Results are typically presented as the number of air changes (the total internal volume) per hour @ 50 pa. We recommend a Target air infiltration (air leakage) rate of less than 1.5 ach-1 @50Pa. Refer also to sections on internal moisture and thermal performance.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 682
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p30_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 30,
+    "content": "TABLE DATA:\n| Wall Panel size   | Earthquake bracing   | Wind bracing units   |\n|:------------------|:---------------------|:---------------------|\n|                   | units                |                      |\n| 1200mm x 3000mm   | 137 (114 BU/m)       | 123 (102 BU/m)       |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Wall Panel size",
+        "Earthquake bracing",
+        "Wind bracing units"
+      ],
+      "row_count": 2,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p30_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 30,
+    "content": "5.7 Faster, Safer & Better Construction \u25cf As Smart Panels are custom built in our New Zealand factory using specialist software, accuracy and tolerances are far superior than traditional construction. \u25cf The modular nature of the prefabricated panels means building to the weathertight stage is up to 60% quicker than traditional construction \u25cf Once weathertight, the Smart Panel system allows for quicker turnaround of the various trades involved during the build process \u2013 allowing for quicker construction and project delivery. \u25cf No onsite cutting is required by the builder for the panels \u2013 creating lower site safety risk and a cleaner, safer workplace. 5.8 Safe Work Practices NZSIP is committed to Safe Working practices. Construction sites can contain multiple hazards and it is essential that installers follow all legal requirements when working on site. Please refer to the OSH regulations for all relevant legislation. The Smart Panel instal manual outlines specific handling and installation of panels and recommends tools and accessories. 6. Bracing Design 6.1 Bracing Criteria Bracing unit requirements for wind and earthquake are determined by using the design criteria from Section 5 of NZS 3604:2011. The bracing resistance of the building may be calculated by adding the bracing unit values of each panel type. All full height panels, without large openings, and a min. length of 1.2m, may be used as bracing elements.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1437
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p30_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 30,
+    "content": "ance of the building may be calculated by adding the bracing unit values of each panel type. All full height panels, without large openings, and a min. length of 1.2m, may be used as bracing elements. 6.2 Panel Fastening See Section 10 Smart Panel Wall Fixings 6.3 Panel Bracing Values Wall Panel size Earthquake bracing Wind bracing units units 1200mm x 3000mm 137 (114 BU/m) 123 (102 BU/m)",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 391
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p31_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 31,
+    "content": "TABLE DATA:\n| CONCRETE FLOORS   |\n|:------------------|\n| Hold Down:        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "CONCRETE FLOORS"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p31_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 31,
+    "content": "6.4 Maximum Bracing Limits Please contact NZSIP for guidance 6.5 Bracing Hold Down Bottom Plate fixing: Hold down bolt with 50x50x3mm washer to be fitted within 50mm of strap & 100mm to end of bracing element. Brace Strap to bottom connection: 6kN hold down strap (25 x 0.9mm*) located as per bracing plan. 5 x 14 gauge Type 17 35mm long screws into each side of structural insulated panel 50mm from edge of element. *strap length to suit 240mm minimum length up face of panel CONCRETE FLOORS Hold Down: 7. Foundation & Subfloor Framing 7.1 Foundation and Subfloor Construction The foundation and subfloor construction as given in: \u2022 NZS 3604: 2011 (timber & concrete) \u2022 NZS 4229 (concrete masonry and timber floors) \u2022 By specific design in accordance with NZBC B1/VM1",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 769
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p31_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 31,
+    "content": "DIAGRAM DESCRIPTION:\n### Technical Description of Construction Detail\n\n1. **Components Shown:**\n   - **Bracing System:** Includes bracing straps and a bottom plate.\n   - **Hold Down Fixings:** Hold down bolts with washers for securing the structure.\n   - **Structural Insulated Panels (SIPs):** Indicated as part of the overall framing and bracing assembly.\n   - **Concrete Floors:** The base for the framing system.\n\n2. **Key Measurements or Spacings:**\n   - **Hold Down Bolt Position:** Must be installed within 50mm of the bracing strap.\n   - **End of Bracing:** Hold down bolt should be 100mm away from the end of the bracing.\n   - **Washer Size:** 50x50x3mm washers specified for the hold down bolts.\n   - **Bracing Connection Gauge:** 16mm diameter for the bracing type connections.\n\n3. **Assembly Order or Installation Sequence:**\n   - Begin with securing the bottom plate to the concrete floor.\n   - Install the hold down bolts with the specified washers.\n   - Attach the bracing straps to the bottom plate and ensure proper spacing relative to the hold down bolts.\n\n4. **Critical Details:**\n   - **Overlap Requirements:** Not explicitly mentioned, but spacing between elements must adhere to specified distances for stability.\n   - **Minimum Clearances:** Hold down bolts require specific distances from the bracing strap and the end of the bracing to ensure structural integrity\n\nPage context: 6.4 Maximum Bracing Limits Please contact NZSIP for guidance 6.5 Bracing Hold Down Bottom Plate fixing: Hold down bolt with 50x50x3mm washer to be fitted within 50mm of strap & 100mm to end of bracing",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 1,
+      "caption_length": 1367
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p32_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 32,
+    "content": "8. Floors 8.1 Floor Construction Floor platforms or lower floor construction shall be specifically designed or constructed in accordance with NZS 3604:2011. 8.2 Timber Floors Load bearing and non load bearing wall panels shall be supported by joists and bearers in accordance with the requirements of NZS 3604:2011. 9. Walls 9.1 Smart Panel Wall to Mid-Floor Connections Floors may be face fixed to Smart wall panels with joist hangers or be supported by Smart wall systems with beam pockets and support posts. See details below: 9.1.1 Joist Hangers MiTek Lumberlok joist hangers to be selected to suit beam width and depth. Fixings required to each flange as per table below.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 677
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p33_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 33,
+    "content": "TABLE DATA:\n| Characteristic Load - Screws   |                                 |      |\n|:-------------------------------|:--------------------------------|:-----|\n| Joist Hanger                   | No. Of screws                   | Down |\n| Type                           | per flange                      |      |\n| JH 47 x 90                     | 1                               | 3kN  |\n| JH 47 x 120                    | 2                               | 6kN  |\n| JH 47 x 190                    | 3                               | 9kN  |\n| JH 95 x 165                    | 3                               | 9kN  |\n| JH 70 x 180                    | 3                               | 9kN  |\n|                                | Fix with Type 17-12g x 35mm Hex |      |\n|                                | head screws                     |      |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Characteristic Load - Screws",
+        "",
+        ""
+      ],
+      "row_count": 8,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p33_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 33,
+    "content": "Characteristic Load - Screws Joist Hanger No. Of screws Down Type per flange JH 47 x 90 1 3kN JH 47 x 120 2 6kN JH 47 x 190 3 9kN JH 95 x 165 3 9kN JH 70 x 180 3 9kN Fix with Type 17-12g x 35mm Hex head screws ** IMPORTANT NOTE ** DO NOT overdrive screws as any damage to SB face will affect load capacities listed in the above table. 9.2 Beam Pocket Smart Wall system can incorporate designed beam pockets that have structural supporting post/studs manufactured into the wall panel. Engineer to design beam and hold down fixings selected based on SED",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 552
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p33_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 33,
+    "content": "DIAGRAM DESCRIPTION:\nThe provided image appears to be a technical diagram related to construction detailing for a beam pocket and screw installation. Here's a concise analysis based on the characteristics mentioned:\n\n1. **Components Shown**:\n   - **Joists**: Various types specified (e.g., JH 47 x 90, JH 47 x 120, etc.) indicating sizes and load capacities.\n   - **Joist Hangers**: Types corresponding to respective joists, indicating structural connections.\n   - **Screws**: Type 17-12g x 35mm Hex head screws for securing joist hangers.\n\n2. **Key Measurements or Spacings**:\n   - Joist hangers listed with dimensions such as 47 x 90 mm, 47 x 120 mm, and others indicating the width and height of the hangers.\n   - Load capacities are provided (3kN, 6kN, 9kN) dependent on the joist hanger type.\n\n3. **Assembly Order or Installation Sequence**:\n   - Secure joist hangers to the framing first.\n   - Insert the specified number of screws per flange as indicated for each joist hanger type (1 or 2 screws per flange).\n   - Ensure that screws are not overdriven to avoid damage.\n\n4. **Critical Details**:\n   - Notable instruction against overdriving screws as it could impact structural integrity.\n   - Ensure proper alignment and fitment of joist\n\nPage context: Characteristic Load - Screws Joist Hanger No. Of screws Down Type per flange JH 47 x 90 1 3kN JH 47 x 120 2 6kN JH 47 x 190 3 9kN JH 95 x 165 3 9kN JH 70 x 180 3 9kN Fix with Type 17-12g x 35mm Hex he",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 1,
+      "caption_length": 1224
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p34_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 34,
+    "content": "9.3 Lintels Are incorporated into our Smart Panels Lintel types a) Lintel supporting roof only b) Lintel supporting roof, wall and floor c) Lintel supporting floor only d) Lintel supporting roof and wall e) Lintel supporting wall and floor Lintels can be designed using NZS 3604:2011 and/or LVL manufactures span tables during the design stage. Sizes will need to be confirmed by structural engineer. 10. General NZSIP Smart Panel walls are manufactured with a nominal density. Batch testing is carried out at the factory for every project to ensure consistency is met. 10.1 Vertical Load Resistance Please contact NZSIP 10.2 Horizontal Load Resistance Please contact NZSIP 10.3 Bottom Plate Details Before Smart Wall system can be installed bottom plates and appropriate packing are required to be fixed into place. All bolts are at suitable lengths to secure plates with packing selected. Where bolts and washers are used for bottom plate, these need to be recessed into the bottom plate to ensure the Smart Wall panel will sit onto bottom plate. Please refer to relevant standard details on bottom plate dimensions. 10.4 Concrete Floors Wall connection details Packing to underside of bottom plate is required, options of packing material can be determined by designer from the below: A) Timber packing 115mm(W)x45mm; H1.2 treated continuous plate; B) Plywood Packing 115mm(W)x18mm continuous H3.1 CD plywood.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1413
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p35_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 35,
+    "content": "Bottom plate of 88mm x 45mm (for 115mm thick wall), H1.2 treated SG8 timber bottom plate, on Plywood or timber packing and DPC to concrete slab. All bottom plate fixings to comply with NZS3604. 10.5 Timber Floors Wall Panel Connection Bottom plate of 88mm x 45mm (for 115mm thick wall), H1.2 treated SG8 timber bottom plate. Fixings for bottom plate to timber floor frames as per NZS3604. All fixings to be flush with the bottom plate.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 436
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p35_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 35,
+    "content": "DIAGRAM DESCRIPTION:\n### Construction Detail Analysis\n\n1. **Components Shown:**\n   - **Bottom Plate:** 88mm x 45mm, H1.2 treated SG8 timber.\n   - **Packing:** Plywood or timber, used for leveling and support.\n   - **DPC (Damp Proof Course):** Placed between the bottom plate and concrete slab.\n   - **Fixings:** M12 bolts with 50x50x5 washers, securing the panels to the bottom plate.\n\n2. **Key Measurements or Spacings:**\n   - **Bottom Plate Dimensions:** 88mm width x 45mm height.\n   - **Wall Thickness:** 115mm.\n   - **Fixing Size:** M12 bolts with washers of 50x50mm.\n\n3. **Assembly Order or Installation Sequence:**\n   - Position the DPC on the concrete slab.\n   - Place the timber packing or plywood on the DPC.\n   - Position the H1.2 treated SG8 timber bottom plate on the packing.\n   - Secure the wall panels to the bottom plate using the specified fixings.\n\n4. **Critical Details:**\n   - Ensure that the DPC is properly aligned to prevent moisture ingress.\n   - The bottom plate should be flush with the packing to maintain alignment with the wall panels.\n   - Compliance with NZS3604 for all fixings is critical to ensure structural integrity and performance.\n\nPage context: Bottom plate of 88mm x 45mm (for 115mm thick wall), H1.2 treated SG8 timber bottom plate, on Plywood or timber packing and DPC to concrete slab. All bottom plate fixings to comply with NZS3604. 10.5 T",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 1,
+      "caption_length": 1148
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p36_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 36,
+    "content": "DIAGRAM DESCRIPTION:\n1. **Components Shown**:\n   - SIP Wall Panel (Structural Insulated Panel)\n   - 86x44mm H1.2 Bottom Plate (fixing element)\n   - Timber Flooring (finished surface)\n\n2. **Key Measurements/Spacings**:\n   - Bottom Plate: 86x44mm\n   - SIP Panel Edge: 12mm allowance from the edge defined for SB sheathing\n\n3. **Assembly Order**:\n   - The installation sequence suggests that the SIP Wall Panel is positioned on the Bottom Plate, which is then fixed down prior to flooring installation.\n\n4. **Critical Details**:\n   - Ensure a 12mm gap at the edge of the SIP Panel for SB sheathing.\n   - Fixings must meet NZS 360 standards.\n   - Details on overlaps or minimum clearances are not specified in the provided details.\n\nPage context: ",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 1,
+      "caption_length": 706
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p37_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 37,
+    "content": "Allow for 12mm to edge of flooring for Smart wall panel when placing bottom plates to concrete or timber flooring. 11. Smart Panel Wall Fixings All Panels require nail fixings both internally, and externally for all junction to timber plates. This Includes top plates, bottom plates and spline connections to lintels headers and footers. Cam-Locking Smart wall panels do not require nailing at cam locked joint. 11.1 Smart Wall Junction Nail Fixings",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 450
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p37_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 37,
+    "content": "DIAGRAM DESCRIPTION:\n1. **Components Shown**: The diagram features smart wall panels, bottom plates, and nail fixings. It indicates connections to both concrete and timber flooring, as well as assembly elements like top plates and junction fixes.\n\n2. **Key Measurements/Spacings**: A crucial measurement mentioned is the allowance of 12mm from the edge of the flooring to the smart wall panel when placing bottom plates.\n\n3. **Assembly Order/Installation Sequence**: The installation sequence suggests starting with the placement of bottom plates on the flooring, followed by the installation of smart wall panels, and securing them with nail fixings. \n\n4. **Critical Details**: The document emphasizes proper overlap and connection for junctions between panels and plates. It highlights that required nail fixings should be applied internally and externally at all junction points, ensuring that panels do not require nailing at cam-locked joints.\n\nPage context: Allow for 12mm to edge of flooring for Smart wall panel when placing bottom plates to concrete or timber flooring. 11. Smart Panel Wall Fixings All Panels require nail fixings both internally, and ext",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 1,
+      "caption_length": 927
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p38_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 38,
+    "content": "Top, bottom and Side plates to be fixed with 50mm D head ring shank nails at 100mm Cts. Fixings to start at 50mm from edge of SB sheathing 11.2 Smart Wall Junction Nail Fixings (External) SPAX screws to connect SIP to SIP external Corner. Length of screw fixing as per table 2.1.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 280
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p38_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 38,
+    "content": "DIAGRAM DESCRIPTION:\nThe diagram presents a construction detail for the installation of Smart Wall Junction Nail Fixings, showcasing the following components and details:\n\n1. **Components Shown:**\n   - **Top and Bottom Plates:** Essential framing components providing structural support.\n   - **Side Plates:** Vertical framing members attached to the top and bottom plates.\n   - **SB Sheathing (Structural Board Sheathing):** A structural panel that provides stability and insulation.\n   - **Fixings:** 50mm D head ring shank nails and SPAX screws for securing the framing and sheathing.\n\n2. **Key Measurements/Spacings:**\n   - **Fixing Spacing:** 50mm from the edge of SB sheathing, with the ring shank nails fixed at 100mm centres (Cts).\n   - **Length of SPAX Screws:** According to specified details in Table 2.1.\n\n3. **Assembly Order/Installation Sequence:**\n   - Begin by securing the bottom plate to the foundation or floor structure.\n   - Install the side plates vertically against the bottom plate, ensuring correct alignment.\n   - Secure the top plate to the upper ends of the side plates.\n   - Fix the SB sheathing to the frame, using specified nails at required intervals.\n\n4. **Critical Details:**\n   - **Fixing Edge Distance:** Ensure that the fixings begin at a minimum of 50mm from the edge of the SB sheathing to maintain structural integrity and avoid edge splitting.\n  \n\nPage context: Top, bottom and Side plates to be fixed with 50mm D head ring shank nails at 100mm Cts. Fixings to start at 50mm from edge of SB sheathing 11.2 Smart Wall Junction Nail Fixings (External) SPAX screws ",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 1,
+      "caption_length": 1366
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p39_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 39,
+    "content": "DIAGRAM DESCRIPTION:\n1. **Components Shown**: The diagram illustrates a structural insulated panel (SIP) assembly, including the following components:\n   - Structural Insulated Panels (SIPs) with an exterior OSB (Oriented Strand Board) facing.\n   - Adhesive tape for sealing joints.\n   - SIP screws for connection at corners.\n   - Bottom plate and top plate for structural integrity.\n\n2. **Key Measurements or Spacings**: The diagram indicates a minimum gap or clearance of 50 mm for the construction detail.\n\n3. **Assembly Order or Installation Sequence**: \n   - Firstly, install the bottom plate and top plate.\n   - Apply SIP screws to connect the panels at the corners, as referenced in the manual.\n   - Seal all joints with airtightness adhesive tape.\n\n4. **Critical Details**: \n   - Ensure all joints are sealed to maintain airtightness.\n   - Minimum clearance of 50 mm is noted, which is critical for structural integrity and moisture control.\n   - The presence of ring-shanked nails for securing the bottom plate and joining plate indicates additional fastening requirements. \n\nOverall, the detail emphasizes the importance of proper assembly and sealing for efficient thermal performance and structural stability.\n\nPage context: ",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 1,
+      "caption_length": 1200
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p40_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 40,
+    "content": "11.3 Cam Locking Wall Junction Connections Smart Wall panels that contain Cam-Locking mechanism will not require any further nailing on this joint line. All top and bottom plate connections on a Cam-Locking panel will require nailing as per above. Standard cam lock wall connection",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 282
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p41_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 41,
+    "content": "TABLE DATA:\n| Allowable Spans (m) for 165mm Thick NZSIP Roof Panels   |            |                |            |\n|:--------------------------------------------------------|:-----------|:---------------|:-----------|\n| 1.0 kPa Snow Load                                       |            |                |            |\n|                                                         |            | Max Roof Pitch |            |\n|                                                         | Wind Zone  |                |            |\n|                                                         |            | 25 degrees     | 45 degrees |\n| Light                                                   | Low        | 2.95           | 3.35       |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.95           | 3.35       |\n|                                                         | High       | 2.95           | 3.35       |\n|                                                         | Very High  | 2.95           | 3.35       |\n|                                                         | Extra High | 2.95           | 3.35       |\n| Heavy                                                   | Low        | 2.7            | 3.05       |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.7            | 3.05       |\n|                                                         | High       | 2.7            | 3.05       |\n|                                                         | Very High  | 2.7            | 3.05       |\n|                                                         | Extra High | 2.7            | 3.05       |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Spans (m) for 165mm Thick NZSIP Roof Panels",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 14,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p41_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 41,
+    "content": "12. Smart Panel Wall to Roof Junctions 12.1 NZSIP Smart Panel Roof Smart Walls are manufactured with a void to top side of panel for top plate continuous timber to be inserted on site. Where Smart Roof is applied to a Smart Wall system a \u201crake plate\u201d to be provided to support panel pitch to the wall system. Smart Roof support fixing is required at 200mm crs for all supporting structure Nailing of all panel splines still required Roof Ridge; Ridge beam supporting SIP panels require SPAX screw fixings at 200crs with screw embedment at 45mm into beam. Packing to ridge beam to support Smart roof may be required as shown in standard detail SIP511. Roof Mid Support: Roof support beams are required to be fixed with 2x SPAX screws through panel with 45mm embedment into supporting beam as shown in standard details SIP 525/526. Allowable Spans (m) for 165mm Thick NZSIP Roof Panels 1.0 kPa Snow Load Max Roof Pitch Wind Zone 25 degrees 45 degrees Low 2.95 3.35 Medium 2.95 3.35 Light Roof High 2.95 3.35 Cladding Very High 2.95 3.35 Extra High 2.95 3.35 Low 2.7 3.05 Medium 2.7 3.05 Heavy Roof High 2.7 3.05 Cladding Very High 2.7 3.05 Extra High 2.7 3.05",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1158
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p42_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 42,
+    "content": "TABLE DATA:\n| Allowable Spans (m) for 165mm Thick NZSIP Roof Panels   |            |                |            |\n|:--------------------------------------------------------|:-----------|:---------------|:-----------|\n| 1.5 kPa Snow Load                                       |            |                |            |\n|                                                         |            | Max Roof Pitch |            |\n|                                                         | Wind Zone  |                |            |\n|                                                         |            | 25 degrees     | 45 degrees |\n| Light                                                   | Low        | 2.7            | 3.1        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.7            | 3.1        |\n|                                                         | High       | 2.7            | 3.1        |\n|                                                         | Very High  | 2.7            | 3.1        |\n|                                                         | Extra High | 2.7            | 3.1        |\n| Heavy                                                   | Low        | 2.5            | 2.9        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.5            | 2.9        |\n|                                                         | High       | 2.5            | 2.9        |\n|                                                         | Very High  | 2.5            | 2.9        |\n|                                                         | Extra High | 2.5            | 2.9        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Spans (m) for 165mm Thick NZSIP Roof Panels",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 14,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p42_table1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 42,
+    "content": "TABLE DATA:\n| Allowable Spans (m) for 165mm Thick NZSIP Roof Panels   |            |                |            |\n|:--------------------------------------------------------|:-----------|:---------------|:-----------|\n| 2.0 kPa Snow Load                                       |            |                |            |\n|                                                         |            | Max Roof Pitch |            |\n|                                                         | Wind Zone  |                |            |\n|                                                         |            | 25 degrees     | 45 degrees |\n| Light                                                   | Low        | 2.5            | 2.9        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.5            | 2.9        |\n|                                                         | High       | 2.5            | 2.9        |\n|                                                         | Very High  | 2.5            | 2.9        |\n|                                                         | Extra High | 2.5            | 2.9        |\n| Heavy                                                   | Low        | 2.35           | 2.7        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.35           | 2.7        |\n|                                                         | High       | 2.35           | 2.7        |\n|                                                         | Very High  | 2.35           | 2.7        |\n|                                                         | Extra High | 2.35           | 2.7        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Spans (m) for 165mm Thick NZSIP Roof Panels",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 14,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p42_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 42,
+    "content": "Allowable Spans (m) for 165mm Thick NZSIP Roof Panels 1.5 kPa Snow Load Max Roof Pitch Wind Zone 25 degrees 45 degrees Low 2.7 3.1 Medium 2.7 3.1 Light Roof High 2.7 3.1 Cladding Very High 2.7 3.1 Extra High 2.7 3.1 Low 2.5 2.9 Medium 2.5 2.9 Heavy Roof High 2.5 2.9 Cladding Very High 2.5 2.9 Extra High 2.5 2.9 Allowable Spans (m) for 165mm Thick NZSIP Roof Panels 2.0 kPa Snow Load Max Roof Pitch Wind Zone 25 degrees 45 degrees Low 2.5 2.9 Medium 2.5 2.9 Light Roof High 2.5 2.9 Cladding Very High 2.5 2.9 Extra High 2.5 2.9 Low 2.35 2.7 Medium 2.35 2.7 Heavy Roof High 2.35 2.7 Cladding Very High 2.35 2.7 Extra High 2.35 2.7",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 631
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p43_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 43,
+    "content": "TABLE DATA:\n| Allowable Spans (m) for 215mm Thick NZSIP Roof Panels   |            |                |            |\n|:--------------------------------------------------------|:-----------|:---------------|:-----------|\n| 1.0 kPa Snow Load                                       |            |                |            |\n|                                                         |            | Max Roof Pitch |            |\n|                                                         | Wind Zone  |                |            |\n|                                                         |            | 25 degrees     | 45 degrees |\n| Light                                                   | Low        | 3.3            | 3.6*       |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 3.3            | 3.6*       |\n|                                                         | High       | 3.3            | 3.6*       |\n|                                                         | Very High  | 3.3            | 3.6*       |\n|                                                         | Extra High | 3.3            | 3.6*       |\n| Heavy                                                   | Low        | 3.05           | 3.4        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 3.05           | 3.4        |\n|                                                         | High       | 3.05           | 3.4        |\n|                                                         | Very High  | 3.05           | 3.4        |\n|                                                         | Extra High | 3.05           | 3.4        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Spans (m) for 215mm Thick NZSIP Roof Panels",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 14,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p43_table1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 43,
+    "content": "TABLE DATA:\n| Allowable Spans (m) for 215mm Thick NZSIP Roof Panels   |            |                |            |\n|:--------------------------------------------------------|:-----------|:---------------|:-----------|\n| 1.5kPa Snow Load                                        |            |                |            |\n|                                                         |            | Max Roof Pitch |            |\n|                                                         | Wind Zone  |                |            |\n|                                                         |            | 25 degrees     | 45 degrees |\n| Light                                                   | Low        | 3.0            | 3.5        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 3.0            | 3.5        |\n|                                                         | High       | 3.0            | 3.5        |\n|                                                         | Very High  | 3.0            | 3.5        |\n|                                                         | Extra High | 3.0            | 3.5        |\n| Heavy                                                   | Low        | 2.8            | 3.2        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.8            | 3.2        |\n|                                                         | High       | 2.8            | 3.2        |\n|                                                         | Very High  | 2.8            | 3.2        |\n|                                                         | Extra High | 2.8            | 3.2        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Spans (m) for 215mm Thick NZSIP Roof Panels",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 14,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p43_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 43,
+    "content": "Allowable Spans (m) for 215mm Thick NZSIP Roof Panels 1.0 kPa Snow Load Max Roof Pitch Wind Zone 25 degrees 45 degrees Low 3.3 3.6* Medium 3.3 3.6* Light Roof High 3.3 3.6* Cladding Very High 3.3 3.6* Extra High 3.3 3.6* Low 3.05 3.4 Medium 3.05 3.4 Heavy Roof High 3.05 3.4 Cladding Very High 3.05 3.4 Extra High 3.05 3.4 Allowable Spans (m) for 215mm Thick NZSIP Roof Panels 1.5kPa Snow Load Max Roof Pitch Wind Zone 25 degrees 45 degrees Low 3.0 3.5 Medium 3.0 3.5 Light Roof High 3.0 3.5 Cladding Very High 3.0 3.5 Extra High 3.0 3.5 Low 2.8 3.2 Medium 2.8 3.2 Heavy Roof High 2.8 3.2 Cladding Very High 2.8 3.2 Extra High 2.8 3.2",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 635
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p44_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 44,
+    "content": "TABLE DATA:\n| Allowable Spans (m) for 215mm Thick NZSIP Roof Panels   |            |                |            |\n|:--------------------------------------------------------|:-----------|:---------------|:-----------|\n| 2.0 kPa Snow Load                                       |            |                |            |\n|                                                         |            | Max Roof Pitch |            |\n|                                                         | Wind Zone  |                |            |\n|                                                         |            | 25 degrees     | 45 degrees |\n| Light                                                   | Low        | 2.8            | 3.25       |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.8            | 3.25       |\n|                                                         | High       | 2.8            | 3.25       |\n|                                                         | Very High  | 2.8            | 3.25       |\n|                                                         | Extra High | 2.8            | 3.25       |\n| Heavy                                                   | Low        | 2.7            | 3.1        |\n| Roof                                                    |            |                |            |\n| Cladding                                                |            |                |            |\n|                                                         | Medium     | 2.7            | 3.1        |\n|                                                         | High       | 2.7            | 3.1        |\n|                                                         | Very High  | 2.7            | 3.1        |\n|                                                         | Extra High | 2.7            | 3.1        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Spans (m) for 215mm Thick NZSIP Roof Panels",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 14,
+      "col_count": 4
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p44_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 44,
+    "content": "Allowable Spans (m) for 215mm Thick NZSIP Roof Panels 2.0 kPa Snow Load Max Roof Pitch Wind Zone 25 degrees 45 degrees Low 2.8 3.25 Medium 2.8 3.25 Light Roof High 2.8 3.25 Cladding Very High 2.8 3.25 Extra High 2.8 3.25 Low 2.7 3.1 Medium 2.7 3.1 Heavy Roof High 2.7 3.1 Cladding Very High 2.7 3.1 Extra High 2.7 3.1 12.2 Truss Roof Connections between roof trusses and NZSIP are SED. Please discuss connections with your engineer and truss manufacturer and confirm with NZSIP. 13. Building Envelope \u2013 Walls & Roof Cladding 13.1 General Ensure specification for all products used for cladding meet with the manufacturers specification. Please contact NZSIP if you are unsure on compatibility. 13.2 Exterior Wall Cladding Cavity batten spacing to be determined by cladding type, see fixing table",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 796
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p45_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 45,
+    "content": "TABLE DATA:\n| 75mm x 3.25 annular grooved stainless nails   |         |                |\n|:----------------------------------------------|:--------|:---------------|\n| Batten Spacing                                | Fixing  | Allowable      |\n|                                               | Spacing | Wind Zone      |\n| (mm)                                          |         |                |\n|                                               | (mm)    | (from NZS3603) |\n| 600                                           | 150     | Extra High     |\n| 600                                           | 200     | Very High      |\n| 600                                           | 300     | Medium         |\n| 450                                           | 200     | Extra High     |\n| 450                                           | 300     | High           |\n| 400                                           | 200     | Extra High     |\n| 400                                           | 300     | Very High      |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "75mm x 3.25 annular grooved stainless nails",
+        "",
+        ""
+      ],
+      "row_count": 11,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p45_table1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 45,
+    "content": "TABLE DATA:\n| 65mm x 2.8mm ring shank Paslode nails   |         |                |\n|:----------------------------------------|:--------|:---------------|\n| Batten Spacing                          | Fixing  | Allowable      |\n|                                         | Spacing | Wind Zone      |\n| (mm)                                    |         |                |\n|                                         | (mm)    | (from NZS3603) |\n| 600                                     | 100     | Very High      |\n| 600                                     | 150     | High           |\n| 600                                     | 200     | Medium         |\n| 600                                     | 250     | Low            |\n| 450                                     | 150     | Very High      |\n| 450                                     | 200     | High           |\n| 450                                     | 300     | Low            |\n| 400                                     | 150     | Very High      |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "65mm x 2.8mm ring shank Paslode nails",
+        "",
+        ""
+      ],
+      "row_count": 12,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p45_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 45,
+    "content": "13.3 Cavity Batten Fixing The selection of fixing, fixing spacing and cavity batten spacing can be selected for different wind zones using Tables 1, 2 and 3 and in the technical literature. Table 1 75mm x 3.25 annular grooved stainless nails Batten Spacing Fixing Allowable Spacing Wind Zone (mm) (mm) (from NZS3603) 600 150 Extra High 600 200 Very High 600 300 Medium 450 200 Extra High 450 300 High 400 200 Extra High 400 300 Very High Table 2 65mm x 2.8mm ring shank Paslode nails Batten Spacing Fixing Allowable Spacing Wind Zone (mm) (mm) (from NZS3603) 600 100 Very High 600 150 High 600 200 Medium 600 250 Low 450 150 Very High 450 200 High 450 300 Low 400 150 Very High",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 678
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p46_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 46,
+    "content": "TABLE DATA:\n|   400 |   200 | High   |\n|------:|------:|:-------|\n|   400 |   300 | Medium |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "400",
+        "200",
+        "High"
+      ],
+      "row_count": 1,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p46_table1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 46,
+    "content": "TABLE DATA:\n| 8g x 65mm Fortress CSK square drive stainless   |         |                |\n|:------------------------------------------------|:--------|:---------------|\n| steel screws                                    |         |                |\n| Batten Spacing                                  | Fixing  | Allowable      |\n|                                                 | Spacing | Wind Zone      |\n| (mm)                                            |         |                |\n|                                                 | (mm)    | (from NZS3603) |\n| 600                                             | 150     | Extra High     |\n| 600                                             | 200     | Extra High     |\n| 600                                             | 300     | Extra High     |\n| 600                                             | 400     | Very High      |\n| 450                                             | 200     | Extra High     |\n| 450                                             | 300     | Extra High     |\n| 450                                             | 400     | Extra High     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "8g x 65mm Fortress CSK square drive stainless",
+        "",
+        ""
+      ],
+      "row_count": 12,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p46_table2",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 46,
+    "content": "TABLE DATA:\n| Allowable Wind Zones For Roof (Kl = 2 or less)   |     |     |     |     |     |\n|:-------------------------------------------------|:----|:----|:----|:----|:----|\n| Purlin Spacing Fastener Spacing (mm)             |     |     |     |     |     |\n| (mm)                                             | 100 | 200 | 250 | 300 | 400 |\n| 500                                              | EH  | EH  | EH  | VH  | H   |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Wind Zones For Roof (Kl = 2 or less)",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 3,
+      "col_count": 6
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p46_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 46,
+    "content": "400 200 High 400 300 Medium Table 3 8g x 65mm Fortress CSK square drive stainless steel screws Batten Spacing Fixing Allowable Spacing Wind Zone (mm) (mm) (from NZS3603) 600 150 Extra High 600 200 Extra High 600 300 Extra High 600 400 Very High 450 200 Extra High 450 300 Extra High 450 400 Extra High 13.4 Roof Cladding Details This document covers NZS 3604 classified Light Roof of profiled metal roof cladding. Please contact NZSIP if considering using roof claddings outside of this scope. 13.5 Purlin Spacing Roof Purlin Fixing. Roof purlins are 75mm x 45mm SG8 H1.2 and fixed using Fortress 8g x 75mm CSK square drive stainless steel screws. The fixing spacing and purlin spacing can be selected for different wind zones using Tables 4 and 5 and in the technical literature. Table 4 Allowable Wind Zones For Roof (Kl = 2 or less) Purlin Spacing Fastener Spacing (mm) (mm) 100 200 250 300 400 500 EH EH EH VH H",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 916
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p47_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 47,
+    "content": "TABLE DATA:\n|   600 | EH   | EH   | VH   | VH   | M   |\n|------:|:-----|:-----|:-----|:-----|:----|\n|   650 | EH   | EH   | VH   | H    | M   |\n|   800 | EH   | VH   | H    | M    | M   |\n|   900 | EH   | VH   | H    | M    | M   |\n|  1000 | EH   | H    | M    | M    | M   |\n|  1005 | EH   | H    | M    | M    | M   |\n|  1150 | EH   | H    | M    | L    | -   |\n|  1200 | EH   | M    | M    | L    | -   |\n|  1400 | EH   | M    | L    | L    | -   |\n|  1800 | VH   | L    | -    | -    | -   |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "600",
+        "EH",
+        "EH",
+        "VH",
+        "VH",
+        "M"
+      ],
+      "row_count": 9,
+      "col_count": 6
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p47_table1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 47,
+    "content": "TABLE DATA:\n| Allowable Wind Zones For Roof (Kl = 3)*   |     |     |     |     |     |\n|:------------------------------------------|:----|:----|:----|:----|:----|\n| Purlin Spacing Fastener Spacing (mm)      |     |     |     |     |     |\n| (mm)                                      | 100 | 200 | 250 | 300 | 400 |\n| 500                                       | EH  | EH  | H   | H   | M   |\n| 600                                       | EH  | VH  | H   | M   | L   |\n| 650                                       | EH  | H   | M   | M   | L   |\n| 800                                       | EH  | H   | M   | L   | -   |\n| 900                                       | EH  | M   | M   | L   | -   |\n| 1000                                      | EH  | M   | L   | L   | -   |\n| 1050                                      | VH  | M   | L   | -   | -   |\n| 1150                                      | VH  | L   | L   | -   | -   |\n| 1200                                      | VH  | L   | L   | -   | -   |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Allowable Wind Zones For Roof (Kl = 3)*",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 11,
+      "col_count": 6
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p47_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 47,
+    "content": "600 EH EH VH VH M 650 EH EH VH H M 800 EH VH H M M 900 EH VH H M M 1000 EH H M M M 1005 EH H M M M 1150 EH H M L - 1200 EH M M L - 1400 EH M L L - 1800 VH L - - - Table 5 Allowable Wind Zones For Roof (Kl = 3)* Purlin Spacing Fastener Spacing (mm) (mm) 100 200 250 300 400 500 EH EH H H M 600 EH VH H M L 650 EH H M M L 800 EH H M L - 900 EH M M L - 1000 EH M L L - 1050 VH M L - - 1150 VH L L - - 1200 VH L L - -",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 414
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p48_table0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 48,
+    "content": "TABLE DATA:\n|   1400 | H   | L   | -   | -   | -   |\n|-------:|:----|:----|:----|:----|:----|\n|   1800 | M   | -   | -   | -   | -   |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "1400",
+        "H",
+        "L",
+        "-",
+        "-",
+        "-"
+      ],
+      "row_count": 1,
+      "col_count": 6
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p48_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 48,
+    "content": "1400 H L - - - 1800 M - - - - *These zones apply for roof slopes less than 10\u00b0 within 2.4 m of a roof corner and for buildings no wide or longer than 12 m. 14. Interior Linings Plasterboard can be direct fixed to walls. If direct fixed consideration to services must be given as the cavity has been removed. 14.1 Ceilings Please refer to GIB site guide 15. Services Do not modify the panels to accommodate services in any way other than as described in this manual and the standard details. 15.1 Electrical Electrical services are to be located within the internal lining cavity. Small Penetrations to connect to electrical services to the exterior of the building are permitted provided they are installed as per the standard details. 15.2 Plumbing Plumbing services are to be located within the internal lining cavity. Small Penetrations to connect to plumbing services to the exterior of the building are permitted provided they are installed as per the standard details. 16. Thermal Performance High density polyurethane is one of the best performing forms of insulation for a given unit of thickness. When combined with the low levels of thermal bridging possible with structural insulated panels, the result is superior than most construction systems.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1258
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p49_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 49,
+    "content": "16.1 Building code For housing and small buildings, compliance with New Zealand Building Code Clause H1 Energy Efficiency, in via the acceptable solution is NZS 4218. When using NZS 4218 to determine compliance, please refer to Installed R-values listed in this section 16.2 Compliance with the Passive House Standard and use in Passive House Planning Package (PHPP) software Smart Panels have been utilized in a number of Certified Passive House projects and are an excellent method of achieving the stringent performance requirements of the standard. For input of panels into PHPP, please contact NZSIP. 16.3 R - Values Thermal performance of individual components Timber framing Thermal conductivity = 0.13 W/(mK) Strand board Thermal conductivity = 0.13 W/(mK) Polyurethane foam Thermal conductivity = 0.023* W/(mK) *allowing for time dependent effects 17. Air Quality Internal Moisture The NZSIP Smart Panel building system will create an airtight, energy efficient building envelope. Due to the inherent airtightness of the NZSIP Smart Panel Building System, it is necessary for the designer to manage adequate air changes and suitable moisture control management to maximise energy savings, occupant comfort and building durability.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1240
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p50_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 50,
+    "content": "When constructed in accordance with this Appraisal the NZSIP Smart Panel Building System will assist with the system\u2019s compliance with NZBC Clause E3.3.1. The NZSIP Smart Panel Building System will contribute to meeting the requirements of NZBC Acceptable Solution E3/AS1, Paragraph 1.1.1 (a) when the building design includes for an adequate combination of thermal resistance, ventilation and space temperature to all habitable spaces, bathrooms, laundries and other spaces where moisture may be generated or may accumulate. Ventilation must meet the performance requirements of NZBC Clause G4.3.1. Floors, walls and roofs complying with the Schedule Method for Compliance with Clause H1.3.2 (E) will have adequate thermal resistance to comply with NZBC Acceptable Solution E3/AS1. Wet areas are spaces where sanitary fixtures and sanitary appliances are located such as bathrooms, toilets, laundries and kitchens. There are two general categories of wet areas as follows: Water Splash \u2013 These are areas subject to intermittent splashing of water such as around baths, vanities, tubs and sinks. Shower Areas \u2013 These are areas subject to frequent and heavy water splash such as enclosed showers, unenclosed shower zones and showers over baths. Both the above wet area categories must be finished with surfaces and joints that are impervious and easily cleaned. In addition, shower areas must be waterproofed.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1409
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p50_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 50,
+    "content": "hower zones and showers over baths. Both the above wet area categories must be finished with surfaces and joints that are impervious and easily cleaned. In addition, shower areas must be waterproofed. This can be achieved using proprietary rigid shower lining systems, flexible vinyl shower wall finish, or tiling. Tiled shower areas must include a wet area waterproofing membrane system under the tiles. 17.1 Ventilation The typical NZSIP Smart Panel construction creates an airtight, energy efficient building envelope. Due to the inherent airtightness of the NZSIP Smart Panel Building System some permanent ventilation, not reliant on window openings, must be provided in wet areas, such as bathrooms and laundries. The Technical Literature contains details for how this may be achieved. Vented windows, wall or ceiling mounted extract fans, or similar fittings are recommended in all building wet areas. Extract fans for moisture laden air must be vented externally. Due to the airtight performance of the NZSIP type construction, the use of mechanical ventilation is required. It is recommended that the minimum design ventilation rate of 0.35ach but no less than 7.5l/s person. (ASHRAE 62-1999) Natural ventilation must also be provided with the minimum area of openable window as 5% of the floor area in each room.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1322
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p51_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 51,
+    "content": "NZSIP Smart Building System: Builders Installation Manual \ufffd smart building system V4: Sept 2021 Easy 10 step guide to building with NZSIP Smart Panels. Please read before you start construction",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 194
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p52_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 52,
+    "content": "2 3 4 5 6 7 8 9 10 Step 1: Equipment, tool list and fixings Builder supplied equipment and responsibilities NZSIP Smart Panels components supplied to site Staff \u25a1 - Pre-ordered Smart wall, roof and floor panels in weatherproof packs 2-3 installation staff -one LBP certified builder & 1 or 2 support staff. -Allen key x 2 for Cam locks and 2 Adapters for Panel Screws Tools -Fixing screws -Top plate timber runs (includes roof raking angles - if SIP roof \u25a1- Impact driver and/or drills for fixing supplied \u25a1- Two levels - long & short for straightening walls -Lintels supplied as per the panel plan \u25a1- Work safe ladders & movable scaffolding unit -Air and weather tightness tapes -Building Membrane for wall panels Accessories -Lifting eyes if SIP roof supplied \u25a1- Bracing timber \u25a1- PUR Spray foam and foam gun Generally the panels will be delivered to site by flat bed truck and \u25a1 - Ring Shank Nails trailer or Hi-Ab for a standard sized home. We recommend Tele handler \u25a1 - Screws for temporary fixing for un\u00adloading of panel packs. NZSIP Smart Roof panels can be delivered to site at a later date to the KeyTasks Smart Walls if required with associated (please note extra handling and transport fees may apply). \u25a1- Review all plans and details as per the construction issue of engineers drawings, architects drawings and NZSIP panel plan.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1341
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p52_c1",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 52,
+    "content": "ith associated (please note extra handling and transport fees may apply). \u25a1- Review all plans and details as per the construction issue of engineers drawings, architects drawings and NZSIP panel plan. Pay particular *Please refer to your NZSIP drawings and note any additional timber attention to engineers drawings for bottom plate fixing centres marked in Red is NOT supplied by NZSIP and needs to be sourced from \u25a1- your local timber merchant. Ensure bottom plate is installed as per engineers drawings before the panels arrive. Bottom plates must be signed off prior to panel installation. \u25a1- Book Tele-handler or Hi-Ab for for install of large headers & roof panels if required. \u00a7!!!,\ufffdrt Easy 10stepguideto building with NZSIPSmart Panels. \ufffd Page1",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 752
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p53_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 53,
+    "content": "3 4 5 6 7 8 9 10 Step 2: Site setup *Long distance shipments out of the Central Otago region Smart Building system arrive on weatherproof clear (!) will likley be sent on truck and trailer units. Please organise wrapped pallets. a site telehandler for most time efficent devanning of NZSIP Smart Panel pallets. \u00ae You will need a clear space for panel delivery as close to the site as possible. Panels will be delivered by hi-ab or truck and trailer units with telehandler . \u00ae Panels must be stored in an area that is not susceptible to flooding and off the ground. @ Site stored panels must be kept dry and covered at all times until ready for use. ROOF PACKS ' @\ufffd \ufffd Tarpcoverforonsitestorage \u00a7!!!,\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 2",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 768
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p54_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 54,
+    "content": "2 4 5 6 7 8 9 10 Step 3: Bottom plate set up Precast or chemset hold down bolts into the concrete foundation perimeter or affix to pile floor system as per engineer and archi\u00ad Double bottom plates are common tects drawings. Please note fixings into pile floor system may with insulated concrete foundations differ - refer to engineers specification. *Please refer to your drawings for correct Chamfer (take the square edge off) bottom plate install detailing. to help the wall panel slide on. \u00ae Layout timber bottom plates to ensure correct fixing positions. Drill holes for bolts. Fix provided plate lengths as per the bottom plate plan drawings. We recommend using bottom plate timber 115mm that is less susceptible to swelling. Smart Wall \u00ae Ensure the bottom plate stays as dry as possible to avoid swell\u00ad Double ing for an easier fit of Smart Wall Panel. bottom plate Make sure the foundation is clear of debris & dust that could Insulated slab @ affect air tight bond of the base plate with the foundation Building control officer or engineer to inspect installed \u00ae bottom plate prior to Smart Panel install. Engineer -or\u00ad Consent Officer Bottom plate sign off Bottom plate timber to be provided and installed by builder Bottom plate/ wall join tapes are provided by NZSIP \u00a7!!!\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 3",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1352
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p54_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 54,
+    "content": "DIAGRAM DESCRIPTION:\n### Construction Detail Analysis\n\n1. **Components Shown:**\n   - **Double Bottom Plates:** These are specified for load-bearing.\n   - **Hold Down Bolts:** Precast or chemset bolts for securing to the foundation.\n   - **Concrete Foundation:** Indicating the base structure.\n   - **Timber Control Layer:** For ensuring alignment and structural integrity.\n   - **Insulated Data/Layer:** Suggests thermal efficiency considerations.\n   - **Engineered Details:** Referencing engineering and architectural compliance.\n\n2. **Key Measurements or Spacings:**\n   - **115mm Cladding Setback:** A critical measurement ensuring proper orientation and alignment.\n   - **Spacing for bolts and double bottom plates:** Specific distances are implied but not detailed in this excerpt.\n\n3. **Assembly Order:**\n   - **Step 1:** Secure bottom plates to the foundation using specified bolts.\n   - **Step 2:** Ensure all components (timber/plates) are flush and conform to engineering requirements.\n   - **Step 3:** Conduct inspections from the building control officer for compliance.\n\n4. **Critical Details:**\n   - **Overlap:** No overlaps are directly mentioned, but the connection between layers should be continuous for structural integrity.\n   - **Gaps:** Any undue gaps could indicate improper assembly, which should be minimized.\n   - **Minimum Clearances:** Not specifically stated, but implied clearances for structural and thermal performance should be adhered to per relevant standards.\n\nThis description incorporates\n\nPage context: 2 4 5 6 7 8 9 10 Step 3: Bottom plate set up Precast or chemset hold down bolts into the concrete foundation perimeter or affix to pile floor system as per engineer and archi\u00ad Double bottom plates are",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 1504
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p55_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 55,
+    "content": "2 3 5 6 7 8 9 10 Step 4: Smart Wall set up Layout Smart Wall panels and window footers as per Supplied Panel Plan the supplied panel plan around the perimeter of the pad. \u00ae Start on Corner 1 and work in the prescribed direction. Stand up the two Smart Wall corner panels onto the bottom plate. Once plumb and level temporary screw fix to bottom plate then brace as per diagram. W3 C6 *Start at corner and work way round. Check for expansion panels \u00ae *Number bottom plate for ease of placement H2 C2 \u00a7!!!,\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 4",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 574
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p56_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 56,
+    "content": "2 3 4 6 7 8 9 10 Step 5: Construction of walls With your foam gun spray a line of foam on both panels (!) joins and the base plate. Lift the Smart Wall panel into position and slide as close \u00ae to the adjoining panel as possible. If the panel proves difficult to install onto the bottom plate check the gaug\u00ad ing of the bottom plate and opening size of wall panel. \u00ae Tighten the Smart Wall panel with the cam locks, starting at the top.Temporarily fix internal and external face of the wall panel to the base plate at each end. Temporary plastic wrap top plate to protect from rain \u2022\u2022\u2022 \u00ae Bottom plate needs to be a maximum of 88mm wide Screw Spacing There is a 3mm tolerance built into the panel plans 100mm -so tight fit is not always necessary k1 Temporary , \"..._. Screws Internal & external tape are the primary airtightness tool 50mm \u00a7!!!,\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 5",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 913
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p56_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 56,
+    "content": "DIAGRAM DESCRIPTION:\nBased on the description provided:\n\n1. **Components Shown:**\n   - **Smart Wall Panels:** The main structural elements being assembled.\n   - **Base Plate:** Provides the foundation for the wall panels.\n   - **Temporary Plates:** Used to support the panels during assembly.\n   - **Cam Lock Mechanism:** Indicates how panels are joined together.\n\n2. **Key Measurements or Spacings:**\n   - **Base Plate Width:** Needs to be a minimum of 88 mm.\n   - **Dimensional Tolerance:** Reference to a 10 mm tolerance for the panels.\n\n3. **Assembly Order or Installation Sequence:**\n   - Apply foam along both panel joins and the base plate.\n   - Lift the Smart Wall panel into position.\n   - Engage the cam lock mechanism to secure the panels.\n\n4. **Critical Details:**\n   - **Tightening of the Cam Lock:** Essential for ensuring stability and integrity of the wall assembly.\n   - **Gap Tolerance:** Ensures panels fit correctly without excessive spacing.\n   - **Support Requirement:** Temporary plates are crucial until the assembly is fully secured.\n\nThis overview captures the necessary technical aspects relevant to the assembly of the Smart Wall system as outlined in the step provided.\n\nPage context: 2 3 4 6 7 8 9 10 Step 5: Construction of walls With your foam gun spray a line of foam on both panels (!) joins and the base plate. Lift the Smart Wall panel into position and slide as close \u00ae to the ",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 4,
+      "caption_length": 1177
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p57_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 57,
+    "content": "2 3 4 6 7 8 9 10 Step 5: Construction of walls continued ... Check the panels are true & level and repeat until wall @ section is complete. Brace panels as and where builder see fit. Bracing ensures no movement of the walls. \u00ae Some Projects will NZSIP Smart Wall Panels come with an adjustment panel per long wall length. This can help manage any unfore\u00adseen minor variation in pad/ foundation and bottom plate lengths during construction. When constructing openings that have headers and foot\u00ad @ ers, ensure the footer panel is installed and temporarily fixed to both adjacent Smart Wall panels first. Then slide the header into position ensuring plumb and level. *Note for large openings it is recommended you brace either side of the long header until the Smart Wall system is completely fixed off to avoid movement. @ Bracing With a larger header it is Bracing recommended to use a Hi-Ab orTelehandlerfor header install. \u00a7!!!,\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 6",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1000
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p57_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 57,
+    "content": "DIAGRAM DESCRIPTION:\nThe image appears to detail the construction of walls using NZSIP Smart Panels. Here's a concise technical description:\n\n1. **Components Shown:**\n   - **Smart Panels:** These are the primary cladding elements.\n   - **Framing:** Typically includes vertical studs and horizontal top/bottom plates.\n   - **Bracing:** Additional structural support to ensure stability.\n   - **Fixings:** Fasteners used to secure panels to the framing.\n\n2. **Key Measurements or Spacings:**\n   - Specific measurements are not explicitly visible, but references to ensuring panels are \"true & level\" imply attention to alignment and spacing during installation.\n\n3. **Assembly Order or Installation Sequence:**\n   - Confirm panels are true and level.\n   - Install panels sequentially, ensuring each is braced properly before moving on.\n   - Repeat until the wall section is complete.\n\n4. **Critical Details:**\n   - Bracing is emphasized for structural integrity.\n   - Attention to ensuring panels are aligned and level indicates the importance of precision during installation.\n   - The note about ensuring a \"complete lateral frame system\" suggests a consideration for load distribution and strength.\n\nThis summary highlights the essential technical aspects relevant to the installation process depicted in the diagram.\n\nPage context: 2 3 4 6 7 8 9 10 Step 5: Construction of walls continued ... Check the panels are true & level and repeat until wall @ section is complete. Brace panels as and where builder see fit. Bracing ensures n",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 3,
+      "caption_length": 1297
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p58_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 58,
+    "content": "2 3 4 5 7 8 9 10 Step 6: Top plate and wall bracing & fixing Once you have erected all NZSI P Smart Wall panels check G) all panels are straight and true. \u00ae Fix a string line 20mm off each corner running the length of each Smart Wall panel. Prior to fixing your string line ensure corner is plumb. *IMPORTANT covering the top plate and window sills during Top plate \u00ae Place the top plates provided in the top slot of the Smart the build reduces the chance of timber products swelling. offset with Wall panels including header panels, shoot in the top \u2713 plate at 100mm centers with the 50mm D head ring shank nails. Once shot in cover the top of the Smart Wall with plastic to protect them from the elements Ensure the top plate provides a continuous flat even Nails surface for the second storey or roof install. 50mm Pack if necessary. Nail off the Smart Wall and footer panels to the base @ plate at 100 mm centers using 50mm D head ring shank nails and all non caml ock wall sections at 100mm centers. This will lock the Smart Wall in place for either the second storey or Smart Roof system Spacing 100mm :t Spacing NZSIP Smart Wall Panel , 100m @ Start fixing 50mm Align fixing with center of from edge of panel. bottom plate100mm centers Smart Easy 10 step guide to building with NZSIP Smart Panels. \ufffd \ufffd bu1ld1ng system Page 7",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1332
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p58_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 58,
+    "content": "DIAGRAM DESCRIPTION:\n### Technical Analysis of Construction Detail\n\n1. **Components Shown:**\n   - **Top Plate:** The horizontal member at the top of the wall assembly.\n   - **Wall Bracing:** Structural support to ensure stability of the wall system.\n   - **NZSI P Smart Wall Panels:** The main cladding or wall panels being installed.\n   - **Fixings:** Fasteners used for securing the components together.\n   - **String Line:** A guide used to ensure alignment of the panels.\n\n2. **Key Measurements or Spacings:**\n   - A string line is positioned 20mm off each corner of the panels.\n   - The spacing of cowling provided (likely indicates spacing requirements for fasteners).\n   - The end view indicates vertical spacing for top plate connection.\n\n3. **Assembly Order or Installation Sequence:**\n   - Erect all NZSI P Smart Wall panels first.\n   - Ensure all panels are straight and true before securing.\n   - Fix the string line once panels are erected.\n   - Attach the top plate to the wall panels as per the specified alignment.\n\n4. **Critical Details:**\n   - Ensure there is a minimum 20mm clearance for the string line from the panel corners to maintain accuracy.\n   - Overlaps or connections are not specifically detailed, but proper alignment is crucial for structural integrity.\n   - The detail implies a need for secure fastening to ensure adequate bracing.\n\nThis concise technical overview summarizes the installation steps and components for proper assembly of\n\nPage context: 2 3 4 5 7 8 9 10 Step 6: Top plate and wall bracing & fixing Once you have erected all NZSI P Smart Wall panels check G) all panels are straight and true. \u00ae Fix a string line 20mm off each corner runn",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 1449
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p59_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 59,
+    "content": "2 3 4 5 6 8 9 10 Step 7: Second storey (if applicable) & gables CD Have required scaffolding in place, then install floor joists and mid-floor as per the engineer & architect's drawings. \u00ae Use a hi-ab or telehandler to lift panels packs onto the second storey. Safely distribute weight on midfloor. \u00ae Install second storey bottom plates and fix as per the engineer's drawings. Repeat the install process of the ground floor, but using @ internal bracing onto mid floor. @ Gables fit together like header and footer panels fixing male and female LVL splines together \u00a7!!!,\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 8",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 641
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p59_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 59,
+    "content": "DIAGRAM DESCRIPTION:\nBased on the description of the diagram provided:\n\n1. **Components Shown**:\n   - **Floor Joists**: Horizontal structural elements providing support for the mid-floor.\n   - **Mid-Floor Panel**: Structural panel placed between the floor joists.\n   - **Gable Structure**: Triangular portions of the building's roof, shown with roof panels.\n\n2. **Key Measurements or Spacings**:\n   - Specific measurements are not visually provided; typically, spacing between floor joists and alignment with structural panels would be outlined in accompanying notes.\n\n3. **Assembly Order or Installation Sequence**:\n   - **Step 1**: Set up required scaffolding.\n   - **Step 2**: Install floor joists.\n   - **Step 3**: Install the mid-floor as per engineer and architect specifications.\n   - **Step 4**: Install roof panels, ensuring proper alignment.\n\n4. **Critical Details**:\n   - **Flashing and Overlaps**: Typically critical at junctions between roof panels and gables\u2014ensure airtight and watertight seals.\n   - **Minimum Clearances**: Gaps may be indicated for thermal expansion or ventilation needs, though exact measurements would be context-dependent.\n\nThis concise technical overview adheres to standard practices within NZ/AU construction terminology.\n\nPage context: 2 3 4 5 6 8 9 10 Step 7: Second storey (if applicable) & gables CD Have required scaffolding in place, then install floor joists and mid-floor as per the engineer & architect's drawings. \u00ae Use a hi-ab",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 1240
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p60_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 60,
+    "content": "2 3 4 5 6 7 9 10 Step 8: Roof preparation CD With the Smart Wall panels fixed off and braced the Smart Roof panels can be installed. \u00ae The roof ridge beam, purlins or rafters to be installed as per the engineers and architect's drawings. \u00ae \u00ae Fix stop blocks to the Smart Wall Panels top plate to ensure panels do not slide down wall when placing. \u00a7!!!,\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 9",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 422
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p60_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 60,
+    "content": "DIAGRAM DESCRIPTION:\nBased on the construction detail provided, here is a concise technical analysis:\n\n1. **Components Shown**:\n   - Smart Roof Panels\n   - Roof Ridge Beam\n   - Purlins or Rafters\n   - Fixings (Purlin screws)\n   - Bracing elements\n\n2. **Key Measurements or Spacings**:\n   - Specific measurements are not explicitly visible in the image. However, it is implied that proper spacing between purlins or rafters should follow relevant building codes and design specifications.\n\n3. **Assembly Order or Installation Sequence**:\n   - The installation sequence begins with fixing the Smart Wall Panels and bracing them.\n   - Following that, the roof ridge beam, purlins, or rafters are to be installed.\n   - Finally, Smart Roof Panels are fixed into position.\n\n4. **Critical Details**:\n   - Ensure that Smart Roof Panels overlap appropriately with the wall panels.\n   - Gaps or minimum clearances are not detailed in the image but should adhere to manufacturer recommendations to prevent water ingress.\n\nThis summary encapsulates the essential aspects of the roof preparation step for NZSIP Smart Panels in construction.\n\nPage context: 2 3 4 5 6 7 9 10 Step 8: Roof preparation CD With the Smart Wall panels fixed off and braced the Smart Roof panels can be installed. \u00ae The roof ridge beam, purlins or rafters to be installed as per th",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 1106
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p61_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 61,
+    "content": "2 3 4 5 6 7 8 10 Step 9: Roof install Affix the supplied lifting eyelets to the panel with tek screws to be lifted. Ensure your HiAb operator is clear on what you require for lifting your panels safely. Do not lift roof panels in high wind. \u00ae Right way up? Panels to then be lifted into place via lifting eyes and a HiAb. Ensure the roof panel is the correct way up. \u00ae Take your time to ensure the panel is correctly placed foamingjunctions as you go. @ Fix off with supplied screws as per panel plan @ Roof Panel Roof Membrane Supplied & Installed .I by Roofers 25mm from edge 200mm centers *Roofing paper or membrane is not suplied by NZSI P -Ensure your roofer has priced and supplies the specified underlay \u00a7!!!\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 10",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 786
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p61_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 61,
+    "content": "DIAGRAM DESCRIPTION:\n1. **Components Shown**:\n   - Roof panels\n   - Lifting eyelets\n   - Tek screws\n   - HiAb (Hydraulic Integrated Abrasive) crane for lifting\n   - Roof membranes (indicated as installed)\n\n2. **Key Measurements or Spacings**:\n   - Panel installation clearance: 25 mm\n\n3. **Assembly Order or Installation Sequence**:\n   - Affix lifting eyelets to the panels using tek screws.\n   - Ensure the HiAb operator is informed for the safe lifting of panels.\n   - Install roof panels followed by membranes.\n\n4. **Critical Details**:\n   - Ensure that the lifting eyelets are securely fastened to the panel.\n   - Maintain a minimum clearance of 25 mm for proper installation and overlap of roof membranes.\n\nPage context: 2 3 4 5 6 7 8 10 Step 9: Roof install Affix the supplied lifting eyelets to the panel with tek screws to be lifted. Ensure your HiAb operator is clear on what you require for lifting your panels safel",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 689
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p62_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 62,
+    "content": "2 3 4 5 6 7 8 9 Step 10: Weathertightness & Warranty D On all Smart Wall panels and Smart Roof panels apply the .\ufffd\ufffd supplied tapes over the exposed paneljoints,base plate connection pointto slab,nail holes and around penetra\u00ad \"\"\"\u2022\ufffd tions to ensure weathertightness. - Ensure you are using the correct tape for exterior applica\u00ad . . . -1\u2022: tion and interior application . - . . . \u00ae Any tears to exterior membrane must be repaired and . -, - - noted \u00ae Ensure your contractors are well briefed on flashing or taping penetrations to wall and roof panels. Minimise - - - where you can. Should a large hole be required and loca\u00ad - - tion not shown on your drawings please consult NZSIP - - - prior to cutting - - - - - - - - - - - - - - - - - - - @ Flash your door and window openings as per NZ3604 - - - - - - - - - - - - - - - - - \u00ae - - Warranty: Complete and return the checklist on the certificate of installation along with photographic evidence of each stage of the build -bottom plate install, wall install, roof install, and panel taping/ weathertightness to obtain your warranty \u00a7!!!,\ufffdrt Easy 10 step guide to building with NZSI P Smart Panels. \ufffd Page 11",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1158
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p62_diagram",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 62,
+    "content": "DIAGRAM DESCRIPTION:\nBased on the provided construction detail, here is the technical analysis:\n\n1. **Components Shown**:\n   - **Smart Wall Panels**: Vertical cladding units that form the walls.\n   - **Smart Roof Panels**: Horizontal cladding units that cover the roof.\n   - **Base Plate**: Connection point to the slab, where the wall panels rest.\n   - **Roof Underlay**: Membrane placed beneath the roof panels for added protection against moisture.\n   - **Tapes**: Applied over exposed panel joints for weathertightness.\n\n2. **Key Measurements or Spacings**:\n   - Specific measurements are not visible, but proper spacing for panel joints and minimum distances from edges for tape application should be adhered to as per manufacturer specifications.\n\n3. **Assembly Order or Installation Sequence**:\n   - Install the Smart Wall panels first.\n   - Follow with the Smart Roof panels.\n   - Ensure the base plate is properly secured to the slab before panel installation.\n   - Apply the supplied tapes over all exposed panel joints and the base plate connection.\n\n4. **Critical Details**:\n   - Ensure tapes overlap sufficiently at joints to maintain weathertightness.\n   - Avoid gaps between panels; joints should be tight to prevent water ingress.\n   - Maintain minimum clearances as specified in the installation manual between the bottom of panels and the slab to mitigate moisture issues.\n\nThis concise overview encapsulates the critical construction details for the installation process as indicated in the provided diagram\n\nPage context: 2 3 4 5 6 7 8 9 Step 10: Weathertightness & Warranty D On all Smart Wall panels and Smart Roof panels apply the .\ufffd\ufffd supplied tapes over the exposed paneljoints,base plate connection pointto slab,nail ",
+    "chunk_type": "diagram",
+    "section": null,
+    "table_data": null,
+    "diagram_data": {
+      "image_count": 2,
+      "caption_length": 1505
+    },
+    "metadata": {
+      "extraction_method": "vision_gpt4o",
+      "has_diagram": true
+    }
+  },
+  {
+    "chunk_id": "NZ SIP Technical Manual Fasteners Section_p63_c0",
+    "source": "NZ SIP Technical Manual Fasteners Section",
+    "page": 63,
+    "content": "2 3 4 5 6 7 8 9 10 NZSIP Smart Building System: Installation Complete! We are here to help If you have any questions about your NZSIP Smart Panels build our experi\u00ad enced support team is available to answer any queries and help with prob\u00ad lem solving. If it is your first build we are happy to provide guidance during the start of your NZSIP Smart Panel installation to get you off to the right start. We also recommend visiting other NZSIP Smart Panels build sites in your area. Please contact us to organise a build site and/or factory visit. Please email questions to: enquiries@nzsip.co.nz 0800 2 NZSIP/www.nzsip.co.nz Physical NZSIP Smart Panel factory address: 5 Wolter Crescent Cromwell 9310 New Zealand Please make an appointment before visiting the factory. Easy 10stepguideto bui lding with NZSIPSmart Panels. \u00a7!J:!,\ufffdrt \ufffd Page12",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 839
+    }
+  }
+]

@@ -1,0 +1,1936 @@
+[
+  {
+    "chunk_id": "Paslode Fastener Selection Chart_p1_table0",
+    "source": "Paslode Fastener Selection Chart",
+    "page": 1,
+    "content": "TABLE DATA:\n| 18 Gauge Finish Nails   |          |        |       |            |         |           |\n|:------------------------|:---------|:-------|:------|:-----------|:--------|:----------|\n| LENGTH                  | SHANK    | SHANK  | GAUGE | COATING    | PRODUCT | NAILS PER |\n|                         | DIAMETER | TYPE   |       |            | NUMBER  | PACK      |\n| MULTI                   | 0.048    | Chisel | 18    | Galvanized | 118000  | 2,000     |\n| 1\"                      | 0.048    | Chisel | 18    | Galvanized | 118001  | 1,000     |\n| 2\"                      | 0.048    | Chisel | 18    | Galvanized | 118002  | 1,000     |\n| 3/4\"                    | 0.048    | Chisel | 18    | Galvanized | 118034  | 1,000     |\n| 5/8\"                    | 0.048    | Chisel | 18    | Galvanized | 118058  | 1,000     |\n| 1-1/2\"                  | 0.048    | Chisel | 18    | Galvanized | 118112  | 1,000     |\n| 1-1/4\"                  | 0.048    | Chisel | 18    | Galvanized | 118114  | 1,000     |\n| 1-3/4\"                  | 0.048    | Chisel | 18    | Galvanized | 118134  | 1,000     |\n| 1\"                      | 0.048    | Chisel | 18    | Galvanized | 950001  | 3,000     |\n| 2\"                      | 0.048    | Chisel | 18    | Galvanized | 950002  | 3,000     |\n| 3/4\"                    | 0.048    | Chisel | 18    | Galvanized | 950034  | 6,000     |\n| 1-1/2\"                  | 0.048    | Chisel | 18    | Galvanized | 950112  | 3,000     |\n| 1-1/4\"                  | 0.048    | Chisel | 18    | Galvanized | 950114  | 3,000     |\n| 1-3/4\"                  | 0.048    | Chisel | 18    | Galvanized | 950134  | 3,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "18 Gauge Finish Nails",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 15,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode Fastener Selection Chart_p1_table1",
+    "source": "Paslode Fastener Selection Chart",
+    "page": 1,
+    "content": "TABLE DATA:\n| 18 Gauge Fuel and Finish Nail Packs   |          |            |       |            |            |           |\n|:--------------------------------------|:---------|:-----------|:------|:-----------|:-----------|:----------|\n| LENGTH                                | SHANK    | SHANK TYPE | GAUGE | COATING    | PRODUCT    | NAILS PER |\n|                                       | DIAMETER |            |       |            | NUMBER     | PACK      |\n| 1-1/2\"                                | 0.048    | Chisel     | 18    | Galvanized | FFP-118112 | 1,000     |\n| 2\"                                    | 0.048    | Chisel     | 18    | Galvanized | FFP-118002 | 1,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "18 Gauge Fuel and Finish Nail Packs",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 3,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode Fastener Selection Chart_p1_c0",
+    "source": "Paslode Fastener Selection Chart",
+    "page": 1,
+    "content": "SELECTION CHART 18 Gauge Finish Nails LENGTH SHANK SHANK GAUGE COATING PRODUCT NAILS PER DIAMETER TYPE NUMBER PACK MULTI 0.048 Chisel 18 Galvanized 118000 2,000 1\" 0.048 Chisel 18 Galvanized 118001 1,000 2\" 0.048 Chisel 18 Galvanized 118002 1,000 3/4\" 0.048 Chisel 18 Galvanized 118034 1,000 5/8\" 0.048 Chisel 18 Galvanized 118058 1,000 1-1/2\" 0.048 Chisel 18 Galvanized 118112 1,000 1-1/4\" 0.048 Chisel 18 Galvanized 118114 1,000 1-3/4\" 0.048 Chisel 18 Galvanized 118134 1,000 1\" 0.048 Chisel 18 Galvanized 950001 3,000 2\" 0.048 Chisel 18 Galvanized 950002 3,000 3/4\" 0.048 Chisel 18 Galvanized 950034 6,000 1-1/2\" 0.048 Chisel 18 Galvanized 950112 3,000 1-1/4\" 0.048 Chisel 18 Galvanized 950114 3,000 1-3/4\" 0.048 Chisel 18 Galvanized 950134 3,000 18 Gauge Fuel and Finish Nail Packs LENGTH SHANK SHANK TYPE GAUGE COATING PRODUCT NAILS PER DIAMETER NUMBER PACK 1-1/2\" 0.048 Chisel 18 Galvanized FFP-118112 1,000 2\" 0.048 Chisel 18 Galvanized FFP-118002 1,000 \u2022 ICC-ES Recognized, ESR-3072 \u2022 Approved for use in all pressure treated lumber such as ACQ and MCQ \u2022 Polymer coating on nail head reduces staining and streaking by 80% compared to traditional hot dipped galvanized nails \u2022 IRC R319.3 code approved for use in pressure treated lumber in accordance with ASTM A 153",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1274
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p1_c0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 1,
+    "content": "Appraisal No. 546 [2022] PASLODE NAILS Appraisal No. 546 (2022) This Appraisal replaces BRANZ Appraisal No. 546 (2017) BRANZ Appraisals Product Technical Assessments of 1.1 Paslode Nails covered by this Appraisal include bright steel wire nails, mechanically galvanised products for building and nails, hot-dip galvanised nails, coated hot-dip galvanised nails and stainless steel nails. Paslode construction. Nails are available in collated format, in a range of sizes, and are designed for use with Paslode nail guns or are manually fixed. Scope 2.1 This Appraisal covers the material durability performance of different Paslode Nails when used in timbers with different treatments, treated in accordance with NZS 3640 and used in accordance with NZS 3602, to comply with the New Zealand Building Code (NZBC) durability requirements. Timber treatments assessed include copper chrome arsenate (CCA), copper azole (CuAz), alkaline copper quaternary (ACQ) and light organic solvent preservative (LOSP). ITW New Zealand Ltd Building Regulations T/A Paslode New Zealand PO Box 100 303 New Zealand Building Code (NZBC) North Shore Mail Centre 3.1 In the opinion of BRANZ, Paslode Nails, if used, installed and maintained in accordance with the North Shore City statements of this Appraisal, will meet or contribute to meeting the following provisions of the Ph: 09 477 3000 NZBC: Fax: 09 477 3001 Clause B1 STRUCTURE: Performance B1.3.1, B1.3.2 and B1.3.4.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1453
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p1_c1",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 1,
+    "content": "City statements of this Appraisal, will meet or contribute to meeting the following provisions of the Ph: 09 477 3000 NZBC: Fax: 09 477 3001 Clause B1 STRUCTURE: Performance B1.3.1, B1.3.2 and B1.3.4. Paslode Nails contribute to meeting Web: www.paslode.co.nz this requirement for the relevant loads from B1.3.3. See Paragraph 7.1. Clause B2 DURABILITY: Performance B2.3.1 (a) not less than 50 years and B2.3.1 (b) 15 years. Paslode Nails meet these requirements. See Paragraphs 8.1-8.3. Clause F2 HAZARDOUS BUILDING MATERIALS: Performance F2.3.1. Paslode Nails meet this requirement. BRANZ 1222 Moonshine Rd, RD1, Porirua 5381 Private Bag 50 908 Porirua 5240, New Zealand Tel: 04 237 1170 branz.co.nz Pg 1 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 857
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p2_table0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 2,
+    "content": "TABLE DATA:\n| Material                      | Sizes (mm)   | Description                   |\n|:------------------------------|:-------------|:------------------------------|\n| Bright steel                  | 50 x 2.87    | D-head, smooth shank          |\n|                               | 65 x 2.87    | D-head, smooth shank          |\n|                               | 75 x 3.06    | D-head, smooth shank          |\n|                               | 88 x 3.15    | D-head, smooth shank          |\n|                               | 90 x 3.15    | D-head, smooth shank          |\n| Mechanically galvanised steel | 35 x 3.15    | Round head, smooth shank      |\n|                               | 38 x 3.30    | Round head, ring shank        |\n|                               | 40 x 3.75    | Round head, smooth shank      |\n|                               | 44 x 3.15    | D-head, smooth shank          |\n| Hot-dip galvanised steel      | 50 x 2.87    | Round head, ring shank        |\n|                               | 50 x 2.87    | D-head, smooth shank          |\n|                               | 60 x 2.87    | Round head, ring shank        |\n|                               | 60 x 2.87    | D-head, ring shank            |\n|                               | 65 x 2.87    | Round head, ring shank        |\n|                               | 65 x 2.87    | Jolt head, ring shank         |\n|                               | 65 x 2.87    | D-head, ring shank            |\n|                               | 75 x 3.06    | Round head, ring shank        |\n|                               | 75 x 3.06    | Jolt head, smooth shank       |\n|                               | 75 x 3.06    | D-head, ring and smooth shank |\n|                               | 88 x 3.15    | D-head, smooth shank          |\n|                               | 90 x 3.15    | D-head, smooth shank          |\n|                               | 90 x 3.06    | Jolt head, smooth shank       |\n| Hot-dip galvanised            | 50 x 2.50    | Round head, ring shank        |\n| with black coating            |              |                               |\n| Stainless steel               | 35 x 3.15    | Round head, ring shank        |\n|                               | 44 x 3.30    | D-head smooth shank           |\n|                               | 50 x 2.80    | Round head, ring shank        |\n|                               | 50 x 2.87    | D-head, ring shank            |\n|                               | 55 x 2.87    | Round head, ring shank        |\n|                               | 65 x 2.87    | Round head, ring shank        |\n|                               | 65 x 2.87    | D-head, ring shank            |\n|                               | 65 x 2.87    | Jolt head, ring shank         |\n|                               | 75 x 3.06    | Round head, ring shank        |\n|                               | 75 x 3.06    | Jolt head, ring shank         |\n|                               | 90 x 3.15    | D-head, ring shank            |\n|                               | 90 x 3.06    | Jolt head, ring shank         |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Material",
+        "Sizes (mm)",
+        "Description"
+      ],
+      "row_count": 35,
+      "col_count": 3
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p2_c0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 2,
+    "content": "BRANZ Appraisal PASLODE NAILS Appraisal No. 546 (2022) 02 August 2022 Appraisal No. 546 [2022] Technical Specification General 4.1 Paslode Nails come in a variety of types and sizes. The nails covered by this Appraisal are as detailed in Table 1 below.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 253
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p2_c1",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 2,
+    "content": "2) 02 August 2022 Appraisal No. 546 [2022] Technical Specification General 4.1 Paslode Nails come in a variety of types and sizes. The nails covered by this Appraisal are as detailed in Table 1 below. Table 1: Paslode collated nails sizes and descriptions Material Sizes (mm) Description 50 x 2.87 D-head, smooth shank 65 x 2.87 D-head, smooth shank Bright steel 75 x 3.06 D-head, smooth shank 88 x 3.15 D-head, smooth shank 90 x 3.15 D-head, smooth shank 35 x 3.15 Round head, smooth shank 38 x 3.30 Round head, ring shank Mechanically galvanised steel 40 x 3.75 Round head, smooth shank 44 x 3.15 D-head, smooth shank 50 x 2.87 Round head, ring shank 50 x 2.87 D-head, smooth shank 60 x 2.87 Round head, ring shank 60 x 2.87 D-head, ring shank 65 x 2.87 Round head, ring shank 65 x 2.87 Jolt head, ring shank Hot-dip galvanised steel 65 x 2.87 D-head, ring shank 75 x 3.06 Round head, ring shank 75 x 3.06 Jolt head, smooth shank 75 x 3.06 D-head, ring and smooth shank 88 x 3.15 D-head, smooth shank 90 x 3.15 D-head, smooth shank 90 x 3.06 Jolt head, smooth shank Hot-dip galvanised 50 x 2.50 Round head, ring shank with black coating 35 x 3.15 Round head, ring shank 44 x 3.30 D-head smooth shank 50 x 2.80 Round head, ring shank 50 x 2.87 D-head, ring shank 55 x 2.87 Round head, ring shank 65 x 2.87 Round head, ring shank Stainless steel 65 x 2.87 D-head, ring shank 65 x 2.87 Jolt head, ring shank 75 x 3.06 Round head, ring shank 75 x 3.06 Jolt head, ring shank 90 x 3.15 D-head, ring shank 90 x 3.06 Jolt head, ring shank Pg 2 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1688
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p3_table0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 3,
+    "content": "TABLE DATA:\n| Nail Material                                            | Label Colour   |\n|:---------------------------------------------------------|:---------------|\n| Bright steel                                             | White          |\n| Mechanically galvanised steel                            | Tan            |\n| Hot-dip galvanised steel, with and without black coating | Yellow         |\n| Stainless steel                                          | Red            |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Nail Material",
+        "Label Colour"
+      ],
+      "row_count": 4,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p3_c0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 3,
+    "content": "BRANZ Appraisal PASLODE NAILS Appraisal No. 546 (2022) 02 August 2022 Appraisal No. 546 [2022] 4.2 The Paslode Nail packaging has different coloured labels for the different nail types as described in Table 2. Table 2: Collated nails label descriptions Nail Material Label Colour Bright steel White Mechanically galvanised steel Tan Hot-dip galvanised steel, with and without black coating Yellow Stainless steel Red 4.3 Collated Paslode Nails for use with Paslode nail guns are generally collated together with paper strips down both sides of the nails, however some of the nails are collated together with plastic. 4.4 Only Paslode nailing tools, as supplied by Paslode New Zealand, are to be used to install Paslode collated nails. The Paslode nail guns have not been assessed by BRANZ and are outside the scope of this Appraisal. Handling and Storage 5.1 Paslode Nails should be stored in a clean, dry area until they are used. Technical Literature 6.1 No specific Technical Literature is referenced by this Appraisal. Design Information Structure 7.1 Connections incorporating Paslode Nails must be designed and installed in accordance with the relevant non-specific design standards, e.g. NZS 3604, or as specified by specific engineering design to the relevant loading and design standards. 7.2 Where a proprietary system manufacturer specifies standard nails, permission must be obtained from them before Paslode Nails are substituted.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1444
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p3_c1",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 3,
+    "content": "g design to the relevant loading and design standards. 7.2 Where a proprietary system manufacturer specifies standard nails, permission must be obtained from them before Paslode Nails are substituted. Durability 8.1 Paslode Nails are expected to have a serviceable life of at least 15 or 50 years (depending on their use) provided that they are installed and maintained in accordance with this Appraisal. 8.2 Table 3 gives information on where each of the types of Paslode Nails identified in Table 1 may be used, based on the timber use, the environment, the timber moisture content and the timber treatment. Table 3 is for Corrosion Zone B, as defined by NZS 3604. Table 4 gives the same information for Corrosion Zones C and D, as defined by NZS 3604. 8.3 If ACQ-based or CuAz-based treatments are used for timber Hazard Classes H3.2, H4 or H5, then only stainless steel fasteners should be used in exposed or sheltered locations in accordance with NZS 3604, Clause 4.4.4. There is very little of these timber treatments in use in New Zealand at this time, and most timber is treated with CCA. Maintenance 9.1 Paslode Nails need little or no maintenance in themselves. Where paint or coatings are required to ensure the required design life, then these must be maintained as per the relevant manufacturer\u2019s instructions. Pg 3 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1479
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p4_table0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 4,
+    "content": "TABLE DATA:\n| -nlik                    |                       |                  | ton rof noitacilppa      |                     |                     |                     |                     |                     |                         |                     |\n| ksir-woL devorppa enip   |                       |                  | rebmiT elbatius          |                     |                     |                     |                     |                     |                         |                     |\n| ,seiceps                 |                       |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n| deird                    |                       |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n|:-------------------------|:----------------------|:-----------------|:-------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:--------------------|:------------------------|:--------------------|\n| 1.1H                     |                       |                  |                          | ton rof noitacilppa |                     |                     |                     |                     |                         |                     |\n|                          |                       |                  |                          | rebmiT elbatius     |                     |                     |                     |                     |                         |                     |\n| 2.1H                     |                       |                  |                          |                     | ton rof noitacilppa | ton rof noitacilppa |                     |                     |                         |                     |\n|                          |                       |                  |                          |                     | rebmiT elbatius     | rebmiT elbatius     |                     |                     |                         |                     |\n| 1.3H                     |                       |                  |                          |                     |                     |                     | ton rof noitacilppa | ton rof noitacilppa |                         |                     |\n|                          |                       |                  |                          |                     |                     |                     | rebmiT elbatius     | rebmiT elbatius     |                         |                     |\n| 2.3H                     |                       |                  |                          |                     |                     |                     |                     |                     | ton rof noitacilppa     |                     |\n|                          |                       |                  |                          |                     |                     |                     |                     |                     | rebmiT elbatius         |                     |\n| 4H                       |                       |                  |                          |                     |                     |                     |                     |                     |                         | ton rof noitacilppa |\n|                          |                       |                  |                          |                     |                     |                     |                     |                     |                         | rebmiT elbatius     |\n| 5H                       |                       |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n| erutsiom                 | %81                   | %81              | %81                      | ta naht             | retaerg             | evitceffe           | evoba               | evoba               | evoba                   | evoba               |\n| esu                      | naht                  | naht             | naht                     | ecivres-ni          | %81                 | .%81 metsys         | yllanoisaccO %81    | yllareneG %81       | dna %81                 | dna %81             |\n| ni                       | sseL                  | sseL             | sseL                     | %42                 | yllacidoireP        | naht                |                     |                     | enilaklA                | enilaklA            |\n| tnetnoc                  |                       |                  |                          | ssel                | naht                | semussA gnitaoc     |                     |                     |                         |                     |\n| rebmiT                   |                       |                  |                          | naht                |                     | sseL                |                     |                     |                         |                     |\n|                          |                       |                  |                          | ,ni                 |                     |                     |                     |                     |                         |                     |\n|                          |                       |                  |                          | sseL esolc %02      |                     |                     |                     |                     |                         |                     |\n| tnemnorivnE              | -ria secaps           | rehtaew          | noitcurtsnoc -ria secaps | fo                  | gniyrd              | tub                 | ni                  | tub tcatnoc         | ro                      | ro                  |\n|                          | ,revoc /erutsiom      | -ni              | ni                       | noitcurtsnoc        | dna                 | rehtaew             | ton                 | ,rehtaew            | dnuorg yrnosam/etercnoc | dnuorg              |\n|                          | ni                    | yrd tnemnorivne  | esu                      | ksir                | gnittew             | detniap             | tub                 | dnuorg              | htiw                    | etercnoc            |\n|                          | esu                   | ot ,noitcurtsnoc | detaeh                   | desaercni           | elbissoP            | ot                  | tcatnoc             | ot                  | tcatnoc                 | ni                  |\n|                          | lluf detaeh           | erusopxe         | ecivres-ni               | erutsiom            |                     | desopxE             | rehtaew             | desopxE sedulcxe    | nI                      | deddebmE            |\n|                          | rednu ot ecivres-ni   | ecivres          | ot                       | ot                  |                     |                     | dnuorg              |                     |                         |                     |\n|                          | desopxe               | muminiM          | desopxe ro               | desopxE ;erutsiom   |                     |                     | ot                  |                     |                         |                     |\n|                          | ro                    | gnirud           | denoitidnoc              |                     |                     |                     | desopxE             |                     |                         |                     |\n|                          | delbmessA denoitidnoc |                  | ,erutsiom                |                     |                     |                     |                     |                     |                         |                     |\n|                          | ,rehtaew              |                  | reveN                    |                     |                     |                     |                     |                     |                         |                     |\n|                          | reven                 |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n| esU                      | gniliec               | desopxe foor     | srebmit                  | no                  | snettab             | gniddalc            | mirt                | *                   | *                       | .cte                |\n|                          | ,snettab              | rehto            | gniriuqer                | dna                 | ytivaC              | ro                  | detniapnu           | gnikceD             | )selip                  | ,selop              |\n|                          | smaeb                 | gnimarf          | noitcetorp               | detroppus           |                     | mirt                | lanretxE            |                     | ton(                    | ,seliP              |\n|                          | ,gnimarf              | ,sessurt         | gnihsinfi                | gnimarf sllaw       |                     | roiretxE            |                     |                     | stsoP                   |                     |\n|                          | dna lanretni          | dna              | erutinruf                | lanretxe            |                     |                     |                     |                     |                         |                     |\n|                          | lanretnI stsioj       | sretfar          | rerob                    | rooflbuS stsioj     |                     |                     |                     |                     |                         |                     |\n|                          |                       | fooR             | lanretnI                 | roofl               |                     |                     |                     |                     |                         |                     |\n|                          |                       |                  | dna                      |                     |                     |                     |                     |                     |                         |                     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "-nlik\nksir-woL devorppa enip\n,seiceps\ndeird",
+        "",
+        "",
+        "ton rof noitacilppa\nrebmiT elbatius",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 9,
+      "col_count": 11
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p4_c0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 4,
+    "content": "BRANZ Appraisal PASLODE NAILS Appraisal No. 546 (2022) 02 August 2022 Appraisal No. 546 [2022] Pg 4 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 251
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p4_c1",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 4,
+    "content": "022) 02 August 2022 Appraisal No. 546 [2022] Pg 4 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ. .slian detalloc ,sraey 05 naht ssel ton ,B enoZ noisorroC 4063 SZN rof sesu lian elbawollA :3 elbaT ksir-woL devorppa erutsiom rebmiT 1.1H 2.1H 1.3H 2.3H 4H 5H tnemnorivnE esU -nlik ,seiceps esu ni tnetnoc enip deird %81 naht sseL ,revoc lluf rednu delbmessA gniliec ,gnimarf lanretnI /erutsiom ot desopxe reven ,snettab dna stsioj -ria ni esu ecivres-ni ,rehtaew smaeb lanretni secaps detaeh ro denoitidnoc %81 naht sseL rehtaew ot erusopxe muminiM desopxe ,sessurt fooR -ni yrd ,noitcurtsnoc gnirud foor rehto dna sretfar tnemnorivne ecivres gnimarf ton rebmiT %81 naht sseL noitcurtsnoc ot desopxe reveN srebmit gnihsinfi lanretnI rof elbatius -ria ni esu ecivres-ni ,erutsiom gniriuqer erutinruf dna noitacilppa secaps detaeh ro denoitidnoc noitcetorp rerob ton rebmiT ta %42 naht sseL noitcurtsnoc ot desopxE dna gnimarf rooflbuS rof elbatius naht ssel ,ni esolc fo ksir desaercni ;erutsiom no detroppus stsioj roofl noitacilppa ecivres-ni %02 erutsiom sllaw lanretxe ton rebmiT retaerg yllacidoireP gniyrd dna gnittew elbissoP snettab ytivaC rof elbatius %81 naht noitacilppa ton rebmiT .%81 naht sseL tub rehtaew ot desopxE gniddalc ro mirt roiretxE rof elbatius evitceffe semussA detniap noitacilppa metsys gnitaoc ton rebmiT evoba yllanoisaccO ni ton tub rehtaew ot desopxE mirt detniapnu lanretxE rof elbatius %81 tcatnoc dnuorg noitacilppa ton rebmiT evoba yllareneG tub ,rehtaew ot desopxE * gnikceD rof elbatius %81 tcatnoc dnuorg sedulcxe noitacilppa ton rebmiT evoba dna enilaklA ro dnuorg htiw tcatnoc nI * )selip ton( stsoP rof elbatius %81 yrnosam/etercnoc noitacilppa ton rebmiT evoba dna enilaklA ro dnuorg ni deddebmE .cte ,selop ,seliP rof elbatius %81 etercnoc noitacilppa .ylno tnemeriuqer ytilibarud raey 51 a ot setaler esu rebmit sihT * leets desinavlag yllacinahceM leets sselniatS gnitaoc kcalb tuohtiw dna htiw ,leets desinavlag pid-toH leets thgirB",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 2080
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p5_table0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 5,
+    "content": "TABLE DATA:\n| -nlik                    |                       |                  | ton rof noitacilppa      |                     |                     |                     |                     |                     |                         |                     |\n| ksir-woL devorppa enip   |                       |                  | rebmiT elbatius          |                     |                     |                     |                     |                     |                         |                     |\n| ,seiceps                 |                       |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n| deird                    |                       |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n|:-------------------------|:----------------------|:-----------------|:-------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:--------------------|:------------------------|:--------------------|\n| 1.1H                     |                       |                  |                          | ton rof noitacilppa |                     |                     |                     |                     |                         |                     |\n|                          |                       |                  |                          | rebmiT elbatius     |                     |                     |                     |                     |                         |                     |\n| 2.1H                     |                       |                  |                          |                     | ton rof noitacilppa | ton rof noitacilppa |                     |                     |                         |                     |\n|                          |                       |                  |                          |                     | rebmiT elbatius     | rebmiT elbatius     |                     |                     |                         |                     |\n| 1.3H                     |                       |                  |                          |                     |                     |                     | ton rof noitacilppa | ton rof noitacilppa |                         |                     |\n|                          |                       |                  |                          |                     |                     |                     | rebmiT elbatius     | rebmiT elbatius     |                         |                     |\n| 2.3H                     |                       |                  |                          |                     |                     |                     |                     |                     | ton rof noitacilppa     |                     |\n|                          |                       |                  |                          |                     |                     |                     |                     |                     | rebmiT elbatius         |                     |\n| 4H                       |                       |                  |                          |                     |                     |                     |                     |                     |                         | ton rof noitacilppa |\n|                          |                       |                  |                          |                     |                     |                     |                     |                     |                         | rebmiT elbatius     |\n| 5H                       |                       |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n| erutsiom                 | %81                   | %81              | %81                      | ta naht             | retaerg             | evitceffe           | evoba               | evoba               | evoba                   | evoba               |\n| esu                      | naht                  | naht             | naht                     | ecivres-ni          | %81                 | .%81 metsys         | yllanoisaccO %81    | yllareneG %81       | dna %81                 | dna %81             |\n| ni                       | sseL                  | sseL             | sseL                     | %42                 | yllacidoireP        | naht                |                     |                     | enilaklA                | enilaklA            |\n| tnetnoc                  |                       |                  |                          | ssel                | naht                | semussA gnitaoc     |                     |                     |                         |                     |\n| rebmiT                   |                       |                  |                          | naht                |                     | sseL                |                     |                     |                         |                     |\n|                          |                       |                  |                          | ,ni                 |                     |                     |                     |                     |                         |                     |\n|                          |                       |                  |                          | sseL esolc %02      |                     |                     |                     |                     |                         |                     |\n| tnemnorivnE              | -ria secaps           | rehtaew          | noitcurtsnoc -ria secaps | fo                  | gniyrd              | tub                 | ni                  | tub tcatnoc         | ro                      | ro                  |\n|                          | ,revoc /erutsiom      | -ni              | ni                       | noitcurtsnoc        | dna                 | rehtaew             | ton                 | ,rehtaew            | dnuorg yrnosam/etercnoc | dnuorg              |\n|                          | ni                    | yrd tnemnorivne  | esu                      | ksir                | gnittew             | detniap             | tub                 | dnuorg              | htiw                    | etercnoc            |\n|                          | esu                   | ot ,noitcurtsnoc | detaeh                   | desaercni           | elbissoP            | ot                  | tcatnoc             | ot                  | tcatnoc                 | ni                  |\n|                          | lluf detaeh           | erusopxe         | ecivres-ni               | erutsiom            |                     | desopxE             | rehtaew             | desopxE sedulcxe    | nI                      | deddebmE            |\n|                          | rednu ot ecivres-ni   | ecivres          | ot                       | ot                  |                     |                     | dnuorg              |                     |                         |                     |\n|                          | desopxe               | muminiM          | desopxe ro               | desopxE ;erutsiom   |                     |                     | ot                  |                     |                         |                     |\n|                          | ro                    | gnirud           | denoitidnoc              |                     |                     |                     | desopxE             |                     |                         |                     |\n|                          | delbmessA denoitidnoc |                  | ,erutsiom                |                     |                     |                     |                     |                     |                         |                     |\n|                          | ,rehtaew              |                  | reveN                    |                     |                     |                     |                     |                     |                         |                     |\n|                          | reven                 |                  |                          |                     |                     |                     |                     |                     |                         |                     |\n| esU                      | gniliec               | desopxe foor     | srebmit                  | no                  | snettab             | gniddalc            | mirt                | *                   | *                       | .cte                |\n|                          | ,snettab              | rehto            | gniriuqer                | dna                 | ytivaC              | ro                  | detniapnu           | gnikceD             | )selip                  | ,selop              |\n|                          | smaeb                 | gnimarf          | noitcetorp               | detroppus           |                     | mirt                | lanretxE            |                     | ton(                    | ,seliP              |\n|                          | ,gnimarf              | ,sessurt         | gnihsinfi                | gnimarf sllaw       |                     | roiretxE            |                     |                     | stsoP                   |                     |\n|                          | dna lanretni          | dna              | erutinruf                | lanretxe            |                     |                     |                     |                     |                         |                     |\n|                          | lanretnI stsioj       | sretfar          | rerob                    | rooflbuS stsioj     |                     |                     |                     |                     |                         |                     |\n|                          |                       | fooR             | lanretnI                 | roofl               |                     |                     |                     |                     |                         |                     |\n|                          |                       |                  | dna                      |                     |                     |                     |                     |                     |                         |                     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "-nlik\nksir-woL devorppa enip\n,seiceps\ndeird",
+        "",
+        "",
+        "ton rof noitacilppa\nrebmiT elbatius",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 9,
+      "col_count": 11
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p5_c0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 5,
+    "content": "BRANZ Appraisal PASLODE NAILS Appraisal No. 546 (2022) 02 August 2022 Appraisal No. 546 [2022] Pg 5 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 251
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p5_c1",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 5,
+    "content": "022) 02 August 2022 Appraisal No. 546 [2022] Pg 5 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ. ..sslliiaann ddeettaalllloocc ,,ssrraaeeyy 0055 nnaahhtt sssseell ttoonn ,,DD ddnnaa CC sseennooZZ nnooiissoorrrrooCC 44006633 SSZZNN rrooff sseessuu lliiaann eellbbaawwoollllAA ::44 eellbbaaTT ksir-woL devorppa erutsiom rebmiT 1.1H 2.1H 1.3H 2.3H 4H 5H tnemnorivnE esU -nlik ,seiceps esu ni tnetnoc enip deird %81 naht sseL ,revoc lluf rednu delbmessA gniliec ,gnimarf lanretnI /erutsiom ot desopxe reven ,snettab dna stsioj -ria ni esu ecivres-ni ,rehtaew smaeb lanretni secaps detaeh ro denoitidnoc %81 naht sseL rehtaew ot erusopxe muminiM desopxe ,sessurt fooR -ni yrd ,noitcurtsnoc gnirud foor rehto dna sretfar tnemnorivne ecivres gnimarf ton rebmiT %81 naht sseL noitcurtsnoc ot desopxe reveN srebmit gnihsinfi lanretnI rof elbatius -ria ni esu ecivres-ni ,erutsiom gniriuqer erutinruf dna noitacilppa secaps detaeh ro denoitidnoc noitcetorp rerob ton rebmiT ta %42 naht sseL noitcurtsnoc ot desopxE dna gnimarf rooflbuS rof elbatius naht ssel ,ni esolc fo ksir desaercni ;erutsiom no detroppus stsioj roofl noitacilppa ecivres-ni %02 erutsiom sllaw lanretxe ton rebmiT retaerg yllacidoireP gniyrd dna gnittew elbissoP snettab ytivaC rof elbatius %81 naht noitacilppa ton rebmiT .%81 naht sseL tub rehtaew ot desopxE gniddalc ro mirt roiretxE rof elbatius evitceffe semussA detniap noitacilppa metsys gnitaoc ton rebmiT evoba yllanoisaccO ni ton tub rehtaew ot desopxE mirt detniapnu lanretxE rof elbatius %81 tcatnoc dnuorg noitacilppa ton rebmiT evoba yllareneG tub ,rehtaew ot desopxE * gnikceD rof elbatius %81 tcatnoc dnuorg sedulcxe noitacilppa ton rebmiT evoba dna enilaklA ro dnuorg htiw tcatnoc nI * )selip ton( stsoP rof elbatius %81 yrnosam/etercnoc noitacilppa ton rebmiT evoba dna enilaklA ro dnuorg ni deddebmE .cte ,selop ,seliP rof elbatius %81 etercnoc noitacilppa .ylno tnemeriuqer ytilibarud raey 51 a ot setaler esu rebmit sihT * desinavlag yllacinahceM leets sselniatS gnitaoc kcalb tuohtiw dna htiw ,leets desinavlag pid-toH leets thgirB",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 2168
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p6_c0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 6,
+    "content": "BRANZ Appraisal PASLODE NAILS Appraisal No. 546 (2022) 02 August 2022 Appraisal No. 546 [2022] Installation Information Installation Skill Level Requirement 10.1 Paslode Nails are installed either with the aid of Paslode nailing guns or are manually fixed, and can be done so by any competent person. Health and Safety 11.1 Guidelines for the safe use of portable mechanically powered nailers and staplers are available from the Department of Labour, and all aspects of these should be followed when using nail guns. Basis of Appraisal The following is a summary of the technical investigations carried out: Tests 12.1 The following testing on Paslode Nails has been completed by BRANZ: \u00ac Accelerated corrosion testing on Paslode Nails in timbers with different Hazard Class treatment levels. Other Investigations 13.1 A durability opinion has been provided by BRANZ technical experts. 13.2 Observations have been made by BRANZ to assess the practicability of installation, and to examine completed installations. Quality 14.1 The methods of quality control for the manufacture of Paslode Nails has been examined by BRANZ and found to be satisfactory. 14.2 The quality of the nails supplied by Paslode New Zealand is the responsibility of Paslode New Zealand. 14.3 Designers are responsible for the design and specification of joints incorporating Paslode Nails. 14.4 Quality of installation on-site of Paslode Nails is the responsibility of the installer.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1457
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p6_c1",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 6,
+    "content": "nd. 14.3 Designers are responsible for the design and specification of joints incorporating Paslode Nails. 14.4 Quality of installation on-site of Paslode Nails is the responsibility of the installer. 14.5 Building owners are responsible for the maintenance of their buildings. Sources of Information \u00ac NZS 3602:2003 Timber and wood-based products for use in building. \u00ac NZS 3604:2011 Timber-framed buildings. \u00ac NZS 3640:2003 Chemical preservation of round and sawn timber. \u00ac Ministry of Business, Innovation and Employment Record of amendments - Acceptable Solutions, Verification Methods and handbooks. \u00ac The Building Regulations 1992. Pg 6 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 793
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p7_c0",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 7,
+    "content": "BRANZ Appraisal PASLODE NAILS Appraisal No. 546 (2022) 02 August 2022 Appraisal No. 546 [2022] In the opinion of BRANZ, Paslode Nails are fit for purpose and will comply with the Building Code to the extent specified in this Appraisal provided they are used, designed, installed and maintained as set out in this Appraisal. The Appraisal is issued only to ITW New Zealand Ltd, T/A Paslode New Zealand, and is valid until further notice, subject to the Conditions of Appraisal. Conditions of Appraisal 1. This Appraisal: a) relates only to the product as described herein; b) must be read, considered and used in full together with the Technical Literature; c) does not address any Legislation, Regulations, Codes or Standards, not specifically named herein; d) is copyright of BRANZ. 2. ITW New Zealand Ltd, T/A Paslode New Zealand: a) continues to have the product reviewed by BRANZ; b) shall notify BRANZ of any changes in product specification or quality assurance measures prior to the product being marketed; c) abides by the BRANZ Appraisals Services Terms and Conditions; d) warrants that the product and the manufacturing process for the product are maintained at or above the standards, levels and quality assessed and found satisfactory by BRANZ pursuant to BRANZ\u2019s Appraisal of the product. 3.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1305
+    }
+  },
+  {
+    "chunk_id": "Paslode NZ Nails BRANZ Appraisal 546_p7_c1",
+    "source": "Paslode NZ Nails BRANZ Appraisal 546",
+    "page": 7,
+    "content": "uct and the manufacturing process for the product are maintained at or above the standards, levels and quality assessed and found satisfactory by BRANZ pursuant to BRANZ\u2019s Appraisal of the product. 3. BRANZ makes no representation or warranty as to: a) the nature of individual examples of, batches of, or individual installations of the product, including methods and workmanship; b) the presence or absence of any patent or similar rights subsisting in the product or any other product; c) any guarantee or warranty offered by ITW New Zealand Ltd, T/A Paslode New Zealand. 4. Any reference in this Appraisal to any other publication shall be read as a reference to the version of the publication specified in this Appraisal. 5. BRANZ provides no certification, guarantee, indemnity or warranty, to ITW New Zealand Ltd, T/A Paslode New Zealand or any third party. For BRANZ Chelydra Percy Chief Executive Date of Issue: 02 August 2022 Pg 7 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1091
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p1_table1",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 1,
+    "content": "TABLE DATA:\n| Paslode Impulse Purlin Nails        |\n|:------------------------------------|\n| Product Technical Statement: 112946 |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Paslode Impulse Purlin Nails"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p1_table2",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 1,
+    "content": "TABLE DATA:\n| Company Contact Details            |\n|:-----------------------------------|\n| Company: Paslode NZ                |\n| Physical 8 Orbit Drive             |\n| Address: Albany                    |\n| Auckland                           |\n| Postal 8 Orbit Drive               |\n| Address: Albany                    |\n| Auckland                           |\n| Telephone: 64 9 4773000            |\n| Email: edlir.truja@paslodeanz.com  |\n| Website: https://www.paslode.co.nz |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Company Contact Details"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p1_c0",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 1,
+    "content": "Paslode Impulse Purlin Nails miproducts Product Technical Statement: 112946 Alternative fixing for roof purlin and batten connection. BRANZ appraised (No 1249) View miproducts listing Company Contact Details Company: Paslode NZ Level of assurance needed to demonstrate NZ Building Code Physical 8 Orbit Drive Compliance Address: Albany Supporting documentation should include self-assessment and technical information Auckland by manufacturer Postal 8 Orbit Drive Address: Albany Paslode confirms that this minimum level of assurance has been met or exceeded Auckland by the following: Telephone: 64 9 4773000 BRANZ Appraisal 1249(2023) Email: edlir.truja@paslodeanz.com Website: https://www.paslode.co.nz Technical Statement Product Description Alternative fixing for roof purlin and batten connection. BRANZ appraised (No 1249) Scope of use BRANZ APPRAISED (No. 1249) ALTERNATE FIXING FOR ROOF PURLIN AND BATTEN CONNECTIONS TYPE T AS PER NZS 3604 TABLES 2.2, 10.10, A10.10, 10.12, A10.12, 15.9 AND A15.9.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1007
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p1_c1",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 1,
+    "content": "ANZ appraised (No 1249) Scope of use BRANZ APPRAISED (No. 1249) ALTERNATE FIXING FOR ROOF PURLIN AND BATTEN CONNECTIONS TYPE T AS PER NZS 3604 TABLES 2.2, 10.10, A10.10, 10.12, A10.12, 15.9 AND A15.9. THREE PASLODE PURLIN NAILS REPLACE 1/10G SELF DRILLING TYPE 17 SCREW, 80MM LONG IF INSTALLED ACCORDING TO DIRECTION New Zealand Building Code (NZBC) The product will, if employed in accordance with the supplier's installation and maintenance requirements, assist with meeting the following provisions of the building code: Clause B1 Structure: Performance B1.3.1, B1.3.2, B1.3.3, B1.3.3(a), B1.3.3(b), B1.3.3(f), B1.3.3(g), B1.3.3(h) Clause B2 Durability: Performance B2.3.1, B2.3.1(a) Clause F2 Hazardous building materials: Performance F2.3.1 Notes BRANZ APPRAISED (No. 1249) ALTERNATE FIXING FOR ROOF PURLIN AND BATTEN CONNECTIONS TYPE T AS PER NZS 3604 TABLES 2.2, 10.10, A10.10, 10.12, A10.12, 15.9 AND A15.9. THREE PASLODE PURLIN NAILS REPLACE 1/10G SELF DRILLING TYPE 17 SCREW, 80MM LONG IF INSTALLED ACCORDING TO DIRECTION. Supporting Evidence The product has and can make available the following additional evidence to support the above statements: BRANZ Appraisal 1249(2023) Product Criteria Design requirements The Paslode Purlin Nails are used as an alternative fixing method for purlins to rafters or to the top chord of trusses. The Joint is formed by installing three Paslode Purlin Nails through the purlin into the rafter or truss at each intersecting connection.",
+    "chunk_type": "text",
+    "section": "ANZ",
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1481
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p1_c2",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 1,
+    "content": "method for purlins to rafters or to the top chord of trusses. The Joint is formed by installing three Paslode Purlin Nails through the purlin into the rafter or truss at each intersecting connection. This joint meets the 2.4 kN alternative fixing capacity requirement of NZS 3604 Table 2.2, fixing type T. Installed nails must be spaced over the contact area of purlin and rafter to avoid any potential splitting. Where a proprietary system manufacturer specifies standard nails, permission must be obtained from them before Paslode nails are substituted. Installation requirements Paslode Purlin Nails are installed with the aid of Paslode nailing guns and can be done so by any competent person. Maintenance requirements Paslode Purlin Nails need little or no maintenance in themselves. Claddings over these connections are required to ensure the required design life, then these must be maintained as per the relevant manufacturers instructions.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 949
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p2_table0",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 2,
+    "content": "TABLE DATA:\n| Paslode Impulse Purlin Nails                                                                                                                                                      | miproducts   |\n| Product Technical Statement: 112946                                                                                                                                               |              |\n|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|\n| Date last validated: 25 September 2023 Date last updated: 25 September 2023                                                                                                       |              |\n| Disclaimer: The Product Technical Statement (PTS) template is copyright to Construction Information Limited. However the content of this PTS is the responsibility of the product |              |\n| manufacturer/supplier. Refer to the miproducts Terms and Conditions                                                                                                               |              |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Paslode Impulse Purlin Nails\nProduct Technical Statement: 112946",
+        "miproducts"
+      ],
+      "row_count": 1,
+      "col_count": 2
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p2_table1",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 2,
+    "content": "TABLE DATA:\n| Paslode Impulse Purlin Nails        |\n|:------------------------------------|\n| Product Technical Statement: 112946 |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Paslode Impulse Purlin Nails"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode Impulse Purlin Nails Technical_p2_c0",
+    "source": "Paslode Impulse Purlin Nails Technical",
+    "page": 2,
+    "content": "Paslode Impulse Purlin Nails miproducts Product Technical Statement: 112946 Date last validated: 25 September 2023 Date last updated: 25 September 2023 Disclaimer: The Product Technical Statement (PTS) template is copyright to Construction Information Limited. However the content of this PTS is the responsibility of the product manufacturer/supplier. Refer to the miproducts Terms and Conditions",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 398
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p1_c0",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 1,
+    "content": "Appraisal No. 1249 (2023) PASLODE PURLIN NAILS Appraisal No. 1249 (2023) Amended 16 August 2023 BRANZ Appraisals Product Technical Assessments of 1.1 Paslode Purlin Nails are bright steel, ring shank RounDrive nails with a red resin coated tip used to products for building and fix timber purlins. construction. Scope 2.1 Paslode Purlin Nails have been appraised for use as fixings for timber purlins to timber rafters or the top chord of trusses in buildings designed in accordance with NZS 3604. 2.2 Paslode Purlin Nails have been appraised for use as an alternative to fixing type \u2018T\u2019 of NZS 3604, Table 2.2, when fixings purlins to rafters or the top chord of trusses in buildings designed in accordance with NZS 3604. Building Regulations ITW New Zealand Ltd New Zealand Building Code (NZBC) T/A Paslode New Zealand 3.1 In the opinion of BRANZ, Paslode Purlin Nails, if used, installed and maintained in accordance with PO Box 100 303 North Shore Mail Centre the statements of this Appraisal, will meet or contribute to meeting the following provisions of North Shore City the NZBC: Tel: 09 477 3000 Clause B1 STRUCTURE: Performance B1.3.1, B1.3.2 and B1.3.4. Paslode Purlin Nails contribute to Fax: 09 477 3001 meeting these requirements for the relevant loads from B1.3.3. See Paragraphs 7.1-7.4. Web: www.paslode.co.nz Clause B2 DURABILITY: Performance B2.3.1 (a) not less than 50 years and B2.3.2. Paslode Purlin Nails meet these requirements. See Paragraph 8.1.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1472
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p1_c1",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 1,
+    "content": "B1.3.3. See Paragraphs 7.1-7.4. Web: www.paslode.co.nz Clause B2 DURABILITY: Performance B2.3.1 (a) not less than 50 years and B2.3.2. Paslode Purlin Nails meet these requirements. See Paragraph 8.1. Clause F2 HAZARDOUS BUILDING MATERIALS: Performance F2.3.1. Paslode Purlin Nails meet this requirement. BRANZ 1222 Moonshine Rd, RD1, Porirua 5381 Private Bag 50 908 Porirua 5240, New Zealand Tel: 04 237 1170 branz.co.nz Pg 1 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 577
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p2_c0",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 2,
+    "content": "BRANZ Appraisal PASLODE PURLIN NAILS Appraisal No. 1249 (2023) 19 May 2023 Appraisal No. 1249 (2023) Technical Specification General 4.1 Paslode Purlin Nails are 80 mm x 3.15 mm in size and have a shank ring height of 36 mm. The tips are dipped in resin from 38 mm to 40 mm from the nail tip. 4.2 Paslode Purlin Nails have an offset RounDrive nail head and can be identified by the letter \u201cP\u201d stamped on the centre of the head. The nails are collated with the use of tan coloured Paslode RounDrive Nailing Systems branded packaging. Accessories 4.3 Only Paslode nail guns, supplied by Paslode New Zealand, are to be used to install Paslode Purlin nails. The Paslode nail guns have not been assessed by BRANZ and are outside the scope of this Appraisal. Handling and Storage 5.1 Paslode Purlin Nails must be stored in a clean, dry area until they are used. Technical Literature 6.1 No specific Technical Literature is referenced by this Appraisal. Design Information Structure 7.1 Paslode Purlin Nails are used as an alternative fixing method for purlins to rafters or to the top chord of trusses in timber-framed buildings designed in accordance with NZS 3604. 7.2 Purlins must be SG6, SG8 or SG10 timber and are limited to a maximum thickness of 45 mm. 7.3 Three Paslode Purlin Nails are fixed through the purlin into the rafter or truss at each intersecting connection. This joint meets the 2.4 kN alternative fixing capacity requirement of NZS 3604 Table 2.2, fixing type \u2018T\u2019.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1480
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p2_c1",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 2,
+    "content": "Nails are fixed through the purlin into the rafter or truss at each intersecting connection. This joint meets the 2.4 kN alternative fixing capacity requirement of NZS 3604 Table 2.2, fixing type \u2018T\u2019. 7.4 Where a proprietary system manufacturer specifies standard nails, permission must be obtained from the manufacturer before Paslode Purlin Nails are substituted. 7.5 Paslode Purlin Nails must be embedded flush to countersunk, diagonally spaced in accordance with the detail on the packaging. Nails must be spaced over the contact area of purlin and rafter to avoid any potential splitting. Durability 8.1 Paslode Purlin Nails are expected to have a serviceable life of at least 50 years. Maintenance 9.1 No maintenance is required for Paslode Purlin Nails. Annual inspections of the roof cladding system must be made to ensure all aspects remain in a weatherproof condition. Installation Information Installation Skill Level Requirement 10.1 Paslode Purlin Nails are installed with the aid of Paslode nailing guns and can be done so by any competent person. Health and Safety 11.1 Guidelines for the safe use of portable mechanically powered nailers and staplers are available from the Department of Labour, and all aspects of these should be followed when using nail guns. Pg 2 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1433
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p3_c0",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 3,
+    "content": "BRANZ Appraisal PASLODE PURLIN NAILS Appraisal No. 1249 (2023) 19 May 2023 Appraisal No. 1249 (2023) Basis of Appraisal The following is a summary of the technical investigations carried out: Tests 12.1 The following testing has been completed by BRANZ: \u00ac Testing of joints using Paslode Purlin Nails to determine their structural strength. Other Investigations 13.1 A durability opinion has been provided by BRANZ technical experts. 13.2 Observations have been made by BRANZ to assess the practicability of installation, and to examine completed installations. Quality 14.1 The methods of quality control for the manufacture of Paslode Purlin Nails has been examined by BRANZ and found to be satisfactory. 14.2 The quality of the nails supplied by Paslode New Zealand is the responsibility of Paslode New Zealand. 14.3 Designers are responsible for the design and specification of joints incorporating Paslode Purlin Nails. 14.4 Quality of installation on-site of Paslode Purlin Nails is the responsibility of the installer. 14.5 Building owners are responsible for the maintenance of their buildings. Sources of Information \u00ac Guidelines for the safe use of Portable Mechanically Powered Nailers and Staplers, Occupational Safety and Health Service, Department of Labour. \u00ac NZS 3602:2003 Timber and wood-based products for use in building. \u00ac NZS 3604:2011 Timber-framed buildings. \u00ac NZS 3640:2003 Chemical preservation of round and sawn timber.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1446
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p3_c1",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 3,
+    "content": "vice, Department of Labour. \u00ac NZS 3602:2003 Timber and wood-based products for use in building. \u00ac NZS 3604:2011 Timber-framed buildings. \u00ac NZS 3640:2003 Chemical preservation of round and sawn timber. \u00ac Ministry of Business, Innovation and Employment Record of amendments - Acceptable Solutions, Verification Methods and handbooks. \u00ac The Building Regulations 1992. Amendments Amendment No. 1, dated 16 August 2023 This Appraisal has been amended to include SG6 and SG10 timber. Pg 3 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 633
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p4_c0",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 4,
+    "content": "BRANZ Appraisal PASLODE PURLIN NAILS Appraisal No. 1249 (2023) 19 May 2023 Appraisal No. 1249 (2023) In the opinion of BRANZ, Paslode Purlin Nails are fit for purpose and will comply with the Building Code to the extent specified in this Appraisal provided they are used, designed, installed and maintained as set out in this Appraisal. The Appraisal is issued only to ITW New Zealand T/A Paslode New Zealand, and is valid until further notice, subject to the Conditions of Appraisal. Conditions of Appraisal 1. This Appraisal: a) relates only to the product as described herein; b) must be read, considered and used in full together with the Technical Literature; c) does not address any Legislation, Regulations, Codes or Standards, not specifically named herein; d) is copyright of BRANZ. 2. ITW New Zealand T/A Paslode New Zealand: a) continues to have the product reviewed by BRANZ; b) shall notify BRANZ of any changes in product specification or quality assurance measures prior to the product being marketed; c) abides by the BRANZ Appraisals Services Terms and Conditions; d) warrants that the product and the manufacturing process for the product are maintained at or above the standards, levels and quality assessed and found satisfactory by BRANZ pursuant to BRANZ\u2019s Appraisal of the product. 3.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1308
+    }
+  },
+  {
+    "chunk_id": "Paslode Purlin Nails BRANZ Appraisal_p4_c1",
+    "source": "Paslode Purlin Nails BRANZ Appraisal",
+    "page": 4,
+    "content": "uct and the manufacturing process for the product are maintained at or above the standards, levels and quality assessed and found satisfactory by BRANZ pursuant to BRANZ\u2019s Appraisal of the product. 3. BRANZ makes no representation or warranty as to: a) the nature of individual examples of, batches of, or individual installations of the product, including methods and workmanship; b) the presence or absence of any patent or similar rights subsisting in the product or any other product; c) any guarantee or warranty offered by ITW New Zealand T/A Paslode New Zealand. 4. Any reference in this Appraisal to any other publication shall be read as a reference to the version of the publication specified in this Appraisal. 5. BRANZ provides no certification, guarantee, indemnity or warranty, to ITW New Zealand T/A Paslode New Zealand or any third party. For BRANZ Claire Falck Acting Chief Executive Date of Issue: 19 May 2023 Pg 4 Readers are advised to check the validity of this Appraisal by referring to the Valid Appraisals listing on the BRANZ website, or by contacting BRANZ.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1083
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p2_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 2,
+    "content": "Notes \u00ae P 2 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 204
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p3_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 3,
+    "content": "\u00ae TABLE OF CONTENTS Tools at a Glance ...............................................................................................................",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 150
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p3_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 3,
+    "content": "P 4 Cordless Impulse XP Framing Nailer ...................................................................................P 8 PowerMaster Plus Framing Nailser ...................................................................................P 10 Compact Framing Nailer ..................................................................................................P 11 PowerMaster Plus 4\" Framing Nailer ................................................................................P 12 SCS200 16 Gauge Standard 1/2\u201d Crown Stapler ...............................................................P 14 WCS200 16 Gauge Wide 15/16\u201d Crown Stapler ................................................................P 15 Positive Placement Tool PF250S .......................................................................................P 16 IMLi200 18 Gauge Brad Nailer .........................................................................................P 17 IMLi250 16 Gauge Finish Nailer .......................................................................................P 18 16 Gauge Straight Finish Nailer ........................................................................................P 19 18 Gauge Brad Nailer .......................................................................................................P 21 18 Gauge Brad Nailer/Stapler ..........................................................................................P 22 18 Gauge Narrow Soffit Stapler ........................................................................................P 24 18 Gauge Narrow Crown Finisher Stapler .........................................................................P 25 US-100 Upholstery/Craft Stapler ......................................................................................P 26 HP-100 Headless Pin Nailer ..............................................................................................P 27 FloorMaster Plus\u2122 ............................................................................................................P 28 FloorMaster Pro\u2122 .............................................................................................................P 29 Miscellaneous Fasteners ...................................................................................................P 30 \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 2441
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p3_c2",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 3,
+    "content": "..................................................................................................P 30 \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 3 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 300
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p4_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 4,
+    "content": "TABLE DATA:\n| TOOL DESCRIPTION APPLICATIONS   |\n|:--------------------------------|\n| GNIMARF                         |\n| SSELDROC                        |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "TOOL DESCRIPTION APPLICATIONS"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p4_table1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 4,
+    "content": "TABLE DATA:\n| SRELIAN   |\n|:----------|\n| GNIMARF   |\n| PIRTS     |\n| CITAM     |\n| UENP      |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SRELIAN"
+      ],
+      "row_count": 2,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p4_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 4,
+    "content": "\u00ae Tools at a Glance TOOL DESCRIPTION APPLICATIONS CORDLESS IMPULSE XP Weight: 7.2 lbs FRAMING, JOISTS, 30\u00b0FRAMING NAILER Height: 14-1/2\" RAFTERS, SOFFITS, Drive 1200 nails per fuel cell Length: 12\" STAIRS, SHEATHING, Nail Capacity: 40 Drive 9000 nails per battery charge CRATING, FENCES Range: 2\" \u2013 3-1/4\" Proven for over 25 years AND DECKS Shank: .113 - .131 Durable. Lightweight. Balanced. DESIGNED FOR: FRAMERS & RENOVATORS \u00ae P 4 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information. GNIMARF SSELDROC (see page P 8 for more details) PART #: 905800 F350-S POWER MASTER+\u2122 Weight: 8.4 lbs FRAMING, JOISTS, Durable construction requires Height: 13-3/10\" RAFTERS, SOFFITS, less maintenance. Length: 18\" STAIRS, SHEATHING, Proven performer for tough Nail Capacity: (2 strips) 84 CRATING, FENCES job site work with less jams Range: 2\" \u2013 3-1/2\" AND DECKS or misfires Shank: .113 - .131 Powerful. Enduring. Reliable. DESIGNED FOR: PROFESSIONAL FRAMERS F325R COMPACT Weight: 5.9 lbs FRAMING, JOISTS, FRAMER\u2122 Height: 12-9/10\" RAFTERS, SOFFITS, Lightest-framing nailer ever Length: 12-3/10\" STAIRS, SHEATHING, (Only 5.9 lbs) Range: 2\" \u2013 3-1/4\" CRATING, FENCES Smallest Framer Ever Shank: .113 - .131 AND DECKS (Only 12' long) Magagine Capacity: 44 Remodel interiors easier DESIGNED FOR: Compact.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1425
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p4_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 4,
+    "content": "RS, SHEATHING, (Only 5.9 lbs) Range: 2\" \u2013 3-1/4\" CRATING, FENCES Smallest Framer Ever Shank: .113 - .131 AND DECKS (Only 12' long) Magagine Capacity: 44 Remodel interiors easier DESIGNED FOR: Compact. Lightweight PROFESSIONAL RENOVATORS PSN100.1 \u2013 4\" FRAMING Weight: 8.9 lbs LSL, LVL, PSL, AND OSB, NAILER 30\u00b0 Height: 14-1/2\" ENGINEERED LUMER Designed to drive 4\" nails Length: 19\" FOR FRAMING Nail Capacity: 84 Powerful to drive into engineered lumber Range: 2\" \u2013 4\" DESIGNED FOR: Shank: .113 - .131 PROFESSIONAL FRAMERS Powerful. Fast. Durable. SRELIAN GNIMARF PIRTS CITAMUENP (see page P 10 for more details) PART #: 501000 (see page P 11 for more details) PART #: 513000 (see page P 12 for more details) PART #: 502900",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 722
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p5_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 5,
+    "content": "TABLE DATA:\n| TOOL DESCRIPTION APPLICATIONS   |\n|:--------------------------------|\n| SRELPATS                        |\n| GNIMAR                          |\n| F                               |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "TOOL DESCRIPTION APPLICATIONS"
+      ],
+      "row_count": 2,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p5_table1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 5,
+    "content": "TABLE DATA:\n| SRELIAN   |\n| MIRT      |\n|:----------|\n| SSELDROC  |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SRELIAN\nMIRT"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p5_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 5,
+    "content": "Tools at a Glance TOOL DESCRIPTION APPLICATIONS SCS200 16GA. STANDARD Weight: 5.6 lbs ROOF DECKING, 1/2\u201d CROWN STAPLER Height: 11.7\" SOFFITS AND FASCIA Heavy-duty all metal magazine Length: 15.1\" BOARDS, SHEATHING design for increased durability Staple Capacity: 150 Range: 3/4\" \u2013 2\" Staple Type: 1/2\" crown (see page P 14 for more details) PART #: 515700 WCS200 16GA. WIDE Weight: 5.9 lbs SOFFITS AND FASCIA 15/16\u201d CROWN STAPLER Height: 11.7\" BOARDS, SUBFLOOR, Drives staples flush in Length: 15.1\" SHEATHING, CRATES all materials Staple Capacity: 150 AND PALLETS Range: 3/4\" \u2013 2\" Staple Type: 15/16\" Crown (see page P 15 for more details) PART #: 515800 IMLi200 \u2013 18GA. Weight: 4.5 lbs CROWN, BRAD NAILER Height: 11-1/2\" BASEBOARD MOULDINGS, Drive 1200 nails per fuel cell Length: 11\" PANELLING Nail Capacity: 100 Drive 12,000 nails per battery AND CARPENTRY charge Range: 3/4\" - 2\" Shank: 18 Gauge Proven for over 25 years Durable. Lightweight. Balanced. (see page P 17 for more details) PART #: 903700 IMLi250 16GA. Weight: 4.6 lbs DOOR AND WINDOW TRIM, STRAIGHT FINISH NAILER Height: 11-3/4\" CASING, CROWN AND Drive 1200 nails per fuel cell Length: 10-1/2\" BASEBOARD MOULDING Nail Capacity: 100 Drive 12,000 nails per battery charge Range: 1-1/4\" \u2013 2-1/2\" Shank: 16 ga. Straight Proven for over 25 years Durable. Lightweight. Balanced. (see page P 18 for more details) PART #: 903800 \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1487
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p5_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 5,
+    "content": "oven for over 25 years Durable. Lightweight. Balanced. (see page P 18 for more details) PART #: 903800 \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 5 Visit Paslode's web site www.paslode.ca for the most current product and technical information. SRELPATS GNIMARF SRELIAN MIRT SSELDROC 2.5\" POSITIVE Weight: 7.8 IBS JOIST HANGERS PLACEMENT\u00ae METAL Height: 14\u201d Length:17.4\u201d DESIGNED FOR: CONNECTOR NAILER Nail Capacity: 55-60 Nails (2 strips) PF250S Nail Range: .131\u201d to .162\u201d (Shank) PROFESSIONAL FRAMERS Dependable, Lightweight, Magazine Angle: 30 Degrees Compact and Accurate Nail Type: 1-1/2\u201d to 2-1/2\u201d Positive Placement Hanger Nails \u2013 Brite and Galvanized Air req: 80-120 PSI (see page P 16 for more details) PART #: 511800",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 781
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p6_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 6,
+    "content": "TABLE DATA:\n| TOOL DESCRIPTION APPLICATIONS   |\n|:--------------------------------|\n| SRE                             |\n| LIAN                            |\n| MIRT                            |\n| CITAMU                          |\n| ENP                             |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "TOOL DESCRIPTION APPLICATIONS"
+      ],
+      "row_count": 3,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p6_table1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 6,
+    "content": "TABLE DATA:\n| SRELPATS   |\n|:-----------|\n| EGUAG      |\n| 81         |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SRELPATS"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p6_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 6,
+    "content": "\u00ae Tools at a Glance TOOL DESCRIPTION APPLICATIONS \u00ae P 6 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information. SRELIAN MIRT CITAMUENP T250S F16P - 16GA. Weight: 3.90 lbs RESIDENTIAL: STRAIGHT FINISH NAILER Height: 11.6\" WINDOW AND DOOR Best in class ergonomics Length: 12.3\" TRIM/FINISH APPLICATIONS, Nail Capacity: 100 (2 strips) Reliable and Durable CARPENTRY, AND PANELLING Range: 1\" \u2013 2-1/2\" Low Maintenance Nail Type: 16 Ga. (Smooth/Galvanized) PART #: 515500 P18-200 18 GA. Weight: 2.9 lbs. WINDOWS, DOORS, BRAD NAILER Height: 9-1/2\" FURNITURE, TRIM Lightweight and well balanced Length: 10-1/4\" APPLICATIONS Nail Capacity: 100 No mar tip Range: 5/8\" \u2013 2\" Easy to access corners Nail Type: 18 ga. \u2013 Smooth, Galvanized Type: 18 ga. (see page P 21 for more details) PART #: P18-200 P18-FS200 18 GA. Weight: 2.9 lbs. WINDOWS, DOORS, BRAD NAILER/STAPLER Height: 9-1/2\" FURNITURE, TRIM Lightweight and well balanced Length: 10-1/4\" APPLICATIONS Nail Capacity: 100 No mar tip Range: 5/8\" \u2013 2\" brad nails Easy to access corners and 5/8\" \u2013 1-1/2\" staples (3/16\" crown) Type: 18 ga. & 3/16 (see page P 22 for more details) PART #: P18-FS200 N18-125 \u2013 1-1/4\" Weight: 2.5 lbs.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1309
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p6_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 6,
+    "content": "tip Range: 5/8\" \u2013 2\" brad nails Easy to access corners and 5/8\" \u2013 1-1/2\" staples (3/16\" crown) Type: 18 ga. & 3/16 (see page P 22 for more details) PART #: P18-FS200 N18-125 \u2013 1-1/4\" Weight: 2.5 lbs. TRIM/FINISH, PLYWOOD, NARROW SOFFIT STAPLER Height: 9\" SOFFITS/FACIAS, Specifically designed for soffit Length: 9-1/4\" UNDERLAYMENT installation with long narrow Staple Capacity: 100 APPLICATIONS nosepiece for tight spots. Range: 3/4\" \u2013 1 1/4\" Staple Type: 3/16\" crown GSN18 PART #: N18-125 SRELPATS EGUAG 81 (see page P 19 for more details) (see page P 24 for more details) N18 150 \u2013 1-1/2\" Weight: 2.8 lbs. TRIM/FINISH, PLYWOOD, NARROW CROWN Height: 9-3/4\" SOFFITS/FASCIAS, FINISH STAPLER Length: 11-1/2\" UNDERLAYMENT Heavy Duty for long life Staple Capacity: 100 APPLICATIONS Range: 3/4\" \u2013 1 1/2\" 4000 Shots per batt. charge Staple Type: 3/16\" crown GSN18 (see page P 25 for more details) PART #: N18-150",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 908
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p7_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 7,
+    "content": "TABLE DATA:\n| TOOL DESCRIPTION APPLICATIONS   |\n|:--------------------------------|\n| SRELPATS                        |\n| GNINET                          |\n| SAF                             |\n| EGUAG                           |\n| ETIL                            |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "TOOL DESCRIPTION APPLICATIONS"
+      ],
+      "row_count": 2,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p7_table1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 7,
+    "content": "TABLE DATA:\n| GNIR   |\n|:-------|\n| OOLF   |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "GNIR"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p7_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 7,
+    "content": "Tools at a Glance TOOL DESCRIPTION APPLICATIONS US-100 \u2013 UPHOLSTERY/ Weight: 2.00 lbs. UPHOLSTERY, CRAFTS, CRAFT STAPLER Height: 9-1/2\" LIGHT PANELING Easy load magazine Length: 12-1/2\" AND HOME PROJECT Staple Capacity: 100 5 Staples/second APPLICATIONS Range: 3/8\" \u2013 9/16\" Staple Type: 22 ga. Upholstery PART #: US-100 23GA HEADLESS PIN Weight: 1.20 lbs. FINE WOODWORKING AND NAILER Height: 9-1/4\" TRIM WORK Lightweight and compact Length: 7-3/4\" Staple Capacity: 100 No mar tip and nail lock out Range: 1/2\" \u2013 1-1/2\" Staple Type: 23 ga. PART #: HP100 FLOORMASTER PLUS\u2122 Weight: 10.4 lbs 3/4\" HARDWOOD FLOORING 2 IN 1 FLOORING NAILER/ Height: 18\" STAPLER Length: 16\" Drives staples and cleats to Flooring Fasteners: meet flooring manufacturers 15ga staples & 16ga L-cleats fastening specifcations Fastener Lengths: 2\", 1-3/4, 1-1/2\" PART #: F2N1-200 \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 7 Visit Paslode's web site www.paslode.ca for the most current product and technical information. SRELPATS GNINETSAF EGUAG ETIL GNIROOLF (see page P 26 for more details) (see page P 27 for more details) (see page P 28 for more details) FLOORMASTER PRO\u2122 Weight: 11 lbs 3/4\" SOLID AND NAILER/STAPLER 2 IN 1 Height: 21-5/8\" ENGINEERED FLOORING COMBO Length: 18\" Professional Grade Durability Flooring Fasteners: & Performance 15-1/2ga staples & 16ga L-Cleats Fastener Lengths: 2\", 1-3/4, 1-1/2\" (see page P 29 for more details) PART #: FNS-200",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1491
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p8_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 8,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS IM325XP Cordless Impulse XP Framing Nailer\u2014 Cordless IT'S MORE THAN A NAILER, IT'S A NAILING SYSTEM THAT GETS THE JOB DONE RIGHT. Impulse XP The Paslode Lithium Ion cordless Impulse nailer has provided framers and renovators the ability to wood frame without air hoses for over 25 years. New Li-ion battery technology drives 50% more nails per charge. Framing Nailer 2-times faster charge time; 2 minute quick charge drives up to 200 nails. Tool free depth of drive adjustment, non slip grip, dual position utility hook, sequential operation triggers. Portable freedom LIGHTWEIGHT QUICK LOADING EASY ACCESS on the jobsite without hoses or compressors ADVANTAGES n Portable, freedom on the jobsite without hoses or compressors n Li-ion battery \u2013 provides 50% longer n Heavy-duty rafter/belt hook for taking jobsite abuse run time (up to 9,000 nails per charge) than NiCd battery n Non-slip grip provides comfort and reduces hand fatigue n 1-hour Full Charge; 2-minute Quick n Tool free depth-of-drive nail adjustment changes nail depth Charge for Up to 200 shots in an instant \u2013 even while wearing gloves n Lightweight \u2013 7.2 lbs. including n Nail lockout feature prevents blank driving battery for better comfort and control n Compact size fits between 16\" o.c. studs, joists and roof n Works in cold temperature down trusses to -10\u00b0C SPECIFICATIONS Part No.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1397
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p8_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 8,
+    "content": "ture prevents blank driving battery for better comfort and control n Compact size fits between 16\" o.c. studs, joists and roof n Works in cold temperature down trusses to -10\u00b0C SPECIFICATIONS Part No. 905800 Range: 2\" \u2013 3-1/4\" Weight: 7.2 lbs Shank: .113 \u2013 .131 Height: 14-1/2\" Nail Angle: 30\u00ba Length: 12\" Fuel Type: Spare Framing Fuel Width: 4\" Nails per Fuel Cell: Approximately 1200 Speed: 2-3 nails per second Fuel life: 21 months from date of manufacture Nail Capacity: 40 Battery Life: 9000 nails per charge ONE-YEAR LIMITED WARRANTY A one-year warranty will apply to all parts, except those listed below as normal wearing parts, or parts\u00b7which are specifically covered by an extended warranty. FIVE-YEAR EXTENDED LIMITED WARRANTY A five-year warranty will apply to all molded nylon parts: \u2022 Motor Housing, Cap and Grille \u2022 Trigger \u2022 Handle Halves and Actuator \u2022 Magazine Parts INCLUDES 90-DAY LIMITED WARRANTY A 90-day warranty applies to the following parts, which are considered normal wearing parts: \u2022 Bumper \u2022 O-Rings \u2022 Driver Blades \u2022 Seal Rings Cordless Li-ion Framing Nailer, Model IM325XP Rechargeable 7.4V Li-ion battery Li-ion battery charger Rugged carrying case Owner\u2019s manual Safety glasses 5/32\" Hex Wrench \u00ae P 8 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1425
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p9_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 9,
+    "content": "TABLE DATA:\n| Pro-Strip RounDrive Nails   |          |        |             |            |         |          |            |          |\n|:----------------------------|:---------|:-------|:------------|:-----------|:--------|:---------|:-----------|:---------|\n| LENGTH                      | SHANK    | SHANK  | HEAD        | COATING    | PRODUCT | NAILS    | QUANTITY   | QUANTITY |\n|                             | DIAMETER | TYPE   | STYLE       |            | NUMBER  | PER PACK | PER MASTER | PER SKID |\n| COATING TYPE: BRITE         |          |        |             |            |         |          |            |          |\n| 2\"                          | 0.113    | Smooth | Roundrive   | Brite      | 097385  | 6,500    | 1          | 80       |\n| 2\"                          | 0.113    | Ring   | Roundrive   | Brite      | 650273  | 5,500    | 1          | 80       |\n| 2-3/8\"                      | 0.113    | Smooth | Roundrive   | Brite      | 50238   | 5 Strips | 10         | -        |\n| 2-3/8\"                      | 0.113    | Smooth | Roundrive   | Brite      | 404238  | 1,000    | 4          | -        |\n| 2-3/8\"                      | 0.113    | Smooth | Roundrive   | Brite      | 097394  | 5,000    | 1          | 96       |\n| 2-3/8\"                      | 0.113    | Ring   | Roundrive   | Brite      | 097397  | 5,000    | 1          | 96       |\n| 3\"                          | 0.120    | Smooth | Roundrive   | Brite      | 097971  | 3,000    | 1          | 96       |\n| 3\"                          | 0.120    | Ring   | Roundrive   | Brite      | 097973  | 3,000    | 1          | 96       |\n| 3-1/4\"                      | 0.120    | Smooth | Roundrive   | Brite      | 50314   | 5 Strips | 1          | 125      |\n| 3-1/4\"                      | 0.120    | Smooth | Roundrive   | Brite      | 404314  | 1,000    | 4          | -        |\n| 3-1/4\"                      | 0.120    | Smooth | Roundrive   | Brite      | 404058  | 3,000    | 1          | 96       |\n| 3-1/4\"                      | 0.131    | Smooth | Roundrive   | Brite      | 650839  | 2,500    | 1          | 96       |\n| 3-1/4\"                      | 0.131    | Ring   | Roundrive   | Brite      | 097978  | 2,500    | 1          | 96       |\n| 3-1/2\"                      | 0.120    | Smooth | Roundrive   | Brite      | 404855  | 2,500    | 1          | 96       |\n| 3-1/2\"                      | 0.131    | Smooth | Roundrive   | Brite      | 097987  | 2,500    | 1          | 96       |\n| 4\"                          | 0.131    | Smooth | Roundrive   | Brite      | 2X0788  | 2,500    | 1          | 96       |\n| COATING TYPE: HOT DIPPED    |          |        |             |            |         |          |            |          |\n| 2\"                          | 0.113    | Ring   | Offset Oval | Hot Dipped | 484200  | 1,000    | 4          | -        |\n| 2\"                          | 0.113    | Ring   | Offset Oval | Hot Dipped | 403389  | 2,500    | 1          | 150      |\n| 2-3/8\"                      | 0.113    | Ring   | Offset Oval | Hot Dipped | 404856  | 2,500    | 1          | 150      |\n| 3\"                          | 0.120    | Ring   | Offset Oval | Hot Dipped | 404857  | 1,500    | 1          | 150      |\n| 3 1/4\"                      | 0.120    | Ring   | Offset Oval | Hot Dipped | 50314G  | 5 Strips | 6          | -        |\n| 3-1/4\"                      | 0.120    | Ring   | Offset Oval | Hot Dipped | 404858  | 1,500    | 1          | 150      |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Pro-Strip RounDrive Nails",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 25,
+      "col_count": 9
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p9_table1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 9,
+    "content": "TABLE DATA:\n| Pro-Strip RounDrive Fuel/Nail Packs   |          |            |            |         |         |           |            |\n|:--------------------------------------|:---------|:-----------|:-----------|:--------|:--------|:----------|:-----------|\n| LENGTH                                | SHANK    | SHANK TYPE | HEAD STYLE | COATING | PRODUCT | NAILS PER | FUEL CELLS |\n|                                       | DIAMETER |            |            |         | NUMBER  | PACK      | PER PACK   |\n| 2-3/8\"                                | 0.113    | Smooth     | Roundrive  | Brite   | 1238FN  | 1,000     | 1          |\n| 2-3/8\"                                | 0.113    | Smooth     | Roundrive  | Brite   | 3238FN  | 3,000     | 3          |\n| 3\"                                    | 0.120    | Smooth     | Roundrive  | Brite   | 3300FN  | 3,000     | 3          |\n| 3-1/4\"                                | 0.120    | Smooth     | Roundrive  | Brite   | 1325FN  | 1,000     | 1          |\n| 3-1/4\"                                | 0.120    | Smooth     | Roundrive  | Brite   | 3325FN  | 3,000     | 3          |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Pro-Strip RounDrive Fuel/Nail Packs",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 6,
+      "col_count": 8
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p9_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 9,
+    "content": "Cordless Impulse XP Framing Nailer SELECTION CHART APPLICATIONS Pro-Strip RounDrive Nails Framing Joists and rafters LENGTH SHANK SHANK HEAD COATING PRODUCT NAILS QUANTITY QUANTITY Soffits DIAMETER TYPE STYLE NUMBER PER PACK PER MASTER PER SKID Stairs COATING TYPE: BRITE Sheathing 2\" 0.113 Smooth Roundrive Brite 097385 6,500 1 80 Crating 2\" 0.113 Ring Roundrive Brite 650273 5,500 1 80 Fences and decks 2-3/8\" 0.113 Smooth Roundrive Brite 50238 5 Strips 10 - 2-3/8\" 0.113 Smooth Roundrive Brite 404238 1,000 4 - 2-3/8\" 0.113 Smooth Roundrive Brite 097394 5,000 1 96 2-3/8\" 0.113 Ring Roundrive Brite 097397 5,000 1 96 TOOL ACCESSORIES 3\" 0.120 Smooth Roundrive Brite 097971 3,000 1 96 3\" 0.120 Ring Roundrive Brite 097973 3,000 1 96 3-1/4\" 0.120 Smooth Roundrive Brite 50314 5 Strips 1 125 3-1/4\" 0.120 Smooth Roundrive Brite 404314 1,000 4 - 3-1/4\" 0.120 Smooth Roundrive Brite 404058 3,000 1 96 3-1/4\" 0.131 Smooth Roundrive Brite 650839 2,500 1 96 3-1/4\" 0.131 Ring Roundrive Brite 097978 2,500 1 96 3-1/2\" 0.120 Smooth Roundrive Brite 404855 2,500 1 96 3-1/2\" 0.131 Smooth Roundrive Brite 097987 2,500 1 96 4\" 0.131 Smooth Roundrive Brite 2X0788 2,500 1 96 Part No. 902513 Part No.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1188
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p9_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 9,
+    "content": "097978 2,500 1 96 3-1/2\" 0.120 Smooth Roundrive Brite 404855 2,500 1 96 3-1/2\" 0.131 Smooth Roundrive Brite 097987 2,500 1 96 4\" 0.131 Smooth Roundrive Brite 2X0788 2,500 1 96 Part No. 902513 Part No. 902654C COATING TYPE: HOT DIPPED All Season Orange Fuel Cell Li Ion Battery 2\" 0.113 Ring Offset Oval Hot Dipped 484200 1,000 4 - 2\" 0.113 Ring Offset Oval Hot Dipped 403389 2,500 1 150 2-3/8\" 0.113 Ring Offset Oval Hot Dipped 404856 2,500 1 150 3\" 0.120 Ring Offset Oval Hot Dipped 404857 1,500 1 150 3 1/4\" 0.120 Ring Offset Oval Hot Dipped 50314G 5 Strips 6 - 3-1/4\" 0.120 Ring Offset Oval Hot Dipped 404858 1,500 1 150 Pro-Strip RounDrive Fuel/Nail Packs LENGTH SHANK SHANK TYPE HEAD STYLE COATING PRODUCT NAILS PER FUEL CELLS DIAMETER NUMBER PACK PER PACK 2-3/8\" 0.113 Smooth Roundrive Brite 1238FN 1,000 1 Part No. 902667C Part No. 901252 2-3/8\" 0.113 Smooth Roundrive Brite 3238FN 3,000 3 Lithium Battery Charger Cordless No mar tip 3\" 0.120 Smooth Roundrive Brite 3300FN 3,000 3 3-1/4\" 0.120 Smooth Roundrive Brite 1325FN 1,000 1 3-1/4\" 0.120 Smooth Roundrive Brite 3325FN 3,000 3 See Page P 13 for additional framing nails that work with this tool. \u2022 ICC-ES Recognized, ESR-3072 \u2022 Approved for use in all pressure treated lumber such as ACQ and MCQ \u2022 Polymer coating on nail head reduces staining and streaking by 80% compared to traditional hot dipped galvanized nails \u2022 IRC R319.3 code approved for use in pressure treated lumber in accordance with ASTM A 153 Part No. 401482 Part No.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1496
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p9_c2",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 9,
+    "content": "s staining and streaking by 80% compared to traditional hot dipped galvanized nails \u2022 IRC R319.3 code approved for use in pressure treated lumber in accordance with ASTM A 153 Part No. 401482 Part No. 219086 Impulse Oil Degreaser \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 9 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 427
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p10_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 10,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS PF-350S PowerMaster Plus Framing Nailer\u2014 PowerMaster DESIGNED FOR PROFESSIONAL FRAMERS Plus Framing Heavy-duty jobs require a heavy-duty nailer. That\u2019s why the pros turn to the proven performance, durability and driving power, only a Paslode pneumatic framing nailer can provide. When used with Paslode nails, this Nailer nailing system can help you drive jobs home on time, every time. POWERFUL FAST DEPENDABLE Durability, Balance and Versatility for all jobs ADVANTAGES n Frame full walls faster. Heavy duty power. n Soft grip handle for comfort n Reliable performance that saves time with less n Bolt-on end plug for easier service maintenance. n Depth of drive on the tool rather than \u2013Durable construction requires less maintenance. the compressor saves time and energy \u2013Proven performer for tough job site work with n Rafter hook, moves out of the way when less jams or misfires not in need \u2013Compact size fits between 16\" o.c. studs, joists and rafters. n Adjustable air deflector cap APPLICATIONS SEE PAGE P 13 FOR Framing Sheathing FRAMING NAILS SELECTION CHART Joists and rafters Crating INCLUDES Soffits Fences and decks Stairs PowerMaster\u2122 Plus Pneumatic Framing Nailer Bump fire trigger Hex wrench (on tool) Safety glasses SPECIFICATIONS Owner\u2019s manual Part No. 501000 TOOL ACCESSORIES Weight: 8.4 lbs Nail Angle: 30\u00b0 Height: 13-3/10\" Nail Type: Paslode RounDrive\u00ae Offset Full Head Length: 18\" Air Req./100p.s.i.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1464
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p10_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 10,
+    "content": "ty glasses SPECIFICATIONS Owner\u2019s manual Part No. 501000 TOOL ACCESSORIES Weight: 8.4 lbs Nail Angle: 30\u00b0 Height: 13-3/10\" Nail Type: Paslode RounDrive\u00ae Offset Full Head Length: 18\" Air Req./100p.s.i. (6.9 bar): .082/cycle Speed: 12 nails per second*, sequential or selectable operation Op. Pres. p.s.i (bar): 80 \u2013 120 (5.5 \u2013 8.3) Op. Pres. p.s.i (bar): 90 \u2013 120 (5.5 - 8.3) Warranty: 90-day limited on wear parts, 1-year limited on magazine parts, Nail Capacity: 2 strips (up to 84) 5-year limited on housing and cap parts Nail Range: 2\" \u2013 3.5\" in length, Part No. 403720 Part No. 219090 .113\" \u2013 .131\" shank diameters Pneumatic Oil Pneumatic Oil w/ Antifreeze \u00ae P 10 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 859
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p11_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 11,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS F325R Compact Framing Nailer\u2014 Compact DESIGNED FOR RENOVATORS Framing With this nailing system, you'll have any interior remodeling job done in no time. Get the access and maneuverability you need in tight spaces with this lightweight yet powerful pneumatic nailing system. Nailer When used with Paslode nails, this nailing system can help you drive jobs home on time, every time. PROFESSIONAL LIGHTWEIGHT EASY ACCESS Lightest weight framer ever ADVANTAGES n Remodel interiors easier. Lightest weight n Great maneuverability to work comfortably framer ever. overhead \u2013 Remodel Interiors Easier n Lightest-framing nailer ever made: 5.9 lbs \u2013 First pneumatic nailer made especially with n Quick 2-step nail strip reload remodeler\u2019s needs in mind \u2013 Fits easily into the tightest spaces such as n Soft grip handle for comfort between 16\" o.c. studs n Works in bump mode for speed on jobsite APPLICATIONS SEE PAGE P 13 FOR Framing Sheathing FRAMING NAILS SELECTION CHART Joists and rafters Crating Soffits Fences and decks INCLUDES Stairs Compact 30\u2070 Framing Nailer Safety glasses Owner\u2019s manual SPECIFICATIONS TOOL ACCESSORIES Part No. 513000 Weight: 5.9 Pounds Magazine Capacity: 44 Height: 12-9/10\u201d Op. Pres. p.s.i (bar): 90 \u2013 120 Width: 4-3/10\u201d Length: 12-3/10\u201d Fastener Range: 2\" \u2013 3 1/4\" Shank: .113 - .131 Part No. 403720 Part No.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1372
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p11_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 11,
+    "content": "513000 Weight: 5.9 Pounds Magazine Capacity: 44 Height: 12-9/10\u201d Op. Pres. p.s.i (bar): 90 \u2013 120 Width: 4-3/10\u201d Length: 12-3/10\u201d Fastener Range: 2\" \u2013 3 1/4\" Shank: .113 - .131 Part No. 403720 Part No. 219090 Pneumatic Oil Pneumatic Oil w/ Antifreeze \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 11 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": "513000 Weight",
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 448
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p12_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 12,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS PowerMaster Plus 4\"\u2014 PowerMaster DESIGNED FOR TIMBER FRAMERS Plus 4\" The F400S is the PowerMaster Plus framing nailer with an extended power and driver blade for 4\" applications. Framing Nailer POWERFUL FAST DEPENDABLE Proven durability and reliability ADVANTAGES n PowerMaster Plus Design - Proven durability n Ergonomic Design - Centre of gravity is closer to and reliability the trigger, providing better balance. n Versatile - Drives a variety of nails from 1-1/2\" n Durable And Reliable - Rugged design will to 4\" in length. stand up to the demands of the job in any kind of weather. APPLICATIONS LSL, LVL, PSL, and OSB Wall Sheathing SEE PAGE P 13 FOR Framing Floor Decking FRAMING NAILS SELECTION CHART Roof INCLUDES PowerMaster Plus 4\" Framing Nailer SPECIFICATIONS Safety glasses Part No. 502900 Owner\u2019s manual Weight: 8.9 lbs Magazine Angle: 30\u00b0 Height: 14-1/2\" Nail Type: 30\u00b0 Paper Tape, full head/clipped Length: 19\" OP. Pres. p.s.i. (bar): 80 \u2013 120 (5.5 \u2013 8.3) TOOL ACCESSORIES Nail Capacity: 84 Warranty: 90-day limited on wear parts, 6-month limited on magazine parts, Range: 2\" \u2013 4\" 1-year limited on housing and cap parts. Shank: .113 \u2013 .131 Back of to tool to Nosepiece: 14.5\u201d Part No. 403720 Part No. 219090 Pneumatic Oil Pneumatic Oil w/ Antifreeze \u00ae P 12 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1411
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p12_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 12,
+    "content": "ool to Nosepiece: 14.5\u201d Part No. 403720 Part No. 219090 Pneumatic Oil Pneumatic Oil w/ Antifreeze \u00ae P 12 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 296
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p13_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 13,
+    "content": "TABLE DATA:\n| Pro-Strip RounDrive Nails   |          |        |             |            |         |          |            |          |\n|:----------------------------|:---------|:-------|:------------|:-----------|:--------|:---------|:-----------|:---------|\n| LENGTH                      | SHANK    | SHANK  | HEAD        | COATING    | PRODUCT | NAILS    | QUANTITY   | QUANTITY |\n|                             | DIAMETER | TYPE   | STYLE       |            | NUMBER  | PER PACK | PER MASTER | PER SKID |\n| COATING TYPE: BRITE         |          |        |             |            |         |          |            |          |\n| 2\"                          | 0.113    | Smooth | Roundrive   | Brite      | 097385  | 6,500    | 1          | 80       |\n| 2\"                          | 0.113    | Ring   | Roundrive   | Brite      | 650273  | 5,500    | 1          | 80       |\n| 2-3/8\"                      | 0.113    | Smooth | Roundrive   | Brite      | 50238   | 5 Strips | 10         | -        |\n| 2-3/8\"                      | 0.113    | Smooth | Roundrive   | Brite      | 404238  | 1,000    | 4          | -        |\n| 2-3/8\"                      | 0.113    | Smooth | Roundrive   | Brite      | 097394  | 5,000    | 1          | 96       |\n| 2-3/8\"                      | 0.113    | Ring   | Roundrive   | Brite      | 097397  | 5,000    | 1          | 96       |\n| 3\"                          | 0.120    | Smooth | Roundrive   | Brite      | 097971  | 3,000    | 1          | 96       |\n| 3\"                          | 0.120    | Ring   | Roundrive   | Brite      | 097973  | 3,000    | 1          | 96       |\n| 3-1/4\"                      | 0.120    | Smooth | Roundrive   | Brite      | 50314   | 5 Strips | 1          | 125      |\n| 3-1/4\"                      | 0.120    | Smooth | Roundrive   | Brite      | 404314  | 1,000    | 4          | -        |\n| 3-1/4\"                      | 0.120    | Smooth | Roundrive   | Brite      | 404058  | 3,000    | 1          | 96       |\n| 3-1/4\"                      | 0.131    | Smooth | Roundrive   | Brite      | 650839  | 2,500    | 1          | 96       |\n| 3-1/4\"                      | 0.131    | Ring   | Roundrive   | Brite      | 097978  | 2,500    | 1          | 96       |\n| 3-1/2\"                      | 0.120    | Smooth | Roundrive   | Brite      | 404855  | 2,500    | 1          | 96       |\n| 3-1/2\"                      | 0.131    | Smooth | Roundrive   | Brite      | 097987  | 2,500    | 1          | 96       |\n| 4\"                          | 0.131    | Smooth | Roundrive   | Brite      | 2X0788  | 2,500    | 1          | 96       |\n| COATING TYPE: HOT DIPPED    |          |        |             |            |         |          |            |          |\n| 2\"                          | 0.113    | Ring   | Offset Oval | Hot Dipped | 484200  | 1,000    | 4          | -        |\n| 2\"                          | 0.113    | Ring   | Offset Oval | Hot Dipped | 403389  | 2,500    | 1          | 150      |\n| 2-3/8\"                      | 0.113    | Ring   | Offset Oval | Hot Dipped | 404856  | 2,500    | 1          | 150      |\n| 3\"                          | 0.120    | Ring   | Offset Oval | Hot Dipped | 404857  | 1,500    | 1          | 150      |\n| 3 1/4\"                      | 0.120    | Ring   | Offset Oval | Hot Dipped | 50314G  | 5 Strips | 6          | -        |\n| 3-1/4\"                      | 0.120    | Ring   | Offset Oval | Hot Dipped | 404858  | 1,500    | 1          | 150      |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Pro-Strip RounDrive Nails",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 25,
+      "col_count": 9
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p13_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 13,
+    "content": "Pneumatic Strip Framing Nailers SELECTION CHART Pro-Strip RounDrive Nails LENGTH SHANK SHANK HEAD COATING PRODUCT NAILS QUANTITY QUANTITY DIAMETER TYPE STYLE NUMBER PER PACK PER MASTER PER SKID COATING TYPE: BRITE 2\" 0.113 Smooth Roundrive Brite 097385 6,500 1 80 2\" 0.113 Ring Roundrive Brite 650273 5,500 1 80 2-3/8\" 0.113 Smooth Roundrive Brite 50238 5 Strips 10 - 2-3/8\" 0.113 Smooth Roundrive Brite 404238 1,000 4 - 2-3/8\" 0.113 Smooth Roundrive Brite 097394 5,000 1 96 2-3/8\" 0.113 Ring Roundrive Brite 097397 5,000 1 96 3\" 0.120 Smooth Roundrive Brite 097971 3,000 1 96 3\" 0.120 Ring Roundrive Brite 097973 3,000 1 96 3-1/4\" 0.120 Smooth Roundrive Brite 50314 5 Strips 1 125 3-1/4\" 0.120 Smooth Roundrive Brite 404314 1,000 4 - 3-1/4\" 0.120 Smooth Roundrive Brite 404058 3,000 1 96 3-1/4\" 0.131 Smooth Roundrive Brite 650839 2,500 1 96 3-1/4\" 0.131 Ring Roundrive Brite 097978 2,500 1 96 3-1/2\" 0.120 Smooth Roundrive Brite 404855 2,500 1 96 3-1/2\" 0.131 Smooth Roundrive Brite 097987 2,500 1 96 4\" 0.131 Smooth Roundrive Brite 2X0788 2,500 1 96 COATING TYPE: HOT DIPPED 2\" 0.113 Ring Offset Oval Hot Dipped 484200 1,000 4 - 2\" 0.113 Ring Offset Oval Hot Dipped 403389 2,500 1 150 2-3/8\" 0.113 Ring Offset Oval Hot Dipped 404856 2,500 1 150 3\" 0.120 Ring Offset Oval Hot Dipped 404857 1,500 1 150 3 1/4\" 0.120 Ring Offset Oval Hot Dipped 50314G 5 Strips 6 - 3-1/4\" 0.120 Ring Offset Oval Hot Dipped 404858 1,500 1 150 Also works with Cordless Impulse Framing Nailer (see page P 8) \u2022 ICC-ES Recognized, ESR-3072 \u2022 Approved for use in all pressure treated lumber such as ACQ and MCQ \u2022 Polymer coating on nail head reduces staining and streaking by 80% compared to traditional hot dipped galvanized nails \u2022 IRC R319.3 code approved for use in pressure treated lumber in accordance with ASTM A 153 PRO-STRIP ROUNDRIVE NAILS FOR USE WITH POWERMASTER PLUS COMPACT FRAMER POWERMASTER PLUS 4\" FRAMER CORDLESS IMPULSE XP FRAMING NAILER \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 2032
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p13_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 13,
+    "content": "USE WITH POWERMASTER PLUS COMPACT FRAMER POWERMASTER PLUS 4\" FRAMER CORDLESS IMPULSE XP FRAMING NAILER \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 13 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": "USE WITH POWERMASTER PLUS COMPACT FRAMER POWERMASTER PLUS",
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 301
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p14_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 14,
+    "content": "TABLE DATA:\n| SELECTION CHART                 |            |        |       |            |         |             |\n|:--------------------------------|:-----------|:-------|:------|:-----------|:--------|:------------|\n| 16 Gauge Standard Crown Staples |            |        |       |            |         |             |\n| LENGTH                          | CROWN SIZE | STAPLE | GAUGE | COATING    | PRODUCT | STAPLES PER |\n|                                 |            | POINT  |       |            | NUMBER  | PACK        |\n| 1\u201d                              | 1/2\"       | Chisel | 16    | Galvanized | OT5242  | 16,500      |\n| 1-1/4\u201d                          | 1/2\"       | Chisel | 16    | Galvanized | OT5238  | 13,500      |\n| 1-1/2\u201d                          | 1/2\"       | Chisel | 16    | Galvanized | OT2695  | 10,500      |\n| 1-3/4\u201d                          | 1/2\"       | Chisel | 16    | Galvanized | OT2250  | 9,000       |\n| 2\u201d                              | 1/2\"       | Chisel | 16    | Galvanized | OT2258  | 7,500       |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 7,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p14_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 14,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS SCS200 16Ga. Standard \u00bd\u201d Crown Stapler SCS200 16 Ga. WITH THE RIGHT STAPLER AND STAPLES, YOU\u2019LL HAVE THE JOB DONE IN NO TIME. Standard 1/2\u201d The new Paslode 16ga standard crown stapler is built for professional framers with speed and power that will increase jobsite productivity by allowing you to work quickly, never having to pull out your hammer to finish off Crown Stapler staples. this durable stapler will hold up to any jobsite conditions or high volume industrial usage.. POWERFUL FAST DEPENDABLE Heavy-duty all metal magazine design for increased durability ADVANTAGES n Lightweight: Only 5.6 lbs n Staple Capacity: Up to 150 staples n Quick-Clear Nose: For easy jam clearance n Staple Range: 3/4\u201d \u2013 2\u201d n Quick Release Follower Tab: Makes reloading fast SELECTION CHART 16 Gauge Standard Crown Staples LENGTH CROWN SIZE STAPLE GAUGE COATING PRODUCT STAPLES PER POINT NUMBER PACK 1\u201d 1/2\" Chisel 16 Galvanized OT5242 16,500 1-1/4\u201d 1/2\" Chisel 16 Galvanized OT5238 13,500 1-1/2\u201d 1/2\" Chisel 16 Galvanized OT2695 10,500 1-3/4\u201d 1/2\" Chisel 16 Galvanized OT2250 9,000 2\u201d 1/2\" Chisel 16 Galvanized OT2258 7,500 APPLICATIONS INCLUDES Roof Decking SCS200 Crown Stapler Soffits and Fascia Boards Pneumatic Lubricating Oil Sheathing Safety glasses Owner\u2019s manual TOOL ACCESSORIES SPECIFICATIONS Part No. 515700 Length: 15.1\" Weight: 5.6 lbs Op. Pres. 80 to 120 p.s.i.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1405
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p14_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 14,
+    "content": "ler Soffits and Fascia Boards Pneumatic Lubricating Oil Sheathing Safety glasses Owner\u2019s manual TOOL ACCESSORIES SPECIFICATIONS Part No. 515700 Length: 15.1\" Weight: 5.6 lbs Op. Pres. 80 to 120 p.s.i. (5.5 to 8.3 bars) Height: 11.7\" Staple Length: 3/4\" \u2013 2\" Width: 3/4\" Staple Diameter: 16 gauge ONE-YEAR FULL WARRANTY A one-year warranty will apply to all parts, except those which are specifically covered by an extended warranty. FIVE-YEAR EXTENDED LIMITED WARRANTY A five-year warranty will apply to all housing and cap Part No. 403720 Part No. 219090 assembly castings. Pneumatic Oil Pneumatic Oil w/ Antifreeze \u00ae P 14 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 815
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p15_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 15,
+    "content": "TABLE DATA:\n| SELECTION CHART             |            |        |       |            |         |             |\n|:----------------------------|:-----------|:-------|:------|:-----------|:--------|:------------|\n| 16 Gauge Wide Crown Staples |            |        |       |            |         |             |\n| LENGTH                      | CROWN SIZE | STAPLE | GAUGE | COATING    | PRODUCT | STAPLES PER |\n|                             |            | POINT  |       |            | NUMBER  | PACK        |\n| 5/8\"                        | 15/16\"     | Chisel | 16    | Galvanized | 0T2851  | 25,500      |\n| 7/8\"                        | 15/16\"     | Chisel | 16    | Galvanized | 404069  | 9,000       |\n| 1-1/2\"                      | 15/16\"     | Chisel | 16    | Galvanized | 0T2855  | 10,500      |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p15_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 15,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS WCS200 16Ga. Wide 15/16\u201d Crown Stapler WCS200 16 Ga. RELIABLE. DURABLE. POWERFUL. Wide 15/16\u201d Tested and proven to reliably hold up to any application on most extreme jobsites. By using Paslode staples, you\u2019ll have fewer jams, fewer misfires and faster loading, only a Paslode stapling system can deliver. Crown Stapler POWERFUL FAST DEPENDABLE Drives staples flush in all materials ADVANTAGES n Lightweight: only 5.9 lbs n Staple Capacity: Up to 150 staples n Quick-Clear Nose: For easy jam clearance n Staple Range: 3/4\u201d \u2013 2\u201d n Quick Release Follower Tab: Makes n Tool-free Adjustable Depth of Drive: Easily reloading fast adjust depth for consistency in any material SELECTION CHART 16 Gauge Wide Crown Staples LENGTH CROWN SIZE STAPLE GAUGE COATING PRODUCT STAPLES PER POINT NUMBER PACK 5/8\" 15/16\" Chisel 16 Galvanized 0T2851 25,500 7/8\" 15/16\" Chisel 16 Galvanized 404069 9,000 1-1/2\" 15/16\" Chisel 16 Galvanized 0T2855 10,500 APPLICATIONS INCLUDES Soffits and Fascia Boards WCS200 Wide 15/16\u201d Crown Stapler Subfloor Pneumatic Lubricating Oil Sheathing Safety glasses Crates and Pallets Owner\u2019s manual TOOL ACCESSORIES SPECIFICATIONS Part No. 515800 Length: 15.1\" Weight: 5.9 lbs Op. Pres. 80 to 120 p.s.i. (5.5 to 8.3 bars) Height: 11.7\" Staple Length: 3/4\" \u2013 2\" Width: 3/4\" Staple Diameter: 16 gauge ONE-YEAR FULL WARRANTY A one-year warranty will apply to all parts, except those which are specifically covered by an extended warranty.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1484
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p15_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 15,
+    "content": "Staple Length: 3/4\" \u2013 2\" Width: 3/4\" Staple Diameter: 16 gauge ONE-YEAR FULL WARRANTY A one-year warranty will apply to all parts, except those which are specifically covered by an extended warranty. FIVE-YEAR EXTENDED LIMITED WARRANTY A five-year warranty will apply to all housing and cap Part No. 403720 Part No. 219090 assembly castings. Pneumatic Oil Pneumatic Oil w/ Antifreeze \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 15 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 583
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p16_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 16,
+    "content": "TABLE DATA:\n| SELECTION CHART                    |          |        |        |            |         |           |\n|:-----------------------------------|:---------|:-------|:-------|:-----------|:--------|:----------|\n| 30 Degree Positive Placement Nails |          |        |        |            |         |           |\n| LENGTH                             | SHANK    | SHANK  | DEGREE | COATING    | PRODUCT | NAILS PER |\n|                                    | DIAMETER |        |        |            | NUMBER  | PACK      |\n| 1-1/2\"                             | 0.148    | Smooth | 30     | Galvanized | 650014  | 3,000     |\n| 1-1/2\"                             | 0.148    | Smooth | 30     | Brite      | 650646  | 2,500     |\n| 2-1/2\"                             | 0.148    | Smooth | 30     | Brite      | 650027  | 1,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p16_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 16,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS Positive Placement Tool\u2014 Positive DESIGNED FOR PROFESSIONAL FRAMERS Placement Paslode is proud to introduce the latest customer-backed innovation. The Paslode\u00ae 21\u017d2\u201d Positive Placement\u00ae Metal Connecting System is designed to provide installers the optimal way for fastening structural hardware to PF250S wood structures. The pneumatic system significantly reduces installation time, allowing jobs to be completed faster and reducing the need for additional labour. Dependable, POWERFUL FAST DEPENDABLE Lightweight, Compact and Accurate ADVANTAGES n Versatile: Drives 1 \u00bd\u201d and 2 \u00bd\u201d nails. n Lightweight and Compact: Reduces fatigue and increases maneuverability. n Dependable: Drive nails consistently to maxi- mize productivity and efficiency. n Accurate: Probing tip guides nails into hardware holes. SELECTION CHART 30 Degree Positive Placement Nails LENGTH SHANK SHANK DEGREE COATING PRODUCT NAILS PER DIAMETER NUMBER PACK 1-1/2\" 0.148 Smooth 30 Galvanized 650014 3,000 1-1/2\" 0.148 Smooth 30 Brite 650646 2,500 2-1/2\" 0.148 Smooth 30 Brite 650027 1,000 \u2022 Mechanically Galvanized, premium corrosion protection with code recognition. Recognized for use in ACQ, MCQ and all pressure treated lumber. \u2022 Heat Treated nails to improve drive performance and reduce bending \u2022 ICC-ES Recognized, ESR-2126, ESR-3326, Galvanization meets ASTM B695 Class 55 APPLICATIONS \u2022 Patented Paper Tape Collation formula provides clean shear for consistent drive performance.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1496
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p16_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 16,
+    "content": "duce bending \u2022 ICC-ES Recognized, ESR-2126, ESR-3326, Galvanization meets ASTM B695 Class 55 APPLICATIONS \u2022 Patented Paper Tape Collation formula provides clean shear for consistent drive performance. Maintains Strip integrity when in contact with moisture and will not fall apart when dropped SPECIFICATIONS Joist Hangers Part No. 511800 Magazine Angle: 30 Degrees Weight: 7.8 lbs Nail Type: 1-1/2\" to 2-1/2\" Positive Placement Hanger Nails \u2013 Brite and Galvanized Height: 14\" Air req: 80-120 PSI Length:17.4\" INCLUDES Warranty: 90-day limited on wear parts, Nail Capacity: 55-60 Nails (2 strips) 1-year limited on magazine parts, 5-year Nail Range: .131\" to .162\" (Shank) Positive Placement PF250S limited on housing and cap parts Safety Glasses Owner\u2019s Manual \u00ae P 16 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 960
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p17_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 17,
+    "content": "TABLE DATA:\n| SELECTION CHART                     |          |            |       |            |            |           |\n|:------------------------------------|:---------|:-----------|:------|:-----------|:-----------|:----------|\n| 18 Gauge Fuel and Finish Nail Packs |          |            |       |            |            |           |\n| LENGTH                              | SHANK    | SHANK TYPE | GAUGE | COATING    | PRODUCT    | NAILS PER |\n|                                     | DIAMETER |            |       |            | NUMBER     | PACK      |\n| 1-1/2\"                              | 0.048    | Chisel     | 18    | Galvanized | FFP-118112 | 1,000     |\n| 2\"                                  | 0.048    | Chisel     | 18    | Galvanized | FFP-118002 | 1,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 4,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p17_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 17,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS 18 Gauge Brad Nailer\u2014 IMLi200 WE'VE GOT THE FACTS NAILED. 18 Gauge When you need precision in tight spaces, reach for the lightweight Paslode Cordless Finishing Nailing System. Brad Nailer It gives great maneuverability to place the nail exactly where you want it wherever you\u2019re working: overhead, on ladders or on your knees. Our portable finish nailer, finish nails and fuel cells are designed to work in tandem so you get the job done right, right away Lightweight and POWERFUL PRECISE PRODUCTIVE PENNIES PER SHOT well balanced ADVANTAGES n Li-Ion for 50% more shots (12,000) per charge n New easier depth of drive thumbwheel n Quick charge to 80% in 30 minutes n New reversible belt hook n New battery standby position conserves charge n 8% lighter \u2013 4.5 lbs with battery (compared with Ni-Cad battery) SELECTION CHART 18 Gauge Fuel and Finish Nail Packs LENGTH SHANK SHANK TYPE GAUGE COATING PRODUCT NAILS PER DIAMETER NUMBER PACK 1-1/2\" 0.048 Chisel 18 Galvanized FFP-118112 1,000 2\" 0.048 Chisel 18 Galvanized FFP-118002 1,000 See Page P 23 for additional finish nails that work with this tool. APPLICATIONS Crown and baseboard mouldings Panelling TOOL ACCESSORIES Carpentry Part No. 902654C Lithium Ion 7.4v battery Part No. 902667C Lithium Ion Battery Charger Part No. 219236 3 Pack of No Mar Tips SPECIFICATIONS Part No. 219086 Degreaser Cleaner Part No. 401482 Impulse Oil Part No. 903700 Part No.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1449
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p17_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 17,
+    "content": "on 7.4v battery Part No. 902667C Lithium Ion Battery Charger Part No. 219236 3 Pack of No Mar Tips SPECIFICATIONS Part No. 219086 Degreaser Cleaner Part No. 401482 Impulse Oil Part No. 903700 Part No. 650039 Universal Trim Fuel Cell (4 pk) Weight: 4.5 lbs Nail Capacity: 100 Height: 11-1/2\" Nail Range: 3/4\" \u2013 2\" INCLUDES Length: 11\" Nail Type: 18 ga IMLi200 18 Ga Brad Nailer ONE-YEAR LIMITED WARRANTY A one-year warranty will apply to all parts, except those listed below as normal Rugged Carrying Case wearing parts, or parts\u00b7which are specifically covered by an extended warranty. Rechargeable Battery with Charger FIVE-YEAR EXTENDED LIMITED WARRANTY A five-year warranty will apply to all molded nylon parts: Safety glasses \u2022 Motor Housing, Cap and Grille \u2022 Handle Halves and Actuator \u2022 Trigger \u2022 Magazine Parts Owner\u2019s manual 90-DAY LIMITED WARRANTY A 90-day warranty applies to the following parts, which are considered normal wearing parts: \u2022 Bumper \u2022 Driver Blades \u2022 O-Rings \u2022 Seal Rings \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 17 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1195
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p18_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 18,
+    "content": "TABLE DATA:\n| SELECTION CHART                     |          |            |       |            |            |           |\n|:------------------------------------|:---------|:-----------|:------|:-----------|:-----------|:----------|\n| 16 Gauge Fuel and Finish Nail Packs |          |            |       |            |            |           |\n| LENGTH                              | SHANK    | SHANK TYPE | GAUGE | COATING    | PRODUCT    | NAILS PER |\n|                                     | DIAMETER |            |       |            | NUMBER     | PACK      |\n| 1 1/2\"                              | 0.063    | Chisel     | 16    | Galvanized | FFP-116112 | 1,000     |\n| 2\"                                  | 0.063    | Chisel     | 16    | Galvanized | FFP-116002 | 1,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 4,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p18_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 18,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS 16 Gauge Straight Cordless Finish Nailer\u2014 IMLi250 GREAT MANEUVERABILITY. 16 Gauge It gives great maneuverability to place the nail exactly where you want it wherever you\u2019re working: overhead, on ladders or on your knees. Our portable finish nailer, finish nails and fuel cells are designed to work in tandem Finish Nailer so you get the job done right, right away. POWERFUL PRECISE PRODUCTIVE PENNIES PER SHOT Lightweight and well balanced ADVANTAGES n Powerful precision \u2013 Finish right the first time. n Use Paslode Universal Trim Fuel \u2013 Drives approx. 1,000 nails n Li-ion Battery \u2013 Drives up to 12,000 nails per charge n Battery Standby Position \u2013 Conserves battery power n Lightweight \u2013 Only 4.6 pounds for added comfort and control n 1 Hour Rapid Charger \u2013 80% charge in 20 min SELECTION CHART 16 Gauge Fuel and Finish Nail Packs LENGTH SHANK SHANK TYPE GAUGE COATING PRODUCT NAILS PER DIAMETER NUMBER PACK 1 1/2\" 0.063 Chisel 16 Galvanized FFP-116112 1,000 2\" 0.063 Chisel 16 Galvanized FFP-116002 1,000 See Page P 20 for additional finish nails that work with this tool. APPLICATIONS Door and window trim Casing TOOL ACCESSORIES Crown and baseboard moulding Part No. 902654C Lithium Ion 7.4v battery Part No. 902667C Lithium Ion Battery Charger Part No. 219236 3 Pack of No Mar Tips SPECIFICATIONS Part No. 219086 Degreaser Cleaner Part No. 401482 Impulse Oil Part No. 903800 Part No.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1431
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p18_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 18,
+    "content": "on 7.4v battery Part No. 902667C Lithium Ion Battery Charger Part No. 219236 3 Pack of No Mar Tips SPECIFICATIONS Part No. 219086 Degreaser Cleaner Part No. 401482 Impulse Oil Part No. 903800 Part No. 650039 Universal Trim Fuel Cell (4 pk) Weight: 4.6 lbs Nail Capacity: 100 INCLUDES Height: 11-3/4\" Nail Range: 1\" - 2-1/2\" Length: 10-1/2\" Nail Type: 16 ga Straight IMli250 16 Ga Straight Finish Nailer ONE-YEAR LIMITED WARRANTY A one-year warranty will apply to all parts, except those listed below as normal Rugged Carrying Case wearing parts, or parts\u00b7which are specifically covered by an extended warranty. Rechargeable Battery with Charger FIVE-YEAR EXTENDED LIMITED WARRANTY A five-year warranty will apply to all molded nylon parts: \u2022 Motor Housing, Cap and Grille \u2022 Handle Halves and Actuator \u2022 Trigger \u2022 Magazine Parts Safety Glasses 90-DAY LIMITED WARRANTY A 90-day warranty applies to the following parts, which are considered normal Owner's Manual wearing parts: \u2022 Bumper \u2022 Driver Blades \u2022 O-Rings \u2022 Seal Rings \u00ae P 18 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1221
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p19_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 19,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS T250S F16P \u2013 16 Gauge Finish Nailer\u2014 T250S F16P LIGHTWEIGHT. HIGH PERFORMANCE. LOW MAINTENANCE. 16 Gauge The Paslode 16 Ga. Pneumatic Finish Nailer has a best-in-class design that allows for comfort in all applications. This is a reliable and durable tool you can trust to keep up with you. The oil-free design allows for long term, Finish Nailer maintenance-free operation which reduces cleanup time and associated costs. LIGHTWEIGHT DEPENDABLE OIL FREE Best in Class Ergonomics ADVANTAGES n Best in class ergonomics \u2013 Designed with n Low maintenance \u2013 Oil-free design allows for enhanced features to optimize balance, long term, maintenance-free operation which maximize comfort, reduce fatigue and increase reduces cleanup time and associated costs productivity n Reliability and durability \u2013 Proven performance that saves you time and can keep up with you APPLICATIONS Window and door trim/finish applications Carpentry Panelling INCLUDES T250S F16P \u2013 16 Gauge Finish Nailer SPECIFICATIONS 1/4\u201d air fitting Part No. 515500 Nail Range: 1\" \u2013 2-1/2\" Rugged Carrying Case Weight: 3.9 lbs Magazine Angle: Straight Collation Owner\u2019s Manual Height: 11.6\" Nail Type: 16 Ga. (Smooth/Galvanized) Safety Glasses Length: 12.3\" Op. Pressure P.S.I (Bar): 80-120 p.s.i Nail Capacity: 100 (2 strips) Warranty: 5 Year limited warranty \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1459
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p19_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 19,
+    "content": "Op. Pressure P.S.I (Bar): 80-120 p.s.i Nail Capacity: 100 (2 strips) Warranty: 5 Year limited warranty \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 19 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 301
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p20_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 20,
+    "content": "TABLE DATA:\n| 16 Gauge Finish Nails   |          |        |       |            |         |           |\n|:------------------------|:---------|:-------|:------|:-----------|:--------|:----------|\n| LENGTH                  | SHANK    | SHANK  | GAUGE | COATING    | PRODUCT | NAILS PER |\n|                         | DIAMETER | TYPE   |       |            | NUMBER  | PACK      |\n| 1\"                      | 0.063    | Chisel | 16    | Galvanized | 095203  | 5,000     |\n| 1-1/4\"                  | 0.063    | Chisel | 16    | Galvanized | 095205  | 5,000     |\n| 1-1/2\"                  | 0.063    | Chisel | 16    | Galvanized | 095257  | 4,000     |\n| 1-3/4\"                  | 0.063    | Chisel | 16    | Galvanized | 095435  | 2,500     |\n| 2\"                      | 0.063    | Chisel | 16    | Galvanized | 095436  | 2,500     |\n| 2-1/2\"                  | 0.063    | Chisel | 16    | Galvanized | 090025  | 2,500     |\n| MULTI                   | 0.063    | Chisel | 16    | Galvanized | 116000  | 2,000     |\n| 1\"                      | 0.063    | Chisel | 16    | Galvanized | 116001  | 1,000     |\n| 1-1/4\"                  | 0.063    | Chisel | 16    | Galvanized | 116114  | 1,000     |\n| 1-1/2\"                  | 0.063    | Chisel | 16    | Galvanized | 116112  | 1,000     |\n| 1-3/4\"                  | 0.063    | Chisel | 16    | Galvanized | 116134  | 1,000     |\n| 2\"                      | 0.063    | Chisel | 16    | Galvanized | 116002  | 1,000     |\n| 2-1/4\"                  | 0.063    | Chisel | 16    | Galvanized | 400601  | 2,500     |\n| 2-1/2\"                  | 0.063    | Chisel | 16    | Galvanized | 116025  | 1,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "16 Gauge Finish Nails",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 15,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p20_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 20,
+    "content": "16 Gauge Straight Finish Nailer SELECTION CHART 16 Gauge Finish Nails LENGTH SHANK SHANK GAUGE COATING PRODUCT NAILS PER DIAMETER TYPE NUMBER PACK 1\" 0.063 Chisel 16 Galvanized 095203 5,000 1-1/4\" 0.063 Chisel 16 Galvanized 095205 5,000 1-1/2\" 0.063 Chisel 16 Galvanized 095257 4,000 1-3/4\" 0.063 Chisel 16 Galvanized 095435 2,500 2\" 0.063 Chisel 16 Galvanized 095436 2,500 2-1/2\" 0.063 Chisel 16 Galvanized 090025 2,500 MULTI 0.063 Chisel 16 Galvanized 116000 2,000 1\" 0.063 Chisel 16 Galvanized 116001 1,000 1-1/4\" 0.063 Chisel 16 Galvanized 116114 1,000 1-1/2\" 0.063 Chisel 16 Galvanized 116112 1,000 1-3/4\" 0.063 Chisel 16 Galvanized 116134 1,000 2\" 0.063 Chisel 16 Galvanized 116002 1,000 2-1/4\" 0.063 Chisel 16 Galvanized 400601 2,500 2-1/2\" 0.063 Chisel 16 Galvanized 116025 1,000 \u2022 ICC-ES Recognized, ESR-3072 \u2022 Approved for use in all pressure treated lumber such as ACQ and MCQ \u2022 Polymer coating on nail head reduces staining and streaking by 80% compared to traditional hot dipped galvanized nails \u2022 IRC R319.3 code approved for use in pressure treated lumber in accordance with ASTM A 153 16 GAUGE FINISH NAILS FOR USE WITH T250S F16P \u2013 16 GAUGE FINISH NAILER IMLi250 \u2013 16 GAUGE FINISH NAILER TOOL ACCESSORIES Part No. 403720 Part No. 219090 Part No. 650039 Pneumatic Oil Pneumatic Oil w/ Universal Trim Fuel Cell Antifreeze (4 Pk) \u00ae P 20 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1447
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p20_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 20,
+    "content": "219090 Part No. 650039 Pneumatic Oil Pneumatic Oil w/ Universal Trim Fuel Cell Antifreeze (4 Pk) \u00ae P 20 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 296
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p21_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 21,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS P18-200 18 Gauge Brad Nailer \u2014 P18-200 BUILT-IN SIGHT LINE ON HOUSING AND NOSE TO ENSURE ACCURATE NAILING. 18 Gauge Paslode driving power with the features contractors demand: depth of drive guide, dual action trigger, dry fire lockout, magazine gauge, easy jam clearing, no slip rubber handle, extra no mar tips and 360\u00b0 adjustable Brad Nailer exhaust. Actuation tip behind nose piece for clear view of work surface. Built-in sight line on housing and nose to ensure accurate nailing. LIGHTWEIGHT PRECISE EASY ACCESS Jobsite tough all metal housing and magazine ADVANTAGES n All metal housing & magazine n Quick-release nose n Adjustable drive depth n 360\u00b0 adjustabler exhaust n Bump & sequential fire switch n 5/8\u201d to 2\u201d nails n Last nail lockout APPLICATIONS SEE PAGE P 22 FOR Windows 18 GAUGE NAILS SELECTION CHART Doors Furniture Trim applications INCLUDES P18-200 18 Gauge Brad Nailer 3 no mar tips SPECIFICATIONS Air fitting Part No. P18-200 Oil Weight: 2.9 lbs Nail Type: 18 Gauge - Smooth, Galvanized Safety glasses Height: 9.5\" OP. Pres. p.s.i. (bar): 80-120 Allen wrenches Length: 10.25\" Warranty: 90-day limited on wear parts, 6-month limited on magazine parts, Nail Capacity: 100 1-year limited on housing and cap parts Nail Range: 5/8\" \u2013 2\" Magazine Angle: Straight \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1417
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p21_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 21,
+    "content": "l Capacity: 100 1-year limited on housing and cap parts Nail Range: 5/8\" \u2013 2\" Magazine Angle: Straight \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 21 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 301
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p22_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 22,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS P18-FS200 P18-FS200 18 Gauge Brad Nailer/Stapler \u2014 18 Gauge BUILT-IN SIGHT LINE ON HOUSING AND NOSE TO ENSURE ACCURATE NAILING. Brad Nailer/ Paslode driving power with the features contractors demand: depth of drive guide, dual action trigger, dry fire lockout, magazine gauge, easy jam clearing, no slip rubber handle, extra no mar tips and 360\u00b0 adjustable Stapler exhaust. Actuation tip behind nose piece for clear view of work surface. Built-in sight line on housing and nose to ensure accurate nailing. LIGHTWEIGHT PRECISE EASY ACCESS Paslode driving power with the features contractors demand ADVANTAGES n All metal housing & magazine n Quick-release nose n Adjustable drive depth n 360\u00b0 adjustable exhaust n Bump & sequential fire switch n 5/8\u201d to 2\u201d Nails, 5/8\u201d to 1-1/2\u201d staples n Last nail lockout APPLICATIONS Windows SEE PAGE P 24 FOR Doors 18 GA. 1/4\" CROWN STAPLES Furniture Trim applications INCLUDES SPECIFICATIONS Part No. P18-FS200 P18-FS200 18 Gauge Brad Nailer/Stapler Weight: 2.9 lbs Nail Type: 18 Gauge - Smooth, 3 no mar tips Galvanized Nails and 1/4\" Crown Staples Height: 9.5\" Air fitting OP. Pres. p.s.i. (bar): 80-120 Length: 10.25\" Oil Warranty: 90-day limited on wear parts, Nail Capacity: 100 Safety glasses 6-month limited on magazine parts, Nail Range: 5/8\" \u2013 2\" brad nails and Allen wrenches 1-year limited on housing and cap parts.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1404
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p22_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 22,
+    "content": "arranty: 90-day limited on wear parts, Nail Capacity: 100 Safety glasses 6-month limited on magazine parts, Nail Range: 5/8\" \u2013 2\" brad nails and Allen wrenches 1-year limited on housing and cap parts. 5/8\" \u2013 1-1/2\" staples (3/16\" crown) Magazine Angle: Straight \u00ae P 22 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 460
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p23_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 23,
+    "content": "TABLE DATA:\n| 18 Gauge Finish Nails   |          |        |       |            |         |           |\n|:------------------------|:---------|:-------|:------|:-----------|:--------|:----------|\n| LENGTH                  | SHANK    | SHANK  | GAUGE | COATING    | PRODUCT | NAILS PER |\n|                         | DIAMETER | TYPE   |       |            | NUMBER  | PACK      |\n| MULTI                   | 0.048    | Chisel | 18    | Galvanized | 118000  | 2,000     |\n| 1\"                      | 0.048    | Chisel | 18    | Galvanized | 118001  | 1,000     |\n| 2\"                      | 0.048    | Chisel | 18    | Galvanized | 118002  | 1,000     |\n| 3/4\"                    | 0.048    | Chisel | 18    | Galvanized | 118034  | 1,000     |\n| 5/8\"                    | 0.048    | Chisel | 18    | Galvanized | 118058  | 1,000     |\n| 1-1/2\"                  | 0.048    | Chisel | 18    | Galvanized | 118112  | 1,000     |\n| 1-1/4\"                  | 0.048    | Chisel | 18    | Galvanized | 118114  | 1,000     |\n| 1-3/4\"                  | 0.048    | Chisel | 18    | Galvanized | 118134  | 1,000     |\n| 1\"                      | 0.048    | Chisel | 18    | Galvanized | 950001  | 3,000     |\n| 2\"                      | 0.048    | Chisel | 18    | Galvanized | 950002  | 3,000     |\n| 3/4\"                    | 0.048    | Chisel | 18    | Galvanized | 950034  | 6,000     |\n| 1-1/2\"                  | 0.048    | Chisel | 18    | Galvanized | 950112  | 3,000     |\n| 1-1/4\"                  | 0.048    | Chisel | 18    | Galvanized | 950114  | 3,000     |\n| 1-3/4\"                  | 0.048    | Chisel | 18    | Galvanized | 950134  | 3,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "18 Gauge Finish Nails",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 15,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p23_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 23,
+    "content": "18 Gauge Brad Nailers/Stapler SELECTION CHART 18 Gauge Finish Nails LENGTH SHANK SHANK GAUGE COATING PRODUCT NAILS PER DIAMETER TYPE NUMBER PACK MULTI 0.048 Chisel 18 Galvanized 118000 2,000 1\" 0.048 Chisel 18 Galvanized 118001 1,000 2\" 0.048 Chisel 18 Galvanized 118002 1,000 3/4\" 0.048 Chisel 18 Galvanized 118034 1,000 5/8\" 0.048 Chisel 18 Galvanized 118058 1,000 1-1/2\" 0.048 Chisel 18 Galvanized 118112 1,000 1-1/4\" 0.048 Chisel 18 Galvanized 118114 1,000 1-3/4\" 0.048 Chisel 18 Galvanized 118134 1,000 1\" 0.048 Chisel 18 Galvanized 950001 3,000 2\" 0.048 Chisel 18 Galvanized 950002 3,000 3/4\" 0.048 Chisel 18 Galvanized 950034 6,000 1-1/2\" 0.048 Chisel 18 Galvanized 950112 3,000 1-1/4\" 0.048 Chisel 18 Galvanized 950114 3,000 1-3/4\" 0.048 Chisel 18 Galvanized 950134 3,000 \u2022 ICC-ES Recognized, ESR-3072 \u2022 Approved for use in all pressure treated lumber such as ACQ and MCQ \u2022 Polymer coating on nail head reduces staining and streaking by 80% compared to traditional hot dipped galvanized nails \u2022 IRC R319.3 code approved for use in pressure treated lumber in accordance with ASTM A 153 18 GAUGE FINISH NAILS FOR USE WITH P18-200 \u2013 P18-FS200 \u2013 IMLI200 \u2013 18 GAUGE 18 GAUGE BRAD NAILER 18 GAUGE BRAD NAILER/STAPLER FINISH NAILER TOOL ACCESSORIES Part No. 403720 Part No. 219090 Part No. 650039 Pneumatic Oil Pneumatic Oil w/ Universal Trim Fuel Cell Antifreeze (4 Pk) \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1470
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p23_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 23,
+    "content": "t No. 219090 Part No. 650039 Pneumatic Oil Pneumatic Oil w/ Universal Trim Fuel Cell Antifreeze (4 Pk) \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 23 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 301
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p24_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 24,
+    "content": "TABLE DATA:\n| SELECTION CHART             |            |        |       |            |         |             |\n|:----------------------------|:-----------|:-------|:------|:-----------|:--------|:------------|\n| 18 Gauge 1/4\" Crown Staples |            |        |       |            |         |             |\n| LENGTH                      | CROWN SIZE | STAPLE | GAUGE | COATING    | PRODUCT | STAPLES PER |\n|                             |            | POINT  |       |            | NUMBER  | PACK        |\n| 1/2\"                        | 1/4\"       | Chisel | 18    | Galvanized | 180121  | 1,000       |\n| 3/4\"                        | 1/4\"       | Chisel | 18    | Galvanized | 180341  | 1,000       |\n| 1\"                          | 1/4\"       | Chisel | 18    | Galvanized | 180011  | 1,000       |\n| 1\"                          | 1/4\"       | Chisel | 18    | Galvanized | 140015  | 5,000       |\n| 1-1/4\"                      | 1/4\"       | Chisel | 18    | Galvanized | 181141  | 1,000       |\n| 1-1/4\"                      | 1/4\"       | Chisel | 18    | Galvanized | 141145  | 5,000       |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 8,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p24_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 24,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS N18-125 \u2013 1-1/4\" Narrow Soffit Stapler\u2014 N18-125 POWERFUL \u2013 MOTOR DRIVES INTO THE HARDEST OF WOODS. 1-1/4\" Narrow Precision pneumatic trim tools to do the job right. Whether you're a professional contractor or a \"week-end\" craftsman, the compact and durable. Lite Line series has the right tool for any trim or hobby application. Soffit Stapler Featuring the same rugged quality as our other heavy duty professional tools. POWERFUL EASY ACCESS PROFESSIONAL Adjustable Exhaust \u2013 Maintains a Cleaner Working ADVANTAGES Environment n Ergonomically Balanced and Lightweight \u2013 n Narrow Nose Piece \u2013 Allows the tool to fit into To reduce arm fatigue. tight corners. n Quick Clear Nose Piece \u2013 to reduce down time n Magnesium Metal Housing \u2013 Durable and on the job if a jam should occur. provides longer tool life.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 846
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p24_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 24,
+    "content": "ol to fit into To reduce arm fatigue. tight corners. n Quick Clear Nose Piece \u2013 to reduce down time n Magnesium Metal Housing \u2013 Durable and on the job if a jam should occur. provides longer tool life. SELECTION CHART 18 Gauge 1/4\" Crown Staples LENGTH CROWN SIZE STAPLE GAUGE COATING PRODUCT STAPLES PER POINT NUMBER PACK 1/2\" 1/4\" Chisel 18 Galvanized 180121 1,000 3/4\" 1/4\" Chisel 18 Galvanized 180341 1,000 1\" 1/4\" Chisel 18 Galvanized 180011 1,000 1\" 1/4\" Chisel 18 Galvanized 140015 5,000 1-1/4\" 1/4\" Chisel 18 Galvanized 181141 1,000 1-1/4\" 1/4\" Chisel 18 Galvanized 141145 5,000 \u2022 ICC-ES Recognized, ESR-1539 INCLUDES \u2022 Code approved for use in pressure treated lumber in accordance with ASTM A 153 N18-125 \u2013 1-1/4\" Narrow Soffit Stapler APPLICATIONS Safety glasses Trim/Finish Carrying case Plywood Owner\u2019s manual Soffits/facias TOOL ACCESSORIES Underlayment Applications SPECIFICATIONS Part No. N18-125 Nail Type: GSN 18, 3/16 inch Crown Weight: 2.5 lbs OP. Pres. p.s.i. (bar): 80-120 (5.5-8.3) Height: 9\" Warranty: 90-day limited on wear parts, 6-month limited on magazine parts, Length: 9-1/4\" Part No. 403720 Part No. 219090 1-year limited on housing and cap parts. Pneumatic Oil Pneumatic Oil w/ Antifreeze Nail Capacity: 100 Nail Range: 3/4\" - 1-1/4\" \u00ae P 24 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1463
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p25_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 25,
+    "content": "TABLE DATA:\n| SELECTION CHART             |            |        |       |            |         |             |\n|:----------------------------|:-----------|:-------|:------|:-----------|:--------|:------------|\n| 18 Gauge 1/4\" Crown Staples |            |        |       |            |         |             |\n| LENGTH                      | CROWN SIZE | STAPLE | GAUGE | COATING    | PRODUCT | STAPLES PER |\n|                             |            | POINT  |       |            | NUMBER  | PACK        |\n| 1/2\"                        | 1/4\"       | Chisel | 18    | Galvanized | 180121  | 1,000       |\n| 3/4\"                        | 1/4\"       | Chisel | 18    | Galvanized | 180341  | 1,000       |\n| 1\"                          | 1/4\"       | Chisel | 18    | Galvanized | 180011  | 1,000       |\n| 1\"                          | 1/4\"       | Chisel | 18    | Galvanized | 140015  | 5,000       |\n| 1 1/4\"                      | 1/4\"       | Chisel | 18    | Galvanized | 181141  | 1,000       |\n| 1 1/4\"                      | 1/4\"       | Chisel | 18    | Galvanized | 141145  | 5,000       |\n| 1 1/2\"                      | 1/4\"       | Chisel | 18    | Galvanized | 141125  | 5,000       |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 9,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p25_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 25,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS N18-150 - 1-1/3\" Narrow Crown Finish Stapler\u2014 1-1/2\" POWERFUL \u2013 MOTOR DRIVES INTO THE HARDEST OF WOODS. Narrow Crown Precision pneumatic trim tools to do the job right. Whether you're a professional contractor or a \"week-end\" craftsman, the compact and durable. Lite Line series has the right tool for any trim or hobby application. Finish Stapler Featuring the same rugged quality as our other heavy duty professional tools. POWERFUL PRECISE PROFESSIONAL Ergonomically Balanced and Lightweight \u2013 ADVANTAGES To Reduce n Adjustable Exhaust \u2013 Maintains a cleaner n Narrow Nose Piece \u2013 Allows the tool to fit into Arm Fatigue working environment. tight corners. n Quick Clear Nose Piece \u2013 to reduce down time n Magnesium Metal Housing \u2013 Durable and on the job if a jam should occur. provides longer tool life.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 846
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p25_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 25,
+    "content": "into Arm Fatigue working environment. tight corners. n Quick Clear Nose Piece \u2013 to reduce down time n Magnesium Metal Housing \u2013 Durable and on the job if a jam should occur. provides longer tool life. SELECTION CHART 18 Gauge 1/4\" Crown Staples LENGTH CROWN SIZE STAPLE GAUGE COATING PRODUCT STAPLES PER POINT NUMBER PACK 1/2\" 1/4\" Chisel 18 Galvanized 180121 1,000 3/4\" 1/4\" Chisel 18 Galvanized 180341 1,000 1\" 1/4\" Chisel 18 Galvanized 180011 1,000 1\" 1/4\" Chisel 18 Galvanized 140015 5,000 1 1/4\" 1/4\" Chisel 18 Galvanized 181141 1,000 1 1/4\" 1/4\" Chisel 18 Galvanized 141145 5,000 1 1/2\" 1/4\" Chisel 18 Galvanized 141125 5,000 \u2022 ICC-ES Recognized, ESR-1539 INCLUDES \u2022 Code approved for use in pressure treated lumber in accordance with ASTM A 153 N18-150 \u2013 1-1/2\u201d Narrow Crown Finish Stapler APPLICATIONS Safety glasses Trim/Finish Carrying case Owner\u2019s manual Plywood Soffits/facias TOOL ACCESSORIES Underlayment Applications SPECIFICATIONS Part No. N18-150 Nail Type: GSN 18, 3/16 inch Crown Weight: 2.8 lbs OP. Pres. p.s.i. (bar): 80-120 (5.5-8.3) Height: 9-3/4\" Warranty: 90-day limited on wear parts, 6-month limited on magazine parts, Length: 11-1/2\" Part No. 403720 Part No. 219090 1-year limited on housing and cap parts. Pneumatic Oil Pneumatic Oil w/ Antifreeze Nail Capacity: 100 Nail Range: 3/4\" - 1-1/2\" \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1419
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p25_c2",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 25,
+    "content": "and cap parts. Pneumatic Oil Pneumatic Oil w/ Antifreeze Nail Capacity: 100 Nail Range: 3/4\" - 1-1/2\" \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 25 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 301
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p26_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 26,
+    "content": "TABLE DATA:\n| SELECTION CHART             |            |        |       |            |         |             |\n|:----------------------------|:-----------|:-------|:------|:-----------|:--------|:------------|\n| 22 Gauge Upholstery Staples |            |        |       |            |         |             |\n| LENGTH                      | CROWN SIZE | STAPLE | GAUGE | COATING    | PRODUCT | STAPLES PER |\n|                             |            | POINT  |       |            | NUMBER  | PACK        |\n| 3/8\"                        | 3/8\"       | Chisel | 22    | Galvanized | 422038  | 4,000       |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 3,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p26_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 26,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS US-100 Upholstery/Craft Stapler\u2014 US-100 LONG NARROW NOSEPIECE FOR TIGHT SPOTS Upholstery/ Lightweight - At only 2 lbs this tool is very easy to handle and decreases operator fatigue. Heavy-duty driver blade. Craft Stapler FAST PRECISE QUICK LOAD Easy-load Magazine ADVANTAGES n Drives 3/8\" - 9/16\" upholstery staples. n Fast - Shoots 5 staples per second SELECTION CHART 22 Gauge Upholstery Staples LENGTH CROWN SIZE STAPLE GAUGE COATING PRODUCT STAPLES PER POINT NUMBER PACK 3/8\" 3/8\" Chisel 22 Galvanized 422038 4,000 \u2022 ICC-ES Recognized, ESR-1539 \u2022 Code approved for use in pressure treated lumber in accordance with ASTM A 153 APPLICATIONS Upholstery Crafts INCLUDES Light paneling US100 Upholstery/Craft Stapler Home project applications TOOL ACCESSORIES SPECIFICATIONS Part No. US-100 Nail Type: 22 Gauge Upholstery Weight: 2.8 lbs OP. Pres. p.s.i. (bar): 80-120 (5.5-8.3) Height: 9-1/2\" Warranty: 90-day limited on wear parts, 6-month limited on magazine parts, Length: 12-1/2\" 1-year limited on housing and cap parts. Nail Capacity: 100 Nail Range: 3/8\" \u2013 9/16\" Part No. 403720 Part No. 219090 Pneumatic Oil Pneumatic Oil w/ Antifreeze \u00ae P 26 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1382
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p27_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 27,
+    "content": "TABLE DATA:\n| SELECTION CHART    |          |            |       |         |         |           |\n|:-------------------|:---------|:-----------|:------|:--------|:--------|:----------|\n| 23 Gauge Pin Nails |          |            |       |         |         |           |\n| LENGTH             | SHANK    | SHANK TYPE | GAUGE | COATING | PRODUCT | NAILS PER |\n|                    | DIAMETER |            |       |         | NUMBER  | PACK      |\n| 1\"                 | 0.025    | Chisel     | 23    | Brite   | 323001  | 3,000     |\n| 3/4\"               | 0.025    | Chisel     | 23    | Brite   | 323034  | 3,000     |\n| 1-1/2\"             | 0.025    | Chisel     | 23    | Brite   | 323112  | 3,000     |\n| 1-3/8\"             | 0.025    | Chisel     | 23    | Brite   | 323138  | 3,000     |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 6,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p27_table1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 27,
+    "content": "TABLE DATA:\n| Fine woodworking and trim work   |\n|:---------------------------------|\n| SPECIFICATIONS                   |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "Fine woodworking and trim work"
+      ],
+      "row_count": 1,
+      "col_count": 1
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p27_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 27,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS HP100 Headless Pin Nailer\u2014 HP100 COMPACT \u2013 LIGHTWEIGHT. Headless Multi-directional exhaust port. Pin nails leave a very small hole for easy finishing and painting. Pin Nailer FAST LIGHTWEIGHT PROFESSIONAL Compact lightweight design ADVANTAGES n Quick release nose piece n Drives 1/2\" to 1-1/2\" pin nails SELECTION CHART 23 Gauge Pin Nails LENGTH SHANK SHANK TYPE GAUGE COATING PRODUCT NAILS PER DIAMETER NUMBER PACK 1\" 0.025 Chisel 23 Brite 323001 3,000 3/4\" 0.025 Chisel 23 Brite 323034 3,000 1-1/2\" 0.025 Chisel 23 Brite 323112 3,000 1-3/8\" 0.025 Chisel 23 Brite 323138 3,000 \u2022 ICC-ES Recognized, ESR-1539 \u2022 Code approved for use in pressure treated lumber in accordance with ASTM A 153 APPLICATIONS INCLUDES HP100 Headless Pin Nailer Safety glasses Tool case Allen wrench and oil TOOL ACCESSORIES Fine woodworking and trim work SPECIFICATIONS Part No. HP100 Nail Type: 23 Gauge - Smooth, Galvanized Pin Nails Weight: 1.2 lbs OP. Pres. p.s.i. (bar): 80-120 Height: 9-1/4\" Warranty: 90-day limited on wear parts, Length: 7-3/4\" 6-month limited on magazine parts, Nail Capacity: 100 1-year limited on housing and cap parts. Nail Range: 1/2\" - 1-1/2\" Part No. 403720 Part No. 219090 Pneumatic Oil Pneumatic Oil w/ Antifreeze Magazine Angle: Straight \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 27 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1487
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p28_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 28,
+    "content": "TABLE DATA:\n| SELECTION CHART             |          |        |       |         |         |           |           |\n|:----------------------------|:---------|:-------|:------|:--------|:--------|:----------|:----------|\n| Flooring Staples and Cleats |          |        |       |         |         |           |           |\n| LENGTH                      | SHANK    | SHANK  | GAUGE | COATING | PRODUCT | NAILS PER | NAILS PER |\n|                             | DIAMETER | TYPE   |       |         | NUMBER  | PACK      | BOX       |\n| 1-3/4\"                      | Staple   | Chisel | 15    | Brite   | 151134  | 1,000     | 5,000     |\n| 2\"                          | Staple   | Chisel | 15    | Brite   | 151002  | 1,000     | 5,000     |\n| 2\"                          | Cleat    | Cleat  | 16    | Brite   | 100002  | 1,000     |           |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 8
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p28_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 28,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS 2 in 1 Flooring Nailer/Stapler\u2014 THE PROFESSIONAL GRADE 2 IN 1 FLOORING TOOL. FloorMaster Optimal performance and solid reliability. Easy maintenance and low cost of ownership. Lightweight \u2013 10.4 lbs Plus\u2122 PRECISE FAST POWERFUL Floormaster Plus\u2122 2 in 1 Flooring ADVANTAGES Nailer/Stapler n Easy Actuation n Industry-Best Design & Ergonomics \u2013 Only 4 lbs of pressure anywhere on poppet \u2013 Reverse handle with foam grip for reduced valve fatigue \u2013 Compact all-around striking surface to avoid \u2013 Compact size for nailing boards closer to the marking/damaging walls end walls SELECTION CHART Flooring Staples and Cleats LENGTH SHANK SHANK GAUGE COATING PRODUCT NAILS PER NAILS PER DIAMETER TYPE NUMBER PACK BOX 1-3/4\" Staple Chisel 15 Brite 151134 1,000 5,000 2\" Staple Chisel 15 Brite 151002 1,000 5,000 2\" Cleat Cleat 16 Brite 100002 1,000 \u2022 ICC-ES Recognized, ESR-1539 \u2022 Code approved for use in pressure treated lumber in accordance with ASTM A 153 APPLICATIONS 3/4\" Hardwood flooring INCLUDES SPECIFICATIONS Part No. F2N1-200 Flooring Fasteners: 15GA staples & Tool & Mallet 16GA L-cleats Weight: 10.4 lbs Fastener Lengths: 1-3/4\", 2\" 15GA Height: 18\" staples & 2\" 16 GA L-cleats Length: 16\" \u00ae P 28 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1429
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p29_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 29,
+    "content": "TABLE DATA:\n| SELECTION CHART             |          |        |       |         |         |           |           |\n|:----------------------------|:---------|:-------|:------|:--------|:--------|:----------|:----------|\n| Flooring Staples and Cleats |          |        |       |         |         |           |           |\n| LENGTH                      | SHANK    | SHANK  | GAUGE | COATING | PRODUCT | NAILS PER | NAILS PER |\n|                             | DIAMETER | TYPE   |       |         | NUMBER  | PACK      | BOX       |\n| 1-3/4\"                      | Staple   | Chisel | 15    | Brite   | 151134  | 1,000     | 5,000     |\n| 2\"                          | Staple   | Chisel | 15    | Brite   | 151002  | 1,000     | 5,000     |\n| 2\"                          | Cleat    | Cleat  | 16    | Brite   | 100002  | 1,000     |           |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "SELECTION CHART",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 5,
+      "col_count": 8
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p29_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 29,
+    "content": "\u00ae DESCRIPTION/SUGGESTED SPECIFICATIONS Nailer/Stapler 2 in 1 Combo\u2014 THE PROFESSIONAL GRADE 2 IN 1 FLOORING TOOL. FloorMaster Optimal performance, unfailing reliability. Ideal for flooring professionals, small contractors and self-employed installers. Pro\u2122 PRECISE SPEED POWERFUL Floormaster Pro\u2122 Nailer/Stapler 2 in 1 Combo ADVANTAGES n Easy firing pneumatic valve n Requires only a few drops of non-detergent oil n Long lasting valve inside weekly for lubrication n Light impact all-around striking cap SELECTION CHART Flooring Staples and Cleats LENGTH SHANK SHANK GAUGE COATING PRODUCT NAILS PER NAILS PER DIAMETER TYPE NUMBER PACK BOX 1-3/4\" Staple Chisel 15 Brite 151134 1,000 5,000 2\" Staple Chisel 15 Brite 151002 1,000 5,000 2\" Cleat Cleat 16 Brite 100002 1,000 \u2022 ICC-ES Recognized, ESR-1539 \u2022 Code approved for use in pressure treated lumber in accordance with ASTM A 153 APPLICATIONS 1/2\" to 3/4\u201d Solid and Engineered Flooring SPECIFICATIONS Part No. FNS-200 Flooring Fasteners: 115-1/2ga staples & 16ga L-Cleats Weight: 11 lbs INCLUDES Fastener Lengths: 2\u201d, 1-3/4\u201d, 1-1/2\u201d Height: 21-5/8\" Tool & Mallet Length: 18\" \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 29 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1325
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p30_table0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 30,
+    "content": "TABLE DATA:\n| MISCELLANEOUS FASTENERS               |          |        |        |            |         |             |\n|:--------------------------------------|:---------|:-------|:-------|:-----------|:--------|:------------|\n| 18 Gauge Flooring Cleats              |          |        |        |            |         |             |\n| LENGTH                                | TYPE     | STAPLE | GAUGE  | COATING    | PRODUCT | CLEATS PER  |\n|                                       |          | POINT  |        |            | NUMBER  | PACK        |\n| 2\"                                    | Cleat    | Chisel | 18     | Brite      | 150018  | 1,000       |\n| 15 Degree Coil Nails                  |          |        |        |            |         |             |\n| LENGTH                                | SHANK    | SHANK  | DEGREE | COATING    | PRODUCT | NAILS PER   |\n|                                       | DIAMETER |        |        |            | NUMBER  | PACK        |\n| 2\"                                    | 0.099    | Spiral | 15     | Brite      | 404582  | 4,500       |\n| 2-1/4\"                                | 0.099    | Spiral | 15     | Brite      | 404583  | 4,500       |\n| 2-1/2\"                                | 0.099    | Spiral | 15     | Brite      | 404584  | 4,500       |\n| 3\"                                    | 0.12     | Spiral | 15     | Brite      | 404508  | 4,500       |\n| 3-1/4\"                                | 0.12     | Spiral | 15     | Brite      | 404510  | 4,500       |\n| 18 Gauge GEN-ER-X 7/32\" Crown Staples |          |        |        |            |         |             |\n| LENGTH                                | TYPE     | STAPLE | GAUGE  | COATING    | PRODUCT | STAPLES PER |\n|                                       |          | POINT  |        |            | NUMBER  | PACK        |\n| 5/8\"                                  | 7/32\"    | Chisel | 18     | Galvanized | 732058  | 5,000       |\n| 1\"                                    | 7/32\"    | Chisel | 18     | Galvanized | 732001  | 5,000       |\n| 1-3/8\"                                | 7/32\"    | Chisel | 18     | Galvanized | 732138  | 5,000       |",
+    "chunk_type": "table",
+    "section": null,
+    "table_data": {
+      "headers": [
+        "MISCELLANEOUS FASTENERS",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "row_count": 15,
+      "col_count": 7
+    },
+    "diagram_data": null,
+    "metadata": {
+      "extraction_method": "pdfplumber_table"
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p30_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 30,
+    "content": "\u00ae Miscellaneous SELECTION CHART Fasteners MISCELLANEOUS FASTENERS 18 Gauge Flooring Cleats LENGTH TYPE STAPLE GAUGE COATING PRODUCT CLEATS PER POINT NUMBER PACK 2\" Cleat Chisel 18 Brite 150018 1,000 15 Degree Coil Nails LENGTH SHANK SHANK DEGREE COATING PRODUCT NAILS PER DIAMETER NUMBER PACK 2\" 0.099 Spiral 15 Brite 404582 4,500 2-1/4\" 0.099 Spiral 15 Brite 404583 4,500 2-1/2\" 0.099 Spiral 15 Brite 404584 4,500 3\" 0.12 Spiral 15 Brite 404508 4,500 3-1/4\" 0.12 Spiral 15 Brite 404510 4,500 18 Gauge GEN-ER-X 7/32\" Crown Staples LENGTH TYPE STAPLE GAUGE COATING PRODUCT STAPLES PER POINT NUMBER PACK 5/8\" 7/32\" Chisel 18 Galvanized 732058 5,000 1\" 7/32\" Chisel 18 Galvanized 732001 5,000 1-3/8\" 7/32\" Chisel 18 Galvanized 732138 5,000 \u00ae P 30 Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 936
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p31_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 31,
+    "content": "Notes \u00ae Call our toll free number 800-387-9692 or visit www.itwconstruction.ca for general information. P 31 Visit Paslode's web site www.paslode.ca for the most current product and technical information.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 205
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p32_c0",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 32,
+    "content": "National Headquarters Take Advantage of these Contractor 120 Travail Road Services from ITW Construction Markham, Ontario, L3S 3J1 Products Canada Tel: 905-471-7403 800-387-9692 From job sites to engineering firms, from Safety Seminars to on-site ser- vices, we hope you take advantage of our many contractor services\u2013at Fax: 905-471-7208 no charge! After all, it\u2019s one thing to offer the quality products you need 800-668-8688 to do your job. It\u2019s another to provide you with superior service, engi- neering expertise and total product support. At ITW Construction Products Canada, we are proud of the partnerships Technical and we have built through the years with our distributor network and Customer Service Support contractors. Thanks to quality products, innovative services and on-time delivery, we will continue to build new relationships and strengthen Tel: 800-387-9692 existing ones today... and into the next century. Fax: 800-668-8688 n Factory representatives with years of training and service experience will go out to your job site to provide you with product, service and technical assistance. Regional Warehouses n We provide architects and engineers with complete submittal packages n Markham, Ontario which gives them the technical data needed to specify ITW Construction Products Canada products. Contact your ITW Construction Products n Coquitlam, British Columbia Canada Distributor or your nearest Customer Service location to n Calgary, Alberta request submittal packages.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1499
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p32_c1",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 32,
+    "content": "cts Canada products. Contact your ITW Construction Products n Coquitlam, British Columbia Canada Distributor or your nearest Customer Service location to n Calgary, Alberta request submittal packages. Technical Application Assistance: n Our staff of application specialists are ready to assist you with any type of application or code approval question during any phase of your project. Call 1-800-387-9692 between 8:00 a.m. and 5:00 p.m. EST, Monday through Friday. Distributed By Ramset, T4, T3, T3Cup, Trakfast, GypFast, Mastershot, Triggershot, Hammershot, PowerPoint, TE Pin and Climacoat are trademarks of Illinois Tools Works, Inc. A7+, C6+, Dynabolt, G5, Hammer-Set, LDT, Multi-Set II, Poly Set, Red Head, Redi-Drive, S7, Striker, and Trubolt are trademarks of ITW Red Head and Illinois Tool Works, Inc. Teks, TruGrip GT, Scots, Maxiseal, Dek-Cap, Tapcon,SG, Tapcon, Maxi-Set Tapcon, Condrive, E-Z Ancor, E-Z Toggle, Twist-N-Lock, E-Z Lite, E-Z Mini, Stud Solver, Hi-Lo, S-12, Backer-On, Rock-On, DecKing, Dec-U-Drive, Dek-Cap, Grid-Mate, Grid-Mate, PB, Climaseal, Spex, Climacoat, UltraShield, Climashield and Building Ideas That Work are trademarks of ITW Buildex and Illinois Tool Works, Inc. Sammys, Sammy X-Press, Sammy X-Press It, Sammy X-Press Swivel, Sammy X-Press Sidewinder, Tapcon, Sammy Saddle, Speedy Pole Tool, Spot-Rite Level, and Truss-T Hanger are trademarks of ITW Buildex and Illinois Tool Works, Inc.",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1428
+    }
+  },
+  {
+    "chunk_id": "Paslode 2020 Full Catalog_p32_c2",
+    "source": "Paslode 2020 Full Catalog",
+    "page": 32,
+    "content": "ammy X-Press It, Sammy X-Press Swivel, Sammy X-Press Sidewinder, Tapcon, Sammy Saddle, Speedy Pole Tool, Spot-Rite Level, and Truss-T Hanger are trademarks of ITW Buildex and Illinois Tool Works, Inc. The term \u201cPaslode\u201d is a trademark and the Paslode logo and all related product and service names, designs and slogans are Paslode trademarks. Paslode, RounDrive, Impulse, Positive Placement are registered trademarks, PowerFramer and quicklode are trademarks of Illinois Tool Works. R4, RSS, Kameleon, Fin/Trim, RT Composite, Low Profile Cabinet, Pheinox, Top Star, VWS, The information and recommendations in this document are based on the best information Caliburn, and The GRK Fasteners Canada Ltd. and all associated designs and logos are trademarks available to us at the time of preparation. We make no other warranty, expressed or implied, of GRK Fasteners Canada Ltd., used under license. as to its correctness or completeness, or as to the results or reliance of this document. Hilti is a registered trademark of Hilti, Corp. DensGlass is a registered trademark of Georgia Pacific Building Products. Dekstrip, Dektite, Retrofit Dektite, and Dektite are registered trademarks of Deks Industries Pty Ltd. Phillips Square-driv is a registered trademark of the Phillips Screw Company. \u00a9 2020 Illinois Tool Works, Inc. Form. No. 01/20",
+    "chunk_type": "text",
+    "section": null,
+    "table_data": null,
+    "diagram_data": null,
+    "metadata": {
+      "char_count": 1338
+    }
+  }
+]
