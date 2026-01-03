@@ -166,7 +166,7 @@ def process_pdfs(pdf_files: list):
         
         try:
             # Process PDF
-            chunks = chunker.process_pdf(pdf_path, source_name=f"Pink Batts - {filename}")
+            chunks = chunker.process_pdf(pdf_path)
             
             # Classify each chunk
             classification = classify_document(filename)
