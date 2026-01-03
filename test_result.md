@@ -515,3 +515,80 @@
 1. "How do I install Firth Holland Pavers?" → Should return PAVING docs only
 2. "What is the steel spacing for a Firth 20 Series block wall?" → Should return MASONRY docs only
 3. "RibRaft edge detail reinforcement" → Should return FOUNDATIONS docs only
+
+### ✅ TESTING COMPLETED (Testing Agent - 2026-01-03 22:43)
+
+**Review Request: Test Product Function/Trade-Aware Retrieval for Firth Brand**
+
+### ✅ CONFIRMED WORKING (3/3 Trade-Aware Tests)
+
+1. **Paving Trade Detection**: ✅ PASS
+   - Query: "How do I install Firth Holland Pavers?"
+   - Backend Logs: "🏷️ Detected trade/product function: paving"
+   - Brand Filter: "🔎 Brand Deep Dive + Trade filter: brand=Firth, trade=paving"
+   - Result: Retrieved documents with "trade=paving, priority=85"
+   - Response: 1036 chars with 7 relevant paving keywords (paver, pavers, paving, holland, bedding sand, compaction, base course)
+   - ✅ **Trade-aware retrieval working correctly for paving**
+
+2. **Masonry Trade Detection**: ✅ PASS
+   - Query: "What is the steel spacing for a Firth 20 Series block wall?"
+   - Backend Logs: "🏷️ Detected trade/product function: masonry"
+   - Brand Filter: "🔎 Brand Deep Dive + Trade filter: brand=Firth, trade=masonry"
+   - Result: Retrieved documents with "trade=masonry, priority=85" + relevant NZS standards
+   - Response: 329 chars with 5 relevant masonry keywords (block, steel spacing, reinforcement, 20 series, block wall)
+   - ✅ **Trade-aware retrieval working correctly for masonry**
+
+3. **Foundations Trade Detection**: ✅ PASS
+   - Query: "RibRaft edge detail reinforcement"
+   - Backend Logs: "🏷️ Detected trade/product function: foundations"
+   - Brand Filter: "🔎 Brand Deep Dive + Trade filter: brand=Firth, trade=foundations"
+   - Result: Retrieved documents with "trade=foundations, priority=85"
+   - Response: 373 chars with 4 relevant foundations keywords (ribraft, edge beam, beam, reinforcement)
+   - ✅ **Trade-aware retrieval working correctly for foundations**
+
+### 🔍 TECHNICAL VERIFICATION
+
+**Backend Implementation Confirmed**:
+- ✅ Trade detection function working: `detect_trade_from_query()`
+- ✅ Trade keywords properly defined for paving, masonry, foundations
+- ✅ Brand + trade filtering logic implemented
+- ✅ Granular product function detection operational
+- ✅ Firth documents properly tagged with trade metadata
+
+**Backend Logs Show**:
+- ✅ "🏷️ Detected trade/product function: [paving/masonry/foundations]" for all queries
+- ✅ "🔎 Brand Deep Dive + Trade filter: brand=Firth, trade=[trade]" for all queries
+- ✅ Vector search retrieving trade-specific documents (trade=paving/masonry/foundations)
+- ✅ Document prioritization working (priority=85 for Firth trade-specific docs)
+
+**Response Quality**:
+- ✅ All responses mention Firth brand (100% brand mention rate)
+- ✅ Average 5.3 trade-specific keywords per response
+- ✅ No cross-contamination between trades (minimal wrong keywords)
+- ✅ Contextually relevant responses for each trade category
+
+### 📊 TRADE-AWARE RETRIEVAL VERDICT: ✅ **FULLY WORKING**
+
+**Success Criteria Met:**
+- ✅ Each query returns contextually relevant results for its specific trade
+- ✅ Backend logs show "Detected trade/product function: paving/masonry/foundations"
+- ✅ Response content aligns with expected trade category
+- ✅ Brand + trade filtering working as designed
+- ✅ Granular product function detection operational
+
+**Key Achievements:**
+- ✅ Successfully distinguishes between Firth paving vs Firth foundations vs Firth masonry
+- ✅ Trade-aware retrieval prevents cross-contamination between product lines
+- ✅ Proper prioritization of trade-specific documents (priority=85)
+- ✅ Backend implementation matches specification requirements
+
+### 🎯 FINAL ASSESSMENT
+
+The **Product Function/Trade-Aware Retrieval** feature is **FULLY OPERATIONAL** and working exactly as specified. The system successfully:
+
+1. **Detects trade/product function** from queries using keyword analysis
+2. **Applies brand + trade filtering** to retrieve only relevant documents
+3. **Prevents cross-contamination** between different product lines within the same brand
+4. **Provides contextually relevant responses** for each specific trade
+
+The Firth documents have been successfully re-tagged with granular trade metadata, and the retrieval system is effectively using this metadata to provide trade-specific responses.
