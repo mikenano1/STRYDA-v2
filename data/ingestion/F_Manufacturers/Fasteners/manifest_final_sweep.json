@@ -1,0 +1,323 @@
+{
+  "operation": "FINAL_SWEEP",
+  "category": {
+    "category_code": "F_Manufacturers",
+    "trade": "fasteners",
+    "country": "New Zealand",
+    "operation": "FINAL_SWEEP"
+  },
+  "fetch_date": "2026-01-03T05:44:32.939262",
+  "documents": [
+    {
+      "source": "Delfast PlaceMakers Nail Guide 2023",
+      "brand_name": "Delfast",
+      "category_code": "F_Manufacturers",
+      "product_family": "Collated Nails",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.placemakers.co.nz/medias/sys_master/root/h71/h46/11685411487774/Delfast-PlaceMakers%20Nail%20Guide%2003-23/Delfast-PlaceMakers-Nail-Guide-03-23.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Nail_Guide_2023.pdf",
+      "file_hash": "f682ee6cbce70cb580820be740b725cdf4480379ceb3c76338279a59acd117e9",
+      "file_size_bytes": 1842428,
+      "retailer_availability": [
+        "PlaceMakers",
+        "ITM"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:04.135979",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Delfast PlaceMakers Rural Range 2021",
+      "brand_name": "Delfast",
+      "category_code": "F_Manufacturers",
+      "product_family": "Staples Rural",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.placemakers.co.nz/medias/sys_master/root/h02/h02/10202659455006/delfast-placemakers-rural-range-compressed-v1-june-2021/delfast-placemakers-rural-range-compressed-v1-june-2021.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Rural_Range_2021.pdf",
+      "file_hash": "6b03e9df236b11f967e02b83f25b6b97824ad135798cc1a496479ab16bdbdb42",
+      "file_size_bytes": 3651149,
+      "retailer_availability": [
+        "PlaceMakers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:06.106593",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Delfast Nails BRANZ Appraisal 1154",
+      "brand_name": "Delfast",
+      "category_code": "F_Manufacturers",
+      "product_family": "Collated Nails",
+      "doc_type": "BRANZ_Appraisal",
+      "trade": "fasteners",
+      "original_url": "https://d39d3mj7qio96p.cloudfront.net/media/documents/01_1154_2021_-_A1.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Delfast/Delfast_Nails_BRANZ_Appraisal_1154.pdf",
+      "file_hash": "e2939091e35347670532d8f2168a4c2195f1252bc095b1363e790e376ab0f4eb",
+      "file_size_bytes": 572864,
+      "retailer_availability": [
+        "PlaceMakers",
+        "ITM",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:07.637504",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "ECKO T-Rex 17 Screws BPIR Declaration",
+      "brand_name": "Ecko",
+      "category_code": "F_Manufacturers",
+      "product_family": "T-Rex 17",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://ajfasteners.co.nz/wp-content/uploads/2023/11/ECKO-TRex-17-Screws-BPIR-Decl-V1.0.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Ecko/ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf",
+      "file_hash": "2616efe4b669543f0f076a71aa8939f4af23511715bb18a658f8d8e585204894",
+      "file_size_bytes": 127652,
+      "retailer_availability": [
+        "PlaceMakers",
+        "ITM"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:08.744750",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "NZ Pryda Connectors Tie-downs Design Guide",
+      "brand_name": "Pryda",
+      "category_code": "F_Manufacturers",
+      "product_family": "Connectors",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.pryda.co.nz/wp-content/uploads/NZ-Pryda-Connectors-Tie-downs-Design-Guide.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf",
+      "file_hash": "cab8d953f5b54d7e113b3993692892a11f22301c5c3a40f77d1910bdcf89774c",
+      "file_size_bytes": 4737750,
+      "retailer_availability": [
+        "Bunnings",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:12.018893",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "NZ Pryda Bracing Design Guide V1.02",
+      "brand_name": "Pryda",
+      "category_code": "F_Manufacturers",
+      "product_family": "Bracing",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.pryda.co.nz/wp-content/uploads/NZ-Pryda-Bracing-Design-Guide-V1.02.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Design_Guide_V1.02.pdf",
+      "file_hash": "17e4b704aa5a8c942e3087ca4bda870c67e86170883a86a2304e77ce244bcdc7",
+      "file_size_bytes": 4396056,
+      "retailer_availability": [
+        "Bunnings",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:15.131278",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "NZ Pryda Bracing Anchor PDS",
+      "brand_name": "Pryda",
+      "category_code": "F_Manufacturers",
+      "product_family": "Bracing Anchor",
+      "doc_type": "Technical_Data_Sheet",
+      "trade": "fasteners",
+      "original_url": "https://www.pryda.co.nz/wp-content/uploads/NZ-Bracing-Anchor-PDS.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Anchor_PDS.pdf",
+      "file_hash": "d859b2fc03e48f073577e57bc6aca469175e2e430a0ba57dea7e0ae59290f1f8",
+      "file_size_bytes": 487783,
+      "retailer_availability": [
+        "Bunnings"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:17.173845",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Pryda Builders Guide NZ",
+      "brand_name": "Pryda",
+      "category_code": "F_Manufacturers",
+      "product_family": "Builders Guide",
+      "doc_type": "Installation_Guide",
+      "trade": "fasteners",
+      "original_url": "https://sheds4u.co.nz/wp-content/uploads/2021/09/Pryda-Builders-Guide-Web.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/Pryda_Builders_Guide_NZ.pdf",
+      "file_hash": "1e594c13e8efa456d50472085ac11606978b955a03fc07e2fc748e8b04ac3f22",
+      "file_size_bytes": 18087291,
+      "retailer_availability": [
+        "Bunnings",
+        "Mitre 10"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:18.128946",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "SP Fasteners Pryda Product Catalogue",
+      "brand_name": "Pryda",
+      "category_code": "F_Manufacturers",
+      "product_family": "Full Range",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://spfasteners.co.nz/wp-content/uploads/2024/01/Product-Catalogue-Web-Oct-14.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Pryda/SP_Fasteners_Pryda_Product_Catalogue.pdf",
+      "file_hash": "fbe285135b8dfa019840346727f548a03faf48c46e3709d95ace4120fc7d4888",
+      "file_size_bytes": 18337479,
+      "retailer_availability": [
+        "SP Fasteners",
+        "Trade"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:22.131740",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Bremick Industrial Fasteners Catalogue",
+      "brand_name": "Bremick",
+      "category_code": "F_Manufacturers",
+      "product_family": "Industrial",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://new.bremick.com.au/images/site/Industrial_catalogue_web.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Industrial_Fasteners_Catalogue.pdf",
+      "file_hash": "f65eb5e4ad684def991bf09d7ca41f208d5c264c1910d6527a8f81e107479bfd",
+      "file_size_bytes": 1013249,
+      "retailer_availability": [
+        "Mitre 10",
+        "Trade Suppliers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:24.117521",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Bremick Stainless Steel Catalogue",
+      "brand_name": "Bremick",
+      "category_code": "F_Manufacturers",
+      "product_family": "Stainless Steel",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.osfs.com.au/wp-content/uploads/2022/05/bremick_Stainless_Steel_web.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Stainless_Steel_Catalogue.pdf",
+      "file_hash": "154a2e1957cd8863b4e2a098d81ea7471765bcbde972dd0f5aee19481bf810ef",
+      "file_size_bytes": 1015681,
+      "retailer_availability": [
+        "Mitre 10",
+        "Trade Suppliers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:25.845580",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Bremick Socket Screws Catalogue",
+      "brand_name": "Bremick",
+      "category_code": "F_Manufacturers",
+      "product_family": "Socket Screws",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.nationalwelding.com.au/assets/PDF/Socket_Screws_web.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Socket_Screws_Catalogue.pdf",
+      "file_hash": "46aaad068ccaa21aa0906edd81f72312ba1c6e15dda572df11fa2b04a8c59d79",
+      "file_size_bytes": 1377524,
+      "retailer_availability": [
+        "Mitre 10",
+        "Trade Suppliers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:28.137134",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Bremick Masonry Anchor Catalogue",
+      "brand_name": "Bremick",
+      "category_code": "F_Manufacturers",
+      "product_family": "Masonry Anchors",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://bremick.com.au/wp-content/uploads/2024/02/Masonry_Anchor_Catalogue.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/Bremick/Bremick_Masonry_Anchor_Catalogue.pdf",
+      "file_hash": "8a597bae8a37b6cde8e94ffa80ca95e844066bf49d11110328e0ad9b711b5096",
+      "file_size_bytes": 4705002,
+      "retailer_availability": [
+        "Mitre 10",
+        "Bunnings",
+        "Trade"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:30.359576",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "PlaceMakers Fastenings Catalogue 2020",
+      "brand_name": "PlaceMakers",
+      "category_code": "F_Manufacturers",
+      "product_family": "Master Catalogue",
+      "doc_type": "Product_Catalog",
+      "trade": "fasteners",
+      "original_url": "https://www.placemakers.co.nz/medias/sys_master/root/h94/he4/10202791477278/fastenings-catalogue-2020/fastenings-catalogue-2020.pdf",
+      "local_path": "/app/data/ingestion/F_Manufacturers/Fasteners/PlaceMakers/PlaceMakers_Fastenings_Catalogue_2020.pdf",
+      "file_hash": "3889d52012ebf79f40c93cf56accdd233867bc2b8988dccddd5231926afc2672",
+      "file_size_bytes": 10222876,
+      "retailer_availability": [
+        "PlaceMakers"
+      ],
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T05:44:32.939201",
+      "status": "downloaded",
+      "has_diagrams": true
+    }
+  ],
+  "failed": [
+    "ECKO Fasteners Catalogue 2024 Screws",
+    "ECKO Fasteners Full Catalogue 2024",
+    "ECKO Fasteners Catalogue 2022"
+  ],
+  "brand_stats": {
+    "Delfast": {
+      "success": 3,
+      "failed": 0
+    },
+    "Ecko": {
+      "success": 1,
+      "failed": 3
+    },
+    "Pryda": {
+      "success": 5,
+      "failed": 0
+    },
+    "Bremick": {
+      "success": 4,
+      "failed": 0
+    },
+    "PlaceMakers": {
+      "success": 1,
+      "failed": 0
+    }
+  },
+  "stats": {
+    "total_attempted": 17,
+    "successful": 14,
+    "failed": 3
+  }
+}
