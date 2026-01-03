@@ -1,0 +1,87 @@
+{
+  "brand": {
+    "brand_name": "James Hardie",
+    "brand_full_name": "James Hardie Industries plc",
+    "category_code": "B_Enclosure",
+    "trade": "cladding",
+    "country": "New Zealand",
+    "website": "https://www.jameshardie.co.nz"
+  },
+  "fetch_date": "2026-01-03T03:46:04.621362",
+  "documents": [
+    {
+      "source": "Linea Weatherboard Direct Fix Technical Specification",
+      "brand_name": "James Hardie",
+      "category_code": "B_Enclosure",
+      "product_family": "Linea Weatherboard",
+      "doc_type": "Installation_Guide",
+      "trade": "cladding",
+      "original_url": "https://www.jameshardie.co.nz/web/assets/general/Linea-Weatherboard-Direct-Fix-Technical-Specification.pdf",
+      "local_path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Direct_Fix_Technical_Specification.pdf",
+      "file_hash": "d07a877ae7ad2301d181bef7263a4720ef511ce466bb03610656811719c23375",
+      "file_size_bytes": 8246685,
+      "description": "Technical specification for Linea Weatherboard direct fix installation",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T03:45:58.755256",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Linea Weatherboard Installation Guide",
+      "brand_name": "James Hardie",
+      "category_code": "B_Enclosure",
+      "product_family": "Linea Weatherboard",
+      "doc_type": "Installation_Guide",
+      "trade": "cladding",
+      "original_url": "https://agnew-cdn.n2erp.co.nz/cdn/images/productdocument/LineaWeatherboardsInstallationGuideApr23.pdf",
+      "local_path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Installation_Guide.pdf",
+      "file_hash": "cfeb0990607d78bbe58f615b3a4036671075ebfe178f4252a3532841f9f12c45",
+      "file_size_bytes": 7442030,
+      "description": "Practical installation guide for Linea Weatherboard April 2023",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T03:46:02.175048",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "Linea Weatherboard Installation Checklist",
+      "brand_name": "James Hardie",
+      "category_code": "B_Enclosure",
+      "product_family": "Linea Weatherboard",
+      "doc_type": "Installation_Guide",
+      "trade": "cladding",
+      "original_url": "https://www.jameshardie.co.nz/web/assets/general/INSTALLATION-Checklist-Linea-Weatherboard.pdf",
+      "local_path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/Linea_Weatherboard_Installation_Checklist.pdf",
+      "file_hash": "4a023c85edd680e06f1f10502a7e95c2d34438b5639255ea7c16b09eed01edf3",
+      "file_size_bytes": 489314,
+      "description": "Step-by-step installation checklist for NZBC E2/AS1 compliance",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T03:46:03.227002",
+      "status": "downloaded",
+      "has_diagrams": true
+    },
+    {
+      "source": "James Hardie Facades Installation Manual",
+      "brand_name": "James Hardie",
+      "category_code": "B_Enclosure",
+      "product_family": "Facades",
+      "doc_type": "Installation_Guide",
+      "trade": "cladding",
+      "original_url": "https://d39d3mj7qio96p.cloudfront.net/media/documents/446.pdf",
+      "local_path": "/app/data/ingestion/B_Enclosure/Wall_Cladding/James_Hardie/James_Hardie_Facades_Installation_Manual.pdf",
+      "file_hash": "e1a4485784fd3bd8cbe7418ec1cda418f3cfac8cf5c96888e0983e80f08b9f77",
+      "file_size_bytes": 266426,
+      "description": "General installation manual for James Hardie fibre cement facades",
+      "ingestion_source": "web_scrape",
+      "ingested_at": "2026-01-03T03:46:04.621311",
+      "status": "downloaded",
+      "has_diagrams": true
+    }
+  ],
+  "failed": [],
+  "stats": {
+    "total_attempted": 4,
+    "successful": 4,
+    "failed": 0
+  }
+}
