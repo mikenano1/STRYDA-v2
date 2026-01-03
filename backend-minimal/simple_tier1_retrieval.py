@@ -6,7 +6,7 @@ Direct approach that works without Decimal issues
 import psycopg2
 import psycopg2.extras
 import re
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 # Enhanced amendment detection patterns
 AMEND_PAT = re.compile(r'\b(amend(?:ment)?\s*13|amdt\s*13|amend\s*13|b1\s*a\s*13)\b', re.I)
