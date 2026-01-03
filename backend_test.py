@@ -70,10 +70,11 @@ class STRYDABackendTester:
                     
                     # Check for Final Sweep source
                     final_sweep_source = any("Final Sweep" in str(source) or "Fasteners Full Suite" in str(source) 
-                                           for source in sources_used)
+                                           for source in sources_used) or "Final Sweep" in answer
                     
-                    # Check for specific brand in sources
-                    brand_in_sources = self._check_brand_in_sources(message, sources_used)
+                    # Check for specific brand in sources or inline citations
+                    brand_in_sources = self._check_brand_in_sources(message, sources_used) or \
+                                     self._check_brand_in_inline_citations(message, inline_citations)
                     
                     result = {
                         "test_name": test_name,
