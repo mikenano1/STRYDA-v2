@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, List, Any
 
 # Configuration
-BACKEND_URL = "https://gemini-stryda.preview.emergentagent.com"  # From frontend/.env
+BACKEND_URL = "https://stryda-brain.preview.emergentagent.com"  # From frontend/.env
 API_BASE = f"{BACKEND_URL}/api"
 
 class BackendTester:

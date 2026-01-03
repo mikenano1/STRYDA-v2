@@ -96,7 +96,7 @@
 ## 🚀 Deployment Information
 
 ### Preview Details:
-- **Preview URL**: https://gemini-stryda.preview.emergentagent.com
+- **Preview URL**: https://stryda-brain.preview.emergentagent.com
 - **QR Code**: Available via Expo development tools
 - **API Integration**: Backend fully operational at localhost:8001
 

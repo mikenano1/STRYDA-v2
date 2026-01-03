@@ -1,7 +1,7 @@
 # STRYDA-v2 POST-REGENERATION VALIDATION REPORT
 
 **Test Date:** 2025-11-25 07:16:43  
-**Backend URL:** https://gemini-stryda.preview.emergentagent.com  
+**Backend URL:** https://stryda-brain.preview.emergentagent.com  
 **Total Queries:** 30
 
 ---

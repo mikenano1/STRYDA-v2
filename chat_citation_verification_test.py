@@ -20,7 +20,7 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 # Backend URL from environment
-BACKEND_URL = "https://gemini-stryda.preview.emergentagent.com"
+BACKEND_URL = "https://stryda-brain.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # Test queries

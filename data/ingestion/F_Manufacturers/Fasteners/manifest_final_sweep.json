@@ -6,7 +6,7 @@
     "country": "New Zealand",
     "operation": "FINAL_SWEEP"
   },
-  "fetch_date": "2026-01-03T05:44:32.939262",
+  "fetch_date": "2026-01-03T05:49:51.880540",
   "documents": [
     {
       "source": "Delfast PlaceMakers Nail Guide 2023",
@@ -24,7 +24,7 @@
         "ITM"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:04.135979",
+      "ingested_at": "2026-01-03T05:49:25.725290",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -43,7 +43,7 @@
         "PlaceMakers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:06.106593",
+      "ingested_at": "2026-01-03T05:49:25.782112",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -64,7 +64,7 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:07.637504",
+      "ingested_at": "2026-01-03T05:49:25.975711",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -84,7 +84,7 @@
         "ITM"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:08.744750",
+      "ingested_at": "2026-01-03T05:49:27.151684",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -104,7 +104,7 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:12.018893",
+      "ingested_at": "2026-01-03T05:49:30.720294",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -124,7 +124,7 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:15.131278",
+      "ingested_at": "2026-01-03T05:49:33.795564",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -143,7 +143,7 @@
         "Bunnings"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:17.173845",
+      "ingested_at": "2026-01-03T05:49:35.639579",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -163,7 +163,7 @@
         "Mitre 10"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:18.128946",
+      "ingested_at": "2026-01-03T05:49:36.591772",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -183,7 +183,7 @@
         "Trade"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:22.131740",
+      "ingested_at": "2026-01-03T05:49:40.029613",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -203,7 +203,7 @@
         "Trade Suppliers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:24.117521",
+      "ingested_at": "2026-01-03T05:49:45.098062",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -223,7 +223,7 @@
         "Trade Suppliers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:25.845580",
+      "ingested_at": "2026-01-03T05:49:46.921915",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -243,7 +243,7 @@
         "Trade Suppliers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:28.137134",
+      "ingested_at": "2026-01-03T05:49:49.396984",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -264,7 +264,7 @@
         "Trade"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:30.359576",
+      "ingested_at": "2026-01-03T05:49:51.631206",
       "status": "downloaded",
       "has_diagrams": true
     },
@@ -283,7 +283,7 @@
         "PlaceMakers"
       ],
       "ingestion_source": "web_scrape",
-      "ingested_at": "2026-01-03T05:44:32.939201",
+      "ingested_at": "2026-01-03T05:49:51.880463",
       "status": "downloaded",
       "has_diagrams": true
     }

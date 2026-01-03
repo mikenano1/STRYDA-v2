@@ -1,216 +1,354 @@
 <analysis>
 <original_problem_statement>
-The user's core objective is to build and refine STRYDA-v2, a sophisticated RAG (Retrieval-Augmented Generation) application for New Zealand's construction industry. The project has evolved significantly through multiple phases, focusing on enhancing answer quality, user experience, and accuracy.
+The user's core objective is to build and refine STRYDA-v2, a sophisticated RAG (Retrieval-Augmented Generation) application for New Zealand's construction industry.
 
-The most recent and critical user request is to migrate the entire backend inference engine from OpenAI's GPT models (GPT-4o and GPT-4o-mini) to Google's Gemini models (Gemini 2.5 Pro and Gemini 2.5 Flash). This migration includes updating regulatory logic to comply with the November 27, 2025, NZ Building Code changes (specifically regarding H1/AS1 and B1 standards) and fixing outstanding bugs in the conversation flow, such as state persistence for gated questions. The ultimate goal is to leverage Gemini's capabilities to provide more accurate, naturally-worded answers grounded in the ingested PDF documents, while maintaining the carefully crafted user experience of a Kiwi builder mate.
+The project has evolved from fixing frontend bugs and implementing core features to a large-scale backend knowledge engineering effort called The Big Brain. The current focus is on ingesting a comprehensive library of technical PDF manuals from various manufacturers, including their diagrams and data tables, to create a definitive knowledge base for the RAG system.
+
+PRODUCT REQUIREMENTS:
+1.  **Backend Knowledge Engineering (The Big Brain):**
+    *   Build a robust, scalable ingestion pipeline to process thousands of technical PDF manuals.
+    *   The pipeline must include a Vision component that uses a multimodal LLM to analyze and create text descriptions for diagrams and images within the PDFs, making them searchable.
+    *   The pipeline must effectively parse and structure tabular data (e.g., load capacities, fastener charts).
+    *   Ingest product documentation from a comprehensive list of NZ construction material and component manufacturers, organized by category. Categories include:
+        *   A_Structure
+        *   B_Enclosure (e.g., James Hardie)
+        *   C_Interiors (e.g., GIB)
+        *   D_Landscaping
+        *   E_Specialty
+        *   F_Manufacturers / Consumables (e.g., Paslode, Simpson Strong-Tie, and other fastener brands)
+        *   G_Merchants
+    *   Upgrade the database schema to support rich metadata for each document chunk (brand, category, product family, document type).
+    *   Continuously refine the retrieval logic to be aware of brands, products, and visual details.
+
+2.  **Frontend Features &amp; UX:**
+    *   Fix outstanding bugs in the chat interface.
+    *   Implement a fully functional in-app PDF viewer for citations.
+    *   Re-implement voice input functionality.
+    *   Build out project management features (Create Project form, Project Archives).
 </original_problem_statement>
 
 **User's preferred language**: English
 
 **what currently exists?**
-A sophisticated FastAPI backend for a RAG application. The system features a multi-layered architecture including an intent classifier, a response mode router ( vs. ), a Missing Context Engine for multi-turn conversations, various response formatting and guardrail layers, and dynamic token budgeting. The database is Supabase PostgreSQL with . The migration to Google Gemini has just begun: the  SDK is installed, and initial configuration changes to  have been made. However, the core logic still uses OpenAI models.
+The project is a full-stack application with a FastAPI backend and an Expo (React Native) frontend.
+
+-   **Backend**: The backend is a sophisticated RAG pipeline built on FastAPI and a PostgreSQL database (via Supabase). The core of the system is the Big Brain ingestion engine.
+    -   **Ingestion Pipeline**: A set of Python scripts (, ) that can download, parse, and ingest PDF documents.
+        -   : A Vision-enabled parser using usage: pdfplumber [-h] [--structure | --structure-text]
+                  [--format {csv,json,text}] [--types TYPES [TYPES ...]]
+                  [--include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]]
+                  [--exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]]
+                  [--laparams LAPARAMS] [--precision PRECISION]
+                  [--pages PAGES [PAGES ...]] [--indent INDENT]
+                  [infile]
+
+positional arguments:
+  infile
+
+options:
+  -h, --help            show this help message and exit
+  --structure           Write the structure tree as JSON. All other arguments
+                        except --pages, --laparams, and --indent will be
+                        ignored
+  --structure-text      Write the structure tree as JSON including text
+                        contents. All other arguments except --pages,
+                        --laparams, and --indent will be ignored
+  --format {csv,json,text}
+  --types TYPES [TYPES ...]
+  --include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]
+                        Include *only* these object attributes in output.
+  --exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]
+                        Exclude these object attributes from output.
+  --laparams LAPARAMS
+  --precision PRECISION
+  --pages PAGES [PAGES ...]
+  --indent INDENT       Indent level for JSON pretty-printing. and an LLM to extract text, parse tables, and generate descriptive captions for diagrams and images.
+        -   : A script to generate OpenAI embeddings for the chunks and store them in the PostgreSQL  table.
+    -   **Knowledge Base**: The  table in the database has been upgraded with a new schema to support rich metadata (, , , ). It has been populated with a massive corpus of documents, including NZS 3604 and technical manuals from GIB, James Hardie, and numerous major fastener brands (Paslode, Simpson Strong-Tie, MiTek, etc.).
+    -   **Retrieval Logic**: The retrieval system in  has been significantly enhanced. It now detects brand names and product-specific keywords in user queries to bias the search and retrieve more relevant context.
+
+-   **Frontend**: The frontend is a stable Expo app with a polished chat interface.
+    -   All major P0/P1 bugs from the previous session (unresponsive citation button, 404 on chat deletion, markdown artifacts, response truncation) have been fixed and verified by the user.
+    -   A functional in-app PDF viewer screen () has been implemented. It uses a  and can handle navigation to specific pages.
 
 **Last working item**:
-- Last item agent was working: The agent was at the very beginning of a major migration from OpenAI's GPT models to Google's Gemini models. It had successfully installed the  library and updated the  file with the target Gemini model names. The agent recognized the high complexity and token cost of this migration and recommended a fork before proceeding with the deeper integration, which the user approved.
-- Status: IN PROGRESS
-- Agent Testing Done: N
-- Which testing method agent to use? backend testing agent
-- User Testing Done: N
+-   Last item agent was working: Operation Final Sweep. The user identified that several local New Zealand and merchant-specific fastener brands were missed during the initial Operation Hardware Store ingestion. The agent was tasked to find and ingest the product catalogs for these remaining brands (Delfast, Allfast, Blacks, Ecko, Pryda, Bremick, etc.). The agent successfully searched for the document URLs and created the scraper script .
+-   Status: IN PROGRESS
+-   Agent Testing Done: N
+-   Which testing method agent to use? This is a backend data ingestion task. The next steps do not require a testing agent. The agent should execute the created script, run the processing pipeline, and then verify the ingestion with a test query.
+-   User Testing Done: N
 
 **All Pending/In progress Issue list**:
-- Issue 1: Complete the Gemini Model Migration (P0)
-- Issue 2: Implement November 27, 2025, Regulatory Updates (P1)
-- Issue 3: Fix  State Persistence (P2)
-- Issue 4: Fix  NoneType Errors (P3)
+-   Issue 1: Complete Operation Final Sweep (P0)
 
-Issues Detail:
-- Issue 1:
-  - Attempted fixes: The agent has installed the  SDK and updated the  file. No code changes to replace the model calls have been made yet.
-  - Next debug checklist:
-    1.  Create a Gemini client wrapper using the installed  library.
-    2.  In , replace the  calls with the new Gemini client calls. Do this for both the  (hybrid) and  paths.
-    3.  Adjust API parameters. Gemini may use different parameter names (e.g., for , ,  structure).
-    4.  Update  to fetch more document chunks () to leverage Gemini's larger context window.
-  - Why fix this issue and what will be achieved with the fix? This is the user's primary directive to move the application's core intelligence to the Gemini platform.
-  - Status: IN PROGRESS
-  - Is recurring issue? N
-  - Should Test frontend/backend/both after fix? backend
-  - Blocked on other issue: None
+**Issues Detail**:
+-   **Issue 1**:
+    -   **Description**: Ingest the product manuals for the remaining local and merchant-staple fastener brands to achieve 100% coverage as requested by the user.
+    -   **Attempted fixes**: The agent has already performed the web search for the required PDF documents and has created the Python script  containing the URLs and logic to download them.
+    -   **Next debug checklist**:
+        1.  Execute the script: ======================================================================
+🧠 STRYDA Big Brain - OPERATION FINAL SWEEP
+   NZ Local Brands + Merchant Staples
+======================================================================
 
-- Issue 2:
-  - Attempted fixes: None.
-  - Next debug checklist:
-    1.  Audit the codebase, especially  and , for any logic related to H1/AS1 energy standards.
-    2.  Modify the logic to explicitly remove the Schedule Method as a valid pathway for new consent queries, forcing the Calculation Method or Modelling Method.
-    3.  This likely requires obtaining and re-ingesting the updated November 2025 PDFs for H1/AS1 and B1 standards.
-  - Why fix this issue and what will be achieved with the fix? To ensure the application provides legally accurate and up-to-date compliance information, which is a critical business requirement.
-  - Status: NOT STARTED
-  - Is recurring issue? N
-  - Should Test frontend/backend/both after fix? backend
-  - Blocked on other issue: Potentially blocked by the need to acquire and ingest new PDF documents.
+📚 Target Brands: 5
+   • Delfast: 3 documents
+   • Ecko: 4 documents
+   • Pryda: 5 documents
+   • Bremick: 4 documents
+   • PlaceMakers: 1 documents
 
-- Issue 3:
-  - Attempted fixes: The agent created the gate and the persistence infrastructure in  but did not fully wire the follow-up handling in .
-  - Next debug checklist:
-    1.  In , within the  endpoint, locate the logic block that checks for a  in the conversation.
-    2.  Implement the follow-up handling: call  to parse the user's reply.
-    3.  If fields are still missing, formulate a response asking only for the missing items.
-    4.  If all fields are collected, build the  string and pass it to the main generation pipeline.
-    5.  Ensure the  is cleared from the conversation state after a successful answer.
-  - Why fix this issue and what will be achieved with the fix? This will fix a key conversational flow where STRYDA asks for details but then fails to use them, making multi-turn threshold questions functional.
-  - Status: IN PROGRESS
-  - Is recurring issue? N
-  - Should Test frontend/backend/both after fix? backend
-  - Blocked on other issue: None
+🔍 Total documents to fetch: 17
 
-- Issue 4:
-  - Attempted fixes: A previous agent added a  check, but the final audit indicates the issue might persist in some code paths.
-  - Next debug checklist:
-    1.  Review  and add a comprehensive  guard at the very beginning of the  function.
-    2.  Trace call sites in  to ensure this function is never called with . This mostly affects the  path now.
-  - Why fix this issue and what will be achieved with the fix? To prevent 502 errors and improve backend stability, especially for  responses.
-  - Status: NOT STARTED
-  - Is recurring issue? Y
-  - Should Test frontend/backend/both after fix? backend
-  - Blocked on other issue: None
+📥 [Delfast] Delfast PlaceMakers Nail Guide 2023...
+   ✅ Downloaded: Delfast_PlaceMakers_Nail_Guide_2023.pdf (1799.2 KB)
+
+📥 [Delfast] Delfast PlaceMakers Rural Range 2021...
+   ✅ Downloaded: Delfast_PlaceMakers_Rural_Range_2021.pdf (3565.6 KB)
+
+📥 [Delfast] Delfast Nails BRANZ Appraisal 1154...
+   ✅ Downloaded: Delfast_Nails_BRANZ_Appraisal_1154.pdf (559.4 KB)
+
+📥 [Ecko] ECKO Fasteners Catalogue 2024 Screws...
+   ⚠️ HTTP Error: 403 Client Error: Forbidden for url: https://www.ecko.co.nz/wp-content/uploads/0.-ECKO-Fasteners-Catalogue-2024-SCREWS.pdf
+
+📥 [Ecko] ECKO Fasteners Full Catalogue 2024...
+   ⚠️ HTTP Error: 403 Client Error: Forbidden for url: https://www.ecko.co.nz/wp-content/uploads/0.-ECKO-Fasteners-Catalogue-2024-1.pdf
+
+📥 [Ecko] ECKO Fasteners Catalogue 2022...
+   ⚠️ HTTP Error: 403 Client Error: Forbidden for url: https://www.ecko.co.nz/wp-content/uploads/ECKO-Fasteners-Catalogue-2022.pdf
+
+📥 [Ecko] ECKO T-Rex 17 Screws BPIR Declaration...
+   ✅ Downloaded: ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf (124.7 KB)
+
+📥 [Pryda] NZ Pryda Connectors Tie-downs Design Guide...
+   ✅ Downloaded: NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf (4626.7 KB)
+
+📥 [Pryda] NZ Pryda Bracing Design Guide V1.02...
+   ✅ Downloaded: NZ_Pryda_Bracing_Design_Guide_V1.02.pdf (4293.0 KB)
+
+📥 [Pryda] NZ Pryda Bracing Anchor PDS...
+   ✅ Downloaded: NZ_Pryda_Bracing_Anchor_PDS.pdf (476.4 KB)
+
+📥 [Pryda] Pryda Builders Guide NZ...
+   ✅ Downloaded: Pryda_Builders_Guide_NZ.pdf (17663.4 KB)
+
+📥 [Pryda] SP Fasteners Pryda Product Catalogue...
+   ✅ Downloaded: SP_Fasteners_Pryda_Product_Catalogue.pdf (17907.7 KB)
+
+📥 [Bremick] Bremick Industrial Fasteners Catalogue...
+   ✅ Downloaded: Bremick_Industrial_Fasteners_Catalogue.pdf (989.5 KB)
+
+📥 [Bremick] Bremick Stainless Steel Catalogue...
+   ✅ Downloaded: Bremick_Stainless_Steel_Catalogue.pdf (991.9 KB)
+
+📥 [Bremick] Bremick Socket Screws Catalogue...
+   ✅ Downloaded: Bremick_Socket_Screws_Catalogue.pdf (1345.2 KB)
+
+📥 [Bremick] Bremick Masonry Anchor Catalogue...
+   ✅ Downloaded: Bremick_Masonry_Anchor_Catalogue.pdf (4594.7 KB)
+
+📥 [PlaceMakers] PlaceMakers Fastenings Catalogue 2020...
+   ✅ Downloaded: PlaceMakers_Fastenings_Catalogue_2020.pdf (9983.3 KB)
+
+======================================================================
+📊 OPERATION FINAL SWEEP - SUMMARY
+======================================================================
+
+   📦 Total downloaded: 14 documents (67.3 MB)
+   ❌ Failed: 3
+
+   📋 By Brand:
+      ✅ Bremick: 4/4
+      ✅ Delfast: 3/3
+      ⚠️ Ecko: 1/4
+      ✅ PlaceMakers: 1/1
+      ✅ Pryda: 5/5
+
+   ❌ Failed documents:
+      • ECKO Fasteners Catalogue 2024 Screws
+      • ECKO Fasteners Full Catalogue 2024
+      • ECKO Fasteners Catalogue 2022
+
+📋 Manifest saved: /app/data/ingestion/F_Manufacturers/Fasteners/manifest_final_sweep.json to download the PDFs into a new sub-directory within .
+        2.  Run the Vision processing pipeline on the newly downloaded files: .
+        3.  Run the ingestion script: .
+        4.  Update the source detection logic in  to include keywords for the new brands (Pryda, Ecko, Bremick, etc.).
+        5.  Restart the backend and run a test query like What is the holding capacity of a Pryda nailplate? to verify successful ingestion and retrieval.
+    -   **Why fix this issue and what will be achieved with the fix?** This will complete the Category F (Fasteners/Consumables) ingestion, a critical requirement from the user, making the AI's knowledge of fasteners comprehensive.
+    -   **Status**: IN PROGRESS
+    -   **Is recurring issue?** N
+    -   **Should Test frontend/backend/both after fix?** Backend (via test query)
+    -   **Blocked on other issue**: None
 
 **In progress Task List**:
-- Task 1: Complete Gemini Migration (P0)
-- Task 2: Fix Gate Persistence and Follow-up Logic (P2)
-
-Task Detail:
-- Task 1:
-  - Where to resume: The agent needs to start writing the code to replace OpenAI API calls with Gemini API calls in . The SDK is installed.
-  - What will be achieved with this? The application's core LLM will be migrated from GPT to Gemini.
-  - Status: IN PROGRESS
-  - Should Test frontend/backend/both after fix? backend
-  - Blocked on something: No
-
-- Task 2:
-  - Where to resume: The agent needs to implement the logic in  to handle a user's reply to a gated question, using the newly created .
-  - What will be achieved with this? Multi-turn conversations for complex threshold questions will be fully functional.
-  - Status: IN PROGRESS
-  - Should Test frontend/backend/both after fix? backend
-  - Blocked on something: No
+-   Task 1: Operation Final Sweep
+    -   Where to resume: Execute the newly created .
+    -   What will be achieved with this? The Big Brain will have near-complete knowledge of fasteners available in the New Zealand market.
+    -   Status: IN PROGRESS
+    -   Should Test frontend/backend/both after fix? Backend
+    -   Blocked on something: None
 
 **Upcoming and Future Tasks**
-- **Upcoming Tasks:**
-  - **P0: Data Freshness Update:** Audit all ingested PDFs against the November 2025 NZBC updates. Acquire and re-ingest any outdated documents. This is critical for legal accuracy.
-  - **P1: Frontend UI Redesign:** The user has mentioned a desire to redesign the UI after the backend migration is stable. (No details provided yet).
-  - **P2: Add Anti-Drift Instruction:** The logic for a  flag exists, but the corresponding system prompt instruction was never added to the GPT-first call when a gate is resolved.
-- **Future Tasks:**
-  - **Speech-to-Text Feature:** A microphone button was added to the frontend (), but the functionality needs to be fully tested and refined.
+-   **Upcoming Tasks:**
+    -   **P1: Query Verification**: After Operation Final Sweep is complete, run a series of test queries to verify that the new data (e.g., Pryda bracing, Ecko T-Rex load data) is retrievable and the AI can answer questions correctly.
+-   **Future Tasks:**
+    -   **P2: Re-implement Voice Input**: Re-integrate  or a similar library to enable voice-to-text input in the chat interface. This was part of the original scope but was deferred.
+    -   **P3: Build Create Project Form**: The screen at  is still a placeholder. It needs to be implemented as a form that calls the  endpoint.
+    -   **P4: Build out Project Archives**: A Project History or View All Projects feature was requested but never built.
 
 **Completed work in this session**
-- **Hybrid RAG Architecture:** Created a sophisticated system with a  to switch between a natural language hybrid mode (full retrieval, citation-free answer) and a strict_compliance mode.
-- **Missing Context Engine:** Built a multi-turn conversational engine (, ) to handle under-specified questions about spans, H1, Schedule 1, etc.
-- **Response Quality Layers:** Implemented several layers to control output, including  (tone),  (length), and  (softens hard numbers).
-- **Required Inputs Gate:** Created a gate () to intercept and ask for clarification on ambiguous threshold/changeover questions (e.g., roof pitch).
-- **Dynamic Token Budgeting:** Implemented  to dynamically set  based on question complexity, saving costs.
-- **GPT-5 Upgrade & Revert:** Attempted a migration to GPT-5, debugged API parameter and reasoning token issues, and then successfully rolled back to a stable GPT-4o configuration when GPT-5 proved unstable.
-- **Bug Fixes:** Resolved numerous bugs related to citation logic, intent classification (e.g., timber treatment questions), and a critical 502 error caused by a  in the response styling layer.
-
-**Earlier issues found/mentioned but not fixed**
-- Issue 1:
-  - The anti-drift instruction for when the  is resolved was planned but never added to the system prompt in .
-  - Debug checklist: Locate the  generation call within the gate resolution logic in  and add a one-time system instruction like: Answer only the original threshold question. Do not explain unrelated topics.
-  - Why to solve this issue and what will be achieved with this? Prevents the model from drifting to related but un-asked-for topics (e.g., talking about roof spans when asked about underlay direction).
-  - Should Test frontend/backend/both after fix: backend
-  - Is recurring issue? N
+-   **Critical Bug Fixes**:
+    -   Fixed the unresponsive citation pill button in the chat interface. (P0)
+    -   Fixed the HTTP ERROR 404 when deleting a chat. (P1)
+    -   Fixed AI response truncation by increasing the  budget.
+    -   Fixed markdown artifacts (e.g., ) appearing in chat bubbles.
+-   **Feature Implementation**:
+    -   Implemented a functional in-app PDF viewer using a .
+-   **Backend RAG & AI Enhancement**:
+    -   **Table Reading**: Vastly improved the AI's ability to read and interpret tabular data by updating the system prompt and dynamically increasing the context window ( and character count) for table-related queries.
+    -   **The Big Brain Ingestion Pipeline**:
+        -   Upgraded the database schema with columns for brand, category, etc.
+        -   Built and executed a Vision Pipeline () that uses an LLM to generate text descriptions for diagrams within PDFs, making visual details searchable.
+        -   Built multiple web scraper connectors (, , ) to download technical manuals.
+        -   Successfully ingested a massive knowledge base covering GIB, James Hardie, and dozens of fastener brands.
+        -   Continuously updated the retrieval logic () to recognize new brands and boost relevance for product-specific queries.
 
 **Code Architecture**
-The application backend is a monolithic FastAPI service with a highly modular and layered architecture for its RAG pipeline.
-
 
 
 **Key Technical Concepts**
-- **Backend**: FastAPI (Python)
-- **Database**: Supabase PostgreSQL with  for vector similarity search.
-- **RAG Pipeline**: Hybrid model that combines deep retrieval with different synthesis strategies based on a .
-- **LLM Engine**: In transition from OpenAI (, ) to Google Gemini (, ).
-- **Embedding Model**: .
-- **Intent Classification**: A hybrid system using regex patterns and LLM-based classification.
-- **Conversational State Management**: A custom, in-memory store () tracks conversation state, locked intent, and pending gates for multi-turn dialogues.
+-   **Backend**: FastAPI, PostgreSQL (Supabase), RAG Pipeline, OpenAI Embeddings (), Google Gemini ().
+-   **Data Ingestion**: A sophisticated Vision Pipeline for processing PDFs, involving:
+    -   Web Scraping (for document URLs)
+    -   PDF Parsing (usage: pdfplumber [-h] [--structure | --structure-text]
+                  [--format {csv,json,text}] [--types TYPES [TYPES ...]]
+                  [--include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]]
+                  [--exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]]
+                  [--laparams LAPARAMS] [--precision PRECISION]
+                  [--pages PAGES [PAGES ...]] [--indent INDENT]
+                  [infile]
+
+positional arguments:
+  infile
+
+options:
+  -h, --help            show this help message and exit
+  --structure           Write the structure tree as JSON. All other arguments
+                        except --pages, --laparams, and --indent will be
+                        ignored
+  --structure-text      Write the structure tree as JSON including text
+                        contents. All other arguments except --pages,
+                        --laparams, and --indent will be ignored
+  --format {csv,json,text}
+  --types TYPES [TYPES ...]
+  --include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]
+                        Include *only* these object attributes in output.
+  --exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]
+                        Exclude these object attributes from output.
+  --laparams LAPARAMS
+  --precision PRECISION
+  --pages PAGES [PAGES ...]
+  --indent INDENT       Indent level for JSON pretty-printing.) for text and tables.
+    -   **Vision-based RAG**: Using a multi-modal LLM to analyze diagrams and generate searchable text captions.
+-   **Retrieval**: Hybrid approach using vector search and keyword-based filtering/biasing for brands and products.
+-   **Frontend**: Expo, React Native, Expo Router, NativeWind.
 
 **key DB schema**
-- : (id, content, embedding, metadata: {doc_type, priority, trade, etc.})
-- : (session_id, role, content, timestamp)
+-   : (id, source, content, embedding (vector), page, chunk_index, doc_type (text), **brand_name (text)**, **category_code (text)**, **product_family (text)**, has_diagrams (boolean), ...etc)
 
 **changes in tech stack**
-- The primary change is the ongoing migration from OpenAI GPT-4 series models to Google Gemini 2.5 series models for all inference tasks.
+-   The backend has evolved significantly into a data engineering pipeline with the addition of usage: pdfplumber [-h] [--structure | --structure-text]
+                  [--format {csv,json,text}] [--types TYPES [TYPES ...]]
+                  [--include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]]
+                  [--exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]]
+                  [--laparams LAPARAMS] [--precision PRECISION]
+                  [--pages PAGES [PAGES ...]] [--indent INDENT]
+                  [infile]
+
+positional arguments:
+  infile
+
+options:
+  -h, --help            show this help message and exit
+  --structure           Write the structure tree as JSON. All other arguments
+                        except --pages, --laparams, and --indent will be
+                        ignored
+  --structure-text      Write the structure tree as JSON including text
+                        contents. All other arguments except --pages,
+                        --laparams, and --indent will be ignored
+  --format {csv,json,text}
+  --types TYPES [TYPES ...]
+  --include-attrs INCLUDE_ATTRS [INCLUDE_ATTRS ...]
+                        Include *only* these object attributes in output.
+  --exclude-attrs EXCLUDE_ATTRS [EXCLUDE_ATTRS ...]
+                        Exclude these object attributes from output.
+  --laparams LAPARAMS
+  --precision PRECISION
+  --pages PAGES [PAGES ...]
+  --indent INDENT       Indent level for JSON pretty-printing. and reliance on a vision-capable LLM for the ingestion process.
 
 **All files of reference**
-Created or significantly updated files:
-- **/app/backend-minimal/app.py**: The central orchestrator, heavily modified to integrate all new layers.
-- **/app/backend-minimal/response_mode_router.py**: New file to decide between  and  modes.
-- **/app/backend-minimal/missing_context_engine.py**: New file to detect and handle under-specified questions.
-- **/app/backend-minimal/simple_conversation_store.py**: New file to manage multi-turn conversation state.
-- **/app/backend-minimal/required_inputs_gate.py**: New file to gate ambiguous threshold questions.
-- **/app/backend-minimal/gate_field_extractor.py**: New file to parse user follow-ups to gated questions.
-- **/app/backend-minimal/gpt_first_enforcer.py**: New file to programmatically shorten  answers.
-- **/app/backend-minimal/numeric_leak_guard.py**: New file to soften hard numbers in  answers.
-- **/app/backend-minimal/token_budget_router.py**: New file to manage token allocation dynamically.
-- **/app/backend-minimal/intent_classifier_v2.py**: Updated to refine intent detection.
-- **/app/backend-minimal/citation_utils.py**: Updated to decouple citations from intent.
-- **/app/backend-minimal/response_style.py**: Updated for tone and to fix bugs.
-- **/app/backend-minimal/simple_tier1_retrieval.py**: Updated to add retrieval biases.
-- **/app/frontend/app/(tabs)/chat.tsx**: Updated to add a speech-to-text button.
-
-**key api endpoints**
-- : The main endpoint for all user interactions.
-- : A new diagnostic endpoint to verify loaded model configurations.
-- : Standard health check.
+-   **Current Task Files**:
+    -   : The newly created script that needs to be executed.
+    -   : The vision-enabled parser to be run on the new files.
+    -   : The script to load the new chunks into the database.
+    -   : The retrieval logic file that will need to be updated with new brand keywords.
+-   **Core Architecture**:
+    -   : Main FastAPI application.
+    -   : Main chat screen.
 
 **Critical Info for New Agent**
-1.  **Gemini Migration is Priority #1:** The most critical task is to complete the migration from OpenAI to Gemini. The user has provided a clear plan. You will need to replace API calls in  and adapt to the Gemini SDK.
-2.  **Hybrid Architecture:** Do not treat this as a simple RAG system. Understand the . Most questions go through the hybrid path (full retrieval, natural synthesis, no citations), while only specific legal/consent questions use the strict_compliance path (full retrieval, citations shown).
-3.  **Layered Logic:** The backend has many layers that execute in sequence: Intent Classification -> Response Mode Routing -> Gating -> Retrieval -> Generation -> Formatting/Guards. Be mindful of this flow when making changes.
-4.  **Data Freshness is a Critical Risk:** The audit revealed that most ingested documents are pre-Nov 2025. This is a major legal and accuracy risk that must be addressed by re-ingesting the latest versions of the NZ Building Code standards.
-5.  **Environment Variable Caching:** The  environment has a history of caching  variables. Changes to  may not take effect on a simple restart. The previous agent added robust  loading at the top of  which should mitigate this, but be aware of it if config changes don't seem to apply.
+1.  **Your immediate priority (P0) is to complete Operation Final Sweep.** The previous agent has already created the scraper script. Your job is to execute the full ingestion pipeline: run the scraper, run the vision-enabled chunker, run the ingestor, and finally update the backend retrieval logic to be aware of the new brands.
+2.  **The Ingestion Pipeline is complex and can be slow.** The agent used background processes and monitored log files () to handle long-running tasks like chunking and embedding. Follow this pattern. If ingestion times out, consider running it in smaller batches.
+3.  **The Vision Pipeline () is mandatory for all new document processing.** This is a core requirement from the user to ensure diagrams are searchable.
+4.  **Retrieval logic is key.** After ingesting new data, you MUST update  with relevant keywords for the new brands/products. Without this, the new data will exist in the database but won't be retrieved effectively.
 
 **documents created in this job**
-- /app/backend-minimal/response_mode_router.py
-- /app/backend-minimal/missing_context_engine.py
-- /app/backend-minimal/simple_conversation_store.py
-- /app/backend-minimal/required_inputs_gate.py
-- /app/backend-minimal/gate_field_extractor.py
-- /app/backend-minimal/gpt_first_enforcer.py
-- /app/backend-minimal/numeric_leak_guard.py
-- /app/backend-minimal/token_budget_router.py
-- /app/backend-minimal/gpt_context_extraction.py
-- /app/backend-minimal/context_session.py
-- and others.
+-   
+-   
+-   
+-   
+-   
+-   
+-   
+-   
+-   
+-   
+-   
+-   
+-   
+-   
 
 **Last 10 User Messages and any pending HUMAN messages**
-1.  **User asks to fix gate bug**: Reports that the  is incorrectly asking for pitch as an input. (COMPLETED)
-2.  **User asks to add talk-to-text button**: A frontend feature request. (IN PROGRESS)
-3.  **User asks what's left for backend gate**: Seeks status on the gate implementation. (ANSWERED)
-4.  **User asks to tune token budget**: Requests a dynamic token router to save costs. (COMPLETED)
-5.  **User asks for app audit for Gemini handoff**: Requests a full system summary before migrating to Gemini. (COMPLETED)
-6.  **User provides Gemini migration plan**: A 5-phase plan to switch to Gemini and update regulatory logic. (PENDING)
-7.  **User confirms migration plan**: Approves proceeding with Phases 2-5 of the Gemini migration. (PENDING)
-8.  **User asks about forking**: Clarifies if a fork is needed to continue. (ANSWERED)
-9.  **User wants to know what token limited means**: Asks for clarification on the agent's token budget. (ANSWERED)
-10. **User gives final directive to complete the gate resume logic**: Instructs agent to finish the gate follow-up wiring. (IN PROGRESS)
+1.  **Msg 501**: Assigns Operation Final Sweep to ingest missing NZ local/merchant fastener brands. Provides a specific list of 8 targets. (PENDING - Current P0 Task)
+2.  **Msg 500**: Audits the fastener ingestion and finds critical gaps, leading to the Final Sweep task.
+3.  **Msg 443**: Assigns Operation Hardware Store to ingest catalogs for 14 major fastener brands. (COMPLETED)
+4.  **Msg 364**: Assigns Full Suite ingestion for all remaining GIB and James Hardie manuals. (COMPLETED)
+5.  **Msg 333**: Pivots to Vision ingestion, requiring diagrams to be captioned. Assigns ingestion of James Hardie manuals. (COMPLETED)
+6.  **Msg 295**: Assigns task to build the ingestion pipeline (Parser, Ingestor) and test with GIB documents. (COMPLETED)
+7.  **Msg 264**: Assigns The Big Brain initialization: DB schema upgrade, folder setup, and pilot ingestion of GIB manuals. (COMPLETED)
+8.  **Msg 246**: Reports a bug where AI responses are being truncated. (COMPLETED)
+9.  **Msg 176**: Confirms the Delete Chat bug is fixed and assigns the next task: improve the AI's table reading capabilities via prompt engineering. (COMPLETED)
+10. **Msg 144**: Approves previous work and assigns the task to fix the Delete Chat 404 error. (COMPLETED)
 
 **Project Health Check:**
-- **Mocked:** No key components are mocked.
-- **Broken:**
-    - The core inference engine is in a broken, mid-migration state. It's configured for Gemini but the code still calls OpenAI.
-    - The  multi-turn follow-up logic is incomplete.
+-   **Broken**: No core features are currently broken.
+-   **Mocked**: The Create Project form and Project Archives features are still placeholders.
 
 **3rd Party Integrations**
-- **Supabase (PostgreSQL + pgvector)**: Used as the primary vector database.
-- **OpenAI**: Currently used for embeddings () and generation (, ). In the process of being replaced for generation.
-- **Google Gemini** (via ): The target for all generation tasks (, ). Uses Emergent LLM Key.
+-   **PostgreSQL (via Supabase)** — Primary Database.
+-   **Google Gemini** (via ) — Core LLM for RAG. Uses Emergent LLM Key.
+-   **OpenAI** — Used for embeddings () and potentially for Vision captions. Uses Emergent LLM Key.
 
 **Testing status**
-- Testing agent used after significant changes: NO
-- Troubleshoot agent used after agent stuck in loop: NO
-- Test files created: None.
-- Known regressions: None explicitly mentioned, but the Gemini migration is a high-risk change.
+-   Testing agent used after significant changes: NO (Agent performed manual backend testing via scripts and direct queries).
+-   Troubleshoot agent used after agent stuck in loop: NO
+-   Test files created: []
+-   Known regressions: None.
+
+**Credentials to test flow:**
+N/A
 
 **What agent forgot to execute**
-- The anti-drift system instruction for when the  is resolved was never added to the  prompt, even though the flag for it was implemented.
-- The  was implemented as a feature-flagged spike but was never fully adopted or cleaned up, leading to a slightly confusing mix of old and new session logic.
-</analysis>
+- The agent has successfully followed the user's strategic direction, shifting focus heavily to the backend data ingestion. All immediate frontend bugs and feature requests (up to the PDF viewer) were addressed before this shift. The main forgotten items are the longer-term future tasks like voice input and full project management features, which have been correctly deprioritized by the user's explicit instructions.
