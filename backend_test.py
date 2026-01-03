@@ -218,52 +218,38 @@ class TradeAwareRetrievalTester:
             self.test_results.append(result)
             return result
     
-    async def run_operation_final_sweep_tests(self):
-        """Run all Operation Final Sweep brand tests"""
+    async def run_trade_aware_retrieval_tests(self):
+        """Run all trade-aware retrieval tests for Firth brand"""
         
-        print("🚀 STRYDA RAG Backend Testing - Operation Final Sweep Verification")
+        print("🚀 STRYDA RAG Backend Testing - Product Function/Trade-Aware Retrieval")
         print("=" * 80)
         print(f"🎯 Backend URL: {self.backend_url}")
         print(f"📅 Test Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"🏷️  Focus: Firth brand trade-aware retrieval (paving, masonry, foundations)")
         print("=" * 80)
         
         # Test cases from the review request
         test_cases = [
             {
-                "message": "What Pryda bracing anchors and connectors are available?",
-                "session_id": "test-pryda-final-sweep",
-                "test_name": "Pryda Bracing Query",
-                "expected": "Should return Pryda product info with load capacities"
+                "message": "How do I install Firth Holland Pavers?",
+                "session_id": "test-firth-paving-trade",
+                "test_name": "Paving Trade Detection",
+                "expected_trade": "paving",
+                "expected": "Should focus on PAVING topics (pavers, pathways, driveways, laying patterns)"
             },
             {
-                "message": "What Zenith butt hinges are in the catalogue?", 
-                "session_id": "test-zenith-final-sweep",
-                "test_name": "Zenith Hardware Query",
-                "expected": "Should return Zenith hardware catalogue data with sizes"
+                "message": "What is the steel spacing for a Firth 20 Series block wall?", 
+                "session_id": "test-firth-masonry-trade",
+                "test_name": "Masonry Trade Detection",
+                "expected_trade": "masonry",
+                "expected": "Should focus on MASONRY topics (block walls, steel reinforcement, grout)"
             },
             {
-                "message": "What MacSim drop-in anchors are available?",
-                "session_id": "test-macsim-final-sweep", 
-                "test_name": "MacSim Anchor Query",
-                "expected": "Should return MacSim anchor specifications"
-            },
-            {
-                "message": "What SPAX screws should I use for decking?",
-                "session_id": "test-spax-final-sweep",
-                "test_name": "SPAX Decking Query", 
-                "expected": "Should return SPAX product info"
-            },
-            {
-                "message": "What Bremick masonry anchors are available?",
-                "session_id": "test-bremick-final-sweep",
-                "test_name": "Bremick Masonry Query",
-                "expected": "Should return Bremick masonry anchor data"
-            },
-            {
-                "message": "I'm at Bunnings, what brackets should I use for deck posts?",
-                "session_id": "test-bunnings-bias-final-sweep",
-                "test_name": "Retailer Bias Test",
-                "expected": "Response should mention Bunnings brands like Zenith, Pryda, or Bremick"
+                "message": "RibRaft edge detail reinforcement",
+                "session_id": "test-firth-foundations-trade",
+                "test_name": "Foundations Trade Detection",
+                "expected_trade": "foundations",
+                "expected": "Should focus on FOUNDATIONS topics (RibRaft, edge beams, reinforcement)"
             }
         ]
         
@@ -272,10 +258,11 @@ class TradeAwareRetrievalTester:
             print(f"\n{'='*20} TEST {i}/{len(test_cases)} {'='*20}")
             print(f"Expected: {test_case['expected']}")
             
-            await self.test_chat_endpoint(
+            await self.test_trade_aware_chat(
                 test_case["message"],
                 test_case["session_id"], 
-                test_case["test_name"]
+                test_case["test_name"],
+                test_case["expected_trade"]
             )
             
             # Small delay between tests
@@ -287,100 +274,96 @@ class TradeAwareRetrievalTester:
     def generate_test_summary(self):
         """Generate comprehensive test summary"""
         print("\n" + "="*80)
-        print("📊 OPERATION FINAL SWEEP TEST SUMMARY")
+        print("📊 TRADE-AWARE RETRIEVAL TEST SUMMARY")
         print("="*80)
         
         total_tests = len(self.test_results)
         passed_tests = len([r for r in self.test_results if r["status"] == "PASS"])
-        failed_tests = len([r for r in self.test_results if r["status"] in ["FAIL", "ERROR"]])
+        partial_tests = len([r for r in self.test_results if r["status"] == "PARTIAL"])
+        failed_tests = len([r for r in self.test_results if r["status"] in ["FAIL", "ERROR", "UNCLEAR"]])
         
         print(f"📈 Total Tests: {total_tests}")
         print(f"✅ Passed: {passed_tests}")
+        print(f"⚠️  Partial: {partial_tests}")
         print(f"❌ Failed: {failed_tests}")
-        print(f"📊 Success Rate: {(passed_tests/total_tests)*100:.1f}%")
+        print(f"📊 Success Rate: {((passed_tests + partial_tests)/total_tests)*100:.1f}%")
         
-        # Brand detection analysis
-        brand_detection_results = []
-        brand_in_sources_results = []
-        final_sweep_usage = []
+        # Trade detection analysis
+        trade_relevance_scores = []
+        firth_mentions = []
         
         for result in self.test_results:
-            if result["status"] == "PASS":
-                brand_detection_results.append(result.get("brand_mentioned", False))
-                brand_in_sources_results.append(result.get("brand_in_sources", False))
-                final_sweep_usage.append(result.get("final_sweep_source", False))
+            if result["status"] in ["PASS", "PARTIAL"]:
+                trade_analysis = result.get("trade_analysis", {})
+                trade_relevance_scores.append(trade_analysis.get("keyword_count", 0))
+                firth_mentions.append(result.get("firth_mentioned", False))
         
-        brand_detection_rate = (sum(brand_detection_results) / len(brand_detection_results)) * 100 if brand_detection_results else 0
-        brand_sources_rate = (sum(brand_in_sources_results) / len(brand_in_sources_results)) * 100 if brand_in_sources_results else 0
-        final_sweep_rate = (sum(final_sweep_usage) / len(final_sweep_usage)) * 100 if final_sweep_usage else 0
+        avg_trade_relevance = sum(trade_relevance_scores) / len(trade_relevance_scores) if trade_relevance_scores else 0
+        firth_mention_rate = (sum(firth_mentions) / len(firth_mentions)) * 100 if firth_mentions else 0
         
-        print(f"\n🎯 BRAND DETECTION ANALYSIS:")
-        print(f"   Brand Mention Rate: {brand_detection_rate:.1f}%")
-        print(f"   Brand in Sources Rate: {brand_sources_rate:.1f}%")
-        print(f"   Final Sweep Usage Rate: {final_sweep_rate:.1f}%")
+        print(f"\n🎯 TRADE-AWARE ANALYSIS:")
+        print(f"   Average Trade Keywords per Response: {avg_trade_relevance:.1f}")
+        print(f"   Firth Brand Mention Rate: {firth_mention_rate:.1f}%")
         
         print(f"\n📋 DETAILED RESULTS:")
         for result in self.test_results:
-            status_icon = "✅" if result["status"] == "PASS" else "❌"
-            brand_icon = "🎯" if result.get("brand_mentioned", False) else "⚪"
-            source_icon = "🏷️" if result.get("brand_in_sources", False) else "⚪"
-            sweep_icon = "📚" if result.get("final_sweep_source", False) else "⚪"
+            status_icon = "✅" if result["status"] == "PASS" else "⚠️" if result["status"] == "PARTIAL" else "❌"
+            trade_icon = "🎯" if result.get("firth_mentioned", False) else "⚪"
             
-            print(f"   {status_icon} {result['test_name']}")
-            print(f"      {brand_icon} Brand Mentioned: {result.get('brand_mentioned', 'N/A')}")
-            print(f"      {source_icon} Brand in Sources: {result.get('brand_in_sources', 'N/A')}")
-            print(f"      {sweep_icon} Final Sweep Source: {result.get('final_sweep_source', 'N/A')}")
-            if result["status"] == "PASS":
+            print(f"   {status_icon} {result['test_name']} ({result.get('expected_trade', 'unknown').upper()})")
+            print(f"      {trade_icon} Firth Mentioned: {result.get('firth_mentioned', 'N/A')}")
+            
+            if result["status"] in ["PASS", "PARTIAL"]:
+                trade_analysis = result.get("trade_analysis", {})
+                print(f"      🔍 Trade Keywords: {trade_analysis.get('found_keywords', [])}")
+                print(f"      ❌ Wrong Keywords: {[f'{t}:{k}' for t,k in trade_analysis.get('wrong_trade_keywords', [])]}")
                 print(f"      📏 Response: {result.get('response_length', 0)} chars")
                 print(f"      ⏱️  Time: {result.get('response_time_ms', 0)}ms")
-                print(f"      🔗 Inline Citations: {result.get('inline_citations', [])}")
+                print(f"      📚 Trade Sources: {result.get('trade_sources', [])}")
             else:
-                print(f"      ⚠️  Error: {result.get('error', 'Unknown error')}")
+                print(f"      ⚠️  Error: {result.get('error', result.get('status_detail', 'Unknown error'))}")
         
         # Final assessment
-        print(f"\n🔍 OPERATION FINAL SWEEP ASSESSMENT:")
+        print(f"\n🔍 TRADE-AWARE RETRIEVAL ASSESSMENT:")
         
         if passed_tests == total_tests:
-            if brand_detection_rate >= 80 and final_sweep_rate >= 80:
-                print("   🎉 EXCELLENT: All tests passed with high brand detection and Final Sweep usage")
-                verdict = "FULLY WORKING"
-            elif brand_sources_rate >= 80:
-                print("   ✅ GOOD: All tests passed with brands found in sources")
-                verdict = "MOSTLY WORKING"
-            elif final_sweep_rate >= 80:
-                print("   ⚠️  PARTIAL: Tests pass with Final Sweep usage but low brand detection")
-                verdict = "PARTIALLY WORKING"
-            else:
-                print("   ⚠️  ISSUES: Tests pass but brand detection and Final Sweep usage are low")
-                verdict = "PARTIALLY WORKING"
+            print("   🎉 EXCELLENT: All tests passed with strong trade-specific responses")
+            verdict = "FULLY WORKING"
+        elif passed_tests + partial_tests == total_tests:
+            print("   ✅ GOOD: All tests show trade relevance (some partial)")
+            verdict = "MOSTLY WORKING"
+        elif passed_tests + partial_tests >= total_tests * 0.67:
+            print("   ⚠️  PARTIAL: Most tests show trade relevance")
+            verdict = "PARTIALLY WORKING"
         else:
-            print("   ❌ CRITICAL: Some tests failed")
+            print("   ❌ CRITICAL: Trade-aware retrieval not working effectively")
             verdict = "NOT WORKING"
         
         print(f"\n🏆 FINAL VERDICT: {verdict}")
         
         # Recommendations
         print(f"\n💡 RECOMMENDATIONS:")
-        if brand_detection_rate < 50:
-            print("   • Expected brands (Pryda, Zenith, MacSim, SPAX, Bremick) may be missing from Final Sweep")
-            print("   • Verify Final Sweep document contains the expected NZ brand catalogs")
-        if brand_sources_rate < 50:
-            print("   • Brand-specific sources not being retrieved effectively")
-            print("   • Check if brand documents are properly indexed and prioritized")
-        if final_sweep_rate < 80:
-            print("   • Final Sweep document may not be properly integrated or prioritized")
-            print("   • Check document ingestion and retrieval configuration")
+        if firth_mention_rate < 50:
+            print("   • Firth brand documents may not be properly indexed or prioritized")
+            print("   • Verify Firth document ingestion and brand detection")
+        if avg_trade_relevance < 2:
+            print("   • Trade-specific keyword detection is low")
+            print("   • Check if trade metadata is properly applied to Firth documents")
         if failed_tests > 0:
-            print("   • Investigate API endpoint failures and error handling")
+            print("   • Investigate API endpoint failures and trade filtering logic")
+            print("   • Check backend logs for trade detection messages")
+        if passed_tests < total_tests:
+            print("   • Review trade-aware retrieval implementation")
+            print("   • Verify granular product function detection is working")
         
         return {
             "total_tests": total_tests,
-            "passed_tests": passed_tests, 
+            "passed_tests": passed_tests,
+            "partial_tests": partial_tests, 
             "failed_tests": failed_tests,
-            "success_rate": (passed_tests/total_tests)*100,
-            "brand_detection_rate": brand_detection_rate,
-            "brand_sources_rate": brand_sources_rate,
-            "final_sweep_usage_rate": final_sweep_rate,
+            "success_rate": ((passed_tests + partial_tests)/total_tests)*100,
+            "avg_trade_relevance": avg_trade_relevance,
+            "firth_mention_rate": firth_mention_rate,
             "verdict": verdict,
             "test_results": self.test_results
         }
