@@ -183,15 +183,11 @@ TRADE_DETECTION_KEYWORDS = {
     ],
     'roofing': [
         'roof', 'roofing', 'purlin', 'ridge', 'hip', 'valley', 
-        'roof underlay', 'sarking'
+        'roof underlay', 'sarking', 'roofing screw', 'cladding screw'
     ],
     'interior_linings': [
         'plasterboard', 'gib', 'lining', 'drywall', 'ceiling', 'stopping',
         'cornice', 'fyreline', 'aqualine', 'braceline', 'noiseline'
-    ],
-    'fasteners': [
-        'nail', 'screw', 'fastener', 'anchor', 'bolt', 'connector', 
-        'bracket', 'joist hanger', 'hanger nail', 't-rex', 'collated'
     ],
     'insulation': [
         'insulation', 'batts', 'pink batts', 'earthwool', 'r-value',
@@ -199,6 +195,48 @@ TRADE_DETECTION_KEYWORDS = {
     ],
     'retaining': [
         'retaining wall', 'keystone', 'garden wall', 'landscape wall'
+    ],
+    # =========================================================================
+    # FASTENER SUB-CATEGORIES (New granular trades from multi-brand re-tag)
+    # =========================================================================
+    'framing': [
+        'joist hanger', 'hanger', 'connector', 'framing bracket',
+        'post support', 'rafter connector', 'purlin clip', 'stringer'
+    ],
+    'bracing': [
+        'brace', 'bracing', 'hold down', 'hold-down', 'speed brace',
+        'wall brace', 'strap', 'tie-down', 'tension tie', 'lateral'
+    ],
+    'anchoring': [
+        'anchor', 'dynabolt', 'chemical anchor', 'wedge anchor', 'drop-in',
+        'sleeve anchor', 'post base', 'post anchor', 'concrete anchor',
+        'masonry anchor', 'chemset', 'epoxy anchor', 'bremfix'
+    ],
+    'nailplates': [
+        'nail plate', 'nailplate', 'gang nail', 'truss plate', 'mending plate'
+    ],
+    'screws': [
+        'timber screw', 'self drill', 'self-drill', 'bugle screw', 
+        'countersunk screw', 'tek screw', 'decking screw'
+    ],
+    'nails': [
+        'framing nail', 'gun nail', 'collated nail', 'coil nail', 
+        'brad nail', 'finishing nail', 'clout nail'
+    ],
+    'bolts': [
+        'coach bolt', 'hex bolt', 'carriage bolt', 'cup head', 
+        'structural bolt', 'high tensile bolt'
+    ],
+    'decking': [
+        'deck screw', 'decking fastener', 't-rex', 'outdoor screw',
+        'exterior screw', 'stainless deck'
+    ],
+    'hardware': [
+        'hinge', 'latch', 'hasp', 'lock', 'handle', 'hook', 'shelf bracket'
+    ],
+    # Generic fasteners fallback (lowest priority)
+    'fasteners': [
+        'fastener', 'fixing', 'nail', 'screw', 'bolt', 'anchor'
     ],
 }
 
