@@ -378,6 +378,45 @@ class STRYDABackendTester:
             print("   ❌ OPERATION FINAL SWEEP: FAILED")
             print("   RAG system not retrieving expected brand-specific information.")
 
+    async def test_chat_endpoint_query(self, query: str, test_name: str):
+        """Test a specific query using the /api/chat endpoint"""
+        print(f"\n🔍 Testing {test_name}: {query}")
+        
+        try:
+            payload = {"message": query, "session_id": f"test-final-sweep-{int(time.time())}"}
+            async with self.session.post(
+                f"{self.base_url}/api/chat",
+                json=payload,
+                headers={"Content-Type": "application/json"},
+                timeout=aiohttp.ClientTimeout(total=60)
+            ) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    analysis = self.analyze_response_for_final_sweep(data)
+                    
+                    # Determine test status based on response quality
+                    status = "PASS" if (
+                        analysis["response_length"] > 50 and
+                        (len(analysis["brand_mentions"]) > 0 or analysis["has_product_info"])
+                    ) else "FAIL"
+                    
+                    self.log_test(test_name, status, {
+                        **analysis,
+                        "query": query,
+                        "endpoint": "/api/chat",
+                        "response_preview": (data.get("response", "") or data.get("answer", ""))[:300] + "..."
+                    })
+                else:
+                    error_text = await response.text()
+                    self.log_test(test_name, "FAIL", {
+                        "status_code": response.status,
+                        "error": error_text
+                    })
+        except Exception as e:
+            self.log_test(test_name, "FAIL", {
+                "error": str(e)
+            })
+
 async def main():
     """Main test execution"""
     print("🚀 Starting STRYDA RAG Backend Testing - Operation Final Sweep Verification")
@@ -388,20 +427,26 @@ async def main():
         # Test 1: Health check (if available)
         await tester.test_health_check()
         
-        # Test 2: Try alternative chat endpoint first
-        await tester.test_alternative_chat_endpoint()
+        # Test 2-5: The four specific queries from review request using /api/chat
+        await tester.test_chat_endpoint_query(
+            "What is the load capacity of a Pryda bracing anchor?",
+            "Pryda Bracing Query"
+        )
         
-        # Test 3: Create thread for message-based testing
-        thread_id = await tester.create_thread()
+        await tester.test_chat_endpoint_query(
+            "What SPAX screws should I use for deck framing?",
+            "SPAX Timber Query"
+        )
         
-        if thread_id:
-            # Test 4-7: The four specific queries from review request
-            await tester.test_pryda_bracing_query(thread_id)
-            await tester.test_spax_timber_query(thread_id)
-            await tester.test_bremick_anchor_query(thread_id)
-            await tester.test_retailer_bias(thread_id)
-        else:
-            print("⚠️ Could not create thread, skipping message-based tests")
+        await tester.test_chat_endpoint_query(
+            "What masonry anchors does Bremick make?",
+            "Bremick Anchor Query"
+        )
+        
+        await tester.test_chat_endpoint_query(
+            "I'm at Bunnings, what anchors do you recommend?",
+            "Retailer Bias Test"
+        )
         
         # Print final summary
         tester.print_summary()
