@@ -427,25 +427,35 @@ async def main():
         # Test 1: Health check (if available)
         await tester.test_health_check()
         
-        # Test 2-5: The four specific queries from review request using /api/chat
+        # Test 2-7: All six specific queries from review request using /api/chat
         await tester.test_chat_endpoint_query(
             "What is the load capacity of a Pryda bracing anchor?",
             "Pryda Bracing Query"
         )
         
         await tester.test_chat_endpoint_query(
-            "What SPAX screws should I use for deck framing?",
+            "What Zenith hinges are available for builders?",
+            "Zenith Hardware Query"
+        )
+        
+        await tester.test_chat_endpoint_query(
+            "What drop-in anchors does MacSim make and what are their sizes?",
+            "MacSim Anchors Query"
+        )
+        
+        await tester.test_chat_endpoint_query(
+            "What SPAX screws should I use for timber framing?",
             "SPAX Timber Query"
         )
         
         await tester.test_chat_endpoint_query(
-            "What masonry anchors does Bremick make?",
-            "Bremick Anchor Query"
+            "I'm at Bunnings, what brackets should I use for deck posts?",
+            "Retailer Bias Test"
         )
         
         await tester.test_chat_endpoint_query(
-            "I'm at Bunnings, what anchors do you recommend?",
-            "Retailer Bias Test"
+            "What is the pull-out capacity of Ecko T-Rex screws?",
+            "Ecko T-Rex Query"
         )
         
         # Print final summary
