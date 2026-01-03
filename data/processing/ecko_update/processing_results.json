@@ -1,7 +1,7 @@
 {
   "input_dir": "/app/data/ingestion/F_Manufacturers/Fasteners/Ecko",
-  "processed_at": "2026-01-03T07:53:06.209924",
-  "vision_enabled": false,
+  "processed_at": "2026-01-03T07:53:19.208801",
+  "vision_enabled": true,
   "files_processed": [
     {
       "path": "/app/data/ingestion/F_Manufacturers/Fasteners/Ecko/ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf",
