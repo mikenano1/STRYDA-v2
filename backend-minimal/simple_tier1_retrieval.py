@@ -903,6 +903,10 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         ('earthwool', 'Earthwool'),
                         ('earth wool', 'Earthwool'),
                         ('knauf', 'Earthwool'),
+                        ('bradford', 'Bradford'),
+                        ('gold batts', 'Bradford'),
+                        ('windmaster', 'Bradford'),
+                        ('hurricane', 'Bradford'),
                         ('firth', 'Firth'),
                     ]
                     
