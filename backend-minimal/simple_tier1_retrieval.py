@@ -521,6 +521,14 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('Pink Batts Deep Dive')
     
+    # Mammoth - Polyester Insulation (Brand Deep Dive)
+    if any(term in query_lower for term in [
+        'mammoth', 'polyester insulation', 'acoustic baffle', 'bafflestack',
+        'acoustic blanket', 'acoustic panel', 'deco flex', 'martini',
+        'duct liner', 'carpark insulation', 'inzone'
+    ]):
+        sources.append('Mammoth Deep Dive')
+    
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
         'james hardie', 'hardie', 'linea', 'weatherboard',
