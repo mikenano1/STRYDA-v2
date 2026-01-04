@@ -410,6 +410,31 @@ TRADE_DETECTION_KEYWORDS = {
         'autex colour', 'autex color', 'nrc rating', 'sound absorption',
         'acoustic performance', 'care and maintenance'
     ],
+    # EXPOL TRADES (Multi-Category)
+    'slab_insulation': [
+        'slab insulation', 'thermoslab', 'slab edge', 'under slab', 'underslab',
+        'foundation insulation', 'concrete slab', 'slab x200', 'max edge',
+        'perimeter insulation', 'raft slab', 'ribraft'
+    ],
+    'structural_fill': [
+        'tuff pods', 'geofoam', 'geoform', 'lightweight fill', 'void former',
+        'structural fill', 'eps fill', 'polystyrene fill'
+    ],
+    'board_insulation': [
+        'platinum board', 'insulation board', 'xps board', 'eps board',
+        'extruded polystyrene', 'rigid insulation', 'foam board',
+        'fastline', 'imperia panel'
+    ],
+    'drainage': [
+        'styrodrain', 'drainage board', 'foundation drainage',
+        'retaining wall drainage', 'basement drainage'
+    ],
+    'garage_insulation': [
+        'garage door insulation', 'garage insulation', 'roller door insulation'
+    ],
+    'expol_general': [
+        'expol tech guide', 'expol technical guide', 'expol range'
+    ],
 }
 
 def detect_trade_from_query(query: str) -> Optional[str]:
