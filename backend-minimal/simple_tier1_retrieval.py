@@ -729,10 +729,26 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     brand_sources = [s for s in target_sources if 'Deep Dive' in s]
                     other_sources = [s for s in target_sources if 'Deep Dive' not in s]
                     
-                    # Extract brand name from source (e.g., "Firth Deep Dive" -> "Firth", "Pink Batts Deep Dive" -> "Pink Batts")
+                    # IMPORTANT: Detect which brand is mentioned in the query
+                    # This ensures we search the correct brand when multiple Deep Dives are detected
                     brand_name = None
-                    if brand_sources:
-                        # Handle multi-word brands like "Pink Batts"
+                    query_lower = query.lower()
+                    
+                    # Check for specific brand mentions in query
+                    brand_priority = [
+                        ('mammoth', 'Mammoth'),
+                        ('pink batts', 'Pink Batts'),
+                        ('pink batt', 'Pink Batts'),
+                        ('firth', 'Firth'),
+                    ]
+                    
+                    for keyword, brand in brand_priority:
+                        if keyword in query_lower:
+                            brand_name = brand
+                            break
+                    
+                    # Fallback: extract from first Deep Dive source if no brand in query
+                    if not brand_name and brand_sources:
                         source_name = brand_sources[0]
                         brand_name = source_name.replace(' Deep Dive', '').replace(' (Universal)', '')
                     
