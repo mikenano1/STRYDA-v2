@@ -478,7 +478,12 @@ CATEGORY_KEYWORDS = {
     'insulation': [
         'insulation', 'batts', 'pink batts', 'earthwool', 'polyester', 'r-value',
         'thermal', 'acoustic insulation', 'underfloor', 'ceiling insulation',
-        'wall insulation', 'bradford', 'mammoth', 'expol'
+        'wall insulation', 'bradford', 'mammoth', 'expol', 'kingspan', 'kooltherm'
+    ],
+    'enclosure_panels': [
+        'insulated panel', 'wall panel', 'roof panel', 'trapezoidal', 'coldstore',
+        'sandwich panel', 'composite panel', 'k-rock', 'krock', 'fivecrown',
+        'architectural panel', 'facade panel', 'evolution facade'
     ],
     'structure': [
         'concrete', 'steel', 'timber', 'foundation', 'pile', 'bearer', 'joist',
