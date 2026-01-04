@@ -105,6 +105,7 @@ BRAND_RETAILER_MAP = {
     'Bradford Gold': ['Carters', 'Mitre 10', 'ITM'],
     'Knauf': ['Carters', 'Mitre 10', 'ITM', 'PlaceMakers'],
     'Expol': ['PlaceMakers', 'ITM', 'Bunnings', 'Mitre 10'],
+    'Kingspan': ['PlaceMakers', 'Carters', 'ITM', 'Specialist Insulation'],
     
     # Specialty
     'Autex': ['PlaceMakers', 'Carters', 'Specialty Acoustic'],
