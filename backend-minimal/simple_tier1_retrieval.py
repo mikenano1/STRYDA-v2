@@ -728,6 +728,20 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('Autex Deep Dive')
     
+    # Expol - Polystyrene/EPS Products (Brand Deep Dive)
+    # Multi-category: Structure (slab/foundation), Enclosure (drainage), Interiors (insulation)
+    if any(term in query_lower for term in [
+        'expol', 'thermoslab', 'slab x200', 'max edge', 'platinum board',
+        'extruded polystyrene', 'xps', 'eps', 'fastline', 'imperia panel',
+        'styrodrain', 'tuff pods', 'geofoam', 'geoform', 'lightweight fill',
+        'polystyrene insulation', 'foam board', 'rigid insulation',
+        'slab insulation', 'slab edge', 'under slab', 'underslab',
+        'foundation insulation', 'concrete slab insulation',
+        # Generic insulation keywords (for multi-brand search)
+        'underfloor insulation', 'garage door insulation'
+    ]):
+        sources.append('Expol Deep Dive')
+    
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
         'james hardie', 'hardie', 'linea', 'weatherboard',
