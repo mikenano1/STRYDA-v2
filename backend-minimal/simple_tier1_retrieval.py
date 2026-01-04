@@ -891,9 +891,9 @@ def canonical_source_map(query: str) -> List[str]:
     
     return unique_sources
 
-def score_with_metadata(base_similarity: float, doc_type: str, priority: int, intent: str) -> float:
+def score_with_metadata(base_similarity: float, doc_type: str, priority: int, intent: str, trade: str = None) -> float:
     """
-    Metadata-aware scoring that combines similarity + doc_type + priority
+    Metadata-aware scoring that combines similarity + doc_type + priority + trade
     
     Scoring formula:
     - final_score = base_similarity + (priority/1000) + intent_bonus
@@ -901,11 +901,17 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
     Where:
     - base_similarity: 0.0-1.0 (from cosine similarity, 1.0 = best match)
     - priority: 0-100 → contributes 0.0-0.1 to final score
-    - intent_bonus: -0.10 to +0.10 based on doc_type alignment with intent
+    - intent_bonus: -0.15 to +0.10 based on doc_type alignment with intent
+    - trade: Used for additional context-aware scoring
     
     Intent-based bonuses:
-    - compliance_strict/implicit_compliance → favor current standards
+    - compliance_strict/implicit_compliance → favor compliance docs, penalize product catalogs
     - general_help/product_info → favor guides and manufacturer docs
+    
+    CHANGELOG (June 2025):
+    - Added Product_Catalog penalty for compliance queries (Bug fix: wrong source citations)
+    - Added Compliance_Document bonus for compliance queries
+    - Added trade-based scoring for acceptable_solution, nz_standard, building_code
     """
     score = base_similarity
     
@@ -915,8 +921,34 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
     
     # Intent-based bonuses/penalties
     if intent in ("compliance_strict", "implicit_compliance"):
-        # Compliance queries: favor current official standards
-        if doc_type == "acceptable_solution_current":
+        # Compliance queries: favor official standards, penalize product catalogs
+        
+        # STRONG PENALTY: Product catalogs should NOT cite for compliance questions
+        if doc_type == "Product_Catalog":
+            score -= 0.15  # Significant penalty for product catalogs in compliance queries
+        
+        # BONUS: Compliance documents (our main Vision-enabled compliance library)
+        elif doc_type == "Compliance_Document":
+            # Additional bonuses based on trade
+            if trade == "acceptable_solution":
+                score += 0.08  # Strong bonus for Acceptable Solutions (E2/AS1, F4/AS1, etc.)
+            elif trade == "verification_method":
+                score += 0.07  # Strong bonus for Verification Methods
+            elif trade == "nz_standard":
+                score += 0.06  # Bonus for NZ Standards (NZS 3604, NZS 4229)
+            elif trade == "building_code":
+                score += 0.09  # Highest bonus for Building Code itself
+            elif trade == "industry_code":
+                score += 0.04  # Medium bonus for industry codes
+            elif trade == "technical_manual":
+                score += 0.03  # Small bonus for technical manuals (GIB, etc.)
+            elif trade == "industry_guide":
+                score += 0.03  # Small bonus for industry guides
+            else:
+                score += 0.02  # Base bonus for any compliance doc
+        
+        # Legacy doc_type handling (for backwards compatibility)
+        elif doc_type == "acceptable_solution_current":
             score += 0.10  # Strong bonus for current AS
         elif doc_type == "verification_method_current":
             score += 0.08  # Strong bonus for current VM
@@ -925,18 +957,22 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
         elif doc_type == "acceptable_solution_legacy":
             score += 0.03  # Small bonus for legacy (still official)
         elif doc_type and doc_type.startswith("manufacturer_manual"):
-            score -= 0.02  # Slight penalty for manufacturer docs
+            score -= 0.05  # Penalty for manufacturer docs in compliance queries
         elif doc_type == "handbook_guide":
             score -= 0.01  # Very slight penalty for guides
             
     elif intent in ("general_help", "product_info"):
         # Practical queries: strongly favor guides and manufacturer docs
-        if doc_type and doc_type.startswith("manufacturer_manual"):
+        if doc_type == "Product_Catalog":
+            score += 0.08  # Bonus for product info in general help
+        elif doc_type and doc_type.startswith("manufacturer_manual"):
             score += 0.08  # INCREASED: Strong bonus for manufacturer docs
         elif doc_type == "handbook_guide":
             score += 0.06  # INCREASED: Strong bonus for guides
         elif doc_type in ("acceptable_solution_current", "verification_method_current"):
             score += 0.02  # Keep standards as useful context
+        elif doc_type == "Compliance_Document":
+            score += 0.01  # Small bonus for compliance in general help
     
     return score
 
