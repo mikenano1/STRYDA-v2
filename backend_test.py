@@ -264,7 +264,10 @@ def test_deck_height_bug_fix():
         print(f"  {criterion}")
     
     print(f"\n📄 Response Preview:")
-    response_text = response_data.get("response", "")
+    response_text = (response_data.get("response", "") or 
+                    response_data.get("answer", "") or 
+                    response_data.get("message", "") or
+                    response_data.get("text", ""))
     print(f"  {response_text[:300]}{'...' if len(response_text) > 300 else ''}")
     
     print(f"\n🔍 Sources Analysis:")
