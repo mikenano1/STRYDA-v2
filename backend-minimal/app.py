@@ -58,6 +58,14 @@ from response_style import apply_answer_style
 from missing_context_engine import should_ask_for_context, extract_context_from_message, CONTEXT_PATTERNS, generate_missing_context_response
 from context_session import create_session, get_session, clear_session, has_active_session
 from simple_conversation_store import bootstrap_conversation, get_conversation, clear_conversation, has_conversation, set_pending_gate, update_pending_gate, get_pending_gate, clear_pending_gate
+
+# Material Triage for Insulation (Attribute Filter Protocol)
+from simple_tier1_retrieval import (
+    check_insulation_triage_needed,
+    detect_material_preference,
+    INSULATION_MATERIAL_GROUPS,
+    detect_trade_from_query
+)
 from gpt_context_extraction import extract_context_via_gpt, validate_proposed_context
 from response_mode_router import determine_response_mode
 from numeric_leak_guard import check_numeric_leak
