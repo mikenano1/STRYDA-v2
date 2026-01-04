@@ -664,6 +664,17 @@ def canonical_source_map(query: str) -> List[str]:
             sources.append('B1 Amendment 13')  # Default to latest
         sources.append('B1/AS1')  # Also include legacy for completeness
     
+    # F4 - Safety from Falling (SPECIFIC SOURCE - deck height, balustrade requirements)
+    # This must come BEFORE the general NZ Building Code check to ensure F4-specific queries get F4 directly
+    if any(term in query_lower for term in [
+        'f4', 'f4/as1', 'balustrade', 'guardrail', 'handrail',
+        'deck height', 'deck without', 'without balustrade', 'without barrier',
+        'fall from deck', 'height of fall', 'safety from falling', 'fall protection',
+        '1m fall', '1 metre fall', '1 meter', '1000mm', '1000 mm',
+        'barrier height', 'minimum barrier', 'maximum height deck'
+    ]):
+        sources.append('F4-AS1_Amendment-6-2021')  # Direct DB source name
+    
     # NZ Building Code - General building code sections
     # Also includes F4 (Safety from Falling) for deck/balustrade questions
     if any(term in query_lower for term in [
@@ -684,7 +695,7 @@ def canonical_source_map(query: str) -> List[str]:
         'change to plans', 'approved plans', 'consent amendment', 'vary consent',
         'variation to consent', 'modify consent', 'alter plans'
     ]):
-        sources.append('NZ Building Code')
+        sources.append('building-code')  # Direct DB source name
     
     # NZS 4229 - Concrete masonry
     if any(term in query_lower for term in [
