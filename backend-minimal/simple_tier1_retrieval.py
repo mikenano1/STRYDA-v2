@@ -771,30 +771,38 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         trade_condition = "trade LIKE %s" if use_like_trade else "trade = %s"
                         trade_value = f"%{detected_trade.replace('general_', '')}%" if use_like_trade else detected_trade
                         
-                        sql = f"""
-                            SELECT id, source, page, content, section, clause, snippet,
-                                   doc_type, trade, status, priority, phase, brand_name, product_family,
-                                   (embedding <=> %s::vector) as similarity
-                            FROM documents 
-                            WHERE embedding IS NOT NULL
-                              AND ({brand_conditions})
-                              AND {trade_condition}
-                            ORDER BY similarity ASC
-                            LIMIT %s;
-                        """
-                        params = [query_embedding] + [f"%{b}%" for b in all_brands] + [trade_value, top_k * 2]
+                        # BRAND FAIRNESS: Get top results from EACH brand separately
+                        # then merge them to ensure representation from all brands
+                        all_results = []
+                        min_per_brand = max(3, top_k // len(all_brands))  # At least 3 from each brand
                         
-                        cur.execute(sql, params)
-                        results = cur.fetchall()
+                        for brand in all_brands:
+                            brand_sql = f"""
+                                SELECT id, source, page, content, section, clause, snippet,
+                                       doc_type, trade, status, priority, phase, brand_name, product_family,
+                                       (embedding <=> %s::vector) as similarity
+                                FROM documents 
+                                WHERE embedding IS NOT NULL
+                                  AND brand_name ILIKE %s
+                                  AND {trade_condition}
+                                ORDER BY similarity ASC
+                                LIMIT %s;
+                            """
+                            brand_params = [query_embedding, f"%{brand}%", trade_value, min_per_brand]
+                            cur.execute(brand_sql, brand_params)
+                            brand_results = cur.fetchall()
+                            all_results.extend(brand_results)
+                            print(f"      • {brand}: {len(brand_results)} results")
+                        
+                        # Sort combined results by similarity and take top_k * 2
+                        results = sorted(all_results, key=lambda x: x[-1])[:top_k * 2]
                         
                         # If we got results from multiple brands, great!
-                        # If not, fall back to broader search
                         if results:
                             search_time = (time.time() - search_start) * 1000
-                            print(f"⚡ Vector search completed in {search_time:.0f}ms, found {len(results)} chunks")
+                            print(f"⚡ Vector search completed in {search_time:.0f}ms, found {len(results)} chunks from {len(all_brands)} brands")
                         else:
                             print(f"   ⚠️ No results with multi-brand search, falling back to broader search")
-                            # Fall through to broader search below
                             brand_name = None
                             results = None
                     
