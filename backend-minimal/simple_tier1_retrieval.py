@@ -872,8 +872,11 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     # Check for specific brand mentions in query
                     brand_priority = [
                         ('mammoth', 'Mammoth'),
+                        ('greenstuf', 'GreenStuf'),
+                        ('green stuf', 'GreenStuf'),
                         ('pink batts', 'Pink Batts'),
                         ('pink batt', 'Pink Batts'),
+                        ('earthwool', 'Earthwool'),
                         ('firth', 'Firth'),
                     ]
                     
