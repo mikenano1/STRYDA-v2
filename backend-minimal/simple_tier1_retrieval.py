@@ -721,22 +721,39 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     brand_sources = [s for s in target_sources if 'Deep Dive' in s]
                     other_sources = [s for s in target_sources if 'Deep Dive' not in s]
                     
-                    # Extract brand name from source (e.g., "Firth Deep Dive" -> "Firth")
+                    # Extract brand name from source (e.g., "Firth Deep Dive" -> "Firth", "Pink Batts Deep Dive" -> "Pink Batts")
                     brand_name = None
                     if brand_sources:
-                        parts = brand_sources[0].split(' ')
-                        brand_name = parts[0] if parts else None
+                        # Handle multi-word brands like "Pink Batts"
+                        source_name = brand_sources[0]
+                        brand_name = source_name.replace(' Deep Dive', '').replace(' (Universal)', '')
                     
-                    sql = """
-                        SELECT id, source, page, content, section, clause, snippet,
-                               doc_type, trade, status, priority, phase, brand_name, product_family,
-                               (embedding <=> %s::vector) as similarity
-                        FROM documents 
-                        WHERE embedding IS NOT NULL
-                          AND (
-                            (brand_name ILIKE %s AND trade = %s)
-                    """
-                    params = [query_embedding, f"%{brand_name}%" if brand_name else "%", detected_trade]
+                    # For insulation, use LIKE to match wall_insulation, ceiling_insulation, etc.
+                    trade_filter = detected_trade
+                    use_like_trade = 'insulation' in detected_trade or detected_trade == 'general_insulation'
+                    
+                    if use_like_trade:
+                        sql = """
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name, product_family,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE embedding IS NOT NULL
+                              AND (
+                                (brand_name ILIKE %s AND trade LIKE %s)
+                        """
+                        params = [query_embedding, f"%{brand_name}%" if brand_name else "%", f"%{detected_trade.replace('general_', '')}%"]
+                    else:
+                        sql = """
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name, product_family,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE embedding IS NOT NULL
+                              AND (
+                                (brand_name ILIKE %s AND trade = %s)
+                        """
+                        params = [query_embedding, f"%{brand_name}%" if brand_name else "%", detected_trade]
                     
                     if other_sources:
                         other_placeholders = ', '.join(['%s'] * len(other_sources))
