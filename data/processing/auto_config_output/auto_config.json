@@ -5,19 +5,23 @@
       "Kingspan"
     ],
     [
-      "therma tr26",
+      "trapezoidal wall",
       "Kingspan"
     ],
     [
-      "g2w",
+      "steico wall",
       "Kingspan"
     ],
     [
-      "trapezoidal roof",
+      "therma tr28",
       "Kingspan"
     ],
     [
-      "tr26",
+      "wall",
+      "Kingspan"
+    ],
+    [
+      "kooltherm k20",
       "Kingspan"
     ],
     [
@@ -25,7 +29,11 @@
       "Autex"
     ],
     [
-      "groove panel",
+      "groove duet",
+      "Autex"
+    ],
+    [
+      "reform",
       "Autex"
     ],
     [
@@ -33,19 +41,15 @@
       "Autex"
     ],
     [
-      "horizon",
+      "groove panel",
       "Autex"
     ],
     [
-      "cube",
+      "ceiling",
       "Autex"
     ],
     [
-      "3d wall",
-      "Autex"
-    ],
-    [
-      "pink batts",
+      "pinkbatts",
       "Pink Batts"
     ],
     [
@@ -53,7 +57,11 @@
       "Pink Batts"
     ],
     [
-      "pinkbatts",
+      "pink batts",
+      "Pink Batts"
+    ],
+    [
+      "underfloor",
       "Pink Batts"
     ],
     [
@@ -65,11 +73,7 @@
       "Pink Batts"
     ],
     [
-      "underfloor",
-      "Pink Batts"
-    ],
-    [
-      "acoustic",
+      "general",
       "Pink Batts"
     ],
     [
@@ -81,7 +85,15 @@
       "Bradford"
     ],
     [
-      "insulation",
+      "wall batts",
+      "Bradford"
+    ],
+    [
+      "ceiling batts",
+      "Bradford"
+    ],
+    [
+      "underfloor",
       "Bradford"
     ],
     [
@@ -89,16 +101,12 @@
       "Bradford"
     ],
     [
-      "roof batts",
+      "windmaster/hurricane",
       "Bradford"
     ],
     [
-      "ventilation",
-      "Bradford"
-    ],
-    [
-      "subfloor vents",
-      "Bradford"
+      "simpsonstrongtie",
+      "Simpson Strong Tie"
     ],
     [
       "simpson-strong-tie",
@@ -109,7 +117,7 @@
       "Simpson Strong Tie"
     ],
     [
-      "simpsonstrongtie",
+      "joist hangers",
       "Simpson Strong Tie"
     ],
     [
@@ -117,11 +125,7 @@
       "Simpson Strong Tie"
     ],
     [
-      "straps & ties",
-      "Simpson Strong Tie"
-    ],
-    [
-      "joist hangers",
+      "rafter connectors",
       "Simpson Strong Tie"
     ],
     [
@@ -129,7 +133,7 @@
       "Simpson Strong Tie"
     ],
     [
-      "purlin clips",
+      "straps & ties",
       "Simpson Strong Tie"
     ],
     [
@@ -137,15 +141,11 @@
       "Pryda"
     ],
     [
-      "hold downs",
-      "Pryda"
-    ],
-    [
       "joist hangers",
       "Pryda"
     ],
     [
-      "anchors",
+      "hold downs",
       "Pryda"
     ],
     [
@@ -153,99 +153,15 @@
       "Pryda"
     ],
     [
+      "general",
+      "Pryda"
+    ],
+    [
       "truss connectors",
       "Pryda"
     ],
     [
-      "expol",
-      "Expol"
-    ],
-    [
-      "xps",
-      "Expol"
-    ],
-    [
-      "panel",
-      "Expol"
-    ],
-    [
-      "tuff pods",
-      "Expol"
-    ],
-    [
-      "brand-wide",
-      "Expol"
-    ],
-    [
-      "x200",
-      "Expol"
-    ],
-    [
-      "greenstuf",
-      "GreenStuf"
-    ],
-    [
-      "roof",
-      "GreenStuf"
-    ],
-    [
-      "duct",
-      "GreenStuf"
-    ],
-    [
-      "wall",
-      "GreenStuf"
-    ],
-    [
-      "masonry",
-      "GreenStuf"
-    ],
-    [
-      "underfloor",
-      "GreenStuf"
-    ],
-    [
-      "firth",
-      "Firth"
-    ],
-    [
-      "foundations systems",
-      "Firth"
-    ],
-    [
-      "concrete masonry",
-      "Firth"
-    ],
-    [
-      "holland pavers",
-      "Firth"
-    ],
-    [
-      "x-pod tc3 foundations",
-      "Firth"
-    ],
-    [
-      "ribraft hotedge",
-      "Firth"
-    ],
-    [
       "asona",
-      "Asona"
-    ],
-    [
-      "metapan p",
-      "Asona"
-    ],
-    [
-      "asona triton trio 85",
-      "Asona"
-    ],
-    [
-      "asona triton 75",
-      "Asona"
-    ],
-    [
-      "asona snaptex laminate",
       "Asona"
     ],
     [
@@ -253,7 +169,131 @@
       "Asona"
     ],
     [
+      "asona sonawood ceiling",
+      "Asona"
+    ],
+    [
+      "asona triton fabwool",
+      "Asona"
+    ],
+    [
+      "asona triton 75",
+      "Asona"
+    ],
+    [
+      "owa symphonia balance",
+      "Asona"
+    ],
+    [
+      "expol",
+      "Expol"
+    ],
+    [
+      "styrodrain",
+      "Expol"
+    ],
+    [
+      "board",
+      "Expol"
+    ],
+    [
+      "platinum board",
+      "Expol"
+    ],
+    [
+      "thermoslab",
+      "Expol"
+    ],
+    [
+      "underfloor",
+      "Expol"
+    ],
+    [
+      "greenstuf",
+      "GreenStuf"
+    ],
+    [
+      "underfloor",
+      "GreenStuf"
+    ],
+    [
+      "roof",
+      "GreenStuf"
+    ],
+    [
+      "masonry",
+      "GreenStuf"
+    ],
+    [
+      "wall",
+      "GreenStuf"
+    ],
+    [
+      "general",
+      "GreenStuf"
+    ],
+    [
+      "chh-woodproducts",
+      "CHH Woodproducts"
+    ],
+    [
+      "chhwoodproducts",
+      "CHH Woodproducts"
+    ],
+    [
+      "chh woodproducts",
+      "CHH Woodproducts"
+    ],
+    [
+      "chh woodproducts general",
+      "CHH Woodproducts"
+    ],
+    [
+      "chh woodproducts cca treated",
+      "CHH Woodproducts"
+    ],
+    [
+      "chh woodproducts boron treated",
+      "CHH Woodproducts"
+    ],
+    [
+      "chh woodproducts losp treated",
+      "CHH Woodproducts"
+    ],
+    [
+      "chh woodproducts antisapstain",
+      "CHH Woodproducts"
+    ],
+    [
+      "firth",
+      "Firth"
+    ],
+    [
+      "ribraft hotedge",
+      "Firth"
+    ],
+    [
+      "x-pod tc3 foundations",
+      "Firth"
+    ],
+    [
+      "pod",
+      "Firth"
+    ],
+    [
+      "foundations systems",
+      "Firth"
+    ],
+    [
+      "15 series masonry",
+      "Firth"
+    ],
+    [
       "mammoth",
+      "Mammoth"
+    ],
+    [
+      "underfloor",
       "Mammoth"
     ],
     [
@@ -261,19 +301,15 @@
       "Mammoth"
     ],
     [
-      "duct",
-      "Mammoth"
-    ],
-    [
       "wall",
       "Mammoth"
     ],
     [
-      "underfloor",
+      "general",
       "Mammoth"
     ],
     [
-      "acoustic",
+      "duct",
       "Mammoth"
     ],
     [
@@ -281,19 +317,11 @@
       "Earthwool"
     ],
     [
-      "wall",
-      "Earthwool"
-    ],
-    [
       "underfloor",
       "Earthwool"
     ],
     [
-      "acoustic",
-      "Earthwool"
-    ],
-    [
-      "ceiling",
+      "wall",
       "Earthwool"
     ],
     [
@@ -301,15 +329,19 @@
       "Earthwool"
     ],
     [
+      "ceiling",
+      "Earthwool"
+    ],
+    [
+      "acoustic",
+      "Earthwool"
+    ],
+    [
       "ecko",
       "Ecko"
     ],
     [
-      "framing nails",
-      "Ecko"
-    ],
-    [
-      "staples",
+      "joist hanger nails",
       "Ecko"
     ],
     [
@@ -317,12 +349,48 @@
       "Ecko"
     ],
     [
-      "t-rex decking screws",
+      "staples",
       "Ecko"
     ],
     [
-      "joist hanger nails",
+      "framing nails",
       "Ecko"
+    ],
+    [
+      "decking fasteners",
+      "Ecko"
+    ],
+    [
+      "red stag",
+      "Red Stag"
+    ],
+    [
+      "red-stag",
+      "Red Stag"
+    ],
+    [
+      "redstag",
+      "Red Stag"
+    ],
+    [
+      "red stag general",
+      "Red Stag"
+    ],
+    [
+      "red stag cca treated",
+      "Red Stag"
+    ],
+    [
+      "red stag landscaping",
+      "Red Stag"
+    ],
+    [
+      "red stag boron treated",
+      "Red Stag"
+    ],
+    [
+      "red stag framepro",
+      "Red Stag"
     ],
     [
       "mitek",
@@ -361,11 +429,11 @@
       "James Hardie"
     ],
     [
-      "linea weatherboard",
+      "full suite",
       "James Hardie"
     ],
     [
-      "full suite",
+      "linea weatherboard",
       "James Hardie"
     ],
     [
@@ -445,15 +513,15 @@
       "NZSIP"
     ],
     [
+      "mainlandfasteners",
+      "Mainland Fasteners"
+    ],
+    [
       "mainland fasteners",
       "Mainland Fasteners"
     ],
     [
       "mainland-fasteners",
-      "Mainland Fasteners"
-    ],
-    [
-      "mainlandfasteners",
       "Mainland Fasteners"
     ],
     [
@@ -472,17 +540,17 @@
   "source_detection": {
     "Kingspan": {
       "keywords": [
-        "therma tr26",
-        "g2w",
-        "trapezoidal roof",
-        "tr26",
-        "k7",
-        "tr27",
-        "wall",
         "kingspan",
-        "g2",
+        "architectural wall panel",
+        "k10",
+        "trapezoidal wall",
+        "steico wall",
+        "therma tr28",
+        "wall",
+        "kooltherm k20",
+        "air-cell tape",
         "steico roof",
-        "kooltherm k10 g2"
+        "tr28"
       ],
       "source_name": "Kingspan Deep Dive",
       "trades": [
@@ -506,17 +574,17 @@
     },
     "Autex": {
       "keywords": [
-        "groove panel",
+        "lattice",
+        "groove duet",
+        "timber",
+        "grid",
+        "accent",
+        "reform",
         "autex",
         "wall",
-        "horizon",
-        "quietspace",
-        "cube",
-        "3d wall",
-        "grid",
-        "vertiface",
-        "lattice",
-        "frontier"
+        "groove panel",
+        "ceiling",
+        "cube"
       ],
       "source_name": "Autex Deep Dive",
       "trades": [
@@ -532,15 +600,15 @@
     },
     "Pink Batts": {
       "keywords": [
-        "roof",
-        "wall",
         "pink batts",
-        "pink-batts",
+        "roof",
         "underfloor",
-        "acoustic",
+        "pink-batts",
+        "wall",
+        "general",
         "pinkbatts",
         "ceiling",
-        "general"
+        "acoustic"
       ],
       "source_name": "Pink Batts Deep Dive",
       "trades": [
@@ -557,17 +625,17 @@
     },
     "Bradford": {
       "keywords": [
-        "insulation",
-        "roof",
-        "roof batts",
-        "ventilation",
-        "subfloor vents",
         "wall batts",
-        "ecopower/solar",
-        "wall",
-        "bradford",
+        "ceiling batts",
         "underfloor",
-        "ceiling batts"
+        "roof",
+        "windmaster/hurricane",
+        "wall",
+        "ventilation",
+        "insulation",
+        "roof batts",
+        "bradford",
+        "subfloor vents"
       ],
       "source_name": "Bradford Deep Dive",
       "trades": [
@@ -589,18 +657,18 @@
     },
     "Simpson Strong Tie": {
       "keywords": [
-        "simpson-strong-tie",
-        "bracing systems",
-        "straps & ties",
-        "simpson strong tie",
         "joist hangers",
-        "post bases",
-        "purlin clips",
-        "concrete anchors",
-        "truss plates",
+        "bracing systems",
+        "simpsonstrongtie",
         "rafter connectors",
+        "simpson strong tie",
+        "post bases",
+        "straps & ties",
+        "truss plates",
+        "concrete anchors",
+        "purlin clips",
         "general",
-        "simpsonstrongtie"
+        "simpson-strong-tie"
       ],
       "source_name": "Simpson Strong Tie Deep Dive",
       "trades": [
@@ -615,14 +683,14 @@
     },
     "Pryda": {
       "keywords": [
-        "hold downs",
         "joist hangers",
-        "anchors",
+        "hold downs",
+        "pryda",
         "framing brackets",
-        "truss connectors",
         "general",
-        "straps",
-        "pryda"
+        "truss connectors",
+        "anchors",
+        "straps"
       ],
       "source_name": "Pryda Deep Dive",
       "trades": [
@@ -641,100 +709,19 @@
         "F_Manufacturers"
       ]
     },
-    "Expol": {
-      "keywords": [
-        "xps",
-        "panel",
-        "expol",
-        "tuff pods",
-        "brand-wide",
-        "x200",
-        "fastline",
-        "platinum board",
-        "imperia panel",
-        "underfloor",
-        "styrodrain"
-      ],
-      "source_name": "Expol Deep Dive",
-      "trades": [
-        "board_insulation",
-        "drainage",
-        "expol_general",
-        "slab_insulation",
-        "structural_fill",
-        "underfloor_insulation"
-      ],
-      "categories": [
-        "A_Structure",
-        "B_Enclosure",
-        "C_Interiors"
-      ]
-    },
-    "GreenStuf": {
-      "keywords": [
-        "roof",
-        "duct",
-        "wall",
-        "masonry",
-        "greenstuf",
-        "underfloor",
-        "acoustic",
-        "ceiling",
-        "general"
-      ],
-      "source_name": "GreenStuf Deep Dive",
-      "trades": [
-        "acoustic_insulation",
-        "ceiling_insulation",
-        "duct_insulation",
-        "general_insulation",
-        "masonry_insulation",
-        "roof_insulation",
-        "underfloor_insulation",
-        "wall_insulation"
-      ],
-      "categories": [
-        "C_Interiors"
-      ]
-    },
-    "Firth": {
-      "keywords": [
-        "foundations systems",
-        "concrete masonry",
-        "holland pavers",
-        "x-pod tc3 foundations",
-        "ribraft hotedge",
-        "tc3",
-        "pod",
-        "paving systems",
-        "15 series masonry",
-        "retaining walls",
-        "firth"
-      ],
-      "source_name": "Firth Deep Dive",
-      "trades": [
-        "foundations",
-        "general",
-        "masonry",
-        "paving"
-      ],
-      "categories": [
-        "A_Structure"
-      ]
-    },
     "Asona": {
       "keywords": [
-        "metapan p",
-        "asona triton trio 85",
-        "asona triton 75",
-        "asona snaptex laminate",
         "asona snaptex",
-        "metapan ul series",
-        "asona sonawood panels",
+        "asona sonawood ceiling",
+        "asona triton fabwool",
+        "asona triton 75",
+        "owa symphonia balance",
+        "asona triton baffle beam",
+        "sonaris perforated",
         "asona",
         "asona triton duo 60",
-        "asona renew",
-        "asona triton defender 50"
+        "asona triton avant 15",
+        "asona triton 50hd"
       ],
       "source_name": "Asona Deep Dive",
       "trades": [
@@ -754,16 +741,120 @@
         "C_Interiors"
       ]
     },
+    "Expol": {
+      "keywords": [
+        "board",
+        "platinum board",
+        "thermoslab",
+        "underfloor",
+        "tuff pods",
+        "geoform",
+        "imperia panel",
+        "expol",
+        "brand-wide",
+        "fastline",
+        "styrodrain"
+      ],
+      "source_name": "Expol Deep Dive",
+      "trades": [
+        "board_insulation",
+        "drainage",
+        "expol_general",
+        "slab_insulation",
+        "structural_fill",
+        "underfloor_insulation"
+      ],
+      "categories": [
+        "A_Structure",
+        "B_Enclosure",
+        "C_Interiors"
+      ]
+    },
+    "GreenStuf": {
+      "keywords": [
+        "greenstuf",
+        "underfloor",
+        "roof",
+        "masonry",
+        "wall",
+        "general",
+        "duct",
+        "ceiling",
+        "acoustic"
+      ],
+      "source_name": "GreenStuf Deep Dive",
+      "trades": [
+        "acoustic_insulation",
+        "ceiling_insulation",
+        "duct_insulation",
+        "general_insulation",
+        "masonry_insulation",
+        "roof_insulation",
+        "underfloor_insulation",
+        "wall_insulation"
+      ],
+      "categories": [
+        "C_Interiors"
+      ]
+    },
+    "CHH Woodproducts": {
+      "keywords": [
+        "chh woodproducts general",
+        "chh woodproducts cca treated",
+        "chh-woodproducts",
+        "chh woodproducts laserframe",
+        "chh woodproducts losp treated",
+        "chh woodproducts antisapstain",
+        "chhwoodproducts",
+        "chh woodproducts",
+        "chh woodproducts boron treated",
+        "chh woodproducts pinex"
+      ],
+      "source_name": "CHH Woodproducts Deep Dive",
+      "trades": [
+        "framing",
+        "timber_general",
+        "treated_timber"
+      ],
+      "categories": [
+        "A_Structure"
+      ]
+    },
+    "Firth": {
+      "keywords": [
+        "pod",
+        "x-pod tc3 foundations",
+        "ribraft hotedge",
+        "foundations systems",
+        "15 series masonry",
+        "ecopave permeable",
+        "paving systems",
+        "holland pavers",
+        "tc3",
+        "general",
+        "firth"
+      ],
+      "source_name": "Firth Deep Dive",
+      "trades": [
+        "foundations",
+        "general",
+        "masonry",
+        "paving"
+      ],
+      "categories": [
+        "A_Structure"
+      ]
+    },
     "Mammoth": {
       "keywords": [
+        "underfloor",
         "roof",
+        "wall",
+        "general",
         "duct",
         "mammoth",
-        "wall",
-        "underfloor",
-        "acoustic",
         "ceiling",
-        "general"
+        "acoustic"
       ],
       "source_name": "Mammoth Deep Dive",
       "trades": [
@@ -781,12 +872,12 @@
     },
     "Earthwool": {
       "keywords": [
-        "earthwool",
-        "wall",
         "underfloor",
-        "acoustic",
+        "wall",
+        "general",
+        "earthwool",
         "ceiling",
-        "general"
+        "acoustic"
       ],
       "source_name": "Earthwool Deep Dive",
       "trades": [
@@ -802,15 +893,15 @@
     },
     "Ecko": {
       "keywords": [
-        "framing nails",
-        "staples",
-        "coil nails",
-        "t-rex decking screws",
         "joist hanger nails",
-        "collated nails",
+        "coil nails",
+        "staples",
         "ecko",
+        "framing nails",
+        "decking fasteners",
+        "t-rex decking screws",
         "general",
-        "decking fasteners"
+        "collated nails"
       ],
       "source_name": "Ecko Deep Dive",
       "trades": [
@@ -828,6 +919,30 @@
         "F_Manufacturers"
       ]
     },
+    "Red Stag": {
+      "keywords": [
+        "red stag",
+        "red stag general",
+        "redstag",
+        "red stag cca treated",
+        "red-stag",
+        "red stag landscaping",
+        "red stag boron treated",
+        "red stag framepro",
+        "red stag structural",
+        "red stag losp treated"
+      ],
+      "source_name": "Red Stag Deep Dive",
+      "trades": [
+        "framing",
+        "posts_rails",
+        "structural_timber",
+        "treated_timber"
+      ],
+      "categories": [
+        "A_Structure"
+      ]
+    },
     "MiTek": {
       "keywords": [
         "mitek",
@@ -843,8 +958,8 @@
     },
     "Ramset": {
       "keywords": [
-        "ramset",
-        "general"
+        "general",
+        "ramset"
       ],
       "source_name": "Ramset Deep Dive",
       "trades": [
@@ -856,8 +971,8 @@
     },
     "MacSim": {
       "keywords": [
-        "anchors packers",
-        "macsim"
+        "macsim",
+        "anchors packers"
       ],
       "source_name": "MacSim Deep Dive",
       "trades": [
@@ -878,10 +993,10 @@
     "James Hardie": {
       "keywords": [
         "james-hardie",
+        "jameshardie",
         "james hardie",
         "linea weatherboard",
-        "full suite",
-        "jameshardie"
+        "full suite"
       ],
       "source_name": "James Hardie Deep Dive",
       "trades": [
@@ -925,8 +1040,8 @@
     },
     "GIB": {
       "keywords": [
-        "gib full suite",
         "gib",
+        "gib full suite",
         "gib plasterboard"
       ],
       "source_name": "GIB Deep Dive",
@@ -956,8 +1071,8 @@
     },
     "Buildex": {
       "keywords": [
-        "general",
-        "buildex"
+        "buildex",
+        "general"
       ],
       "source_name": "Buildex Deep Dive",
       "trades": [
@@ -969,8 +1084,8 @@
     },
     "SPAX": {
       "keywords": [
-        "spax",
-        "premium screws"
+        "premium screws",
+        "spax"
       ],
       "source_name": "SPAX Deep Dive",
       "trades": [
@@ -1012,8 +1127,8 @@
     },
     "NZSIP": {
       "keywords": [
-        "general",
-        "nzsip"
+        "nzsip",
+        "general"
       ],
       "source_name": "NZSIP Deep Dive",
       "trades": [
@@ -1025,10 +1140,10 @@
     },
     "Mainland Fasteners": {
       "keywords": [
-        "mainland fasteners",
-        "mainland-fasteners",
+        "mainlandfasteners",
         "south island fasteners",
-        "mainlandfasteners"
+        "mainland fasteners",
+        "mainland-fasteners"
       ],
       "source_name": "Mainland Fasteners Deep Dive",
       "trades": [
@@ -1083,6 +1198,11 @@
       "ITM",
       "Bunnings"
     ],
+    "Asona": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
     "Expol": [
       "PlaceMakers",
       "ITM",
@@ -1093,12 +1213,12 @@
       "ITM",
       "Bunnings"
     ],
-    "Firth": [
+    "CHH Woodproducts": [
       "PlaceMakers",
       "ITM",
       "Bunnings"
     ],
-    "Asona": [
+    "Firth": [
       "PlaceMakers",
       "ITM",
       "Bunnings"
@@ -1114,6 +1234,11 @@
       "Bunnings"
     ],
     "Ecko": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Red Stag": [
       "PlaceMakers",
       "ITM",
       "Bunnings"
@@ -1194,5 +1319,5 @@
       "Bunnings"
     ]
   },
-  "generated_at": "2026-01-04T09:41:41.230336"
+  "generated_at": "2026-01-04T17:03:33.603859"
 }
