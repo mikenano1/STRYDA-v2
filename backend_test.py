@@ -74,7 +74,14 @@ def analyze_citations(response_data: Dict[str, Any]) -> Dict[str, Any]:
     """Analyze citations in the response"""
     citations = response_data.get("citations", [])
     sources_used = response_data.get("sources_used", [])
-    response_text = response_data.get("response", "")
+    
+    # Try different possible response field names
+    response_text = (response_data.get("response", "") or 
+                    response_data.get("answer", "") or 
+                    response_data.get("message", "") or
+                    response_data.get("text", ""))
+    
+    print(f"🔍 Response text extracted: '{response_text[:100]}...' (length: {len(response_text)})")
     
     # Extract source information
     cited_sources = []
