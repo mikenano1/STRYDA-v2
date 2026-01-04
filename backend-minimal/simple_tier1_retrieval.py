@@ -385,6 +385,31 @@ TRADE_DETECTION_KEYWORDS = {
         'insulation', 'pink batts', 'batts', 'r-value', 'thermal',
         'glass wool'
     ],
+    # AUTEX ACOUSTIC TRADES (Autex Deep Dive)
+    'acoustic_ceiling': [
+        'acoustic ceiling', 'ceiling tiles', 'ceiling panel', 'acoustic tile',
+        '3d ceiling', 'accent ceiling', 'grid ceiling', 'cove ceiling',
+        'horizon ceiling', 'lattice ceiling'
+    ],
+    'acoustic_wall': [
+        'acoustic wall', 'wall panel', 'acoustic panel', 'sound panel',
+        'quietspace', 'composition', 'cube panel', 'embrace wall',
+        'groove panel', 'lanes', 'mirage panel', 'reform', 'vertiface',
+        'pinboard', 'noticeboard'
+    ],
+    'acoustic_screens': [
+        'acoustic screen', 'workstation screen', 'desk screen', 'partition',
+        'cascade screen', 'frontier screen', 'vicinity screen',
+        'office divider', 'desk divider'
+    ],
+    'acoustic_timber': [
+        'acoustic timber', 'timber acoustic', 'wood acoustic', 'timber panel',
+        'slat panel', 'timber slat'
+    ],
+    'acoustic_general': [
+        'autex colour', 'autex color', 'nrc rating', 'sound absorption',
+        'acoustic performance', 'care and maintenance'
+    ],
 }
 
 def detect_trade_from_query(query: str) -> Optional[str]:
