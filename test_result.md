@@ -707,103 +707,109 @@ The **Multi-Category Brand Trade-Aware Retrieval** feature is **FULLY OPERATIONA
 
 The multi-category brand documents (Simpson Strong-Tie, Pryda, Ecko, Zenith) have been successfully re-tagged with granular trade metadata, and the retrieval system is effectively using this metadata to provide trade-specific responses.
 
-## Latest Testing Results - Pink Batts Insulation Retrieval (2025-01-04)
+## Latest Testing Results - Material Triage System (Attribute Filter Protocol) (2025-01-04)
 
-### 🎯 TESTING REQUEST: Verify Pink Batts Insulation Trade-Aware Retrieval
+### 🎯 TESTING REQUEST: Verify Material Triage System for Insulation Queries
 
-**Review Request**: Test the STRYDA RAG backend's new Pink Batts insulation retrieval.
+**Review Request**: Test the new "Attribute Filter Protocol" (Material Triage) for insulation queries.
 
-**Context**: Just ingested 1,320 Pink Batts documentation chunks with trade-aware tagging:
-- wall_insulation: 176 chunks
-- ceiling_insulation: 174 chunks  
-- general_insulation: 540 chunks
-- underfloor_insulation: 164 chunks
-- roof_insulation: 220 chunks
-- acoustic_insulation: 46 chunks
+**Context**: New Material Triage system implemented for insulation queries:
+- Glass Wool group: Pink Batts, Earthwool, Bradford, Knauf
+- Polyester group: Mammoth, GreenStuf, Autex
+- Goal: Never present more than 3 options without asking a narrowing question
 
-### ✅ TESTING COMPLETED (Testing Agent - 2026-01-04 00:08)
+### ❌ TESTING COMPLETED (Testing Agent - 2026-01-04 09:15)
 
-**Review Request: Test Pink Batts Insulation Trade-Aware Retrieval**
+**Review Request: Test Material Triage System for Insulation Queries**
 
-### ✅ CONFIRMED WORKING (3/3 Pink Batts Tests)
+### ❌ CRITICAL IMPLEMENTATION GAP IDENTIFIED (1/4 Tests Passed)
 
-1. **Ceiling Insulation R-value Test**: ✅ PASS
-   - Query: "What R-value Pink Batts do I need for my ceiling in Auckland?"
-   - Backend Logs: "🏷️ Detected trade/product function: insulation"
-   - Brand Filter: "🔎 Brand Deep Dive + Trade filter: brand=Pink Batts, trade=insulation"
-   - Trade Detection: "trade=ceiling_insulation, priority=85"
-   - Result: Retrieved "Pink Batts Deep Dive" documents with ceiling-specific tagging
-   - Response: 776 chars with 4 relevant keywords (r-value, ceiling, auckland, insulation)
-   - Response Time: 18.8 seconds
-   - ✅ **Pink Batts brand mentioned, trade-aware retrieval working correctly**
+**Test Results Summary:**
+- Total Tests: 4
+- Passed: 1 (25.0%)
+- Failed: 3 (75.0%)
+- Success Rate: 25.0%
 
-2. **Underfloor Installation Test**: ✅ PASS
-   - Query: "How do I install Pink Batts underfloor insulation?"
-   - Backend Logs: "🏷️ Detected trade/product function: insulation"
-   - Brand Filter: "🔎 Brand Deep Dive + Trade filter: brand=Pink Batts, trade=insulation"
-   - Trade Detection: "trade=underfloor_insulation, priority=85"
-   - Result: Retrieved "Pink Batts Deep Dive" documents with underfloor-specific tagging
-   - Response: 2988 chars with 6 relevant keywords (install, underfloor, installation, batts, floor, joists)
-   - Response Time: 12.6 seconds
-   - ✅ **Comprehensive installation guidance with Pink Batts specificity**
+**Individual Test Results:**
 
-3. **Wall Insulation Specs Test**: ✅ PASS
-   - Query: "What are the dimensions of Pink Batts R2.6 wall insulation?"
-   - Backend Logs: "🏷️ Detected trade/product function: insulation"
-   - Brand Filter: "🔎 Brand Deep Dive + Trade filter: brand=Pink Batts, trade=insulation"
-   - Trade Detection: "trade=general_insulation, priority=85"
-   - Result: Retrieved "Pink Batts Deep Dive" documents with wall insulation specifications
-   - Response: 202 chars with 2 relevant keywords (r2.6, wall) plus R-value mentions
-   - Response Time: 11.6 seconds
-   - ✅ **Product specifications retrieved correctly**
+1. **Generic Insulation Query (Should trigger triage)**: ❌ FAIL
+   - Query: "What R-value insulation do I need for walls in Auckland?"
+   - Expected: Should ask about material preference BEFORE listing products
+   - Actual: Directly answered with R2.0 requirement, mentioned Pink Batts only
+   - Issue: **Did not trigger material triage**
+   - Response: 177 chars, mentioned Pink Batts but no triage question
 
-### 🔍 TECHNICAL VERIFICATION
+2. **Brand-Specific Query (Should NOT trigger triage)**: ✅ PASS
+   - Query: "What Mammoth wall insulation R-values are available?"
+   - Expected: Should directly answer about Mammoth products (polyester)
+   - Actual: Correctly provided Mammoth R-values (R1.9, R2.0, R2.2, etc.)
+   - Response: 815 chars, focused on Mammoth without triage
+   - ✅ **Working correctly**
 
-**Backend Implementation Confirmed**:
-- ✅ Pink Batts brand detection working: All queries correctly identified "Pink Batts" brand
-- ✅ Trade-aware insulation categorization operational: ceiling_insulation, underfloor_insulation, general_insulation
-- ✅ Pink Batts Deep Dive source retrieval: All queries show "Pink Batts Deep Dive" as primary source
-- ✅ Trade-specific document filtering: Each query retrieves appropriate insulation sub-category
-- ✅ 1,320 Pink Batts chunks successfully integrated and accessible
+3. **Material-Specific Query (Should NOT trigger triage)**: ❌ FAIL
+   - Query: "I want glass wool insulation for my ceiling"
+   - Expected: Should focus on Pink Batts/Earthwool (glass wool brands)
+   - Actual: Triggered triage asking for brand preference
+   - Issue: **Triggered triage when it shouldn't have**
+   - Response: 391 chars, mentioned multiple brands and asked for preference
 
-**Backend Logs Show**:
-- ✅ "🔍 Source detection: ['NZ Building Code', 'Pink Batts Deep Dive']" for all queries
-- ✅ "🔎 Brand Deep Dive + Trade filter: brand=Pink Batts, trade=insulation" for all queries
-- ✅ "📊 Retrieval source mix: {'Pink Batts Deep Dive': 20}" showing exclusive Pink Batts retrieval
-- ✅ Trade-specific tagging: ceiling_insulation, underfloor_insulation, general_insulation
-- ✅ High priority scoring: priority=85 for Pink Batts Deep Dive documents
+4. **Follow-up Material Selection**: ❌ FAIL
+   - Query: "I prefer polyester insulation"
+   - Expected: Should focus on Mammoth/GreenStuf options
+   - Actual: Triggered triage asking for brand/merchant preference
+   - Issue: **Triggered triage when it shouldn't have**
+   - Response: 278 chars, asked for brand or merchant preference
 
-**Response Quality**:
-- ✅ 100% Pink Batts brand mention rate (3/3 tests)
-- ✅ Average 4.0 relevant keywords per response
-- ✅ Appropriate response lengths (202-2988 characters)
-- ✅ R-value information included where relevant
-- ✅ Installation guidance provided for underfloor query
+### 🔍 ROOT CAUSE ANALYSIS
 
-### 📊 PINK BATTS RETRIEVAL VERDICT: ✅ **FULLY WORKING**
+**Critical Finding: Material Triage Logic NOT IMPLEMENTED**
 
-**Success Criteria Met:**
-- ✅ Backend logs show "Pink Batts Deep Dive" as the source (100% detection rate)
-- ✅ Responses are specific to Pink Batts products (100% brand mention rate)
-- ✅ Trade detection shows appropriate insulation sub-categories (ceiling, underfloor, general)
-- ✅ All 3 test queries passed with relevant, comprehensive responses
-- ✅ 1,320 Pink Batts documentation chunks successfully integrated
+1. **System Prompt vs Code Mismatch**:
+   - ✅ System prompt contains detailed Material Triage instructions
+   - ✅ `simple_tier1_retrieval.py` contains `check_insulation_triage_needed()` function
+   - ❌ **Function is NEVER CALLED in the main chat flow**
+   - ❌ No integration between triage logic and chat endpoint
 
-**Key Achievements:**
-- ✅ Successfully distinguishes between Pink Batts ceiling vs underfloor vs wall insulation
-- ✅ Trade-aware retrieval prevents cross-contamination between insulation types
-- ✅ Proper prioritization of Pink Batts Deep Dive documents (priority=85)
-- ✅ Backend implementation matches specification requirements exactly
-- ✅ Comprehensive product information retrieval for R-values, installation, and specifications
+2. **Backend Implementation Status**:
+   - ✅ Material groups defined: `INSULATION_MATERIAL_GROUPS`
+   - ✅ Triage question builder: `build_material_triage_question()`
+   - ✅ Material detection: `detect_material_preference()`
+   - ❌ **No call to `check_insulation_triage_needed()` in `/api/chat` endpoint**
+
+3. **Current Behavior**:
+   - System relies only on AI prompt instructions
+   - No programmatic triage checking
+   - AI inconsistently follows triage rules
+   - Results in unpredictable triage behavior
+
+### 📊 MATERIAL TRIAGE VERDICT: ❌ **NOT IMPLEMENTED**
+
+**What's Missing:**
+- ❌ Integration of triage check in main chat flow
+- ❌ Programmatic material triage triggering
+- ❌ Consistent triage behavior across queries
+- ❌ Pre-answer filtering based on material groups
+
+**What's Working:**
+- ✅ Brand-specific queries work correctly
+- ✅ Material group definitions exist
+- ✅ Triage logic functions are written
+- ✅ Backend retrieval system functional
+
+### 🚨 CRITICAL ISSUES REQUIRING MAIN AGENT ATTENTION
+
+1. **Material Triage Logic Not Integrated**: The `check_insulation_triage_needed()` function exists but is never called in the chat endpoint
+2. **Inconsistent Triage Behavior**: System relies on AI prompt alone, leading to unpredictable results
+3. **Implementation Gap**: Code exists but not connected to main chat flow
+4. **Goal Not Met**: System presents multiple options without narrowing questions
+
+### 🔧 REQUIRED FIXES
+
+1. **Integrate Triage Check**: Add call to `check_insulation_triage_needed()` in `/api/chat` endpoint
+2. **Implement Triage Response**: Handle triage responses before normal retrieval
+3. **Test Integration**: Verify triage triggers correctly for generic insulation queries
+4. **Validate Skipping**: Ensure triage skips for brand/material-specific queries
 
 ### 🎯 FINAL ASSESSMENT
 
-The **Pink Batts Insulation Trade-Aware Retrieval** feature is **FULLY OPERATIONAL** and working exactly as specified. The system successfully:
-
-1. **Detects Pink Batts brand** from queries and applies brand-specific filtering
-2. **Applies trade-aware insulation categorization** to retrieve only relevant insulation documents
-3. **Utilizes Pink Batts Deep Dive source** as the primary knowledge base (1,320 chunks)
-4. **Provides contextually relevant responses** for each specific insulation application
-5. **Maintains high response quality** with appropriate technical detail and product specificity
-
-The Pink Batts documentation has been successfully ingested with granular trade metadata (ceiling_insulation: 174, underfloor_insulation: 164, wall_insulation: 176, etc.), and the retrieval system is effectively using this metadata to provide trade-specific insulation guidance.
+The **Material Triage System (Attribute Filter Protocol)** is **NOT OPERATIONAL**. While the logic exists in the codebase, it's not integrated into the main chat flow, resulting in inconsistent behavior that doesn't meet the specified requirements.
