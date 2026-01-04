@@ -186,7 +186,10 @@ def test_window_variation_bug_fix():
         print(f"  {criterion}")
     
     print(f"\n📄 Response Preview:")
-    response_text = response_data.get("response", "")
+    response_text = (response_data.get("response", "") or 
+                    response_data.get("answer", "") or 
+                    response_data.get("message", "") or
+                    response_data.get("text", ""))
     print(f"  {response_text[:200]}{'...' if len(response_text) > 200 else ''}")
     
     print(f"\n🔍 Sources Analysis:")
