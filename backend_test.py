@@ -17,300 +17,325 @@ BACKEND_URL = "https://stryda-rag.preview.emergentagent.com/api/chat"
 SESSION_ID = "test_session_bug_fixes"
 USER_ID = "test_user"
 
-def test_chat_endpoint(query: str, session_id: str = None) -> Dict[str, Any]:
-    """Test the chat endpoint with a specific query"""
-    
-    if session_id is None:
-        session_id = f"test-material-triage-{int(time.time())}"
-    
+def make_chat_request(message: str) -> Dict[str, Any]:
+    """Make a chat request to the STRYDA RAG API"""
     payload = {
-        "message": query,
-        "session_id": session_id
+        "message": message,
+        "session_id": SESSION_ID,
+        "user_id": USER_ID
     }
     
-    print(f"\n🔍 Testing Query: '{query}'")
-    print(f"📋 Session ID: {session_id}")
-    print(f"🌐 Endpoint: {CHAT_ENDPOINT}")
+    headers = {
+        "Content-Type": "application/json"
+    }
     
     try:
+        print(f"🔍 Testing query: {message}")
         start_time = time.time()
-        response = requests.post(CHAT_ENDPOINT, json=payload, timeout=30)
-        response_time = time.time() - start_time
         
-        print(f"⏱️  Response Time: {response_time:.2f}s")
-        print(f"📊 Status Code: {response.status_code}")
+        response = requests.post(BACKEND_URL, json=payload, headers=headers, timeout=30)
+        
+        response_time = time.time() - start_time
+        print(f"⏱️  Response time: {response_time:.2f}s")
         
         if response.status_code == 200:
-            data = response.json()
-            
-            # Extract key information
-            answer = data.get('response', data.get('answer', ''))
-            citations = data.get('citations', [])
-            session_id = data.get('session_id', session_id)
-            
-            print(f"✅ Response Length: {len(answer)} characters")
-            print(f"📚 Citations: {len(citations)}")
-            print(f"💬 Response Preview: {answer[:200]}...")
-            
             return {
                 "success": True,
-                "response": answer,
-                "citations": citations,
-                "session_id": session_id,
+                "data": response.json(),
                 "response_time": response_time,
-                "full_data": data
+                "status_code": response.status_code
             }
         else:
-            print(f"❌ Error: {response.status_code}")
-            print(f"📄 Response: {response.text}")
             return {
                 "success": False,
                 "error": f"HTTP {response.status_code}: {response.text}",
-                "response_time": response_time
+                "response_time": response_time,
+                "status_code": response.status_code
             }
             
-    except Exception as e:
-        print(f"❌ Exception: {str(e)}")
+    except requests.exceptions.Timeout:
         return {
             "success": False,
-            "error": str(e),
-            "response_time": 0
+            "error": "Request timeout (30s)",
+            "response_time": 30.0,
+            "status_code": None
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": f"Request failed: {str(e)}",
+            "response_time": 0,
+            "status_code": None
         }
 
-def analyze_material_triage_response(response: str, test_type: str) -> Dict[str, Any]:
-    """Analyze if the response shows proper material triage behavior"""
+def analyze_citations(response_data: Dict[str, Any]) -> Dict[str, Any]:
+    """Analyze citations in the response"""
+    citations = response_data.get("citations", [])
+    sources_used = response_data.get("sources_used", [])
+    response_text = response_data.get("response", "")
     
-    response_lower = response.lower()
+    # Extract source information
+    cited_sources = []
+    for citation in citations:
+        if isinstance(citation, dict):
+            source = citation.get("source", "")
+            title = citation.get("title", "")
+            cited_sources.append({"source": source, "title": title})
     
-    # Material groups
-    glass_wool_brands = ['pink batts', 'earthwool', 'bradford', 'knauf']
-    polyester_brands = ['mammoth', 'greenstuf', 'autex']
+    # Check for specific problematic sources
+    has_metal_roofing = any("metal" in str(source).lower() and "roof" in str(source).lower() 
+                           for source in cited_sources + sources_used)
+    has_pryda = any("pryda" in str(source).lower() 
+                   for source in cited_sources + sources_used)
+    has_building_code = any("building" in str(source).lower() and "code" in str(source).lower() 
+                           for source in cited_sources + sources_used)
+    has_f4_as1 = any("f4" in str(source).lower() and "as1" in str(source).lower() 
+                     for source in cited_sources + sources_used)
     
-    # Check for material triage indicators
-    triage_indicators = [
-        'material preference', 'do you have a preference', 'which material',
-        'glass wool', 'polyester', 'both glass wool and polyester',
-        'options in both', 'material type', 'prefer glass wool', 'prefer polyester',
-        'choice between', 'two main types', 'two options'
-    ]
+    # Check response content
+    response_lower = response_text.lower()
+    mentions_metal_roofing = "metal roof" in response_lower or "roofing" in response_lower
+    mentions_pryda = "pryda" in response_lower
+    mentions_building_consent = "consent" in response_lower or "building consent" in response_lower
+    mentions_one_metre = "1 metre" in response_lower or "1m" in response_lower or "one metre" in response_lower
     
-    # Check for brand mentions
-    glass_wool_mentioned = any(brand in response_lower for brand in glass_wool_brands)
-    polyester_mentioned = any(brand in response_lower for brand in polyester_brands)
-    triage_language = any(indicator in response_lower for indicator in triage_indicators)
-    
-    analysis = {
-        "test_type": test_type,
-        "glass_wool_mentioned": glass_wool_mentioned,
-        "polyester_mentioned": polyester_mentioned,
-        "triage_language_detected": triage_language,
-        "response_length": len(response),
-        "brands_mentioned": []
+    return {
+        "total_citations": len(citations),
+        "total_sources_used": len(sources_used),
+        "cited_sources": cited_sources,
+        "sources_used": sources_used,
+        "has_metal_roofing_source": has_metal_roofing,
+        "has_pryda_source": has_pryda,
+        "has_building_code_source": has_building_code,
+        "has_f4_as1_source": has_f4_as1,
+        "mentions_metal_roofing": mentions_metal_roofing,
+        "mentions_pryda": mentions_pryda,
+        "mentions_building_consent": mentions_building_consent,
+        "mentions_one_metre": mentions_one_metre,
+        "response_length": len(response_text),
+        "response_complete": not response_text.endswith("...") and len(response_text) > 100
     }
-    
-    # Count specific brand mentions
-    for brand in glass_wool_brands + polyester_brands:
-        if brand in response_lower:
-            analysis["brands_mentioned"].append(brand)
-    
-    return analysis
 
-def run_material_triage_tests():
-    """Run all Material Triage tests as specified in the review request"""
+def test_window_variation_bug_fix():
+    """Test Bug Fix 1: Wrong Source Context (Window Variation Question)"""
+    print("\n" + "="*80)
+    print("🔧 BUG FIX 1: Window Variation Source Context Test")
+    print("="*80)
     
-    print("🎯 MATERIAL TRIAGE TESTING - Attribute Filter Protocol")
-    print("=" * 60)
-    print("Context: New Material Triage system for insulation queries")
-    print("Glass Wool group: Pink Batts, Earthwool, Bradford, Knauf")
-    print("Polyester group: Mammoth, GreenStuf, Autex")
-    print("Goal: Never present more than 3 options without asking a narrowing question")
+    query = "Can I change a window layout from my approved plans? Is this a minor variation or amendment?"
     
+    result = make_chat_request(query)
+    
+    if not result["success"]:
+        print(f"❌ API Request Failed: {result['error']}")
+        return {
+            "test_name": "Window Variation Bug Fix",
+            "passed": False,
+            "error": result["error"],
+            "details": {}
+        }
+    
+    response_data = result["data"]
+    analysis = analyze_citations(response_data)
+    
+    print(f"📝 Response Length: {analysis['response_length']} characters")
+    print(f"📚 Citations: {analysis['total_citations']}")
+    print(f"🔗 Sources Used: {analysis['total_sources_used']}")
+    
+    # Test criteria
+    criteria_passed = []
+    criteria_failed = []
+    
+    # Should cite building-code as authority (NOT nz_metal_roofing)
+    if analysis["has_building_code_source"] and not analysis["has_metal_roofing_source"]:
+        criteria_passed.append("✅ Cites building-code authority (not metal roofing)")
+    else:
+        criteria_failed.append("❌ Should cite building-code, not metal roofing sources")
+    
+    # Should NOT reference "metal roofing" or "Pryda"
+    if not analysis["mentions_metal_roofing"] and not analysis["mentions_pryda"]:
+        criteria_passed.append("✅ No inappropriate metal roofing/Pryda references")
+    else:
+        criteria_failed.append("❌ Contains inappropriate metal roofing/Pryda references")
+    
+    # Answer should be about building consent process
+    if analysis["mentions_building_consent"]:
+        criteria_passed.append("✅ Discusses building consent process")
+    else:
+        criteria_failed.append("❌ Should discuss building consent process")
+    
+    # Response should be complete
+    if analysis["response_complete"]:
+        criteria_passed.append("✅ Response appears complete")
+    else:
+        criteria_failed.append("❌ Response appears incomplete or truncated")
+    
+    print("\n📊 Test Results:")
+    for criterion in criteria_passed:
+        print(f"  {criterion}")
+    for criterion in criteria_failed:
+        print(f"  {criterion}")
+    
+    print(f"\n📄 Response Preview:")
+    response_text = response_data.get("response", "")
+    print(f"  {response_text[:200]}{'...' if len(response_text) > 200 else ''}")
+    
+    print(f"\n🔍 Sources Analysis:")
+    print(f"  Sources Used: {analysis['sources_used']}")
+    print(f"  Has Building Code Source: {analysis['has_building_code_source']}")
+    print(f"  Has Metal Roofing Source: {analysis['has_metal_roofing_source']}")
+    print(f"  Has Pryda Source: {analysis['has_pryda_source']}")
+    
+    test_passed = len(criteria_failed) == 0
+    
+    return {
+        "test_name": "Window Variation Bug Fix",
+        "passed": test_passed,
+        "criteria_passed": len(criteria_passed),
+        "criteria_failed": len(criteria_failed),
+        "details": analysis,
+        "response_data": response_data
+    }
+
+def test_deck_height_bug_fix():
+    """Test Bug Fix 2: Deck Height Question - Correct Source"""
+    print("\n" + "="*80)
+    print("🔧 BUG FIX 2: Deck Height Source & Completeness Test")
+    print("="*80)
+    
+    query = "What is the maximum height a deck can be without requiring a balustrade?"
+    
+    result = make_chat_request(query)
+    
+    if not result["success"]:
+        print(f"❌ API Request Failed: {result['error']}")
+        return {
+            "test_name": "Deck Height Bug Fix",
+            "passed": False,
+            "error": result["error"],
+            "details": {}
+        }
+    
+    response_data = result["data"]
+    analysis = analyze_citations(response_data)
+    
+    print(f"📝 Response Length: {analysis['response_length']} characters")
+    print(f"📚 Citations: {analysis['total_citations']}")
+    print(f"🔗 Sources Used: {analysis['total_sources_used']}")
+    
+    # Test criteria
+    criteria_passed = []
+    criteria_failed = []
+    
+    # Should cite F4-AS1 (Safety from Falling) as authority
+    if analysis["has_f4_as1_source"]:
+        criteria_passed.append("✅ Cites F4-AS1 (Safety from Falling) authority")
+    else:
+        criteria_failed.append("❌ Should cite F4-AS1 (Safety from Falling) as authority")
+    
+    # Should mention "1 metre" as height threshold
+    if analysis["mentions_one_metre"]:
+        criteria_passed.append("✅ Mentions 1 metre height threshold")
+    else:
+        criteria_failed.append("❌ Should mention 1 metre height threshold")
+    
+    # Response should NOT be cut off mid-sentence (max_tokens increased)
+    if analysis["response_complete"] and analysis["response_length"] > 150:
+        criteria_passed.append("✅ Response is complete and substantial")
+    else:
+        criteria_failed.append("❌ Response appears incomplete or too short")
+    
+    print("\n📊 Test Results:")
+    for criterion in criteria_passed:
+        print(f"  {criterion}")
+    for criterion in criteria_failed:
+        print(f"  {criterion}")
+    
+    print(f"\n📄 Response Preview:")
+    response_text = response_data.get("response", "")
+    print(f"  {response_text[:300]}{'...' if len(response_text) > 300 else ''}")
+    
+    print(f"\n🔍 Sources Analysis:")
+    print(f"  Sources Used: {analysis['sources_used']}")
+    print(f"  Has F4-AS1 Source: {analysis['has_f4_as1_source']}")
+    print(f"  Mentions 1 Metre: {analysis['mentions_one_metre']}")
+    print(f"  Response Length: {analysis['response_length']} chars")
+    
+    test_passed = len(criteria_failed) == 0
+    
+    return {
+        "test_name": "Deck Height Bug Fix",
+        "passed": test_passed,
+        "criteria_passed": len(criteria_passed),
+        "criteria_failed": len(criteria_failed),
+        "details": analysis,
+        "response_data": response_data
+    }
+
+def run_bug_fix_tests():
+    """Run all bug fix tests"""
+    print("🚀 STRYDA RAG API Bug Fix Testing")
+    print("="*80)
+    print(f"Backend URL: {BACKEND_URL}")
+    print(f"Session ID: {SESSION_ID}")
+    print(f"User ID: {USER_ID}")
+    
+    # Run tests
     test_results = []
     
-    # Test 1: Generic Insulation Query (SHOULD trigger material triage)
-    print("\n📋 TEST 1: Generic Insulation Query (Should trigger triage)")
-    result1 = test_chat_endpoint("What R-value insulation do I need for walls in Auckland?")
-    if result1["success"]:
-        analysis1 = analyze_material_triage_response(result1["response"], "generic_query")
-        analysis1["expected_behavior"] = "Should ask about material preference BEFORE listing products"
-        analysis1["should_trigger_triage"] = True
-        test_results.append({"test": "generic_query", "result": result1, "analysis": analysis1})
+    # Test 1: Window Variation Bug Fix
+    test1_result = test_window_variation_bug_fix()
+    test_results.append(test1_result)
     
-    time.sleep(2)  # Brief pause between tests
-    
-    # Test 2: Brand-Specific Query (should NOT trigger triage)
-    print("\n📋 TEST 2: Brand-Specific Query (Should NOT trigger triage)")
-    result2 = test_chat_endpoint("What Mammoth wall insulation R-values are available?")
-    if result2["success"]:
-        analysis2 = analyze_material_triage_response(result2["response"], "brand_specific")
-        analysis2["expected_behavior"] = "Should directly answer about Mammoth products (polyester)"
-        analysis2["should_trigger_triage"] = False
-        test_results.append({"test": "brand_specific", "result": result2, "analysis": analysis2})
-    
+    # Wait between tests
     time.sleep(2)
     
-    # Test 3: Material-Specific Query (should NOT trigger triage)
-    print("\n📋 TEST 3: Material-Specific Query (Should NOT trigger triage)")
-    result3 = test_chat_endpoint("I want glass wool insulation for my ceiling")
-    if result3["success"]:
-        analysis3 = analyze_material_triage_response(result3["response"], "material_specific")
-        analysis3["expected_behavior"] = "Should focus on Pink Batts/Earthwool (glass wool brands)"
-        analysis3["should_trigger_triage"] = False
-        test_results.append({"test": "material_specific", "result": result3, "analysis": analysis3})
+    # Test 2: Deck Height Bug Fix
+    test2_result = test_deck_height_bug_fix()
+    test_results.append(test2_result)
     
-    time.sleep(2)
+    # Summary
+    print("\n" + "="*80)
+    print("📊 BUG FIX TESTING SUMMARY")
+    print("="*80)
     
-    # Test 4: Follow-up after Material Selection
-    print("\n📋 TEST 4: Follow-up Material Selection")
-    result4 = test_chat_endpoint("I prefer polyester insulation")
-    if result4["success"]:
-        analysis4 = analyze_material_triage_response(result4["response"], "material_preference")
-        analysis4["expected_behavior"] = "Should focus on Mammoth/GreenStuf options"
-        analysis4["should_trigger_triage"] = False
-        test_results.append({"test": "material_preference", "result": result4, "analysis": analysis4})
+    total_tests = len(test_results)
+    passed_tests = sum(1 for result in test_results if result.get("passed", False))
+    failed_tests = total_tests - passed_tests
     
-    return test_results
-
-def evaluate_test_results(test_results):
-    """Evaluate the test results against success criteria"""
+    print(f"Total Tests: {total_tests}")
+    print(f"Passed: {passed_tests}")
+    print(f"Failed: {failed_tests}")
+    print(f"Success Rate: {(passed_tests/total_tests)*100:.1f}%")
     
-    print("\n🔍 MATERIAL TRIAGE TEST EVALUATION")
-    print("=" * 50)
-    
-    evaluation = {
-        "total_tests": len(test_results),
-        "passed_tests": 0,
-        "failed_tests": 0,
-        "test_details": []
-    }
-    
-    for test_data in test_results:
-        test_name = test_data["test"]
-        analysis = test_data["analysis"]
+    print("\n📋 Individual Test Results:")
+    for i, result in enumerate(test_results, 1):
+        status = "✅ PASS" if result.get("passed", False) else "❌ FAIL"
+        test_name = result.get("test_name", f"Test {i}")
+        print(f"  {i}. {test_name}: {status}")
         
-        print(f"\n📊 {test_name.upper()} ANALYSIS:")
-        print(f"   Expected: {analysis['expected_behavior']}")
-        print(f"   Should Trigger Triage: {analysis['should_trigger_triage']}")
-        print(f"   Glass Wool Mentioned: {analysis['glass_wool_mentioned']}")
-        print(f"   Polyester Mentioned: {analysis['polyester_mentioned']}")
-        print(f"   Triage Language: {analysis['triage_language_detected']}")
-        print(f"   Brands Mentioned: {analysis['brands_mentioned']}")
-        print(f"   Response Length: {analysis['response_length']} chars")
-        
-        # Evaluate success based on test type
-        test_passed = False
-        failure_reasons = []
-        
-        if test_name == "generic_query":
-            # Should trigger triage - ask about material preference
-            if analysis["triage_language_detected"]:
-                if analysis["glass_wool_mentioned"] and analysis["polyester_mentioned"]:
-                    test_passed = True
-                    print("   ✅ PASS: Correctly triggered material triage with both options")
-                elif analysis["glass_wool_mentioned"] or analysis["polyester_mentioned"]:
-                    test_passed = True
-                    print("   ✅ PASS: Triggered material triage (partial material mention)")
-                else:
-                    failure_reasons.append("Triage triggered but no material types mentioned")
-            else:
-                failure_reasons.append("Did not trigger material triage")
-        
-        elif test_name == "brand_specific":
-            # Should NOT trigger triage, should focus on Mammoth (polyester)
-            if "mammoth" in analysis["brands_mentioned"]:
-                if not analysis["triage_language_detected"]:
-                    test_passed = True
-                    print("   ✅ PASS: Correctly answered about Mammoth without triage")
-                else:
-                    failure_reasons.append("Triggered triage when it shouldn't have")
-            else:
-                failure_reasons.append("Did not focus on Mammoth brand")
-        
-        elif test_name == "material_specific":
-            # Should NOT trigger triage, should focus on glass wool brands
-            if analysis["glass_wool_mentioned"]:
-                if not analysis["triage_language_detected"]:
-                    test_passed = True
-                    print("   ✅ PASS: Correctly focused on glass wool brands without triage")
-                else:
-                    failure_reasons.append("Triggered triage when it shouldn't have")
-            else:
-                failure_reasons.append("Did not focus on glass wool brands")
-        
-        elif test_name == "material_preference":
-            # Should focus on polyester brands (Mammoth/GreenStuf)
-            if analysis["polyester_mentioned"]:
-                if not analysis["triage_language_detected"]:
-                    test_passed = True
-                    print("   ✅ PASS: Correctly focused on polyester options")
-                else:
-                    failure_reasons.append("Triggered triage when it shouldn't have")
-            else:
-                failure_reasons.append("Did not focus on polyester options")
-        
-        if not test_passed:
-            print(f"   ❌ FAIL: {'; '.join(failure_reasons)}")
-        
-        if test_passed:
-            evaluation["passed_tests"] += 1
-        else:
-            evaluation["failed_tests"] += 1
-        
-        evaluation["test_details"].append({
-            "test": test_name,
-            "passed": test_passed,
-            "failure_reasons": failure_reasons,
-            "analysis": analysis
-        })
+        if "error" in result:
+            print(f"     Error: {result['error']}")
+        elif not result.get("passed", False):
+            criteria_failed = result.get("criteria_failed", 0)
+            print(f"     Failed Criteria: {criteria_failed}")
     
-    return evaluation
-
-def main():
-    """Main test execution"""
-    
-    print("🚀 Starting Material Triage Backend Testing")
-    print(f"🌐 Backend URL: {BACKEND_URL}")
-    print(f"📡 Chat Endpoint: {CHAT_ENDPOINT}")
-    
-    # Run all tests
-    test_results = run_material_triage_tests()
-    
-    # Evaluate results
-    evaluation = evaluate_test_results(test_results)
-    
-    # Final summary
-    print("\n🎯 FINAL MATERIAL TRIAGE TEST SUMMARY")
-    print("=" * 50)
-    print(f"Total Tests: {evaluation['total_tests']}")
-    print(f"Passed: {evaluation['passed_tests']}")
-    print(f"Failed: {evaluation['failed_tests']}")
-    print(f"Success Rate: {(evaluation['passed_tests']/evaluation['total_tests']*100):.1f}%")
-    
-    # Detailed failure analysis
-    if evaluation["failed_tests"] > 0:
-        print("\n❌ FAILED TESTS ANALYSIS:")
-        for detail in evaluation["test_details"]:
-            if not detail["passed"]:
-                print(f"   {detail['test']}: {'; '.join(detail['failure_reasons'])}")
-    
-    # Success criteria evaluation
-    print("\n📋 SUCCESS CRITERIA EVALUATION:")
-    print("1. Generic queries trigger the material triage question")
-    print("2. Brand/material-specific queries skip triage and answer directly")
-    print("3. The triage question mentions both Glass Wool and Polyester options")
-    print("4. Goal: Never present more than 3 options without asking a narrowing question")
-    
-    if evaluation["passed_tests"] == evaluation["total_tests"]:
-        print("\n🎉 ALL TESTS PASSED - Material Triage is working correctly!")
-        print("✅ The Attribute Filter Protocol is FULLY OPERATIONAL")
-    elif evaluation["passed_tests"] >= evaluation["total_tests"] * 0.75:
-        print(f"\n⚠️  MOSTLY WORKING - {evaluation['failed_tests']} test(s) failed")
-        print("🔶 The Attribute Filter Protocol is PARTIALLY OPERATIONAL")
+    # Overall verdict
+    print(f"\n🎯 OVERALL VERDICT:")
+    if passed_tests == total_tests:
+        print("✅ ALL BUG FIXES WORKING CORRECTLY")
+    elif passed_tests > 0:
+        print("⚠️  PARTIAL SUCCESS - Some bug fixes working")
     else:
-        print(f"\n🚨 CRITICAL ISSUES - {evaluation['failed_tests']} test(s) failed")
-        print("❌ The Attribute Filter Protocol needs IMMEDIATE ATTENTION")
+        print("❌ BUG FIXES NOT WORKING - All tests failed")
     
-    return evaluation
+    return {
+        "total_tests": total_tests,
+        "passed_tests": passed_tests,
+        "failed_tests": failed_tests,
+        "success_rate": (passed_tests/total_tests)*100,
+        "test_results": test_results
+    }
 
 if __name__ == "__main__":
-    main()
+    results = run_bug_fix_tests()
