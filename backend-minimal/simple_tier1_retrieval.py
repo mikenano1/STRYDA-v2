@@ -651,6 +651,20 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('Earthwool Deep Dive')
     
+    # Bradford - Glass Wool Insulation & Ventilation (Brand Deep Dive)
+    # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
+    if any(term in query_lower for term in [
+        'bradford', 'gold batts', 'polymax', 'optimo', 'anticon', 'thermoseal',
+        'soundscreen', 'fireseal', 'ashgrid', 'quietel',
+        # Generic insulation keywords
+        'insulation', 'r-value', 'wall insulation', 'ceiling insulation',
+        'underfloor insulation', 'roof insulation', 'glass wool',
+        # Ventilation keywords
+        'ventilation', 'whirlybird', 'windmaster', 'hurricane', 'ecopower',
+        'solarxvent', 'roof vent', 'subfloor vent'
+    ]):
+        sources.append('Bradford Deep Dive')
+    
     # Mammoth - Polyester Insulation (Brand Deep Dive)
     # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
     if any(term in query_lower for term in [
