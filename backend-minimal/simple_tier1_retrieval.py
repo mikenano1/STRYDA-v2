@@ -705,13 +705,28 @@ def canonical_source_map(query: str) -> List[str]:
     # GreenStuf - Polyester Insulation (Brand Deep Dive)
     # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
     if any(term in query_lower for term in [
-        'greenstuf', 'green stuf', 'autex', 'duct wrap', 'duct liner',
+        'greenstuf', 'green stuf', 'duct wrap', 'duct liner',
         'masonry wall blanket', 'garage door insulation',
         # Generic insulation keywords (for multi-brand search)
         'insulation', 'r-value', 'wall insulation', 'ceiling insulation',
         'underfloor insulation', 'roof insulation', 'acoustic insulation'
     ]):
         sources.append('GreenStuf Deep Dive')
+    
+    # Autex - Acoustic Products (Brand Deep Dive)
+    # NOTE: Also triggers on generic acoustic keywords for multi-brand comparison
+    if any(term in query_lower for term in [
+        'autex', 'quietspace', 'composition', 'vertiface', 'frontier',
+        'cascade', 'vicinity', 'acoustic panel', 'acoustic ceiling',
+        'acoustic wall', 'acoustic screen', 'acoustic timber',
+        'workstation screen', 'desk screen', 'ceiling tile', 'wall tile',
+        '3d tile', 'acoustic tile', 'pinboard', 'noticeboard',
+        'embrace', 'cube panel', 'groove', 'lattice', 'horizon', 'cove',
+        'lanes', 'mirage', 'reform', 'accent ceiling', 'grid ceiling',
+        # Generic acoustic keywords (for multi-brand search)
+        'soundproofing', 'sound absorption', 'nrc', 'acoustic'
+    ]):
+        sources.append('Autex Deep Dive')
     
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
