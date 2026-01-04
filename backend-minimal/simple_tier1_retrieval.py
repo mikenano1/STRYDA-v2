@@ -483,6 +483,17 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('GIB Site Guide 2024')
     
+    # Pink Batts - Insulation (Brand Deep Dive)
+    if any(term in query_lower for term in [
+        'pink batts', 'pink batt', 'insulation', 'batts',
+        'r-value', 'r2.6', 'r2.8', 'r3.2', 'r4.0', 'r5.0', 'r6.0', 'r7.0',
+        'ceiling insulation', 'wall insulation', 'underfloor insulation',
+        'roof insulation', 'skillion', 'acoustic insulation',
+        'glass wool', 'thermal insulation', 'snug floor', 'superbatts',
+        'silencer', 'comfortech', 'tasman insulation'
+    ]):
+        sources.append('Pink Batts Deep Dive')
+    
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
         'james hardie', 'hardie', 'linea', 'weatherboard',
