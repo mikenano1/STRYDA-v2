@@ -238,6 +238,33 @@ TRADE_DETECTION_KEYWORDS = {
     'fasteners': [
         'fastener', 'fixing', 'nail', 'screw', 'bolt', 'anchor'
     ],
+    # =========================================================================
+    # INSULATION TRADES (Pink Batts Deep Dive)
+    # =========================================================================
+    'wall_insulation': [
+        'wall insulation', 'wall batts', 'r2.2', 'r2.4', 'r2.6', 'r2.8',
+        'stud insulation', 'wall r-value'
+    ],
+    'ceiling_insulation': [
+        'ceiling insulation', 'ceiling batts', 'r3.2', 'r3.6', 'r4.0', 
+        'r4.3', 'r5.0', 'r6.0', 'r7.0', 'attic insulation'
+    ],
+    'underfloor_insulation': [
+        'underfloor insulation', 'floor insulation', 'snug floor',
+        'suspended floor insulation', 'subfloor'
+    ],
+    'roof_insulation': [
+        'roof insulation', 'skillion insulation', 'rafter insulation',
+        'pitched roof insulation'
+    ],
+    'acoustic_insulation': [
+        'acoustic insulation', 'soundproofing', 'sound insulation',
+        'noise control', 'silencer', 'acoustic batts'
+    ],
+    'general_insulation': [
+        'insulation', 'pink batts', 'batts', 'r-value', 'thermal',
+        'glass wool'
+    ],
 }
 
 def detect_trade_from_query(query: str) -> Optional[str]:
