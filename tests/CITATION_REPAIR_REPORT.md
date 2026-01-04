@@ -3,7 +3,7 @@
 ## Test Information
 
 - **Test Date**: 2025-11-10 07:04:01 UTC
-- **Backend URL**: https://nzbuildtech.preview.emergentagent.com
+- **Backend URL**: https://stryda-rag.preview.emergentagent.com
 - **Total Queries**: 20
 - **Fixes Applied**: Intent router clause patterns, comparative query detection
 

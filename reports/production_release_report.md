@@ -4,7 +4,7 @@
 - **Release Date**: 2025-10-06T04:15:00Z
 - **Version**: Chat v1 (Multi-Turn with Citations)
 - **Build Status**: ✅ **PRODUCTION READY**
-- **Deployment URL**: https://nzbuildtech.preview.emergentagent.com
+- **Deployment URL**: https://stryda-rag.preview.emergentagent.com
 
 ---
 
