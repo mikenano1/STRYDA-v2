@@ -768,6 +768,24 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('Expol Deep Dive')
     
+    # Kingspan - Insulated Panels & Insulation Boards (Brand Deep Dive)
+    # Multi-category: Enclosure (panels), Interiors (insulation boards)
+    if any(term in query_lower for term in [
+        'kingspan', 'kooltherm', 'therma', 'steico', 'greenguard', 'air-cell', 'aircell',
+        # Insulated Panels (B_Enclosure)
+        'architectural panel', 'k-rock', 'krock', 'rockspan', 'firemaster',
+        'trapezoidal panel', 'trapezoidal roof', 'trapezoidal wall',
+        'coldstore panel', 'cold store', 'evolution facade', 'fivecrown', 'five crown',
+        # Kooltherm Range (C_Interiors)
+        'k10 soffit', 'k12 framing', 'k17 plasterboard', 'k7 roof', 'k5 external',
+        'k3 floorboard', 'k20 concrete sandwich',
+        # Therma Range
+        'tr26', 'tr27', 'tr28', 'tt47',
+        # Generic high-performance insulation keywords
+        'phenolic insulation', 'pir insulation', 'insulated panel'
+    ]):
+        sources.append('Kingspan Deep Dive')
+    
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
         'james hardie', 'hardie', 'linea', 'weatherboard',
