@@ -707,109 +707,92 @@ The **Multi-Category Brand Trade-Aware Retrieval** feature is **FULLY OPERATIONA
 
 The multi-category brand documents (Simpson Strong-Tie, Pryda, Ecko, Zenith) have been successfully re-tagged with granular trade metadata, and the retrieval system is effectively using this metadata to provide trade-specific responses.
 
-## Latest Testing Results - Material Triage System (Attribute Filter Protocol) (2025-01-04)
+## Latest Testing Results - STRYDA RAG API Bug Fix Testing (2025-01-04)
 
-### 🎯 TESTING REQUEST: Verify Material Triage System for Insulation Queries
+### 🎯 REVIEW REQUEST TESTING COMPLETED
 
-**Review Request**: Test the new "Attribute Filter Protocol" (Material Triage) for insulation queries.
+**Review Request: Test the STRYDA RAG API for two specific bug fixes**
 
-**Context**: New Material Triage system implemented for insulation queries:
-- Glass Wool group: Pink Batts, Earthwool, Bradford, Knauf
-- Polyester group: Mammoth, GreenStuf, Autex
-- Goal: Never present more than 3 options without asking a narrowing question
+### ✅ CONFIRMED WORKING (2/2 Content Tests)
 
-### ❌ TESTING COMPLETED (Testing Agent - 2026-01-04 09:15)
+**Bug Fix Testing Results:**
 
-**Review Request: Test Material Triage System for Insulation Queries**
+1. **Window Variation Source Context**: ✅ CONTENT FIXED
+   - Query: "Can I change a window layout from my approved plans? Is this a minor variation or amendment?"
+   - Backend Logs: "🔎 Searching 1 sources: ['building-code']" 
+   - Response: 1090 chars discussing building consent process correctly
+   - Content Analysis: ✅ Discusses "minor variation" and "amendment" appropriately
+   - Source Retrieval: ✅ Correctly uses building-code source (not metal roofing)
+   - Response Quality: ✅ Complete, relevant, and accurate
 
-### ❌ CRITICAL IMPLEMENTATION GAP IDENTIFIED (1/4 Tests Passed)
+2. **Deck Height Source & Completeness**: ✅ CONTENT FIXED  
+   - Query: "What is the maximum height a deck can be without requiring a balustrade?"
+   - Backend Logs: "F4-AS1_Amendment-6-2021" retrieved as top source
+   - Response: 365 chars with correct "1000 mm (1 metre)" threshold
+   - Content Analysis: ✅ Mentions correct height threshold
+   - Source Retrieval: ✅ Correctly uses F4-AS1 source
+   - Response Completeness: ✅ Not truncated (max_tokens fix working)
 
-**Test Results Summary:**
-- Total Tests: 4
-- Passed: 1 (25.0%)
-- Failed: 3 (75.0%)
-- Success Rate: 25.0%
+### ❌ CRITICAL ISSUE IDENTIFIED (Citation System)
 
-**Individual Test Results:**
+**Citation System Status**: ❌ COMPLETELY BROKEN
+- Both queries return empty citations array: `"citations": []`
+- Backend logs show correct source retrieval but citations not passed to API
+- Source information available in backend but not exposed to frontend
+- This affects user ability to verify information sources
 
-1. **Generic Insulation Query (Should trigger triage)**: ❌ FAIL
-   - Query: "What R-value insulation do I need for walls in Auckland?"
-   - Expected: Should ask about material preference BEFORE listing products
-   - Actual: Directly answered with R2.0 requirement, mentioned Pink Batts only
-   - Issue: **Did not trigger material triage**
-   - Response: 177 chars, mentioned Pink Batts but no triage question
+### 🔍 TECHNICAL ANALYSIS
 
-2. **Brand-Specific Query (Should NOT trigger triage)**: ✅ PASS
-   - Query: "What Mammoth wall insulation R-values are available?"
-   - Expected: Should directly answer about Mammoth products (polyester)
-   - Actual: Correctly provided Mammoth R-values (R1.9, R2.0, R2.2, etc.)
-   - Response: 815 chars, focused on Mammoth without triage
-   - ✅ **Working correctly**
+**Backend Source Retrieval**: ✅ WORKING CORRECTLY
+- Window query: Correctly detects and searches `building-code` source
+- Deck query: Correctly detects and searches `F4-AS1_Amendment-6-2021` source  
+- Vector search working: "⚡ Vector search completed in 960-968ms, found 40 chunks"
+- Source prioritization working: F4-AS1 gets priority=95, building-code gets priority=95
 
-3. **Material-Specific Query (Should NOT trigger triage)**: ❌ FAIL
-   - Query: "I want glass wool insulation for my ceiling"
-   - Expected: Should focus on Pink Batts/Earthwool (glass wool brands)
-   - Actual: Triggered triage asking for brand preference
-   - Issue: **Triggered triage when it shouldn't have**
-   - Response: 391 chars, mentioned multiple brands and asked for preference
+**Content Generation**: ✅ WORKING CORRECTLY
+- Responses are contextually appropriate and complete
+- No inappropriate cross-contamination between sources
+- Correct technical information being provided
+- Response lengths indicate max_tokens fix is working (no truncation)
 
-4. **Follow-up Material Selection**: ❌ FAIL
-   - Query: "I prefer polyester insulation"
-   - Expected: Should focus on Mammoth/GreenStuf options
-   - Actual: Triggered triage asking for brand/merchant preference
-   - Issue: **Triggered triage when it shouldn't have**
-   - Response: 278 chars, asked for brand or merchant preference
+**API Response Format**: ✅ WORKING
+- Response structure: `['answer', 'intent', 'citations', 'can_show_citations', 'model', 'timestamp']`
+- Content field: Uses "answer" field (not "response")
+- Response times: 12-16 seconds (acceptable for complex RAG queries)
 
-### 🔍 ROOT CAUSE ANALYSIS
+### 📊 BUG FIX VERDICT: ⚠️ **PARTIALLY SUCCESSFUL**
 
-**Critical Finding: Material Triage Logic NOT IMPLEMENTED**
+**✅ What's Fixed:**
+- ✅ Window variation queries now use building-code source (not metal roofing)
+- ✅ Deck height queries use F4-AS1 source correctly  
+- ✅ Response completeness fixed (no truncation at ~2048 chars)
+- ✅ Content quality is accurate and contextually appropriate
+- ✅ Source retrieval logic working correctly
 
-1. **System Prompt vs Code Mismatch**:
-   - ✅ System prompt contains detailed Material Triage instructions
-   - ✅ `simple_tier1_retrieval.py` contains `check_insulation_triage_needed()` function
-   - ❌ **Function is NEVER CALLED in the main chat flow**
-   - ❌ No integration between triage logic and chat endpoint
+**❌ What's Still Broken:**
+- ❌ Citation system not providing source references to users
+- ❌ Users cannot verify which documents were used for answers
+- ❌ Frontend cannot display source information
 
-2. **Backend Implementation Status**:
-   - ✅ Material groups defined: `INSULATION_MATERIAL_GROUPS`
-   - ✅ Triage question builder: `build_material_triage_question()`
-   - ✅ Material detection: `detect_material_preference()`
-   - ❌ **No call to `check_insulation_triage_needed()` in `/api/chat` endpoint**
+### 🚨 CRITICAL FINDINGS
 
-3. **Current Behavior**:
-   - System relies only on AI prompt instructions
-   - No programmatic triage checking
-   - AI inconsistently follows triage rules
-   - Results in unpredictable triage behavior
+1. **Core Bug Fixes Working**: The main issues (wrong source context, response truncation) have been resolved at the content level
 
-### 📊 MATERIAL TRIAGE VERDICT: ❌ **NOT IMPLEMENTED**
+2. **Citation Pipeline Broken**: While backend retrieves correct sources, the citation information is not being passed through to the API response
 
-**What's Missing:**
-- ❌ Integration of triage check in main chat flow
-- ❌ Programmatic material triage triggering
-- ❌ Consistent triage behavior across queries
-- ❌ Pre-answer filtering based on material groups
-
-**What's Working:**
-- ✅ Brand-specific queries work correctly
-- ✅ Material group definitions exist
-- ✅ Triage logic functions are written
-- ✅ Backend retrieval system functional
-
-### 🚨 CRITICAL ISSUES REQUIRING MAIN AGENT ATTENTION
-
-1. **Material Triage Logic Not Integrated**: The `check_insulation_triage_needed()` function exists but is never called in the chat endpoint
-2. **Inconsistent Triage Behavior**: System relies on AI prompt alone, leading to unpredictable results
-3. **Implementation Gap**: Code exists but not connected to main chat flow
-4. **Goal Not Met**: System presents multiple options without narrowing questions
+3. **User Experience Impact**: Users get correct information but cannot verify sources, reducing trust and compliance value
 
 ### 🔧 REQUIRED FIXES
 
-1. **Integrate Triage Check**: Add call to `check_insulation_triage_needed()` in `/api/chat` endpoint
-2. **Implement Triage Response**: Handle triage responses before normal retrieval
-3. **Test Integration**: Verify triage triggers correctly for generic insulation queries
-4. **Validate Skipping**: Ensure triage skips for brand/material-specific queries
+1. **Fix Citation Pipeline**: Ensure source information from backend retrieval is properly formatted and included in API response
+2. **Test Citation Display**: Verify frontend can properly display source references
+3. **Validate Source Attribution**: Ensure users can see which building codes/standards were referenced
 
 ### 🎯 FINAL ASSESSMENT
 
-The **Material Triage System (Attribute Filter Protocol)** is **NOT OPERATIONAL**. While the logic exists in the codebase, it's not integrated into the main chat flow, resulting in inconsistent behavior that doesn't meet the specified requirements.
+The **core bug fixes are working correctly** - the system now retrieves appropriate sources and generates complete, accurate responses. However, the **citation system requires immediate attention** to provide users with source transparency.
+
+**Content Quality**: ✅ EXCELLENT
+**Source Retrieval**: ✅ WORKING  
+**Citation System**: ❌ BROKEN
+**Overall User Experience**: ⚠️ GOOD CONTENT, MISSING CITATIONS
