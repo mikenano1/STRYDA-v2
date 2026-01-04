@@ -522,10 +522,14 @@ def canonical_source_map(query: str) -> List[str]:
         sources.append('Pink Batts Deep Dive')
     
     # Mammoth - Polyester Insulation (Brand Deep Dive)
+    # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
     if any(term in query_lower for term in [
         'mammoth', 'polyester insulation', 'acoustic baffle', 'bafflestack',
         'acoustic blanket', 'acoustic panel', 'deco flex', 'martini',
-        'duct liner', 'carpark insulation', 'inzone'
+        'duct liner', 'carpark insulation', 'inzone',
+        # Generic insulation keywords (for multi-brand search)
+        'insulation', 'r-value', 'wall insulation', 'ceiling insulation',
+        'underfloor insulation', 'roof insulation', 'acoustic insulation'
     ]):
         sources.append('Mammoth Deep Dive')
     
