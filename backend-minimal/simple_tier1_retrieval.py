@@ -641,6 +641,16 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('Pink Batts Deep Dive')
     
+    # Earthwool - Glass Wool Insulation (Brand Deep Dive)
+    # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
+    if any(term in query_lower for term in [
+        'earthwool', 'earth wool', 'knauf', 'floorshield',
+        # Generic insulation keywords (for multi-brand search)
+        'insulation', 'r-value', 'wall insulation', 'ceiling insulation',
+        'underfloor insulation', 'roof insulation', 'glass wool'
+    ]):
+        sources.append('Earthwool Deep Dive')
+    
     # Mammoth - Polyester Insulation (Brand Deep Dive)
     # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
     if any(term in query_lower for term in [
