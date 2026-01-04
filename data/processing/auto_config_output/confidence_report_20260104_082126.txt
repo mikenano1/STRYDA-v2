@@ -1,0 +1,133 @@
+======================================================================
+       STRYDA AUTO-CONFIG - LOW CONFIDENCE REPORT
+       Generated: 2026-01-04 08:21:26
+======================================================================
+
+📊 SUMMARY: 29 brands | 24,992 total chunks
+
+======================================================================
+✅ HIGH CONFIDENCE (14 brands) - Ready for Production
+======================================================================
+   • Kingspan: 2,884 chunks | 12 trades | 24 families
+     Categories: B_Enclosure, C_Interiors
+   • Autex: 2,853 chunks | 5 trades | 23 families
+     Categories: C_Interiors
+   • Pink Batts: 1,320 chunks | 6 trades | 6 families
+     Categories: C_Interiors
+     Note: Moderate generic tagging: 48% tagged as 'general'
+   • Bradford: 1,274 chunks | 10 trades | 10 families
+     Categories: B_Enclosure, C_Interiors
+     Note: Moderate generic tagging: 47% tagged as 'general'
+   • Simpson Strong Tie: 591 chunks | 4 trades | 9 families
+     Categories: F_Manufacturers
+     Note: No Technical Data Sheets detected
+   • Pryda: 533 chunks | 10 trades | 7 families
+     Categories: F_Manufacturers
+     Note: No Technical Data Sheets detected
+   • Expol: 391 chunks | 6 trades | 12 families
+     Categories: A_Structure, B_Enclosure, C_Interiors
+     Note: Moderate generic tagging: 53% tagged as 'general'
+   • GreenStuf: 381 chunks | 8 trades | 8 families
+     Categories: C_Interiors
+     Note: Moderate generic tagging: 47% tagged as 'general'
+   • Firth: 341 chunks | 4 trades | 12 families
+     Categories: A_Structure
+   • Mammoth: 277 chunks | 7 trades | 7 families
+     Categories: C_Interiors
+   • Earthwool: 277 chunks | 5 trades | 5 families
+     Categories: C_Interiors
+   • Ecko: 189 chunks | 9 trades | 8 families
+     Categories: F_Manufacturers
+     Note: No Technical Data Sheets detected
+   • MiTek: 41 chunks | 1 trades | 1 families
+     Categories: F_Manufacturers
+     Note: Specialist brand (41 chunks, 0% general - CLEAN)
+   • Ramset: 26 chunks | 1 trades | 1 families
+     Categories: F_Manufacturers
+     Note: Specialist brand (26 chunks, 0% general - CLEAN)
+
+======================================================================
+⚠️  MEDIUM CONFIDENCE (13 brands) - Review Recommended
+======================================================================
+   • MacSim: 3,938 chunks | 0% general tags
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • James Hardie: 2,822 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • Zenith: 2,735 chunks | 0% general tags
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • Fasteners: 1,162 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     Action: Review PDFs for clearer product segmentation
+   • GIB: 1,103 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • Bremick: 732 chunks | 0% general tags
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • Buildex: 275 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • SPAX: 226 chunks | 0% general tags
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • PlaceMakers: 172 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • Paslode: 121 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • NZSIP: 109 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • Mainland Fasteners: 106 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+   • Delfast: 94 chunks | 0% general tags
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Review PDFs for clearer product segmentation
+
+======================================================================
+❌ LOW CONFIDENCE (2 brands) - Manual Review Required
+======================================================================
+   • Titan: 14 chunks | 0% general tags
+     → Very low chunk count: 14
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     Action: Check PDF quality, may need manual tagging or re-ingestion
+   • NZ Nails: 5 chunks | 0% general tags
+     → Very low chunk count: 5
+     → Limited trade diversity: 1 trade(s)
+     → Few product families detected: 1
+     → No Technical Data Sheets detected
+     Action: Check PDF quality, may need manual tagging or re-ingestion
+
+======================================================================
+📋 RECOMMENDATIONS
+======================================================================
+   1. Review 2 LOW confidence brand(s) before production use
+   2. Consider re-ingesting 13 MEDIUM confidence brand(s) with better folder structure
+   3. 14 brand(s) are ready for production use
+
+======================================================================

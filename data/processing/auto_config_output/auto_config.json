@@ -1,0 +1,1141 @@
+{
+  "brand_priority": [
+    [
+      "kingspan",
+      "Kingspan"
+    ],
+    [
+      "coldstore",
+      "Kingspan"
+    ],
+    [
+      "fivecrown",
+      "Kingspan"
+    ],
+    [
+      "k-rock firemaster",
+      "Kingspan"
+    ],
+    [
+      "tr28",
+      "Kingspan"
+    ],
+    [
+      "panel",
+      "Kingspan"
+    ],
+    [
+      "autex",
+      "Autex"
+    ],
+    [
+      "timber",
+      "Autex"
+    ],
+    [
+      "brand-wide",
+      "Autex"
+    ],
+    [
+      "embrace",
+      "Autex"
+    ],
+    [
+      "composition",
+      "Autex"
+    ],
+    [
+      "panel",
+      "Autex"
+    ],
+    [
+      "pinkbatts",
+      "Pink Batts"
+    ],
+    [
+      "pink batts",
+      "Pink Batts"
+    ],
+    [
+      "pink-batts",
+      "Pink Batts"
+    ],
+    [
+      "wall",
+      "Pink Batts"
+    ],
+    [
+      "general",
+      "Pink Batts"
+    ],
+    [
+      "underfloor",
+      "Pink Batts"
+    ],
+    [
+      "roof",
+      "Pink Batts"
+    ],
+    [
+      "acoustic",
+      "Pink Batts"
+    ],
+    [
+      "bradford",
+      "Bradford"
+    ],
+    [
+      "subfloor vents",
+      "Bradford"
+    ],
+    [
+      "wall",
+      "Bradford"
+    ],
+    [
+      "ceiling batts",
+      "Bradford"
+    ],
+    [
+      "windmaster/hurricane",
+      "Bradford"
+    ],
+    [
+      "roof batts",
+      "Bradford"
+    ],
+    [
+      "simpsonstrongtie",
+      "Simpson Strong Tie"
+    ],
+    [
+      "simpson strong tie",
+      "Simpson Strong Tie"
+    ],
+    [
+      "simpson-strong-tie",
+      "Simpson Strong Tie"
+    ],
+    [
+      "post bases",
+      "Simpson Strong Tie"
+    ],
+    [
+      "rafter connectors",
+      "Simpson Strong Tie"
+    ],
+    [
+      "truss plates",
+      "Simpson Strong Tie"
+    ],
+    [
+      "general",
+      "Simpson Strong Tie"
+    ],
+    [
+      "purlin clips",
+      "Simpson Strong Tie"
+    ],
+    [
+      "pryda",
+      "Pryda"
+    ],
+    [
+      "hold downs",
+      "Pryda"
+    ],
+    [
+      "framing brackets",
+      "Pryda"
+    ],
+    [
+      "straps",
+      "Pryda"
+    ],
+    [
+      "general",
+      "Pryda"
+    ],
+    [
+      "anchors",
+      "Pryda"
+    ],
+    [
+      "expol",
+      "Expol"
+    ],
+    [
+      "slab x200",
+      "Expol"
+    ],
+    [
+      "imperia panel",
+      "Expol"
+    ],
+    [
+      "board",
+      "Expol"
+    ],
+    [
+      "brand-wide",
+      "Expol"
+    ],
+    [
+      "thermoslab",
+      "Expol"
+    ],
+    [
+      "greenstuf",
+      "GreenStuf"
+    ],
+    [
+      "wall",
+      "GreenStuf"
+    ],
+    [
+      "general",
+      "GreenStuf"
+    ],
+    [
+      "underfloor",
+      "GreenStuf"
+    ],
+    [
+      "masonry",
+      "GreenStuf"
+    ],
+    [
+      "roof",
+      "GreenStuf"
+    ],
+    [
+      "firth",
+      "Firth"
+    ],
+    [
+      "foundations systems",
+      "Firth"
+    ],
+    [
+      "tc3",
+      "Firth"
+    ],
+    [
+      "15 series masonry",
+      "Firth"
+    ],
+    [
+      "general",
+      "Firth"
+    ],
+    [
+      "pod",
+      "Firth"
+    ],
+    [
+      "mammoth",
+      "Mammoth"
+    ],
+    [
+      "wall",
+      "Mammoth"
+    ],
+    [
+      "general",
+      "Mammoth"
+    ],
+    [
+      "underfloor",
+      "Mammoth"
+    ],
+    [
+      "roof",
+      "Mammoth"
+    ],
+    [
+      "duct",
+      "Mammoth"
+    ],
+    [
+      "earthwool",
+      "Earthwool"
+    ],
+    [
+      "wall",
+      "Earthwool"
+    ],
+    [
+      "general",
+      "Earthwool"
+    ],
+    [
+      "underfloor",
+      "Earthwool"
+    ],
+    [
+      "acoustic",
+      "Earthwool"
+    ],
+    [
+      "ceiling",
+      "Earthwool"
+    ],
+    [
+      "ecko",
+      "Ecko"
+    ],
+    [
+      "general",
+      "Ecko"
+    ],
+    [
+      "t-rex decking screws",
+      "Ecko"
+    ],
+    [
+      "coil nails",
+      "Ecko"
+    ],
+    [
+      "collated nails",
+      "Ecko"
+    ],
+    [
+      "framing nails",
+      "Ecko"
+    ],
+    [
+      "mitek",
+      "MiTek"
+    ],
+    [
+      "general",
+      "MiTek"
+    ],
+    [
+      "ramset",
+      "Ramset"
+    ],
+    [
+      "general",
+      "Ramset"
+    ],
+    [
+      "macsim",
+      "MacSim"
+    ],
+    [
+      "anchors packers",
+      "MacSim"
+    ],
+    [
+      "james-hardie",
+      "James Hardie"
+    ],
+    [
+      "jameshardie",
+      "James Hardie"
+    ],
+    [
+      "james hardie",
+      "James Hardie"
+    ],
+    [
+      "linea weatherboard",
+      "James Hardie"
+    ],
+    [
+      "full suite",
+      "James Hardie"
+    ],
+    [
+      "zenith",
+      "Zenith"
+    ],
+    [
+      "hardware fasteners",
+      "Zenith"
+    ],
+    [
+      "fasteners",
+      "Fasteners"
+    ],
+    [
+      "fasteners full suite",
+      "Fasteners"
+    ],
+    [
+      "gib",
+      "GIB"
+    ],
+    [
+      "gib full suite",
+      "GIB"
+    ],
+    [
+      "gib plasterboard",
+      "GIB"
+    ],
+    [
+      "bremick",
+      "Bremick"
+    ],
+    [
+      "anchors industrial",
+      "Bremick"
+    ],
+    [
+      "buildex",
+      "Buildex"
+    ],
+    [
+      "general",
+      "Buildex"
+    ],
+    [
+      "spax",
+      "SPAX"
+    ],
+    [
+      "premium screws",
+      "SPAX"
+    ],
+    [
+      "placemakers",
+      "PlaceMakers"
+    ],
+    [
+      "master catalogue",
+      "PlaceMakers"
+    ],
+    [
+      "paslode",
+      "Paslode"
+    ],
+    [
+      "general",
+      "Paslode"
+    ],
+    [
+      "nzsip",
+      "NZSIP"
+    ],
+    [
+      "general",
+      "NZSIP"
+    ],
+    [
+      "mainland-fasteners",
+      "Mainland Fasteners"
+    ],
+    [
+      "mainland fasteners",
+      "Mainland Fasteners"
+    ],
+    [
+      "mainlandfasteners",
+      "Mainland Fasteners"
+    ],
+    [
+      "south island fasteners",
+      "Mainland Fasteners"
+    ],
+    [
+      "delfast",
+      "Delfast"
+    ],
+    [
+      "collated nails",
+      "Delfast"
+    ]
+  ],
+  "source_detection": {
+    "Kingspan": {
+      "keywords": [
+        "panels brand-wide",
+        "kooltherm k3",
+        "fivecrown",
+        "kingspan",
+        "k-rock firemaster",
+        "tr28",
+        "coldstore",
+        "panel",
+        "therma tr27",
+        "kooltherm k5",
+        "k5"
+      ],
+      "source_name": "Kingspan Deep Dive",
+      "trades": [
+        "below_grade_insulation",
+        "coldstore_panel",
+        "fire_rated_panel",
+        "floor_insulation",
+        "insulation_accessories",
+        "kingspan_boards_general",
+        "kingspan_panels_general",
+        "roof_insulation",
+        "roof_panel",
+        "soffit_insulation",
+        "wall_insulation",
+        "wall_panel"
+      ],
+      "categories": [
+        "B_Enclosure",
+        "C_Interiors"
+      ]
+    },
+    "Autex": {
+      "keywords": [
+        "timber",
+        "brand-wide",
+        "embrace",
+        "composition",
+        "panel",
+        "3d ceiling",
+        "autex",
+        "cascade",
+        "vertiface",
+        "cube",
+        "composition tiles"
+      ],
+      "source_name": "Autex Deep Dive",
+      "trades": [
+        "acoustic_ceiling",
+        "acoustic_general",
+        "acoustic_screens",
+        "acoustic_timber",
+        "acoustic_wall"
+      ],
+      "categories": [
+        "C_Interiors"
+      ]
+    },
+    "Pink Batts": {
+      "keywords": [
+        "wall",
+        "general",
+        "pink-batts",
+        "pinkbatts",
+        "underfloor",
+        "roof",
+        "acoustic",
+        "ceiling",
+        "pink batts"
+      ],
+      "source_name": "Pink Batts Deep Dive",
+      "trades": [
+        "acoustic_insulation",
+        "ceiling_insulation",
+        "general_insulation",
+        "roof_insulation",
+        "underfloor_insulation",
+        "wall_insulation"
+      ],
+      "categories": [
+        "C_Interiors"
+      ]
+    },
+    "Bradford": {
+      "keywords": [
+        "subfloor vents",
+        "wall",
+        "ceiling batts",
+        "windmaster/hurricane",
+        "roof batts",
+        "ventilation",
+        "underfloor",
+        "ecopower/solar",
+        "bradford",
+        "roof",
+        "acoustic"
+      ],
+      "source_name": "Bradford Deep Dive",
+      "trades": [
+        "acoustic_insulation",
+        "ceiling_insulation",
+        "general_insulation",
+        "general_ventilation",
+        "powered_ventilation",
+        "roof_insulation",
+        "roof_ventilation",
+        "subfloor_ventilation",
+        "underfloor_insulation",
+        "wall_insulation"
+      ],
+      "categories": [
+        "B_Enclosure",
+        "C_Interiors"
+      ]
+    },
+    "Simpson Strong Tie": {
+      "keywords": [
+        "rafter connectors",
+        "post bases",
+        "truss plates",
+        "simpsonstrongtie",
+        "general",
+        "purlin clips",
+        "straps & ties",
+        "concrete anchors",
+        "joist hangers",
+        "simpson strong tie",
+        "simpson-strong-tie",
+        "bracing systems"
+      ],
+      "source_name": "Simpson Strong Tie Deep Dive",
+      "trades": [
+        "anchoring",
+        "bracing",
+        "framing",
+        "nailplates"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Pryda": {
+      "keywords": [
+        "hold downs",
+        "pryda",
+        "framing brackets",
+        "straps",
+        "general",
+        "anchors",
+        "truss connectors",
+        "joist hangers"
+      ],
+      "source_name": "Pryda Deep Dive",
+      "trades": [
+        "anchoring",
+        "bolts",
+        "bracing",
+        "decking",
+        "fasteners",
+        "framing",
+        "nailplates",
+        "nails",
+        "roofing",
+        "screws"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Expol": {
+      "keywords": [
+        "expol",
+        "slab x200",
+        "board",
+        "imperia panel",
+        "brand-wide",
+        "thermoslab",
+        "fastline",
+        "panel",
+        "underfloor",
+        "xps",
+        "geoform"
+      ],
+      "source_name": "Expol Deep Dive",
+      "trades": [
+        "board_insulation",
+        "drainage",
+        "expol_general",
+        "slab_insulation",
+        "structural_fill",
+        "underfloor_insulation"
+      ],
+      "categories": [
+        "A_Structure",
+        "B_Enclosure",
+        "C_Interiors"
+      ]
+    },
+    "GreenStuf": {
+      "keywords": [
+        "wall",
+        "general",
+        "underfloor",
+        "masonry",
+        "greenstuf",
+        "roof",
+        "duct",
+        "acoustic",
+        "ceiling"
+      ],
+      "source_name": "GreenStuf Deep Dive",
+      "trades": [
+        "acoustic_insulation",
+        "ceiling_insulation",
+        "duct_insulation",
+        "general_insulation",
+        "masonry_insulation",
+        "roof_insulation",
+        "underfloor_insulation",
+        "wall_insulation"
+      ],
+      "categories": [
+        "C_Interiors"
+      ]
+    },
+    "Firth": {
+      "keywords": [
+        "foundations systems",
+        "tc3",
+        "general",
+        "15 series masonry",
+        "pod",
+        "concrete masonry",
+        "ecopave permeable",
+        "ribraft foundations",
+        "keystone retaining",
+        "ribraft hotedge",
+        "firth"
+      ],
+      "source_name": "Firth Deep Dive",
+      "trades": [
+        "foundations",
+        "general",
+        "masonry",
+        "paving"
+      ],
+      "categories": [
+        "A_Structure"
+      ]
+    },
+    "Mammoth": {
+      "keywords": [
+        "wall",
+        "general",
+        "underfloor",
+        "mammoth",
+        "roof",
+        "duct",
+        "acoustic",
+        "ceiling"
+      ],
+      "source_name": "Mammoth Deep Dive",
+      "trades": [
+        "acoustic_insulation",
+        "ceiling_insulation",
+        "duct_insulation",
+        "general_insulation",
+        "roof_insulation",
+        "underfloor_insulation",
+        "wall_insulation"
+      ],
+      "categories": [
+        "C_Interiors"
+      ]
+    },
+    "Earthwool": {
+      "keywords": [
+        "wall",
+        "general",
+        "underfloor",
+        "earthwool",
+        "acoustic",
+        "ceiling"
+      ],
+      "source_name": "Earthwool Deep Dive",
+      "trades": [
+        "acoustic_insulation",
+        "ceiling_insulation",
+        "general_insulation",
+        "underfloor_insulation",
+        "wall_insulation"
+      ],
+      "categories": [
+        "C_Interiors"
+      ]
+    },
+    "Ecko": {
+      "keywords": [
+        "ecko",
+        "general",
+        "coil nails",
+        "collated nails",
+        "framing nails",
+        "staples",
+        "t-rex decking screws",
+        "joist hanger nails",
+        "decking fasteners"
+      ],
+      "source_name": "Ecko Deep Dive",
+      "trades": [
+        "bolts",
+        "decking",
+        "fasteners",
+        "framing",
+        "framing_nails",
+        "joist_hanger_nails",
+        "roofing",
+        "screws",
+        "staples"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "MiTek": {
+      "keywords": [
+        "general",
+        "mitek"
+      ],
+      "source_name": "MiTek Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Ramset": {
+      "keywords": [
+        "ramset",
+        "general"
+      ],
+      "source_name": "Ramset Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "MacSim": {
+      "keywords": [
+        "macsim",
+        "anchors packers"
+      ],
+      "source_name": "MacSim Deep Dive",
+      "trades": [
+        "anchoring",
+        "bolts",
+        "decking",
+        "fasteners",
+        "hardware",
+        "nails",
+        "rivets",
+        "roofing",
+        "screws"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "James Hardie": {
+      "keywords": [
+        "linea weatherboard",
+        "jameshardie",
+        "james-hardie",
+        "james hardie",
+        "full suite"
+      ],
+      "source_name": "James Hardie Deep Dive",
+      "trades": [
+        "cladding"
+      ],
+      "categories": [
+        "B_Enclosure"
+      ]
+    },
+    "Zenith": {
+      "keywords": [
+        "zenith",
+        "hardware fasteners"
+      ],
+      "source_name": "Zenith Deep Dive",
+      "trades": [
+        "anchoring",
+        "bolts",
+        "fasteners",
+        "hardware",
+        "nails",
+        "roofing",
+        "screws"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Fasteners": {
+      "keywords": [
+        "fasteners full suite",
+        "fasteners"
+      ],
+      "source_name": "Fasteners Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "GIB": {
+      "keywords": [
+        "gib full suite",
+        "gib",
+        "gib plasterboard"
+      ],
+      "source_name": "GIB Deep Dive",
+      "trades": [
+        "interior_linings"
+      ],
+      "categories": [
+        "C_Interiors"
+      ]
+    },
+    "Bremick": {
+      "keywords": [
+        "anchors industrial",
+        "bremick"
+      ],
+      "source_name": "Bremick Deep Dive",
+      "trades": [
+        "anchoring",
+        "bolts",
+        "fasteners",
+        "roofing",
+        "screws"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Buildex": {
+      "keywords": [
+        "general",
+        "buildex"
+      ],
+      "source_name": "Buildex Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "SPAX": {
+      "keywords": [
+        "spax",
+        "premium screws"
+      ],
+      "source_name": "SPAX Deep Dive",
+      "trades": [
+        "anchoring",
+        "decking",
+        "fasteners",
+        "hardware",
+        "screws"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "PlaceMakers": {
+      "keywords": [
+        "master catalogue",
+        "placemakers"
+      ],
+      "source_name": "PlaceMakers Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Paslode": {
+      "keywords": [
+        "general",
+        "paslode"
+      ],
+      "source_name": "Paslode Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "NZSIP": {
+      "keywords": [
+        "general",
+        "nzsip"
+      ],
+      "source_name": "NZSIP Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Mainland Fasteners": {
+      "keywords": [
+        "south island fasteners",
+        "mainland-fasteners",
+        "mainland fasteners",
+        "mainlandfasteners"
+      ],
+      "source_name": "Mainland Fasteners Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    },
+    "Delfast": {
+      "keywords": [
+        "collated nails",
+        "delfast"
+      ],
+      "source_name": "Delfast Deep Dive",
+      "trades": [
+        "fasteners"
+      ],
+      "categories": [
+        "F_Manufacturers"
+      ]
+    }
+  },
+  "brand_retailer_map": {
+    "Kingspan": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Autex": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Pink Batts": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Bradford": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Simpson Strong Tie": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Pryda": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Expol": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "GreenStuf": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Firth": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Mammoth": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Earthwool": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Ecko": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "MiTek": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Ramset": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "MacSim": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "James Hardie": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Zenith": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Fasteners": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "GIB": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Bremick": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Buildex": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "SPAX": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "PlaceMakers": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Paslode": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "NZSIP": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Mainland Fasteners": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ],
+    "Delfast": [
+      "PlaceMakers",
+      "ITM",
+      "Bunnings"
+    ]
+  },
+  "generated_at": "2026-01-04T08:21:26.898090"
+}
