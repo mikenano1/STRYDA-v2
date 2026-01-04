@@ -665,15 +665,24 @@ def canonical_source_map(query: str) -> List[str]:
         sources.append('B1/AS1')  # Also include legacy for completeness
     
     # NZ Building Code - General building code sections
+    # Also includes F4 (Safety from Falling) for deck/balustrade questions
     if any(term in query_lower for term in [
         'h1', 'energy', 'insulation', 'r-value', 'thermal',
+        # F4 - Safety from Falling (decks, balustrades, barriers)
         'f4', 'f4/as1', 'barrier', 'balustrade', 'handrail', 'guardrail',
         'deck fall', '1m fall', '1 metre fall', 'fall protection',
         'escape', 'means of escape', 'safety barriers', 'minimum barrier height',
+        'deck height', 'deck without', 'without balustrade', 'without barrier',
+        'fall from deck', 'height of fall', 'safety from falling',
+        # Other Building Code sections
         'g5', 'g5.3.2', 'hearth', 'solid fuel', 'fireplace',
         'c1', 'c2', 'c3', 'c4', 'fire', 'fire rating', 'fire stopping',
         'g12', 'g13', 'water', 'sanitary', 'plumbing', 'hot water',
-        'building code', 'nzbc'
+        'building code', 'nzbc',
+        # Consent process and variations
+        'building consent', 'consent process', 'minor variation', 'amendment',
+        'change to plans', 'approved plans', 'consent amendment', 'vary consent',
+        'variation to consent', 'modify consent', 'alter plans'
     ]):
         sources.append('NZ Building Code')
     
