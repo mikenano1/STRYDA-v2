@@ -172,70 +172,40 @@ class PinkBattsRAGTester:
             self.test_results.append(result)
             return result
     
-    def get_trade_keywords(self, trade: str) -> list:
-        """Get expected keywords for each trade category"""
-        trade_keywords = {
-            "framing": ["joist", "hangers", "hanger", "beam", "framing", "lvl", "timber", "structural", "face mount", "top mount"],
-            "bracing": ["bracing", "brace", "earthquake", "seismic", "hold down", "strap", "speed brace", "wall bracing", "lateral"],
-            "anchoring": ["anchor", "anchors", "dynabolt", "concrete", "masonry", "fixing", "bolt", "chemical anchor", "drop-in"],
-            "decking": ["deck", "decking", "boards", "joists", "bearers", "posts", "outdoor", "timber deck"],
-            "fasteners": ["screws", "nails", "bolts", "fixings", "fasteners", "self-drilling", "hex head"],
-            "hardware": ["hinges", "handles", "locks", "door", "window", "cabinet", "furniture"],
-            "nailplates": ["nail plate", "nailplate", "truss", "gang nail", "connector plate"],
-            "framing_nails": ["framing nail", "nail", "galvanised", "bright", "ring shank"],
-            "staples": ["staple", "staples", "pneumatic", "crown", "leg length"]
-        }
-        return trade_keywords.get(trade, [])
-    
-    async def run_all_tests(self):
-        """Run all multi-category brand trade-aware retrieval tests"""
-        print("🎯 STRYDA RAG Backend - Multi-Category Brand Trade-Aware Retrieval Tests")
+    async def run_pink_batts_tests(self):
+        """Run all Pink Batts specific tests"""
+        print("🎯 STRYDA RAG Backend - Pink Batts Insulation Retrieval Testing")
         print("=" * 80)
         print(f"Backend URL: {self.backend_url}")
         print(f"Test Start Time: {datetime.now().isoformat()}")
+        print(f"Context: Testing 1,320 Pink Batts documentation chunks with trade-aware tagging")
         print()
         
         await self.setup_session()
         
         try:
-            # Test 1: Simpson Strong-Tie Framing
+            # Test 1: Ceiling Insulation R-value Query
             await self.test_chat_endpoint(
-                query="What Simpson joist hangers should I use for LVL beams?",
-                expected_trade="framing",
-                expected_brand="Simpson",
-                test_name="Simpson Framing Test"
+                query="What R-value Pink Batts do I need for my ceiling in Auckland?",
+                test_name="Ceiling Insulation R-value Test",
+                expected_keywords=["r-value", "ceiling", "auckland", "r3.2", "r4.0", "r5.0", "insulation"],
+                expected_trade="ceiling_insulation"
             )
             
-            # Test 2: Pryda Bracing
+            # Test 2: Underfloor Installation Query
             await self.test_chat_endpoint(
-                query="What Pryda bracing options are available for earthquake zones?",
-                expected_trade="bracing", 
-                expected_brand="Pryda",
-                test_name="Pryda Bracing Test"
+                query="How do I install Pink Batts underfloor insulation?",
+                test_name="Underfloor Installation Test", 
+                expected_keywords=["install", "underfloor", "installation", "batts", "floor", "joists"],
+                expected_trade="underfloor_insulation"
             )
             
-            # Test 3: Zenith Anchoring
+            # Test 3: Wall Insulation Specs Query
             await self.test_chat_endpoint(
-                query="What Zenith dynabolt sizes are available for concrete?",
-                expected_trade="anchoring",
-                expected_brand="Zenith", 
-                test_name="Zenith Anchoring Test"
-            )
-            
-            # Additional Test 4: Ecko Decking (bonus test)
-            await self.test_chat_endpoint(
-                query="What Ecko decking screws should I use for outdoor timber?",
-                expected_trade="decking",
-                expected_brand="Ecko",
-                test_name="Ecko Decking Test"
-            )
-            
-            # Additional Test 5: Zenith Fasteners (different trade for same brand)
-            await self.test_chat_endpoint(
-                query="What Zenith self-drilling screws are available for steel framing?",
-                expected_trade="fasteners",
-                expected_brand="Zenith",
-                test_name="Zenith Fasteners Test"
+                query="What are the dimensions of Pink Batts R2.6 wall insulation?",
+                test_name="Wall Insulation Specs Test",
+                expected_keywords=["dimensions", "r2.6", "wall", "thickness", "width", "specifications"],
+                expected_trade="wall_insulation"
             )
             
         finally:
@@ -247,16 +217,18 @@ class PinkBattsRAGTester:
     def generate_test_summary(self):
         """Generate comprehensive test summary"""
         print("\n" + "=" * 80)
-        print("📊 MULTI-CATEGORY BRAND TRADE-AWARE RETRIEVAL TEST SUMMARY")
+        print("📊 PINK BATTS INSULATION RETRIEVAL TEST SUMMARY")
         print("=" * 80)
         
         total_tests = len(self.test_results)
         passed_tests = len([r for r in self.test_results if r.get("status") == "PASS"])
+        partial_tests = len([r for r in self.test_results if r.get("status") == "PARTIAL"])
         failed_tests = len([r for r in self.test_results if r.get("status") == "FAIL"])
         error_tests = len([r for r in self.test_results if r.get("status") == "ERROR"])
         
         print(f"Total Tests: {total_tests}")
         print(f"✅ Passed: {passed_tests}")
+        print(f"⚠️ Partial: {partial_tests}")
         print(f"❌ Failed: {failed_tests}")
         print(f"🚨 Errors: {error_tests}")
         print(f"Success Rate: {(passed_tests/total_tests)*100:.1f}%")
@@ -264,30 +236,34 @@ class PinkBattsRAGTester:
         
         # Detailed results
         for result in self.test_results:
-            status_icon = "✅" if result["status"] == "PASS" else "❌" if result["status"] == "FAIL" else "🚨"
+            status_icon = "✅" if result["status"] == "PASS" else "⚠️" if result["status"] == "PARTIAL" else "❌" if result["status"] == "FAIL" else "🚨"
             print(f"{status_icon} {result['test_name']}: {result['status']}")
             
-            if result["status"] == "PASS":
-                print(f"   Brand Mentioned: {result.get('brand_mentioned', False)}")
-                print(f"   Trade Keywords: {result.get('trade_keyword_count', 0)} found")
+            if result["status"] in ["PASS", "PARTIAL"]:
+                print(f"   Pink Batts Mentioned: {result.get('pink_batts_mentioned', False)}")
+                print(f"   Deep Dive Source: {result.get('deep_dive_source', False)}")
+                print(f"   Keywords Found: {len(result.get('keywords_found', []))}/{len(result.get('expected_keywords', []))}")
+                print(f"   R-values Found: {result.get('r_values_found', [])}")
                 print(f"   Response Time: {result.get('response_time_ms', 0)}ms")
                 print(f"   Response Length: {result.get('response_length', 0)} chars")
             elif result["status"] == "FAIL":
-                print(f"   Issues: Brand mentioned={result.get('brand_mentioned', False)}, Trade keywords={result.get('trade_keyword_count', 0)}")
+                print(f"   Issues: Pink Batts={result.get('pink_batts_mentioned', False)}, Keywords={len(result.get('keywords_found', []))}")
             else:
                 print(f"   Error: {result.get('error', 'Unknown error')}")
             print()
         
-        # Trade-aware retrieval analysis
-        print("🔍 TRADE-AWARE RETRIEVAL ANALYSIS:")
+        # Pink Batts specific analysis
+        print("🔍 PINK BATTS RETRIEVAL ANALYSIS:")
         print("-" * 40)
         
-        brand_mention_rate = len([r for r in self.test_results if r.get("brand_mentioned", False)]) / total_tests * 100
-        avg_trade_keywords = sum(r.get("trade_keyword_count", 0) for r in self.test_results) / total_tests
+        pink_batts_mention_rate = len([r for r in self.test_results if r.get("pink_batts_mentioned", False)]) / total_tests * 100
+        deep_dive_detection_rate = len([r for r in self.test_results if r.get("deep_dive_source", False)]) / total_tests * 100
+        avg_keywords_found = sum(len(r.get("keywords_found", [])) for r in self.test_results) / total_tests
         avg_response_time = sum(r.get("response_time_ms", 0) for r in self.test_results) / total_tests
         
-        print(f"Brand Mention Rate: {brand_mention_rate:.1f}%")
-        print(f"Average Trade Keywords per Response: {avg_trade_keywords:.1f}")
+        print(f"Pink Batts Brand Mention Rate: {pink_batts_mention_rate:.1f}%")
+        print(f"Deep Dive Source Detection Rate: {deep_dive_detection_rate:.1f}%")
+        print(f"Average Keywords Found per Response: {avg_keywords_found:.1f}")
         print(f"Average Response Time: {avg_response_time:.1f}ms")
         print()
         
@@ -298,40 +274,40 @@ class PinkBattsRAGTester:
         criteria_met = 0
         total_criteria = 3
         
-        if brand_mention_rate >= 80:
-            print("✅ Brand Detection: PASS (≥80% brand mention rate)")
+        if pink_batts_mention_rate >= 80:
+            print("✅ Pink Batts Brand Recognition: PASS (≥80% mention rate)")
             criteria_met += 1
         else:
-            print(f"❌ Brand Detection: FAIL ({brand_mention_rate:.1f}% < 80%)")
+            print(f"❌ Pink Batts Brand Recognition: FAIL ({pink_batts_mention_rate:.1f}% < 80%)")
         
-        if avg_trade_keywords >= 2:
-            print("✅ Trade Detection: PASS (≥2 avg trade keywords)")
+        if deep_dive_detection_rate >= 50:
+            print("✅ Deep Dive Source Detection: PASS (≥50% detection rate)")
             criteria_met += 1
         else:
-            print(f"❌ Trade Detection: FAIL ({avg_trade_keywords:.1f} < 2)")
+            print(f"❌ Deep Dive Source Detection: FAIL ({deep_dive_detection_rate:.1f}% < 50%)")
         
-        if passed_tests >= total_tests * 0.8:
-            print("✅ Overall Success: PASS (≥80% test pass rate)")
+        if (passed_tests + partial_tests) >= total_tests * 0.8:
+            print("✅ Overall Response Quality: PASS (≥80% pass/partial rate)")
             criteria_met += 1
         else:
-            print(f"❌ Overall Success: FAIL ({(passed_tests/total_tests)*100:.1f}% < 80%)")
+            print(f"❌ Overall Response Quality: FAIL ({((passed_tests + partial_tests)/total_tests)*100:.1f}% < 80%)")
         
         print()
         print(f"📈 FINAL VERDICT: {criteria_met}/{total_criteria} criteria met")
         
         if criteria_met == total_criteria:
-            print("🎉 MULTI-CATEGORY BRAND TRADE-AWARE RETRIEVAL: ✅ FULLY WORKING")
+            print("🎉 PINK BATTS INSULATION RETRIEVAL: ✅ FULLY WORKING")
         elif criteria_met >= 2:
-            print("⚠️  MULTI-CATEGORY BRAND TRADE-AWARE RETRIEVAL: 🔶 PARTIALLY WORKING")
+            print("⚠️  PINK BATTS INSULATION RETRIEVAL: 🔶 PARTIALLY WORKING")
         else:
-            print("🚨 MULTI-CATEGORY BRAND TRADE-AWARE RETRIEVAL: ❌ NOT WORKING")
+            print("🚨 PINK BATTS INSULATION RETRIEVAL: ❌ NOT WORKING")
         
         print(f"\nTest Completed: {datetime.now().isoformat()}")
 
 async def main():
     """Main test execution"""
-    tester = TradeAwareRetrievalTester()
-    await tester.run_all_tests()
+    tester = PinkBattsRAGTester()
+    await tester.run_pink_batts_tests()
 
 if __name__ == "__main__":
     asyncio.run(main())
