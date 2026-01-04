@@ -993,6 +993,13 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     
                     # Check for specific brand mentions in query
                     brand_priority = [
+                        ('kingspan', 'Kingspan'),
+                        ('kooltherm', 'Kingspan'),
+                        ('therma tr', 'Kingspan'),
+                        ('steico', 'Kingspan'),
+                        ('k-rock', 'Kingspan'),
+                        ('krock', 'Kingspan'),
+                        ('fivecrown', 'Kingspan'),
                         ('expol', 'Expol'),
                         ('thermoslab', 'Expol'),
                         ('tuff pods', 'Expol'),
