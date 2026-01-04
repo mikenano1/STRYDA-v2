@@ -1076,6 +1076,80 @@ async def api_chat(req: ChatRequest):
             print(f"🌊 Hybrid mode: full retrieval + natural synthesis")
             
             try:
+                # =====================================================
+                # PRE-ANSWER TRIAGE CHECK (Attribute Filter Protocol)
+                # =====================================================
+                # Check if this is a generic insulation query that needs material triage
+                detected_trade = detect_trade_from_query(user_message)
+                
+                if detected_trade and 'insulation' in detected_trade:
+                    # Check if user has a material preference
+                    material_pref = detect_material_preference(user_message)
+                    
+                    # Check if user mentioned a merchant (skip triage)
+                    merchant_keywords = ['placemakers', 'bunnings', 'carters', 'itm', 'mitre 10', 'mitre10']
+                    has_merchant = any(m in user_message.lower() for m in merchant_keywords)
+                    
+                    if not material_pref and not has_merchant:
+                        # Get brands from both material groups for triage
+                        triage_info = check_insulation_triage_needed(
+                            user_message, 
+                            ['Pink Batts', 'Mammoth', 'Earthwool', 'GreenStuf', 'Bradford', 'Autex']
+                        )
+                        
+                        if triage_info and triage_info.get('triage_needed'):
+                            print(f"🔀 MATERIAL TRIAGE TRIGGERED: {triage_info.get('materials_available')}")
+                            
+                            # Build triage response
+                            glass_wool_brands = ['Pink Batts', 'Earthwool', 'Bradford']
+                            polyester_brands = ['Mammoth', 'GreenStuf']
+                            
+                            triage_response = f"""For insulation, I have compliant options in multiple material types:
+
+**Glass Wool** ({', '.join(glass_wool_brands[:2])}) - Traditional glass fibre, lightweight, cost-effective
+
+**Polyester** ({', '.join(polyester_brands[:2])}) - No-itch, allergy-friendly, moisture resistant
+
+Do you have a material preference, or would you like me to filter by which merchant you use?"""
+                            
+                            response = {
+                                "answer": triage_response,
+                                "intent": "material_triage",
+                                "citations": [],
+                                "can_show_citations": False,
+                                "model": "triage_system",
+                                "triage_type": "material",
+                                "timestamp": int(time.time())
+                            }
+                            
+                            # Skip normal retrieval - return triage question
+                            # (response is already set, will fall through to return)
+                            print(f"📤 Returning material triage question")
+                            
+                            # Save to thread and return early
+                            try:
+                                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                                with conn.cursor() as cur:
+                                    cur.execute("""
+                                        INSERT INTO messages (thread_id, role, content, intent, metadata)
+                                        VALUES (%s, 'assistant', %s, 'material_triage', %s)
+                                    """, (session_id, triage_response, json.dumps({"triage_type": "material", "materials": triage_info.get('materials_available')})))
+                                conn.commit()
+                                conn.close()
+                            except Exception as e:
+                                print(f"⚠️ Failed to save triage response: {e}")
+                            
+                            return ChatResponse(
+                                response=triage_response,
+                                citations=[],
+                                sources_used=[],
+                                can_show_citations=False,
+                                model="triage_system"
+                            )
+                
+                # =====================================================
+                # NORMAL RETRIEVAL (No triage needed or triage skipped)
+                # =====================================================
                 # FULL retrieval
                 docs = tier1_retrieval(user_message, top_k=20, intent=final_intent)
                 
