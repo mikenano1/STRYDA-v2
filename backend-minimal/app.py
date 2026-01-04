@@ -1112,7 +1112,21 @@ async def api_chat(req: ChatRequest):
 
 Do you have a material preference, or would you like me to filter by which merchant you use?"""
                             
-                            response = {
+                            # Save to chat_messages and return early
+                            try:
+                                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                                with conn.cursor() as cur:
+                                    cur.execute("""
+                                        INSERT INTO chat_messages (session_id, role, content)
+                                        VALUES (%s, %s, %s);
+                                    """, (session_id, "assistant", triage_response))
+                                conn.commit()
+                                conn.close()
+                            except Exception as e:
+                                print(f"⚠️ Failed to save triage response: {e}")
+                            
+                            print(f"📤 Returning material triage question")
+                            return {
                                 "answer": triage_response,
                                 "intent": "material_triage",
                                 "citations": [],
@@ -1121,31 +1135,6 @@ Do you have a material preference, or would you like me to filter by which merch
                                 "triage_type": "material",
                                 "timestamp": int(time.time())
                             }
-                            
-                            # Skip normal retrieval - return triage question
-                            # (response is already set, will fall through to return)
-                            print(f"📤 Returning material triage question")
-                            
-                            # Save to thread and return early
-                            try:
-                                conn = psycopg2.connect(DATABASE_URL, sslmode="require")
-                                with conn.cursor() as cur:
-                                    cur.execute("""
-                                        INSERT INTO messages (thread_id, role, content, intent, metadata)
-                                        VALUES (%s, 'assistant', %s, 'material_triage', %s)
-                                    """, (session_id, triage_response, json.dumps({"triage_type": "material", "materials": triage_info.get('materials_available')})))
-                                conn.commit()
-                                conn.close()
-                            except Exception as e:
-                                print(f"⚠️ Failed to save triage response: {e}")
-                            
-                            return ChatResponse(
-                                response=triage_response,
-                                citations=[],
-                                sources_used=[],
-                                can_show_citations=False,
-                                model="triage_system"
-                            )
                 
                 # =====================================================
                 # NORMAL RETRIEVAL (No triage needed or triage skipped)
