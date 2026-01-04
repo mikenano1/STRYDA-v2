@@ -1,313 +1,315 @@
 #!/usr/bin/env python3
 """
-STRYDA RAG Backend Testing - Pink Batts Insulation Retrieval
+Backend Testing for Material Triage System (Attribute Filter Protocol)
+Testing the new insulation material triage functionality
 Testing Agent: Backend Testing Agent
 Date: 2025-01-04
-Focus: Pink Batts trade-aware insulation retrieval with 1,320 documentation chunks
+Focus: Material Triage for insulation queries - Glass Wool vs Polyester
 """
 
-import asyncio
-import aiohttp
+import requests
 import json
 import time
-import sys
-from datetime import datetime
+from typing import Dict, Any
 
-# Backend URL from environment
+# Backend URL from frontend/.env
 BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com"
+CHAT_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
-class PinkBattsRAGTester:
-    def __init__(self):
-        self.backend_url = BACKEND_URL
-        self.test_results = []
-        self.session = None
-        
-    async def setup_session(self):
-        """Setup HTTP session for testing"""
-        self.session = aiohttp.ClientSession()
-        
-    async def cleanup_session(self):
-        """Cleanup HTTP session"""
-        if self.session:
-            await self.session.close()
-            
-    async def test_chat_endpoint(self, query: str, test_name: str, expected_keywords: list, expected_trade: str = None):
-        """Test chat endpoint with Pink Batts specific expectations"""
-        print(f"\n🧪 Testing: {test_name}")
-        print(f"Query: {query}")
-        print(f"Expected Keywords: {expected_keywords}")
-        if expected_trade:
-            print(f"Expected Trade: {expected_trade}")
-        
+def test_chat_endpoint(query: str, session_id: str = None) -> Dict[str, Any]:
+    """Test the chat endpoint with a specific query"""
+    
+    if session_id is None:
+        session_id = f"test-material-triage-{int(time.time())}"
+    
+    payload = {
+        "message": query,
+        "session_id": session_id
+    }
+    
+    print(f"\n🔍 Testing Query: '{query}'")
+    print(f"📋 Session ID: {session_id}")
+    print(f"🌐 Endpoint: {CHAT_ENDPOINT}")
+    
+    try:
         start_time = time.time()
+        response = requests.post(CHAT_ENDPOINT, json=payload, timeout=30)
+        response_time = time.time() - start_time
         
-        try:
-            # Make request to chat endpoint
-            payload = {
-                "message": query,
-                "session_id": f"pink-batts-test-{int(time.time())}"
+        print(f"⏱️  Response Time: {response_time:.2f}s")
+        print(f"📊 Status Code: {response.status_code}")
+        
+        if response.status_code == 200:
+            data = response.json()
+            
+            # Extract key information
+            answer = data.get('response', data.get('answer', ''))
+            citations = data.get('citations', [])
+            session_id = data.get('session_id', session_id)
+            
+            print(f"✅ Response Length: {len(answer)} characters")
+            print(f"📚 Citations: {len(citations)}")
+            print(f"💬 Response Preview: {answer[:200]}...")
+            
+            return {
+                "success": True,
+                "response": answer,
+                "citations": citations,
+                "session_id": session_id,
+                "response_time": response_time,
+                "full_data": data
+            }
+        else:
+            print(f"❌ Error: {response.status_code}")
+            print(f"📄 Response: {response.text}")
+            return {
+                "success": False,
+                "error": f"HTTP {response.status_code}: {response.text}",
+                "response_time": response_time
             }
             
-            async with self.session.post(
-                f"{self.backend_url}/api/chat",
-                json=payload,
-                headers={"Content-Type": "application/json"}
-            ) as response:
-                
-                response_time = (time.time() - start_time) * 1000
-                
-                if response.status == 200:
-                    data = await response.json()
-                    
-                    # Extract response details
-                    ai_response = data.get("answer", data.get("response", ""))
-                    citations = data.get("citations", [])
-                    sources_used = data.get("sources_used", [])
-                    intent = data.get("intent", "")
-                    model = data.get("model", "")
-                    
-                    # Check for Pink Batts mentions
-                    pink_batts_mentioned = any(term.lower() in ai_response.lower() 
-                                             for term in ["pink batts", "pink batt", "pinkbatts"])
-                    
-                    # Check for Pink Batts Deep Dive source
-                    deep_dive_source = any("pink batts deep dive" in str(source).lower() 
-                                         for source in sources_used)
-                    
-                    # Check for expected keywords
-                    keywords_found = [kw for kw in expected_keywords 
-                                    if kw.lower() in ai_response.lower()]
-                    
-                    # Check for R-values (important for insulation)
-                    r_values_found = []
-                    r_value_patterns = ["r-value", "r value", "r2.", "r3.", "r4.", "r5.", "r6."]
-                    for pattern in r_value_patterns:
-                        if pattern in ai_response.lower():
-                            r_values_found.append(pattern)
-                    
-                    # Check for trade detection
-                    trade_detected = expected_trade and expected_trade in str(data).lower() if expected_trade else None
-                    
-                    # Analyze response quality
-                    response_length = len(ai_response)
-                    
-                    # Determine test status
-                    status = "PASS"
-                    if not pink_batts_mentioned:
-                        status = "FAIL"
-                    elif len(keywords_found) < 2:
-                        status = "PARTIAL"
-                    elif response_length < 100:
-                        status = "PARTIAL"
-                    
-                    result = {
-                        "test_name": test_name,
-                        "query": query,
-                        "status": status,
-                        "response_time_ms": round(response_time, 1),
-                        "response_length": response_length,
-                        "pink_batts_mentioned": pink_batts_mentioned,
-                        "deep_dive_source": deep_dive_source,
-                        "keywords_found": keywords_found,
-                        "expected_keywords": expected_keywords,
-                        "r_values_found": r_values_found,
-                        "trade_detected": trade_detected,
-                        "sources_used": sources_used,
-                        "citations_count": len(citations),
-                        "intent": intent,
-                        "model": model,
-                        "ai_response": ai_response[:300] + "..." if len(ai_response) > 300 else ai_response,
-                        "full_response": ai_response
-                    }
-                    
-                    print(f"✅ Status: {result['status']}")
-                    print(f"⏱️  Response Time: {response_time:.1f}ms")
-                    print(f"📝 Response Length: {response_length} chars")
-                    print(f"🏷️  Pink Batts Mentioned: {pink_batts_mentioned}")
-                    print(f"📚 Deep Dive Source: {deep_dive_source}")
-                    print(f"🔧 Keywords Found: {len(keywords_found)}/{len(expected_keywords)} ({keywords_found})")
-                    print(f"📊 R-values Found: {r_values_found}")
-                    print(f"🎯 Intent: {intent}")
-                    print(f"🤖 Model: {model}")
-                    print(f"📖 Citations: {len(citations)}")
-                    
-                    if result['status'] in ["FAIL", "PARTIAL"]:
-                        print(f"⚠️  ISSUES:")
-                        if not pink_batts_mentioned:
-                            print(f"   - Pink Batts brand not mentioned in response")
-                        if len(keywords_found) < 2:
-                            print(f"   - Insufficient relevant keywords ({len(keywords_found)}/{len(expected_keywords)})")
-                        if response_length < 100:
-                            print(f"   - Response too short ({response_length} chars)")
-                        if not deep_dive_source:
-                            print(f"   - Pink Batts Deep Dive source not detected")
-                    
-                    self.test_results.append(result)
-                    return result
-                    
-                else:
-                    error_text = await response.text()
-                    print(f"❌ HTTP Error {response.status}: {error_text}")
-                    
-                    result = {
-                        "test_name": test_name,
-                        "query": query,
-                        "status": "ERROR",
-                        "error": f"HTTP {response.status}: {error_text}",
-                        "response_time_ms": round(response_time, 1)
-                    }
-                    self.test_results.append(result)
-                    return result
-                    
-        except Exception as e:
-            print(f"❌ Exception: {str(e)}")
-            
-            result = {
-                "test_name": test_name,
-                "query": query,
-                "status": "ERROR",
-                "error": str(e),
-                "response_time_ms": round((time.time() - start_time) * 1000, 1)
-            }
-            self.test_results.append(result)
-            return result
-    
-    async def run_pink_batts_tests(self):
-        """Run all Pink Batts specific tests"""
-        print("🎯 STRYDA RAG Backend - Pink Batts Insulation Retrieval Testing")
-        print("=" * 80)
-        print(f"Backend URL: {self.backend_url}")
-        print(f"Test Start Time: {datetime.now().isoformat()}")
-        print(f"Context: Testing 1,320 Pink Batts documentation chunks with trade-aware tagging")
-        print()
-        
-        await self.setup_session()
-        
-        try:
-            # Test 1: Ceiling Insulation R-value Query
-            await self.test_chat_endpoint(
-                query="What R-value Pink Batts do I need for my ceiling in Auckland?",
-                test_name="Ceiling Insulation R-value Test",
-                expected_keywords=["r-value", "ceiling", "auckland", "r3.2", "r4.0", "r5.0", "insulation"],
-                expected_trade="ceiling_insulation"
-            )
-            
-            # Test 2: Underfloor Installation Query
-            await self.test_chat_endpoint(
-                query="How do I install Pink Batts underfloor insulation?",
-                test_name="Underfloor Installation Test", 
-                expected_keywords=["install", "underfloor", "installation", "batts", "floor", "joists"],
-                expected_trade="underfloor_insulation"
-            )
-            
-            # Test 3: Wall Insulation Specs Query
-            await self.test_chat_endpoint(
-                query="What are the dimensions of Pink Batts R2.6 wall insulation?",
-                test_name="Wall Insulation Specs Test",
-                expected_keywords=["dimensions", "r2.6", "wall", "thickness", "width", "specifications"],
-                expected_trade="wall_insulation"
-            )
-            
-        finally:
-            await self.cleanup_session()
-        
-        # Generate summary
-        self.generate_test_summary()
-    
-    def generate_test_summary(self):
-        """Generate comprehensive test summary"""
-        print("\n" + "=" * 80)
-        print("📊 PINK BATTS INSULATION RETRIEVAL TEST SUMMARY")
-        print("=" * 80)
-        
-        total_tests = len(self.test_results)
-        passed_tests = len([r for r in self.test_results if r.get("status") == "PASS"])
-        partial_tests = len([r for r in self.test_results if r.get("status") == "PARTIAL"])
-        failed_tests = len([r for r in self.test_results if r.get("status") == "FAIL"])
-        error_tests = len([r for r in self.test_results if r.get("status") == "ERROR"])
-        
-        print(f"Total Tests: {total_tests}")
-        print(f"✅ Passed: {passed_tests}")
-        print(f"⚠️ Partial: {partial_tests}")
-        print(f"❌ Failed: {failed_tests}")
-        print(f"🚨 Errors: {error_tests}")
-        print(f"Success Rate: {(passed_tests/total_tests)*100:.1f}%")
-        print()
-        
-        # Detailed results
-        for result in self.test_results:
-            status_icon = "✅" if result["status"] == "PASS" else "⚠️" if result["status"] == "PARTIAL" else "❌" if result["status"] == "FAIL" else "🚨"
-            print(f"{status_icon} {result['test_name']}: {result['status']}")
-            
-            if result["status"] in ["PASS", "PARTIAL"]:
-                print(f"   Pink Batts Mentioned: {result.get('pink_batts_mentioned', False)}")
-                print(f"   Deep Dive Source: {result.get('deep_dive_source', False)}")
-                print(f"   Keywords Found: {len(result.get('keywords_found', []))}/{len(result.get('expected_keywords', []))}")
-                print(f"   R-values Found: {result.get('r_values_found', [])}")
-                print(f"   Response Time: {result.get('response_time_ms', 0)}ms")
-                print(f"   Response Length: {result.get('response_length', 0)} chars")
-            elif result["status"] == "FAIL":
-                print(f"   Issues: Pink Batts={result.get('pink_batts_mentioned', False)}, Keywords={len(result.get('keywords_found', []))}")
-            else:
-                print(f"   Error: {result.get('error', 'Unknown error')}")
-            print()
-        
-        # Pink Batts specific analysis
-        print("🔍 PINK BATTS RETRIEVAL ANALYSIS:")
-        print("-" * 40)
-        
-        pink_batts_mention_rate = len([r for r in self.test_results if r.get("pink_batts_mentioned", False)]) / total_tests * 100
-        deep_dive_detection_rate = len([r for r in self.test_results if r.get("deep_dive_source", False)]) / total_tests * 100
-        avg_keywords_found = sum(len(r.get("keywords_found", [])) for r in self.test_results) / total_tests
-        avg_response_time = sum(r.get("response_time_ms", 0) for r in self.test_results) / total_tests
-        
-        print(f"Pink Batts Brand Mention Rate: {pink_batts_mention_rate:.1f}%")
-        print(f"Deep Dive Source Detection Rate: {deep_dive_detection_rate:.1f}%")
-        print(f"Average Keywords Found per Response: {avg_keywords_found:.1f}")
-        print(f"Average Response Time: {avg_response_time:.1f}ms")
-        print()
-        
-        # Success criteria evaluation
-        print("🎯 SUCCESS CRITERIA EVALUATION:")
-        print("-" * 40)
-        
-        criteria_met = 0
-        total_criteria = 3
-        
-        if pink_batts_mention_rate >= 80:
-            print("✅ Pink Batts Brand Recognition: PASS (≥80% mention rate)")
-            criteria_met += 1
-        else:
-            print(f"❌ Pink Batts Brand Recognition: FAIL ({pink_batts_mention_rate:.1f}% < 80%)")
-        
-        if deep_dive_detection_rate >= 50:
-            print("✅ Deep Dive Source Detection: PASS (≥50% detection rate)")
-            criteria_met += 1
-        else:
-            print(f"❌ Deep Dive Source Detection: FAIL ({deep_dive_detection_rate:.1f}% < 50%)")
-        
-        if (passed_tests + partial_tests) >= total_tests * 0.8:
-            print("✅ Overall Response Quality: PASS (≥80% pass/partial rate)")
-            criteria_met += 1
-        else:
-            print(f"❌ Overall Response Quality: FAIL ({((passed_tests + partial_tests)/total_tests)*100:.1f}% < 80%)")
-        
-        print()
-        print(f"📈 FINAL VERDICT: {criteria_met}/{total_criteria} criteria met")
-        
-        if criteria_met == total_criteria:
-            print("🎉 PINK BATTS INSULATION RETRIEVAL: ✅ FULLY WORKING")
-        elif criteria_met >= 2:
-            print("⚠️  PINK BATTS INSULATION RETRIEVAL: 🔶 PARTIALLY WORKING")
-        else:
-            print("🚨 PINK BATTS INSULATION RETRIEVAL: ❌ NOT WORKING")
-        
-        print(f"\nTest Completed: {datetime.now().isoformat()}")
+    except Exception as e:
+        print(f"❌ Exception: {str(e)}")
+        return {
+            "success": False,
+            "error": str(e),
+            "response_time": 0
+        }
 
-async def main():
+def analyze_material_triage_response(response: str, test_type: str) -> Dict[str, Any]:
+    """Analyze if the response shows proper material triage behavior"""
+    
+    response_lower = response.lower()
+    
+    # Material groups
+    glass_wool_brands = ['pink batts', 'earthwool', 'bradford', 'knauf']
+    polyester_brands = ['mammoth', 'greenstuf', 'autex']
+    
+    # Check for material triage indicators
+    triage_indicators = [
+        'material preference', 'do you have a preference', 'which material',
+        'glass wool', 'polyester', 'both glass wool and polyester',
+        'options in both', 'material type', 'prefer glass wool', 'prefer polyester',
+        'choice between', 'two main types', 'two options'
+    ]
+    
+    # Check for brand mentions
+    glass_wool_mentioned = any(brand in response_lower for brand in glass_wool_brands)
+    polyester_mentioned = any(brand in response_lower for brand in polyester_brands)
+    triage_language = any(indicator in response_lower for indicator in triage_indicators)
+    
+    analysis = {
+        "test_type": test_type,
+        "glass_wool_mentioned": glass_wool_mentioned,
+        "polyester_mentioned": polyester_mentioned,
+        "triage_language_detected": triage_language,
+        "response_length": len(response),
+        "brands_mentioned": []
+    }
+    
+    # Count specific brand mentions
+    for brand in glass_wool_brands + polyester_brands:
+        if brand in response_lower:
+            analysis["brands_mentioned"].append(brand)
+    
+    return analysis
+
+def run_material_triage_tests():
+    """Run all Material Triage tests as specified in the review request"""
+    
+    print("🎯 MATERIAL TRIAGE TESTING - Attribute Filter Protocol")
+    print("=" * 60)
+    print("Context: New Material Triage system for insulation queries")
+    print("Glass Wool group: Pink Batts, Earthwool, Bradford, Knauf")
+    print("Polyester group: Mammoth, GreenStuf, Autex")
+    print("Goal: Never present more than 3 options without asking a narrowing question")
+    
+    test_results = []
+    
+    # Test 1: Generic Insulation Query (SHOULD trigger material triage)
+    print("\n📋 TEST 1: Generic Insulation Query (Should trigger triage)")
+    result1 = test_chat_endpoint("What R-value insulation do I need for walls in Auckland?")
+    if result1["success"]:
+        analysis1 = analyze_material_triage_response(result1["response"], "generic_query")
+        analysis1["expected_behavior"] = "Should ask about material preference BEFORE listing products"
+        analysis1["should_trigger_triage"] = True
+        test_results.append({"test": "generic_query", "result": result1, "analysis": analysis1})
+    
+    time.sleep(2)  # Brief pause between tests
+    
+    # Test 2: Brand-Specific Query (should NOT trigger triage)
+    print("\n📋 TEST 2: Brand-Specific Query (Should NOT trigger triage)")
+    result2 = test_chat_endpoint("What Mammoth wall insulation R-values are available?")
+    if result2["success"]:
+        analysis2 = analyze_material_triage_response(result2["response"], "brand_specific")
+        analysis2["expected_behavior"] = "Should directly answer about Mammoth products (polyester)"
+        analysis2["should_trigger_triage"] = False
+        test_results.append({"test": "brand_specific", "result": result2, "analysis": analysis2})
+    
+    time.sleep(2)
+    
+    # Test 3: Material-Specific Query (should NOT trigger triage)
+    print("\n📋 TEST 3: Material-Specific Query (Should NOT trigger triage)")
+    result3 = test_chat_endpoint("I want glass wool insulation for my ceiling")
+    if result3["success"]:
+        analysis3 = analyze_material_triage_response(result3["response"], "material_specific")
+        analysis3["expected_behavior"] = "Should focus on Pink Batts/Earthwool (glass wool brands)"
+        analysis3["should_trigger_triage"] = False
+        test_results.append({"test": "material_specific", "result": result3, "analysis": analysis3})
+    
+    time.sleep(2)
+    
+    # Test 4: Follow-up after Material Selection
+    print("\n📋 TEST 4: Follow-up Material Selection")
+    result4 = test_chat_endpoint("I prefer polyester insulation")
+    if result4["success"]:
+        analysis4 = analyze_material_triage_response(result4["response"], "material_preference")
+        analysis4["expected_behavior"] = "Should focus on Mammoth/GreenStuf options"
+        analysis4["should_trigger_triage"] = False
+        test_results.append({"test": "material_preference", "result": result4, "analysis": analysis4})
+    
+    return test_results
+
+def evaluate_test_results(test_results):
+    """Evaluate the test results against success criteria"""
+    
+    print("\n🔍 MATERIAL TRIAGE TEST EVALUATION")
+    print("=" * 50)
+    
+    evaluation = {
+        "total_tests": len(test_results),
+        "passed_tests": 0,
+        "failed_tests": 0,
+        "test_details": []
+    }
+    
+    for test_data in test_results:
+        test_name = test_data["test"]
+        analysis = test_data["analysis"]
+        
+        print(f"\n📊 {test_name.upper()} ANALYSIS:")
+        print(f"   Expected: {analysis['expected_behavior']}")
+        print(f"   Should Trigger Triage: {analysis['should_trigger_triage']}")
+        print(f"   Glass Wool Mentioned: {analysis['glass_wool_mentioned']}")
+        print(f"   Polyester Mentioned: {analysis['polyester_mentioned']}")
+        print(f"   Triage Language: {analysis['triage_language_detected']}")
+        print(f"   Brands Mentioned: {analysis['brands_mentioned']}")
+        print(f"   Response Length: {analysis['response_length']} chars")
+        
+        # Evaluate success based on test type
+        test_passed = False
+        failure_reasons = []
+        
+        if test_name == "generic_query":
+            # Should trigger triage - ask about material preference
+            if analysis["triage_language_detected"]:
+                if analysis["glass_wool_mentioned"] and analysis["polyester_mentioned"]:
+                    test_passed = True
+                    print("   ✅ PASS: Correctly triggered material triage with both options")
+                elif analysis["glass_wool_mentioned"] or analysis["polyester_mentioned"]:
+                    test_passed = True
+                    print("   ✅ PASS: Triggered material triage (partial material mention)")
+                else:
+                    failure_reasons.append("Triage triggered but no material types mentioned")
+            else:
+                failure_reasons.append("Did not trigger material triage")
+        
+        elif test_name == "brand_specific":
+            # Should NOT trigger triage, should focus on Mammoth (polyester)
+            if "mammoth" in analysis["brands_mentioned"]:
+                if not analysis["triage_language_detected"]:
+                    test_passed = True
+                    print("   ✅ PASS: Correctly answered about Mammoth without triage")
+                else:
+                    failure_reasons.append("Triggered triage when it shouldn't have")
+            else:
+                failure_reasons.append("Did not focus on Mammoth brand")
+        
+        elif test_name == "material_specific":
+            # Should NOT trigger triage, should focus on glass wool brands
+            if analysis["glass_wool_mentioned"]:
+                if not analysis["triage_language_detected"]:
+                    test_passed = True
+                    print("   ✅ PASS: Correctly focused on glass wool brands without triage")
+                else:
+                    failure_reasons.append("Triggered triage when it shouldn't have")
+            else:
+                failure_reasons.append("Did not focus on glass wool brands")
+        
+        elif test_name == "material_preference":
+            # Should focus on polyester brands (Mammoth/GreenStuf)
+            if analysis["polyester_mentioned"]:
+                if not analysis["triage_language_detected"]:
+                    test_passed = True
+                    print("   ✅ PASS: Correctly focused on polyester options")
+                else:
+                    failure_reasons.append("Triggered triage when it shouldn't have")
+            else:
+                failure_reasons.append("Did not focus on polyester options")
+        
+        if not test_passed:
+            print(f"   ❌ FAIL: {'; '.join(failure_reasons)}")
+        
+        if test_passed:
+            evaluation["passed_tests"] += 1
+        else:
+            evaluation["failed_tests"] += 1
+        
+        evaluation["test_details"].append({
+            "test": test_name,
+            "passed": test_passed,
+            "failure_reasons": failure_reasons,
+            "analysis": analysis
+        })
+    
+    return evaluation
+
+def main():
     """Main test execution"""
-    tester = PinkBattsRAGTester()
-    await tester.run_pink_batts_tests()
+    
+    print("🚀 Starting Material Triage Backend Testing")
+    print(f"🌐 Backend URL: {BACKEND_URL}")
+    print(f"📡 Chat Endpoint: {CHAT_ENDPOINT}")
+    
+    # Run all tests
+    test_results = run_material_triage_tests()
+    
+    # Evaluate results
+    evaluation = evaluate_test_results(test_results)
+    
+    # Final summary
+    print("\n🎯 FINAL MATERIAL TRIAGE TEST SUMMARY")
+    print("=" * 50)
+    print(f"Total Tests: {evaluation['total_tests']}")
+    print(f"Passed: {evaluation['passed_tests']}")
+    print(f"Failed: {evaluation['failed_tests']}")
+    print(f"Success Rate: {(evaluation['passed_tests']/evaluation['total_tests']*100):.1f}%")
+    
+    # Detailed failure analysis
+    if evaluation["failed_tests"] > 0:
+        print("\n❌ FAILED TESTS ANALYSIS:")
+        for detail in evaluation["test_details"]:
+            if not detail["passed"]:
+                print(f"   {detail['test']}: {'; '.join(detail['failure_reasons'])}")
+    
+    # Success criteria evaluation
+    print("\n📋 SUCCESS CRITERIA EVALUATION:")
+    print("1. Generic queries trigger the material triage question")
+    print("2. Brand/material-specific queries skip triage and answer directly")
+    print("3. The triage question mentions both Glass Wool and Polyester options")
+    print("4. Goal: Never present more than 3 options without asking a narrowing question")
+    
+    if evaluation["passed_tests"] == evaluation["total_tests"]:
+        print("\n🎉 ALL TESTS PASSED - Material Triage is working correctly!")
+        print("✅ The Attribute Filter Protocol is FULLY OPERATIONAL")
+    elif evaluation["passed_tests"] >= evaluation["total_tests"] * 0.75:
+        print(f"\n⚠️  MOSTLY WORKING - {evaluation['failed_tests']} test(s) failed")
+        print("🔶 The Attribute Filter Protocol is PARTIALLY OPERATIONAL")
+    else:
+        print(f"\n🚨 CRITICAL ISSUES - {evaluation['failed_tests']} test(s) failed")
+        print("❌ The Attribute Filter Protocol needs IMMEDIATE ATTENTION")
+    
+    return evaluation
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
