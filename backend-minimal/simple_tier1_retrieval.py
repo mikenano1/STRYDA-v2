@@ -653,6 +653,17 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('Mammoth Deep Dive')
     
+    # GreenStuf - Polyester Insulation (Brand Deep Dive)
+    # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
+    if any(term in query_lower for term in [
+        'greenstuf', 'green stuf', 'autex', 'duct wrap', 'duct liner',
+        'masonry wall blanket', 'garage door insulation',
+        # Generic insulation keywords (for multi-brand search)
+        'insulation', 'r-value', 'wall insulation', 'ceiling insulation',
+        'underfloor insulation', 'roof insulation', 'acoustic insulation'
+    ]):
+        sources.append('GreenStuf Deep Dive')
+    
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
         'james hardie', 'hardie', 'linea', 'weatherboard',
