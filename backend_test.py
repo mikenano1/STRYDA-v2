@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-STRYDA RAG Backend Testing - Multi-Category Brand Trade-Aware Retrieval
+STRYDA RAG Backend Testing - Pink Batts Insulation Retrieval
 Testing Agent: Backend Testing Agent
 Date: 2025-01-04
-Focus: Multi-category brands with granular trade classifications
+Focus: Pink Batts trade-aware insulation retrieval with 1,320 documentation chunks
 """
 
 import asyncio
@@ -16,7 +16,7 @@ from datetime import datetime
 # Backend URL from environment
 BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com"
 
-class TradeAwareRetrievalTester:
+class PinkBattsRAGTester:
     def __init__(self):
         self.backend_url = BACKEND_URL
         self.test_results = []
