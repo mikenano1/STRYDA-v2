@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 """
-Backend Testing for Material Triage System (Attribute Filter Protocol)
-Testing the new insulation material triage functionality
+STRYDA RAG API Bug Fix Testing
+Testing specific bug fixes for source context and response completeness
 Testing Agent: Backend Testing Agent
 Date: 2025-01-04
-Focus: Material Triage for insulation queries - Glass Wool vs Polyester
+Focus: Bug Fix 1 (Window Variation Source) & Bug Fix 2 (Deck Height Source & Completeness)
 """
 
 import requests
 import json
 import time
-from typing import Dict, Any
+from typing import Dict, Any, List
 
-# Backend URL from frontend/.env
-BACKEND_URL = "https://stryda-rag.preview.emergentagent.com"
-CHAT_ENDPOINT = f"{BACKEND_URL}/api/chat"
+# Test Configuration
+BACKEND_URL = "https://stryda-rag.preview.emergentagent.com/api/chat"
+SESSION_ID = "test_session_bug_fixes"
+USER_ID = "test_user"
 
 def test_chat_endpoint(query: str, session_id: str = None) -> Dict[str, Any]:
     """Test the chat endpoint with a specific query"""
