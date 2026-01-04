@@ -1,0 +1,23 @@
+{
+  "chunks_processed": 660,
+  "chunks_inserted": 660,
+  "chunks_skipped": 0,
+  "embeddings_generated": 660,
+  "product_functions_detected": {
+    "Pink Batts General": 317,
+    "Pink Batts Acoustic": 23,
+    "Pink Batts Ceiling": 100,
+    "Pink Batts Wall": 91,
+    "Pink Batts Underfloor": 88,
+    "Pink Batts Roof": 41
+  },
+  "trades_detected": {
+    "general_insulation": 317,
+    "acoustic_insulation": 23,
+    "ceiling_insulation": 100,
+    "wall_insulation": 91,
+    "underfloor_insulation": 88,
+    "roof_insulation": 41
+  },
+  "errors": []
+}
