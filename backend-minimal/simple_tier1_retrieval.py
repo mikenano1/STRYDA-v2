@@ -889,22 +889,6 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         cur.execute(sql, params)
                         results = cur.fetchall()
                     
-                    if other_sources:
-                        other_placeholders = ', '.join(['%s'] * len(other_sources))
-                        sql += f" OR source IN ({other_placeholders})"
-                        params.extend(other_sources)
-                    
-                    sql += """
-                          )
-                        ORDER BY similarity ASC
-                        LIMIT %s;
-                    """
-                    params.append(top_k * 2)
-                    
-                    print(f"   🔎 Brand Deep Dive + Trade filter: brand={brand_name}, trade={detected_trade}")
-                    cur.execute(sql, params)
-                    results = cur.fetchall()
-                    
                     # Fallback if trade filter returned no results
                     if not results:
                         print(f"   ⚠️ No results with trade filter '{detected_trade}', falling back to brand-only search")
