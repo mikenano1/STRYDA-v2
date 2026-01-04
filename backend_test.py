@@ -39,9 +39,11 @@ def make_chat_request(message: str) -> Dict[str, Any]:
         print(f"⏱️  Response time: {response_time:.2f}s")
         
         if response.status_code == 200:
+            response_json = response.json()
+            print(f"🔍 Raw response keys: {list(response_json.keys())}")
             return {
                 "success": True,
-                "data": response.json(),
+                "data": response_json,
                 "response_time": response_time,
                 "status_code": response.status_code
             }
