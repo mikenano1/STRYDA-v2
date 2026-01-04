@@ -242,6 +242,43 @@ def build_material_triage_question(available_groups: list, query_context: str = 
         'skip_text': "No preference - show me what's available at my merchant",
     }
 
+def check_insulation_triage_needed(query: str, brands_in_results: list) -> dict:
+    """
+    Check if material triage is needed for an insulation query.
+    Returns triage info dict or None if not needed.
+    """
+    query_lower = query.lower()
+    
+    # Skip triage if user already specified material or brand
+    material_pref = detect_material_preference(query)
+    if material_pref:
+        return None  # User already has a preference
+    
+    # Skip if user mentioned a merchant (they'll get filtered results)
+    merchant_keywords = ['placemakers', 'bunnings', 'carters', 'itm', 'mitre 10', 'mitre10']
+    if any(m in query_lower for m in merchant_keywords):
+        return None
+    
+    # Check what materials are represented in the results
+    materials_found = set()
+    for brand in brands_in_results:
+        brand_lower = brand.lower() if brand else ''
+        for material, info in INSULATION_MATERIAL_GROUPS.items():
+            for b in info['brands']:
+                if b.lower() in brand_lower or brand_lower in b.lower():
+                    materials_found.add(material)
+    
+    # If multiple materials found, triage is needed
+    if len(materials_found) >= 2:
+        return {
+            'triage_needed': True,
+            'type': 'material_triage',
+            'materials_available': list(materials_found),
+            'triage_question': build_material_triage_question(list(materials_found)),
+        }
+    
+    return None
+
 # =============================================================================
 # PRODUCT FUNCTION / TRADE DETECTION FOR RETRIEVAL
 # =============================================================================
