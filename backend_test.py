@@ -31,12 +31,13 @@ class PinkBattsRAGTester:
         if self.session:
             await self.session.close()
             
-    async def test_chat_endpoint(self, query: str, expected_trade: str, expected_brand: str, test_name: str):
-        """Test chat endpoint with trade-aware retrieval expectations"""
+    async def test_chat_endpoint(self, query: str, test_name: str, expected_keywords: list, expected_trade: str = None):
+        """Test chat endpoint with Pink Batts specific expectations"""
         print(f"\n🧪 Testing: {test_name}")
         print(f"Query: {query}")
-        print(f"Expected Trade: {expected_trade}")
-        print(f"Expected Brand: {expected_brand}")
+        print(f"Expected Keywords: {expected_keywords}")
+        if expected_trade:
+            print(f"Expected Trade: {expected_trade}")
         
         start_time = time.time()
         
@@ -44,7 +45,7 @@ class PinkBattsRAGTester:
             # Make request to chat endpoint
             payload = {
                 "message": query,
-                "session_id": f"test-trade-aware-{int(time.time())}"
+                "session_id": f"pink-batts-test-{int(time.time())}"
             }
             
             async with self.session.post(
@@ -59,51 +60,87 @@ class PinkBattsRAGTester:
                     data = await response.json()
                     
                     # Extract response details
-                    ai_response = data.get("answer", "")
+                    ai_response = data.get("answer", data.get("response", ""))
                     citations = data.get("citations", [])
                     sources_used = data.get("sources_used", [])
+                    intent = data.get("intent", "")
+                    model = data.get("model", "")
                     
-                    # Check for brand mention
-                    brand_mentioned = expected_brand.lower() in ai_response.lower()
+                    # Check for Pink Batts mentions
+                    pink_batts_mentioned = any(term.lower() in ai_response.lower() 
+                                             for term in ["pink batts", "pink batt", "pinkbatts"])
                     
-                    # Check for trade-specific keywords
-                    trade_keywords = self.get_trade_keywords(expected_trade)
-                    trade_keyword_count = sum(1 for keyword in trade_keywords if keyword.lower() in ai_response.lower())
+                    # Check for Pink Batts Deep Dive source
+                    deep_dive_source = any("pink batts deep dive" in str(source).lower() 
+                                         for source in sources_used)
+                    
+                    # Check for expected keywords
+                    keywords_found = [kw for kw in expected_keywords 
+                                    if kw.lower() in ai_response.lower()]
+                    
+                    # Check for R-values (important for insulation)
+                    r_values_found = []
+                    r_value_patterns = ["r-value", "r value", "r2.", "r3.", "r4.", "r5.", "r6."]
+                    for pattern in r_value_patterns:
+                        if pattern in ai_response.lower():
+                            r_values_found.append(pattern)
+                    
+                    # Check for trade detection
+                    trade_detected = expected_trade and expected_trade in str(data).lower() if expected_trade else None
                     
                     # Analyze response quality
                     response_length = len(ai_response)
                     
+                    # Determine test status
+                    status = "PASS"
+                    if not pink_batts_mentioned:
+                        status = "FAIL"
+                    elif len(keywords_found) < 2:
+                        status = "PARTIAL"
+                    elif response_length < 100:
+                        status = "PARTIAL"
+                    
                     result = {
                         "test_name": test_name,
                         "query": query,
-                        "expected_trade": expected_trade,
-                        "expected_brand": expected_brand,
-                        "status": "PASS" if brand_mentioned and trade_keyword_count > 0 else "FAIL",
+                        "status": status,
                         "response_time_ms": round(response_time, 1),
                         "response_length": response_length,
-                        "brand_mentioned": brand_mentioned,
-                        "trade_keyword_count": trade_keyword_count,
-                        "trade_keywords_found": [kw for kw in trade_keywords if kw.lower() in ai_response.lower()],
+                        "pink_batts_mentioned": pink_batts_mentioned,
+                        "deep_dive_source": deep_dive_source,
+                        "keywords_found": keywords_found,
+                        "expected_keywords": expected_keywords,
+                        "r_values_found": r_values_found,
+                        "trade_detected": trade_detected,
                         "sources_used": sources_used,
                         "citations_count": len(citations),
-                        "ai_response": ai_response[:200] + "..." if len(ai_response) > 200 else ai_response,
+                        "intent": intent,
+                        "model": model,
+                        "ai_response": ai_response[:300] + "..." if len(ai_response) > 300 else ai_response,
                         "full_response": ai_response
                     }
                     
                     print(f"✅ Status: {result['status']}")
                     print(f"⏱️  Response Time: {response_time:.1f}ms")
                     print(f"📝 Response Length: {response_length} chars")
-                    print(f"🏷️  Brand Mentioned: {brand_mentioned}")
-                    print(f"🔧 Trade Keywords Found: {trade_keyword_count} ({result['trade_keywords_found']})")
-                    print(f"📚 Sources Used: {len(sources_used)}")
+                    print(f"🏷️  Pink Batts Mentioned: {pink_batts_mentioned}")
+                    print(f"📚 Deep Dive Source: {deep_dive_source}")
+                    print(f"🔧 Keywords Found: {len(keywords_found)}/{len(expected_keywords)} ({keywords_found})")
+                    print(f"📊 R-values Found: {r_values_found}")
+                    print(f"🎯 Intent: {intent}")
+                    print(f"🤖 Model: {model}")
                     print(f"📖 Citations: {len(citations)}")
                     
-                    if result['status'] == "FAIL":
-                        print(f"❌ FAILURE REASONS:")
-                        if not brand_mentioned:
-                            print(f"   - Brand '{expected_brand}' not mentioned in response")
-                        if trade_keyword_count == 0:
-                            print(f"   - No trade-specific keywords found for '{expected_trade}'")
+                    if result['status'] in ["FAIL", "PARTIAL"]:
+                        print(f"⚠️  ISSUES:")
+                        if not pink_batts_mentioned:
+                            print(f"   - Pink Batts brand not mentioned in response")
+                        if len(keywords_found) < 2:
+                            print(f"   - Insufficient relevant keywords ({len(keywords_found)}/{len(expected_keywords)})")
+                        if response_length < 100:
+                            print(f"   - Response too short ({response_length} chars)")
+                        if not deep_dive_source:
+                            print(f"   - Pink Batts Deep Dive source not detected")
                     
                     self.test_results.append(result)
                     return result
