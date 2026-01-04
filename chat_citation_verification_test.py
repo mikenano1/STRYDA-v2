@@ -20,7 +20,7 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 # Backend URL from environment
-BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com"
+BACKEND_URL = "https://nzbuildtech.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # Test queries

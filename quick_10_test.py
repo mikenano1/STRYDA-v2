@@ -6,7 +6,7 @@ import json
 import time
 from datetime import datetime
 
-BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com"
+BACKEND_URL = "https://nzbuildtech.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # 2 queries per category (10 total)

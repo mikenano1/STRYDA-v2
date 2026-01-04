@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://trade-aware-rag.preview.emergentagent.com",
+  API_BASE: "https://nzbuildtech.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 

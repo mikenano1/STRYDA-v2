@@ -13,7 +13,7 @@ import time
 from typing import Dict, Any
 
 # Backend URL from frontend/.env
-BACKEND_URL = "https://trade-aware-rag.preview.emergentagent.com"
+BACKEND_URL = "https://nzbuildtech.preview.emergentagent.com"
 CHAT_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 def test_chat_endpoint(query: str, session_id: str = None) -> Dict[str, Any]:
