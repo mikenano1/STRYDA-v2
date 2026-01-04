@@ -949,6 +949,12 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     
                     # Check for specific brand mentions in query
                     brand_priority = [
+                        ('expol', 'Expol'),
+                        ('thermoslab', 'Expol'),
+                        ('tuff pods', 'Expol'),
+                        ('geofoam', 'Expol'),
+                        ('geoform', 'Expol'),
+                        ('styrodrain', 'Expol'),
                         ('autex', 'Autex'),
                         ('quietspace', 'Autex'),
                         ('vertiface', 'Autex'),
