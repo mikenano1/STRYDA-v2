@@ -1,0 +1,330 @@
+{
+  "timestamp": "2026-01-04T00:34:26.337290",
+  "total_files": 43,
+  "total_chunks": 277,
+  "chunker_stats": {
+    "pages_processed": 94,
+    "images_found": 10,
+    "images_captioned": 0,
+    "tables_extracted": 63,
+    "vision_errors": 0
+  },
+  "file_stats": [
+    {
+      "filename": "acoustic-bafflestack.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 6,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "acoustic-blanket.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 7,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "acoustic-panel-absorber.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 7,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "acoustic-wall-sections.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 9,
+      "trade": "wall_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "Ceiling-blanket-insulation.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 9,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "duct-insulation-liner.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 8,
+      "trade": "duct_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "Mammoth-and-Gib-Noise-Control-Systems.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 10,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "Mammoth-Material-Safety-Datasheet.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 6,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "martini-deco-deluxe.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 7,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "martini-deco-flex.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 6,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "martini-deco-quiet-board.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 8,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "martini-deco-quiet-panel.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 7,
+      "trade": "acoustic_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "Masonry-insulation .pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 6,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "skillion-roof-insulation.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 8,
+      "trade": "roof_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "underfloor-insulation-blanket.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 7,
+      "trade": "underfloor_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "underfloor-insulation-sections.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 8,
+      "trade": "underfloor_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "Wall-insulation-blanket.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 7,
+      "trade": "general_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "Wall-insulation-sections.pdf",
+      "folder": "1_Data_Sheets",
+      "chunks": 9,
+      "trade": "wall_insulation",
+      "doc_type": "Technical_Data_Sheet"
+    },
+    {
+      "filename": "Declare-Acoustic-Label-2026.pdf",
+      "folder": "2_Certificates",
+      "chunks": 0,
+      "trade": "acoustic_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "Declare-Label-2026.pdf",
+      "folder": "2_Certificates",
+      "chunks": 0,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "InZone-Insulation-EC-25-Cert-to-Apr-26-1.pdf",
+      "folder": "2_Certificates",
+      "chunks": 1,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "Mammoth-Appraisal-797.pdf",
+      "folder": "2_Certificates",
+      "chunks": 18,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "Mammoth-Appraisal-802.pdf",
+      "folder": "2_Certificates",
+      "chunks": 17,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "Mammoth-Lifetime-Warranty.pdf",
+      "folder": "2_Certificates",
+      "chunks": 3,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "Membership-Certificate-In-Zone-Industries-Ltd.pdf",
+      "folder": "2_Certificates",
+      "chunks": 1,
+      "trade": "general_insulation",
+      "doc_type": "Certification"
+    },
+    {
+      "filename": "dECO-Flex-Installation-Guide_NZ_22.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 4,
+      "trade": "acoustic_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Acoustic-Bafflestack-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 4,
+      "trade": "acoustic_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Acoustic-Blanket-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 5,
+      "trade": "acoustic_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Acoustic-Panel-Absorber-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 5,
+      "trade": "acoustic_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Acoustic-Sections-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 5,
+      "trade": "acoustic_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Carpark-Panel-Installation-Guidelines-_L.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 6,
+      "trade": "underfloor_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Ceiling-Blanket-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 10,
+      "trade": "ceiling_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Skillion-Roof-Installation-Guidelines.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 5,
+      "trade": "roof_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Underfloor-Blanket-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 5,
+      "trade": "underfloor_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Underfloor-Sections-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 5,
+      "trade": "underfloor_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Wall-Sections-Blankets-Installation-Guidelines-June-2024.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 5,
+      "trade": "wall_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Martini-dECO-Range-Installation-Guide.pdf",
+      "folder": "3_Install_Guides",
+      "chunks": 7,
+      "trade": "acoustic_insulation",
+      "doc_type": "Installation_Guide"
+    },
+    {
+      "filename": "Mammoth-Acoustic-Blanket-and-Wall-Sections-BPIR-Dec-v1.0.pdf",
+      "folder": "4_BPIR",
+      "chunks": 6,
+      "trade": "wall_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Mammoth-Acoustic-Panels-BPIR-Dec-v1.1.pdf",
+      "folder": "4_BPIR",
+      "chunks": 7,
+      "trade": "acoustic_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Mammoth-Bafflestack-BPIR-Dec-v1.0.pdf",
+      "folder": "4_BPIR",
+      "chunks": 5,
+      "trade": "acoustic_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Mammoth-Carpark-Underfloor-BPIR-Dec-v1.0.pdf",
+      "folder": "4_BPIR",
+      "chunks": 6,
+      "trade": "underfloor_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Mammoth-Ceiling-Wall-and-Underfloor-Insulation-BPIR-Dec-v1.0.pdf",
+      "folder": "4_BPIR",
+      "chunks": 6,
+      "trade": "underfloor_insulation",
+      "doc_type": "BPIR_Declaration"
+    },
+    {
+      "filename": "Mammoth-Duct-Liner-BPIR-Dec-v1.0.pdf",
+      "folder": "4_BPIR",
+      "chunks": 6,
+      "trade": "duct_insulation",
+      "doc_type": "BPIR_Declaration"
+    }
+  ],
+  "trade_distribution": {
+    "acoustic_insulation": 100,
+    "wall_insulation": 29,
+    "general_insulation": 68,
+    "duct_insulation": 14,
+    "roof_insulation": 13,
+    "underfloor_insulation": 43,
+    "ceiling_insulation": 10
+  },
+  "doc_type_distribution": {
+    "Technical_Data_Sheet": 135,
+    "Certification": 40,
+    "Installation_Guide": 66,
+    "BPIR_Declaration": 36
+  }
+}
