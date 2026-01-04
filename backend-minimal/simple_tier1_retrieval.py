@@ -160,6 +160,89 @@ RETAILER_BRAND_MAP['itm'] = RETAILER_BRAND_MAP.get('itm', [])
 ALL_KNOWN_BRANDS = list(BRAND_RETAILER_MAP.keys())
 
 # =============================================================================
+# ATTRIBUTE FILTER PROTOCOL - MATERIAL CLASSIFICATION
+# =============================================================================
+# Defines product categories by differentiating attributes (e.g., material type)
+# Used for "Pre-Answer Triage" to narrow options before listing products
+
+INSULATION_MATERIAL_GROUPS = {
+    'glass_wool': {
+        'display_name': 'Glass Wool',
+        'brands': ['Pink Batts', 'Earthwool', 'Bradford', 'Knauf'],
+        'description': 'Traditional glass fibre insulation - lightweight, cost-effective',
+        'keywords': ['glass wool', 'glass fibre', 'pink batts', 'earthwool', 'bradford', 'knauf'],
+    },
+    'polyester': {
+        'display_name': 'Polyester', 
+        'brands': ['Mammoth', 'GreenStuf', 'Autex'],
+        'description': 'Polyester fibre insulation - no itch, allergy-friendly, moisture resistant',
+        'keywords': ['polyester', 'mammoth', 'greenstuf', 'autex', 'no itch', 'allergy'],
+    },
+    'polystyrene': {
+        'display_name': 'Polystyrene/EPS',
+        'brands': ['Expol'],
+        'description': 'Rigid foam boards - high R-value per thickness, moisture resistant',
+        'keywords': ['polystyrene', 'eps', 'expol', 'foam board', 'rigid'],
+    },
+}
+
+# Reverse lookup: Brand -> Material Group
+BRAND_TO_MATERIAL = {}
+for material, info in INSULATION_MATERIAL_GROUPS.items():
+    for brand in info['brands']:
+        BRAND_TO_MATERIAL[brand.lower()] = material
+
+def detect_material_preference(query: str) -> str:
+    """Detect if user has specified a material preference in their query"""
+    query_lower = query.lower()
+    
+    for material, info in INSULATION_MATERIAL_GROUPS.items():
+        # Check for material keywords
+        if any(kw in query_lower for kw in info['keywords']):
+            return material
+        # Check for brand names (implies material preference)
+        for brand in info['brands']:
+            if brand.lower() in query_lower:
+                return material
+    
+    return None  # No preference detected
+
+def get_available_material_groups(brands_in_db: list) -> list:
+    """Get which material groups have brands available in the database"""
+    available_groups = set()
+    for brand in brands_in_db:
+        brand_lower = brand.lower()
+        if brand_lower in BRAND_TO_MATERIAL:
+            available_groups.add(BRAND_TO_MATERIAL[brand_lower])
+    return list(available_groups)
+
+def build_material_triage_question(available_groups: list, query_context: str = '') -> dict:
+    """Build the triage question for material selection"""
+    if len(available_groups) < 2:
+        return None  # No triage needed if only one material type
+    
+    options = []
+    for group in available_groups:
+        info = INSULATION_MATERIAL_GROUPS.get(group, {})
+        brands = info.get('brands', [])
+        # Filter to only brands we actually have
+        options.append({
+            'material': group,
+            'display_name': info.get('display_name', group),
+            'brands': brands[:3],  # Max 3 example brands
+            'description': info.get('description', ''),
+        })
+    
+    return {
+        'type': 'material_triage',
+        'category': 'insulation',
+        'question': "I have compliant insulation options in multiple material types. Do you have a material preference?",
+        'options': options,
+        'allow_skip': True,
+        'skip_text': "No preference - show me what's available at my merchant",
+    }
+
+# =============================================================================
 # PRODUCT FUNCTION / TRADE DETECTION FOR RETRIEVAL
 # =============================================================================
 # Detects product-specific keywords to filter by trade
