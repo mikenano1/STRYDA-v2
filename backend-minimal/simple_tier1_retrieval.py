@@ -436,6 +436,34 @@ TRADE_DETECTION_KEYWORDS = {
     'expol_general': [
         'expol tech guide', 'expol technical guide', 'expol range'
     ],
+    # KINGSPAN TRADES (Multi-Category)
+    'wall_panel': [
+        'wall panel', 'architectural panel', 'k-rock', 'krock', 'rockspan',
+        'firemaster', 'trapezoidal wall', 'insulated wall panel'
+    ],
+    'roof_panel': [
+        'roof panel', 'trapezoidal roof', 'fivecrown', 'five crown',
+        'insulated roof panel', 'standing seam'
+    ],
+    'coldstore_panel': [
+        'coldstore', 'cold store', 'cold room', 'coolroom', 'freezer panel',
+        'refrigerated panel', 'controlled environment'
+    ],
+    'facade_panel': [
+        'facade panel', 'evolution facade', 'panelised facade', 'rainscreen'
+    ],
+    'fire_rated_panel': [
+        'fire rated panel', 'firemaster', 'fire wall', 'fire barrier'
+    ],
+    'soffit_insulation': [
+        'soffit board', 'soffit insulation', 'k10', 'underside insulation'
+    ],
+    'floor_insulation': [
+        'floor insulation', 'k3 floorboard', 'underfloor board'
+    ],
+    'below_grade_insulation': [
+        'below grade', 'greenguard', 'basement insulation', 'foundation board'
+    ],
 }
 
 def detect_trade_from_query(query: str) -> Optional[str]:
