@@ -1386,8 +1386,8 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             trade_meta = result.get('trade')
             status_meta = result.get('status')
             
-            # Apply metadata-aware scoring
-            final_score = score_with_metadata(base_score, doc_type, priority, intent)
+            # Apply metadata-aware scoring (now includes trade for better compliance/product differentiation)
+            final_score = score_with_metadata(base_score, doc_type, priority, intent, trade_meta)
             
             formatted_result = {
                 'id': str(result['id']),
