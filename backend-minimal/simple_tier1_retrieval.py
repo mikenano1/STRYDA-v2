@@ -1537,30 +1537,96 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             has_substitution = any(term in query_lower for term in substitution_keywords)
             has_amendment_question = any(term in query_lower for term in amendment_keywords)
             
+            # MATERIAL EQUIVALENCE PROTOCOL (Bug Fix: Structural Downgrade Detection)
+            # Before triggering Minor Variation advice, check if this is a structural downgrade
+            # Hierarchy (strongest to weakest): LVL/Glulam > SG12 > SG10 > SG8 > SG6
+            structural_grades = {
+                'lvl': 100, 'laminated veneer': 100, 'j-frame': 100, 'jframe': 100, 'j frame': 100,
+                'glulam': 95, 'glue-lam': 95, 'glue laminated': 95,
+                'hyspan': 95, 'hyjoist': 95,
+                'sg12': 80, 'sg 12': 80,
+                'sg10': 70, 'sg 10': 70,
+                'sg8': 60, 'sg 8': 60,
+                'sg6': 50, 'sg 6': 50,
+                'no. 1 framing': 60, 'no.1 framing': 60, '#1 framing': 60,
+            }
+            
+            # Detect if query mentions two different structural grades
+            detected_grades = []
+            for grade, strength in structural_grades.items():
+                if grade in query_lower:
+                    detected_grades.append((grade, strength))
+            
+            is_structural_downgrade = False
+            downgrade_warning = None
+            
+            if len(detected_grades) >= 2:
+                # Sort by strength (higher first)
+                detected_grades.sort(key=lambda x: x[1], reverse=True)
+                higher_grade = detected_grades[0]
+                lower_grade = detected_grades[1]
+                
+                # Check if user is proposing to go from higher to lower
+                if higher_grade[1] > lower_grade[1]:
+                    is_structural_downgrade = True
+                    print(f"   ⚠️ STRUCTURAL DOWNGRADE DETECTED: {higher_grade[0].upper()} → {lower_grade[0].upper()}")
+                    downgrade_warning = f"""
+⚠️ STRUCTURAL EQUIVALENCE WARNING:
+This is NOT a simple product substitution. {higher_grade[0].upper()} is a {'engineered timber product (LVL/Glulam)' if higher_grade[1] >= 95 else 'higher grade timber'} which is STRONGER than {lower_grade[0].upper()}.
+
+Swapping from {higher_grade[0].upper()} to {lower_grade[0].upper()} is a STRUCTURAL DOWNGRADE that may:
+• Reduce load-bearing capacity
+• Require larger member sizes to achieve same spans
+• NOT meet the original span table requirements
+
+ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables) to confirm if {lower_grade[0].upper()} can achieve the same spans at the specified centres. This likely requires an ENGINEER'S REVIEW, not just a Minor Variation.
+"""
+            
             if has_substitution or has_amendment_question:
-                print(f"   📋 PRODUCT SUBSTITUTION: Injecting MBIE Minor Variations guidance...")
-                cur.execute("""
-                    SELECT id, source, page, content, section, clause, snippet,
-                           doc_type, trade, status, priority, phase, brand_name,
-                           0.10 as similarity  -- Very high priority injection
-                    FROM documents 
-                    WHERE source = 'MBIE-Minor-Variation-Guidance'
-                      AND (
-                        content ILIKE '%minor variation%'
-                        OR content ILIKE '%amendment%'
-                        OR content ILIKE '%substitution%'
-                        OR content ILIKE '%changing supplier%'
-                        OR content ILIKE '%swapping%'
-                        OR content ILIKE '%example%'
-                      )
-                    ORDER BY page
-                    LIMIT 7;
-                """)
-                mbie_results = cur.fetchall()
-                if mbie_results:
-                    # Prepend MBIE results to ensure they appear first
-                    results = list(mbie_results) + list(results)
-                    print(f"   ✅ Injected {len(mbie_results)} MBIE Minor Variations chunks")
+                if is_structural_downgrade:
+                    # Structural downgrade: Inject span table content + warning, NOT minor variation advice
+                    print(f"   🚨 BLOCKING Minor Variation injection - Structural downgrade detected")
+                    print(f"   📊 Injecting span table / structural guidance instead...")
+                    
+                    # Inject NZS 3604 span tables and structural content
+                    cur.execute("""
+                        SELECT id, source, page, content, section, clause, snippet,
+                               doc_type, trade, status, priority, phase, brand_name,
+                               0.08 as similarity  -- High priority injection
+                        FROM documents 
+                        WHERE (source ILIKE '%NZS-3604%' OR source ILIKE '%3604%')
+                          AND (content ILIKE '%span%' OR content ILIKE '%table%' OR content ILIKE '%bearer%' OR content ILIKE '%joist%')
+                        LIMIT 5;
+                    """)
+                    span_results = cur.fetchall()
+                    if span_results:
+                        results = list(span_results) + list(results)
+                        print(f"   ✅ Injected {len(span_results)} NZS 3604 span table chunks")
+                else:
+                    # NOT a structural downgrade - safe to suggest Minor Variation
+                    print(f"   📋 PRODUCT SUBSTITUTION: Injecting MBIE Minor Variations guidance...")
+                    cur.execute("""
+                        SELECT id, source, page, content, section, clause, snippet,
+                               doc_type, trade, status, priority, phase, brand_name,
+                               0.10 as similarity  -- Very high priority injection
+                        FROM documents 
+                        WHERE source = 'MBIE-Minor-Variation-Guidance'
+                          AND (
+                            content ILIKE '%minor variation%'
+                            OR content ILIKE '%amendment%'
+                            OR content ILIKE '%substitution%'
+                            OR content ILIKE '%changing supplier%'
+                            OR content ILIKE '%swapping%'
+                            OR content ILIKE '%example%'
+                          )
+                        ORDER BY page
+                        LIMIT 7;
+                    """)
+                    mbie_results = cur.fetchall()
+                    if mbie_results:
+                        # Prepend MBIE results to ensure they appear first
+                        results = list(mbie_results) + list(results)
+                        print(f"   ✅ Injected {len(mbie_results)} MBIE Minor Variations chunks")
         
         # Return connection to pool
         return_db_connection(conn)
