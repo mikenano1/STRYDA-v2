@@ -977,6 +977,14 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
             else:
                 score += 0.02  # Base bonus for any compliance doc
         
+        # MBIE Guidance documents (NEW - June 2025)
+        # These are authoritative MBIE sources (Minor Variations, Schedule 1, Tolerances)
+        elif doc_type == "MBIE_Guidance":
+            if trade == "mbie_guidance":
+                score += 0.10  # HIGHEST bonus - authoritative government guidance
+            else:
+                score += 0.08  # Strong bonus for any MBIE doc
+        
         # Legacy doc_type handling (for backwards compatibility)
         elif doc_type == "acceptable_solution_current":
             score += 0.10  # Strong bonus for current AS
