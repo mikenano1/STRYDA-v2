@@ -47,6 +47,10 @@ export async function chatAPI(request: ChatRequest): Promise<ChatResponse> {
     session: request.session_id.substring(0, 8) + '...'
   });
 
+  // Set up timeout controller - 60 seconds for complex queries
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout
+
   try {
     const response = await fetch(targetUrl, {
       method: 'POST',
@@ -54,7 +58,10 @@ export async function chatAPI(request: ChatRequest): Promise<ChatResponse> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(request),
+      signal: controller.signal,
     });
+
+    clearTimeout(timeoutId);
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -80,7 +87,15 @@ export async function chatAPI(request: ChatRequest): Promise<ChatResponse> {
 
     return finalResponse;
 
-  } catch (error) {
+  } catch (error: any) {
+    clearTimeout(timeoutId);
+    
+    // Handle timeout specifically
+    if (error.name === 'AbortError') {
+      console.error('⏱️ Chat API Timeout: Request took too long');
+      throw new Error('Request timeout - complex queries may take longer. Please try again.');
+    }
+    
     console.error('❌ Chat API Error:', error);
     throw error;
   }
