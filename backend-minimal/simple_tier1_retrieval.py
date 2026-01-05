@@ -858,6 +858,15 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('Kingspan Deep Dive')
     
+    # J&L Duke - Engineered Timber (TriBoard, JFrame) - NEW June 2025
+    if any(term in query_lower for term in [
+        'j&l duke', 'jl duke', 'j l duke', 'duke timber',
+        'triboard', 'tri board', 'tri-board',
+        'jframe', 'j-frame', 'j frame',
+        'tgv panel', 'tgv lining'
+    ]):
+        sources.append('J&L Duke')  # Will match brand_name
+    
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
         'james hardie', 'hardie', 'linea', 'weatherboard',
