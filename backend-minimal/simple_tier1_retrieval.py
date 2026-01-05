@@ -1627,6 +1627,79 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                         # Prepend MBIE results to ensure they appear first
                         results = list(mbie_results) + list(results)
                         print(f"   ✅ Injected {len(mbie_results)} MBIE Minor Variations chunks")
+            
+            # DUAL-FETCH PROTOCOL (Comparison Queries)
+            # When user asks to compare two products/brands, MUST fetch data for BOTH
+            comparison_keywords = ['compare', 'comparison', 'versus', ' vs ', ' vs.', 'difference between',
+                                  'which is better', 'better than', 'or should i use', 'instead of']
+            
+            is_comparison_query = any(term in query_lower for term in comparison_keywords)
+            
+            if is_comparison_query:
+                print(f"   🔀 COMPARISON QUERY DETECTED - Initiating Dual-Fetch Protocol...")
+                
+                # Known brand/product patterns to detect
+                brand_patterns = {
+                    # Timber/Engineered
+                    'j-frame': ('J&L Duke', "source LIKE 'J&L Duke%%'"),
+                    'jframe': ('J&L Duke', "source LIKE 'J&L Duke%%'"),
+                    'j frame': ('J&L Duke', "source LIKE 'J&L Duke%%'"),
+                    'triboard': ('J&L Duke', "source LIKE 'J&L Duke%%'"),
+                    'red stag': ('Red Stag', "source LIKE 'Red Stag%%' OR brand_name = 'Red Stag'"),
+                    'redstag': ('Red Stag', "source LIKE 'Red Stag%%' OR brand_name = 'Red Stag'"),
+                    'chh': ('CHH Woodproducts', "source LIKE 'CHH%%' OR brand_name = 'CHH Woodproducts'"),
+                    'carter holt': ('CHH Woodproducts', "source LIKE 'CHH%%' OR brand_name = 'CHH Woodproducts'"),
+                    'abodo': ('Abodo Wood', "brand_name = 'Abodo Wood'"),
+                    # Insulation
+                    'pink batts': ('Pink Batts', "source LIKE 'Pink Batts%%'"),
+                    'greenstuf': ('GreenStuf', "source LIKE 'GreenStuf%%' OR brand_name = 'GreenStuf'"),
+                    'autex': ('Autex', "source LIKE 'Autex%%' OR brand_name = 'Autex'"),
+                    'expol': ('Expol', "source LIKE 'Expol%%' OR brand_name = 'Expol'"),
+                    'kingspan': ('Kingspan', "source LIKE 'Kingspan%%' OR brand_name = 'Kingspan'"),
+                    # Cladding
+                    'james hardie': ('James Hardie', "source LIKE 'James Hardie%%'"),
+                    'hardie': ('James Hardie', "source LIKE 'James Hardie%%'"),
+                    # Compliance
+                    'nzs 3604': ('NZS 3604', "source LIKE 'NZS%%3604%%'"),
+                    '3604': ('NZS 3604', "source LIKE 'NZS%%3604%%'"),
+                    'e2/as1': ('E2/AS1', "source LIKE 'E2%%AS1%%'"),
+                    'f4/as1': ('F4/AS1', "source LIKE 'F4%%AS1%%'"),
+                }
+                
+                # Detect which brands are mentioned
+                detected_entities = []
+                for pattern, (brand_name, sql_filter) in brand_patterns.items():
+                    if pattern in query_lower and brand_name not in [e[0] for e in detected_entities]:
+                        detected_entities.append((brand_name, sql_filter))
+                
+                if len(detected_entities) >= 2:
+                    print(f"   📊 Dual-Fetch: Found {len(detected_entities)} entities: {[e[0] for e in detected_entities]}")
+                    
+                    # Fetch data for EACH entity separately
+                    comparison_results = []
+                    for brand_name, sql_filter in detected_entities[:3]:  # Max 3 entities
+                        cur.execute(f"""
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE ({sql_filter})
+                              AND embedding IS NOT NULL
+                            ORDER BY similarity ASC
+                            LIMIT 5;
+                        """, (query_embedding,))
+                        entity_results = cur.fetchall()
+                        
+                        if entity_results:
+                            comparison_results.extend(entity_results)
+                            print(f"   ✅ Fetched {len(entity_results)} chunks for {brand_name}")
+                        else:
+                            print(f"   ⚠️ No data found for {brand_name}")
+                    
+                    if comparison_results:
+                        # Prepend comparison results to ensure both entities are represented
+                        results = list(comparison_results) + list(results)
+                        print(f"   ✅ Dual-Fetch complete: {len(comparison_results)} total comparison chunks")
         
         # Return connection to pool
         return_db_connection(conn)
