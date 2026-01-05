@@ -675,6 +675,25 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('F4-AS1_Amendment-6-2021')  # Direct DB source name
     
+    # MBIE Guidance Documents (NEW - June 2025)
+    # Minor Variations, Schedule 1 Exemptions, Tolerances Guide
+    # These are authoritative MBIE sources for consent process questions
+    if any(term in query_lower for term in [
+        # Minor Variations
+        'minor variation', 'minor change', 'vary consent', 'variation to consent',
+        'change to plans', 'change plans', 'amend consent', 'consent amendment',
+        'modify plans', 'alter plans', 'deviate from plans', 'differ from consent',
+        # Schedule 1 Exemptions (Building Work Not Requiring Consent)
+        'schedule 1', 'schedule one', 'exempt', 'exemption', 'not require consent',
+        'consent not required', 'without consent', 'no consent needed', 'building work exempt',
+        'do i need consent', 'need a consent', 'require consent', 'consent required',
+        # Tolerances Guide
+        'tolerance', 'tolerances', 'workmanship', 'acceptable deviation',
+        'construction tolerance', 'building tolerance', 'how accurate', 'accuracy'
+    ]):
+        # Search using trade filter since source names may vary
+        sources.append('MBIE')  # Will match brand_name = 'MBIE'
+    
     # NZ Building Code - General building code sections
     # Also includes F4 (Safety from Falling) for deck/balustrade questions
     if any(term in query_lower for term in [
@@ -690,7 +709,7 @@ def canonical_source_map(query: str) -> List[str]:
         'c1', 'c2', 'c3', 'c4', 'fire', 'fire rating', 'fire stopping',
         'g12', 'g13', 'water', 'sanitary', 'plumbing', 'hot water',
         'building code', 'nzbc',
-        # Consent process and variations
+        # Consent process and variations (also search building-code for general info)
         'building consent', 'consent process', 'minor variation', 'amendment',
         'change to plans', 'approved plans', 'consent amendment', 'vary consent',
         'variation to consent', 'modify consent', 'alter plans'
