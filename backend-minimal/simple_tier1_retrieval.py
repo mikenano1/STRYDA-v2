@@ -867,6 +867,17 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('J&L Duke')  # Will match brand_name
     
+    # Abodo Wood - Timber Cladding, Decking, Screening (NEW June 2025)
+    if any(term in query_lower for term in [
+        'abodo', 'abodo wood', 'vulcan', 'vulcan timber', 'vulcan cladding',
+        'vulcan decking', 'vulcan screening', 'vulcan shingles', 'vulcan panelling',
+        'thermally modified', 'thermally modified timber', 'tmt',
+        'timber cladding', 'timber weatherboard', 'timber decking', 'timber screening',
+        'sioox', 'protector oil', 'char oil', 'iron vitriol', 'rejuvenator',
+        'rhombus clip', 'rhombus batten'
+    ]):
+        sources.append('Abodo Wood')  # Will match brand_name
+    
     # James Hardie - Cladding/Exterior (Big Brain Integration)
     if any(term in query_lower for term in [
         'james hardie', 'hardie', 'linea', 'weatherboard',
