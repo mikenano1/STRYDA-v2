@@ -1675,6 +1675,10 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                 if len(detected_entities) >= 2:
                     print(f"   📊 Dual-Fetch: Found {len(detected_entities)} entities: {[e[0] for e in detected_entities]}")
                     
+                    # Column names matching the SELECT statement
+                    columns = ['id', 'source', 'page', 'content', 'section', 'clause', 'snippet',
+                              'doc_type', 'trade', 'status', 'priority', 'phase', 'brand_name', 'similarity']
+                    
                     # Fetch data for EACH entity separately
                     comparison_results = []
                     for brand_name, sql_filter in detected_entities[:3]:  # Max 3 entities
@@ -1693,26 +1697,27 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                             entity_results = cur.fetchall()
                             
                             if entity_results:
-                                # IMPORTANT: Mark these as comparison results with boosted similarity
-                                # so they don't get sorted to the bottom
-                                boosted_results = []
+                                # Boost similarity by -0.2 (lower = better in pgvector)
+                                # and convert to dict format
                                 for r in entity_results:
-                                    # Convert tuple to list to modify similarity value
-                                    r_list = list(r)
-                                    # Boost similarity by subtracting 0.05 (lower = better in pgvector)
-                                    r_list[-1] = max(0.01, r_list[-1] - 0.2)  
-                                    boosted_results.append(tuple(r_list))
-                                comparison_results.extend(boosted_results)
+                                    # Results from DictCursor are already dict-like
+                                    boosted_dict = dict(r)
+                                    boosted_dict['similarity'] = max(0.01, boosted_dict['similarity'] - 0.2)
+                                    comparison_results.append(boosted_dict)
                                 print(f"   ✅ Fetched {len(entity_results)} chunks for {brand_name}")
                             else:
                                 print(f"   ⚠️ No data found for {brand_name}")
                         except Exception as e:
                             print(f"   ❌ Error fetching {brand_name}: {e}")
+                            import traceback
+                            traceback.print_exc()
                     
                     if comparison_results:
+                        # Convert existing results to dicts too if they're DictRow objects
+                        results_as_dicts = [dict(r) for r in results]
                         # Prepend comparison results to ensure both entities are represented
-                        results = list(comparison_results) + list(results)
-                        print(f"   ✅ Dual-Fetch complete: {len(comparison_results)} total comparison chunks (boosted)")
+                        results = comparison_results + results_as_dicts
+                        print(f"   ✅ Dual-Fetch complete: {len(comparison_results)} chunks (boosted), total {len(results)}")
         
         # Return connection to pool
         return_db_connection(conn)
