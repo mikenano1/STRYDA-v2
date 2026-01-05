@@ -829,7 +829,7 @@ def canonical_source_map(query: str) -> List[str]:
     # Expol - Polystyrene/EPS Products (Brand Deep Dive)
     # Multi-category: Structure (slab/foundation), Enclosure (drainage), Interiors (insulation)
     if any(term in query_lower for term in [
-        'expol', 'thermoslab', 'slab x200', 'max edge', 'platinum board',
+        'expol', 'thermoslab', 'thermaslab', 'slab x200', 'max edge', 'platinum board',
         'extruded polystyrene', 'xps', 'eps', 'fastline', 'imperia panel',
         'styrodrain', 'tuff pods', 'geofoam', 'geoform', 'lightweight fill',
         'polystyrene insulation', 'foam board', 'rigid insulation',
@@ -839,6 +839,23 @@ def canonical_source_map(query: str) -> List[str]:
         'underfloor insulation', 'garage door insulation'
     ]):
         sources.append('Expol Deep Dive')
+    
+    # CHEMICAL COMPATIBILITY RULE: PVC Cables + Polystyrene = WireGuard Required
+    # Bug Fix #1: PVC cables react with polystyrene (plasticiser migration)
+    # When user mentions cables/wiring + polystyrene/expol, MUST trigger WireGuard content
+    cable_keywords = ['cable', 'cabling', 'wiring', 'wire', 'electrical', 'pvc', 'conduit']
+    polystyrene_keywords = ['polystyrene', 'eps', 'xps', 'expol', 'thermoslab', 'thermaslab', 
+                            'underfloor insulation', 'foam insulation', 'styrofoam']
+    
+    has_cable = any(term in query_lower for term in cable_keywords)
+    has_polystyrene = any(term in query_lower for term in polystyrene_keywords)
+    
+    if has_cable and has_polystyrene:
+        # Force Expol Deep Dive retrieval for WireGuard content
+        if 'Expol Deep Dive' not in sources:
+            sources.append('Expol Deep Dive')
+        # Log this association rule trigger
+        print(f"   ⚠️ CHEMICAL COMPATIBILITY RULE TRIGGERED: Cable + Polystyrene → WireGuard search")
     
     # Kingspan - Insulated Panels & Insulation Boards (Brand Deep Dive)
     # Multi-category: Enclosure (panels), Interiors (insulation boards)
