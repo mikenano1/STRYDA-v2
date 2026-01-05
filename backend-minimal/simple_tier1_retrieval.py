@@ -1675,6 +1675,9 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                 if len(detected_entities) >= 2:
                     print(f"   📊 Dual-Fetch: Found {len(detected_entities)} entities: {[e[0] for e in detected_entities]}")
                     
+                    # Convert embedding to string for PostgreSQL vector comparison
+                    query_embedding_str = str(query_embedding)
+                    
                     # Fetch data for EACH entity separately
                     comparison_results = []
                     for brand_name, sql_filter in detected_entities[:3]:  # Max 3 entities
@@ -1687,7 +1690,7 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                               AND embedding IS NOT NULL
                             ORDER BY similarity ASC
                             LIMIT 5;
-                        """, (query_embedding,))
+                        """, (query_embedding_str,))
                         entity_results = cur.fetchall()
                         
                         if entity_results:
