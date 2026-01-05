@@ -1494,6 +1494,34 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             
             search_time = (time.time() - search_start) * 1000
             print(f"⚡ Vector search completed in {search_time:.0f}ms, found {len(results)} chunks")
+            
+            # CHEMICAL COMPATIBILITY INJECTION
+            # When cables + polystyrene are mentioned, inject WireGuard content directly
+            query_lower = query.lower()
+            cable_keywords = ['cable', 'cabling', 'wiring', 'wire', 'electrical', 'pvc', 'conduit']
+            polystyrene_keywords = ['polystyrene', 'eps', 'xps', 'expol', 'thermoslab', 'thermaslab', 
+                                    'underfloor insulation', 'foam insulation', 'styrofoam']
+            
+            has_cable = any(term in query_lower for term in cable_keywords)
+            has_polystyrene = any(term in query_lower for term in polystyrene_keywords)
+            
+            if has_cable and has_polystyrene:
+                print(f"   🔬 CHEMICAL COMPATIBILITY: Injecting WireGuard content...")
+                cur.execute("""
+                    SELECT id, source, page, content, section, clause, snippet,
+                           doc_type, trade, status, priority, phase, brand_name,
+                           0.15 as similarity  -- High priority injection
+                    FROM documents 
+                    WHERE (content ILIKE '%wireguard%' OR content ILIKE '%wire guard%')
+                      AND (source ILIKE '%expol%' OR brand_name = 'Expol')
+                      AND (content ILIKE '%plasticiser%' OR content ILIKE '%electrical%' OR content ILIKE '%cable%')
+                    LIMIT 5;
+                """)
+                wireguard_results = cur.fetchall()
+                if wireguard_results:
+                    # Prepend WireGuard results to ensure they appear first
+                    results = list(wireguard_results) + list(results)
+                    print(f"   ✅ Injected {len(wireguard_results)} WireGuard chunks")
         
         # Return connection to pool
         return_db_connection(conn)
