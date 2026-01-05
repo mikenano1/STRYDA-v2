@@ -1382,7 +1382,7 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         """
                         params.append(top_k * 2)
                         
-                        print(f"   🔎 MBIE Guidance search: brand_name='MBIE' + other sources")
+                        print(f"   🔎 MBIE Guidance search: brand_name='MBIE' + {len(other_sources)} other sources")
                         cur.execute(sql, params)
                         results = cur.fetchall()
                     else:
@@ -1401,13 +1401,13 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                             ORDER BY similarity ASC
                             LIMIT %s;
                         """
-                    
-                    # Bind parameters: embedding, then each source individually, then limit
-                    params = [query_embedding] + target_sources + [top_k * 2]
-                    
-                    print(f"   🔎 Searching {len(target_sources)} sources: {target_sources}")
-                    cur.execute(sql, params)
-                    results = cur.fetchall()
+                        
+                        # Bind parameters: embedding, then each source individually, then limit
+                        params = [query_embedding] + target_sources + [top_k * 2]
+                        
+                        print(f"   🔎 Searching {len(target_sources)} sources: {target_sources}")
+                        cur.execute(sql, params)
+                        results = cur.fetchall()
                 
                 # FALLBACK LOGIC: If filtered search returns 0 results, retry with global search + metadata
                 if len(results) == 0:
