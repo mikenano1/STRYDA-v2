@@ -1361,23 +1361,33 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     cur.execute(sql, params)
                     results = cur.fetchall()
                 else:
-                    # Check for MBIE guidance search (special handling)
+                    # Check for special brand-based searches (MBIE, J&L Duke, etc.)
                     has_mbie = 'MBIE' in target_sources
-                    other_sources = [s for s in target_sources if s != 'MBIE']
+                    has_jl_duke = 'J&L Duke' in target_sources
+                    other_sources = [s for s in target_sources if s not in ('MBIE', 'J&L Duke')]
                     
-                    if has_mbie:
-                        # MBIE guidance documents use brand_name = 'MBIE'
-                        sql = """
+                    if has_mbie or has_jl_duke:
+                        # Brand-based search (uses brand_name field)
+                        brand_conditions = []
+                        params = [query_embedding]
+                        
+                        if has_mbie:
+                            brand_conditions.append("brand_name = 'MBIE'")
+                            brand_conditions.append("source LIKE 'MBIE%%'")
+                        
+                        if has_jl_duke:
+                            brand_conditions.append("brand_name = 'J&L Duke'")
+                            brand_conditions.append("source LIKE 'J&L Duke%%'")
+                        
+                        sql = f"""
                             SELECT id, source, page, content, section, clause, snippet,
                                    doc_type, trade, status, priority, phase, brand_name,
                                    (embedding <=> %s::vector) as similarity
                             FROM documents 
                             WHERE embedding IS NOT NULL
                               AND (
-                                brand_name = 'MBIE'
-                                OR source LIKE 'MBIE%%'
+                                {' OR '.join(brand_conditions)}
                         """
-                        params = [query_embedding]
                         
                         if other_sources:
                             other_placeholders = ', '.join(['%s'] * len(other_sources))
@@ -1391,7 +1401,10 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         """
                         params.append(top_k * 2)
                         
-                        print(f"   🔎 MBIE Guidance search: brand_name='MBIE' + {len(other_sources)} other sources")
+                        brands_str = []
+                        if has_mbie: brands_str.append('MBIE')
+                        if has_jl_duke: brands_str.append('J&L Duke')
+                        print(f"   🔎 Brand search: {', '.join(brands_str)} + {len(other_sources)} other sources")
                         cur.execute(sql, params)
                         results = cur.fetchall()
                     else:
