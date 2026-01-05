@@ -1522,6 +1522,45 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     # Prepend WireGuard results to ensure they appear first
                     results = list(wireguard_results) + list(results)
                     print(f"   ✅ Injected {len(wireguard_results)} WireGuard chunks")
+            
+            # PRODUCT SUBSTITUTION / MINOR VARIATION INJECTION
+            # When user asks about swapping/substituting/changing brands, inject MBIE Minor Variations guidance
+            # Rule: If products have same performance specs (R-value, durability, use), it's a Minor Variation, not Amendment
+            substitution_keywords = ['swap', 'swapping', 'substitute', 'substituting', 'substitution',
+                                    'change brand', 'different brand', 'alternative brand', 'instead of',
+                                    'replace with', 'replacing', 'switch to', 'switching', 
+                                    'use another', 'another product', 'equivalent product',
+                                    'comparable product', 'same r-value', 'same performance']
+            amendment_keywords = ['amendment', 'consent amendment', 'building consent', 'variation', 
+                                 'minor variation', 'major amendment']
+            
+            has_substitution = any(term in query_lower for term in substitution_keywords)
+            has_amendment_question = any(term in query_lower for term in amendment_keywords)
+            
+            if has_substitution or has_amendment_question:
+                print(f"   📋 PRODUCT SUBSTITUTION: Injecting MBIE Minor Variations guidance...")
+                cur.execute("""
+                    SELECT id, source, page, content, section, clause, snippet,
+                           doc_type, trade, status, priority, phase, brand_name,
+                           0.10 as similarity  -- Very high priority injection
+                    FROM documents 
+                    WHERE source = 'MBIE-Minor-Variation-Guidance'
+                      AND (
+                        content ILIKE '%minor variation%'
+                        OR content ILIKE '%amendment%'
+                        OR content ILIKE '%substitution%'
+                        OR content ILIKE '%changing supplier%'
+                        OR content ILIKE '%swapping%'
+                        OR content ILIKE '%example%'
+                      )
+                    ORDER BY page
+                    LIMIT 7;
+                """)
+                mbie_results = cur.fetchall()
+                if mbie_results:
+                    # Prepend MBIE results to ensure they appear first
+                    results = list(mbie_results) + list(results)
+                    print(f"   ✅ Injected {len(mbie_results)} MBIE Minor Variations chunks")
         
         # Return connection to pool
         return_db_connection(conn)
