@@ -1372,12 +1372,13 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     cur.execute(sql, params)
                     results = cur.fetchall()
                 else:
-                    # Check for special brand-based searches (MBIE, J&L Duke, etc.)
+                    # Check for special brand-based searches (MBIE, J&L Duke, Abodo Wood, etc.)
                     has_mbie = 'MBIE' in target_sources
                     has_jl_duke = 'J&L Duke' in target_sources
-                    other_sources = [s for s in target_sources if s not in ('MBIE', 'J&L Duke')]
+                    has_abodo = 'Abodo Wood' in target_sources
+                    other_sources = [s for s in target_sources if s not in ('MBIE', 'J&L Duke', 'Abodo Wood')]
                     
-                    if has_mbie or has_jl_duke:
+                    if has_mbie or has_jl_duke or has_abodo:
                         # Brand-based search (uses brand_name field)
                         brand_conditions = []
                         params = [query_embedding]
@@ -1389,6 +1390,10 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         if has_jl_duke:
                             brand_conditions.append("brand_name = 'J&L Duke'")
                             brand_conditions.append("source LIKE 'J&L Duke%%'")
+                        
+                        if has_abodo:
+                            brand_conditions.append("brand_name = 'Abodo Wood'")
+                            brand_conditions.append("source LIKE 'Abodo Wood%%'")
                         
                         sql = f"""
                             SELECT id, source, page, content, section, clause, snippet,
