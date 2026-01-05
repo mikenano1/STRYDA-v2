@@ -1352,21 +1352,55 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     cur.execute(sql, params)
                     results = cur.fetchall()
                 else:
-                    # Standard source-filtered search
-                    # Generate placeholders for IN clause (%s, %s, %s, ...)
-                    placeholders = ', '.join(['%s'] * len(target_sources))
+                    # Check for MBIE guidance search (special handling)
+                    has_mbie = 'MBIE' in target_sources
+                    other_sources = [s for s in target_sources if s != 'MBIE']
                     
-                    # Build SQL with expanded IN clause (psycopg2-safe) + metadata
-                    sql = f"""
-                        SELECT id, source, page, content, section, clause, snippet,
-                               doc_type, trade, status, priority, phase, brand_name,
-                               (embedding <=> %s::vector) as similarity
-                        FROM documents 
-                        WHERE source IN ({placeholders})
-                          AND embedding IS NOT NULL
-                        ORDER BY similarity ASC
-                        LIMIT %s;
-                    """
+                    if has_mbie:
+                        # MBIE guidance documents use brand_name = 'MBIE'
+                        sql = """
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE embedding IS NOT NULL
+                              AND (
+                                brand_name = 'MBIE'
+                                OR source LIKE 'MBIE%%'
+                        """
+                        params = [query_embedding]
+                        
+                        if other_sources:
+                            other_placeholders = ', '.join(['%s'] * len(other_sources))
+                            sql += f" OR source IN ({other_placeholders})"
+                            params.extend(other_sources)
+                        
+                        sql += """
+                              )
+                            ORDER BY similarity ASC
+                            LIMIT %s;
+                        """
+                        params.append(top_k * 2)
+                        
+                        print(f"   🔎 MBIE Guidance search: brand_name='MBIE' + other sources")
+                        cur.execute(sql, params)
+                        results = cur.fetchall()
+                    else:
+                        # Standard source-filtered search
+                        # Generate placeholders for IN clause (%s, %s, %s, ...)
+                        placeholders = ', '.join(['%s'] * len(target_sources))
+                        
+                        # Build SQL with expanded IN clause (psycopg2-safe) + metadata
+                        sql = f"""
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE source IN ({placeholders})
+                              AND embedding IS NOT NULL
+                            ORDER BY similarity ASC
+                            LIMIT %s;
+                        """
                     
                     # Bind parameters: embedding, then each source individually, then limit
                     params = [query_embedding] + target_sources + [top_k * 2]
