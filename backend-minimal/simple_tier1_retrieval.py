@@ -1741,6 +1741,7 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                 'trade': trade_meta,
                 'status': status_meta,
                 'priority': priority,
+                'brand_name': result.get('brand_name', ''),  # Preserve brand_name for comparisons
                 'tier1_source': True
             }
             
