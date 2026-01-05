@@ -1693,7 +1693,16 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                             entity_results = cur.fetchall()
                             
                             if entity_results:
-                                comparison_results.extend(entity_results)
+                                # IMPORTANT: Mark these as comparison results with boosted similarity
+                                # so they don't get sorted to the bottom
+                                boosted_results = []
+                                for r in entity_results:
+                                    # Convert tuple to list to modify similarity value
+                                    r_list = list(r)
+                                    # Boost similarity by subtracting 0.05 (lower = better in pgvector)
+                                    r_list[-1] = max(0.01, r_list[-1] - 0.2)  
+                                    boosted_results.append(tuple(r_list))
+                                comparison_results.extend(boosted_results)
                                 print(f"   ✅ Fetched {len(entity_results)} chunks for {brand_name}")
                             else:
                                 print(f"   ⚠️ No data found for {brand_name}")
@@ -1703,7 +1712,7 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                     if comparison_results:
                         # Prepend comparison results to ensure both entities are represented
                         results = list(comparison_results) + list(results)
-                        print(f"   ✅ Dual-Fetch complete: {len(comparison_results)} total comparison chunks")
+                        print(f"   ✅ Dual-Fetch complete: {len(comparison_results)} total comparison chunks (boosted)")
         
         # Return connection to pool
         return_db_connection(conn)
