@@ -1675,29 +1675,30 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                 if len(detected_entities) >= 2:
                     print(f"   📊 Dual-Fetch: Found {len(detected_entities)} entities: {[e[0] for e in detected_entities]}")
                     
-                    # Convert embedding to string for PostgreSQL vector comparison
-                    query_embedding_str = str(query_embedding)
-                    
                     # Fetch data for EACH entity separately
                     comparison_results = []
                     for brand_name, sql_filter in detected_entities[:3]:  # Max 3 entities
-                        cur.execute(f"""
-                            SELECT id, source, page, content, section, clause, snippet,
-                                   doc_type, trade, status, priority, phase, brand_name,
-                                   (embedding <=> %s::vector) as similarity
-                            FROM documents 
-                            WHERE ({sql_filter})
-                              AND embedding IS NOT NULL
-                            ORDER BY similarity ASC
-                            LIMIT 5;
-                        """, (query_embedding_str,))
-                        entity_results = cur.fetchall()
-                        
-                        if entity_results:
-                            comparison_results.extend(entity_results)
-                            print(f"   ✅ Fetched {len(entity_results)} chunks for {brand_name}")
-                        else:
-                            print(f"   ⚠️ No data found for {brand_name}")
+                        try:
+                            # Use simple brand_name filter that works reliably
+                            cur.execute("""
+                                SELECT id, source, page, content, section, clause, snippet,
+                                       doc_type, trade, status, priority, phase, brand_name,
+                                       (embedding <=> %s::vector) as similarity
+                                FROM documents 
+                                WHERE brand_name = %s
+                                  AND embedding IS NOT NULL
+                                ORDER BY similarity ASC
+                                LIMIT 5;
+                            """, (query_embedding, brand_name))
+                            entity_results = cur.fetchall()
+                            
+                            if entity_results:
+                                comparison_results.extend(entity_results)
+                                print(f"   ✅ Fetched {len(entity_results)} chunks for {brand_name}")
+                            else:
+                                print(f"   ⚠️ No data found for {brand_name}")
+                        except Exception as e:
+                            print(f"   ❌ Error fetching {brand_name}: {e}")
                     
                     if comparison_results:
                         # Prepend comparison results to ensure both entities are represented
