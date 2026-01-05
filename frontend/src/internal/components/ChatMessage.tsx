@@ -155,17 +155,19 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
                     {cleanText}
                 </Text>
 
-                {/* Parsed Citation Pills */}
-                {matches.map((match, i) => (
+                {/* Parsed Citation Pills - now handles multiple formats */}
+                {allMatches.map((match, i) => (
                     <TouchableOpacity 
                         key={`parsed-${i}`} 
-                        onPress={() => handlePillPress(match[1].trim(), match[2].trim(), match[3].trim())} 
+                        onPress={() => handlePillPress(match.source, match.clause, match.page)} 
                         style={styles.pillButton}
                         activeOpacity={0.6}
                         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                     >
                         <Text style={styles.pillText}>
-                            View Source: {match[1].trim()} {match[2].trim()}
+                            📄 {match.source.length > 40 ? match.source.substring(0, 40) + '...' : match.source}
+                            {match.clause ? ` • ${match.clause}` : ''}
+                            {match.page ? ` • p.${match.page}` : ''}
                         </Text>
                     </TouchableOpacity>
                 ))}
