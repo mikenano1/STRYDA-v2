@@ -67,9 +67,66 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
   };
 
   // Regex to parse the hybrid citation format
-  const citationRegex = /\[\[Source:\s*(.*?)\s*\|\s*Clause:\s*(.*?)\s*\|\s*Page:\s*(.*?)\]\]/g;
-  const matches = [...(message.text || '').matchAll(citationRegex)];
-  const rawText = (message.text || '').replace(citationRegex, '').trim();
+  // Updated to handle optional Clause field and various source name formats (with spaces, dashes, dots)
+  // Format 1: [[Source: X | Clause: Y | Page: Z]]
+  // Format 2: [[Source: X | Page: Z]] (no clause)
+  // Format 3: [[Source: X]] (just source)
+  const citationRegexFull = /\[\[Source:\s*([^|\]]+?)\s*\|\s*Clause:\s*([^|\]]+?)\s*\|\s*Page:\s*([^\]]+?)\]\]/g;
+  const citationRegexNoClause = /\[\[Source:\s*([^|\]]+?)\s*\|\s*Page:\s*([^\]]+?)\]\]/g;
+  const citationRegexSourceOnly = /\[\[Source:\s*([^\]]+?)\]\]/g;
+  
+  // Find all matches for each format
+  const matchesFull = [...(message.text || '').matchAll(citationRegexFull)];
+  const matchesNoClause = [...(message.text || '').matchAll(citationRegexNoClause)];
+  const matchesSourceOnly = [...(message.text || '').matchAll(citationRegexSourceOnly)];
+  
+  // Combine all matches into a unified format: { source, clause, page }
+  const allMatches: { source: string; clause: string; page: string; raw: string }[] = [];
+  
+  // Full matches (Source + Clause + Page)
+  matchesFull.forEach(match => {
+    allMatches.push({
+      source: match[1].trim(),
+      clause: match[2].trim(),
+      page: match[3].trim(),
+      raw: match[0]
+    });
+  });
+  
+  // No Clause matches (Source + Page)
+  matchesNoClause.forEach(match => {
+    // Check if this wasn't already matched by the full regex
+    const alreadyMatched = allMatches.some(m => m.raw.includes(match[1].trim()));
+    if (!alreadyMatched) {
+      allMatches.push({
+        source: match[1].trim(),
+        clause: '',
+        page: match[2].trim(),
+        raw: match[0]
+      });
+    }
+  });
+  
+  // Source-only matches
+  matchesSourceOnly.forEach(match => {
+    const alreadyMatched = allMatches.some(m => m.source === match[1].trim());
+    if (!alreadyMatched) {
+      allMatches.push({
+        source: match[1].trim(),
+        clause: '',
+        page: '1',
+        raw: match[0]
+      });
+    }
+  });
+  
+  // Remove all citation formats from raw text
+  let rawText = message.text || '';
+  rawText = rawText.replace(citationRegexFull, '');
+  rawText = rawText.replace(citationRegexNoClause, '');
+  rawText = rawText.replace(citationRegexSourceOnly, '');
+  rawText = rawText.trim();
+  
   const cleanText = cleanMarkdown(rawText);
 
   return (
