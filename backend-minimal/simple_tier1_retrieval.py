@@ -1169,6 +1169,51 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         # NEW: Detect specific trade/product function from query
         detected_trade = detect_trade_from_query(query)
         
+        # ==========================================================================
+        # FIRE RATING QUERY DETECTION
+        # When user asks about fire rating/group number for a specific product,
+        # we need to search the product's TDS/Datasheet specifically
+        # ==========================================================================
+        fire_rating_keywords = ['fire rating', 'fire group', 'group number', 'group 1', 'group 2', 
+                               'iso 9705', 'fire hazard', 'flame spread', 'smoke developed',
+                               'fire classification', 'fire test', 'fire exit', 'exitway',
+                               'c/as2', 'c/vm2', 'fire performance']
+        
+        # Product name patterns for Autex products
+        autex_products = {
+            'cube': 'Cube',
+            'composition': 'Composition', 
+            'vertiface': 'Vertiface',
+            'quietspace': 'Quietspace',
+            'frontier': 'Frontier',
+            'horizon': 'Horizon',
+            'cascade': 'Cascade',
+            'groove': 'Groove',
+            'lattice': 'Lattice',
+            'mirage': 'Mirage',
+            'reform': 'ReForm',
+            '3d tile': '3D Tiles',
+            '3d ceiling': '3D Ceiling Tiles',
+            'acoustic timber': 'Acoustic Timber',
+            'vicinity': 'Vicinity',
+            'embrace': 'Embrace',
+            'cove': 'Cove',
+            'lanes': 'Lanes',
+            'accent': 'Accent',
+            'grid ceiling': 'Grid Ceiling'
+        }
+        
+        has_fire_rating_query = any(kw in query_lower for kw in fire_rating_keywords)
+        detected_autex_product = None
+        for pattern, product_name in autex_products.items():
+            if pattern in query_lower:
+                detected_autex_product = product_name
+                break
+        
+        _FIRE_RATING_PRODUCT_QUERY = has_fire_rating_query and detected_autex_product
+        if _FIRE_RATING_PRODUCT_QUERY:
+            print(f"   🔥 FIRE RATING QUERY: Detected product '{detected_autex_product}' - will target Datasheet")
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
