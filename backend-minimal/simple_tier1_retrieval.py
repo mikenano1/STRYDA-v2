@@ -2084,6 +2084,66 @@ This is a HARD NO - no exceptions. Do not proceed with solvent-based products ne
             except Exception as e:
                 print(f"   ❌ Fire rating injection failed: {e}")
         
+        # ==========================================================================
+        # CROSS-REFERENCE INJECTION: Add C/AS2 Table 4.12.1.1 for exit way queries
+        # This provides the code requirements that the product rating must meet
+        # ==========================================================================
+        if _CROSS_REFERENCE_QUERY:
+            # Inject a synthetic chunk with the C/AS2 requirements
+            code_requirements_chunk = {
+                'id': 'XREF_CAS2_TABLE_4121',
+                'source': 'C/AS2 Table 4.12.1.1 (Cross-Reference)',
+                'page': 77,
+                'content': """NZBC C/AS2 Table 4.12.1.1: Maximum Permitted Group Number for Internal Surface Finishes
+
+CROSS-REFERENCE LOGIC FOR COMPLIANCE:
+When evaluating if a product can be used in a specific location, compare:
+1. PRODUCT RATING (from manufacturer TDS) 
+2. CODE REQUIREMENT (from table below)
+3. If Product Rating <= Code Requirement → PERMITTED
+   (Lower Group Number = Better fire performance. Group 1 is best.)
+
+EXITWAYS (Fire Exit Routes) - Surface Finish Requirements:
+┌─────────────────────────────────────┬──────────────────┬────────────────┐
+│ Location                            │ UNSPRINKLERED    │ SPRINKLERED    │
+├─────────────────────────────────────┼──────────────────┼────────────────┤
+│ Exitways: walls and ceilings        │ Group 1-S        │ Group 2        │
+│ Importance Level 4 buildings        │ Group 1-S        │ Group 2        │
+├─────────────────────────────────────┼──────────────────┼────────────────┤
+│ Sleeping spaces (care/detention)    │ Group 1-S        │ Group 2        │
+│ Other sleeping spaces: ceilings     │ Group 2-S        │ Group 2        │
+│ Other sleeping spaces: walls        │ Group 2-S        │ Group 3        │
+├─────────────────────────────────────┼──────────────────┼────────────────┤
+│ All other occupied spaces           │ Group 3          │ Group 3        │
+└─────────────────────────────────────┴──────────────────┴────────────────┘
+
+INTERPRETATION:
+- Group 1-S = Lowest smoke production, best performance
+- Group 1 = Excellent fire performance  
+- Group 2-S = Good performance with smoke control
+- Group 2 = Good fire performance
+- Group 3 = Standard performance
+
+EXAMPLE CROSS-REFERENCE:
+- Product: Autex Cube (Group 1-S per ISO 9705)
+- Requirement: Exitways unsprinklered = Group 1-S
+- Result: 1-S <= 1-S → ✅ PERMITTED in unsprinklered exitways""",
+                'snippet': 'C/AS2 Table 4.12.1.1: Exitways require Group 1-S (unsprinklered) or Group 2 (sprinklered) for wall/ceiling finishes.',
+                'section': '4.12 Internal Surface Finishes',
+                'clause': 'Table 4.12.1.1',
+                'final_score': 1.8,  # Highest priority for code requirements
+                'base_score': 1.8,
+                'priority': 100,
+                'doc_type': 'Cross_Reference_Table',
+                'trade': 'fire_compliance',
+                'tier1_source': True,
+                'cross_reference': True
+            }
+            
+            # Insert at the very beginning
+            final_results.insert(0, code_requirements_chunk)
+            print(f"   🔗 CROSS-REFERENCE: Injected C/AS2 Table 4.12.1.1 requirements")
+        
         return final_results
         
     except Exception as e:
