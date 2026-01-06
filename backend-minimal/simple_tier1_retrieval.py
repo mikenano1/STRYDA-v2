@@ -1718,6 +1718,69 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
                         # Prepend comparison results to ensure both entities are represented
                         results = comparison_results + results_as_dicts
                         print(f"   ✅ Dual-Fetch complete: {len(comparison_results)} chunks (boosted), total {len(results)}")
+            
+            # FIRE BOUNDARY CHECK (CRITICAL SAFETY RULE)
+            # When user mentions distances < 1.0m from boundary + combustible materials
+            # MUST warn about C/AS1 (Protection from Fire) restrictions
+            import re
+            
+            boundary_keywords = ['boundary', 'property line', 'property boundary', 'site boundary',
+                                'neighbouring', 'neighbor', 'adjacent property', 'next door']
+            combustible_keywords = ['polystyrene', 'eps', 'xps', 'expol', 'styrodrain', 'styro',
+                                   'foam', 'timber', 'wood', 'cladding', 'weatherboard',
+                                   'thermoslab', 'geofoam', 'combustible']
+            
+            # Check for distance mentions (e.g., "600mm", "0.5m", "900mm from boundary")
+            distance_pattern = r'(\d+(?:\.\d+)?)\s*(?:mm|m|metres?|meters?)'
+            distance_matches = re.findall(distance_pattern, query_lower)
+            
+            has_boundary = any(term in query_lower for term in boundary_keywords)
+            has_combustible = any(term in query_lower for term in combustible_keywords)
+            
+            # Check if any mentioned distance is < 1000mm (1m)
+            has_close_distance = False
+            for match in distance_matches:
+                try:
+                    value = float(match)
+                    # If value looks like mm (>= 100), check if < 1000mm
+                    # If value looks like m (< 100), check if < 1.0m
+                    if value >= 100 and value < 1000:  # mm
+                        has_close_distance = True
+                    elif value < 1.0:  # metres
+                        has_close_distance = True
+                except:
+                    pass
+            
+            if has_boundary and has_combustible:
+                print(f"   🔥 FIRE BOUNDARY CHECK TRIGGERED: Boundary + Combustible material")
+                
+                # Inject C/AS1 Fire Safety content
+                cur.execute("""
+                    SELECT id, source, page, content, section, clause, snippet,
+                           doc_type, trade, status, priority, phase, brand_name,
+                           0.05 as similarity  -- HIGHEST priority injection for safety
+                    FROM documents 
+                    WHERE (source LIKE 'C-AS1%%' OR source LIKE '%%Protection%%Fire%%')
+                      AND (content ILIKE '%boundary%' OR content ILIKE '%external wall%' 
+                           OR content ILIKE '%fire rating%' OR content ILIKE '%combustible%'
+                           OR content ILIKE '%1.0 m%' OR content ILIKE '%1 m%')
+                      AND embedding IS NOT NULL
+                    LIMIT 5;
+                """)
+                fire_results = cur.fetchall()
+                
+                if fire_results:
+                    # Convert to dicts and inject at top
+                    fire_dicts = [dict(r) for r in fire_results]
+                    if isinstance(results[0], dict) if results else True:
+                        results = fire_dicts + results
+                    else:
+                        results = fire_dicts + [dict(r) for r in results]
+                    print(f"   ✅ Injected {len(fire_dicts)} C/AS1 Fire Safety chunks")
+                
+                if has_close_distance:
+                    print(f"   ⚠️ CRITICAL: Distance < 1.0m from boundary with combustible material!")
+                    # The LLM will see the C/AS1 content and should warn appropriately
         
         # Return connection to pool
         return_db_connection(conn)
