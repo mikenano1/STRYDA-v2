@@ -2182,6 +2182,80 @@ EXAMPLE CROSS-REFERENCE:
             final_results.insert(0, code_requirements_chunk)
             print(f"   🔗 CROSS-REFERENCE: Injected C/AS2 Table 4.12.1.1 requirements")
         
+        # ==========================================================================
+        # GOOD GROUND / SITE SUITABILITY INJECTION
+        # When foundation products are queried with site exclusion conditions,
+        # inject NZS 3604 Good Ground requirements and SED warning
+        # ==========================================================================
+        if _GOOD_GROUND_CHECK:
+            good_ground_warning = {
+                'id': 'GOOD_GROUND_SITE_CHECK',
+                'source': 'NZS 3604:2011 Good Ground Requirements',
+                'page': 0,
+                'content': """⚠️ SITE SUITABILITY WARNING - NZS 3604 "GOOD GROUND" CHECK
+
+CRITICAL LOGIC FOR FOUNDATION SYSTEMS:
+Proprietary foundation systems like Expol Tuff Pods, rib-raft slabs, and standard concrete slab floors are designed to comply with NZS 3604:2011 which REQUIRES "Good Ground" conditions.
+
+NZS 3604 DEFINITION OF "GOOD GROUND":
+Ground is considered "Good Ground" when it is STABLE and can support the building loads without:
+- Excessive settlement
+- Ground movement
+- Lateral spread
+
+CONDITIONS THAT EXCLUDE SITES FROM "GOOD GROUND" (Section 3.1.2):
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ EXCLUSION CONDITION          │ WHY IT'S EXCLUDED                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ HIGH WATER TABLE             │ Reduces soil bearing capacity, risk of      │
+│                              │ hydrostatic pressure, potential buoyancy    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ LIQUEFACTION-PRONE ZONES     │ Soil can lose strength during earthquakes,  │
+│                              │ causing foundation failure or lateral spread│
+├─────────────────────────────────────────────────────────────────────────────┤
+│ PEAT OR SOFT SOILS           │ High compressibility, long-term settlement  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ UNCONTROLLED FILL            │ Unpredictable settlement and stability      │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ STEEP SLOPES (>1:8)          │ Risk of instability, sliding, erosion       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ FLOOD-PRONE AREAS            │ Water damage, soil erosion, scour           │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+DECISION LOGIC:
+IF site has ANY of the above exclusion conditions:
+  → NZS 3604 standard details DO NOT APPLY
+  → SPECIFIC ENGINEERING DESIGN (SED) IS REQUIRED
+  → A Chartered Professional Engineer (CPEng) must design the foundations
+
+APPLYING THIS TO EXPOL TUFF PODS:
+- Expol Tuff Pod floor systems are designed for NZS 3604 "Good Ground" conditions
+- On sites with high water tables, liquefaction risk, or other exclusions:
+  → Standard Tuff Pod installation details MAY NOT BE SUITABLE
+  → Engineer must assess site-specific conditions
+  → Modified foundation design or alternative systems may be required
+
+RECOMMENDATION FOR NON-GOOD-GROUND SITES:
+1. Get a geotechnical investigation report
+2. Engage a CPEng structural engineer
+3. The engineer will specify whether Tuff Pods can be used with modifications,
+   or if an alternative foundation system is required""",
+                'snippet': 'NZS 3604 requires "Good Ground" for standard foundation systems. High water table, liquefaction zones, peat soils, and steep slopes EXCLUDE sites from Good Ground - Specific Engineering Design (SED) required.',
+                'section': 'Site Requirements',
+                'clause': 'NZS 3604 Section 3.1.2',
+                'final_score': 2.0,  # Highest priority for safety warnings
+                'base_score': 2.0,
+                'priority': 100,
+                'doc_type': 'Site_Suitability_Warning',
+                'trade': 'foundations',
+                'tier1_source': True,
+                'good_ground_check': True
+            }
+            
+            # Insert at the very beginning
+            final_results.insert(0, good_ground_warning)
+            print(f"   🏗️ GOOD GROUND: Injected NZS 3604 site suitability requirements")
+        
         return final_results
         
     except Exception as e:
