@@ -847,18 +847,20 @@ def canonical_source_map(query: str) -> List[str]:
         # "Autex" mentioned but NOT GreenStuf - check if it's acoustic or thermal context
         thermal_context = any(term in query_lower for term in [
             'insulation', 'thermal', 'r-value', 'underlay', 'roof', 'ceiling bat', 
-            'wall bat', 'underfloor', 'blanket', 'wool', 'polyester'
+            'wall bat', 'underfloor', 'blanket', 'wool', 'polyester',
+            'roof underlay', 'underlay', 'roof insulation', 'ceiling insulation',
+            'wall insulation', 'floor insulation'
         ])
         if thermal_context:
             # Likely asking about GreenStuf thermal products (sometimes called "Autex GreenStuf")
-            sources.append('GreenStuf Deep Dive')
-            print(f"   🔀 PRODUCT DIFFERENTIATION: 'Autex' + thermal context → Adding GreenStuf")
+            if 'GreenStuf Deep Dive' not in sources:
+                sources.append('GreenStuf Deep Dive')
+            print(f"   🔀 PRODUCT DIFFERENTIATION: 'Autex' + thermal context → Adding GreenStuf (excluding Autex Acoustics)")
         else:
             # Acoustic context - add Autex acoustic products
             sources.append('Autex Deep Dive')
     elif any(term in query_lower for term in autex_acoustic_keywords):
         # Acoustic keywords without brand - add Autex
-        sources.append('Autex Deep Dive')
         sources.append('Autex Deep Dive')
     
     # Expol - Polystyrene/EPS Products (Brand Deep Dive)
