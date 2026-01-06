@@ -802,8 +802,11 @@ def canonical_source_map(query: str) -> List[str]:
     
     # GreenStuf - Polyester Insulation (Brand Deep Dive)
     # NOTE: Also triggers on generic insulation keywords for multi-brand comparison
-    if any(term in query_lower for term in [
-        'greenstuf', 'green stuf', 'duct wrap', 'duct liner',
+    # IMPORTANT: GreenStuf is a SEPARATE brand from Autex Acoustics (same parent company, different products)
+    greenstuf_explicit = any(term in query_lower for term in ['greenstuf', 'green stuf'])
+    
+    if greenstuf_explicit or any(term in query_lower for term in [
+        'duct wrap', 'duct liner',
         'masonry wall blanket', 'garage door insulation',
         # Generic insulation keywords (for multi-brand search)
         'insulation', 'r-value', 'wall insulation', 'ceiling insulation',
@@ -811,10 +814,18 @@ def canonical_source_map(query: str) -> List[str]:
     ]):
         sources.append('GreenStuf Deep Dive')
     
+    # ==========================================================================
+    # PRODUCT DIFFERENTIATION: GreenStuf vs Autex Acoustics
+    # When "GreenStuf" is explicitly mentioned, DO NOT add Autex acoustic products
+    # GreenStuf = Thermal Insulation (polyester batts, wool, PIR)
+    # Autex = Acoustic Panels (Cube, Vertiface, Composition, etc.)
+    # ==========================================================================
+    
     # Autex - Acoustic Products (Brand Deep Dive)
-    # NOTE: Also triggers on generic acoustic keywords for multi-brand comparison
-    if any(term in query_lower for term in [
-        'autex', 'quietspace', 'composition', 'vertiface', 'frontier',
+    # NOTE: Only add Autex if GreenStuf was NOT explicitly mentioned
+    # This prevents mixing thermal insulation queries with acoustic panel results
+    autex_acoustic_keywords = [
+        'quietspace', 'composition', 'vertiface', 'frontier',
         'cascade', 'vicinity', 'acoustic panel', 'acoustic ceiling',
         'acoustic wall', 'acoustic screen', 'acoustic timber',
         'workstation screen', 'desk screen', 'ceiling tile', 'wall tile',
@@ -822,8 +833,32 @@ def canonical_source_map(query: str) -> List[str]:
         'embrace', 'cube panel', 'groove', 'lattice', 'horizon', 'cove',
         'lanes', 'mirage', 'reform', 'accent ceiling', 'grid ceiling',
         # Generic acoustic keywords (for multi-brand search)
-        'soundproofing', 'sound absorption', 'nrc', 'acoustic'
-    ]):
+        'soundproofing', 'sound absorption', 'nrc'
+    ]
+    
+    # Check if this is an Autex acoustic query (not GreenStuf thermal)
+    if greenstuf_explicit:
+        # GreenStuf explicitly mentioned - DO NOT add Autex acoustic products
+        # Remove Autex Deep Dive if it was accidentally added
+        if 'Autex Deep Dive' in sources:
+            sources.remove('Autex Deep Dive')
+        print(f"   🔀 PRODUCT DIFFERENTIATION: GreenStuf detected → Excluding Autex Acoustics")
+    elif 'autex' in query_lower:
+        # "Autex" mentioned but NOT GreenStuf - check if it's acoustic or thermal context
+        thermal_context = any(term in query_lower for term in [
+            'insulation', 'thermal', 'r-value', 'underlay', 'roof', 'ceiling bat', 
+            'wall bat', 'underfloor', 'blanket', 'wool', 'polyester'
+        ])
+        if thermal_context:
+            # Likely asking about GreenStuf thermal products (sometimes called "Autex GreenStuf")
+            sources.append('GreenStuf Deep Dive')
+            print(f"   🔀 PRODUCT DIFFERENTIATION: 'Autex' + thermal context → Adding GreenStuf")
+        else:
+            # Acoustic context - add Autex acoustic products
+            sources.append('Autex Deep Dive')
+    elif any(term in query_lower for term in autex_acoustic_keywords):
+        # Acoustic keywords without brand - add Autex
+        sources.append('Autex Deep Dive')
         sources.append('Autex Deep Dive')
     
     # Expol - Polystyrene/EPS Products (Brand Deep Dive)
