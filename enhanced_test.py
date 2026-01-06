@@ -6,7 +6,7 @@ Test the enhanced chat endpoint directly to see if citations work there
 import requests
 import json
 
-BACKEND_URL = "https://stryda-rag.preview.emergentagent.com"
+BACKEND_URL = "https://buildai-15.preview.emergentagent.com"
 
 def test_enhanced_chat_endpoint():
     """Test the enhanced chat endpoint directly"""

@@ -10,7 +10,7 @@ import json
 import time
 from datetime import datetime
 
-BACKEND_URL = "https://stryda-rag.preview.emergentagent.com"
+BACKEND_URL = "https://buildai-15.preview.emergentagent.com"
 
 async def test_review_request_scenarios():
     """Test the specific scenarios from the review request"""

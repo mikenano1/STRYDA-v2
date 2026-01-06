@@ -149,7 +149,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://app.emergent.sh",
-        "https://stryda-rag.preview.emergentagent.com",
+        "https://buildai-15.preview.emergentagent.com",
         "http://localhost:3000",  # Dev only
     ],
     allow_credentials=False,  # Enhanced security

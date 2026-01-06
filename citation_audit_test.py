@@ -12,7 +12,7 @@ from typing import Dict, List, Any
 import os
 
 # Backend URL from environment
-BACKEND_URL = os.getenv('BACKEND_URL', 'https://stryda-rag.preview.emergentagent.com')
+BACKEND_URL = os.getenv('BACKEND_URL', 'https://buildai-15.preview.emergentagent.com')
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # Test queries organized by category

@@ -13,7 +13,7 @@ import time
 from typing import Dict, Any, List
 
 # Test Configuration
-BACKEND_URL = "https://stryda-rag.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://buildai-15.preview.emergentagent.com/api/chat"
 SESSION_ID = "test_session_bug_fixes"
 USER_ID = "test_user"
 

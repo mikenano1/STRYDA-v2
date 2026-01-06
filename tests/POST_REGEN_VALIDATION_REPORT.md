@@ -1,7 +1,7 @@
 # POST-REGENERATION VALIDATION RESULTS
 
 **Date:** 2025-11-25 07:29:59  
-**Backend:** https://stryda-rag.preview.emergentagent.com  
+**Backend:** https://buildai-15.preview.emergentagent.com  
 **Total Queries:** 30  
 **Pass Rate:** 25/30 (83.3%)  
 **Total Time:** 288.3s
