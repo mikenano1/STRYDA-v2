@@ -3,6 +3,8 @@ STRYDA Token Budget Router
 Dynamically sets max_tokens based on question complexity to prevent cut-offs while controlling costs
 
 CHANGELOG:
+- v1.2 (June 2025): CRITICAL FIX - Increased max from 3000→4500 for compliance queries
+- v1.2: Added fire safety, boundary, combustible keywords for extended responses
 - v1.1 (June 2025): Increased base tokens from 1200→1600, max from 2048→3000 to prevent cut-offs
 - v1.1: Added safety/compliance keywords for F4, variations, amendments
 """
@@ -14,8 +16,9 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
     Determine appropriate max_tokens budget based on mode, intent, and message complexity.
     
     Rules:
-    - Strict mode: Always 3000 tokens (comprehensive answers)
-    - GPT-first/hybrid: 1600-3000 tokens (dynamic based on complexity)
+    - Strict mode: Always 4500 tokens (comprehensive compliance answers)
+    - Fire/Boundary queries: 4500 tokens (MUST complete safety warnings)
+    - GPT-first/hybrid: 2000-4500 tokens (dynamic based on complexity)
     
     Args:
         mode: "gpt_first" or "strict_compliance"
@@ -26,14 +29,33 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
         max_tokens value (int)
     """
     
+    msg_lower = message.lower()
+    
+    # CRITICAL: Fire safety and boundary queries ALWAYS get maximum tokens
+    # These queries MUST complete their warnings - truncation is a liability risk
+    fire_boundary_keywords = [
+        'boundary', 'property line', 'site boundary', 'fire', 'combustible',
+        'polystyrene', 'eps', 'styrodrain', 'c/as1', 'c/as2', 'cas1', 'cas2',
+        'fire rating', 'fire spread', 'non-combustible', 'flame', 'ignition',
+        'basement', 'retaining wall', 'below ground', 'above ground'
+    ]
+    
+    has_fire_boundary = any(keyword in msg_lower for keyword in fire_boundary_keywords)
+    
+    if has_fire_boundary:
+        # Fire/boundary queries get MAXIMUM tokens - no truncation allowed
+        return 4500
+    
     # Strict compliance always gets full budget
     if mode == "strict_compliance":
-        return 3000
+        return 4500
     
-    # GPT-first/Hybrid starts with higher base (increased from 1200)
-    base_tokens = 1600
+    # Compliance-related intents get high budget
+    if intent in ("compliance_strict", "implicit_compliance"):
+        return 4000
     
-    msg_lower = message.lower()
+    # GPT-first/Hybrid starts with higher base
+    base_tokens = 2000
     
     # Check for calculation/technical keywords that need more tokens
     calc_keywords = [
@@ -58,7 +80,8 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
         'balustrade', 'barrier', 'deck', 'handrail', 'guardrail',
         'height', 'falling', 'safety', 'f4', 'clause f4',
         'variation', 'amendment', 'minor variation', 'change to plans',
-        'building consent', 'approved plans', 'consent process'
+        'building consent', 'approved plans', 'consent process',
+        'nzbc', 'building code', 'acceptable solution', 'verification method'
     ]
     
     has_calc_words = any(keyword in msg_lower for keyword in calc_keywords)
@@ -66,15 +89,15 @@ def pick_max_tokens(mode: str, intent: str, message: str) -> int:
     has_safety_words = any(keyword in msg_lower for keyword in safety_compliance_keywords)
     
     if has_calc_words or has_table_words or has_safety_words:
-        base_tokens = 2000  # Increased for technical/safety/compliance explanations
+        base_tokens = 3000  # Increased for technical/safety/compliance explanations
     
     # Longer questions often need longer answers
     if len(message) > 100:
-        base_tokens += 300
-    if len(message) > 200:
         base_tokens += 400
+    if len(message) > 200:
+        base_tokens += 600
     
-    # Clamp between 1600 and 3000
-    final_tokens = max(1600, min(3000, base_tokens))
+    # Clamp between 2000 and 4500
+    final_tokens = max(2000, min(4500, base_tokens))
     
     return final_tokens
