@@ -2013,6 +2013,58 @@ This is a HARD NO - no exceptions. Do not proceed with solvent-based products ne
             final_results.insert(0, solvent_hazard_warning)
             print(f"   🚨 INJECTED SOLVENT+EPS HAZARD WARNING (priority override)")
         
+        # ==========================================================================
+        # FIRE RATING PRODUCT QUERY: Inject specific product datasheet content
+        # When user asks about fire rating for a specific Autex product,
+        # directly fetch and inject the product's TDS fire rating data
+        # ==========================================================================
+        if _FIRE_RATING_PRODUCT_QUERY and detected_autex_product:
+            try:
+                # Fetch the specific product's datasheet content with fire rating info
+                fire_conn = get_db_connection()
+                with fire_conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as fire_cur:
+                    # Search for the product's datasheet specifically
+                    fire_cur.execute("""
+                        SELECT id, source, page, content, section, clause, snippet,
+                               doc_type, trade, status, priority, phase, brand_name
+                        FROM documents 
+                        WHERE source LIKE %s
+                          AND (LOWER(content) LIKE '%%iso 9705%%' 
+                               OR LOWER(content) LIKE '%%group 1%%'
+                               OR LOWER(content) LIKE '%%fire rating%%'
+                               OR LOWER(content) LIKE '%%fire hazard%%'
+                               OR LOWER(content) LIKE '%%smoke%%')
+                        ORDER BY 
+                            CASE WHEN LOWER(source) LIKE '%%datasheet%%' THEN 0 ELSE 1 END,
+                            page
+                        LIMIT 5;
+                    """, (f'%{detected_autex_product}%',))
+                    
+                    fire_results = fire_cur.fetchall()
+                    
+                    if fire_results:
+                        print(f"   🔥 FIRE RATING INJECTION: Found {len(fire_results)} chunks for {detected_autex_product}")
+                        
+                        # Convert to dict and boost priority
+                        fire_dicts = []
+                        for r in fire_results:
+                            fire_dict = dict(r)
+                            fire_dict['final_score'] = 1.5  # High priority
+                            fire_dict['base_score'] = 1.5
+                            fire_dict['tier1_source'] = True
+                            fire_dict['fire_rating_injection'] = True
+                            fire_dicts.append(fire_dict)
+                        
+                        # Insert at the beginning of results
+                        final_results = fire_dicts + final_results
+                        print(f"   ✅ Injected {len(fire_dicts)} fire rating chunks for {detected_autex_product}")
+                    else:
+                        print(f"   ⚠️ No fire rating data found for {detected_autex_product}")
+                
+                return_db_connection(fire_conn)
+            except Exception as e:
+                print(f"   ❌ Fire rating injection failed: {e}")
+        
         return final_results
         
     except Exception as e:
