@@ -1099,6 +1099,36 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         
         start_time = time.time()
         
+        # ==========================================================================
+        # CRITICAL CHEMICAL COMPATIBILITY CHECK: Solvents + EPS = INSTANT FAILURE
+        # This check happens BEFORE any retrieval - it's a hard override
+        # Solvents dissolve polystyrene on contact. No hedging. No "maybe."
+        # ==========================================================================
+        query_lower = query.lower()
+        
+        solvent_keywords = [
+            'solvent', 'solvent-based', 'solvent based', 
+            'bitumen paint', 'bituminous paint', 'black bitumen', 'bituminous',
+            'primer', 'oil-based', 'oil based',
+            'petroleum', 'petrol', 'kerosene', 'turps', 'turpentine',
+            'acetone', 'thinners', 'paint thinner', 'mineral spirits',
+            'tar', 'coal tar', 'creosote', 'xylene', 'toluene'
+        ]
+        
+        eps_keywords = [
+            'polystyrene', 'eps', 'xps', 'expol', 'styrofoam', 'styrodrain',
+            'thermoslab', 'thermaslab', 'tuff pod', 'geofoam', 'foam board',
+            'expanded polystyrene', 'extruded polystyrene'
+        ]
+        
+        has_solvent_query = any(kw in query_lower for kw in solvent_keywords)
+        has_eps_query = any(kw in query_lower for kw in eps_keywords)
+        
+        _SOLVENT_EPS_HAZARD = has_solvent_query and has_eps_query
+        
+        if _SOLVENT_EPS_HAZARD:
+            print(f"   🚨 CRITICAL CHEMICAL HAZARD: Solvent + EPS/Polystyrene query detected!")
+        
         # Check embedding cache
         embed_cache_key = cache_key(query)
         cached_embedding = embedding_cache.get(embed_cache_key)
