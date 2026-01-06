@@ -1214,6 +1214,25 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         if _FIRE_RATING_PRODUCT_QUERY:
             print(f"   🔥 FIRE RATING QUERY: Detected product '{detected_autex_product}' - will target Datasheet")
         
+        # ==========================================================================
+        # CROSS-REFERENCE LOGIC: Fire Rating + Code Compliance
+        # When asking about fire ratings AND exit ways/compliance, inject BOTH:
+        # 1. Product fire rating from TDS
+        # 2. Code requirements from C/AS2 Table 4.12.1.1
+        # ==========================================================================
+        exitway_keywords = ['exit', 'exitway', 'escape route', 'exit way', 'fire exit',
+                           'escape path', 'means of escape', 'safe path', 'egress']
+        code_compliance_keywords = ['permitted', 'allowed', 'can i use', 'compliant', 
+                                   'acceptable', 'meet', 'comply', 'c/as2', 'building code']
+        
+        has_exitway_query = any(kw in query_lower for kw in exitway_keywords)
+        has_code_compliance = any(kw in query_lower for kw in code_compliance_keywords)
+        
+        _CROSS_REFERENCE_QUERY = (has_fire_rating_query or detected_autex_product) and (has_exitway_query or has_code_compliance)
+        
+        if _CROSS_REFERENCE_QUERY:
+            print(f"   🔗 CROSS-REFERENCE QUERY: Will inject both product TDS AND C/AS2 code requirements")
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
