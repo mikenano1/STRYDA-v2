@@ -1353,13 +1353,16 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         ('geofoam', 'Expol'),
                         ('geoform', 'Expol'),
                         ('styrodrain', 'Expol'),
+                        # IMPORTANT: GreenStuf must come BEFORE Autex
+                        # "Autex GreenStuf" should match GreenStuf, not Autex Acoustics
+                        ('greenstuf', 'GreenStuf'),
+                        ('green stuf', 'GreenStuf'),
+                        # Autex acoustic products (only match if GreenStuf not present)
                         ('autex', 'Autex'),
                         ('quietspace', 'Autex'),
                         ('vertiface', 'Autex'),
                         ('composition', 'Autex'),
                         ('mammoth', 'Mammoth'),
-                        ('greenstuf', 'GreenStuf'),
-                        ('green stuf', 'GreenStuf'),
                         ('pink batts', 'Pink Batts'),
                         ('pink batt', 'Pink Batts'),
                         ('earthwool', 'Earthwool'),
@@ -1374,6 +1377,9 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                     
                     for keyword, brand in brand_priority:
                         if keyword in query_lower:
+                            # SPECIAL CASE: If "greenstuf" is in query, always use GreenStuf even if "autex" is also present
+                            if keyword == 'autex' and ('greenstuf' in query_lower or 'green stuf' in query_lower):
+                                continue  # Skip autex, let greenstuf match
                             brand_name = brand
                             break
                     
