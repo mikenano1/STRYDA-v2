@@ -1924,6 +1924,50 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
         legacy_count = source_mix.get('B1/AS1', 0)
         print(f"   B1 Amendment 13: {amendment_count}, Legacy B1: {legacy_count}")
         
+        # ==========================================================================
+        # CRITICAL: Solvent + EPS Hazard Injection
+        # If detected, inject a synthetic warning chunk at the TOP of results
+        # This ensures the LLM sees the hazard warning FIRST
+        # ==========================================================================
+        if _SOLVENT_EPS_HAZARD:
+            solvent_hazard_warning = {
+                'id': 'HAZARD_SOLVENT_EPS_001',
+                'source': 'STRYDA Chemical Compatibility System',
+                'page': 0,
+                'content': """⚠️ CRITICAL CHEMICAL HAZARD - MANDATORY WARNING ⚠️
+
+SOLVENT-BASED PRODUCTS WILL DESTROY EPS/XPS POLYSTYRENE ON CONTACT.
+
+This is NOT a Building Code issue - this is basic material chemistry:
+- Solvents (bitumen paint, primers, thinners, oil-based products) dissolve polystyrene instantly
+- The foam will melt, collapse, and lose all structural/insulation properties
+- This is irreversible damage
+
+MANUFACTURER REQUIREMENT (Expol Technical Data Sheet):
+"Do NOT use solvent-based products in contact with Expol products."
+
+CORRECT ALTERNATIVES:
+- Use WATER-BASED bitumen emulsion (e.g., Resene Waterborne Bituminous, Sika BlackSeal)
+- Use solvent-FREE primers
+- Check product label: must say "water-based" or "solvent-free"
+
+This is a HARD NO - no exceptions. Do not proceed with solvent-based products near any EPS/XPS foam.""",
+                'snippet': 'CRITICAL: Solvent-based products dissolve EPS/XPS polystyrene on contact. Use water-based alternatives only.',
+                'section': 'Chemical Compatibility',
+                'clause': 'TDS-EXPOL-CHEMICAL',
+                'final_score': 2.0,  # Highest possible to ensure it's first
+                'base_score': 2.0,
+                'priority': 100,
+                'doc_type': 'Safety_Override',
+                'trade': 'chemical_compatibility',
+                'tier1_source': True,
+                'hazard_type': 'SOLVENT_EPS_DISSOLUTION'
+            }
+            
+            # Insert at the beginning of results
+            final_results.insert(0, solvent_hazard_warning)
+            print(f"   🚨 INJECTED SOLVENT+EPS HAZARD WARNING (priority override)")
+        
         return final_results
         
     except Exception as e:
