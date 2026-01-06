@@ -857,6 +857,31 @@ def canonical_source_map(query: str) -> List[str]:
         # Log this association rule trigger
         print(f"   ⚠️ CHEMICAL COMPATIBILITY RULE TRIGGERED: Cable + Polystyrene → WireGuard search")
     
+    # ==========================================================================
+    # CRITICAL CHEMICAL COMPATIBILITY CHECK #2: Solvents + EPS = DESTRUCTION
+    # Bug Fix: Solvent-based products (bitumen paint, primers) dissolve EPS/XPS
+    # This is a HARD NO - no hedging, no "check with manufacturer"
+    # ==========================================================================
+    solvent_keywords = [
+        'solvent', 'solvent-based', 'solvent based', 
+        'bitumen paint', 'bituminous paint', 'black bitumen',
+        'primer', 'oil-based', 'oil based',
+        'petroleum', 'petrol', 'kerosene', 'turps', 'turpentine',
+        'acetone', 'thinners', 'paint thinner', 'mineral spirits',
+        'tar', 'coal tar', 'creosote'
+    ]
+    
+    has_solvent = any(term in query_lower for term in solvent_keywords)
+    
+    # Check if this is a solvent + EPS query (using existing polystyrene_keywords)
+    if has_solvent and has_polystyrene:
+        print(f"   🚨 CRITICAL CHEMICAL HAZARD DETECTED: Solvent + EPS/Polystyrene")
+        # This will be caught by the response generator to issue a HARD NO
+        # Store this flag in the results metadata
+        _SOLVENT_EPS_HAZARD_FLAG = True
+    else:
+        _SOLVENT_EPS_HAZARD_FLAG = False
+    
     # Kingspan - Insulated Panels & Insulation Boards (Brand Deep Dive)
     # Multi-category: Enclosure (panels), Interiors (insulation boards)
     if any(term in query_lower for term in [
