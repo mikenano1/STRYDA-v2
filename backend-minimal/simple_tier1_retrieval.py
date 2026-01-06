@@ -1233,6 +1233,44 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         if _CROSS_REFERENCE_QUERY:
             print(f"   🔗 CROSS-REFERENCE QUERY: Will inject both product TDS AND C/AS2 code requirements")
         
+        # ==========================================================================
+        # GOOD GROUND / SITE SUITABILITY LOGIC
+        # Foundation products (Tuff Pods, slabs, etc.) default to NZS 3604 "Good Ground"
+        # High water table, liquefaction zones, etc. are "Good Ground" exclusions
+        # ==========================================================================
+        foundation_product_keywords = [
+            'tuff pod', 'tuff pods', 'tuffpod', 'tuffpods', 'pod floor',
+            'raft slab', 'concrete slab', 'slab foundation', 'floor slab',
+            'thermoslab', 'thermaslab', 'slab x200', 'maxedge', 'max edge',
+            'foundation', 'footing', 'perimeter foundation', 'rib raft'
+        ]
+        
+        site_exclusion_keywords = [
+            'high water table', 'water table', 'high watertable',
+            'liquefaction', 'liquefiable', 'liquefied', 'lateral spread',
+            'peat', 'peat soil', 'soft soil', 'clay soil', 'expansive soil',
+            'fill', 'uncontrolled fill', 'unconsolidated',
+            'slope', 'steep slope', 'sloping site', 'hillside',
+            'flood zone', 'flood prone', 'flooding',
+            'coastal erosion', 'erosion prone',
+            'bad ground', 'poor ground', 'unstable ground', 'unstable soil'
+        ]
+        
+        good_ground_keywords = ['good ground', 'site suitability', 'nzs 3604', 'sed', 'specific engineering']
+        
+        has_foundation_product = any(kw in query_lower for kw in foundation_product_keywords)
+        has_site_exclusion = any(kw in query_lower for kw in site_exclusion_keywords)
+        has_good_ground_query = any(kw in query_lower for kw in good_ground_keywords)
+        
+        # Also detect if asking about Expol products that are foundation-related
+        expol_foundation_products = ['expol' in query_lower and any(p in query_lower for p in ['tuff', 'pod', 'slab', 'thermoslab', 'foundation'])]
+        has_expol_foundation = any(expol_foundation_products)
+        
+        _GOOD_GROUND_CHECK = (has_foundation_product or has_expol_foundation) and (has_site_exclusion or has_good_ground_query)
+        
+        if _GOOD_GROUND_CHECK:
+            print(f"   🏗️ GOOD GROUND CHECK: Foundation product + Site condition query detected")
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
