@@ -2331,6 +2331,75 @@ RECOMMENDATION FOR NON-GOOD-GROUND SITES:
             final_results.insert(0, good_ground_warning)
             print(f"   🏗️ GOOD GROUND: Injected NZS 3604 site suitability requirements")
         
+        # ==========================================================================
+        # PRECAUTIONARY CODE LOGIC: Insulation vs Roof Underlay Air Gap Warning
+        # When manufacturer says "no gap needed" but code best practice says "gap required"
+        # Must cite BOTH and give a "Yes, but..." answer - cannot just say "Yes"
+        # ==========================================================================
+        if _INSULATION_UNDERLAY_GAP_CHECK:
+            air_gap_warning = {
+                'id': 'PRECAUTIONARY_AIR_GAP_WARNING',
+                'source': 'STRYDA Precautionary Code Logic - E2/AS1 Ventilation Requirements',
+                'page': 0,
+                'content': """⚠️ PRECAUTIONARY WARNING: Insulation Contact with Roof Underlay
+
+CONFLICT BETWEEN MANUFACTURER CLAIMS AND CODE BEST PRACTICE:
+
+MANUFACTURER POSITION (Product Datasheet):
+Many insulation manufacturers (GreenStuf, Mammoth, Bradford, etc.) state their products are:
+- "Non-wicking" / "Moisture resistant"
+- "Can be installed in contact with underlay"
+- "Does not require a gap"
+
+HOWEVER - BUILDING CODE BEST PRACTICE (E2/AS1 & Industry Guidelines):
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ GENERAL REQUIREMENT: Minimum 25mm ventilation air gap above insulation     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ PURPOSE:                                                                     │
+│ • Allows drainage of any condensation from underlay                         │
+│ • Provides ventilation to prevent moisture buildup                          │
+│ • Reduces risk of mould/mildew in roof cavity                              │
+│ • Prevents insulation from becoming wet and losing R-value                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ SPECIFIC RISKS OF DIRECT CONTACT:                                           │
+│ • Bituminous underlays can transfer moisture                                │
+│ • Compressed insulation loses thermal performance                           │
+│ • No drainage path for condensation                                         │
+│ • Potential for rot/decay of timber framing                                │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+CONFLICT RESOLUTION - YOU MUST PROVIDE "YES, BUT..." ANSWER:
+
+When responding to "Can insulation touch the underlay?" questions:
+1. ACKNOWLEDGE the manufacturer's claim (permissive)
+2. CITE the code best practice (restrictive) 
+3. WARN about the specific risk (bituminous underlays, moisture)
+4. RECOMMEND checking consent conditions
+
+EXAMPLE COMPLIANT RESPONSE:
+"While [Product] documentation states the insulation is non-wicking and can contact 
+the underlay, NZBC E2/AS1 generally recommends a minimum 25mm air gap for drainage 
+and ventilation. Direct contact is a PARTICULAR RISK with bituminous papers. 
+Check your specific consent conditions and consult your building inspector."
+
+DO NOT simply say "Yes" based on the product datasheet alone.""",
+                'snippet': 'PRECAUTIONARY: Manufacturer may allow contact, but E2/AS1 recommends 25mm air gap. Must cite BOTH sources and warn about bituminous underlay risks.',
+                'section': 'Roof Ventilation & Insulation',
+                'clause': 'E2/AS1 General Practice',
+                'final_score': 2.0,  # Highest priority for safety warnings
+                'base_score': 2.0,
+                'priority': 100,
+                'doc_type': 'Precautionary_Warning',
+                'trade': 'roof_insulation',
+                'tier1_source': True,
+                'precautionary_code_check': True
+            }
+            
+            # Insert at the very beginning to ensure LLM sees this first
+            final_results.insert(0, air_gap_warning)
+            print(f"   ⚠️ PRECAUTIONARY CODE: Injected Air Gap warning for insulation/underlay query")
+        
         return final_results
         
     except Exception as e:
