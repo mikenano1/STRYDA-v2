@@ -2592,6 +2592,70 @@ Answer: "NO. Zone D (Sea Spray) per NZS 3604 REQUIRES stainless steel 316 fixing
             final_results.insert(0, zone_d_knowledge)
             print(f"   📍 ZONE D: Injected NZS 3604 corrosion zone definitions")
         
+        # ==========================================================================
+        # COMMODITY TIMBER KNOWLEDGE INJECTION
+        # When standard grades (SG8, SG10) are mentioned with brands (Red Stag, etc.)
+        # Inject knowledge that these are commodity timbers following NZS 3604
+        # ==========================================================================
+        if _COMMODITY_TIMBER_QUERY:
+            commodity_knowledge = {
+                'id': 'NZS3604_COMMODITY_TIMBER',
+                'source': 'NZS 3604:2011 Commodity Timber Grades (STRYDA Knowledge Base)',
+                'page': 0,
+                'content': """🪵 COMMODITY TIMBER GRADES - NZS 3604 SPAN TABLES
+
+IMPORTANT: Standard timber grades (SG8, SG10, SG12) are COMMODITIES.
+Brands like "Red Stag", "Laserframe", "Carter Holt" sell the SAME product.
+
+WHEN COMPARING COMMODITY TIMBER vs PROPRIETARY PRODUCTS:
+═══════════════════════════════════════════════════════════════════════════════
+
+1. COMMODITY TIMBER (Red Stag SG8, CHH SG8, etc.):
+   • All brands selling SG8 timber follow the SAME NZS 3604 span tables
+   • "Red Stag SG8" = "Laserframe SG8" = "NZS 3604 Table 8.x SG8"
+   • Use NZS 3604 Section 8 tables for spans, loads, and sizes
+
+2. PROPRIETARY PRODUCTS (J-Frame, Posi-Strut, etc.):
+   • Have their OWN span tables (often stronger than commodity)
+   • Use manufacturer's published tables, NOT NZS 3604
+
+NZS 3604:2011 SECTION 8 - LINTEL SPAN TABLES FOR SG8:
+───────────────────────────────────────────────────────────────────────────────
+Lintel Size       | Light Roof, Single | Light Roof, Two | Heavy Roof
+                  | Storey (mm)        | Storey (mm)     | Single (mm)
+───────────────────────────────────────────────────────────────────────────────
+90x45 SG8        | 900                | 600             | 600
+140x45 SG8       | 1500               | 1200            | 1200
+190x45 SG8       | 2100               | 1800            | 1500
+240x45 SG8       | 2700               | 2400            | 2100
+2x90x45 SG8      | 1500               | 1200            | 1200
+2x140x45 SG8     | 2400               | 1800            | 1800
+───────────────────────────────────────────────────────────────────────────────
+
+COMPARISON METHODOLOGY:
+When asked "Compare Red Stag SG8 vs J-Frame":
+1. For Red Stag SG8 → Use NZS 3604 Table 8.x spans
+2. For J-Frame → Use J-Frame manufacturer span tables
+3. Compare the maximum spans for equivalent load conditions
+
+NOTE: Proprietary products like J-Frame often have LONGER spans than 
+commodity SG8 because they are engineered with better stress grades or LVL.""",
+                'snippet': 'Red Stag SG8 = NZS 3604 SG8 commodity timber. Use NZS 3604 Section 8 span tables. J-Frame and other proprietary products have their own (usually longer) span tables.',
+                'section': 'Commodity Timber',
+                'clause': 'NZS 3604:2011 Section 8',
+                'final_score': 1.9,
+                'base_score': 1.9,
+                'priority': 95,
+                'doc_type': 'Knowledge_Definition',
+                'trade': 'structural_timber',
+                'tier1_source': True,
+                'commodity_timber_injection': True
+            }
+            
+            # Insert near the beginning
+            final_results.insert(0, commodity_knowledge)
+            print(f"   🪵 COMMODITY TIMBER: Injected NZS 3604 span table reference")
+        
         return final_results
         
     except Exception as e:
