@@ -2973,6 +2973,32 @@ DO NOT focus only on hygiene (E3) - Fire Safety is the PRIMARY concern here.""",
             final_results.insert(0, exitway_fire_warning)
             print(f"   🔥 EXITWAY FIRE SAFETY: Injected C/AS2 surface finish requirements (CRITICAL)")
         
+        # ══════════════════════════════════════════════════════════════════════════
+        # LAYER 1: SAFETY FIREWALL INJECTION
+        # Inject all triggered safety warnings into results at highest priority
+        # ══════════════════════════════════════════════════════════════════════════
+        if _SAFETY_TRIGGERS:
+            for i, trigger in enumerate(_SAFETY_TRIGGERS):
+                safety_injection = {
+                    'id': f'SAFETY_FIREWALL_{trigger["type"]}_{i}',
+                    'source': trigger['source'],
+                    'page': 0,
+                    'content': trigger['message'],
+                    'snippet': trigger['message'][:200],
+                    'section': 'Safety Firewall',
+                    'clause': trigger['type'],
+                    'final_score': 3.0,  # Highest possible priority
+                    'base_score': 3.0,
+                    'priority': 100,
+                    'doc_type': 'Safety_Firewall_Warning',
+                    'trade': 'safety',
+                    'tier1_source': True,
+                    'safety_trigger': True,
+                    'trigger_type': trigger['type']
+                }
+                final_results.insert(0, safety_injection)
+            print(f"   🛡️ SAFETY FIREWALL: Injected {len(_SAFETY_TRIGGERS)} warning(s) into results")
+        
         return final_results
         
     except Exception as e:
