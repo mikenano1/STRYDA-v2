@@ -1340,6 +1340,48 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         if _INSULATION_UNDERLAY_GAP_CHECK:
             print(f"   ⚠️ PRECAUTIONARY CODE CHECK: Insulation + Roof Underlay contact query detected")
         
+        # ==========================================================================
+        # BRAND-SPECIFIC CORROSION ZONE LOGIC
+        # When asking about a specific brand + corrosion zone (Zone D, sea spray, etc.)
+        # MUST prioritize the brand's own documentation over generic fastener guides
+        # ==========================================================================
+        corrosion_zone_keywords = [
+            'zone d', 'zone c', 'zone b', 'sea spray', 'coastal', 'marine',
+            'corrosion zone', 'nzs 3604', 'exposure zone', 'severe marine',
+            'harsh environment', 'salt spray', 'salt air'
+        ]
+        
+        fixing_material_keywords = [
+            'stainless', 'stainless steel', '316', '304', 'galvanized', 'galvanised',
+            'hot dip', 'hdg', 'zinc', 'fixing', 'fixings', 'fastener', 'nail', 'nails',
+            'screw', 'screws'
+        ]
+        
+        # Detect specific brands in query
+        brand_specific_keywords = {
+            'abodo': 'Abodo Wood',
+            'vulcan': 'Abodo Wood',
+            'sand decking': 'Abodo Wood',
+            'kingspan': 'Kingspan',
+            'colorsteel': 'ColorSteel',
+            'cladding': None  # Generic - will use detected brand
+        }
+        
+        has_corrosion_zone = any(kw in query_lower for kw in corrosion_zone_keywords)
+        has_fixing_material = any(kw in query_lower for kw in fixing_material_keywords)
+        
+        detected_brand_for_zone = None
+        for keyword, brand in brand_specific_keywords.items():
+            if keyword in query_lower and brand:
+                detected_brand_for_zone = brand
+                break
+        
+        _BRAND_CORROSION_ZONE_CHECK = has_corrosion_zone and (has_fixing_material or detected_brand_for_zone)
+        
+        if _BRAND_CORROSION_ZONE_CHECK and detected_brand_for_zone:
+            print(f"   🌊 CORROSION ZONE CHECK: Brand '{detected_brand_for_zone}' + Zone/Fixing query detected")
+            print(f"   → Will prioritize {detected_brand_for_zone} TDS over generic fastener guides")
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
