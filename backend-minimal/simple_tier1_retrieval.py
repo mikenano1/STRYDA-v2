@@ -1308,6 +1308,38 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         if _GOOD_GROUND_CHECK:
             print(f"   🏗️ GOOD GROUND CHECK: Foundation product + Site condition query detected")
         
+        # ==========================================================================
+        # PRECAUTIONARY CODE LOGIC: Insulation vs Roof Underlay Air Gap Rule
+        # When asking about insulation touching/contacting roof underlay:
+        # - Product datasheets may say "no gap needed" (permissive)
+        # - Building Code best practice requires ventilation gap (restrictive)
+        # Must cite BOTH and let user decide - cannot just say "Yes"
+        # ==========================================================================
+        insulation_keywords = [
+            'insulation', 'greenstuf', 'green stuf', 'mammoth', 'pink batts', 
+            'earthwool', 'bradford', 'batts', 'polyester insulation', 'wool insulation'
+        ]
+        
+        underlay_contact_keywords = [
+            'touching', 'contact', 'directly', 'against', 'up against',
+            'touching the underlay', 'contact with underlay', 'against the underlay',
+            'touch the roof', 'contact roof'
+        ]
+        
+        roof_underlay_keywords = [
+            'roof underlay', 'underlay', 'roofing underlay', 'building paper',
+            'sarking', 'breather membrane', 'bituminous paper', 'bitumen paper'
+        ]
+        
+        has_insulation = any(kw in query_lower for kw in insulation_keywords)
+        has_underlay_contact = any(kw in query_lower for kw in underlay_contact_keywords)
+        has_roof_underlay = any(kw in query_lower for kw in roof_underlay_keywords)
+        
+        _INSULATION_UNDERLAY_GAP_CHECK = has_insulation and (has_underlay_contact or has_roof_underlay)
+        
+        if _INSULATION_UNDERLAY_GAP_CHECK:
+            print(f"   ⚠️ PRECAUTIONARY CODE CHECK: Insulation + Roof Underlay contact query detected")
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
