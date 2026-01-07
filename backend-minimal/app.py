@@ -101,6 +101,149 @@ def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dic
     
     return citations
 
+# ══════════════════════════════════════════════════════════════════════════════
+# LAYER 6: CITATION CONSOLIDATOR (UX Optimization)
+# "Quality over Quantity" - Group citations, limit display, deduplicate definitions
+# ══════════════════════════════════════════════════════════════════════════════
+
+def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary: int = 5) -> Dict:
+    """
+    Consolidate and group citations for cleaner UX.
+    
+    Rules:
+    1. GROUP: Collapse multiple clauses from same document section
+    2. TIER: Split into primary (top 3) and secondary (hidden/expandable)
+    3. DEDUPE: Remove definitions if actionable clause from same source exists
+    
+    Returns:
+        {
+            'primary': [...],      # Top 3 most relevant (always shown)
+            'secondary': [...],    # Supporting citations (collapsed/hidden)
+            'grouped': {...}       # Grouped by document for display
+        }
+    """
+    if not docs:
+        return {'primary': [], 'secondary': [], 'grouped': {}}
+    
+    # Step 1: Group by document source (base name without page)
+    grouped = {}
+    for doc in docs:
+        source = doc.get('source', 'Unknown')
+        # Extract base document name (remove page-specific suffixes)
+        base_source = source.split(' - ')[0] if ' - ' in source else source
+        base_source = base_source.replace('Deep Dive', '').strip()
+        
+        if base_source not in grouped:
+            grouped[base_source] = {
+                'source': base_source,
+                'pages': [],
+                'clauses': [],
+                'sections': [],
+                'max_score': 0,
+                'docs': []
+            }
+        
+        page = doc.get('page', 0)
+        clause = doc.get('clause', '')
+        section = doc.get('section', '')
+        score = doc.get('final_score', 0)
+        
+        if page not in grouped[base_source]['pages']:
+            grouped[base_source]['pages'].append(page)
+        if clause and clause not in grouped[base_source]['clauses']:
+            grouped[base_source]['clauses'].append(clause)
+        if section and section not in grouped[base_source]['sections']:
+            grouped[base_source]['sections'].append(section)
+        
+        grouped[base_source]['max_score'] = max(grouped[base_source]['max_score'], score)
+        grouped[base_source]['docs'].append(doc)
+    
+    # Step 2: Deduplicate - Remove "Definition" entries if actionable clause exists
+    definition_keywords = ['definition', 'glossary', 'interpretation', 'meaning of terms']
+    actionable_sources = set()
+    
+    for base_source, data in grouped.items():
+        has_actionable = any(
+            s.lower() not in ' '.join(definition_keywords) 
+            for s in data['sections']
+        )
+        if has_actionable:
+            actionable_sources.add(base_source)
+    
+    # Filter out definition-only entries if actionable version exists
+    filtered_grouped = {}
+    for base_source, data in grouped.items():
+        is_definition_only = all(
+            any(kw in s.lower() for kw in definition_keywords) 
+            for s in data['sections'] if s
+        )
+        
+        # Keep if: not definition-only, OR no actionable alternative exists
+        if not is_definition_only or base_source not in actionable_sources:
+            filtered_grouped[base_source] = data
+    
+    # Step 3: Sort by max score and split into tiers
+    sorted_sources = sorted(
+        filtered_grouped.values(), 
+        key=lambda x: x['max_score'], 
+        reverse=True
+    )
+    
+    # Build consolidated citations
+    primary = []
+    secondary = []
+    
+    for i, source_data in enumerate(sorted_sources):
+        # Format page list (collapse consecutive)
+        pages = sorted(source_data['pages'])
+        if len(pages) > 3:
+            page_str = f"{pages[0]}-{pages[-1]}"
+        else:
+            page_str = ', '.join(str(p) for p in pages[:3])
+        
+        # Format clause list (collapse to section)
+        if len(source_data['clauses']) > 2:
+            # Group by section prefix (e.g., "7.3.1, 7.3.2, 7.3.3" -> "Section 7.3")
+            clause_str = f"Section {source_data['clauses'][0].split('.')[0]}" if source_data['clauses'][0] else ''
+        else:
+            clause_str = ', '.join(source_data['clauses'][:2])
+        
+        citation = {
+            'id': f"consolidated_{source_data['source']}_{i}",
+            'source': source_data['source'],
+            'pages': page_str,
+            'clause': clause_str,
+            'section': source_data['sections'][0] if source_data['sections'] else '',
+            'confidence': source_data['max_score'],
+            'doc_count': len(source_data['docs']),
+            'pill_text': f"[[{source_data['source']} | Page: {page_str}]]"
+        }
+        
+        if i < max_primary:
+            primary.append(citation)
+        elif i < max_primary + max_secondary:
+            secondary.append(citation)
+    
+    return {
+        'primary': primary,
+        'secondary': secondary,
+        'grouped': filtered_grouped
+    }
+
+def format_citation_string(consolidated: Dict) -> str:
+    """
+    Format consolidated citations into a clean string for the response.
+    Only includes primary citations in the visible response.
+    """
+    if not consolidated.get('primary'):
+        return ""
+    
+    citation_parts = []
+    for cit in consolidated['primary']:
+        citation_parts.append(cit['pill_text'])
+    
+    return '\n'.join(citation_parts)
+
 # Database configuration
 DATABASE_URL = os.getenv("DATABASE_URL")
 API_KEY = os.getenv("OPENAI_API_KEY") # Keep for legacy/fallback if needed
