@@ -1561,12 +1561,17 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                 # Logging
                 print(f"🔍 Gemini output: {len(answer)} chars")
                 
+                # LAYER 6: Citation Consolidation
+                consolidated = consolidate_citations(docs, max_primary=3, max_secondary=5)
+                primary_citations = consolidated.get('primary', [])
+                
                 # Final response
                 response = {
                     "answer": answer,
                     "intent": final_intent,
-                    "citations": [], # No citations in hybrid mode
-                    "can_show_citations": False,
+                    "citations": primary_citations,  # Consolidated top 3 citations
+                    "secondary_citations": consolidated.get('secondary', []),  # Hidden/expandable
+                    "can_show_citations": len(primary_citations) > 0,
                     "model": f"{GEMINI_MODEL}-hybrid",
                     "timestamp": int(time.time())
                 }
