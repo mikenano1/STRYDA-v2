@@ -1383,11 +1383,11 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                     system_message="",
                     initial_messages=messages_payload
                 )
-                chat_client.with_model("gemini", GEMINI_MODEL)
-                chat_client.with_params(max_tokens=max_tokens_budget, temperature=0.2)
+                chat_client = chat_client.with_model("gemini", GEMINI_MODEL)
+                chat_client = chat_client.with_params(max_tokens=max_tokens_budget, temperature=0.2)
                 
                 # Execute
-                print(f"🤖 Calling Gemini Hybrid ({GEMINI_MODEL})...")
+                print(f"🤖 Calling Gemini Hybrid ({GEMINI_MODEL}) with max_tokens={max_tokens_budget}...")
                 # Using send_message with empty text to trigger generation based on history
                 answer = await chat_client.send_message(UserMessage(text=None))
                 
