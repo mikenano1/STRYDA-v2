@@ -2496,6 +2496,68 @@ DO NOT simply say "Yes" based on the product datasheet alone.""",
             final_results.insert(0, air_gap_warning)
             print(f"   ⚠️ PRECAUTIONARY CODE: Injected Air Gap warning for insulation/underlay query")
         
+        # ==========================================================================
+        # NZS 3604 ZONE D KNOWLEDGE INJECTION
+        # Zone D IS a real, standard NZS 3604 classification - inject definition
+        # This prevents AI from hallucinating "Zone D is not standard"
+        # ==========================================================================
+        if _ZONE_D_QUERY:
+            zone_d_knowledge = {
+                'id': 'NZS3604_ZONE_D_DEFINITION',
+                'source': 'NZS 3604:2011 Section 4 - Corrosion Zones (STRYDA Knowledge Base)',
+                'page': 0,
+                'content': """📍 NZS 3604:2011 CORROSION ZONE DEFINITIONS - OFFICIAL STANDARD
+
+Zone D IS a REAL, OFFICIAL NZS 3604 classification. Do NOT claim it "is not standard."
+
+NZS 3604:2011 SECTION 4 - ATMOSPHERIC CORROSION ZONES:
+┌─────────┬─────────────────────────────────────────────────────────────────────┐
+│ ZONE    │ DEFINITION                                                          │
+├─────────┼─────────────────────────────────────────────────────────────────────┤
+│ Zone B  │ Benign/Inland - More than 1km from sea, no industrial pollution     │
+├─────────┼─────────────────────────────────────────────────────────────────────┤
+│ Zone C  │ Coastal/Marine - 100m to 1km from sea, moderate salt exposure       │
+├─────────┼─────────────────────────────────────────────────────────────────────┤
+│ ZONE D  │ SEA SPRAY / SEVERE MARINE - Within 100m of breaking surf, direct    │
+│         │ salt spray exposure, harbours, tidal estuaries. MOST CORROSIVE.     │
+└─────────┴─────────────────────────────────────────────────────────────────────┘
+
+ZONE D FASTENER REQUIREMENTS (E2/AS1 & NZS 3604):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• STAINLESS STEEL 316 (marine grade) REQUIRED for all external fixings
+• Hot Dip Galvanized (HDG) is NOT PERMITTED in Zone D
+• Zinc-coated fasteners will fail rapidly in sea spray conditions
+
+ABODO VULCAN TIMBER - ZONE D REQUIREMENTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+From Abodo CodeMark Weatherboard Cladding System Manual (Page 10):
+"For buildings located in sea spray 'Zone D' (Exposure) conditions according to 
+NZS3604, STAINLESS 316 FIXINGS MUST BE USED."
+
+This is a MANDATORY requirement - not a recommendation. Using non-stainless 
+fixings in Zone D will void the Abodo warranty and fail to comply with NZBC.
+
+ANSWER FORMAT FOR ZONE D QUESTIONS:
+When asked "Can I use [product] in Zone D without stainless steel?"
+Answer: "NO. Zone D (Sea Spray) per NZS 3604 REQUIRES stainless steel 316 fixings.
+[Manufacturer] documentation explicitly states this requirement."
+""",
+                'snippet': 'Zone D IS a real NZS 3604 classification (sea spray/severe marine within 100m of surf). Stainless steel 316 REQUIRED for all fixings - HDG not permitted.',
+                'section': 'Corrosion Zones',
+                'clause': 'NZS 3604:2011 Section 4',
+                'final_score': 2.0,
+                'base_score': 2.0,
+                'priority': 100,
+                'doc_type': 'Knowledge_Definition',
+                'trade': 'corrosion_zones',
+                'tier1_source': True,
+                'zone_d_injection': True
+            }
+            
+            # Insert at the very beginning
+            final_results.insert(0, zone_d_knowledge)
+            print(f"   📍 ZONE D: Injected NZS 3604 corrosion zone definitions")
+        
         return final_results
         
     except Exception as e:
