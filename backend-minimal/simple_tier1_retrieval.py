@@ -1135,28 +1135,140 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         from cache_manager import embedding_cache, cache_key
         
         start_time = time.time()
-        
-        # ==========================================================================
-        # CRITICAL CHEMICAL COMPATIBILITY CHECK: Solvents + EPS = INSTANT FAILURE
-        # This check happens BEFORE any retrieval - it's a hard override
-        # Solvents dissolve polystyrene on contact. No hedging. No "maybe."
-        # ==========================================================================
         query_lower = query.lower()
         
+        # ══════════════════════════════════════════════════════════════════════════
+        # LAYER 1: SAFETY FIREWALL (Pre-Flight Checks)
+        # Hard-coded safety triggers that inject critical context BEFORE LLM response
+        # These are non-negotiable safety rules that override all other logic
+        # ══════════════════════════════════════════════════════════════════════════
+        
+        _SAFETY_TRIGGERS = []
+        
+        # --- TRIGGER 1: Chemical Hazard (Solvent + EPS) ---
         solvent_keywords = [
             'solvent', 'solvent-based', 'solvent based', 
             'bitumen paint', 'bituminous paint', 'black bitumen', 'bituminous',
-            'primer', 'oil-based', 'oil based',
+            'primer', 'oil-based', 'oil based', 'contact adhesive', 'contact glue',
             'petroleum', 'petrol', 'kerosene', 'turps', 'turpentine',
             'acetone', 'thinners', 'paint thinner', 'mineral spirits',
-            'tar', 'coal tar', 'creosote', 'xylene', 'toluene'
+            'tar', 'coal tar', 'creosote', 'xylene', 'toluene', 'glue'
         ]
-        
         eps_keywords = [
             'polystyrene', 'eps', 'xps', 'expol', 'styrofoam', 'styrodrain',
             'thermoslab', 'thermaslab', 'tuff pod', 'geofoam', 'foam board',
             'expanded polystyrene', 'extruded polystyrene'
         ]
+        if any(kw in query_lower for kw in solvent_keywords) and any(kw in query_lower for kw in eps_keywords):
+            _SAFETY_TRIGGERS.append({
+                'type': 'CHEMICAL_HAZARD',
+                'message': '⚠️ CHEMICAL HAZARD: Solvents dissolve EPS/XPS polystyrene on contact. Use water-based adhesives ONLY. This is irreversible damage.',
+                'source': 'STRYDA Safety Firewall - Chemical Compatibility'
+            })
+        
+        # --- TRIGGER 2: Fire Safety (Exitway + Combustible) ---
+        exitway_keywords = [
+            'hallway', 'corridor', 'stairwell', 'staircase', 'escape', 'exitway',
+            'exit way', 'fire exit', 'landing', 'lobby', 'foyer', 'passage'
+        ]
+        combustible_keywords = [
+            'timber', 'wood', 'ply', 'plywood', 'mdf', 'particle board',
+            'macrocarpa', 'cedar', 'pine', 'rimu', 't&g', 'tongue and groove',
+            'uncoated', 'untreated', 'lining board', 'softboard'
+        ]
+        if any(kw in query_lower for kw in exitway_keywords) and any(kw in query_lower for kw in combustible_keywords):
+            _SAFETY_TRIGGERS.append({
+                'type': 'FIRE_SAFETY',
+                'message': '🔥 FIRE SAFETY WARNING: Check NZBC C/AS2 Table 4.12.1.1. Exitways (hallways, corridors, stairwells) require Group 1-S (non-combustible) surface finishes. Uncoated timber is Group 3 (PROHIBITED in unsprinklered exitways).',
+                'source': 'STRYDA Safety Firewall - C/AS2 Fire Compliance'
+            })
+        
+        # --- TRIGGER 3: Corrosion Zone (Zone D + Non-Stainless) ---
+        zone_d_keywords = ['zone d', 'sea spray', 'coastal', 'marine', 'severe marine', 'harbourside', 'beachfront']
+        non_stainless_keywords = ['aluminium', 'aluminum', 'galvanized', 'galvanised', 'hdg', 'zinc', 'galv']
+        if any(kw in query_lower for kw in zone_d_keywords) and any(kw in query_lower for kw in non_stainless_keywords):
+            _SAFETY_TRIGGERS.append({
+                'type': 'CORROSION_HAZARD',
+                'message': '🌊 CORROSION CRITICAL: Zone D (Sea Spray) per NZS 3604 REQUIRES Stainless Steel 316 for ALL external fixings. Standard aluminium and galvanized fixings will corrode rapidly. HDG is NOT permitted in Zone D.',
+                'source': 'STRYDA Safety Firewall - NZS 3604 Corrosion Zones'
+            })
+        
+        # --- TRIGGER 4: Structural Integrity (Slab/Footing + Cutting) ---
+        structural_keywords = ['footing', 'slab', 'foundation', 'raft', 'concrete slab', 'floor slab', 'reinforcing']
+        cutting_keywords = ['cut', 'cutting', 'hole', 'penetration', 'pipe', 'sleeve', 'core', 'drill through', 'break out']
+        if any(kw in query_lower for kw in structural_keywords) and any(kw in query_lower for kw in cutting_keywords):
+            _SAFETY_TRIGGERS.append({
+                'type': 'STRUCTURAL_RISK',
+                'message': '🏗️ STRUCTURAL RISK: Do NOT cut reinforcing steel in concrete slabs/footings. Sleeving must be installed BEFORE pour per G13/AS1. Any post-pour penetrations require engineering assessment. Cutting rebar compromises structural integrity.',
+                'source': 'STRYDA Safety Firewall - G13/AS1 Structural Requirements'
+            })
+        
+        # --- TRIGGER 5: Boundary Fire (Combustible + Property Line) ---
+        boundary_keywords = ['boundary', 'property line', 'fence line', 'neighbour', 'neighboring', '1m', '1 metre', '600mm', 'close to boundary']
+        if any(kw in query_lower for kw in boundary_keywords) and any(kw in query_lower for kw in combustible_keywords + eps_keywords):
+            _SAFETY_TRIGGERS.append({
+                'type': 'BOUNDARY_FIRE',
+                'message': '🔥 BOUNDARY FIRE WARNING: Combustible materials within 1m of boundary require C/AS1 fire rating assessment. EPS/polystyrene products may need fire-rated protection or increased setback.',
+                'source': 'STRYDA Safety Firewall - C/AS1 Boundary Requirements'
+            })
+        
+        # Log triggered safety checks
+        if _SAFETY_TRIGGERS:
+            print(f"   🛡️ SAFETY FIREWALL: {len(_SAFETY_TRIGGERS)} trigger(s) activated:")
+            for trigger in _SAFETY_TRIGGERS:
+                print(f"      → {trigger['type']}")
+        
+        # ══════════════════════════════════════════════════════════════════════════
+        # LAYER 2: COMMODITY BRIDGE (Universal Translator)
+        # Maps brand names to standard document aliases for broader search
+        # Fixes retrieval "silos" where AI misses standards looking for brands
+        # ══════════════════════════════════════════════════════════════════════════
+        
+        _COMMODITY_MAPPINGS = []
+        
+        # Timber Brands -> NZS 3604
+        timber_brands = ['red stag', 'redstag', 'laserframe', 'laser frame', 'carters timber', 'chh', 'carter holt']
+        timber_grades = ['sg8', 'sg10', 'sg12', 'msg8', 'msg10', 'h1.2', 'h3.1', 'h3.2']
+        if any(brand in query_lower for brand in timber_brands) or any(grade in query_lower for grade in timber_grades):
+            _COMMODITY_MAPPINGS.append({
+                'brand': 'Commodity Timber',
+                'standard_alias': 'NZS 3604 Section 8 (Lintels) OR Section 10 (Rafters)',
+                'search_terms': ['NZS-36042011', 'NZS 3604']
+            })
+        
+        # Foundation Products -> NZS 3604 Section 7
+        foundation_brands = ['expol', 'tuff pod', 'tuffpod', 'thermoslab', 'rib raft', 'ribraft', 'firth']
+        if any(brand in query_lower for brand in foundation_brands):
+            _COMMODITY_MAPPINGS.append({
+                'brand': 'Foundation System',
+                'standard_alias': 'NZS 3604 Section 7.5 (Concrete Slabs)',
+                'search_terms': ['NZS-36042011', 'NZS 3604']
+            })
+        
+        # Roof Cladding -> E2/AS1
+        cladding_brands = ['colorsteel', 'colorcote', 'zincalume', 'corrugate', 'longrun']
+        if any(brand in query_lower for brand in cladding_brands):
+            _COMMODITY_MAPPINGS.append({
+                'brand': 'Roof Cladding',
+                'standard_alias': 'E2/AS1 (External Moisture - Roof Claddings)',
+                'search_terms': ['E2/AS1', 'E2-AS1']
+            })
+        
+        # Plasterboard -> NZS 3604 Section 5
+        plasterboard_brands = ['gib', 'plasterboard', 'gypsum', 'drywall', 'wallboard']
+        bracing_keywords = ['brac', 'racking', 'lateral', 'wind load']
+        if any(brand in query_lower for brand in plasterboard_brands) and any(kw in query_lower for kw in bracing_keywords):
+            _COMMODITY_MAPPINGS.append({
+                'brand': 'Plasterboard Bracing',
+                'standard_alias': 'NZS 3604 Section 5 (Bracing)',
+                'search_terms': ['NZS-36042011', 'NZS 3604']
+            })
+        
+        # Log commodity mappings
+        if _COMMODITY_MAPPINGS:
+            print(f"   🌉 COMMODITY BRIDGE: {len(_COMMODITY_MAPPINGS)} mapping(s) activated:")
+            for mapping in _COMMODITY_MAPPINGS:
+                print(f"      → {mapping['brand']} ↔ {mapping['standard_alias']}")
         
         has_solvent_query = any(kw in query_lower for kw in solvent_keywords)
         has_eps_query = any(kw in query_lower for kw in eps_keywords)
