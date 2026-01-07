@@ -2675,6 +2675,76 @@ commodity SG8 because they are engineered with better stress grades or LVL.""",
             final_results.insert(0, commodity_knowledge)
             print(f"   🪵 COMMODITY TIMBER: Injected NZS 3604 span table reference")
         
+        # ==========================================================================
+        # BRACING DEMAND KNOWLEDGE INJECTION
+        # Prevents hallucination by providing the correct table reference
+        # CRITICAL: Table 5.4 = Wind Zone definitions (NOT BU/m values!)
+        # ==========================================================================
+        if has_bracing_demand_query:
+            bracing_knowledge = {
+                'id': 'NZS3604_BRACING_TABLES',
+                'source': 'NZS 3604:2011 Section 5 - Bracing Demand Tables (STRYDA Knowledge Base)',
+                'page': 0,
+                'content': """📐 NZS 3604:2011 BRACING DEMAND - CORRECT TABLE REFERENCE
+
+⚠️ CRITICAL: DO NOT USE TABLE 5.4 FOR BU/m VALUES!
+Table 5.4 = Wind Zone DEFINITIONS (L, M, H, VH, EH) - NOT bracing demand!
+
+CORRECT TABLES FOR BRACING DEMAND (BU/m):
+═══════════════════════════════════════════════════════════════════════════════
+• TABLE 5.5 = Subfloor structure bracing demand (BU/m)
+• TABLE 5.6 = Single or upper storey wall bracing demand (BU/m) ← MOST COMMON
+• TABLE 5.7 = Lower of two storeys wall bracing demand (BU/m)
+• TABLE 5.8 = Earthquake bracing demand (BU/m²)
+
+TABLE 5.6 - WIND BRACING DEMAND FOR SINGLE OR UPPER STOREY WALLS (BU/m):
+═══════════════════════════════════════════════════════════════════════════════
+(Values shown for HIGH WIND ZONE - multiply by factor for other zones)
+
+Floor-to-Apex (H) | Roof Height (h) |  ACROSS  |  ALONG
+───────────────────────────────────────────────────────────────────────────────
+      3m          |      0m         |    35    |    35
+      3m          |      1m         |    30    |    35
+      4m          |      0m         |    45    |    45
+      4m          |      1m         |    40    |    45
+      5m          |      0m         |    55    |    55   ← TYPICAL SINGLE STOREY
+      5m          |      1m         |    50    |    55
+      5m          |      2m         |    50    |    55
+      6m          |      0m         |    60    |    65
+      6m          |      1m         |    60    |    65
+───────────────────────────────────────────────────────────────────────────────
+
+WIND ZONE MULTIPLIERS (apply to High Wind Zone values):
+• Low Wind Zone:      × 0.5
+• Medium Wind Zone:   × 0.7
+• High Wind Zone:     × 1.0 (base values in table)
+• Very High:          × 1.3
+• Extra High:         × 1.6
+
+EXAMPLE CALCULATION:
+Single storey, light roof, concrete slab, High Wind Zone, H=5m, h=0m:
+→ Table 5.6: 55 BU/m (Across) and 55 BU/m (Along)
+
+ANTI-HALLUCINATION WARNING:
+If the retrieved documents don't contain the specific BU/m value, 
+state "Cannot find exact value - please refer to NZS 3604 Table 5.6"
+DO NOT guess or invent a number like "120 BU/m".""",
+                'snippet': 'Bracing demand from NZS 3604 Table 5.6: Single storey, light roof, High Wind Zone = 55 BU/m. DO NOT use Table 5.4 (that shows wind zone definitions, not BU/m values).',
+                'section': 'Bracing Design',
+                'clause': 'NZS 3604:2011 Table 5.6',
+                'final_score': 2.0,
+                'base_score': 2.0,
+                'priority': 100,
+                'doc_type': 'Knowledge_Definition',
+                'trade': 'bracing',
+                'tier1_source': True,
+                'bracing_demand_injection': True
+            }
+            
+            # Insert at the very beginning
+            final_results.insert(0, bracing_knowledge)
+            print(f"   📐 BRACING DEMAND: Injected NZS 3604 Table 5.6 reference")
+        
         return final_results
         
     except Exception as e:
