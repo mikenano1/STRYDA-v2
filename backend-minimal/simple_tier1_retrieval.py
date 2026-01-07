@@ -1252,13 +1252,44 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             print(f"   🔥 FIRE RATING QUERY: Detected product '{detected_autex_product}' - will target Datasheet")
         
         # ==========================================================================
+        # EXITWAY FIRE SAFETY CHECK (CRITICAL - Takes precedence over E/G clauses)
+        # If query mentions exitway locations, MUST flag C/AS2 fire requirements
+        # Fire Safety (C clauses) ALWAYS takes precedence over Hygiene (E/G clauses)
+        # ==========================================================================
+        exitway_location_keywords = [
+            'hallway', 'hall way', 'corridor', 'stairwell', 'stair well', 'staircase',
+            'exit', 'exitway', 'exit way', 'fire exit', 'escape route', 'escape path',
+            'means of escape', 'safe path', 'egress', 'landing', 'lobby',
+            'passage', 'passageway', 'foyer', 'entrance hall', 'vestibule'
+        ]
+        
+        # Materials that are typically combustible (Group 3)
+        combustible_material_keywords = [
+            'timber', 'wood', 'macrocarpa', 'cedar', 'pine', 'rimu', 'kahikatea',
+            'plywood', 'mdf', 'particle board', 'chipboard', 'osb', 'softboard',
+            't&g', 'tongue and groove', 'tongue & groove', 'lining board',
+            'uncoated', 'untreated', 'raw timber', 'natural timber'
+        ]
+        
+        # Check for exitway + combustible material combination
+        has_exitway_location = any(kw in query_lower for kw in exitway_location_keywords)
+        has_combustible_material = any(kw in query_lower for kw in combustible_material_keywords)
+        
+        _EXITWAY_FIRE_SAFETY_CHECK = has_exitway_location and has_combustible_material
+        
+        if _EXITWAY_FIRE_SAFETY_CHECK:
+            print(f"   🔥 CRITICAL FIRE SAFETY: Exitway location + combustible material detected!")
+            print(f"   → C/AS2 fire requirements MUST be checked (takes precedence over E/G clauses)")
+        
+        # ==========================================================================
         # CROSS-REFERENCE LOGIC: Fire Rating + Code Compliance
         # When asking about fire ratings AND exit ways/compliance, inject BOTH:
         # 1. Product fire rating from TDS
         # 2. Code requirements from C/AS2 Table 4.12.1.1
         # ==========================================================================
         exitway_keywords = ['exit', 'exitway', 'escape route', 'exit way', 'fire exit',
-                           'escape path', 'means of escape', 'safe path', 'egress']
+                           'escape path', 'means of escape', 'safe path', 'egress',
+                           'hallway', 'corridor', 'stairwell', 'staircase']
         code_compliance_keywords = ['permitted', 'allowed', 'can i use', 'compliant', 
                                    'acceptable', 'meet', 'comply', 'c/as2', 'building code']
         
