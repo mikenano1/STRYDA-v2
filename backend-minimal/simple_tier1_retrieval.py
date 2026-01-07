@@ -1270,6 +1270,62 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             for mapping in _COMMODITY_MAPPINGS:
                 print(f"      → {mapping['brand']} ↔ {mapping['standard_alias']}")
         
+        # ══════════════════════════════════════════════════════════════════════════
+        # LAYER 5: RELEVANCE RAZOR (Scope Control)
+        # "Answer the Question Asked, not the Whole Chapter"
+        # Suppress irrelevant technical content based on query intent
+        # Safety Firewall (Layer 1) ALWAYS bypasses this filter
+        # ══════════════════════════════════════════════════════════════════════════
+        
+        # Intent Classification Keywords
+        planning_keywords = ['boundary', 'setback', 'height', 'site coverage', 'building envelope', 
+                            'recession plane', 'yard', 'distance from', 'how far', 'property line',
+                            'resource consent', 'permitted activity', 'district plan']
+        
+        structural_keywords = ['span', 'load', 'bearer', 'joist', 'rafter', 'lintel', 'beam',
+                              'foundation', 'footing', 'bracing', 'tie down', 'hold down',
+                              'cantilever', 'deflection', 'moment', 'shear', 'connection']
+        
+        weathertightness_keywords = ['weathertight', 'waterproof', 'leak', 'moisture', 'cladding',
+                                    'flashing', 'drainage', 'cavity', 'wrap', 'underlay', 'membrane',
+                                    'penetration', 'seal', 'weatherboard', 'e2']
+        
+        material_keywords = ['fastening', 'fixing', 'nail', 'screw', 'bolt', 'anchor',
+                            'treatment', 'h1.2', 'h3', 'durability', 'coating', 'finish',
+                            'grade', 'species', 'compatibility', 'corrosion', 'zone d']
+        
+        # Classify query intent
+        _QUERY_INTENT = 'general'  # Default
+        intent_scores = {
+            'planning': sum(1 for kw in planning_keywords if kw in query_lower),
+            'structural': sum(1 for kw in structural_keywords if kw in query_lower),
+            'weathertightness': sum(1 for kw in weathertightness_keywords if kw in query_lower),
+            'material': sum(1 for kw in material_keywords if kw in query_lower)
+        }
+        
+        # Get highest scoring intent
+        max_intent = max(intent_scores, key=intent_scores.get)
+        if intent_scores[max_intent] > 0:
+            _QUERY_INTENT = max_intent
+        
+        # Define suppression rules (what to filter OUT based on intent)
+        _SUPPRESSION_RULES = {
+            'planning': ['weathertightness_detail', 'structural_sizing', 'material_specs'],
+            'structural': ['planning_setbacks', 'aesthetic_finishes', 'general_definitions'],
+            'weathertightness': ['structural_sizing', 'planning_setbacks', 'material_grades'],
+            'material': ['structural_sizing', 'planning_setbacks', 'general_definitions'],
+            'general': []  # No suppression for general queries
+        }
+        
+        _ACTIVE_SUPPRESSIONS = _SUPPRESSION_RULES.get(_QUERY_INTENT, [])
+        
+        # Safety exception: If Safety Firewall triggered, disable suppression
+        if _SAFETY_TRIGGERS:
+            _ACTIVE_SUPPRESSIONS = []
+            print(f"   🎯 RELEVANCE RAZOR: Suppression DISABLED (Safety Firewall active)")
+        else:
+            print(f"   🎯 RELEVANCE RAZOR: Intent='{_QUERY_INTENT}' | Suppressing: {_ACTIVE_SUPPRESSIONS if _ACTIVE_SUPPRESSIONS else 'None'}")
+        
         has_solvent_query = any(kw in query_lower for kw in solvent_keywords)
         has_eps_query = any(kw in query_lower for kw in eps_keywords)
         
