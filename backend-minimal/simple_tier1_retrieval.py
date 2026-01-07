@@ -1622,46 +1622,90 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
                         detected_trade = None  # Reset for logging
                 
                 elif has_final_sweep or has_fasteners_suite:
-                    # Use special query that searches Final Sweep sources and brand names
-                    # Extract brand names from Final Sweep sources
-                    final_sweep_sources = [s for s in target_sources if 'Final Sweep' in s]
-                    other_sources = [s for s in target_sources if 'Final Sweep' not in s and s != 'Fasteners Full Suite']
+                    # IMPORTANT: Check if a specific product brand is also detected
+                    # If so, prioritize brand docs over generic fastener guides
+                    has_specific_brand = any(s in target_sources for s in ['Abodo Wood', 'J&L Duke', 'ColorSteel', 'Kingspan'])
                     
-                    # Build flexible query for fastener content
-                    sql = """
-                        SELECT id, source, page, content, section, clause, snippet,
-                               doc_type, trade, status, priority, phase, brand_name,
-                               (embedding <=> %s::vector) as similarity
-                        FROM documents 
-                        WHERE embedding IS NOT NULL
-                          AND (
-                            source LIKE 'Final Sweep%%'
-                            OR trade = 'fasteners'
-                            OR category_code = 'F_Manufacturers'
-                    """
-                    params = [query_embedding]
-                    
-                    # Add any specific brand name filters extracted from the query
-                    if final_sweep_sources:
-                        brand_placeholders = ', '.join(['%s'] * len(final_sweep_sources))
-                        sql += f" OR source IN ({brand_placeholders})"
-                        params.extend(final_sweep_sources)
-                    
-                    if other_sources:
-                        other_placeholders = ', '.join(['%s'] * len(other_sources))
-                        sql += f" OR source IN ({other_placeholders})"
-                        params.extend(other_sources)
-                    
-                    sql += """
-                          )
-                        ORDER BY similarity ASC
-                        LIMIT %s;
-                    """
-                    params.append(top_k * 2)
-                    
-                    print(f"   🔎 Fastener-optimized search: Final Sweep + fasteners trade")
-                    cur.execute(sql, params)
-                    results = cur.fetchall()
+                    if has_specific_brand and _BRAND_CORROSION_ZONE_CHECK:
+                        # BRAND PRIORITY: User is asking about a specific brand's fixing requirements
+                        # Use brand-based search instead of generic fastener search
+                        print(f"   🌊 BRAND PRIORITY: Skipping generic fastener search, using {detected_brand_for_zone} docs")
+                        
+                        brand_conditions = []
+                        params = [query_embedding]
+                        
+                        if 'Abodo Wood' in target_sources:
+                            brand_conditions.append("brand_name = 'Abodo Wood'")
+                            brand_conditions.append("source LIKE 'Abodo Wood%%'")
+                        
+                        if 'J&L Duke' in target_sources:
+                            brand_conditions.append("brand_name = 'J&L Duke'")
+                            brand_conditions.append("source LIKE 'J&L Duke%%'")
+                        
+                        if 'ColorSteel' in target_sources:
+                            brand_conditions.append("brand_name = 'ColorSteel'")
+                            brand_conditions.append("source LIKE 'ColorSteel%%'")
+                        
+                        if 'Kingspan' in target_sources:
+                            brand_conditions.append("brand_name = 'Kingspan'")
+                            brand_conditions.append("source LIKE 'Kingspan%%'")
+                        
+                        sql = f"""
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE embedding IS NOT NULL
+                              AND ({' OR '.join(brand_conditions)})
+                            ORDER BY similarity ASC
+                            LIMIT %s;
+                        """
+                        params.append(top_k * 2)
+                        
+                        cur.execute(sql, params)
+                        results = cur.fetchall()
+                    else:
+                        # Standard fastener search - generic query without specific brand
+                        # Use special query that searches Final Sweep sources and brand names
+                        # Extract brand names from Final Sweep sources
+                        final_sweep_sources = [s for s in target_sources if 'Final Sweep' in s]
+                        other_sources = [s for s in target_sources if 'Final Sweep' not in s and s != 'Fasteners Full Suite']
+                        
+                        # Build flexible query for fastener content
+                        sql = """
+                            SELECT id, source, page, content, section, clause, snippet,
+                                   doc_type, trade, status, priority, phase, brand_name,
+                                   (embedding <=> %s::vector) as similarity
+                            FROM documents 
+                            WHERE embedding IS NOT NULL
+                              AND (
+                                source LIKE 'Final Sweep%%'
+                                OR trade = 'fasteners'
+                                OR category_code = 'F_Manufacturers'
+                        """
+                        params = [query_embedding]
+                        
+                        # Add any specific brand name filters extracted from the query
+                        if final_sweep_sources:
+                            brand_placeholders = ', '.join(['%s'] * len(final_sweep_sources))
+                            sql += f" OR source IN ({brand_placeholders})"
+                            params.extend(final_sweep_sources)
+                        
+                        if other_sources:
+                            other_placeholders = ', '.join(['%s'] * len(other_sources))
+                            sql += f" OR source IN ({other_placeholders})"
+                            params.extend(other_sources)
+                        
+                        sql += """
+                              )
+                            ORDER BY similarity ASC
+                            LIMIT %s;
+                        """
+                        params.append(top_k * 2)
+                        
+                        print(f"   🔎 Fastener-optimized search: Final Sweep + fasteners trade")
+                        cur.execute(sql, params)
+                        results = cur.fetchall()
                 else:
                     # Check for special brand-based searches (MBIE, J&L Duke, Abodo Wood, etc.)
                     has_mbie = 'MBIE' in target_sources
