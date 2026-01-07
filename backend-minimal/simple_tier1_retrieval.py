@@ -1392,6 +1392,40 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
         if _ZONE_D_QUERY:
             print(f"   📍 ZONE D DETECTED: Will inject NZS 3604 exposure zone definitions")
         
+        # ==========================================================================
+        # COMMODITY FALLBACK LOGIC: Standard Timber Grades
+        # When a brand mentions a standard grade (SG8, SG10, H1.2, etc.),
+        # treat it as a commodity and fallback to NZS 3604 if brand docs fail
+        # "Red Stag SG8" = "NZS 3604 SG8 Timber"
+        # ==========================================================================
+        standard_timber_grades = [
+            'sg8', 'sg10', 'sg12', 'sg6',  # Structural grades
+            'h1.2', 'h3.1', 'h3.2', 'h4', 'h5', 'h6',  # Treatment grades
+            'msg8', 'msg10', 'msg12',  # Machine stress graded
+            'no. 1 framing', 'no. 2 framing', 'no.1 framing', 'no.2 framing',
+            '90x45', '140x45', '190x45', '240x45',  # Common sizes
+            '90x35', '70x45', '140x35'
+        ]
+        
+        commodity_timber_brands = [
+            'red stag', 'redstag', 'laserframe', 'laser frame',
+            'carters', 'placemakers', 'mitre 10', 'bunnings',
+            'carter holt', 'chh', 'radiata', 'pine'
+        ]
+        
+        has_standard_grade = any(grade in query_lower for grade in standard_timber_grades)
+        has_commodity_brand = any(brand in query_lower for brand in commodity_timber_brands)
+        
+        _COMMODITY_TIMBER_QUERY = has_standard_grade or has_commodity_brand
+        
+        if _COMMODITY_TIMBER_QUERY:
+            print(f"   🪵 COMMODITY TIMBER: Standard grade detected - will include NZS 3604 fallback")
+            # Add NZS 3604 to target sources if not already there
+            if 'NZS 3604:2011' not in target_sources:
+                target_sources.append('NZS 3604:2011')
+            if 'NZS-36042011' not in target_sources:
+                target_sources.append('NZS-36042011')
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
