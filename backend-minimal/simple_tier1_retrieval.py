@@ -1426,6 +1426,25 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             if 'NZS-36042011' not in target_sources:
                 target_sources.append('NZS-36042011')
         
+        # ==========================================================================
+        # BRACING DEMAND QUERY DETECTION
+        # Prevent hallucination by ensuring correct table is referenced
+        # Table 5.4 = Wind Zone definitions (NOT BU/m values!)
+        # Table 5.5 = Subfloor bracing demand (BU/m)
+        # Table 5.6 = Single/upper storey bracing demand (BU/m) <-- Most common
+        # Table 5.7 = Lower of two storeys bracing demand (BU/m)
+        # Table 5.8 = Earthquake bracing demand (BU/m²)
+        # ==========================================================================
+        bracing_demand_keywords = [
+            'bracing demand', 'bracing unit', 'bu/m', 'bracing units',
+            'wind bracing', 'earthquake bracing', 'wall bracing demand'
+        ]
+        
+        has_bracing_demand_query = any(kw in query_lower for kw in bracing_demand_keywords)
+        
+        if has_bracing_demand_query:
+            print(f"   📐 BRACING DEMAND QUERY: Will inject table reference guide")
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
