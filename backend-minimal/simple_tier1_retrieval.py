@@ -2830,15 +2830,32 @@ commodity SG8 because they are engineered with better stress grades or LVL.""",
                 'page': 0,
                 'content': """📐 NZS 3604:2011 BRACING DEMAND - CORRECT TABLE REFERENCE
 
-⚠️ CRITICAL: DO NOT USE TABLE 5.4 FOR BU/m VALUES!
-Table 5.4 = Wind Zone DEFINITIONS (L, M, H, VH, EH) - NOT bracing demand!
+══════════════════════════════════════════════════════════════════════════════
+LAYER 4: ANTI-HALLUCINATION - TABULAR METADATA
+══════════════════════════════════════════════════════════════════════════════
 
-CORRECT TABLES FOR BRACING DEMAND (BU/m):
-═══════════════════════════════════════════════════════════════════════════════
-• TABLE 5.5 = Subfloor structure bracing demand (BU/m)
-• TABLE 5.6 = Single or upper storey wall bracing demand (BU/m) ← MOST COMMON
-• TABLE 5.7 = Lower of two storeys wall bracing demand (BU/m)
-• TABLE 5.8 = Earthquake bracing demand (BU/m²)
+⚠️ TABLE USAGE RULES (DO NOT VIOLATE):
+
+┌─────────────┬───────────────────────────────────────────────────────────────┐
+│ TABLE       │ PURPOSE & USAGE                                               │
+├─────────────┼───────────────────────────────────────────────────────────────┤
+│ TABLE 5.4   │ [INPUT ONLY] Wind Zone DEFINITIONS (L, M, H, VH, EH)         │
+│             │ ❌ DO NOT extract BU/m values - this table has NONE           │
+├─────────────┼───────────────────────────────────────────────────────────────┤
+│ TABLE 5.5   │ [OUTPUT] Subfloor structure bracing demand (BU/m)            │
+├─────────────┼───────────────────────────────────────────────────────────────┤
+│ TABLE 5.6   │ [OUTPUT] Single/upper storey WALL bracing demand (BU/m)      │
+│             │ ✅ USE THIS for "bracing demand" questions                    │
+├─────────────┼───────────────────────────────────────────────────────────────┤
+│ TABLE 5.7   │ [OUTPUT] Lower of two storeys bracing demand (BU/m)          │
+├─────────────┼───────────────────────────────────────────────────────────────┤
+│ TABLE 5.8   │ [OUTPUT] Earthquake bracing demand (BU/m²)                   │
+├─────────────┼───────────────────────────────────────────────────────────────┤
+│ TABLE 8.2   │ [OUTPUT] Lintel spans for SG8 timber (mm)                    │
+│             │ ✅ USE THIS for lintel span questions                        │
+├─────────────┼───────────────────────────────────────────────────────────────┤
+│ TABLE 10.1  │ [OUTPUT] Rafter spans for SG8 timber (mm)                    │
+└─────────────┴───────────────────────────────────────────────────────────────┘
 
 TABLE 5.6 - WIND BRACING DEMAND FOR SINGLE OR UPPER STOREY WALLS (BU/m):
 ═══════════════════════════════════════════════════════════════════════════════
@@ -2847,31 +2864,24 @@ TABLE 5.6 - WIND BRACING DEMAND FOR SINGLE OR UPPER STOREY WALLS (BU/m):
 Floor-to-Apex (H) | Roof Height (h) |  ACROSS  |  ALONG
 ───────────────────────────────────────────────────────────────────────────────
       3m          |      0m         |    35    |    35
-      3m          |      1m         |    30    |    35
       4m          |      0m         |    45    |    45
-      4m          |      1m         |    40    |    45
       5m          |      0m         |    55    |    55   ← TYPICAL SINGLE STOREY
-      5m          |      1m         |    50    |    55
-      5m          |      2m         |    50    |    55
       6m          |      0m         |    60    |    65
-      6m          |      1m         |    60    |    65
 ───────────────────────────────────────────────────────────────────────────────
 
-WIND ZONE MULTIPLIERS (apply to High Wind Zone values):
+WIND ZONE MULTIPLIERS:
 • Low Wind Zone:      × 0.5
 • Medium Wind Zone:   × 0.7
-• High Wind Zone:     × 1.0 (base values in table)
+• High Wind Zone:     × 1.0 (base values)
 • Very High:          × 1.3
 • Extra High:         × 1.6
 
-EXAMPLE CALCULATION:
-Single storey, light roof, concrete slab, High Wind Zone, H=5m, h=0m:
-→ Table 5.6: 55 BU/m (Across) and 55 BU/m (Along)
+EXAMPLE: Single storey, light roof, High Wind Zone, H=5m, h=0m → 55 BU/m
 
-ANTI-HALLUCINATION WARNING:
-If the retrieved documents don't contain the specific BU/m value, 
-state "Cannot find exact value - please refer to NZS 3604 Table 5.6"
-DO NOT guess or invent a number like "120 BU/m".""",
+⛔ ANTI-HALLUCINATION RULE:
+If the specific BU/m value is not found in the above table,
+state: "Refer to NZS 3604 Table 5.6 for exact value based on your dimensions."
+DO NOT GUESS OR INVENT NUMBERS (e.g., "120 BU/m" is WRONG).""",
                 'snippet': 'Bracing demand from NZS 3604 Table 5.6: Single storey, light roof, High Wind Zone = 55 BU/m. DO NOT use Table 5.4 (that shows wind zone definitions, not BU/m values).',
                 'section': 'Bracing Design',
                 'clause': 'NZS 3604:2011 Table 5.6',
