@@ -1382,6 +1382,16 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             print(f"   🌊 CORROSION ZONE CHECK: Brand '{detected_brand_for_zone}' + Zone/Fixing query detected")
             print(f"   → Will prioritize {detected_brand_for_zone} TDS over generic fastener guides")
         
+        # ==========================================================================
+        # NZS 3604 EXPOSURE ZONE KNOWLEDGE INJECTION
+        # Zone D is a REAL, STANDARD classification - inject definition if mentioned
+        # This prevents AI from claiming "Zone D is not standard"
+        # ==========================================================================
+        _ZONE_D_QUERY = 'zone d' in query_lower or ('sea spray' in query_lower and 'zone' in query_lower)
+        
+        if _ZONE_D_QUERY:
+            print(f"   📍 ZONE D DETECTED: Will inject NZS 3604 exposure zone definitions")
+        
         # Debug logging
         print(f"🔍 Source detection for query: '{query[:60]}...'")
         print(f"   Detected sources: {target_sources if target_sources else 'None (will search all docs)'}")
