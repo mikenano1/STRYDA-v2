@@ -2776,6 +2776,81 @@ DO NOT guess or invent a number like "120 BU/m".""",
             final_results.insert(0, bracing_knowledge)
             print(f"   📐 BRACING DEMAND: Injected NZS 3604 Table 5.6 reference")
         
+        # ==========================================================================
+        # EXITWAY FIRE SAFETY INJECTION (CRITICAL - Takes precedence over E/G)
+        # When exitway location + combustible material detected,
+        # MUST inject C/AS2 fire requirements - Fire Safety > Hygiene
+        # ==========================================================================
+        if _EXITWAY_FIRE_SAFETY_CHECK:
+            exitway_fire_warning = {
+                'id': 'EXITWAY_FIRE_SAFETY_CRITICAL',
+                'source': 'C/AS2 Fire Safety - Exitway Surface Finish Requirements (CRITICAL)',
+                'page': 0,
+                'content': """🔥 CRITICAL FIRE SAFETY WARNING - EXITWAY SURFACE FINISHES
+
+⚠️ FIRE SAFETY (C CLAUSES) TAKES PRECEDENCE OVER HYGIENE (E/G CLAUSES) ⚠️
+
+CRITICAL HIERARCHY:
+When assessing materials for exitways (hallways, corridors, stairwells):
+1. FIRST check FIRE SAFETY (NZBC C/AS2) - Can this material be used safely?
+2. ONLY THEN check hygiene/moisture (E3/G) - Secondary consideration
+
+EXITWAY LOCATIONS (C/AS2 Definition):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Hallways / Corridors / Passages
+• Stairwells / Staircases / Landings
+• Lobbies / Foyers / Vestibules
+• Any path of travel to a final exit
+
+C/AS2 TABLE 4.12.1.1 - SURFACE FINISH REQUIREMENTS FOR EXITWAYS:
+┌─────────────────────────────────────┬──────────────────┬────────────────┐
+│ LOCATION                            │ UNSPRINKLERED    │ SPRINKLERED    │
+├─────────────────────────────────────┼──────────────────┼────────────────┤
+│ EXITWAYS: Walls & Ceilings          │ GROUP 1-S        │ GROUP 2        │
+│ (Hallways, Corridors, Stairwells)   │ REQUIRED         │ PERMITTED      │
+└─────────────────────────────────────┴──────────────────┴────────────────┘
+
+FIRE GROUP RATINGS (ISO 9705):
+• Group 1-S = Best (non-combustible, low smoke) - GIB plasterboard, treated products
+• Group 2 = Good fire performance
+• Group 3 = COMBUSTIBLE - TYPICAL UNTREATED TIMBER
+
+⚠️ UNCOATED/UNTREATED TIMBER IS TYPICALLY GROUP 3:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Macrocarpa, Cedar, Pine, Rimu, Kahikatea = Group 3 (combustible)
+• T&G timber lining, plywood, MDF = Group 3 (combustible)
+• Group 3 materials are PROHIBITED in unsprinklered exitways
+
+ANSWER FOR "Can I use [timber] in a hallway?":
+═══════════════════════════════════════════════════════════════════════════════
+**NO.** Hallways are EXITWAYS under NZBC. 
+
+Under C/AS2, wall linings in unsprinklered exitways require **Group 1-S** 
+fire rating. Uncoated/untreated timber (e.g., Macrocarpa T&G) is typically 
+**Group 3 (combustible)** and is PROHIBITED unless:
+1. The building has a compliant automatic sprinkler system, OR
+2. The product has been fire-tested to achieve Group 1-S rating
+
+Simply "sealing" or "coating" timber does NOT automatically achieve Group 1-S.
+The product must have certified fire test results (ISO 9705).
+
+DO NOT focus only on hygiene (E3) - Fire Safety is the PRIMARY concern here.""",
+                'snippet': 'CRITICAL: Hallways are EXITWAYS requiring Group 1-S fire rating (C/AS2). Untreated timber is Group 3 (combustible) and PROHIBITED in unsprinklered exitways. Fire Safety > Hygiene.',
+                'section': 'Fire Safety - Exitways',
+                'clause': 'C/AS2 Table 4.12.1.1',
+                'final_score': 2.5,  # Highest priority - must be seen first
+                'base_score': 2.5,
+                'priority': 100,
+                'doc_type': 'Critical_Safety_Warning',
+                'trade': 'fire_safety',
+                'tier1_source': True,
+                'exitway_fire_check': True
+            }
+            
+            # Insert at the VERY beginning - Fire Safety takes absolute precedence
+            final_results.insert(0, exitway_fire_warning)
+            print(f"   🔥 EXITWAY FIRE SAFETY: Injected C/AS2 surface finish requirements (CRITICAL)")
+        
         return final_results
         
     except Exception as e:
