@@ -41,21 +41,24 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
     }
   };
 
-  // Helper to find text_content from citations array by matching source
-  const findTextContent = (source: string): string | undefined => {
-    if (!message.citations || message.citations.length === 0) return undefined;
+  // Helper to find citation data from citations array by matching source
+  const findCitationData = (source: string): { textContent?: string; evidenceCollection?: any[] } => {
+    if (!message.citations || message.citations.length === 0) return {};
     
     // Normalize the source for comparison
     const normalizeSource = (s: string) => s.split(/[|\-•]/)[0].trim().toLowerCase();
     const normalizedSearchSource = normalizeSource(source);
     
     // Find matching citation
-    const match = message.citations.find(c => {
+    const match = message.citations.find((c: any) => {
       const citationSource = c.source || c.title || '';
       return normalizeSource(citationSource) === normalizedSearchSource;
     });
     
-    return match?.text_content || match?.snippet;
+    return {
+      textContent: match?.text_content || match?.snippet,
+      evidenceCollection: match?.evidence_collection || []
+    };
   };
 
   const handlePillPress = (source: string, clause: string, page: string) => {
@@ -64,9 +67,10 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
       console.log(`>>> Clause: ${clause}`);
       console.log(`>>> Page: ${page}`);
       
-      // Try to find text content from the citations array
-      const textContent = findTextContent(source);
-      console.log(`>>> Text Content found: ${textContent ? 'YES' : 'NO'}`);
+      // Try to find citation data (text content + evidence collection) from the citations array
+      const citationData = findCitationData(source);
+      console.log(`>>> Text Content found: ${citationData.textContent ? 'YES' : 'NO'}`);
+      console.log(`>>> Evidence Collection: ${citationData.evidenceCollection?.length || 0} items`);
       
       setSelectedMatch({ source, clause, page, textContent });
       setModalVisible(true);
