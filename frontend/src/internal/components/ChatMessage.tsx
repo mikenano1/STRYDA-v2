@@ -163,22 +163,37 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
                     {cleanText}
                 </Text>
 
-                {/* Parsed Citation Pills - now handles multiple formats */}
-                {allMatches.map((match, i) => (
-                    <TouchableOpacity 
-                        key={`parsed-${i}`} 
-                        onPress={() => handlePillPress(match.source, match.clause, match.page)} 
-                        style={styles.pillButton}
-                        activeOpacity={0.6}
-                        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                    >
-                        <Text style={styles.pillText}>
-                            📄 {match.source.length > 40 ? match.source.substring(0, 40) + '...' : match.source}
-                            {match.clause ? ` • ${match.clause}` : ''}
-                            {match.page ? ` • p.${match.page}` : ''}
-                        </Text>
-                    </TouchableOpacity>
-                ))}
+                {/* Parsed Citation Pills - deduplicated by normalized source name */}
+                {(() => {
+                    // Deduplicate by normalized source name
+                    const seenSources = new Set<string>();
+                    const uniqueMatches = allMatches.filter(match => {
+                        const normalizedSource = normalizeSourceForDisplay(match.source);
+                        if (seenSources.has(normalizedSource)) {
+                            return false;
+                        }
+                        seenSources.add(normalizedSource);
+                        return true;
+                    }).slice(0, 3); // Max 3 pills
+                    
+                    return uniqueMatches.map((match, i) => {
+                        const displaySource = normalizeSourceForDisplay(match.source);
+                        return (
+                            <TouchableOpacity 
+                                key={`parsed-${i}`} 
+                                onPress={() => handlePillPress(match.source, match.clause, match.page)} 
+                                style={styles.pillButton}
+                                activeOpacity={0.6}
+                                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                            >
+                                <Text style={styles.pillText}>
+                                    📄 {displaySource.length > 30 ? displaySource.substring(0, 30) + '...' : displaySource}
+                                    {match.page ? ` • p.${match.page}` : ''}
+                                </Text>
+                            </TouchableOpacity>
+                        );
+                    });
+                })()}
             </View>
             )}
             
