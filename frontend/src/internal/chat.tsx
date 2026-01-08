@@ -312,8 +312,12 @@ export default function ChatScreen() {
           {message.citations && message.citations.length > 0 && (
             <View style={styles.citationsContainer}>
               <Text style={styles.citationsTitle}>References:</Text>
-              {message.citations.slice(0, 2).map((citation, index) => (
-                <TouchableOpacity key={citation.id || citation.chunk_id || index} style={styles.citation}>
+              {message.citations.slice(0, 3).map((citation, index) => (
+                <TouchableOpacity 
+                  key={citation.id || citation.chunk_id || index} 
+                  style={styles.citation}
+                  onPress={() => handleCitationPress(citation)}
+                >
                   <IconSymbol 
                     name={citation.document_type === 'nzbc' ? 'doc.text.fill' : 'building.2.fill'} 
                     size={14} 
@@ -321,21 +325,21 @@ export default function ChatScreen() {
                   />
                   <View style={styles.citationContent}>
                     <Text style={styles.citationTitle} numberOfLines={2}>
-                      {citation.title}
+                      {citation.source || citation.title || 'Unknown Source'}
                     </Text>
-                    {citation.snippet && (
-                      <Text style={styles.citationSnippet} numberOfLines={2}>
-                        {citation.snippet}
+                    {(citation.pages || citation.clause) && (
+                      <Text style={styles.citationSnippet} numberOfLines={1}>
+                        {citation.pages ? `Page: ${citation.pages}` : ''}{citation.clause ? ` • ${citation.clause}` : ''}
                       </Text>
                     )}
                   </View>
+                  <IconSymbol 
+                    name="chevron.right" 
+                    size={12} 
+                    color={Colors.dark.icon} 
+                  />
                 </TouchableOpacity>
               ))}
-              {message.citations.length > 2 && (
-                <Text style={styles.moreCitationsText}>
-                  View {message.citations.length - 2} more references in Library
-                </Text>
-              )}
             </View>
           )}
         </View>
