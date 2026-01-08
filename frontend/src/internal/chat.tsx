@@ -464,6 +464,51 @@ export default function ChatScreen() {
           </View>
         </View>
       </KeyboardAvoidingView>
+      
+      {/* Evidence Modal */}
+      <Modal
+        visible={evidenceModalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setEvidenceModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Source Extract / Evidence</Text>
+              <TouchableOpacity 
+                onPress={() => setEvidenceModalVisible(false)}
+                style={styles.modalCloseButton}
+              >
+                <IconSymbol name="xmark.circle.fill" size={24} color={Colors.dark.icon} />
+              </TouchableOpacity>
+            </View>
+            
+            {selectedCitation && (
+              <ScrollView style={styles.modalBody}>
+                <View style={styles.modalSourceInfo}>
+                  <Text style={styles.modalSourceTitle}>
+                    {selectedCitation.source || selectedCitation.title || 'Unknown Source'}
+                  </Text>
+                  {(selectedCitation.pages || selectedCitation.clause || selectedCitation.section) && (
+                    <Text style={styles.modalSourceMeta}>
+                      {selectedCitation.pages ? `Page: ${selectedCitation.pages}` : ''}
+                      {selectedCitation.clause ? ` • ${selectedCitation.clause}` : ''}
+                      {selectedCitation.section ? `\n${selectedCitation.section}` : ''}
+                    </Text>
+                  )}
+                </View>
+                
+                <View style={styles.modalDivider} />
+                
+                <Text style={styles.modalEvidenceText}>
+                  {selectedCitation.text_content || selectedCitation.snippet || 'No text content available for this citation.'}
+                </Text>
+              </ScrollView>
+            )}
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }
