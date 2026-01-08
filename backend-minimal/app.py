@@ -171,6 +171,7 @@ def determine_search_strategy(query: str) -> str:
     THE FOREMAN: Determines which specialist agent(s) should handle this query.
     
     Returns:
+        SearchStrategy.ENGINEER - Visual query (tables, diagrams, drawings)
         SearchStrategy.INSPECTOR - Pure compliance/regulatory query
         SearchStrategy.PRODUCT_REP - Pure product/manufacturer query  
         SearchStrategy.HYBRID - Both agents needed (conflict resolution)
@@ -181,6 +182,7 @@ def determine_search_strategy(query: str) -> str:
     # Count keyword matches for each category
     regulatory_matches = sum(1 for kw in REGULATORY_KEYWORDS if kw in query_lower)
     product_matches = sum(1 for kw in PRODUCT_KEYWORDS if kw in query_lower)
+    visual_matches = sum(1 for kw in VISUAL_KEYWORDS if kw in query_lower)
     
     # Detect specific brand mentions (strong product signal)
     brand_keywords = ['gib', 'expol', 'kingspan', 'autex', 'greenstuf', 'mammoth', 
@@ -191,10 +193,22 @@ def determine_search_strategy(query: str) -> str:
     import re
     has_code_ref = bool(re.search(r'\b(nzs|nzbc|e[12]|b[12]|h1|g7|c/as|as[12]|vm[12])\b', query_lower, re.I))
     
+    # Detect explicit visual intent (strong Engineer signal)
+    visual_explicit = any(kw in query_lower for kw in [
+        'span table', 'show me', 'diagram', 'drawing', 'chart', 'figure',
+        'cad detail', 'detail drawing', 'flashing detail'
+    ])
+    
     # Logging for debugging
-    print(f"   🎯 FOREMAN ROUTER: reg={regulatory_matches}, prod={product_matches}, brand={has_brand}, code={has_code_ref}")
+    print(f"   🎯 FOREMAN ROUTER: reg={regulatory_matches}, prod={product_matches}, visual={visual_matches}, brand={has_brand}, code={has_code_ref}")
     
     # Decision Logic
+    
+    # ENGINEER: Strong visual intent - query is about tables/diagrams/drawings
+    # e.g., "Show me the span table for 90x45 SG8" or "Where is the flashing detail?"
+    if visual_explicit or visual_matches >= 2:
+        print(f"   📐 STRATEGY: ENGINEER (Visual Agent - tables/diagrams)")
+        return SearchStrategy.ENGINEER
     
     # HYBRID: Both product AND regulatory signals present
     # e.g., "Can I use Expol in Zone D?" or "Is J-Frame compliant with NZS 3604?"
