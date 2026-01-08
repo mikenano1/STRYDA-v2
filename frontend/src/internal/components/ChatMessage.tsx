@@ -148,6 +148,23 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
       console.log(`>>> Modal state set to TRUE`);
   };
 
+  // Handler for image citation pills
+  const handleImagePillPress = (source: string, page: string, imageUrl: string, summary?: string, imageType?: string, brand?: string) => {
+      console.log(`🖼️🖼️🖼️ IMAGE CITATION PRESSED 🖼️🖼️🖼️`);
+      console.log(`>>> Source: ${source}`);
+      console.log(`>>> Image URL: ${imageUrl?.substring(0, 80)}...`);
+      
+      setSelectedImage({
+        source,
+        page,
+        imageUrl,
+        summary,
+        imageType,
+        brand
+      });
+      setImageModalVisible(true);
+  };
+
   // Function to clean markdown artifacts from AI responses
   const cleanMarkdown = (text: string): string => {
       return text
