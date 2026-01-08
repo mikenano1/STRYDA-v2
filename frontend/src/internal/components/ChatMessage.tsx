@@ -51,15 +51,61 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
   const findCitationData = (source: string): { textContent?: string; evidenceCollection?: any[] } => {
     if (!message.citations || message.citations.length === 0) return {};
     
-    // Normalize the source for comparison
-    const normalizeSource = (s: string) => s.split(/[|\-•]/)[0].trim().toLowerCase();
-    const normalizedSearchSource = normalizeSource(source);
+    // Multiple matching strategies for flexible source matching
+    const searchSource = source.toLowerCase().trim();
     
-    // Find matching citation
-    const match = message.citations.find((c: any) => {
-      const citationSource = c.source || c.title || '';
-      return normalizeSource(citationSource) === normalizedSearchSource;
+    // Strategy 1: Extract brand name from the beginning
+    // "EXPOL ThermaSlab Family (EPS) Technical Data Sheet" -> "expol"
+    const extractBrandName = (s: string): string => {
+      const normalized = s.toLowerCase().trim();
+      // First word is often the brand
+      const firstWord = normalized.split(/[\s\-]/)[0];
+      // Also try splitting on delimiters
+      const beforeDelimiter = normalized.split(/[|\-•]/)[0].trim();
+      return firstWord.length > 2 ? firstWord : beforeDelimiter;
+    };
+    
+    const searchBrand = extractBrandName(source);
+    
+    // Strategy 2: Check if either source contains the other (partial match)
+    const containsMatch = (a: string, b: string): boolean => {
+      const aLower = a.toLowerCase();
+      const bLower = b.toLowerCase();
+      return aLower.includes(bLower) || bLower.includes(aLower);
+    };
+    
+    // Strategy 3: Brand extraction from both sides
+    const brandMatch = (citationSource: string, searchSource: string): boolean => {
+      const citationBrand = extractBrandName(citationSource);
+      const searchBrand = extractBrandName(searchSource);
+      return citationBrand === searchBrand && citationBrand.length > 2;
+    };
+    
+    // Find matching citation using multiple strategies
+    let match = message.citations.find((c: any) => {
+      const citationSource = (c.source || c.title || '').toLowerCase().trim();
+      
+      // Exact match (after lowercase)
+      if (citationSource === searchSource) return true;
+      
+      // Brand name match (most reliable for normalized vs full names)
+      if (brandMatch(citationSource, searchSource)) return true;
+      
+      // Contains match (one is substring of other)
+      if (containsMatch(citationSource, searchSource)) return true;
+      
+      return false;
     });
+    
+    // Fallback: If still no match, try any citation with evidence
+    if (!match && message.citations.length > 0) {
+      // Pick first citation that has text content
+      match = message.citations.find((c: any) => 
+        c.text_content || c.snippet || (c.evidence_collection && c.evidence_collection.length > 0)
+      );
+    }
+    
+    console.log(`🔍 findCitationData: source="${source}" -> matched=${match?.source || 'NONE'}`);
     
     return {
       textContent: match?.text_content || match?.snippet,
