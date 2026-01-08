@@ -352,12 +352,12 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
 
 def format_engineer_response(visuals: List[Dict], query: str) -> str:
     """
-    Format Engineer results as a structured response with image cards.
+    Format Engineer results as a structured response with technical specifications.
     """
     if not visuals:
         return "I couldn't find any relevant diagrams, tables, or drawings for that query. The visual database may not have been populated yet, or the query doesn't match any indexed visuals."
     
-    response_parts = ["Here are the relevant visual resources I found:\n"]
+    response_parts = ["Here are the relevant technical specifications I found:\n"]
     
     for i, v in enumerate(visuals, 1):
         image_type = v.get('image_type', 'visual').replace('_', ' ').title()
@@ -366,21 +366,19 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
         page = v.get('source_page', '?')
         summary = v.get('summary', 'No summary available.')
         similarity = v.get('similarity', 0) * 100
-        image_url = v.get('image_url', '')
         
         # Format technical variables if present
         tech_vars = v.get('technical_variables', {})
         tech_str = ""
         if tech_vars:
-            tech_items = [f"{k}: {v}" for k, v in list(tech_vars.items())[:5]]
-            tech_str = f"\n   📊 Key Data: {', '.join(tech_items)}"
+            tech_items = [f"**{k}**: {val}" for k, val in list(tech_vars.items())[:8]]
+            tech_str = "\n   📊 **Technical Data:**\n   " + "\n   ".join(tech_items)
         
         response_parts.append(f"""
 **{i}. {image_type}** (Match: {similarity:.0f}%)
    📁 Source: {source} (p.{page})
    🏷️ Brand: {brand}
    📝 {summary}{tech_str}
-   🖼️ [View Image]({image_url})
 """)
     
     return "\n".join(response_parts)
