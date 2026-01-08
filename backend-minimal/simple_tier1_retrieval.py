@@ -3053,6 +3053,49 @@ DO NOT focus only on hygiene (E3) - Fire Safety is the PRIMARY concern here.""",
             print(f"   🔥 EXITWAY FIRE SAFETY: Injected C/AS2 surface finish requirements (CRITICAL)")
         
         # ══════════════════════════════════════════════════════════════════════════
+        # G7/AS1 CEILING HEIGHT KNOWLEDGE INJECTION
+        # When querying about ceiling heights for habitable spaces/conversions,
+        # inject the minimum height requirements from NZBC G7/AS1
+        # ══════════════════════════════════════════════════════════════════════════
+        if _G7_CEILING_HEIGHT_CHECK:
+            ceiling_height_knowledge = {
+                'id': 'NZBC_G7_AS1_CEILING_HEIGHT',
+                'source': 'NZBC G7/AS1 - Natural Light (Clause 2.1.1)',
+                'page': 1,
+                'content': '''NZBC G7/AS1 Clause 2.1.1 requires a minimum ceiling height of 2.4m for habitable spaces. A 2.3m ceiling height is non-compliant for a bedroom.
+
+HABITABLE SPACE DEFINITION (NZBC G7):
+A habitable space is any room used for activities normally associated with domestic living, including bedrooms, living rooms, lounges, kitchens, and dining rooms. Garages, laundries, bathrooms, toilets, pantries, and storage areas are NOT habitable spaces.
+
+MINIMUM CEILING HEIGHT REQUIREMENTS:
+• Habitable spaces: 2.4m minimum (MANDATORY)
+• Non-habitable spaces (bathrooms, laundries): 2.1m minimum
+• Garage (non-habitable): No minimum specified, but conversion changes requirements
+
+GARAGE CONVERSION COMPLIANCE:
+If converting a garage to a bedroom or other habitable space:
+1. Ceiling height MUST be at least 2.4m to comply with G7/AS1
+2. A 2.3m ceiling height does NOT meet the 2.4m minimum
+3. Building consent is REQUIRED for change of use
+4. Other requirements: ventilation (G4), insulation (H1), natural light (G7)
+
+VERDICT: A garage with 2.3m ceiling height CANNOT be converted to a compliant habitable space without raising the ceiling/roof structure.''',
+                'snippet': 'NZBC G7/AS1 Clause 2.1.1 requires a minimum ceiling height of 2.4m for habitable spaces. A 2.3m ceiling height is non-compliant for a bedroom.',
+                'section': 'Building Code Compliance - Ceiling Heights',
+                'clause': 'NZBC G7/AS1 Clause 2.1.1',
+                'final_score': 2.8,  # Very high priority for compliance questions
+                'base_score': 2.8,
+                'priority': 95,
+                'doc_type': 'Building_Code_Compliance',
+                'trade': 'building_code',
+                'tier1_source': True,
+                'g7_ceiling_check': True
+            }
+            
+            final_results.insert(0, ceiling_height_knowledge)
+            print(f"   📏 G7/AS1 CEILING HEIGHT: Injected minimum 2.4m requirement for habitable spaces")
+        
+        # ══════════════════════════════════════════════════════════════════════════
         # LAYER 1: SAFETY FIREWALL INJECTION
         # Inject all triggered safety warnings into results at highest priority
         # ══════════════════════════════════════════════════════════════════════════
