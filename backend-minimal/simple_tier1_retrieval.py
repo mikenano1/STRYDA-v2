@@ -78,6 +78,43 @@ AGENT_SCOPES = {
     "foreman": None  # None means no filtering - search all docs
 }
 
+
+def build_agent_filter_sql(agent_doc_types: List[str]) -> tuple:
+    """
+    Build SQL WHERE clause fragment for agent-based doc_type filtering.
+    
+    Args:
+        agent_doc_types: List of allowed doc_types for this agent, or None for no filter
+        
+    Returns:
+        Tuple of (sql_clause: str, params: tuple)
+        - sql_clause: Empty string if no filter, or "AND doc_type IN (...)" clause
+        - params: Tuple of values for parameter substitution
+    """
+    if not agent_doc_types:
+        return "", ()
+    
+    # Build parameterized IN clause to prevent SQL injection
+    placeholders = ", ".join(["%s"] * len(agent_doc_types))
+    sql_clause = f" AND doc_type IN ({placeholders})"
+    return sql_clause, tuple(agent_doc_types)
+
+
+def get_agent_filter_for_mode(agent_mode: str) -> List[str]:
+    """
+    Get the list of allowed doc_types for a given agent mode.
+    
+    Args:
+        agent_mode: "inspector", "product_rep", "foreman", or None
+        
+    Returns:
+        List of allowed doc_types, or None if no filtering
+    """
+    if not agent_mode or agent_mode == "foreman":
+        return None
+    return AGENT_SCOPES.get(agent_mode)
+
+
 # Enhanced amendment detection patterns
 AMEND_PAT = re.compile(r'\b(amend(?:ment)?\s*13|amdt\s*13|amend\s*13|b1\s*a\s*13)\b', re.I)
 B1_LATEST_PAT = re.compile(r'\b(latest\s+b1|current\s+b1|new\s+b1|updated\s+b1)\b', re.I)
