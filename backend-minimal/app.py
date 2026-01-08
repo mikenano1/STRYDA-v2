@@ -1660,7 +1660,20 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
             conn.close()
         except Exception as e:
             print(f"⚠️ Assistant message save failed: {e}")
-            
+        
+        # ══════════════════════════════════════════════════════════════════════════
+        # LAYER 6 HARD CAP: Citation Overflow Protection
+        # Backend enforcement - DO NOT rely on LLM or frontend to limit citations
+        # Max 3 primary citations, rest moved to hidden_citations
+        # ══════════════════════════════════════════════════════════════════════════
+        MAX_PRIMARY_CITATIONS = 3
+        
+        if 'citations' in response and len(response.get('citations', [])) > MAX_PRIMARY_CITATIONS:
+            all_citations = response['citations']
+            response['hidden_citations'] = all_citations[MAX_PRIMARY_CITATIONS:]
+            response['citations'] = all_citations[:MAX_PRIMARY_CITATIONS]
+            print(f"   📚 CITATION CAP: Reduced {len(all_citations)} → {MAX_PRIMARY_CITATIONS} primary + {len(all_citations) - MAX_PRIMARY_CITATIONS} hidden")
+        
         return response
         
     except Exception as e:
