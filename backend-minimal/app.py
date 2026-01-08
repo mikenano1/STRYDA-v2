@@ -211,6 +211,13 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
         else:
             clause_str = ', '.join(source_data['clauses'][:2])
         
+        # Extract text_content (snippet) from the highest-scoring document in this group
+        # This is the "evidence" that will be shown in the modal
+        best_doc = max(source_data['docs'], key=lambda d: d.get('final_score', 0))
+        text_content = best_doc.get('snippet') or best_doc.get('content', '')
+        # Truncate to reasonable length for modal display
+        text_content = text_content[:800] if text_content else ''
+        
         citation = {
             'id': f"consolidated_{source_data['source']}_{i}",
             'source': source_data['source'],
@@ -219,7 +226,8 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
             'section': source_data['sections'][0] if source_data['sections'] else '',
             'confidence': source_data['max_score'],
             'doc_count': len(source_data['docs']),
-            'pill_text': f"[[{source_data['source']} | Page: {page_str}]]"
+            'pill_text': f"[[{source_data['source']} | Page: {page_str}]]",
+            'text_content': text_content  # Evidence text for modal display
         }
         
         if i < max_primary:
