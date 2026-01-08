@@ -1627,12 +1627,17 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                 intent=final_intent
             )
             
-            # Unpack response
+            # LAYER 6: Citation Consolidation (apply to strict compliance mode too)
+            consolidated = consolidate_citations(docs, max_primary=3, max_secondary=5)
+            primary_citations = consolidated.get('primary', [])
+            
+            # Unpack response with consolidated citations
             response = {
                 "answer": structured_response.get("answer", ""),
                 "intent": structured_response.get("intent", final_intent),
-                "citations": structured_response.get("citations", []),
-                "can_show_citations": True,
+                "citations": primary_citations,  # Consolidated & deduplicated
+                "secondary_citations": consolidated.get('secondary', []),
+                "can_show_citations": len(primary_citations) > 0,
                 "model": structured_response.get("model", "gemini"),
                 "timestamp": int(time.time())
             }
