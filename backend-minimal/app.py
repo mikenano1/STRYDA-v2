@@ -1761,6 +1761,7 @@ Do you have a material preference, or would you like me to filter by which merch
                                 "page": v.get('source_page', 0),
                                 "snippet": v.get('summary', ''),
                                 "image_type": v.get('image_type'),
+                                "image_url": v.get('image_url'),  # Include image URL
                                 "confidence": v.get('confidence', 0.8),
                                 "technical_variables": v.get('technical_variables', {}),
                             })
