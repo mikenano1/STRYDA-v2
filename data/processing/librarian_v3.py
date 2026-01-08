@@ -104,15 +104,15 @@ def clean_ocr_garbage(text: str) -> str:
     - Lines with >50% non-alphanumeric characters
     - Isolated single characters and fragments
     - Excessive whitespace and control characters
-    - Inline OCR garbage sequences
+    - Inline OCR garbage sequences (e.g., "c 6 o x4 n m tin m u o...")
     """
     # First pass: Clean inline garbage sequences
-    # Pattern matches: sequences of spaced single characters like "c 6 o x4 n m"
-    text = re.sub(r'(?:\b[a-zA-Z0-9]\s+){4,}[a-zA-Z0-9]\b', '', text)
+    # Pattern: 5+ consecutive short tokens (1-3 chars each) - typical OCR garbage
+    # Matches sequences like: 'c 6 o x4 n m tin m u o b u u s t r y u l n se s a o l f a nt'
+    text = re.sub(r'(?:(?<![a-zA-Z])[a-zA-Z0-9]{1,3}\s+){5,}[a-zA-Z0-9]{1,3}(?![a-zA-Z])', '', text)
     
-    # Pattern matches: random character sequences with lots of single chars
-    # Like "m u o b u u s t r y u l n se s a o l f a nt"
-    text = re.sub(r'(?:[a-z]\s+){5,}[a-z]+(?:\s+[a-z]+)*', '', text, flags=re.IGNORECASE)
+    # Clean up double spaces left behind
+    text = re.sub(r'\s{2,}', ' ', text)
     
     lines = text.split('\n')
     cleaned_lines = []
