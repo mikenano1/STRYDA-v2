@@ -298,10 +298,108 @@ def execute_hybrid_search(query: str, intent: str, top_k: int = 10) -> tuple:
     return inspector_results, product_results, final_merged[:top_k * 2]
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# LAYER 6: CITATION CONSOLIDATOR (UX Optimization)
-# "Quality over Quantity" - Group citations, limit display, deduplicate definitions
-# ══════════════════════════════════════════════════════════════════════════════
+def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
+    """
+    THE ENGINEER: Visual Agent - searches the visuals table for diagrams, tables, drawings.
+    
+    Returns:
+        List of visual assets with image URLs and summaries.
+    """
+    import openai
+    
+    print(f"   📐 ENGINEER SEARCH: Looking for visual assets...")
+    
+    try:
+        # Generate embedding for query
+        openai_client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        response = openai_client.embeddings.create(
+            model="text-embedding-3-small",
+            input=query,
+            dimensions=1536
+        )
+        query_embedding = response.data[0].embedding
+        
+        # Connect to database
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        
+        # Vector similarity search on visuals table
+        cursor.execute("""
+            SELECT 
+                id, source_document, source_page, image_type, brand,
+                storage_path, summary, technical_variables, confidence,
+                1 - (embedding <=> %s::vector) as similarity
+            FROM visuals
+            WHERE embedding IS NOT NULL
+            ORDER BY embedding <=> %s::vector
+            LIMIT %s
+        """, (query_embedding, query_embedding, top_k))
+        
+        results = [dict(r) for r in cursor.fetchall()]
+        cursor.close()
+        conn.close()
+        
+        # Generate signed URLs for images
+        for result in results:
+            if result.get('storage_path'):
+                # Create signed URL (valid for 1 hour)
+                try:
+                    from supabase import create_client
+                    supabase = create_client(
+                        os.getenv('SUPABASE_URL'),
+                        os.getenv('SUPABASE_SERVICE_ROLE_KEY')
+                    )
+                    signed_url = supabase.storage.from_('visual_assets').create_signed_url(
+                        result['storage_path'],
+                        3600  # 1 hour expiry
+                    )
+                    result['image_url'] = signed_url.get('signedURL', '')
+                except Exception as e:
+                    print(f"      ⚠️ Failed to generate signed URL: {e}")
+                    result['image_url'] = None
+        
+        print(f"      📐 Engineer found: {len(results)} visual assets")
+        return results
+        
+    except Exception as e:
+        print(f"      ❌ Engineer search error: {e}")
+        return []
+
+
+def format_engineer_response(visuals: List[Dict], query: str) -> str:
+    """
+    Format Engineer results as a structured response with image cards.
+    """
+    if not visuals:
+        return "I couldn't find any relevant diagrams, tables, or drawings for that query. The visual database may not have been populated yet, or the query doesn't match any indexed visuals."
+    
+    response_parts = ["Here are the relevant visual resources I found:\n"]
+    
+    for i, v in enumerate(visuals, 1):
+        image_type = v.get('image_type', 'visual').replace('_', ' ').title()
+        brand = v.get('brand', 'Unknown')
+        source = v.get('source_document', 'Unknown')[:50]
+        page = v.get('source_page', '?')
+        summary = v.get('summary', 'No summary available.')
+        similarity = v.get('similarity', 0) * 100
+        image_url = v.get('image_url', '')
+        
+        # Format technical variables if present
+        tech_vars = v.get('technical_variables', {})
+        tech_str = ""
+        if tech_vars:
+            tech_items = [f"{k}: {v}" for k, v in list(tech_vars.items())[:5]]
+            tech_str = f"\n   📊 Key Data: {', '.join(tech_items)}"
+        
+        response_parts.append(f"""
+**{i}. {image_type}** (Match: {similarity:.0f}%)
+   📁 Source: {source} (p.{page})
+   🏷️ Brand: {brand}
+   📝 {summary}{tech_str}
+   🖼️ [View Image]({image_url})
+""")
+    
+    return "\n".join(response_parts)
 
 def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary: int = 5) -> Dict:
     """
