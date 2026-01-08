@@ -21,7 +21,7 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
   const isAssistant = message.role === 'assistant';
   
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedMatch, setSelectedMatch] = useState<{source: string, clause: string, page: string} | null>(null);
+  const [selectedMatch, setSelectedMatch] = useState<{source: string, clause: string, page: string, textContent?: string} | null>(null);
 
   // Format timestamp
   const formatTime = (ts: number) => {
@@ -41,12 +41,34 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
     }
   };
 
+  // Helper to find text_content from citations array by matching source
+  const findTextContent = (source: string): string | undefined => {
+    if (!message.citations || message.citations.length === 0) return undefined;
+    
+    // Normalize the source for comparison
+    const normalizeSource = (s: string) => s.split(/[|\-•]/)[0].trim().toLowerCase();
+    const normalizedSearchSource = normalizeSource(source);
+    
+    // Find matching citation
+    const match = message.citations.find(c => {
+      const citationSource = c.source || c.title || '';
+      return normalizeSource(citationSource) === normalizedSearchSource;
+    });
+    
+    return match?.text_content || match?.snippet;
+  };
+
   const handlePillPress = (source: string, clause: string, page: string) => {
       console.log(`🟠🟠🟠 CITATION BUTTON PRESSED 🟠🟠🟠`);
       console.log(`>>> Source: ${source}`);
       console.log(`>>> Clause: ${clause}`);
       console.log(`>>> Page: ${page}`);
-      setSelectedMatch({ source, clause, page });
+      
+      // Try to find text content from the citations array
+      const textContent = findTextContent(source);
+      console.log(`>>> Text Content found: ${textContent ? 'YES' : 'NO'}`);
+      
+      setSelectedMatch({ source, clause, page, textContent });
       setModalVisible(true);
       console.log(`>>> Modal state set to TRUE`);
   };
