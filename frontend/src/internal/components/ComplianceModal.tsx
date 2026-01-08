@@ -1,6 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, Modal, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
-import { FileText, CheckCircle, X, BookOpen } from 'lucide-react-native';
+import { FileText, X, BookOpen, ChevronRight } from 'lucide-react-native';
+
+interface EvidenceItem {
+  text: string;
+  page?: string;
+  clause?: string;
+  section?: string;
+  score?: number;
+  doc_type?: string;
+  original_source?: string;
+}
 
 interface ComplianceModalProps {
   visible: boolean;
@@ -9,7 +19,8 @@ interface ComplianceModalProps {
   source: string;
   clause: string;
   page: string;
-  textContent?: string;  // RAG snippet / evidence text
+  textContent?: string;
+  evidenceCollection?: EvidenceItem[];
 }
 
 export default function ComplianceModal({ 
@@ -19,12 +30,10 @@ export default function ComplianceModal({
   source, 
   clause, 
   page,
-  textContent 
+  textContent,
+  evidenceCollection 
 }: ComplianceModalProps) {
   
-  const [fetchedContent, setFetchedContent] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-
   // Normalize source name for display (strip suffixes after |, -, •)
   const normalizeSource = (src: string): string => {
     const baseSource = src.split(/[|\-•]/)[0].trim();
@@ -33,18 +42,21 @@ export default function ComplianceModal({
 
   const displaySource = normalizeSource(source);
   
-  // Try to fetch evidence from backend if not provided
-  useEffect(() => {
-    if (visible && !textContent && source) {
-      // Could fetch from backend here if needed
-      // For now, just show what we have
-      setFetchedContent(null);
-    }
-  }, [visible, source, textContent]);
-
   // Determine what content to show
-  const evidenceText = textContent || fetchedContent;
-  const hasEvidence = evidenceText && evidenceText.trim().length > 0;
+  const hasEvidenceCollection = evidenceCollection && evidenceCollection.length > 0;
+  const hasTextContent = textContent && textContent.trim().length > 0;
+  const hasAnyEvidence = hasEvidenceCollection || hasTextContent;
+
+  // Format clause/page header for an evidence item
+  const formatEvidenceHeader = (item: EvidenceItem, index: number): string => {
+    const parts = [];
+    if (item.clause) parts.push(`Clause ${item.clause}`);
+    if (item.page) parts.push(`Page ${item.page}`);
+    if (item.section) parts.push(item.section);
+    
+    if (parts.length === 0) return `Evidence ${index + 1}`;
+    return parts.join(' • ');
+  };
 
   return (
     <Modal
@@ -59,7 +71,7 @@ export default function ComplianceModal({
           <View style={styles.header}>
             <View style={styles.headerTitleContainer}>
               <BookOpen size={20} color="#FF7A00" style={{marginRight: 8}} />
-              <Text style={styles.modalTitle}>Source Extract</Text>
+              <Text style={styles.modalTitle}>Source Evidence</Text>
             </View>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
               <X size={24} color="#999" />
@@ -69,40 +81,71 @@ export default function ComplianceModal({
           {/* Source Info */}
           <View style={styles.sourceInfoContainer}>
             <Text style={styles.sourceTitle}>{displaySource}</Text>
-            {(clause || page) && (
+            {hasEvidenceCollection && (
               <Text style={styles.sourceMeta}>
-                {clause ? `${clause}` : ''}
-                {clause && page ? ' • ' : ''}
-                {page ? `Page ${page}` : ''}
+                {evidenceCollection!.length} evidence snippet{evidenceCollection!.length !== 1 ? 's' : ''} found
               </Text>
             )}
           </View>
 
           {/* Evidence Content */}
-          <View style={styles.evidenceContainer}>
-            {isLoading ? (
-              <View style={styles.loadingContainer}>
-                <ActivityIndicator size="small" color="#FF7A00" />
-                <Text style={styles.loadingText}>Loading evidence...</Text>
+          <ScrollView 
+            style={styles.evidenceContainer}
+            showsVerticalScrollIndicator={true}
+            contentContainerStyle={styles.evidenceScrollContent}
+          >
+            {hasEvidenceCollection ? (
+              // MULTI-EVIDENCE: Loop through evidence_collection
+              evidenceCollection!.map((item, index) => (
+                <View key={index}>
+                  {/* Divider between items (except first) */}
+                  {index > 0 && <View style={styles.evidenceDivider} />}
+                  
+                  {/* Evidence Item */}
+                  <View style={styles.evidenceItem}>
+                    {/* Header: Clause/Page */}
+                    <View style={styles.evidenceHeader}>
+                      <FileText size={14} color="#FF7A00" />
+                      <Text style={styles.evidenceHeaderText}>
+                        {formatEvidenceHeader(item, index)}
+                      </Text>
+                    </View>
+                    
+                    {/* Document Type Badge (if available) */}
+                    {item.doc_type && (
+                      <View style={styles.docTypeBadge}>
+                        <Text style={styles.docTypeText}>{item.doc_type.replace(/_/g, ' ')}</Text>
+                      </View>
+                    )}
+                    
+                    {/* Evidence Text */}
+                    <Text style={styles.evidenceText}>{item.text}</Text>
+                  </View>
+                </View>
+              ))
+            ) : hasTextContent ? (
+              // SINGLE EVIDENCE: Fallback to text_content
+              <View style={styles.evidenceItem}>
+                <View style={styles.evidenceHeader}>
+                  <FileText size={14} color="#FF7A00" />
+                  <Text style={styles.evidenceHeaderText}>
+                    {clause ? `Clause ${clause}` : ''}{clause && page ? ' • ' : ''}{page ? `Page ${page}` : 'Evidence'}
+                  </Text>
+                </View>
+                <Text style={styles.evidenceText}>{textContent}</Text>
               </View>
-            ) : hasEvidence ? (
-              <ScrollView 
-                style={styles.evidenceScroll}
-                showsVerticalScrollIndicator={true}
-              >
-                <Text style={styles.evidenceText}>{evidenceText}</Text>
-              </ScrollView>
             ) : (
+              // NO EVIDENCE
               <View style={styles.noContentContainer}>
                 <FileText size={32} color="#666" />
                 <Text style={styles.noContentTitle}>Evidence Not Available</Text>
                 <Text style={styles.noContentText}>
                   The source text for this citation is not currently loaded.
-                  The reference points to: {source}
+                  Reference: {source}
                 </Text>
               </View>
             )}
-          </View>
+          </ScrollView>
 
           {/* Footer */}
           <View style={styles.footer}>
@@ -137,7 +180,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingHorizontal: 20,
     paddingBottom: 34,
-    maxHeight: '80%',
+    maxHeight: '85%',
     borderWidth: 1,
     borderColor: '#333',
     borderBottomWidth: 0,
@@ -183,36 +226,66 @@ const styles = StyleSheet.create({
   },
   evidenceContainer: {
     flex: 1,
-    minHeight: 150,
-    maxHeight: 300,
+    maxHeight: 350,
     backgroundColor: '#111',
     borderRadius: 12,
-    padding: 16,
     marginBottom: 16,
   },
-  evidenceScroll: {
-    flex: 1,
+  evidenceScrollContent: {
+    padding: 16,
+  },
+  evidenceItem: {
+    marginVertical: 8,
+  },
+  evidenceHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+    gap: 8,
+  },
+  evidenceHeaderText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#FF7A00',
+  },
+  docTypeBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: 'rgba(255, 122, 0, 0.15)',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 4,
+    marginBottom: 8,
+  },
+  docTypeText: {
+    fontSize: 11,
+    color: '#FF7A00',
+    textTransform: 'capitalize',
   },
   evidenceText: {
     fontSize: 14,
     color: '#E0E0E0',
     lineHeight: 22,
   },
+  evidenceDivider: {
+    height: 1,
+    backgroundColor: '#333',
+    marginVertical: 16,
+  },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     gap: 12,
+    padding: 40,
   },
   loadingText: {
     color: '#999',
     fontSize: 14,
   },
   noContentContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 30,
     gap: 12,
   },
   noContentTitle: {
