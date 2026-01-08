@@ -443,8 +443,8 @@ def process_document(source: str, doc_type: str, brand: str = None) -> Dict:
         stats['errors'].append(f"PDF not found: {source[:50]}")
         return stats
     
-    # Extract images with LlamaParse
-    images = extract_images_with_llamaparse(pdf_url, source)
+    # Extract images with PyMuPDF
+    images = extract_images_with_pymupdf(pdf_url, source)
     stats['images_found'] = len(images)
     
     if not images:
