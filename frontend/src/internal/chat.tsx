@@ -910,4 +910,62 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.dark.border + '30',
   },
+  // Evidence Modal Styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'flex-end',
+  },
+  modalContent: {
+    backgroundColor: Colors.dark.surface,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    maxHeight: '70%',
+    paddingBottom: Platform.OS === 'ios' ? 34 : 20,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.dark.border + '40',
+  },
+  modalTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.dark.text,
+  },
+  modalCloseButton: {
+    padding: 4,
+  },
+  modalBody: {
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  modalSourceInfo: {
+    marginBottom: 12,
+  },
+  modalSourceTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: Colors.dark.tint,
+    marginBottom: 4,
+  },
+  modalSourceMeta: {
+    fontSize: 13,
+    color: Colors.dark.icon,
+    lineHeight: 18,
+  },
+  modalDivider: {
+    height: 1,
+    backgroundColor: Colors.dark.border + '40',
+    marginVertical: 12,
+  },
+  modalEvidenceText: {
+    fontSize: 14,
+    color: Colors.dark.text,
+    lineHeight: 22,
+  },
 });
