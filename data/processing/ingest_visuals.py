@@ -182,81 +182,79 @@ def get_storage_url_for_source(source: str) -> Optional[str]:
 # LLAMAPARSE IMAGE EXTRACTION
 # =============================================================================
 
-def extract_images_with_llamaparse(pdf_url: str, source_name: str) -> List[Dict]:
+def extract_images_with_pymupdf(pdf_url: str, source_name: str) -> List[Dict]:
     """
-    Use LlamaParse with PREMIUM MODE to extract actual images from PDF.
+    Use PyMuPDF to extract REAL images from PDF.
     
-    Returns list of image dictionaries with downloaded image data.
+    Returns list of image dictionaries with binary data.
     """
-    print(f"   📄 LlamaParse Premium: {source_name[:50]}...")
+    print(f"   📄 PyMuPDF Extraction: {source_name[:50]}...")
     
     try:
-        # Configure LlamaParse for IMAGE EXTRACTION
-        parser = LlamaParse(
-            api_key=LLAMA_CLOUD_API_KEY,
-            result_type="markdown",
-            premium_mode=True,  # CRITICAL: Enables image extraction
-            verbose=False,
-        )
+        # Download PDF
+        response = requests.get(pdf_url, timeout=60)
+        if response.status_code != 200:
+            print(f"      ❌ Failed to download PDF: {response.status_code}")
+            return []
         
-        # Create temp directory for images
-        with tempfile.TemporaryDirectory() as temp_dir:
-            # Parse and extract images
-            print(f"      🔄 Parsing document...")
+        print(f"      📥 Downloaded: {len(response.content)/1024:.1f}KB")
+        
+        # Save to temp file
+        with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as tmp:
+            tmp.write(response.content)
+            tmp_path = tmp.name
+        
+        # Open with PyMuPDF
+        doc = fitz.open(tmp_path)
+        print(f"      📑 Pages: {len(doc)}")
+        
+        images = []
+        
+        for page_num in range(len(doc)):
+            page = doc[page_num]
+            image_list = page.get_images()
             
-            # Use get_images to download actual image files
-            try:
-                images_result = parser.get_images([pdf_url], download_path=temp_dir)
-                print(f"      📥 get_images returned: {type(images_result)}")
-            except Exception as e:
-                print(f"      ⚠️ get_images failed: {e}")
-                images_result = []
-            
-            # Check what files were downloaded
-            downloaded_files = list(Path(temp_dir).glob("**/*"))
-            image_files = [f for f in downloaded_files if f.suffix.lower() in ['.png', '.jpg', '.jpeg', '.webp']]
-            
-            print(f"      📁 Downloaded {len(image_files)} image files")
-            
-            images = []
-            for img_path in image_files:
-                # Read image data
-                with open(img_path, 'rb') as f:
-                    img_data = f.read()
-                
-                # Skip tiny images (likely icons/bullets)
-                if len(img_data) < MIN_IMAGE_SIZE_KB * 1024:
-                    continue
-                
-                # Determine mime type
-                suffix = img_path.suffix.lower()
-                mime_map = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp'}
-                mime_type = mime_map.get(suffix, 'image/png')
-                
-                # Extract page number from filename if available
-                page_num = 1
-                fname = img_path.stem
-                if '_page_' in fname:
-                    try:
-                        page_num = int(fname.split('_page_')[1].split('_')[0])
-                    except:
-                        pass
-                
-                images.append({
-                    'data': img_data,
-                    'base64': base64.b64encode(img_data).decode('utf-8'),
-                    'mime_type': mime_type,
-                    'filename': img_path.name,
-                    'size_kb': len(img_data) / 1024,
-                    'page': page_num,
-                    'source': source_name,
-                })
-            
-            print(f"      ✅ Extracted {len(images)} valid images (>{MIN_IMAGE_SIZE_KB}KB)")
-            return images
-            
+            for img in image_list:
+                xref = img[0]
+                try:
+                    base_image = doc.extract_image(xref)
+                    image_bytes = base_image["image"]
+                    image_ext = base_image["ext"]
+                    size_kb = len(image_bytes) / 1024
+                    
+                    # Skip tiny images (icons, bullets)
+                    if size_kb < MIN_IMAGE_SIZE_KB:
+                        continue
+                    
+                    # Determine mime type
+                    mime_map = {
+                        'jpeg': 'image/jpeg', 'jpg': 'image/jpeg',
+                        'png': 'image/png', 'webp': 'image/webp'
+                    }
+                    mime_type = mime_map.get(image_ext.lower(), 'image/png')
+                    
+                    images.append({
+                        'data': image_bytes,
+                        'base64': base64.b64encode(image_bytes).decode('utf-8'),
+                        'mime_type': mime_type,
+                        'ext': image_ext,
+                        'filename': f"img_p{page_num+1}_{xref}.{image_ext}",
+                        'size_kb': size_kb,
+                        'page': page_num + 1,
+                        'source': source_name,
+                    })
+                    
+                except Exception as e:
+                    continue  # Skip problematic images
+        
+        doc.close()
+        os.unlink(tmp_path)  # Clean up temp file
+        
+        print(f"      ✅ Extracted {len(images)} images (>{MIN_IMAGE_SIZE_KB}KB)")
+        return images
+        
     except Exception as e:
-        print(f"      ❌ LlamaParse error: {e}")
+        print(f"      ❌ PyMuPDF error: {e}")
         return []
 
 
