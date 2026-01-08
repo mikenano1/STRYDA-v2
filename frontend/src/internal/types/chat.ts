@@ -8,12 +8,19 @@ export interface ChatRequest {
 }
 
 export interface Citation {
+  id?: string;
   source: string;
-  page: number;
-  score: number;
-  snippet: string;
+  title?: string;
+  page?: number;
+  pages?: string;
+  score?: number;
+  snippet?: string;
+  text_content?: string;  // Full RAG snippet for Evidence Modal
   section?: string | null;
   clause?: string | null;
+  confidence?: number;
+  doc_count?: number;
+  pill_text?: string;
 }
 
 export interface ChatResponse {
