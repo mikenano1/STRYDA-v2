@@ -308,6 +308,36 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
                         );
                     });
                 })()}
+
+                {/* Image Citation Pills - from citations array with image_url */}
+                {message.citations && message.citations
+                    .filter((c: any) => c.image_url && c.image_type)
+                    .slice(0, 5)
+                    .map((citation: any, i: number) => {
+                        const displaySource = normalizeSourceForDisplay(citation.source || 'Image');
+                        const imageType = (citation.image_type || 'image').replace(/_/g, ' ');
+                        return (
+                            <TouchableOpacity 
+                                key={`image-${i}`} 
+                                onPress={() => handleImagePillPress(
+                                    citation.source || 'Image',
+                                    String(citation.page || 1),
+                                    citation.image_url,
+                                    citation.snippet,
+                                    citation.image_type,
+                                    citation.brand
+                                )} 
+                                style={styles.imagePillButton}
+                                activeOpacity={0.6}
+                                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                            >
+                                <Text style={styles.pillText}>
+                                    🖼️ View {imageType} • p.{citation.page || '?'}
+                                </Text>
+                            </TouchableOpacity>
+                        );
+                    })
+                }
             </View>
             )}
             
