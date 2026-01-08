@@ -368,7 +368,7 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
 
 def format_engineer_response(visuals: List[Dict], query: str) -> str:
     """
-    Format Engineer results as a clean, professional Markdown response with Image Cards.
+    Format Engineer results as a clean, professional Markdown response with Citation Pills.
     """
     if not visuals:
         return "I couldn't find any relevant diagrams, tables, or specifications for that query. The visual database may not have been populated yet, or the query doesn't match any indexed content."
@@ -389,11 +389,7 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
         response_parts.append(f"### {i}. {brand} - {image_type}")
         response_parts.append(f"*Match: {similarity:.0f}% • Source: {source[:60]}{'...' if len(source) > 60 else ''} (p.{page})*\n")
         
-        # Add image if available - use HTML for better rendering
-        if image_url:
-            response_parts.append(f'<img src="{image_url}" alt="{image_type}" width="100%" style="border-radius: 8px; margin: 10px 0;" />')
-            response_parts.append(f"\n[🔗 Click to View High-Res Image]({image_url})\n")
-        
+        # Add summary
         response_parts.append(f"{summary}\n")
         
         if tech_vars:
@@ -408,7 +404,6 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
             for key, value in tech_vars.items():
                 key_lower = key.lower()
                 
-                # Categorize by key name
                 if any(k in key_lower for k in ['product', 'profile', 'type', 'system', 'name', 'model', 'series']):
                     product_info[key] = value
                 elif any(k in key_lower for k in ['mm', 'width', 'height', 'thickness', 'length', 'size', 'dimension', 'spacing', 'radius', 'scale', 'span', 'centres', 'centers']):
@@ -422,9 +417,7 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
                 else:
                     other[key] = value
             
-            # Format each category
             def format_value(val):
-                """Convert value to clean string."""
                 if isinstance(val, list):
                     if len(val) <= 3:
                         return ', '.join(str(v) for v in val)
@@ -437,7 +430,6 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
                     return str(val)
             
             def format_key(key):
-                """Convert key to readable label."""
                 return key.replace('_', ' ').replace('-', ' ').title()
             
             def add_section(title, data, emoji):
@@ -447,7 +439,6 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
                         formatted_val = format_value(v)
                         response_parts.append(f"- **{format_key(k)}:** {formatted_val}")
             
-            # Add sections in logical order
             add_section("Product Details", product_info, "📦")
             add_section("Dimensions & Spacing", dimensions, "📏")
             add_section("Installation Requirements", installation, "🔧")
@@ -456,6 +447,12 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
             
             if other and len(other) <= 3:
                 add_section("Additional Info", other, "ℹ️")
+        
+        # Add Citation Pill for viewing the diagram
+        if image_url:
+            # Create a clean title for the link
+            link_title = f"{brand} {image_type} (Page {page})"
+            response_parts.append(f"\n> 📐 **View Diagram:** [{link_title}]({image_url})")
         
         response_parts.append("\n---\n")
     
