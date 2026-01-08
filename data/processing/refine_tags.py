@@ -66,6 +66,9 @@ PRODUCT_REP_KEYWORDS = [
     # Other major suppliers
     "nuplex", "selleys", "parex", "mapei", "fosroc", "denso",
     "tremco", "soudal", "everbuild", "geocel", "dow corning",
+    
+    # Additional NZ brands
+    "asona",
 ]
 
 # Keywords that indicate COMPLIANCE/INSPECTOR documents (The Rules)
