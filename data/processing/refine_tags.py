@@ -77,7 +77,7 @@ PRODUCT_REP_KEYWORDS = [
 INSPECTOR_KEYWORDS = [
     # Standards & Codes (ENHANCED)
     "nzs", "as/nzs", "as1", "as2", "as3", "vm1", "vm2",
-    "building code", "nzbc", "building act", "act", "regulation",
+    "building code", "building-code", "nzbc", "building act", "act", "regulation",
     "clause", "schedule",
     
     # Compliance documents (ENHANCED)
