@@ -352,34 +352,96 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
 
 def format_engineer_response(visuals: List[Dict], query: str) -> str:
     """
-    Format Engineer results as a structured response with technical specifications.
+    Format Engineer results as a clean, professional Markdown response.
     """
     if not visuals:
-        return "I couldn't find any relevant diagrams, tables, or drawings for that query. The visual database may not have been populated yet, or the query doesn't match any indexed visuals."
+        return "I couldn't find any relevant diagrams, tables, or specifications for that query. The visual database may not have been populated yet, or the query doesn't match any indexed content."
     
-    response_parts = ["Here are the relevant technical specifications I found:\n"]
+    response_parts = ["## 📐 Technical Specifications Found\n"]
     
     for i, v in enumerate(visuals, 1):
-        image_type = v.get('image_type', 'visual').replace('_', ' ').title()
+        image_type = v.get('image_type', 'specification').replace('_', ' ').title()
         brand = v.get('brand', 'Unknown')
-        source = v.get('source_document', 'Unknown')[:50]
+        source = v.get('source_document', 'Unknown')
         page = v.get('source_page', '?')
         summary = v.get('summary', 'No summary available.')
         similarity = v.get('similarity', 0) * 100
-        
-        # Format technical variables if present
         tech_vars = v.get('technical_variables', {})
-        tech_str = ""
-        if tech_vars:
-            tech_items = [f"**{k}**: {val}" for k, val in list(tech_vars.items())[:8]]
-            tech_str = "\n   📊 **Technical Data:**\n   " + "\n   ".join(tech_items)
         
-        response_parts.append(f"""
-**{i}. {image_type}** (Match: {similarity:.0f}%)
-   📁 Source: {source} (p.{page})
-   🏷️ Brand: {brand}
-   📝 {summary}{tech_str}
-""")
+        # Build clean header
+        response_parts.append(f"### {i}. {brand} - {image_type}")
+        response_parts.append(f"*Match: {similarity:.0f}% • Source: {source[:60]}{'...' if len(source) > 60 else ''} (p.{page})*\n")
+        response_parts.append(f"{summary}\n")
+        
+        if tech_vars:
+            # Group technical variables into logical categories
+            product_info = {}
+            dimensions = {}
+            installation = {}
+            compliance = {}
+            materials = {}
+            other = {}
+            
+            for key, value in tech_vars.items():
+                key_lower = key.lower()
+                
+                # Categorize by key name
+                if any(k in key_lower for k in ['product', 'profile', 'type', 'system', 'name', 'model', 'series']):
+                    product_info[key] = value
+                elif any(k in key_lower for k in ['mm', 'width', 'height', 'thickness', 'length', 'size', 'dimension', 'spacing', 'radius', 'scale', 'span', 'centres', 'centers']):
+                    dimensions[key] = value
+                elif any(k in key_lower for k in ['install', 'fix', 'batten', 'screw', 'nail', 'anchor', 'embed', 'nogs', 'dwang', 'stud', 'corner', 'junction', 'cavity']):
+                    installation[key] = value
+                elif any(k in key_lower for k in ['nzs', 'nzbc', 'code', 'standard', 'compliance', 'branz', 'codemark', 'certification', 'wind_zone', 'risk', 'durability']):
+                    compliance[key] = value
+                elif any(k in key_lower for k in ['material', 'steel', 'timber', 'plywood', 'flashing', 'underlay', 'finish']):
+                    materials[key] = value
+                else:
+                    other[key] = value
+            
+            # Format each category
+            def format_value(val):
+                """Convert value to clean string."""
+                if isinstance(val, list):
+                    if len(val) <= 3:
+                        return ', '.join(str(v) for v in val)
+                    else:
+                        return ', '.join(str(v) for v in val[:3]) + f' (+{len(val)-3} more)'
+                elif isinstance(val, dict):
+                    # Format nested dict as key-value pairs
+                    items = [f"{k}: {v}" for k, v in list(val.items())[:4]]
+                    return ' | '.join(items)
+                else:
+                    return str(val)
+            
+            def format_key(key):
+                """Convert key to readable label."""
+                return key.replace('_', ' ').replace('-', ' ').title()
+            
+            def add_section(title, data, emoji):
+                if data:
+                    response_parts.append(f"\n**{emoji} {title}:**")
+                    for k, v in list(data.items())[:6]:  # Limit to 6 items per section
+                        formatted_val = format_value(v)
+                        response_parts.append(f"- **{format_key(k)}:** {formatted_val}")
+            
+            # Add sections in logical order
+            add_section("Product Details", product_info, "📦")
+            add_section("Dimensions & Spacing", dimensions, "📏")
+            add_section("Installation Requirements", installation, "🔧")
+            add_section("Materials", materials, "🪵")
+            add_section("Compliance & Standards", compliance, "✅")
+            
+            # Add remaining items if important
+            if other and len(other) <= 3:
+                add_section("Additional Info", other, "ℹ️")
+        
+        response_parts.append("\n---\n")
+    
+    # Add footer
+    response_parts.append("\n*These specifications are extracted from manufacturer documentation. Always verify with the original source before use in construction.*")
+    
+    return "\n".join(response_parts)
     
     return "\n".join(response_parts)
 
