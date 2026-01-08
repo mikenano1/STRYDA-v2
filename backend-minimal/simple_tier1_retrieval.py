@@ -1449,6 +1449,29 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             print(f"   🔥 CRITICAL FIRE SAFETY: Exitway location + combustible material detected!")
             print(f"   → C/AS2 fire requirements MUST be checked (takes precedence over E/G clauses)")
         
+        # ══════════════════════════════════════════════════════════════════════════
+        # G7/AS1 CEILING HEIGHT DETECTION (Knowledge Injection)
+        # Minimum ceiling height for habitable spaces = 2.4m per NZBC G7/AS1
+        # If query mentions ceiling height + bedroom/habitable, inject G7 requirements
+        # ══════════════════════════════════════════════════════════════════════════
+        ceiling_height_keywords = [
+            'ceiling height', 'ceiling', 'height', '2.3m', '2.3 m', '2.4m', '2.4 m',
+            'head height', 'room height', 'floor to ceiling', 'stud height'
+        ]
+        habitable_space_keywords = [
+            'bedroom', 'living', 'lounge', 'kitchen', 'dining', 'habitable',
+            'convert', 'conversion', 'garage conversion', 'basement', 'attic',
+            'sleepout', 'granny flat', 'minor dwelling', 'dwelling'
+        ]
+        
+        has_ceiling_height = any(kw in query_lower for kw in ceiling_height_keywords)
+        has_habitable_space = any(kw in query_lower for kw in habitable_space_keywords)
+        
+        _G7_CEILING_HEIGHT_CHECK = has_ceiling_height and has_habitable_space
+        
+        if _G7_CEILING_HEIGHT_CHECK:
+            print(f"   📏 G7/AS1 CEILING HEIGHT: Habitable space height query detected!")
+        
         # ==========================================================================
         # CROSS-REFERENCE LOGIC: Fire Rating + Code Compliance
         # When asking about fire ratings AND exit ways/compliance, inject BOTH:
