@@ -150,6 +150,22 @@ PRODUCT_KEYWORDS = [
     'compatible', 'compatibility',
 ]
 
+# Keywords that indicate visual/table/diagram intent (ENGINEER AGENT)
+VISUAL_KEYWORDS = [
+    # Explicit visual requests
+    'table', 'span table', 'chart', 'diagram', 'drawing', 'detail',
+    'figure', 'image', 'picture', 'illustration', 'graph',
+    # Technical drawings
+    'cad', 'cad detail', 'dwg', 'section', 'elevation', 'plan view',
+    'cross section', 'flashing detail', 'junction', 'corner detail',
+    # Span/structural queries (often need tables)
+    'what span', 'maximum span', 'span for', 'spacing', 'centres',
+    'load table', 'capacity table', 'wind zone table',
+    # Show me / visual intent
+    'show me', 'show the', 'see the', 'view the', 'look at',
+    'where is the', 'find the table', 'find the diagram',
+]
+
 def determine_search_strategy(query: str) -> str:
     """
     THE FOREMAN: Determines which specialist agent(s) should handle this query.
