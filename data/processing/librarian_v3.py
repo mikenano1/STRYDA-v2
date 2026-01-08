@@ -144,27 +144,43 @@ def is_ocr_artifact(line: str) -> bool:
     - Random letters/numbers: "c 6 o x4 0H z"
     - Excessive spacing between characters: "C l i c k h e r e"
     - Unicode junk
+    - Very short words repeated
     """
+    words = line.split()
+    
     # Check for excessive spaces between single characters
-    spaced_chars = re.findall(r'(?:^|\s)([a-zA-Z0-9])\s+(?=[a-zA-Z0-9](?:\s|$))', line)
-    if len(spaced_chars) > len(line.split()) * 0.4:
+    single_char_count = sum(1 for w in words if len(w) == 1)
+    if len(words) > 3 and single_char_count / len(words) > 0.4:
         return True
     
-    # Check for lines that are mostly single characters separated by spaces
-    words = line.split()
-    single_char_count = sum(1 for w in words if len(w) == 1)
-    if len(words) > 3 and single_char_count / len(words) > 0.5:
+    # Check for too many very short words (1-2 chars)
+    short_word_count = sum(1 for w in words if len(w) <= 2)
+    if len(words) > 4 and short_word_count / len(words) > 0.5:
         return True
+    
+    # Check for lines with mostly uppercase single letters and numbers
+    if len(words) > 3:
+        gibberish_pattern = sum(1 for w in words if len(w) <= 2 and (w.isupper() or w.isdigit()))
+        if gibberish_pattern / len(words) > 0.4:
+            return True
     
     # Check for common OCR garbage patterns
     garbage_patterns = [
         r'^[\s\d\W]+$',                    # Only whitespace, digits, special chars
-        r'^[a-zA-Z\s]{1,2}(\s[a-zA-Z\s]{1,2}){3,}$',  # Spaced single letters
-        r'[^\x00-\x7F]{3,}',               # Too many non-ASCII chars
+        r'^[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]\s+[a-zA-Z]',  # Spaced single letters at start
+        r'[^\x00-\x7F]{3,}',               # Too many non-ASCII chars in sequence
+        r'^[!@#$%^&*()]+',                 # Starts with special chars
+        r'[!@#$%^&*]{3,}',                 # Multiple special chars in sequence
     ]
     
     for pattern in garbage_patterns:
         if re.search(pattern, line):
+            return True
+    
+    # Check average word length - OCR garbage tends to have very short avg word length
+    if words:
+        avg_word_len = sum(len(w) for w in words) / len(words)
+        if avg_word_len < 2.5 and len(words) > 3:
             return True
     
     return False
