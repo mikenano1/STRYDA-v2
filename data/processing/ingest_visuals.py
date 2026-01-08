@@ -185,15 +185,24 @@ def get_documents_to_process(limit: int = None, doc_types: List[str] = None) -> 
 
 def get_storage_url_for_source(source: str) -> Optional[str]:
     """Get the Supabase Storage URL for a source document."""
+    
+    # Try to find the PDF in various locations
+    # The source name format is typically: "Brand - Document Name"
+    
+    # Clean source name to get potential filename
+    source_clean = source.strip()
+    
+    # Try to construct URL from known bucket patterns
+    supabase_url = os.getenv('SUPABASE_URL')
+    
+    # Check if we have original_url in database
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
     
-    # Check if we have a storage_path in the documents
     cursor.execute("""
-        SELECT metadata->>'storage_path' as storage_path,
-               metadata->>'original_url' as original_url
+        SELECT DISTINCT original_url, ingestion_source
         FROM documents 
-        WHERE source = %s 
+        WHERE source = %s AND original_url IS NOT NULL
         LIMIT 1
     """, (source,))
     
@@ -203,10 +212,21 @@ def get_storage_url_for_source(source: str) -> Optional[str]:
     
     if row and row[0]:
         return row[0]
-    elif row and row[1]:
-        return row[1]
     
-    return None
+    # Try to construct URL from bucket patterns
+    # Pattern 1: product-library bucket with brand folders
+    brand_part = source.split(' - ')[0] if ' - ' in source else source
+    doc_part = source.split(' - ')[1] if ' - ' in source else source
+    
+    # Try pdfs bucket directly
+    potential_urls = [
+        f"{supabase_url}/storage/v1/object/public/pdfs/{doc_part}.pdf",
+        f"{supabase_url}/storage/v1/object/public/product-library/{brand_part}/{doc_part}.pdf",
+    ]
+    
+    # For now, return the most likely URL pattern
+    # LlamaParse will error if file doesn't exist
+    return potential_urls[0] if potential_urls else None
 
 
 # =============================================================================
