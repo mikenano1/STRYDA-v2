@@ -201,7 +201,7 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
         reverse=True
     )
     
-    # Build consolidated citations
+    # Build consolidated citations with evidence_collection
     primary = []
     secondary = []
     
@@ -220,11 +220,45 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
         else:
             clause_str = ', '.join(source_data['clauses'][:2])
         
-        # Extract text_content (snippet) from the highest-scoring document in this group
-        # This is the "evidence" that will be shown in the modal
+        # BUILD EVIDENCE COLLECTION - All unique snippets from merged docs
+        evidence_collection = []
+        seen_snippets = set()  # Avoid duplicate text
+        
+        # Sort docs by score (highest first) for better ordering
+        sorted_docs = sorted(source_data['docs'], key=lambda d: d.get('final_score', 0), reverse=True)
+        
+        for doc in sorted_docs:
+            snippet_text = doc.get('snippet') or doc.get('content', '')
+            if not snippet_text:
+                continue
+            
+            # Truncate individual snippets
+            snippet_text = snippet_text[:600] if snippet_text else ''
+            
+            # Dedupe by first 100 chars (avoid near-duplicates)
+            snippet_key = snippet_text[:100].lower().strip()
+            if snippet_key in seen_snippets:
+                continue
+            seen_snippets.add(snippet_key)
+            
+            evidence_item = {
+                'text': snippet_text,
+                'page': str(doc.get('page', '')),
+                'clause': doc.get('clause', ''),
+                'section': doc.get('section', ''),
+                'score': doc.get('final_score', 0),
+                'doc_type': doc.get('doc_type', ''),
+                'original_source': doc.get('source', '')  # Full original source name
+            }
+            evidence_collection.append(evidence_item)
+            
+            # Limit to 5 evidence items per citation to prevent huge payloads
+            if len(evidence_collection) >= 5:
+                break
+        
+        # Also keep single text_content for backwards compatibility
         best_doc = max(source_data['docs'], key=lambda d: d.get('final_score', 0))
         text_content = best_doc.get('snippet') or best_doc.get('content', '')
-        # Truncate to reasonable length for modal display
         text_content = text_content[:800] if text_content else ''
         
         citation = {
@@ -236,7 +270,8 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
             'confidence': source_data['max_score'],
             'doc_count': len(source_data['docs']),
             'pill_text': f"[[{source_data['source']} | Page: {page_str}]]",
-            'text_content': text_content  # Evidence text for modal display
+            'text_content': text_content,  # Single best snippet (backwards compatibility)
+            'evidence_collection': evidence_collection  # All unique snippets with metadata
         }
         
         if i < max_primary:
