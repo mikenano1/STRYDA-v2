@@ -102,6 +102,172 @@ def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dic
     return citations
 
 # ══════════════════════════════════════════════════════════════════════════════
+# THE FOREMAN: SEARCH STRATEGY ROUTER (4-Agent Architecture)
+# Intelligently routes queries to the appropriate specialist agent(s)
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Search strategy enum
+class SearchStrategy:
+    INSPECTOR = "inspector"        # Compliance/Regulatory queries only
+    PRODUCT_REP = "product_rep"    # Product/Manufacturer queries only
+    HYBRID = "hybrid"              # Both agents - conflict resolution needed
+    FOREMAN = "foreman"            # Legacy - search all docs
+
+# Keywords that indicate regulatory/compliance intent
+REGULATORY_KEYWORDS = [
+    # Building codes & standards
+    'nzbc', 'nzs', 'building code', 'building act', 'clause', 'compliance',
+    'zone', 'zone a', 'zone b', 'zone c', 'zone d', 'climate zone',
+    'acceptable solution', 'verification method', 'as1', 'as2', 'vm1',
+    # Specific code references
+    'e2', 'e1', 'b1', 'b2', 'h1', 'g7', 'c/as', 'f7', 'd1',
+    # Legal/regulatory terms
+    'minimum', 'maximum', 'requirement', 'required', 'must', 'shall',
+    'comply', 'compliant', 'non-compliant', 'legal', 'illegal', 'allowed',
+    'permitted', 'prohibited', 'consent', 'council', 'bca', 'mbie',
+    # Standards organizations
+    'branz', 'nzs 3604', 'nzs 4229', 'nzs 3622', 'as/nzs',
+    # Safety/critical terms
+    'fire rating', 'fire safety', 'exitway', 'egress', 'structural',
+]
+
+# Keywords that indicate product/manufacturer intent
+PRODUCT_KEYWORDS = [
+    # Brand names
+    'gib', 'expol', 'kingspan', 'autex', 'greenstuf', 'mammoth', 'earthwool',
+    'pink batts', 'abodo', 'j-frame', 'jframe', 'red stag', 'triboard',
+    'thermoslab', 'thermaslab', 'geofoam', 'styrodrain', 'wireguard',
+    # Product-specific terms
+    'install', 'installation', 'how to', 'drying time', 'curing',
+    'datasheet', 'data sheet', 'spec sheet', 'manual', 'guide',
+    'warranty', 'guarantee', 'product', 'range', 'series',
+    # Technical specs
+    'r-value', 'r value', 'rvalue', 'thickness', 'size', 'dimension',
+    'weight', 'density', 'compressive strength', 'tensile',
+    # Usage queries
+    'can i use', 'suitable for', 'recommended for', 'best for',
+    'compatible', 'compatibility',
+]
+
+def determine_search_strategy(query: str) -> str:
+    """
+    THE FOREMAN: Determines which specialist agent(s) should handle this query.
+    
+    Returns:
+        SearchStrategy.INSPECTOR - Pure compliance/regulatory query
+        SearchStrategy.PRODUCT_REP - Pure product/manufacturer query  
+        SearchStrategy.HYBRID - Both agents needed (conflict resolution)
+        SearchStrategy.FOREMAN - Fallback to legacy search
+    """
+    query_lower = query.lower()
+    
+    # Count keyword matches for each category
+    regulatory_matches = sum(1 for kw in REGULATORY_KEYWORDS if kw in query_lower)
+    product_matches = sum(1 for kw in PRODUCT_KEYWORDS if kw in query_lower)
+    
+    # Detect specific brand mentions (strong product signal)
+    brand_keywords = ['gib', 'expol', 'kingspan', 'autex', 'greenstuf', 'mammoth', 
+                      'abodo', 'j-frame', 'jframe', 'red stag', 'earthwool', 'pink batts']
+    has_brand = any(brand in query_lower for brand in brand_keywords)
+    
+    # Detect code/standard references (strong regulatory signal)
+    import re
+    has_code_ref = bool(re.search(r'\b(nzs|nzbc|e[12]|b[12]|h1|g7|c/as|as[12]|vm[12])\b', query_lower, re.I))
+    
+    # Logging for debugging
+    print(f"   🎯 FOREMAN ROUTER: reg={regulatory_matches}, prod={product_matches}, brand={has_brand}, code={has_code_ref}")
+    
+    # Decision Logic
+    
+    # HYBRID: Both product AND regulatory signals present
+    # e.g., "Can I use Expol in Zone D?" or "Is J-Frame compliant with NZS 3604?"
+    if (has_brand and has_code_ref) or (has_brand and regulatory_matches >= 2):
+        print(f"   🤝 STRATEGY: HYBRID (Product + Compliance conflict check)")
+        return SearchStrategy.HYBRID
+    
+    # INSPECTOR: Strong regulatory signal, no/weak product signal
+    # e.g., "What is the minimum ceiling height per G7/AS1?"
+    if has_code_ref or (regulatory_matches >= 3 and product_matches < 2):
+        print(f"   👷 STRATEGY: INSPECTOR (Compliance-focused)")
+        return SearchStrategy.INSPECTOR
+    
+    # PRODUCT_REP: Strong product signal, no/weak regulatory signal
+    # e.g., "What is the R-value of Expol ThermaSlab?" or "GIB drying time"
+    if has_brand or (product_matches >= 3 and regulatory_matches < 2):
+        print(f"   📦 STRATEGY: PRODUCT_REP (Product-focused)")
+        return SearchStrategy.PRODUCT_REP
+    
+    # FOREMAN: Ambiguous or general query - search everything
+    # e.g., "How do I build a deck?" or "insulation options"
+    print(f"   🏗️ STRATEGY: FOREMAN (Full search)")
+    return SearchStrategy.FOREMAN
+
+
+def execute_hybrid_search(query: str, intent: str, top_k: int = 10) -> tuple:
+    """
+    Execute the "Council Meeting" - parallel searches from both agents.
+    
+    Returns:
+        Tuple of (inspector_results, product_results, merged_results)
+    """
+    from simple_tier1_retrieval import simple_tier1_retrieval
+    
+    print(f"   🤝 HYBRID SEARCH: Calling both Inspector and Product Rep...")
+    
+    # Step 1: Get compliance/regulatory documents
+    inspector_results = simple_tier1_retrieval(
+        query, 
+        top_k=top_k, 
+        intent=intent,
+        agent_mode=SearchStrategy.INSPECTOR
+    )
+    print(f"      👷 Inspector returned: {len(inspector_results)} docs")
+    
+    # Step 2: Get product/manufacturer documents
+    product_results = simple_tier1_retrieval(
+        query,
+        top_k=top_k,
+        intent=intent,
+        agent_mode=SearchStrategy.PRODUCT_REP
+    )
+    print(f"      📦 Product Rep returned: {len(product_results)} docs")
+    
+    # Step 3: Merge results with Inspector taking priority
+    # Inspector docs come first (The Law takes precedence)
+    merged_results = []
+    seen_ids = set()
+    
+    # Add all inspector results first (compliance is priority)
+    for doc in inspector_results:
+        doc_id = doc.get('id', str(doc.get('source', '')) + str(doc.get('page', '')))
+        if doc_id not in seen_ids:
+            doc['_agent_source'] = 'inspector'  # Tag source
+            merged_results.append(doc)
+            seen_ids.add(doc_id)
+    
+    # Add product results that aren't duplicates
+    for doc in product_results:
+        doc_id = doc.get('id', str(doc.get('source', '')) + str(doc.get('page', '')))
+        if doc_id not in seen_ids:
+            doc['_agent_source'] = 'product_rep'  # Tag source
+            merged_results.append(doc)
+            seen_ids.add(doc_id)
+    
+    # Sort by final_score (but inspector docs already at top)
+    # Keep inspector results in their relative order, then product results
+    inspector_merged = [d for d in merged_results if d.get('_agent_source') == 'inspector']
+    product_merged = [d for d in merged_results if d.get('_agent_source') == 'product_rep']
+    
+    # Take top results from each, ensuring balance
+    max_per_agent = top_k // 2 + 2
+    final_merged = inspector_merged[:max_per_agent] + product_merged[:max_per_agent]
+    
+    print(f"      🔀 Merged: {len(inspector_merged)} inspector + {len(product_merged)} product = {len(final_merged)} total")
+    
+    return inspector_results, product_results, final_merged[:top_k * 2]
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # LAYER 6: CITATION CONSOLIDATOR (UX Optimization)
 # "Quality over Quantity" - Group citations, limit display, deduplicate definitions
 # ══════════════════════════════════════════════════════════════════════════════
