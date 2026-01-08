@@ -6,7 +6,7 @@ Additional testing to understand citation system behavior
 import requests
 import json
 
-BACKEND_URL = "https://buildai-15.preview.emergentagent.com"
+BACKEND_URL = "https://stresstest-nz.preview.emergentagent.com"
 
 def test_citation_scenarios():
     """Test various scenarios to understand when citations are provided"""

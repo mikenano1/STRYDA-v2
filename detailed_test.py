@@ -9,7 +9,7 @@ import json
 import time
 from datetime import datetime
 
-BACKEND_URL = "https://buildai-15.preview.emergentagent.com"
+BACKEND_URL = "https://stresstest-nz.preview.emergentagent.com"
 
 async def test_detailed_final_sweep():
     """Test the Final Sweep queries and capture detailed responses"""

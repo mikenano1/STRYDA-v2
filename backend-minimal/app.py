@@ -292,7 +292,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://app.emergent.sh",
-        "https://buildai-15.preview.emergentagent.com",
+        "https://stresstest-nz.preview.emergentagent.com",
         "http://localhost:3000",  # Dev only
     ],
     allow_credentials=False,  # Enhanced security

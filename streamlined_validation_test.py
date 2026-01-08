@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 import os
 
-BACKEND_URL = "https://buildai-15.preview.emergentagent.com"
+BACKEND_URL = "https://stresstest-nz.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 TIMEOUT = 30
 
