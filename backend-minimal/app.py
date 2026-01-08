@@ -448,11 +448,8 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
             if other and len(other) <= 3:
                 add_section("Additional Info", other, "ℹ️")
         
-        # Add Citation Pill for viewing the diagram
-        if image_url:
-            # Create a clean title for the link
-            link_title = f"{brand} {image_type} (Page {page})"
-            response_parts.append(f"\n> 📐 **View Diagram:** [{link_title}]({image_url})")
+        # Note: Image pills are rendered in frontend from citations array
+        # No need for markdown links here
         
         response_parts.append("\n---\n")
     
