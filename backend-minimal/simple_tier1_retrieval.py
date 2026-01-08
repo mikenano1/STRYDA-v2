@@ -8,6 +8,76 @@ import psycopg2.extras
 import re
 from typing import List, Dict, Optional
 
+# ══════════════════════════════════════════════════════════════════════════════
+# 4-AGENT ARCHITECTURE: AGENT KNOWLEDGE DOMAINS
+# Defines which doc_types each specialist agent can access
+# This enforces the "Hierarchy of Truth" at the retrieval level
+# ══════════════════════════════════════════════════════════════════════════════
+AGENT_SCOPES = {
+    # THE COUNCIL INSPECTOR - Compliance Expert (The Law)
+    # Only retrieves regulatory/legal documents - CANNOT be overruled
+    "inspector": [
+        # Building Code & Standards
+        "Building_Code",
+        "Building_Code_Compliance", 
+        "building_code",
+        "Compliance_Document",
+        "standard",
+        # Acceptable Solutions & Verification Methods
+        "acceptable_solution",
+        "acceptable_solution_current",
+        "acceptable_solution_legacy",
+        "verification_method",
+        "verification_method_current",
+        # Legislation & Official Guidance
+        "legislation",
+        "Building_Act",
+        "MBIE_Guidance",
+        "council_guide",
+        "Industry_Code_of_Practice",
+        "industry_code_of_practice",
+        # NZS Standards
+        "NZS_Standard",
+        "NZS_3604",
+        "NZS_4229",
+    ],
+    
+    # THE PRODUCT REP - Supplier Data (The Sales Pitch)
+    # Only retrieves manufacturer/product documents - CAN be overruled by Inspector
+    "product_rep": [
+        # Technical Data Sheets
+        "Technical_Data_Sheet",
+        "technical_data_sheet",
+        "TDS",
+        "spec_sheet",
+        "Spec_Sheet",
+        # Installation & Manuals
+        "Installation_Guide",
+        "installation_guide",
+        "Technical_Manual",
+        "Product_Manual",
+        "product_manual",
+        "manufacturer_manual",
+        "manufacturer_manual_current",
+        # Appraisals & Certifications
+        "Appraisal",
+        "appraisal",
+        "BRANZ_Appraisal",
+        "Certification",
+        "certification",
+        # Product Information
+        "Product_Catalog",
+        "product_info",
+        "warranty",
+        "Warranty",
+    ],
+    
+    # THE FOREMAN (Router) - Has access to EVERYTHING
+    # Used when agent_mode is None or "foreman"
+    # This is the default fallback for legacy behavior
+    "foreman": None  # None means no filtering - search all docs
+}
+
 # Enhanced amendment detection patterns
 AMEND_PAT = re.compile(r'\b(amend(?:ment)?\s*13|amdt\s*13|amend\s*13|b1\s*a\s*13)\b', re.I)
 B1_LATEST_PAT = re.compile(r'\b(latest\s+b1|current\s+b1|new\s+b1|updated\s+b1)\b', re.I)
