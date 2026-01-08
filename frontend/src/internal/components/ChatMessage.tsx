@@ -374,6 +374,20 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
                 evidenceCollection={selectedMatch.evidenceCollection}
             />
         )}
+
+        {/* Image Modal for visual citations */}
+        {selectedImage && (
+            <ImageModal
+                visible={imageModalVisible}
+                onClose={() => setImageModalVisible(false)}
+                source={selectedImage.source}
+                page={selectedImage.page}
+                imageUrl={selectedImage.imageUrl}
+                summary={selectedImage.summary}
+                imageType={selectedImage.imageType}
+                brand={selectedImage.brand}
+            />
+        )}
     </>
   );
 }
