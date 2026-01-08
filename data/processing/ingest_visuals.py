@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-STRYDA Visual Ingestion Engine
-===============================
+STRYDA Visual Ingestion Engine v2.0
+====================================
 
-Agent #4: The Engineer - Visual Extraction Pipeline
+Agent #4: The Engineer - REAL Image Extraction Pipeline
 
 This script:
-1. Scans PDFs from product_rep and inspector documents
-2. Extracts images/tables using LlamaParse (Premium Mode)
-3. Analyzes each visual with Claude 3.5 Sonnet
-4. Stores images in Supabase Storage
-5. Stores metadata + embeddings in visuals table
+1. Uses LlamaParse with premium_mode to extract ACTUAL images
+2. Downloads the image files
+3. Uploads PNG/JPG files to Supabase visual_assets bucket
+4. Analyzes each image with Claude for technical data
+5. Stores metadata + signed URL reference in visuals table
 """
 
 import os
@@ -19,8 +19,11 @@ import json
 import hashlib
 import base64
 import time
-from typing import List, Dict, Optional, Tuple
+import requests
+import tempfile
+from typing import List, Dict, Optional
 from datetime import datetime
+from pathlib import Path
 
 sys.path.insert(0, '/app/backend-minimal')
 
@@ -52,53 +55,41 @@ ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 # Minimum image size to process (skip tiny icons)
-MIN_IMAGE_SIZE_KB = 20
+MIN_IMAGE_SIZE_KB = 10
 
-# Batch size for processing
-BATCH_SIZE = 5
+# Claude system prompt for image analysis
+CLAUDE_SYSTEM_PROMPT = """You are a Senior Structural Engineer analyzing construction document images for New Zealand building compliance.
 
-# Claude system prompt for content analysis
-CLAUDE_SYSTEM_PROMPT = """You are a Senior Structural Engineer analyzing construction documents for New Zealand building compliance.
+Analyze the provided image and extract technical information.
 
-Your task is to analyze the provided technical content (tables, specifications, dimensions) and extract structured data.
+Determine:
+1. IMAGE_TYPE: One of [span_table, detail_drawing, diagram, chart, specification, flashing_detail, section_view, photo, logo, other]
+2. RELEVANCE: Is this technically useful for construction? (true/false) - Logos, decorative images = false
+3. BRAND: If visible, identify the manufacturer (e.g., "Kingspan", "GIB", "Abodo")
+4. TECHNICAL_VARIABLES: Extract key values visible in the image
 
-For the content provided, determine:
-1. IMAGE_TYPE: One of [span_table, detail_drawing, specification, diagram, chart, other]
-2. RELEVANCE: Is this technically useful for construction? (true/false)
-3. BRAND: If visible, identify the manufacturer (e.g., "Kingspan", "GIB", "EXPOL")
-4. TECHNICAL_VARIABLES: Extract key values like:
-   - Spans (mm), spacings, dimensions
-   - Load ratings, wind zones
-   - Material grades (SG8, H3.2, etc.)
-   - R-values, fire ratings
-   - Screw lengths, fixing requirements
-   - Installation requirements
-   - Code references (NZS, BRANZ, etc.)
-
-Return ONLY valid JSON in this format:
+Return ONLY valid JSON:
 {
-    "image_type": "specification",
+    "image_type": "detail_drawing",
     "relevance": true,
-    "brand": "Kingspan",
-    "summary": "Kooltherm K12 screw length specifications for various board thicknesses with BRANZ report references",
+    "brand": "Abodo",
+    "summary": "External corner flashing detail for weatherboard cladding showing overlap dimensions",
     "technical_variables": {
-        "product": "Kooltherm K12",
-        "screw_lengths": {"25mm": "95mm", "30mm": "100mm", "40mm": "110mm"},
-        "min_embedment": "25mm",
-        "code_refs": ["BRANZ ST-18460", "NZS 3604:2011"],
-        "batten_size": "45x45mm H3"
+        "overlap_mm": 50,
+        "material": "galvanized steel",
+        "application": "external corner"
     },
-    "confidence": 0.95
+    "confidence": 0.90
 }
 
-If the content is not technically relevant, return:
+For non-technical images (logos, photos, decorations):
 {
-    "image_type": "other",
+    "image_type": "logo",
     "relevance": false,
     "brand": null,
-    "summary": "Non-technical content",
+    "summary": "Company logo or decorative image",
     "technical_variables": {},
-    "confidence": 0.90
+    "confidence": 0.95
 }"""
 
 # =============================================================================
@@ -126,91 +117,24 @@ def init_clients():
     anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     openai_client = openai.OpenAI(api_key=OPENAI_API_KEY)
     
-    print("   ✅ Supabase client initialized")
-    print("   ✅ Anthropic client initialized")
-    print("   ✅ OpenAI client initialized")
+    print("   ✅ All API clients initialized")
 
 
 # =============================================================================
-# DOCUMENT DISCOVERY
+# PDF URL DISCOVERY
 # =============================================================================
-
-def get_documents_to_process(limit: int = None, doc_types: List[str] = None) -> List[Dict]:
-    """
-    Get list of unique source documents to process.
-    
-    Filters:
-    - product_rep and inspector doc_types
-    - Excludes legislation (text-only)
-    - Excludes already processed documents
-    """
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-    
-    # Default doc_types for visual extraction
-    if doc_types is None:
-        doc_types = [
-            # Product Rep - High visual content
-            'Technical_Data_Sheet', 'Installation_Guide', 'Technical_Manual',
-            'Product_Catalog', 'Product_Manual', 'Product_Guide',
-            'CAD_Detail', 'CAD_Files', 'Specification',
-            # Inspector - Tables and figures
-            'Compliance_Document', 'NZS_Standard', 'MBIE_Guidance',
-            'acceptable_solution', 'verification_method',
-        ]
-    
-    # Get distinct sources
-    placeholders = ", ".join(["%s"] * len(doc_types))
-    query = f"""
-        SELECT DISTINCT source, doc_type, brand_name
-        FROM documents 
-        WHERE doc_type IN ({placeholders})
-        AND source NOT LIKE '%%legislation%%'
-        ORDER BY source
-    """
-    if limit:
-        query += f" LIMIT {limit}"
-    
-    cursor.execute(query, tuple(doc_types))
-    sources = [dict(r) for r in cursor.fetchall()]
-    
-    # Filter out already processed
-    cursor.execute("SELECT DISTINCT source_document FROM visuals")
-    processed = {r['source_document'] for r in cursor.fetchall()}
-    
-    sources = [s for s in sources if s['source'] not in processed]
-    
-    cursor.close()
-    conn.close()
-    
-    return sources
-
 
 def get_storage_url_for_source(source: str) -> Optional[str]:
-    """
-    Get the Supabase Storage URL for a source document.
+    """Get the Supabase Storage URL for a source document."""
     
-    Searches the product-library bucket for matching PDFs.
-    Source format: "Brand - Document Name"
-    """
-    from supabase import create_client
-    
-    supabase_url = os.getenv('SUPABASE_URL')
-    supabase_key = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
-    
-    if not supabase_url or not supabase_key:
-        return None
-    
-    supabase_client = create_client(supabase_url, supabase_key)
-    
-    # Parse source name: "Brand - Document Name" -> ("Brand", "Document Name")
+    # Parse source name: "Brand - Document Name"
     if ' - ' in source:
         brand_raw, doc_name = source.split(' - ', 1)
     else:
         brand_raw = source
         doc_name = source
     
-    # Normalize brand name to match folder structure
+    # Brand to folder mapping
     brand_mapping = {
         'Abodo Wood': ('A_Structure', 'Abodo_Wood'),
         'Kingspan': ('B_Enclosure', 'Kingspan'),
@@ -221,147 +145,125 @@ def get_storage_url_for_source(source: str) -> Optional[str]:
         'Asona Deep Dive': ('C_Interiors', 'Asona_Acoustics'),
     }
     
-    # Try to find the brand in mapping
     category, brand_folder = None, None
     for key, (cat, folder) in brand_mapping.items():
         if key.lower() in brand_raw.lower():
             category, brand_folder = cat, folder
             break
     
-    # Special handling for Kooltherm K12 docs (in separate folder)
-    if 'kooltherm' in source.lower() or 'k12' in source.lower():
-        # These are in 03_Kooltherm_K12_Framing_Board folder
-        pdf_name = f"{doc_name}.pdf"
-        try:
-            # List files in the K12 folder
-            files = supabase_client.storage.from_('product-library').list('03_Kooltherm_K12_Framing_Board')
-            for f in files:
-                if doc_name.lower() in f.get('name', '').lower():
-                    path = f"03_Kooltherm_K12_Framing_Board/{f['name']}"
-                    signed = supabase_client.storage.from_('product-library').create_signed_url(path, 3600)
-                    if signed and signed.get('signedURL'):
-                        print(f"      📂 Found PDF at: {path}")
-                        return signed['signedURL']
-        except Exception as e:
-            pass
-    
     if not category:
-        # Try pdfs bucket as fallback
-        pdf_name = f"{doc_name}.pdf"
-        try:
-            signed = supabase_client.storage.from_('pdfs').create_signed_url(pdf_name, 3600)
-            if signed and signed.get('signedURL'):
-                return signed['signedURL']
-        except:
-            pass
         return None
     
-    # Search through document type subfolders
+    # Document type subfolders to search
     doc_type_folders = [
         'Brochures_Fact_Sheets', 'Technical_Data_Sheets', 'Guides_Manuals',
         'Profile_Drawings', 'Certificates_Warranties', 'Safety_Data_Sheets',
         'Environmental_Product_Declaration', 'Reports', 'Color_Finishes_Textures'
     ]
     
-    # Build expected filename
     pdf_name = f"{doc_name}.pdf"
     
     for doc_folder in doc_type_folders:
         path = f"{category}/{brand_folder}/{doc_folder}/{pdf_name}"
         try:
-            signed = supabase_client.storage.from_('product-library').create_signed_url(path, 3600)
+            signed = supabase.storage.from_('product-library').create_signed_url(path, 3600)
             if signed and signed.get('signedURL'):
                 print(f"      📂 Found PDF at: {path}")
                 return signed['signedURL']
         except:
             continue
     
-    print(f"      ⚠️ Could not find PDF for: {source[:50]}")
     return None
 
 
 # =============================================================================
-# LLAMAPARSE EXTRACTION
+# LLAMAPARSE IMAGE EXTRACTION
 # =============================================================================
 
-def extract_images_with_llamaparse(pdf_path_or_url: str, source_name: str) -> List[Dict]:
+def extract_images_with_llamaparse(pdf_url: str, source_name: str) -> List[Dict]:
     """
-    Use LlamaParse to extract technical content (tables, diagrams, specs) from a PDF.
+    Use LlamaParse with PREMIUM MODE to extract actual images from PDF.
     
-    LlamaParse converts visual elements to structured markdown/SVG.
-    Returns list of content chunks that contain technical data.
+    Returns list of image dictionaries with downloaded image data.
     """
-    print(f"   📄 Parsing: {source_name[:50]}...")
+    print(f"   📄 LlamaParse Premium: {source_name[:50]}...")
     
     try:
-        # Configure LlamaParse for technical extraction
+        # Configure LlamaParse for IMAGE EXTRACTION
         parser = LlamaParse(
             api_key=LLAMA_CLOUD_API_KEY,
             result_type="markdown",
-            auto_mode=True,
-            specialized_image_parsing=True,  # Better for technical drawings
+            premium_mode=True,  # CRITICAL: Enables image extraction
             verbose=False,
         )
         
-        # Parse document
-        documents = parser.load_data(pdf_path_or_url)
-        
-        # Extract content chunks that contain technical data
-        content_chunks = []
-        
-        for doc_idx, doc in enumerate(documents):
-            content = doc.text if hasattr(doc, 'text') else str(doc)
+        # Create temp directory for images
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Parse and extract images
+            print(f"      🔄 Parsing document...")
             
-            # Check if this page has technical content worth extracting
-            has_table = '|' in content and content.count('|') > 4  # Markdown tables
-            has_svg = '<svg' in content  # SVG diagrams
-            has_dimensions = any(kw in content.lower() for kw in [
-                'mm', 'scale', 'dimension', 'spacing', 'thickness', 'span',
-                'r-value', 'load', 'capacity', 'zone', 'grade'
-            ])
-            has_technical_refs = any(kw in content.lower() for kw in [
-                'nzs', 'branz', 'codemark', 'as/nzs', 'clause', 'table'
-            ])
+            # Use get_images to download actual image files
+            try:
+                images_result = parser.get_images([pdf_url], download_path=temp_dir)
+                print(f"      📥 get_images returned: {type(images_result)}")
+            except Exception as e:
+                print(f"      ⚠️ get_images failed: {e}")
+                images_result = []
             
-            # Only extract pages with meaningful technical content
-            if (has_table or has_svg) and (has_dimensions or has_technical_refs):
-                # Determine content type
-                if has_svg and has_table:
-                    content_type = 'detail_drawing'
-                elif has_svg:
-                    content_type = 'diagram'
-                elif has_table:
-                    content_type = 'specification'
-                else:
-                    content_type = 'other'
+            # Check what files were downloaded
+            downloaded_files = list(Path(temp_dir).glob("**/*"))
+            image_files = [f for f in downloaded_files if f.suffix.lower() in ['.png', '.jpg', '.jpeg', '.webp']]
+            
+            print(f"      📁 Downloaded {len(image_files)} image files")
+            
+            images = []
+            for img_path in image_files:
+                # Read image data
+                with open(img_path, 'rb') as f:
+                    img_data = f.read()
                 
-                content_chunks.append({
-                    'content': content,
-                    'page': doc_idx + 1,
+                # Skip tiny images (likely icons/bullets)
+                if len(img_data) < MIN_IMAGE_SIZE_KB * 1024:
+                    continue
+                
+                # Determine mime type
+                suffix = img_path.suffix.lower()
+                mime_map = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp'}
+                mime_type = mime_map.get(suffix, 'image/png')
+                
+                # Extract page number from filename if available
+                page_num = 1
+                fname = img_path.stem
+                if '_page_' in fname:
+                    try:
+                        page_num = int(fname.split('_page_')[1].split('_')[0])
+                    except:
+                        pass
+                
+                images.append({
+                    'data': img_data,
+                    'base64': base64.b64encode(img_data).decode('utf-8'),
+                    'mime_type': mime_type,
+                    'filename': img_path.name,
+                    'size_kb': len(img_data) / 1024,
+                    'page': page_num,
                     'source': source_name,
-                    'type': content_type,
-                    'has_table': has_table,
-                    'has_svg': has_svg,
                 })
-        
-        print(f"      Found {len(content_chunks)} technical pages")
-        return content_chunks
-        
+            
+            print(f"      ✅ Extracted {len(images)} valid images (>{MIN_IMAGE_SIZE_KB}KB)")
+            return images
+            
     except Exception as e:
-        print(f"      ⚠️ LlamaParse error: {e}")
+        print(f"      ❌ LlamaParse error: {e}")
         return []
 
 
 # =============================================================================
-# CLAUDE ANALYSIS
+# CLAUDE IMAGE ANALYSIS
 # =============================================================================
 
-def analyze_content_with_claude(content: str, content_type: str = "specification") -> Dict:
-    """
-    Send technical content to Claude for analysis.
-    
-    Returns parsed JSON response with extracted technical variables.
-    """
+def analyze_image_with_claude(image_base64: str, mime_type: str = "image/png") -> Dict:
+    """Send actual image to Claude for visual analysis."""
     try:
         response = anthropic_client.messages.create(
             model="claude-sonnet-4-20250514",
@@ -369,34 +271,63 @@ def analyze_content_with_claude(content: str, content_type: str = "specification
             system=CLAUDE_SYSTEM_PROMPT,
             messages=[{
                 "role": "user",
-                "content": f"""Analyze this technical content extracted from a construction document and extract structured data. 
-
-Content type hint: {content_type}
-
----
-{content[:8000]}
----
-
-Return JSON only with image_type, relevance, brand, summary, technical_variables, and confidence."""
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": mime_type,
+                            "data": image_base64,
+                        }
+                    },
+                    {
+                        "type": "text",
+                        "text": "Analyze this construction document image. Extract technical information. Return JSON only."
+                    }
+                ]
             }]
         )
         
-        # Parse JSON from response
         text = response.content[0].text
         
-        # Try to extract JSON from response
+        # Extract JSON from response
         if "{" in text and "}" in text:
             json_start = text.find("{")
             json_end = text.rfind("}") + 1
-            json_str = text[json_start:json_end]
-            return json.loads(json_str)
+            return json.loads(text[json_start:json_end])
         
-        return {"error": "No JSON in response", "raw": text[:200]}
+        return {"error": "No JSON in response", "relevance": False}
         
-    except json.JSONDecodeError as e:
-        return {"error": f"JSON parse error: {e}", "raw": text[:200] if 'text' in dir() else ""}
     except Exception as e:
-        return {"error": str(e)}
+        return {"error": str(e), "relevance": False}
+
+
+# =============================================================================
+# SUPABASE UPLOAD
+# =============================================================================
+
+def upload_image_to_bucket(image_data: bytes, filename: str, mime_type: str) -> Optional[str]:
+    """Upload actual image file to visual_assets bucket."""
+    try:
+        # Generate unique filename
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        file_hash = hashlib.md5(image_data).hexdigest()[:8]
+        ext = '.png' if 'png' in mime_type else '.jpg'
+        storage_path = f"images/{timestamp}_{file_hash}_{filename.replace(' ', '_')[:30]}{ext}"
+        
+        # Upload to bucket
+        result = supabase.storage.from_('visual_assets').upload(
+            storage_path,
+            image_data,
+            {"content-type": mime_type}
+        )
+        
+        print(f"         📤 Uploaded: {storage_path}")
+        return storage_path
+        
+    except Exception as e:
+        print(f"         ❌ Upload failed: {e}")
+        return None
 
 
 # =============================================================================
@@ -404,7 +335,7 @@ Return JSON only with image_type, relevance, brand, summary, technical_variables
 # =============================================================================
 
 def generate_embedding(text: str) -> List[float]:
-    """Generate embedding using OpenAI text-embedding-3-small."""
+    """Generate embedding using OpenAI."""
     try:
         response = openai_client.embeddings.create(
             model="text-embedding-3-small",
@@ -418,32 +349,10 @@ def generate_embedding(text: str) -> List[float]:
 
 
 # =============================================================================
-# STORAGE & DATABASE
+# DATABASE STORAGE
 # =============================================================================
 
-def upload_to_storage(image_data: bytes, filename: str) -> Optional[str]:
-    """Upload image to visual_assets bucket."""
-    try:
-        # Generate unique path
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        hash_suffix = hashlib.md5(image_data).hexdigest()[:8]
-        storage_path = f"images/{timestamp}_{hash_suffix}_{filename}"
-        
-        # Upload
-        result = supabase.storage.from_('visual_assets').upload(
-            storage_path,
-            image_data,
-            {"content-type": "image/png"}
-        )
-        
-        return storage_path
-        
-    except Exception as e:
-        print(f"      ⚠️ Upload error: {e}")
-        return None
-
-
-def save_to_database(visual_data: Dict) -> bool:
+def save_visual_to_database(visual_data: Dict) -> bool:
     """Save visual metadata to visuals table."""
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -476,79 +385,120 @@ def save_to_database(visual_data: Dict) -> bool:
         return True
         
     except Exception as e:
-        print(f"      ⚠️ Database error: {e}")
+        print(f"      ❌ Database error: {e}")
         return False
 
 
 # =============================================================================
-# MAIN PIPELINE
+# DOCUMENT PROCESSING
 # =============================================================================
 
-def process_document(source: str, doc_type: str, brand: str = None) -> Dict:
-    """
-    Process a single document through the visual pipeline.
+def get_documents_to_process(limit: int = None) -> List[Dict]:
+    """Get source documents to process for visual extraction."""
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     
-    Returns stats dict.
+    # Target doc types with visual content
+    doc_types = [
+        'Technical_Data_Sheet', 'Installation_Guide', 'Technical_Manual',
+        'Product_Catalog', 'Product_Guide', 'CAD_Detail',
+    ]
+    
+    placeholders = ", ".join(["%s"] * len(doc_types))
+    query = f"""
+        SELECT DISTINCT source, doc_type, brand_name
+        FROM documents 
+        WHERE doc_type IN ({placeholders})
+        ORDER BY source
     """
+    if limit:
+        query += f" LIMIT {limit}"
+    
+    cursor.execute(query, tuple(doc_types))
+    sources = [dict(r) for r in cursor.fetchall()]
+    
+    # Filter out already processed
+    cursor.execute("SELECT DISTINCT source_document FROM visuals")
+    processed = {r['source_document'] for r in cursor.fetchall()}
+    sources = [s for s in sources if s['source'] not in processed]
+    
+    cursor.close()
+    conn.close()
+    return sources
+
+
+def process_document(source: str, doc_type: str, brand: str = None) -> Dict:
+    """Process a single document - extract images, analyze, upload, store."""
     stats = {
         'source': source,
         'images_found': 0,
-        'images_processed': 0,
+        'images_uploaded': 0,
         'images_relevant': 0,
         'errors': []
     }
     
-    # Get storage URL
+    # Get PDF URL
     pdf_url = get_storage_url_for_source(source)
     if not pdf_url:
-        stats['errors'].append(f"Could not find PDF for: {source[:50]}")
+        stats['errors'].append(f"PDF not found: {source[:50]}")
         return stats
     
-    # Extract technical content with LlamaParse
-    content_chunks = extract_images_with_llamaparse(pdf_url, source)
-    stats['images_found'] = len(content_chunks)
+    # Extract images with LlamaParse
+    images = extract_images_with_llamaparse(pdf_url, source)
+    stats['images_found'] = len(images)
     
-    for chunk in content_chunks:
+    if not images:
+        return stats
+    
+    for img in images:
         try:
             # Analyze with Claude
-            analysis = analyze_content_with_claude(chunk['content'], chunk.get('type', 'specification'))
+            print(f"      🤖 Analyzing image ({img['size_kb']:.1f}KB)...")
+            analysis = analyze_image_with_claude(img['base64'], img['mime_type'])
             
-            if 'error' in analysis:
-                stats['errors'].append(analysis['error'])
+            if analysis.get('error'):
+                stats['errors'].append(f"Claude: {analysis['error']}")
                 continue
             
-            # Skip non-relevant content
+            # Skip non-relevant images (logos, decorative)
             if not analysis.get('relevance', False):
+                print(f"         ⏭️ Skipped (not relevant): {analysis.get('image_type', 'unknown')}")
                 continue
             
             stats['images_relevant'] += 1
             
-            # Store content in text format (no image upload needed)
-            # Generate a unique storage path identifier
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            content_hash = hashlib.md5(chunk['content'].encode()).hexdigest()[:8]
-            storage_path = f"text/{source[:30]}_{chunk.get('page', 0)}_{content_hash}.md"
+            # Upload to Supabase bucket
+            storage_path = upload_image_to_bucket(
+                img['data'],
+                img['filename'],
+                img['mime_type']
+            )
             
-            # Generate embedding from summary + technical vars + content snippet
-            embed_text = f"{analysis.get('summary', '')} {json.dumps(analysis.get('technical_variables', {}))} {chunk['content'][:500]}"
+            if not storage_path:
+                continue
+            
+            stats['images_uploaded'] += 1
+            
+            # Generate embedding
+            embed_text = f"{analysis.get('summary', '')} {json.dumps(analysis.get('technical_variables', {}))}"
             embedding = generate_embedding(embed_text)
             
             # Save to database
             visual_data = {
                 'source_document': source,
-                'source_page': chunk.get('page'),
-                'image_type': analysis.get('image_type', chunk.get('type', 'other')),
+                'source_page': img.get('page', 1),
+                'image_type': analysis.get('image_type', 'other'),
                 'brand': analysis.get('brand') or brand,
                 'storage_path': storage_path,
-                'file_size': len(chunk['content']),
+                'file_size': int(img['size_kb'] * 1024),
                 'summary': analysis.get('summary'),
                 'technical_variables': analysis.get('technical_variables', {}),
                 'confidence': analysis.get('confidence', 0.0),
                 'embedding': embedding,
             }
             
-            if save_to_database(visual_data):
-                stats['images_processed'] += 1
+            save_visual_to_database(visual_data)
+            print(f"         ✅ Saved: {analysis.get('image_type')} - {analysis.get('summary', '')[:50]}...")
             
         except Exception as e:
             stats['errors'].append(str(e))
@@ -556,92 +506,72 @@ def process_document(source: str, doc_type: str, brand: str = None) -> Dict:
     return stats
 
 
-def run_pipeline(limit: int = None, doc_types: List[str] = None, dry_run: bool = False):
-    """
-    Run the full visual ingestion pipeline.
-    """
+# =============================================================================
+# MAIN PIPELINE
+# =============================================================================
+
+def run_pipeline(limit: int = None, dry_run: bool = False):
+    """Run the full visual ingestion pipeline."""
     print("\n" + "="*70)
-    print("🔧 STRYDA VISUAL INGESTION ENGINE")
-    print("   Agent #4: The Engineer")
+    print("🔧 STRYDA VISUAL INGESTION ENGINE v2.0")
+    print("   Agent #4: The Engineer - REAL IMAGE EXTRACTION")
     print("="*70)
     
     # Initialize clients
     print("\n📡 Initializing API clients...")
     init_clients()
     
-    # Get documents to process
+    # Get documents
     print("\n📥 Discovering documents...")
-    documents = get_documents_to_process(limit=limit, doc_types=doc_types)
+    documents = get_documents_to_process(limit=limit)
     print(f"   Found {len(documents)} documents to process")
     
     if dry_run:
-        print("\n⚠️ DRY RUN - No processing will occur")
-        print("\n📋 Sample documents:")
+        print("\n⚠️ DRY RUN - No processing")
         for doc in documents[:10]:
             print(f"   • {doc['source'][:60]}... [{doc['doc_type']}]")
         return
     
-    # Process documents
+    # Process
     print(f"\n🔄 Processing {len(documents)} documents...")
     
-    total_stats = {
-        'documents_processed': 0,
-        'total_images_found': 0,
-        'total_images_processed': 0,
-        'total_images_relevant': 0,
-        'errors': []
-    }
+    totals = {'docs': 0, 'found': 0, 'uploaded': 0, 'relevant': 0, 'errors': []}
     
     for i, doc in enumerate(documents):
-        print(f"\n[{i+1}/{len(documents)}] Processing: {doc['source'][:50]}...")
+        print(f"\n[{i+1}/{len(documents)}] {doc['source'][:50]}...")
         
         stats = process_document(doc['source'], doc['doc_type'], doc.get('brand_name'))
         
-        total_stats['documents_processed'] += 1
-        total_stats['total_images_found'] += stats['images_found']
-        total_stats['total_images_processed'] += stats['images_processed']
-        total_stats['total_images_relevant'] += stats['images_relevant']
-        total_stats['errors'].extend(stats['errors'])
+        totals['docs'] += 1
+        totals['found'] += stats['images_found']
+        totals['uploaded'] += stats['images_uploaded']
+        totals['relevant'] += stats['images_relevant']
+        totals['errors'].extend(stats['errors'])
         
-        print(f"   ✅ Found: {stats['images_found']} | Relevant: {stats['images_relevant']} | Saved: {stats['images_processed']}")
+        print(f"   📊 Found: {stats['images_found']} | Relevant: {stats['images_relevant']} | Uploaded: {stats['images_uploaded']}")
         
-        # Rate limiting
-        time.sleep(1)
+        time.sleep(1)  # Rate limiting
     
-    # Final report
+    # Report
     print("\n" + "="*70)
     print("📊 INGESTION COMPLETE")
     print("="*70)
-    print(f"\n📦 Documents Processed: {total_stats['documents_processed']}")
-    print(f"🖼️ Images Found: {total_stats['total_images_found']}")
-    print(f"✅ Images Relevant: {total_stats['total_images_relevant']}")
-    print(f"💾 Images Saved: {total_stats['total_images_processed']}")
-    print(f"❌ Errors: {len(total_stats['errors'])}")
-    
-    if total_stats['errors']:
-        print("\n⚠️ Sample Errors:")
-        for err in total_stats['errors'][:5]:
-            print(f"   • {err[:80]}...")
+    print(f"📦 Documents: {totals['docs']}")
+    print(f"🖼️ Images Found: {totals['found']}")
+    print(f"✅ Relevant: {totals['relevant']}")
+    print(f"📤 Uploaded: {totals['uploaded']}")
+    print(f"❌ Errors: {len(totals['errors'])}")
 
 
 # =============================================================================
 # CLI
 # =============================================================================
 
-def main():
+if __name__ == '__main__':
     import argparse
-    parser = argparse.ArgumentParser(description='STRYDA Visual Ingestion Engine')
-    parser.add_argument('--limit', type=int, help='Limit number of documents to process')
-    parser.add_argument('--dry-run', action='store_true', help='Preview only, no processing')
-    parser.add_argument('--doc-types', nargs='+', help='Specific doc_types to process')
+    parser = argparse.ArgumentParser(description='STRYDA Visual Ingestion v2.0')
+    parser.add_argument('--limit', type=int, help='Limit documents')
+    parser.add_argument('--dry-run', action='store_true', help='Preview only')
     args = parser.parse_args()
     
-    run_pipeline(
-        limit=args.limit,
-        doc_types=args.doc_types,
-        dry_run=args.dry_run
-    )
-
-
-if __name__ == '__main__':
-    main()
+    run_pipeline(limit=args.limit, dry_run=args.dry_run)
