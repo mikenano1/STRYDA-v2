@@ -220,15 +220,37 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
         else:
             clause_str = ', '.join(source_data['clauses'][:2])
         
-        # BUILD EVIDENCE COLLECTION - All unique snippets from merged docs
+        # ═══════════════════════════════════════════════════════════════════
+        # FIXED: BUILD EVIDENCE COLLECTION - Preserve ALL text from merges
+        # Priority: snippet > content > description > chunk_text > any text field
+        # ═══════════════════════════════════════════════════════════════════
         evidence_collection = []
         seen_snippets = set()  # Avoid duplicate text
+        
+        # Helper to extract text from doc with multiple fallbacks
+        def extract_text_from_doc(doc):
+            """Extract text content with multiple fallback fields"""
+            # Try multiple fields in priority order
+            text_fields = ['snippet', 'content', 'text_content', 'description', 
+                          'chunk_text', 'text', 'body', 'summary']
+            
+            for field in text_fields:
+                text = doc.get(field)
+                if text and isinstance(text, str) and len(text.strip()) > 20:
+                    return text.strip()
+            
+            # Last resort: look for any string field with substantial content
+            for key, value in doc.items():
+                if isinstance(value, str) and len(value) > 50 and key not in ['id', 'source', 'url', 'path']:
+                    return value.strip()
+            
+            return None
         
         # Sort docs by score (highest first) for better ordering
         sorted_docs = sorted(source_data['docs'], key=lambda d: d.get('final_score', 0), reverse=True)
         
         for doc in sorted_docs:
-            snippet_text = doc.get('snippet') or doc.get('content', '')
+            snippet_text = extract_text_from_doc(doc)
             if not snippet_text:
                 continue
             
@@ -256,10 +278,31 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
             if len(evidence_collection) >= 5:
                 break
         
-        # Also keep single text_content for backwards compatibility
-        best_doc = max(source_data['docs'], key=lambda d: d.get('final_score', 0))
-        text_content = best_doc.get('snippet') or best_doc.get('content', '')
-        text_content = text_content[:800] if text_content else ''
+        # ═══════════════════════════════════════════════════════════════════
+        # FIXED: PRIORITY MERGE for text_content
+        # Don't just take "best_doc" - find the best doc WITH text content
+        # ═══════════════════════════════════════════════════════════════════
+        text_content = ''
+        
+        # First try: Get from highest-scoring doc that HAS text
+        for doc in sorted_docs:
+            extracted = extract_text_from_doc(doc)
+            if extracted:
+                text_content = extracted[:800]
+                break
+        
+        # Second try: If still empty, use first evidence_collection item
+        if not text_content and evidence_collection:
+            text_content = evidence_collection[0].get('text', '')[:800]
+        
+        # Third try: Generate fallback message with doc metadata
+        if not text_content:
+            fallback_parts = []
+            for doc in sorted_docs[:3]:
+                doc_info = f"- {doc.get('source', 'Unknown')} (Page {doc.get('page', 'N/A')})"
+                fallback_parts.append(doc_info)
+            if fallback_parts:
+                text_content = f"Referenced documents:\n" + "\n".join(fallback_parts)
         
         citation = {
             'id': f"consolidated_{source_data['source']}_{i}",
