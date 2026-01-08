@@ -75,6 +75,14 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
   const citationRegexNoClause = /\[\[Source:\s*([^|\]]+?)\s*\|\s*Page:\s*([^\]]+?)\]\]/g;
   const citationRegexSourceOnly = /\[\[Source:\s*([^\]]+?)\]\]/g;
   
+  // Helper function to normalize source names for display
+  // "J&L Duke - J-frame-BRANZ • 7.4" → "J&L Duke"
+  const normalizeSourceForDisplay = (source: string): string => {
+    // Split on pipe, dash, or bullet point and take the first part
+    const baseSource = source.split(/[|\-•]/)[0].trim();
+    return baseSource || source;
+  };
+  
   // Find all matches for each format
   const matchesFull = [...(message.text || '').matchAll(citationRegexFull)];
   const matchesNoClause = [...(message.text || '').matchAll(citationRegexNoClause)];
