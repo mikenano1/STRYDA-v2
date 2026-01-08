@@ -368,7 +368,7 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
 
 def format_engineer_response(visuals: List[Dict], query: str) -> str:
     """
-    Format Engineer results as a clean, professional Markdown response.
+    Format Engineer results as a clean, professional Markdown response with Image Cards.
     """
     if not visuals:
         return "I couldn't find any relevant diagrams, tables, or specifications for that query. The visual database may not have been populated yet, or the query doesn't match any indexed content."
@@ -383,10 +383,16 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
         summary = v.get('summary', 'No summary available.')
         similarity = v.get('similarity', 0) * 100
         tech_vars = v.get('technical_variables', {})
+        image_url = v.get('image_url', '')
         
         # Build clean header
         response_parts.append(f"### {i}. {brand} - {image_type}")
         response_parts.append(f"*Match: {similarity:.0f}% • Source: {source[:60]}{'...' if len(source) > 60 else ''} (p.{page})*\n")
+        
+        # Add image if available
+        if image_url:
+            response_parts.append(f"![{image_type}]({image_url})\n")
+        
         response_parts.append(f"{summary}\n")
         
         if tech_vars:
@@ -424,7 +430,6 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
                     else:
                         return ', '.join(str(v) for v in val[:3]) + f' (+{len(val)-3} more)'
                 elif isinstance(val, dict):
-                    # Format nested dict as key-value pairs
                     items = [f"{k}: {v}" for k, v in list(val.items())[:4]]
                     return ' | '.join(items)
                 else:
@@ -437,7 +442,7 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
             def add_section(title, data, emoji):
                 if data:
                     response_parts.append(f"\n**{emoji} {title}:**")
-                    for k, v in list(data.items())[:6]:  # Limit to 6 items per section
+                    for k, v in list(data.items())[:6]:
                         formatted_val = format_value(v)
                         response_parts.append(f"- **{format_key(k)}:** {formatted_val}")
             
@@ -448,13 +453,11 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
             add_section("Materials", materials, "🪵")
             add_section("Compliance & Standards", compliance, "✅")
             
-            # Add remaining items if important
             if other and len(other) <= 3:
                 add_section("Additional Info", other, "ℹ️")
         
         response_parts.append("\n---\n")
     
-    # Add footer
     response_parts.append("\n*These specifications are extracted from manufacturer documentation. Always verify with the original source before use in construction.*")
     
     return "\n".join(response_parts)
