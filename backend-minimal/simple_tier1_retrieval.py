@@ -3211,6 +3211,37 @@ VERDICT: A garage with 2.3m ceiling height CANNOT be converted to a compliant ha
             print(f"   📏 G7/AS1 CEILING HEIGHT: Injected minimum 2.4m requirement for habitable spaces")
         
         # ══════════════════════════════════════════════════════════════════════════
+        # LAYER 7: H1 ENERGY EFFICIENCY INJECTION
+        # When insulation R-value fails H1/AS1 Schedule 1 requirements,
+        # inject a compliance warning to frame the answer correctly
+        # ══════════════════════════════════════════════════════════════════════════
+        if _H1_COMPLIANCE_FAIL and _H1_WARNING_MESSAGE:
+            h1_energy_warning = {
+                'id': 'H1_AS1_ENERGY_COMPLIANCE_WARNING',
+                'source': 'H1/AS1 Schedule 1 - Energy Efficiency (R-Value Requirements)',
+                'page': 1,
+                'content': _H1_WARNING_MESSAGE,
+                'snippet': f'H1/AS1 Schedule 1 requires minimum R{detected_h1_min_r} for {detected_h1_location_name.lower()}. R{extracted_r_value} is non-compliant.',
+                'section': 'Building Code Compliance - Energy Efficiency',
+                'clause': 'H1/AS1 Schedule 1',
+                'final_score': 2.9,  # Very high priority - compliance warning
+                'base_score': 2.9,
+                'priority': 98,
+                'doc_type': 'Building_Code_Compliance',
+                'trade': 'insulation',
+                'tier1_source': True,
+                'h1_energy_check': True,
+                'compliance_fail': True,
+                'extracted_r_value': extracted_r_value,
+                'required_r_value': detected_h1_min_r,
+                'location_type': detected_h1_location
+            }
+            
+            # Insert at the BEGINNING - compliance warnings must frame the answer
+            final_results.insert(0, h1_energy_warning)
+            print(f"   🔋 LAYER 7 - H1 ENERGY: Injected compliance warning (R{extracted_r_value} < R{detected_h1_min_r} for {detected_h1_location_name})")
+        
+        # ══════════════════════════════════════════════════════════════════════════
         # LAYER 1: SAFETY FIREWALL INJECTION
         # Inject all triggered safety warnings into results at highest priority
         # ══════════════════════════════════════════════════════════════════════════
