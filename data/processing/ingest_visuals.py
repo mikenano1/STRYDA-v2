@@ -214,6 +214,7 @@ def get_storage_url_for_source(source: str) -> Optional[str]:
     brand_mapping = {
         'Abodo Wood': ('A_Structure', 'Abodo_Wood'),
         'Kingspan': ('B_Enclosure', 'Kingspan'),
+        'Kingspan Deep Dive': ('B_Enclosure', 'Kingspan'),
         'Bradford Deep Dive': ('C_Interiors', 'Bradford'),
         'Autex Deep Dive': ('C_Interiors', 'Autex'),
         'Mammoth Deep Dive': ('C_Interiors', 'Mammoth'),
@@ -226,6 +227,23 @@ def get_storage_url_for_source(source: str) -> Optional[str]:
         if key.lower() in brand_raw.lower():
             category, brand_folder = cat, folder
             break
+    
+    # Special handling for Kooltherm K12 docs (in separate folder)
+    if 'kooltherm' in source.lower() or 'k12' in source.lower():
+        # These are in 03_Kooltherm_K12_Framing_Board folder
+        pdf_name = f"{doc_name}.pdf"
+        try:
+            # List files in the K12 folder
+            files = supabase_client.storage.from_('product-library').list('03_Kooltherm_K12_Framing_Board')
+            for f in files:
+                if doc_name.lower() in f.get('name', '').lower():
+                    path = f"03_Kooltherm_K12_Framing_Board/{f['name']}"
+                    signed = supabase_client.storage.from_('product-library').create_signed_url(path, 3600)
+                    if signed and signed.get('signedURL'):
+                        print(f"      📂 Found PDF at: {path}")
+                        return signed['signedURL']
+        except Exception as e:
+            pass
     
     if not category:
         # Try pdfs bucket as fallback
