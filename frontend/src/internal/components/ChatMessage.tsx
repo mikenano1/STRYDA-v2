@@ -265,6 +265,7 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
                 clause={selectedMatch.clause}
                 page={selectedMatch.page}
                 textContent={selectedMatch.textContent}
+                evidenceCollection={selectedMatch.evidenceCollection}
             />
         )}
     </>
