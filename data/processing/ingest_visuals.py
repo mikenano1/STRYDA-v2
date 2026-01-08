@@ -184,49 +184,79 @@ def get_documents_to_process(limit: int = None, doc_types: List[str] = None) -> 
 
 
 def get_storage_url_for_source(source: str) -> Optional[str]:
-    """Get the Supabase Storage URL for a source document."""
+    """
+    Get the Supabase Storage URL for a source document.
     
-    # Try to find the PDF in various locations
-    # The source name format is typically: "Brand - Document Name"
+    Searches the product-library bucket for matching PDFs.
+    Source format: "Brand - Document Name"
+    """
+    from supabase import create_client
     
-    # Clean source name to get potential filename
-    source_clean = source.strip()
-    
-    # Try to construct URL from known bucket patterns
     supabase_url = os.getenv('SUPABASE_URL')
+    supabase_key = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
     
-    # Check if we have original_url in database
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cursor = conn.cursor()
+    if not supabase_url or not supabase_key:
+        return None
     
-    cursor.execute("""
-        SELECT DISTINCT original_url, ingestion_source
-        FROM documents 
-        WHERE source = %s AND original_url IS NOT NULL
-        LIMIT 1
-    """, (source,))
+    supabase_client = create_client(supabase_url, supabase_key)
     
-    row = cursor.fetchone()
-    cursor.close()
-    conn.close()
+    # Parse source name: "Brand - Document Name" -> ("Brand", "Document Name")
+    if ' - ' in source:
+        brand_raw, doc_name = source.split(' - ', 1)
+    else:
+        brand_raw = source
+        doc_name = source
     
-    if row and row[0]:
-        return row[0]
+    # Normalize brand name to match folder structure
+    brand_mapping = {
+        'Abodo Wood': ('A_Structure', 'Abodo_Wood'),
+        'Kingspan': ('B_Enclosure', 'Kingspan'),
+        'Bradford Deep Dive': ('C_Interiors', 'Bradford'),
+        'Autex Deep Dive': ('C_Interiors', 'Autex'),
+        'Mammoth Deep Dive': ('C_Interiors', 'Mammoth'),
+        'Asona Deep Dive': ('C_Interiors', 'Asona_Acoustics'),
+    }
     
-    # Try to construct URL from bucket patterns
-    # Pattern 1: product-library bucket with brand folders
-    brand_part = source.split(' - ')[0] if ' - ' in source else source
-    doc_part = source.split(' - ')[1] if ' - ' in source else source
+    # Try to find the brand in mapping
+    category, brand_folder = None, None
+    for key, (cat, folder) in brand_mapping.items():
+        if key.lower() in brand_raw.lower():
+            category, brand_folder = cat, folder
+            break
     
-    # Try pdfs bucket directly
-    potential_urls = [
-        f"{supabase_url}/storage/v1/object/public/pdfs/{doc_part}.pdf",
-        f"{supabase_url}/storage/v1/object/public/product-library/{brand_part}/{doc_part}.pdf",
+    if not category:
+        # Try pdfs bucket as fallback
+        pdf_name = f"{doc_name}.pdf"
+        try:
+            signed = supabase_client.storage.from_('pdfs').create_signed_url(pdf_name, 3600)
+            if signed and signed.get('signedURL'):
+                return signed['signedURL']
+        except:
+            pass
+        return None
+    
+    # Search through document type subfolders
+    doc_type_folders = [
+        'Brochures_Fact_Sheets', 'Technical_Data_Sheets', 'Guides_Manuals',
+        'Profile_Drawings', 'Certificates_Warranties', 'Safety_Data_Sheets',
+        'Environmental_Product_Declaration', 'Reports', 'Color_Finishes_Textures'
     ]
     
-    # For now, return the most likely URL pattern
-    # LlamaParse will error if file doesn't exist
-    return potential_urls[0] if potential_urls else None
+    # Build expected filename
+    pdf_name = f"{doc_name}.pdf"
+    
+    for doc_folder in doc_type_folders:
+        path = f"{category}/{brand_folder}/{doc_folder}/{pdf_name}"
+        try:
+            signed = supabase_client.storage.from_('product-library').create_signed_url(path, 3600)
+            if signed and signed.get('signedURL'):
+                print(f"      📂 Found PDF at: {path}")
+                return signed['signedURL']
+        except:
+            continue
+    
+    print(f"      ⚠️ Could not find PDF for: {source[:50]}")
+    return None
 
 
 # =============================================================================
