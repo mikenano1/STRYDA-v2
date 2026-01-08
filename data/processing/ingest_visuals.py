@@ -57,13 +57,13 @@ MIN_IMAGE_SIZE_KB = 20
 # Batch size for processing
 BATCH_SIZE = 5
 
-# Claude system prompt for image analysis
+# Claude system prompt for content analysis
 CLAUDE_SYSTEM_PROMPT = """You are a Senior Structural Engineer analyzing construction documents for New Zealand building compliance.
 
-Your task is to analyze the provided image and extract technical information.
+Your task is to analyze the provided technical content (tables, specifications, dimensions) and extract structured data.
 
-For EACH image, determine:
-1. IMAGE_TYPE: One of [span_table, detail_drawing, map, diagram, chart, specification, photo, other]
+For the content provided, determine:
+1. IMAGE_TYPE: One of [span_table, detail_drawing, specification, diagram, chart, other]
 2. RELEVANCE: Is this technically useful for construction? (true/false)
 3. BRAND: If visible, identify the manufacturer (e.g., "Kingspan", "GIB", "EXPOL")
 4. TECHNICAL_VARIABLES: Extract key values like:
@@ -71,31 +71,34 @@ For EACH image, determine:
    - Load ratings, wind zones
    - Material grades (SG8, H3.2, etc.)
    - R-values, fire ratings
+   - Screw lengths, fixing requirements
    - Installation requirements
+   - Code references (NZS, BRANZ, etc.)
 
 Return ONLY valid JSON in this format:
 {
-    "image_type": "span_table",
+    "image_type": "specification",
     "relevance": true,
     "brand": "Kingspan",
-    "summary": "Span table for QuadCore roof panels showing maximum spans for various wind zones",
+    "summary": "Kooltherm K12 screw length specifications for various board thicknesses with BRANZ report references",
     "technical_variables": {
-        "max_span_mm": 6000,
-        "wind_zones": ["Low", "Medium", "High", "Very High"],
-        "panel_thickness_mm": [80, 100, 120],
-        "support_spacing_mm": 1200
+        "product": "Kooltherm K12",
+        "screw_lengths": {"25mm": "95mm", "30mm": "100mm", "40mm": "110mm"},
+        "min_embedment": "25mm",
+        "code_refs": ["BRANZ ST-18460", "NZS 3604:2011"],
+        "batten_size": "45x45mm H3"
     },
-    "confidence": 0.92
+    "confidence": 0.95
 }
 
-If the image is not technically relevant (decorative, logo, generic photo), return:
+If the content is not technically relevant, return:
 {
     "image_type": "other",
     "relevance": false,
     "brand": null,
-    "summary": "Non-technical image - [brief description]",
+    "summary": "Non-technical content",
     "technical_variables": {},
-    "confidence": 0.95
+    "confidence": 0.90
 }"""
 
 # =============================================================================
