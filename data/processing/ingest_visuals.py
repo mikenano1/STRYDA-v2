@@ -265,67 +265,66 @@ def get_storage_url_for_source(source: str) -> Optional[str]:
 
 def extract_images_with_llamaparse(pdf_path_or_url: str, source_name: str) -> List[Dict]:
     """
-    Use LlamaParse to extract images from a PDF.
+    Use LlamaParse to extract technical content (tables, diagrams, specs) from a PDF.
     
-    Returns list of image objects with base64 data.
+    LlamaParse converts visual elements to structured markdown/SVG.
+    Returns list of content chunks that contain technical data.
     """
     print(f"   📄 Parsing: {source_name[:50]}...")
     
     try:
-        # Configure LlamaParse - use auto_mode for best results
+        # Configure LlamaParse for technical extraction
         parser = LlamaParse(
             api_key=LLAMA_CLOUD_API_KEY,
             result_type="markdown",
-            auto_mode=True,  # Auto-selects best parsing mode
+            auto_mode=True,
+            specialized_image_parsing=True,  # Better for technical drawings
             verbose=False,
         )
         
         # Parse document
         documents = parser.load_data(pdf_path_or_url)
         
-        # LlamaParse returns markdown with embedded images
-        # We need to extract image references from the markdown
-        images = []
+        # Extract content chunks that contain technical data
+        content_chunks = []
         
         for doc_idx, doc in enumerate(documents):
             content = doc.text if hasattr(doc, 'text') else str(doc)
             
-            # Look for image references in markdown
-            # Format: ![description](image_url) or embedded base64
-            import re
+            # Check if this page has technical content worth extracting
+            has_table = '|' in content and content.count('|') > 4  # Markdown tables
+            has_svg = '<svg' in content  # SVG diagrams
+            has_dimensions = any(kw in content.lower() for kw in [
+                'mm', 'scale', 'dimension', 'spacing', 'thickness', 'span',
+                'r-value', 'load', 'capacity', 'zone', 'grade'
+            ])
+            has_technical_refs = any(kw in content.lower() for kw in [
+                'nzs', 'branz', 'codemark', 'as/nzs', 'clause', 'table'
+            ])
             
-            # Find markdown image references
-            img_pattern = r'!\[([^\]]*)\]\(([^)]+)\)'
-            matches = re.findall(img_pattern, content)
-            
-            for idx, (desc, url) in enumerate(matches):
-                # Skip small placeholder images
-                if 'placeholder' in url.lower() or len(url) < 50:
-                    continue
-                    
-                images.append({
-                    'description': desc,
-                    'url': url,
+            # Only extract pages with meaningful technical content
+            if (has_table or has_svg) and (has_dimensions or has_technical_refs):
+                # Determine content type
+                if has_svg and has_table:
+                    content_type = 'detail_drawing'
+                elif has_svg:
+                    content_type = 'diagram'
+                elif has_table:
+                    content_type = 'specification'
+                else:
+                    content_type = 'other'
+                
+                content_chunks.append({
+                    'content': content,
                     'page': doc_idx + 1,
                     'source': source_name,
+                    'type': content_type,
+                    'has_table': has_table,
+                    'has_svg': has_svg,
                 })
-            
-            # Also look for base64 embedded images
-            base64_pattern = r'data:image/(png|jpeg|jpg);base64,([A-Za-z0-9+/=]+)'
-            base64_matches = re.findall(base64_pattern, content)
-            
-            for idx, (img_type, img_data) in enumerate(base64_matches):
-                # Check size (base64 is ~1.33x original size)
-                if len(img_data) > MIN_IMAGE_SIZE_KB * 1024 * 1.33:
-                    images.append({
-                        'data': img_data,
-                        'type': f'image/{img_type}',
-                        'page': doc_idx + 1,
-                        'source': source_name,
-                    })
         
-        print(f"      Found {len(images)} images/references")
-        return images
+        print(f"      Found {len(content_chunks)} technical pages")
+        return content_chunks
         
     except Exception as e:
         print(f"      ⚠️ LlamaParse error: {e}")
