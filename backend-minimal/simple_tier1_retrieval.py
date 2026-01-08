@@ -1185,18 +1185,34 @@ def score_with_metadata(base_similarity: float, doc_type: str, priority: int, in
 
 
 
-def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "compliance_strict") -> List[Dict]:
+def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "compliance_strict", agent_mode: str = None) -> List[Dict]:
     """
     Optimized Tier-1 retrieval using pgvector similarity search with caching
     PERFORMANCE: Reduced top_k to 4 for faster context assembly and lower token usage
     IMPROVEMENTS: Canonical source mapping + fallback logic + metadata-aware ranking
     
+    4-AGENT ARCHITECTURE:
+    - agent_mode="inspector": Only searches compliance/regulatory documents (The Law)
+    - agent_mode="product_rep": Only searches manufacturer/product documents (The Sales Pitch)
+    - agent_mode=None/"foreman": Searches all documents (Default/Legacy behavior)
+    
     Args:
         query: User question
         top_k: Number of results to return
         intent: Intent from classifier (compliance_strict, general_help, product_info, etc.)
+        agent_mode: Agent specialization filter ("inspector", "product_rep", or None for all)
     """
     DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
+    
+    # ══════════════════════════════════════════════════════════════════════════
+    # AGENT MODE: Build doc_type filter based on agent specialization
+    # ══════════════════════════════════════════════════════════════════════════
+    agent_doc_type_filter = None
+    if agent_mode and agent_mode in AGENT_SCOPES and AGENT_SCOPES[agent_mode]:
+        agent_doc_type_filter = AGENT_SCOPES[agent_mode]
+        print(f"   🤖 AGENT MODE: {agent_mode.upper()} - Restricting to {len(agent_doc_type_filter)} doc_types")
+    elif agent_mode and agent_mode not in AGENT_SCOPES:
+        print(f"   ⚠️ Unknown agent_mode '{agent_mode}', falling back to Foreman (all docs)")
     
     try:
         import time
