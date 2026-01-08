@@ -2665,6 +2665,26 @@ ACTION REQUIRED: You MUST check the span tables (NZS 3604 or manufacturer tables
             
             formatted_results.append(formatted_result)
         
+        # ══════════════════════════════════════════════════════════════════════════
+        # AGENT MODE: Apply post-retrieval doc_type filtering
+        # This filters out results that don't match the agent's allowed doc_types
+        # Applied AFTER retrieval but BEFORE ranking to maintain agent specialization
+        # ══════════════════════════════════════════════════════════════════════════
+        if agent_doc_type_filter:
+            original_count = len(formatted_results)
+            filtered_results = []
+            for result in formatted_results:
+                result_doc_type = result.get('doc_type', '')
+                if result_doc_type in agent_doc_type_filter:
+                    filtered_results.append(result)
+            
+            # If filtering removes too many results, keep original (safety fallback)
+            if len(filtered_results) >= min(3, original_count // 2):
+                formatted_results = filtered_results
+                print(f"   🤖 AGENT FILTER: {original_count} → {len(formatted_results)} results (kept {len(formatted_results)} matching doc_types)")
+            else:
+                print(f"   ⚠️ AGENT FILTER: Would reduce to {len(filtered_results)} results, keeping original {original_count} for safety")
+        
         # Apply ranking bias based on query patterns (keep existing B1 Amendment logic)
         bias_weights = detect_b1_amendment_bias(query)
         bias_applied = False
