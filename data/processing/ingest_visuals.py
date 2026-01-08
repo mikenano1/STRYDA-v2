@@ -36,11 +36,13 @@ from supabase import create_client, Client
 import openai
 import anthropic
 
-# LlamaParse import
+# LlamaParse import (for text) + PyMuPDF for images
 try:
     from llama_parse import LlamaParse
-except ImportError:
-    print("❌ llama-parse not installed. Run: pip install llama-parse")
+    import fitz  # PyMuPDF for image extraction
+except ImportError as e:
+    print(f"❌ Missing dependency: {e}")
+    print("Run: pip install llama-parse pymupdf")
     sys.exit(1)
 
 # =============================================================================
