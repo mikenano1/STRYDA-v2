@@ -35,11 +35,19 @@ interface Message {
 }
 
 interface Citation {
-  chunk_id: string;
-  title: string;
+  id?: string;
+  chunk_id?: string;
+  title?: string;
+  source?: string;
   url?: string;
   snippet?: string;
+  text_content?: string;  // Full evidence text for modal display
   document_type?: string;
+  page?: number;
+  pages?: string;
+  clause?: string;
+  section?: string;
+  pill_text?: string;
 }
 
 interface ComplianceIssue {
