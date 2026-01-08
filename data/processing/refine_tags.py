@@ -30,23 +30,24 @@ DATABASE_URL = 'postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-
 
 # Keywords that indicate PRODUCT documents (The Manuals/Specs)
 PRODUCT_REP_KEYWORDS = [
-    # Document types
+    # Document types (ENHANCED)
     "manual", "guide", "specification", "install", "datasheet", "data sheet",
     "tds", "sds", "appraisal", "codemark", "cert", "warranty", "branz",
     "brochure", "catalogue", "catalog", "product", "range", "series",
-    "technical", "spec sheet",
+    "technical", "spec sheet", "details", "drawings", "certificate",
     
     # Major NZ Brands - Building/Construction
     "abodo", "gib", "james hardie", "hardie", "kingspan", "expol", 
     "resene", "sika", "knauf", "csr", "bostik", "dulux", "holdfast",
     
-    # Insulation brands
+    # Insulation brands (ENHANCED - therm catch-all)
     "greenstuf", "earthwool", "pink batts", "autex", "mammoth", 
-    "thermakraft", "thermaslab", "styrofoam",
+    "thermakraft", "thermaslab", "styrofoam", "therm",
     
-    # Timber/Framing brands
+    # Timber/Framing brands (ENHANCED - frame, truss catch-all)
     "red stag", "redstag", "hyne", "futurebuild", "future build",
     "j-frame", "jframe", "triboard", "xlam", "wesbeam", "carter holt",
+    "frame", "truss",
     
     # Roofing/Cladding
     "colorsteel", "metalcraft", "dimond", "roofing industries",
