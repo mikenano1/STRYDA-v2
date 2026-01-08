@@ -78,7 +78,13 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
       console.log(`>>> Text Content found: ${citationData.textContent ? 'YES' : 'NO'}`);
       console.log(`>>> Evidence Collection: ${citationData.evidenceCollection?.length || 0} items`);
       
-      setSelectedMatch({ source, clause, page, textContent });
+      setSelectedMatch({ 
+        source, 
+        clause, 
+        page, 
+        textContent: citationData.textContent,
+        evidenceCollection: citationData.evidenceCollection 
+      });
       setModalVisible(true);
       console.log(`>>> Modal state set to TRUE`);
   };
