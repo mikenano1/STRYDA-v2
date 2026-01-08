@@ -483,48 +483,46 @@ def process_document(source: str, doc_type: str, brand: str = None) -> Dict:
     # Get storage URL
     pdf_url = get_storage_url_for_source(source)
     if not pdf_url:
-        # Try to construct URL from bucket
-        # Format: https://{supabase_url}/storage/v1/object/public/documents/{source}.pdf
-        pdf_url = f"{SUPABASE_URL}/storage/v1/object/public/documents/{source}"
+        stats['errors'].append(f"Could not find PDF for: {source[:50]}")
+        return stats
     
-    # Extract images with LlamaParse
-    images = extract_images_with_llamaparse(pdf_url, source)
-    stats['images_found'] = len(images)
+    # Extract technical content with LlamaParse
+    content_chunks = extract_images_with_llamaparse(pdf_url, source)
+    stats['images_found'] = len(content_chunks)
     
-    for img in images:
+    for chunk in content_chunks:
         try:
             # Analyze with Claude
-            analysis = analyze_image_with_claude(img['data'], img.get('type', 'image/png'))
+            analysis = analyze_content_with_claude(chunk['content'], chunk.get('type', 'specification'))
             
             if 'error' in analysis:
                 stats['errors'].append(analysis['error'])
                 continue
             
-            # Skip non-relevant images
+            # Skip non-relevant content
             if not analysis.get('relevance', False):
                 continue
             
             stats['images_relevant'] += 1
             
-            # Upload to storage
-            img_bytes = base64.b64decode(img['data'])
-            storage_path = upload_to_storage(img_bytes, f"{source[:30]}_p{img.get('page', 0)}.png")
+            # Store content in text format (no image upload needed)
+            # Generate a unique storage path identifier
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            content_hash = hashlib.md5(chunk['content'].encode()).hexdigest()[:8]
+            storage_path = f"text/{source[:30]}_{chunk.get('page', 0)}_{content_hash}.md"
             
-            if not storage_path:
-                continue
-            
-            # Generate embedding from summary + technical vars
-            embed_text = f"{analysis.get('summary', '')} {json.dumps(analysis.get('technical_variables', {}))}"
+            # Generate embedding from summary + technical vars + content snippet
+            embed_text = f"{analysis.get('summary', '')} {json.dumps(analysis.get('technical_variables', {}))} {chunk['content'][:500]}"
             embedding = generate_embedding(embed_text)
             
             # Save to database
             visual_data = {
                 'source_document': source,
-                'source_page': img.get('page'),
-                'image_type': analysis.get('image_type', 'other'),
+                'source_page': chunk.get('page'),
+                'image_type': analysis.get('image_type', chunk.get('type', 'other')),
                 'brand': analysis.get('brand') or brand,
                 'storage_path': storage_path,
-                'file_size': len(img_bytes),
+                'file_size': len(chunk['content']),
                 'summary': analysis.get('summary'),
                 'technical_variables': analysis.get('technical_variables', {}),
                 'confidence': analysis.get('confidence', 0.0),
