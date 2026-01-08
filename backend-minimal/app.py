@@ -114,7 +114,7 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
     1. GROUP: Collapse multiple clauses from same document section
     2. TIER: Split into primary (top 3) and secondary (hidden/expandable)
     3. DEDUPE: Remove definitions if actionable clause from same source exists
-    4. NORMALIZE: Strip everything after | or - from source names (e.g., "GIB Site Guide | Page 4" -> "GIB Site Guide")
+    4. NORMALIZE: Strip everything after |, -, or • from source names
     
     Returns:
         {
@@ -123,6 +123,18 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
             'grouped': {...}       # Grouped by document for display
         }
     """
+    import re
+    
+    def normalize_source_name(title: str) -> str:
+        """Normalize source name by stripping suffixes after |, -, or • (bullet point)"""
+        # Split on Pipe, Dash, OR Bullet Point using regex
+        # "NZS 3604 • Section 2" -> "NZS 3604"
+        # "GIB Site Guide | Page 4" -> "GIB Site Guide"
+        # "NZS 3604:2011 - Section 7" -> "NZS 3604:2011"
+        base_title = re.split(r'[|\-•]', title)[0]
+        base_title = base_title.replace('Deep Dive', '').strip()
+        return base_title
+    
     if not docs:
         return {'primary': [], 'secondary': [], 'grouped': {}}
     
@@ -130,11 +142,8 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
     grouped = {}
     for doc in docs:
         source = doc.get('source', 'Unknown')
-        # NORMALIZE: Strip everything after | or - to merge duplicates
-        # "GIB Site Guide | Page 4" -> "GIB Site Guide"
-        # "NZS 3604:2011 - Section 7" -> "NZS 3604:2011"
-        base_source = source.split(' | ')[0].split(' - ')[0].strip()
-        base_source = base_source.replace('Deep Dive', '').strip()
+        # NORMALIZE: Use regex to split on |, -, or • (bullet point)
+        base_source = normalize_source_name(source)
         
         if base_source not in grouped:
             grouped[base_source] = {
