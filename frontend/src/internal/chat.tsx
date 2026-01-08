@@ -80,6 +80,16 @@ export default function ChatScreen() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isProcessingVoice, setIsProcessingVoice] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
+  
+  // Evidence Modal state
+  const [evidenceModalVisible, setEvidenceModalVisible] = useState(false);
+  const [selectedCitation, setSelectedCitation] = useState<Citation | null>(null);
+
+  // Handle citation click - show Evidence Modal
+  const handleCitationPress = (citation: Citation) => {
+    setSelectedCitation(citation);
+    setEvidenceModalVisible(true);
+  };
 
   useEffect(() => {
     // If there's an initial message from the home screen, send it
