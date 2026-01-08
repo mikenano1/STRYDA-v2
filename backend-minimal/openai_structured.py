@@ -289,9 +289,13 @@ def create_fallback_response(user_message: str, tier1_snippets: List[Dict], reas
         }
 
 def format_tier1_citations(tier1_snippets: List[Dict]) -> List[Dict]:
-    """Format Tier-1 snippets into proper citation structure"""
+    """Format Tier-1 snippets into proper citation structure with text_content for Evidence Modal"""
     citations = []
     for doc in tier1_snippets:
+        # Get the snippet/content text for the Evidence Modal
+        text_content = doc.get("snippet") or doc.get("content", "")
+        text_content = text_content[:800] if text_content else ""  # Truncate for modal display
+        
         citation = {
             "id": f"cite_{doc.get('id', '')[:8]}",
             "source": doc.get("source", "Unknown"),
@@ -299,7 +303,8 @@ def format_tier1_citations(tier1_snippets: List[Dict]) -> List[Dict]:
             "score": doc.get("score", 0.0),
             "snippet": doc.get("snippet", "")[:200],
             "section": doc.get("section"),
-            "clause": doc.get("clause")
+            "clause": doc.get("clause"),
+            "text_content": text_content  # Evidence text for modal display
         }
         citations.append(citation)
     return citations
