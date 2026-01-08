@@ -21,7 +21,13 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
   const isAssistant = message.role === 'assistant';
   
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedMatch, setSelectedMatch] = useState<{source: string, clause: string, page: string, textContent?: string} | null>(null);
+  const [selectedMatch, setSelectedMatch] = useState<{
+    source: string; 
+    clause: string; 
+    page: string; 
+    textContent?: string;
+    evidenceCollection?: any[];
+  } | null>(null);
 
   // Format timestamp
   const formatTime = (ts: number) => {
