@@ -389,9 +389,10 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
         response_parts.append(f"### {i}. {brand} - {image_type}")
         response_parts.append(f"*Match: {similarity:.0f}% • Source: {source[:60]}{'...' if len(source) > 60 else ''} (p.{page})*\n")
         
-        # Add image if available
+        # Add image if available - use HTML for better rendering
         if image_url:
-            response_parts.append(f"![{image_type}]({image_url})\n")
+            response_parts.append(f'<img src="{image_url}" alt="{image_type}" width="100%" style="border-radius: 8px; margin: 10px 0;" />')
+            response_parts.append(f"\n[🔗 Click to View High-Res Image]({image_url})\n")
         
         response_parts.append(f"{summary}\n")
         
