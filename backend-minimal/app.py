@@ -1681,6 +1681,40 @@ Do you have a material preference, or would you like me to filter by which merch
                 search_strategy = determine_search_strategy(user_message)
                 
                 # Execute search based on strategy
+                if search_strategy == SearchStrategy.ENGINEER:
+                    # ENGINEER: Visual Agent - search diagrams/tables/drawings
+                    visual_assets = execute_engineer_search(user_message, top_k=5)
+                    if visual_assets:
+                        # Return visual response directly
+                        engineer_response = format_engineer_response(visual_assets, user_message)
+                        print(f"   📐 ENGINEER search: {len(visual_assets)} visual assets found")
+                        
+                        # Build visual-specific citations
+                        visual_citations = []
+                        for v in visual_assets:
+                            visual_citations.append({
+                                "id": str(v.get('id', '')),
+                                "source": v.get('source_document', 'Visual Asset'),
+                                "page": v.get('source_page', 0),
+                                "snippet": v.get('summary', ''),
+                                "image_url": v.get('image_url'),
+                                "image_type": v.get('image_type'),
+                                "confidence": v.get('confidence', 0.8),
+                            })
+                        
+                        # Return visual response (skip normal RAG flow)
+                        return {
+                            "response": engineer_response,
+                            "citations": visual_citations,
+                            "conversation_id": convo_id,
+                            "search_strategy": "engineer",
+                            "visual_count": len(visual_assets)
+                        }
+                    else:
+                        # Fallback to normal search if no visuals found
+                        print(f"   📐 ENGINEER: No visuals found, falling back to FOREMAN")
+                        search_strategy = SearchStrategy.FOREMAN
+                
                 if search_strategy == SearchStrategy.HYBRID:
                     # HYBRID: "Council Meeting" - Both agents consulted
                     inspector_docs, product_docs, docs = execute_hybrid_search(
