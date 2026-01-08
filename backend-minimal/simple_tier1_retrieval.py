@@ -1563,6 +1563,121 @@ def simple_tier1_retrieval(query: str, top_k: int = 20, intent: str = "complianc
             print(f"   ⚠️ PRECAUTIONARY CODE CHECK: Insulation + Roof Underlay contact query detected")
         
         # ==========================================================================
+        # LAYER 7: H1 ENERGY EFFICIENCY LOGIC (R-Value Compliance)
+        # Cross-references product R-values against H1/AS1 Schedule 1 requirements
+        # Prevents users from specifying insulation that fails minimum H1 standards
+        # ==========================================================================
+        import re
+        
+        # Insulation keywords that trigger this check
+        h1_insulation_keywords = [
+            'insulation', 'batts', 'batt', 'r-value', 'rvalue', 'r value',
+            'greenstuf', 'pink batts', 'earthwool', 'autex', 'polyester',
+            'glasswool', 'wool insulation', 'thermal', 'energywise'
+        ]
+        
+        # Location keywords with their H1/AS1 minimum R-values
+        h1_location_requirements = {
+            'roof': {'min_r': 6.6, 'locations': ['roof', 'roofing', 'skillion', 'ceiling', 'rafter', 'attic', 'loft', 'pitched roof', 'flat roof']},
+            'wall': {'min_r': 2.0, 'locations': ['wall', 'walls', 'exterior wall', 'external wall', 'stud wall', 'framing']},
+            'floor': {'min_r': 1.3, 'locations': ['floor', 'underfloor', 'subfloor', 'flooring', 'suspended floor']},
+        }
+        
+        # Check for insulation query
+        has_h1_insulation = any(kw in query_lower for kw in h1_insulation_keywords)
+        
+        # Detect location type
+        detected_h1_location = None
+        detected_h1_min_r = None
+        detected_h1_location_name = None
+        
+        for loc_type, requirements in h1_location_requirements.items():
+            if any(loc in query_lower for loc in requirements['locations']):
+                detected_h1_location = loc_type
+                detected_h1_min_r = requirements['min_r']
+                detected_h1_location_name = loc_type.capitalize()
+                break
+        
+        # Extract R-value from query using regex
+        # Matches patterns like: R2.9, R-2.9, R 2.9, r2.9, R2, R26, etc.
+        r_value_pattern = r'r[- ]?(\d+\.?\d*)'
+        r_value_match = re.search(r_value_pattern, query_lower)
+        
+        extracted_r_value = None
+        if r_value_match:
+            try:
+                extracted_r_value = float(r_value_match.group(1))
+            except ValueError:
+                pass
+        
+        # Determine if H1 check is triggered
+        _H1_ENERGY_CHECK = has_h1_insulation and detected_h1_location is not None
+        _H1_COMPLIANCE_FAIL = False
+        _H1_WARNING_MESSAGE = None
+        
+        if _H1_ENERGY_CHECK and extracted_r_value is not None:
+            print(f"   🔋 LAYER 7 - H1 ENERGY CHECK: Insulation query for {detected_h1_location_name}")
+            print(f"      → Extracted R-value: R{extracted_r_value}")
+            print(f"      → H1/AS1 Minimum for {detected_h1_location_name}: R{detected_h1_min_r}")
+            
+            if extracted_r_value < detected_h1_min_r:
+                _H1_COMPLIANCE_FAIL = True
+                
+                # Generate severity-appropriate warning
+                shortfall = detected_h1_min_r - extracted_r_value
+                
+                if detected_h1_location == 'roof' and extracted_r_value < 6.6:
+                    if extracted_r_value < 3.0:
+                        severity = "CRITICAL NON-COMPLIANCE"
+                    else:
+                        severity = "NON-COMPLIANCE WARNING"
+                    
+                    _H1_WARNING_MESSAGE = f"""⚠️ {severity}: H1/AS1 Schedule 1 requires a minimum construction R-value of R{detected_h1_min_r} for roofs/ceilings.
+
+QUERY ANALYSIS:
+• Your specified R-value: R{extracted_r_value}
+• Required minimum (H1/AS1): R{detected_h1_min_r}
+• Shortfall: R{shortfall:.1f} below code minimum
+
+COMPLIANCE REQUIREMENT:
+Under H1/AS1 Schedule 1, all new residential construction must achieve minimum thermal resistance values. For roof/ceiling assemblies in Climate Zone 1-3, the minimum construction R-value is R6.6.
+
+An R{extracted_r_value} insulation CANNOT achieve code compliance for a roof/ceiling application on its own. You would need to:
+1. Use higher R-value insulation (minimum R6.6), OR
+2. Combine with other insulation layers to achieve total R6.6, OR
+3. Use an alternative solution verified by calculation
+
+Note: R{extracted_r_value} may be suitable for wall applications (minimum R2.0) but NOT for roofs."""
+
+                elif detected_h1_location == 'wall' and extracted_r_value < 2.0:
+                    _H1_WARNING_MESSAGE = f"""⚠️ H1 COMPLIANCE WARNING: H1/AS1 typically requires a minimum R{detected_h1_min_r} for walls.
+
+QUERY ANALYSIS:
+• Your specified R-value: R{extracted_r_value}
+• Required minimum (H1/AS1 Schedule 1): R{detected_h1_min_r}
+• Shortfall: R{shortfall:.1f} below typical minimum
+
+IMPORTANT: Verify your Climate Zone as requirements may vary. For most NZ locations (Climate Zones 1-3), wall insulation must achieve at least R2.0 construction R-value.
+
+An R{extracted_r_value} insulation alone may not meet H1/AS1 requirements for external wall applications."""
+
+                elif detected_h1_location == 'floor' and extracted_r_value < 1.3:
+                    _H1_WARNING_MESSAGE = f"""⚠️ H1 COMPLIANCE NOTICE: H1/AS1 Schedule 1 requires a minimum R{detected_h1_min_r} for floors.
+
+• Your specified R-value: R{extracted_r_value}
+• Required minimum: R{detected_h1_min_r}
+
+Verify the product achieves the required construction R-value for underfloor applications."""
+
+                print(f"      ❌ COMPLIANCE FAIL: R{extracted_r_value} < R{detected_h1_min_r} (shortfall: R{shortfall:.1f})")
+            else:
+                print(f"      ✅ COMPLIANCE OK: R{extracted_r_value} >= R{detected_h1_min_r}")
+        
+        elif _H1_ENERGY_CHECK:
+            print(f"   🔋 LAYER 7 - H1 ENERGY CHECK: Insulation + {detected_h1_location_name} detected (no R-value extracted)")
+        
+        
+        # ==========================================================================
         # BRAND-SPECIFIC CORROSION ZONE LOGIC
         # When asking about a specific brand + corrosion zone (Zone D, sea spray, etc.)
         # MUST prioritize the brand's own documentation over generic fastener guides
