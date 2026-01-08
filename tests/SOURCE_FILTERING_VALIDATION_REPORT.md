@@ -2,7 +2,7 @@
 
 **Test Date:** 2025-11-25T06:30:31.409292
 
-**Backend URL:** https://stresstest-nz.preview.emergentagent.com/api/chat
+**Backend URL:** https://expert-agent-router.preview.emergentagent.com/api/chat
 
 **Total Queries Tested:** 20
 

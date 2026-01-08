@@ -1,7 +1,7 @@
 # STRYDA-v2 POST-REGENERATION VALIDATION REPORT
 
 **Test Date:** 2025-11-25 07:16:43  
-**Backend URL:** https://stresstest-nz.preview.emergentagent.com  
+**Backend URL:** https://expert-agent-router.preview.emergentagent.com  
 **Total Queries:** 30
 
 ---

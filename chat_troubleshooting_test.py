@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 load_dotenv('/app/frontend/.env')
 
 # Get backend URL from environment
-BACKEND_URL = os.getenv('EXPO_PUBLIC_BACKEND_URL', 'https://stresstest-nz.preview.emergentagent.com')
+BACKEND_URL = os.getenv('EXPO_PUBLIC_BACKEND_URL', 'https://expert-agent-router.preview.emergentagent.com')
 API_BASE = f"{BACKEND_URL}/api"
 
 class ChatTroubleshootingTester:

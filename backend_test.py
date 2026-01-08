@@ -13,7 +13,7 @@ import time
 from typing import Dict, Any, List
 
 # Test Configuration
-BACKEND_URL = "https://stresstest-nz.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://expert-agent-router.preview.emergentagent.com/api/chat"
 SESSION_ID = "test_session_bug_fixes"
 USER_ID = "test_user"
 
