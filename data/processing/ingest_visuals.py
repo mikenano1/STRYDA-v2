@@ -272,36 +272,59 @@ def extract_images_with_llamaparse(pdf_path_or_url: str, source_name: str) -> Li
     print(f"   📄 Parsing: {source_name[:50]}...")
     
     try:
+        # Configure LlamaParse - use auto_mode for best results
         parser = LlamaParse(
             api_key=LLAMA_CLOUD_API_KEY,
             result_type="markdown",
-            premium_mode=True,
+            auto_mode=True,  # Auto-selects best parsing mode
             verbose=False,
-            # Extract images
-            extract_images=True,
-            # Use image descriptions for context
-            use_vendor_multimodal_model=True,
-            vendor_multimodal_model="anthropic-sonnet-4-20250514",
         )
         
         # Parse document
         documents = parser.load_data(pdf_path_or_url)
         
-        # Extract images from parsing result
+        # LlamaParse returns markdown with embedded images
+        # We need to extract image references from the markdown
         images = []
-        for doc in documents:
-            # Check for embedded images in the result
-            if hasattr(doc, 'images') and doc.images:
-                for idx, img in enumerate(doc.images):
-                    if hasattr(img, 'data') and len(img.data) > MIN_IMAGE_SIZE_KB * 1024:
-                        images.append({
-                            'data': base64.b64encode(img.data).decode('utf-8'),
-                            'page': getattr(img, 'page_number', idx + 1),
-                            'type': getattr(img, 'mime_type', 'image/png'),
-                            'source': source_name,
-                        })
         
-        print(f"      Found {len(images)} images above {MIN_IMAGE_SIZE_KB}KB")
+        for doc_idx, doc in enumerate(documents):
+            content = doc.text if hasattr(doc, 'text') else str(doc)
+            
+            # Look for image references in markdown
+            # Format: ![description](image_url) or embedded base64
+            import re
+            
+            # Find markdown image references
+            img_pattern = r'!\[([^\]]*)\]\(([^)]+)\)'
+            matches = re.findall(img_pattern, content)
+            
+            for idx, (desc, url) in enumerate(matches):
+                # Skip small placeholder images
+                if 'placeholder' in url.lower() or len(url) < 50:
+                    continue
+                    
+                images.append({
+                    'description': desc,
+                    'url': url,
+                    'page': doc_idx + 1,
+                    'source': source_name,
+                })
+            
+            # Also look for base64 embedded images
+            base64_pattern = r'data:image/(png|jpeg|jpg);base64,([A-Za-z0-9+/=]+)'
+            base64_matches = re.findall(base64_pattern, content)
+            
+            for idx, (img_type, img_data) in enumerate(base64_matches):
+                # Check size (base64 is ~1.33x original size)
+                if len(img_data) > MIN_IMAGE_SIZE_KB * 1024 * 1.33:
+                    images.append({
+                        'data': img_data,
+                        'type': f'image/{img_type}',
+                        'page': doc_idx + 1,
+                        'source': source_name,
+                    })
+        
+        print(f"      Found {len(images)} images/references")
         return images
         
     except Exception as e:
