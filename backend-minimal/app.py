@@ -114,6 +114,7 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
     1. GROUP: Collapse multiple clauses from same document section
     2. TIER: Split into primary (top 3) and secondary (hidden/expandable)
     3. DEDUPE: Remove definitions if actionable clause from same source exists
+    4. NORMALIZE: Strip everything after | or - from source names (e.g., "GIB Site Guide | Page 4" -> "GIB Site Guide")
     
     Returns:
         {
@@ -125,12 +126,14 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
     if not docs:
         return {'primary': [], 'secondary': [], 'grouped': {}}
     
-    # Step 1: Group by document source (base name without page)
+    # Step 1: Group by document source (normalize by stripping suffixes)
     grouped = {}
     for doc in docs:
         source = doc.get('source', 'Unknown')
-        # Extract base document name (remove page-specific suffixes)
-        base_source = source.split(' - ')[0] if ' - ' in source else source
+        # NORMALIZE: Strip everything after | or - to merge duplicates
+        # "GIB Site Guide | Page 4" -> "GIB Site Guide"
+        # "NZS 3604:2011 - Section 7" -> "NZS 3604:2011"
+        base_source = source.split(' | ')[0].split(' - ')[0].strip()
         base_source = base_source.replace('Deep Dive', '').strip()
         
         if base_source not in grouped:
