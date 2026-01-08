@@ -338,11 +338,11 @@ def extract_images_with_llamaparse(pdf_path_or_url: str, source_name: str) -> Li
 # CLAUDE ANALYSIS
 # =============================================================================
 
-def analyze_image_with_claude(image_base64: str, mime_type: str = "image/png") -> Dict:
+def analyze_content_with_claude(content: str, content_type: str = "specification") -> Dict:
     """
-    Send image to Claude for structural analysis.
+    Send technical content to Claude for analysis.
     
-    Returns parsed JSON response.
+    Returns parsed JSON response with extracted technical variables.
     """
     try:
         response = anthropic_client.messages.create(
@@ -351,20 +351,15 @@ def analyze_image_with_claude(image_base64: str, mime_type: str = "image/png") -
             system=CLAUDE_SYSTEM_PROMPT,
             messages=[{
                 "role": "user",
-                "content": [
-                    {
-                        "type": "image",
-                        "source": {
-                            "type": "base64",
-                            "media_type": mime_type,
-                            "data": image_base64,
-                        }
-                    },
-                    {
-                        "type": "text",
-                        "text": "Analyze this construction document image and extract technical information. Return JSON only."
-                    }
-                ]
+                "content": f"""Analyze this technical content extracted from a construction document and extract structured data. 
+
+Content type hint: {content_type}
+
+---
+{content[:8000]}
+---
+
+Return JSON only with image_type, relevance, brand, summary, technical_variables, and confidence."""
             }]
         )
         
