@@ -71,7 +71,7 @@ PRODUCT_REP_KEYWORDS = [
     "asona", "bradford", "ecko", "firth", "bremick", "delfast", 
     "macsim", "mainland", "simpson", "spax", "titan", "zenith",
     "j&l duke", "metal roofing", "fasteners", "nz_nails", "nz nails",
-    "placemakers",
+    "placemakers", "nz_metal",
 ]
 
 # Keywords that indicate COMPLIANCE/INSPECTOR documents (The Rules)
