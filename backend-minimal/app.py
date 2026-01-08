@@ -112,6 +112,7 @@ class SearchStrategy:
     PRODUCT_REP = "product_rep"    # Product/Manufacturer queries only
     HYBRID = "hybrid"              # Both agents - conflict resolution needed
     FOREMAN = "foreman"            # Legacy - search all docs
+    ENGINEER = "engineer"          # Visual Agent - tables, diagrams, drawings
 
 # Keywords that indicate regulatory/compliance intent
 REGULATORY_KEYWORDS = [
