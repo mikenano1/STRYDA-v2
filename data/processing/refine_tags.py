@@ -68,7 +68,7 @@ PRODUCT_REP_KEYWORDS = [
     "tremco", "soudal", "everbuild", "geocel", "dow corning",
     
     # Additional NZ brands
-    "asona",
+    "asona", "bradford",
 ]
 
 # Keywords that indicate COMPLIANCE/INSPECTOR documents (The Rules)
