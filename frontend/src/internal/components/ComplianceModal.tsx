@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet, Platform } from 'react-native';
-import { FileText, CheckCircle, X } from 'lucide-react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Modal, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { FileText, CheckCircle, X, BookOpen } from 'lucide-react-native';
 
 interface ComplianceModalProps {
   visible: boolean;
@@ -9,87 +9,115 @@ interface ComplianceModalProps {
   source: string;
   clause: string;
   page: string;
+  textContent?: string;  // RAG snippet / evidence text
 }
 
-export default function ComplianceModal({ visible, onClose, onOpenDocument, source, clause, page }: ComplianceModalProps) {
+export default function ComplianceModal({ 
+  visible, 
+  onClose, 
+  onOpenDocument, 
+  source, 
+  clause, 
+  page,
+  textContent 
+}: ComplianceModalProps) {
   
-  // Hardcoded map for MVP (In reality this would be dynamic or in a config file)
-  const getLocalPath = (src: string) => {
-      const s = src.toLowerCase();
-      if (s.includes('3604')) return 'assets/standards/nzs3604.pdf';
-      if (s.includes('e2/as1') || s.includes('e2')) return 'assets/standards/e2as1.pdf';
-      if (s.includes('3500')) return 'assets/standards/asnzs3500.pdf';
-      return 'Unknown - Requires Download';
+  const [fetchedContent, setFetchedContent] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Normalize source name for display (strip suffixes after |, -, •)
+  const normalizeSource = (src: string): string => {
+    const baseSource = src.split(/[|\-•]/)[0].trim();
+    return baseSource || src;
   };
 
-  const localPath = getLocalPath(source);
-  const isAvailable = localPath.startsWith('assets');
+  const displaySource = normalizeSource(source);
+  
+  // Try to fetch evidence from backend if not provided
+  useEffect(() => {
+    if (visible && !textContent && source) {
+      // Could fetch from backend here if needed
+      // For now, just show what we have
+      setFetchedContent(null);
+    }
+  }, [visible, source, textContent]);
 
-  const handleOpenDocument = () => {
-      console.log(`🔗 Opening PDF Viewer: ${source} | ${clause} | Page ${page}`);
-      onClose(); // Close the modal first
-      onOpenDocument(source, clause, page, localPath);
-  };
+  // Determine what content to show
+  const evidenceText = textContent || fetchedContent;
+  const hasEvidence = evidenceText && evidenceText.trim().length > 0;
 
   return (
     <Modal
-      animationType="fade"
+      animationType="slide"
       transparent={true}
       visible={visible}
       onRequestClose={onClose}
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
+          {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.modalTitle}>System Check</Text>
-            <TouchableOpacity onPress={onClose}>
-                <X size={24} color="#999" />
+            <View style={styles.headerTitleContainer}>
+              <BookOpen size={20} color="#FF7A00" style={{marginRight: 8}} />
+              <Text style={styles.modalTitle}>Source Extract</Text>
+            </View>
+            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+              <X size={24} color="#999" />
             </TouchableOpacity>
           </View>
 
-          <View style={styles.statusContainer}>
-              <View style={styles.statusRow}>
-                  <Text style={styles.label}>Status:</Text>
-                  <View style={styles.badge}>
-                      <CheckCircle size={16} color="#4ADE80" style={{marginRight: 4}} />
-                      <Text style={styles.badgeText}>CITATION LINKED</Text>
-                  </View>
-              </View>
-
-              <View style={styles.divider} />
-
-              <View style={styles.detailRow}>
-                  <Text style={styles.label}>Source:</Text>
-                  <Text style={styles.value}>{source}</Text>
-              </View>
-              
-              <View style={styles.detailRow}>
-                  <Text style={styles.label}>Clause:</Text>
-                  <Text style={styles.value}>{clause}</Text>
-              </View>
-
-              <View style={styles.detailRow}>
-                  <Text style={styles.label}>Target Page:</Text>
-                  <Text style={styles.value}>{page}</Text>
-              </View>
-
-              <View style={styles.detailRow}>
-                  <Text style={styles.label}>File Path:</Text>
-                  <Text style={[styles.value, styles.pathText]}>{localPath}</Text>
-              </View>
+          {/* Source Info */}
+          <View style={styles.sourceInfoContainer}>
+            <Text style={styles.sourceTitle}>{displaySource}</Text>
+            {(clause || page) && (
+              <Text style={styles.sourceMeta}>
+                {clause ? `${clause}` : ''}
+                {clause && page ? ' • ' : ''}
+                {page ? `Page ${page}` : ''}
+              </Text>
+            )}
           </View>
 
-          <TouchableOpacity 
-            style={[styles.openButton, !isAvailable && styles.disabledButton]}
-            onPress={handleOpenDocument}
-            disabled={!isAvailable}
-          >
-              <FileText size={20} color="white" style={{marginRight: 8}} />
-              <Text style={styles.buttonText}>
-                  {isAvailable ? "Open Document" : "Document Unavailable"}
-              </Text>
-          </TouchableOpacity>
+          {/* Evidence Content */}
+          <View style={styles.evidenceContainer}>
+            {isLoading ? (
+              <View style={styles.loadingContainer}>
+                <ActivityIndicator size="small" color="#FF7A00" />
+                <Text style={styles.loadingText}>Loading evidence...</Text>
+              </View>
+            ) : hasEvidence ? (
+              <ScrollView 
+                style={styles.evidenceScroll}
+                showsVerticalScrollIndicator={true}
+              >
+                <Text style={styles.evidenceText}>{evidenceText}</Text>
+              </ScrollView>
+            ) : (
+              <View style={styles.noContentContainer}>
+                <FileText size={32} color="#666" />
+                <Text style={styles.noContentTitle}>Evidence Not Available</Text>
+                <Text style={styles.noContentText}>
+                  The source text for this citation is not currently loaded.
+                  The reference points to: {source}
+                </Text>
+              </View>
+            )}
+          </View>
 
+          {/* Footer */}
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>
+              📚 Source Extract (Generated from Search)
+            </Text>
+          </View>
+
+          {/* Close Button */}
+          <TouchableOpacity 
+            style={styles.closeFullButton}
+            onPress={onClose}
+          >
+            <Text style={styles.closeButtonText}>Close</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
@@ -99,102 +127,126 @@ export default function ComplianceModal({ visible, onClose, onOpenDocument, sour
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'flex-end',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   modalView: {
-    width: '85%',
-    backgroundColor: '#1E1E1E',
-    borderRadius: 20,
-    padding: 24,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    backgroundColor: '#1A1A1A',
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    paddingTop: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 34,
+    maxHeight: '80%',
     borderWidth: 1,
     borderColor: '#333',
+    borderBottomWidth: 0,
   },
   header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+    paddingBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#333',
+  },
+  headerTitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   modalTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontWeight: '600',
     color: 'white',
   },
-  statusContainer: {
-      backgroundColor: '#111',
-      borderRadius: 12,
-      padding: 16,
-      marginBottom: 24,
+  closeButton: {
+    padding: 4,
   },
-  statusRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: 8,
+  sourceInfoContainer: {
+    backgroundColor: '#252525',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    borderLeftWidth: 4,
+    borderLeftColor: '#FF7A00',
   },
-  badge: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      backgroundColor: 'rgba(74, 222, 128, 0.1)', // Green tint
-      paddingHorizontal: 8,
-      paddingVertical: 4,
-      borderRadius: 6,
-      borderWidth: 1,
-      borderColor: 'rgba(74, 222, 128, 0.3)',
+  sourceTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#FF7A00',
+    marginBottom: 4,
   },
-  badgeText: {
-      color: '#4ADE80',
-      fontSize: 12,
-      fontWeight: 'bold',
+  sourceMeta: {
+    fontSize: 13,
+    color: '#999',
   },
-  divider: {
-      height: 1,
-      backgroundColor: '#333',
-      marginVertical: 12,
+  evidenceContainer: {
+    flex: 1,
+    minHeight: 150,
+    maxHeight: 300,
+    backgroundColor: '#111',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
   },
-  detailRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: 8,
+  evidenceScroll: {
+    flex: 1,
   },
-  label: {
-      color: '#999',
-      fontSize: 14,
+  evidenceText: {
+    fontSize: 14,
+    color: '#E0E0E0',
+    lineHeight: 22,
   },
-  value: {
-      color: 'white',
-      fontSize: 14,
-      fontWeight: '500',
-      maxWidth: '60%',
-      textAlign: 'right',
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 12,
   },
-  pathText: {
-      fontFamily: 'monospace',
-      fontSize: 12,
-      color: '#F97316', // Orange
+  loadingText: {
+    color: '#999',
+    fontSize: 14,
   },
-  openButton: {
-      backgroundColor: '#F97316',
-      borderRadius: 12,
-      padding: 16,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
+  noContentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    gap: 12,
   },
-  disabledButton: {
-      backgroundColor: '#444',
-      opacity: 0.6,
+  noContentTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#888',
   },
-  buttonText: {
-      color: 'white',
-      fontWeight: 'bold',
-      fontSize: 16,
+  noContentText: {
+    fontSize: 13,
+    color: '#666',
+    textAlign: 'center',
+    lineHeight: 18,
+  },
+  footer: {
+    paddingVertical: 12,
+    borderTopWidth: 1,
+    borderTopColor: '#333',
+    marginBottom: 12,
+  },
+  footerText: {
+    fontSize: 12,
+    color: '#666',
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  closeFullButton: {
+    backgroundColor: '#FF7A00',
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
