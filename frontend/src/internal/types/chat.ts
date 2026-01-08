@@ -7,6 +7,16 @@ export interface ChatRequest {
   message: string;
 }
 
+export interface EvidenceItem {
+  text: string;
+  page?: string;
+  clause?: string;
+  section?: string;
+  score?: number;
+  doc_type?: string;
+  original_source?: string;
+}
+
 export interface Citation {
   id?: string;
   source: string;
@@ -16,6 +26,7 @@ export interface Citation {
   score?: number;
   snippet?: string;
   text_content?: string;  // Full RAG snippet for Evidence Modal
+  evidence_collection?: EvidenceItem[];  // Multi-evidence support
   section?: string | null;
   clause?: string | null;
   confidence?: number;
