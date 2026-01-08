@@ -1697,16 +1697,16 @@ Do you have a material preference, or would you like me to filter by which merch
                                 "source": v.get('source_document', 'Visual Asset'),
                                 "page": v.get('source_page', 0),
                                 "snippet": v.get('summary', ''),
-                                "image_url": v.get('image_url'),
                                 "image_type": v.get('image_type'),
                                 "confidence": v.get('confidence', 0.8),
+                                "technical_variables": v.get('technical_variables', {}),
                             })
                         
                         # Return visual response (skip normal RAG flow)
                         return {
                             "response": engineer_response,
                             "citations": visual_citations,
-                            "conversation_id": convo_id,
+                            "conversation_id": session_id,
                             "search_strategy": "engineer",
                             "visual_count": len(visual_assets)
                         }
