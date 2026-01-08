@@ -8,6 +8,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { ChatMessage, Citation } from '../types/chat';
 import CitationPill from './CitationPill';
 import ComplianceModal from './ComplianceModal';
+import ImageModal from './ImageModal';
 
 interface ChatMessageProps {
   message: ChatMessage;
@@ -20,6 +21,7 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
   const isUser = message.role === 'user';
   const isAssistant = message.role === 'assistant';
   
+  // Text citation modal state
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMatch, setSelectedMatch] = useState<{
     source: string; 
@@ -27,6 +29,17 @@ export function ChatMessageComponent({ message, onCitationPress, onOpenDocument,
     page: string; 
     textContent?: string;
     evidenceCollection?: any[];
+  } | null>(null);
+
+  // Image modal state
+  const [imageModalVisible, setImageModalVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<{
+    source: string;
+    page: string;
+    imageUrl: string;
+    summary?: string;
+    imageType?: string;
+    brand?: string;
   } | null>(null);
 
   // Format timestamp
