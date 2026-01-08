@@ -474,6 +474,16 @@ const styles = StyleSheet.create({
       zIndex: 9999, // Force top
       elevation: 10, // Android shadow/z-index
   },
+  imagePillButton: {
+      marginTop: 8,
+      backgroundColor: '#7C3AED', // Purple for images
+      paddingVertical: 10,
+      paddingHorizontal: 16,
+      borderRadius: 12,
+      alignSelf: 'flex-start',
+      zIndex: 9999,
+      elevation: 10,
+  },
   pillText: {
       color: 'white',
       fontWeight: 'bold',
