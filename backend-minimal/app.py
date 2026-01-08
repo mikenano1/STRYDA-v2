@@ -1544,10 +1544,37 @@ Do you have a material preference, or would you like me to filter by which merch
                             }
                 
                 # =====================================================
-                # NORMAL RETRIEVAL (No triage needed or triage skipped)
+                # THE FOREMAN: INTELLIGENT SEARCH ROUTING (4-Agent Architecture)
+                # Routes queries to appropriate specialist agent(s)
                 # =====================================================
-                # FULL retrieval
-                docs = tier1_retrieval(user_message, top_k=20, intent=final_intent)
+                
+                # Determine search strategy
+                search_strategy = determine_search_strategy(user_message)
+                
+                # Execute search based on strategy
+                if search_strategy == SearchStrategy.HYBRID:
+                    # HYBRID: "Council Meeting" - Both agents consulted
+                    inspector_docs, product_docs, docs = execute_hybrid_search(
+                        user_message, 
+                        intent=final_intent,
+                        top_k=12
+                    )
+                    print(f"   🤝 HYBRID search completed: {len(docs)} merged docs")
+                    
+                elif search_strategy == SearchStrategy.INSPECTOR:
+                    # INSPECTOR: Compliance-focused search only
+                    docs = tier1_retrieval(user_message, top_k=20, intent=final_intent, agent_mode='inspector')
+                    print(f"   👷 INSPECTOR search: {len(docs)} compliance docs")
+                    
+                elif search_strategy == SearchStrategy.PRODUCT_REP:
+                    # PRODUCT_REP: Product-focused search only
+                    docs = tier1_retrieval(user_message, top_k=20, intent=final_intent, agent_mode='product_rep')
+                    print(f"   📦 PRODUCT_REP search: {len(docs)} product docs")
+                    
+                else:
+                    # FOREMAN: Legacy full search (fallback)
+                    docs = tier1_retrieval(user_message, top_k=20, intent=final_intent)
+                    print(f"   🏗️ FOREMAN full search: {len(docs)} docs")
                 
                 # Build context
                 background_context = ""
