@@ -70,7 +70,8 @@ PRODUCT_REP_KEYWORDS = [
     # Additional NZ brands
     "asona", "bradford", "ecko", "firth", "bremick", "delfast", 
     "macsim", "mainland", "simpson", "spax", "titan", "zenith",
-    "j&l duke", "metal roofing", "fasteners",
+    "j&l duke", "metal roofing", "fasteners", "nz_nails", "nz nails",
+    "placemakers",
 ]
 
 # Keywords that indicate COMPLIANCE/INSPECTOR documents (The Rules)
