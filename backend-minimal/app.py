@@ -303,7 +303,7 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
     THE ENGINEER: Visual Agent - searches the visuals table for diagrams, tables, drawings.
     
     Returns:
-        List of visual assets with summaries and technical data.
+        List of visual assets with image URLs and summaries.
     """
     import openai
     
@@ -339,8 +339,24 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
         cursor.close()
         conn.close()
         
-        # Note: We're storing extracted text/table content, not actual images
-        # So we don't need to generate signed URLs
+        # Generate signed URLs for images
+        from supabase import create_client
+        supabase_client = create_client(
+            os.getenv('SUPABASE_URL'),
+            os.getenv('SUPABASE_SERVICE_ROLE_KEY')
+        )
+        
+        for result in results:
+            if result.get('storage_path'):
+                try:
+                    signed = supabase_client.storage.from_('visual_assets').create_signed_url(
+                        result['storage_path'],
+                        3600  # 1 hour expiry
+                    )
+                    result['image_url'] = signed.get('signedURL', '')
+                except Exception as e:
+                    print(f"      ⚠️ Signed URL error: {e}")
+                    result['image_url'] = None
         
         print(f"      📐 Engineer found: {len(results)} visual assets")
         return results
