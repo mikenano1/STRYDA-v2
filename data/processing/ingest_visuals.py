@@ -420,17 +420,24 @@ def generate_embedding(text: str) -> List[float]:
 
 
 def save_to_database(visual_data: Dict) -> bool:
-    """Save visual to database."""
+    """Save visual to database with product codes."""
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cursor = conn.cursor()
+        
+        # Convert product_codes list to PostgreSQL array format
+        product_codes = visual_data.get('product_codes', [])
+        if isinstance(product_codes, list):
+            product_codes_pg = product_codes
+        else:
+            product_codes_pg = []
         
         cursor.execute("""
             INSERT INTO visuals (
                 source_document, source_page, image_type, brand,
                 storage_path, file_size, summary, technical_variables,
-                confidence, embedding
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                confidence, embedding, product_codes, drawing_type
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """, (
             visual_data['source_document'],
             visual_data.get('source_page'),
@@ -441,7 +448,9 @@ def save_to_database(visual_data: Dict) -> bool:
             visual_data.get('summary'),
             json.dumps(visual_data.get('technical_variables', {})),
             visual_data.get('confidence', 0.9),
-            visual_data.get('embedding')
+            visual_data.get('embedding'),
+            product_codes_pg,
+            visual_data.get('drawing_type')
         ))
         
         conn.commit()
