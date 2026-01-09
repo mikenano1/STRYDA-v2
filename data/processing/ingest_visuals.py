@@ -97,7 +97,8 @@ CRITICAL EXTRACTION RULES:
    - Look for codes like: AW62P, WB10, WB18, SG8, H3.2, K12, etc.
    - Include profile names, model numbers, product IDs
    - If you see text like "AW62P" anywhere, it MUST be in the array
-   - Case sensitive - preserve exact format
+   - NORMALIZE: Remove hyphens and spaces (e.g., "AW-62-P" becomes "AW62P")
+   - Case: UPPERCASE all codes
 
 2. drawing_type: EXACTLY one of:
    - "Profile" (cross-section profiles, profile drawings)
@@ -126,6 +127,12 @@ Return ONLY this JSON:
 }
 
 If NO product codes visible, return empty array: "product_codes": []"""
+
+
+def normalize_product_code(code: str) -> str:
+    """Normalize product code by removing hyphens, spaces, and uppercasing."""
+    import re
+    return re.sub(r'[-\s]', '', code).upper()
 
 # =============================================================================
 # CLIENTS
