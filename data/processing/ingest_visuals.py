@@ -197,6 +197,7 @@ def get_storage_url_for_source(source: str) -> Optional[str]:
 def extract_images_with_context(pdf_url: str, source_name: str) -> List[Dict]:
     """
     Extract images from PDF along with surrounding text context.
+    Handles both embedded images AND vector PDFs (by rendering pages).
     """
     print(f"   📄 Extracting: {source_name[:50]}...")
     
@@ -214,6 +215,7 @@ def extract_images_with_context(pdf_url: str, source_name: str) -> List[Dict]:
         print(f"      📑 Pages: {len(doc)}")
         
         images = []
+        total_embedded = 0
         
         for page_num in range(len(doc)):
             page = doc[page_num]
@@ -221,8 +223,9 @@ def extract_images_with_context(pdf_url: str, source_name: str) -> List[Dict]:
             # Get page text for context
             page_text = page.get_text()
             
-            # Get images from page
+            # Check for embedded images first
             image_list = page.get_images()
+            total_embedded += len(image_list)
             
             for img_idx, img in enumerate(image_list):
                 xref = img[0]
@@ -235,8 +238,6 @@ def extract_images_with_context(pdf_url: str, source_name: str) -> List[Dict]:
                     if size_kb < MIN_IMAGE_SIZE_KB:
                         continue
                     
-                    # Extract surrounding context (nearby text)
-                    # Split text into chunks and find relevant section
                     context = extract_context_for_image(page_text, img_idx, page_num)
                     
                     mime_map = {'jpeg': 'image/jpeg', 'jpg': 'image/jpeg', 'png': 'image/png'}
@@ -256,14 +257,62 @@ def extract_images_with_context(pdf_url: str, source_name: str) -> List[Dict]:
                 except:
                     continue
         
+        # If NO embedded images found, this might be a vector PDF
+        # Render each page as an image (for profile drawings, CAD, etc.)
+        if total_embedded == 0 and len(doc) <= 5:  # Only for small PDFs
+            print(f"      📐 Vector PDF detected - rendering pages as images...")
+            
+            for page_num in range(len(doc)):
+                page = doc[page_num]
+                page_text = page.get_text()
+                
+                # Skip pages with no meaningful text (likely blank)
+                if len(page_text.strip()) < 50:
+                    continue
+                
+                # Render page at 150 DPI (good balance of quality/size)
+                mat = fitz.Matrix(150/72, 150/72)  # 150 DPI
+                pix = page.get_pixmap(matrix=mat)
+                image_bytes = pix.tobytes("png")
+                
+                size_kb = len(image_bytes) / 1024
+                
+                if size_kb < 10:  # Skip tiny renders
+                    continue
+                
+                context = extract_context_for_image(page_text, 0, page_num)
+                
+                # Extract product codes from page text directly
+                import re
+                codes_in_text = re.findall(r'\b([A-Z]{2,}[0-9]+[A-Z0-9]*)\b', page_text)
+                if codes_in_text:
+                    context = f"Product Codes: {', '.join(set(codes_in_text))} | {context}"
+                
+                images.append({
+                    'data': image_bytes,
+                    'base64': base64.b64encode(image_bytes).decode('utf-8'),
+                    'mime_type': 'image/png',
+                    'ext': 'png',
+                    'filename': f"render_p{page_num+1}.png",
+                    'size_kb': size_kb,
+                    'page': page_num + 1,
+                    'source': source_name,
+                    'context': context,
+                    'is_render': True,  # Mark as page render
+                })
+                
+                print(f"         Rendered page {page_num + 1}: {size_kb:.1f}KB")
+        
         doc.close()
         os.unlink(tmp_path)
         
-        print(f"      📷 Found {len(images)} images (>{MIN_IMAGE_SIZE_KB}KB)")
+        print(f"      📷 Found {len(images)} images/renders (>{MIN_IMAGE_SIZE_KB}KB)")
         return images
         
     except Exception as e:
         print(f"      ❌ Extraction error: {e}")
+        import traceback
+        traceback.print_exc()
         return []
 
 
