@@ -1,0 +1,40 @@
+agent_zone,Source_Folder,brand,doc_type,filename,ingest_status,agent_text_chunks,agent_visual_assets
+Inspector,MBIE Guidance,MBIE,MBIE_Guidance,MBIE-Minor-Variation-Guidance,Text Only,26,0
+Inspector,MBIE Guidance,MBIE,MBIE_Guidance,MBIE-Schedule-1-Exemptions-Guidance,Text Only,499,0
+Inspector,MBIE Guidance,MBIE,MBIE_Guidance,MBIE-Tolerances-Guide,Text Only,784,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,Ardex-Waterproofing-Manual,Text Only,1306,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,B1-Structure-Amendment13,Text Only,142,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-AS1_2nd-Edition_2023,Text Only,104,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-AS2_2nd-Edition_2025,Text Only,171,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-AS3_Amendment-4_2019-EXPIRED,Text Only,7,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-AS4_Amendment-4_2019-EXPIRED,Text Only,191,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-AS5_Amendment-4_2019-EXPIRED,Text Only,256,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-AS6_Amendment-4_2019-EXPIRED,Text Only,384,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-AS7_Amendment-4_2019-EXPIRED,Text Only,55,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,C-VM2_Amendment-6_2020,Text Only,340,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,CAS3-Amendment4-2019-EXPIRED,Text Only,269,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,E1-AS1_1st-Edition-Amd12-2024,Text Only,225,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,E2-AS1_4th-Edition-2025,Text Only,619,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,E3-AS1_2nd-Edition-Amd7-2020,Text Only,50,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,F4-AS1_Amendment-6-2021,Text Only,10,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,F6-AS1_Amendment-3-2021,Text Only,34,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,F7-AS1_5th-Edition-2023,Text Only,29,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,G12-AS1_3rd-Edition-Amd14-2024,Text Only,193,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,G13-AS1_3rd-Edition-Amd14-2024,Text Only,85,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,GIB-Bracing-Supplement-2016,Text Only,51,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,GIB-EzyBrace-Systems-2016,Text Only,138,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,GIB-Fire-Systems-Manual,Text Only,475,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,H1-AS1_6th-Edition,Text Only,35,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,H1-VM1_6th-Edition-2025,Text Only,31,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020,Text Only,351,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,NZS-36042011,Text Only,2161,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,NZS-42292013,Text Only,430,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,SNZ-HB-3604-2011-Selected-Extracts,Text Only,1417,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022,Text Only,78,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,b1-structure-as1-second-edition,Text Only,61,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,building-code,Text Only,364,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,e2-external-moisture-as1-fourth-edition,Text Only,30,0
+Inspector,NZ Building Code,NZ Building Code,Compliance_Document,nz_metal_roofing,Text Only,798,0
+Inspector,NZ Building Code,NZSIP,Product_Catalog,Final Sweep - NZSIP,Text Only,97,0
+Inspector,NZ Building Code,Unknown,nz_standard,NZS 3604:2011,Text Only,1,0
+Inspector,NZ Building Code,Unknown,nz_standard,NZS 4229:2013,Text Only,1,0
