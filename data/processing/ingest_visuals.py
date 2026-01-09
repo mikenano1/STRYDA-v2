@@ -86,28 +86,46 @@ OR
 {"category": "SITE_PHOTO", "keep": false, "reason": "Photograph of completed house with timber cladding"}"""
 
 # =============================================================================
-# ANALYSIS PROMPT (for kept images only)
+# ANALYSIS PROMPT (for kept images only) - HARD CODE EXTRACTION
 # =============================================================================
 
-ANALYSIS_PROMPT = """You are a Senior Structural Engineer. Analyze this technical drawing/table for NZ construction.
+ANALYSIS_PROMPT = """You are a Senior Structural Engineer. Analyze this technical drawing for NZ construction.
 
-Extract:
-1. image_type: "detail_drawing", "span_table", "spec_sheet", "section_view", "flashing_detail"
-2. brand: Manufacturer name if visible
-3. summary: 1-2 sentence description of what this drawing shows
-4. technical_variables: Key measurements, codes, specifications visible
+CRITICAL EXTRACTION RULES:
 
-Return JSON only:
+1. product_codes: List ALL alphanumeric product codes visible in the image.
+   - Look for codes like: AW62P, WB10, WB18, SG8, H3.2, K12, etc.
+   - Include profile names, model numbers, product IDs
+   - If you see text like "AW62P" anywhere, it MUST be in the array
+   - Case sensitive - preserve exact format
+
+2. drawing_type: EXACTLY one of:
+   - "Profile" (cross-section profiles, profile drawings)
+   - "Detail" (junction details, flashing details, construction details)
+   - "Span Table" (load tables, span charts, spacing tables)
+   - "Fixing Chart" (screw patterns, nail schedules, fixing specifications)
+   - "Section" (wall sections, building sections)
+   - "Other"
+
+3. brand: Manufacturer name if visible
+
+4. summary: Brief 1-2 sentence description
+
+5. technical_variables: Key measurements visible
+
+Return ONLY this JSON:
 {
-    "image_type": "detail_drawing",
+    "product_codes": ["AW62P", "WB10"],
+    "drawing_type": "Profile",
     "brand": "Abodo",
-    "summary": "External corner junction detail for weatherboard cladding showing flashing overlap",
+    "summary": "Profile drawing showing AW62P weatherboard cross-section with dimensions",
     "technical_variables": {
-        "overlap_mm": 50,
-        "cavity_depth_mm": 20,
-        "fixing_type": "stainless steel screws"
+        "width_mm": 187,
+        "thickness_mm": 18
     }
-}"""
+}
+
+If NO product codes visible, return empty array: "product_codes": []"""
 
 # =============================================================================
 # CLIENTS
