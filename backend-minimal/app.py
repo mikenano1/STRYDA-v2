@@ -312,21 +312,22 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
     
     print(f"   📐 ENGINEER SEARCH: Looking for visual assets...")
     
+    def normalize_code(code: str) -> str:
+        """Normalize product code by removing hyphens, spaces, and uppercasing."""
+        return re.sub(r'[-\s]', '', code).upper()
+    
     try:
         # STEP 1: Extract product codes from query using regex
-        # Pattern: 2+ uppercase letters followed by numbers (e.g., AW62P, WB10, SG8, K12)
-        code_pattern = r'\b([A-Z]{2,}[0-9]+[A-Z0-9]*)\b'
-        detected_codes = re.findall(code_pattern, query.upper())
+        # Pattern: 2+ letters followed by numbers (with optional hyphens/spaces)
+        # e.g., AW62P, AW-62-P, WB10, SG8, K12
+        code_pattern = r'\b([A-Za-z]{2,}[-\s]?[0-9]+[-\s]?[A-Za-z0-9]*)\b'
+        raw_codes = re.findall(code_pattern, query)
         
-        # Also check for common patterns with lowercase
-        code_pattern_mixed = r'\b([A-Za-z]{2,}[0-9]+[A-Za-z0-9]*)\b'
-        detected_codes_mixed = [c.upper() for c in re.findall(code_pattern_mixed, query)]
+        # Normalize all detected codes (strip hyphens, spaces, uppercase)
+        detected_codes = list(set(normalize_code(c) for c in raw_codes if len(normalize_code(c)) >= 3))
         
-        # Combine and dedupe
-        all_codes = list(set(detected_codes + detected_codes_mixed))
-        
-        if all_codes:
-            print(f"      🏷️ Detected product codes: {all_codes}")
+        if detected_codes:
+            print(f"      🏷️ Detected product codes (normalized): {detected_codes}")
         
         # Generate embedding for query
         openai_client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
@@ -342,7 +343,7 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         
         # STEP 2: If product codes detected, use HARD FILTER
-        if all_codes:
+        if detected_codes:
             # Use ANY() to match any code in the array
             print(f"      🔒 Applying HARD FILTER on product_codes")
             cursor.execute("""
@@ -356,7 +357,7 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
                 AND product_codes && %s
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (query_embedding, all_codes, query_embedding, top_k))
+            """, (query_embedding, detected_codes, query_embedding, top_k))
         else:
             # No codes detected - use pure vector search
             cursor.execute("""
@@ -376,7 +377,7 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
         conn.close()
         
         # Log results
-        if all_codes and not results:
+        if detected_codes and not results:
             print(f"      ⚠️ No results with code filter - trying without filter")
             # Fallback to vector search if no matches
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
