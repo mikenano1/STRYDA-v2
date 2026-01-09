@@ -302,14 +302,32 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
     """
     THE ENGINEER: Visual Agent - searches the visuals table for diagrams, tables, drawings.
     
+    Uses HARD FILTERING on product codes when detected in query.
+    
     Returns:
         List of visual assets with image URLs and summaries.
     """
     import openai
+    import re
     
     print(f"   📐 ENGINEER SEARCH: Looking for visual assets...")
     
     try:
+        # STEP 1: Extract product codes from query using regex
+        # Pattern: 2+ uppercase letters followed by numbers (e.g., AW62P, WB10, SG8, K12)
+        code_pattern = r'\b([A-Z]{2,}[0-9]+[A-Z0-9]*)\b'
+        detected_codes = re.findall(code_pattern, query.upper())
+        
+        # Also check for common patterns with lowercase
+        code_pattern_mixed = r'\b([A-Za-z]{2,}[0-9]+[A-Za-z0-9]*)\b'
+        detected_codes_mixed = [c.upper() for c in re.findall(code_pattern_mixed, query)]
+        
+        # Combine and dedupe
+        all_codes = list(set(detected_codes + detected_codes_mixed))
+        
+        if all_codes:
+            print(f"      🏷️ Detected product codes: {all_codes}")
+        
         # Generate embedding for query
         openai_client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         response = openai_client.embeddings.create(
@@ -323,21 +341,60 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         
-        # Vector similarity search on visuals table
-        cursor.execute("""
-            SELECT 
-                id, source_document, source_page, image_type, brand,
-                storage_path, summary, technical_variables, confidence,
-                1 - (embedding <=> %s::vector) as similarity
-            FROM visuals
-            WHERE embedding IS NOT NULL
-            ORDER BY embedding <=> %s::vector
-            LIMIT %s
-        """, (query_embedding, query_embedding, top_k))
+        # STEP 2: If product codes detected, use HARD FILTER
+        if all_codes:
+            # Use ANY() to match any code in the array
+            print(f"      🔒 Applying HARD FILTER on product_codes")
+            cursor.execute("""
+                SELECT 
+                    id, source_document, source_page, image_type, brand,
+                    storage_path, summary, technical_variables, confidence,
+                    product_codes, drawing_type,
+                    1 - (embedding <=> %s::vector) as similarity
+                FROM visuals
+                WHERE embedding IS NOT NULL
+                AND product_codes && %s
+                ORDER BY embedding <=> %s::vector
+                LIMIT %s
+            """, (query_embedding, all_codes, query_embedding, top_k))
+        else:
+            # No codes detected - use pure vector search
+            cursor.execute("""
+                SELECT 
+                    id, source_document, source_page, image_type, brand,
+                    storage_path, summary, technical_variables, confidence,
+                    product_codes, drawing_type,
+                    1 - (embedding <=> %s::vector) as similarity
+                FROM visuals
+                WHERE embedding IS NOT NULL
+                ORDER BY embedding <=> %s::vector
+                LIMIT %s
+            """, (query_embedding, query_embedding, top_k))
         
         results = [dict(r) for r in cursor.fetchall()]
         cursor.close()
         conn.close()
+        
+        # Log results
+        if all_codes and not results:
+            print(f"      ⚠️ No results with code filter - trying without filter")
+            # Fallback to vector search if no matches
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor.execute("""
+                SELECT 
+                    id, source_document, source_page, image_type, brand,
+                    storage_path, summary, technical_variables, confidence,
+                    product_codes, drawing_type,
+                    1 - (embedding <=> %s::vector) as similarity
+                FROM visuals
+                WHERE embedding IS NOT NULL
+                ORDER BY embedding <=> %s::vector
+                LIMIT %s
+            """, (query_embedding, query_embedding, top_k))
+            results = [dict(r) for r in cursor.fetchall()]
+            cursor.close()
+            conn.close()
         
         # Generate signed URLs for images
         from supabase import create_client
@@ -359,10 +416,16 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
                     result['image_url'] = None
         
         print(f"      📐 Engineer found: {len(results)} visual assets")
+        for r in results:
+            codes = r.get('product_codes', [])
+            print(f"         - {r.get('drawing_type', '?')}: {codes if codes else 'No codes'}")
+        
         return results
         
     except Exception as e:
         print(f"      ❌ Engineer search error: {e}")
+        import traceback
+        traceback.print_exc()
         return []
 
 
