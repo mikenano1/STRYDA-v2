@@ -7,7 +7,7 @@ import asyncio
 import aiohttp
 import json
 
-BACKEND_URL = "https://expert-agent-router.preview.emergentagent.com"
+BACKEND_URL = "https://eng-image-extract.preview.emergentagent.com"
 
 async def debug_response_structure():
     """Debug the actual response structure"""

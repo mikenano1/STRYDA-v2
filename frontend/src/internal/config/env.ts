@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://expert-agent-router.preview.emergentagent.com",
+  API_BASE: "https://eng-image-extract.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 

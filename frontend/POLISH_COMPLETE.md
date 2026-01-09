@@ -38,7 +38,7 @@
 
 **Local URL:** http://localhost:3000  
 **Tunnel Subdomain:** nzbuilder-ai  
-**Preview URL:** https://expert-agent-router.preview.emergentagent.com  
+**Preview URL:** https://eng-image-extract.preview.emergentagent.com  
 
 **QR Code:** Generate from Expo Dev Tools at http://localhost:3000
 
