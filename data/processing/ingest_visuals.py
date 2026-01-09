@@ -532,23 +532,32 @@ def process_document(source: str, doc_type: str, brand: str = None) -> Dict:
         print(f"         ✅ KEPT: {category} - {reason[:50]}")
         stats['kept'] += 1
         
-        # Deep analysis
+        # Deep analysis with HARD CODE EXTRACTION
         analysis = analyze_technical_image(img['base64'], img['mime_type'], img['context'])
+        
+        # Extract product codes and drawing type from analysis
+        product_codes = analysis.get('product_codes', [])
+        drawing_type = analysis.get('drawing_type', 'Other')
+        
+        # Log extracted codes
+        if product_codes:
+            print(f"         🏷️ Product Codes: {product_codes}")
+        print(f"         📐 Drawing Type: {drawing_type}")
         
         # Upload to bucket
         storage_path = upload_to_bucket(img['data'], img['filename'], img['mime_type'])
         if not storage_path:
             continue
         
-        # Generate embedding from context + summary
-        embed_text = f"{img['context']} {analysis.get('summary', '')} {json.dumps(analysis.get('technical_variables', {}))}"
+        # Generate embedding from context + summary + product codes
+        embed_text = f"{img['context']} {analysis.get('summary', '')} {' '.join(product_codes)} {json.dumps(analysis.get('technical_variables', {}))}"
         embedding = generate_embedding(embed_text)
         
-        # Save to database
+        # Save to database with new fields
         visual_data = {
             'source_document': source,
             'source_page': img['page'],
-            'image_type': analysis.get('image_type', category.lower()),
+            'image_type': drawing_type.lower().replace(' ', '_'),
             'brand': analysis.get('brand') or brand,
             'storage_path': storage_path,
             'file_size': int(img['size_kb'] * 1024),
@@ -556,6 +565,8 @@ def process_document(source: str, doc_type: str, brand: str = None) -> Dict:
             'technical_variables': analysis.get('technical_variables', {}),
             'confidence': 0.95,
             'embedding': embedding,
+            'product_codes': product_codes,
+            'drawing_type': drawing_type,
         }
         
         save_to_database(visual_data)
