@@ -1748,7 +1748,18 @@ async def api_chat(req: ChatRequest):
                     merchant_keywords = ['placemakers', 'bunnings', 'carters', 'itm', 'mitre 10', 'mitre10']
                     has_merchant = any(m in user_message.lower() for m in merchant_keywords)
                     
-                    if not material_pref and not has_merchant:
+                    # CRITICAL FIX: Skip triage if user already specified a brand
+                    # Brands like Kingspan, Expol, etc. indicate user already knows what they want
+                    specific_brand_keywords = [
+                        'kingspan', 'kooltherm', 'k10', 'k7', 'k17', 'k3', 'k5', 'k20',  # Kingspan
+                        'expol', 'thermoslab', 'tuff pods', 'geofoam', 'platinum board',  # Expol
+                        'pink batts', 'earthwool', 'knauf', 'bradford', 'gold batts',    # Glass wool
+                        'mammoth', 'greenstuf', 'autex',                                  # Polyester
+                        'steico', 'therma', 'tr26', 'tr27', 'tr28',                       # Kingspan Therma/Steico
+                    ]
+                    has_specific_brand = any(brand in user_message.lower() for brand in specific_brand_keywords)
+                    
+                    if not material_pref and not has_merchant and not has_specific_brand:
                         # Get brands from both material groups for triage
                         triage_info = check_insulation_triage_needed(
                             user_message, 
