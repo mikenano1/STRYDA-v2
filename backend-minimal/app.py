@@ -448,9 +448,9 @@ def format_engineer_response(visuals: List[Dict], query: str) -> str:
         tech_vars = v.get('technical_variables', {})
         image_url = v.get('image_url', '')
         
-        # Build clean header
+        # Build clean header (no match percentage for hard-filtered results)
         response_parts.append(f"### {i}. {brand} - {image_type}")
-        response_parts.append(f"*Match: {similarity:.0f}% • Source: {source[:60]}{'...' if len(source) > 60 else ''} (p.{page})*\n")
+        response_parts.append(f"*Source: {source[:60]}{'...' if len(source) > 60 else ''} (p.{page})*\n")
         
         # Add summary
         response_parts.append(f"{summary}\n")
