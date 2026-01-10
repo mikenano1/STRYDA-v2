@@ -1,37 +1,37 @@
-agent_zone,category,brand_folder,filename,file_size_mb,db_source,ingest_status,agent_text_chunks,agent_visual_assets,storage_path
-Inspector,Compliance,NZ Building Code,Ardex-Waterproofing-Manual.pdf,42.59,Ardex-Waterproofing-Manual,Text Only,949,0,Ardex-Waterproofing-Manual.pdf
-Inspector,Compliance,NZ Building Code,B1-Structure-Amendment13.pdf,1.61,B1-Structure-Amendment13,Text Only,104,0,B1-Structure-Amendment13.pdf
-Inspector,Compliance,NZ Building Code,C-AS1_2nd-Edition_2023.pdf,2.60,C-AS1_2nd-Edition_2023,Text Only,191,0,C-AS1_2nd-Edition_2023.pdf
-Inspector,Compliance,NZ Building Code,C-AS2_2nd-Edition_2025.pdf,5.79,C-AS2_2nd-Edition_2025,Text Only,358,0,C-AS2_2nd-Edition_2025.pdf
-Inspector,Compliance,NZ Building Code,C-AS3_Amendment-4_2019-EXPIRED.pdf,3.58,C-AS3_Amendment-4_2019-EXPIRED,Text Only,212,0,C-AS3_Amendment-4_2019-EXPIRED.pdf
-Inspector,Compliance,NZ Building Code,C-AS4_Amendment-4_2019-EXPIRED.pdf,4.12,C-AS4_Amendment-4_2019-EXPIRED,Text Only,49,0,C-AS4_Amendment-4_2019-EXPIRED.pdf
-Inspector,Compliance,NZ Building Code,C-AS5_Amendment-4_2019-EXPIRED.pdf,3.89,C-AS5_Amendment-4_2019-EXPIRED,Text Only,16,0,C-AS5_Amendment-4_2019-EXPIRED.pdf
-Inspector,Compliance,NZ Building Code,C-AS6_Amendment-4_2019-EXPIRED.pdf,3.69,C-AS6_Amendment-4_2019-EXPIRED,Text Only,9,0,C-AS6_Amendment-4_2019-EXPIRED.pdf
-Inspector,Compliance,NZ Building Code,C-AS7_Amendment-4_2019-EXPIRED.pdf,1.47,C-AS7_Amendment-4_2019-EXPIRED,Text Only,4,0,C-AS7_Amendment-4_2019-EXPIRED.pdf
-Inspector,Compliance,NZ Building Code,C-VM2_Amendment-6_2020.pdf,2.05,C-VM2_Amendment-6_2020,Text Only,27,0,C-VM2_Amendment-6_2020.pdf
-Inspector,Compliance,NZ Building Code,CAS3-Amendment4-2019-EXPIRED.pdf,3.58,CAS3-Amendment4-2019-EXPIRED,Text Only,78,0,CAS3-Amendment4-2019-EXPIRED.pdf
-Inspector,Compliance,NZ Building Code,E1-AS1_1st-Edition-Amd12-2024.pdf,2.66,E1-AS1_1st-Edition-Amd12-2024,Text Only,34,0,E1-AS1_1st-Edition-Amd12-2024.pdf
-Inspector,Compliance,NZ Building Code,E2-AS1_4th-Edition-2025.pdf,12.24,E2-AS1_4th-Edition-2025,Text Only,492,0,E2-AS1_4th-Edition-2025.pdf
-Inspector,Compliance,NZ Building Code,E3-AS1_2nd-Edition-Amd7-2020.pdf,0.92,E3-AS1_2nd-Edition-Amd7-2020,Text Only,52,0,E3-AS1_2nd-Edition-Amd7-2020.pdf
-Inspector,Compliance,NZ Building Code,F4-AS1_Amendment-6-2021.pdf,0.64,F4-AS1_Amendment-6-2021,Text Only,38,0,F4-AS1_Amendment-6-2021.pdf
-Inspector,Compliance,NZ Building Code,F6-AS1_Amendment-3-2021.pdf,0.48,F6-AS1_Amendment-3-2021,Text Only,37,0,F6-AS1_Amendment-3-2021.pdf
-Inspector,Compliance,NZ Building Code,F7-AS1_5th-Edition-2023.pdf,0.48,F7-AS1_5th-Edition-2023,Text Only,13,0,F7-AS1_5th-Edition-2023.pdf
-Inspector,Compliance,NZ Building Code,G12-AS1_3rd-Edition-Amd14-2024.pdf,5.90,G12-AS1_3rd-Edition-Amd14-2024,Text Only,201,0,G12-AS1_3rd-Edition-Amd14-2024.pdf
-Inspector,Compliance,NZ Building Code,G13-AS1_3rd-Edition-Amd14-2024.pdf,3.27,G13-AS1_3rd-Edition-Amd14-2024,Text Only,65,0,G13-AS1_3rd-Edition-Amd14-2024.pdf
-Inspector,Compliance,NZ Building Code,GIB-Bracing-Supplement-2016.pdf,1.82,GIB-Bracing-Supplement-2016,Text Only,111,0,GIB-Bracing-Supplement-2016.pdf
-Inspector,Compliance,NZ Building Code,GIB-EzyBrace-Systems-2016.pdf,3.66,GIB-EzyBrace-Systems-2016,Text Only,254,0,GIB-EzyBrace-Systems-2016.pdf
-Inspector,Compliance,NZ Building Code,GIB-Fire-Systems-Manual.pdf,9.63,GIB-Fire-Systems-Manual,Text Only,577,0,GIB-Fire-Systems-Manual.pdf
-Inspector,Compliance,NZ Building Code,H1-AS1_6th-Edition.pdf,1.48,H1-AS1_6th-Edition,Text Only,148,0,H1-AS1_6th-Edition.pdf
-Inspector,Compliance,NZ Building Code,H1-VM1_6th-Edition-2025.pdf,0.95,H1-VM1_6th-Edition-2025,Text Only,220,0,H1-VM1_6th-Edition-2025.pdf
-Inspector,Compliance,NZ Building Code,Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf,2.15,Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020,Text Only,965,0,Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
-Inspector,Compliance,MBIE,MBIE-Minor-Variation-Guidance.pdf.pdf,2.39,MBIE-Minor-Variation-Guidance,Text Only,48,0,MBIE-Minor-Variation-Guidance.pdf.pdf
-Inspector,Compliance,MBIE,MBIE-Schedule-1-Exemptions-Guidance.pdf.pdf,9.19,MBIE-Schedule-1-Exemptions-Guidance,Text Only,870,0,MBIE-Schedule-1-Exemptions-Guidance.pdf.pdf
-Inspector,Compliance,MBIE,MBIE-Tolerances-Guide.pdf.pdf,0.69,MBIE-Tolerances-Guide,Text Only,971,0,MBIE-Tolerances-Guide.pdf.pdf
-Inspector,Compliance,NZ Building Code,NZS-36042011.pdf,10.07,NZS-36042011,Text Only,2467,0,NZS-36042011.pdf
-Inspector,Compliance,NZ Building Code,NZS-42292013.pdf,4.98,NZS-42292013,Text Only,498,0,NZS-42292013.pdf
-Inspector,Compliance,NZ Building Code,SNZ-HB-3604-2011-Selected-Extracts.pdf,10.07,SNZ-HB-3604-2011-Selected-Extracts,Text Only,671,0,SNZ-HB-3604-2011-Selected-Extracts.pdf
-Inspector,Compliance,NZ Building Code,WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf,3.69,WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022,Text Only,8,0,WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
-Inspector,Compliance,NZ Building Code,b1-structure-as1-second-edition.pdf,0.59,b1-structure-as1-second-edition,Text Only,51,0,b1-structure-as1-second-edition.pdf
-Inspector,Compliance,NZ Building Code,building-code.pdf,1.57,building-code,Text Only,823,0,building-code.pdf
-Inspector,Compliance,NZ Building Code,e2-external-moisture-as1-fourth-edition.pdf,22.36,e2-external-moisture-as1-fourth-edition,Text Only,79,0,e2-external-moisture-as1-fourth-edition.pdf
-Inspector,Compliance,NZ Building Code,nz_metal_roofing.pdf,17.95,nz_metal_roofing,Text Only,737,0,nz_metal_roofing.pdf
+agent_zone,category,brand,filename,file_size_mb,ingest_status,text_chunks,visual_assets,db_source_matched,storage_path
+Inspector,Compliance,NZ Building Code,Ardex-Waterproofing-Manual.pdf,42.59,Ingested,2631,0,Ardex-Waterproofing-Manual,Ardex-Waterproofing-Manual.pdf
+Inspector,Compliance,NZ Building Code,B1-Structure-Amendment13.pdf,1.61,Ingested,228,0,B1-Structure-Amendment13,B1-Structure-Amendment13.pdf
+Inspector,Compliance,NZ Building Code,C-AS1_2nd-Edition_2023.pdf,2.60,Ingested,126,0,C-AS1_2nd-Edition_2023,C-AS1_2nd-Edition_2023.pdf
+Inspector,Compliance,NZ Building Code,C-AS2_2nd-Edition_2025.pdf,5.79,Ingested,628,0,C-AS2_2nd-Edition_2025,C-AS2_2nd-Edition_2025.pdf
+Inspector,Compliance,NZ Building Code,C-AS3_Amendment-4_2019-EXPIRED.pdf,3.58,Ingested,616,0,C-AS3_Amendment-4_2019-EXPIRED,C-AS3_Amendment-4_2019-EXPIRED.pdf
+Inspector,Compliance,NZ Building Code,C-AS4_Amendment-4_2019-EXPIRED.pdf,4.12,Ingested,336,0,C-AS4_Amendment-4_2019-EXPIRED,C-AS4_Amendment-4_2019-EXPIRED.pdf
+Inspector,Compliance,NZ Building Code,C-AS5_Amendment-4_2019-EXPIRED.pdf,3.89,Ingested,434,0,C-AS5_Amendment-4_2019-EXPIRED,C-AS5_Amendment-4_2019-EXPIRED.pdf
+Inspector,Compliance,NZ Building Code,C-AS6_Amendment-4_2019-EXPIRED.pdf,3.69,Ingested,211,0,C-AS6_Amendment-4_2019-EXPIRED,C-AS6_Amendment-4_2019-EXPIRED.pdf
+Inspector,Compliance,NZ Building Code,C-AS7_Amendment-4_2019-EXPIRED.pdf,1.47,Ingested,33,0,C-AS7_Amendment-4_2019-EXPIRED,C-AS7_Amendment-4_2019-EXPIRED.pdf
+Inspector,Compliance,NZ Building Code,C-VM2_Amendment-6_2020.pdf,2.05,Ingested,372,0,C-VM2_Amendment-6_2020,C-VM2_Amendment-6_2020.pdf
+Inspector,Compliance,NZ Building Code,CAS3-Amendment4-2019-EXPIRED.pdf,3.58,Ingested,359,0,CAS3-Amendment4-2019-EXPIRED,CAS3-Amendment4-2019-EXPIRED.pdf
+Inspector,Compliance,NZ Building Code,E1-AS1_1st-Edition-Amd12-2024.pdf,2.66,Ingested,122,0,E1-AS1_1st-Edition-Amd12-2024,E1-AS1_1st-Edition-Amd12-2024.pdf
+Inspector,Compliance,NZ Building Code,E2-AS1_4th-Edition-2025.pdf,12.24,Ingested,384,0,E2-AS1_4th-Edition-2025,E2-AS1_4th-Edition-2025.pdf
+Inspector,Compliance,NZ Building Code,E3-AS1_2nd-Edition-Amd7-2020.pdf,0.92,Ingested,42,0,E3-AS1_2nd-Edition-Amd7-2020,E3-AS1_2nd-Edition-Amd7-2020.pdf
+Inspector,Compliance,NZ Building Code,F4-AS1_Amendment-6-2021.pdf,0.64,Ingested,14,0,F4-AS1_Amendment-6-2021,F4-AS1_Amendment-6-2021.pdf
+Inspector,Compliance,NZ Building Code,F6-AS1_Amendment-3-2021.pdf,0.48,Ingested,8,0,F6-AS1_Amendment-3-2021,F6-AS1_Amendment-3-2021.pdf
+Inspector,Compliance,NZ Building Code,F7-AS1_5th-Edition-2023.pdf,0.48,Ingested,8,0,F7-AS1_5th-Edition-2023,F7-AS1_5th-Edition-2023.pdf
+Inspector,Compliance,NZ Building Code,G12-AS1_3rd-Edition-Amd14-2024.pdf,5.90,Ingested,28,0,G12-AS1_3rd-Edition-Amd14-2024,G12-AS1_3rd-Edition-Amd14-2024.pdf
+Inspector,Compliance,NZ Building Code,G13-AS1_3rd-Edition-Amd14-2024.pdf,3.27,Ingested,9,0,G13-AS1_3rd-Edition-Amd14-2024,G13-AS1_3rd-Edition-Amd14-2024.pdf
+Inspector,Compliance,NZ Building Code,GIB-Bracing-Supplement-2016.pdf,1.82,Ingested,51,0,GIB-Bracing-Supplement-2016,GIB-Bracing-Supplement-2016.pdf
+Inspector,Compliance,NZ Building Code,GIB-EzyBrace-Systems-2016.pdf,3.66,Ingested,97,0,GIB-EzyBrace-Systems-2016,GIB-EzyBrace-Systems-2016.pdf
+Inspector,Compliance,NZ Building Code,GIB-Fire-Systems-Manual.pdf,9.63,Ingested,447,0,GIB-Fire-Systems-Manual,GIB-Fire-Systems-Manual.pdf
+Inspector,Compliance,NZ Building Code,H1-AS1_6th-Edition.pdf,1.48,Ingested,162,0,H1-AS1_6th-Edition,H1-AS1_6th-Edition.pdf
+Inspector,Compliance,NZ Building Code,H1-VM1_6th-Edition-2025.pdf,0.95,Ingested,103,0,H1-VM1_6th-Edition-2025,H1-VM1_6th-Edition-2025.pdf
+Inspector,Compliance,NZ Building Code,Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf,2.15,Ingested,783,0,Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020,Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+Inspector,Compliance,NZ Building Code,MBIE-Minor-Variation-Guidance.pdf.pdf,2.39,Ingested,48,0,MBIE-Minor-Variation-Guidance,MBIE-Minor-Variation-Guidance.pdf.pdf
+Inspector,Compliance,NZ Building Code,MBIE-Schedule-1-Exemptions-Guidance.pdf.pdf,9.19,Ingested,232,0,MBIE-Schedule-1-Exemptions-Guidance,MBIE-Schedule-1-Exemptions-Guidance.pdf.pdf
+Inspector,Compliance,NZ Building Code,MBIE-Tolerances-Guide.pdf.pdf,0.69,Ingested,195,0,MBIE-Tolerances-Guide,MBIE-Tolerances-Guide.pdf.pdf
+Inspector,Compliance,NZ Building Code,NZS-36042011.pdf,10.07,Ingested,1360,0,NZS-36042011,NZS-36042011.pdf
+Inspector,Compliance,NZ Building Code,NZS-42292013.pdf,4.98,Ingested,502,0,NZS-42292013,NZS-42292013.pdf
+Inspector,Compliance,NZ Building Code,SNZ-HB-3604-2011-Selected-Extracts.pdf,10.07,Ingested,794,0,SNZ-HB-3604-2011-Selected-Extracts,SNZ-HB-3604-2011-Selected-Extracts.pdf
+Inspector,Compliance,NZ Building Code,WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf,3.69,Ingested,19,0,WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022,WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+Inspector,Compliance,NZ Building Code,b1-structure-as1-second-edition.pdf,0.59,Ingested,76,0,b1-structure-as1-second-edition,b1-structure-as1-second-edition.pdf
+Inspector,Compliance,NZ Building Code,building-code.pdf,1.57,Ingested,370,0,building-code,building-code.pdf
+Inspector,Compliance,NZ Building Code,e2-external-moisture-as1-fourth-edition.pdf,22.36,Ingested,65,0,e2-external-moisture-as1-fourth-edition,e2-external-moisture-as1-fourth-edition.pdf
+Inspector,Compliance,NZ Building Code,nz_metal_roofing.pdf,17.95,Ingested,1213,0,nz_metal_roofing,nz_metal_roofing.pdf

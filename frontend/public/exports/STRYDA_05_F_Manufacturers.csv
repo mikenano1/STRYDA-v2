@@ -1,81 +1,81 @@
-agent_zone,category,brand_folder,filename,file_size_mb,db_source,ingest_status,agent_text_chunks,agent_visual_assets,storage_path
-Product Rep,F_Manufacturers,Bremick,Bremick_Industrial_Fasteners_Catalogue.pdf,0.97,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Bremick/Bremick_Industrial_Fasteners_Catalogue.pdf
-Product Rep,F_Manufacturers,Bremick,Bremick_Masonry_Anchor_Catalogue.pdf,4.49,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Bremick/Bremick_Masonry_Anchor_Catalogue.pdf
-Product Rep,F_Manufacturers,Bremick,Bremick_Socket_Screws_Catalogue.pdf,1.31,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Bremick/Bremick_Socket_Screws_Catalogue.pdf
-Product Rep,F_Manufacturers,Bremick,Bremick_Stainless_Steel_Catalogue.pdf,0.97,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Bremick/Bremick_Stainless_Steel_Catalogue.pdf
-Product Rep,F_Manufacturers,Buildex,Buildex_Low_Profile_Roof_Clip_Fastener_Guide.pdf,0.39,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Buildex/Buildex_Low_Profile_Roof_Clip_Fastener_Guide.pdf
-Product Rep,F_Manufacturers,Buildex,ITW_Buildex_2020_Catalog.pdf,2.74,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Buildex/ITW_Buildex_2020_Catalog.pdf
-Product Rep,F_Manufacturers,Buildex,ITW_Buildex_Catalog_2024-25.pdf,2.64,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Buildex/ITW_Buildex_Catalog_2024-25.pdf
-Product Rep,F_Manufacturers,Delfast,Delfast_Nails_BRANZ_Appraisal_1154.pdf,0.55,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Delfast/Delfast_Nails_BRANZ_Appraisal_1154.pdf
-Product Rep,F_Manufacturers,Delfast,Delfast_PlaceMakers_Nail_Guide_2023.pdf,1.76,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Nail_Guide_2023.pdf
-Product Rep,F_Manufacturers,Delfast,Delfast_PlaceMakers_Rural_Range_2021.pdf,3.48,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Rural_Range_2021.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-AG16-BRADS.pdf,0.81,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-AG16-BRADS.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-BC-BRADS.pdf,0.74,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-BC-BRADS.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-Blue-Head-Screw-Bolt-Installation-Guide.pdf,12.71,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-Blue-Head-Screw-Bolt-Installation-Guide.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-Bottom-Plate-Fixing-Installation-Guide-2.pdf,18.00,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-Bottom-Plate-Fixing-Installation-Guide-2.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-Bottom-Plate-Fixing-Installation-Guide.pdf,12.29,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-Bottom-Plate-Fixing-Installation-Guide.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-DA-BRADS.pdf,0.75,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-DA-BRADS.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-EC-BRADS.pdf,0.73,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-EC-BRADS.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-Orange-Head-Screw-Bolt-Installation-Guide.pdf,12.53,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-Orange-Head-Screw-Bolt-Installation-Guide.pdf
-Product Rep,F_Manufacturers,Ecko,0-ECKO-Through-Bolt-Installation-Guide.pdf,12.09,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/0-ECKO-Through-Bolt-Installation-Guide.pdf
-Product Rep,F_Manufacturers,Ecko,1-Bracing-Bracket-SPEC-Sheet-1.pdf,0.68,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/1-Bracing-Bracket-SPEC-Sheet-1.pdf
-Product Rep,F_Manufacturers,Ecko,1-FrameFit-Packer-SPEC-Sheet_OCT25.pdf,0.33,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/1-FrameFit-Packer-SPEC-Sheet_OCT25.pdf
-Product Rep,F_Manufacturers,Ecko,1-TurboSpitze-Cladding-Screws-SPEC-Sheet.pdf,0.90,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/1-TurboSpitze-Cladding-Screws-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,12kN-Pile-Fixing-SPEC-Sheet.pdf,2.32,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/12kN-Pile-Fixing-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,2-I-Joist-Hangers-SPEC-Sheet.pdf,3.54,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/2-I-Joist-Hangers-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,2-Joist-Hangers-SPEC-Sheet.pdf,2.94,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/2-Joist-Hangers-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,3-CPC-SPEC-Sheet.pdf,1.00,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/3-CPC-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,3-ECKO-Loose-Nails-Staples.pdf,5.62,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/3-ECKO-Loose-Nails-Staples.pdf
-Product Rep,F_Manufacturers,Ecko,4-ECKO-Collated-Fasteners.pdf,13.16,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/4-ECKO-Collated-Fasteners.pdf
-Product Rep,F_Manufacturers,Ecko,4-ECKO-Collated-fasteners-gas-pack.pdf,3.73,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/4-ECKO-Collated-fasteners-gas-pack.pdf
-Product Rep,F_Manufacturers,Ecko,4-Steel-Strap-SPEC-Sheet.pdf,0.70,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/4-Steel-Strap-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,5-ECKO-H-Packer.pdf,5.08,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/5-ECKO-H-Packer.pdf
-Product Rep,F_Manufacturers,Ecko,6-ECKO-Masonry-Fixings.pdf,6.64,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/6-ECKO-Masonry-Fixings.pdf
-Product Rep,F_Manufacturers,Ecko,6-MultiGrip-SPEC-Sheet.pdf,0.26,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/6-MultiGrip-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,6kN-Pile-Fixing-SPEC-Sheet.pdf,0.68,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/6kN-Pile-Fixing-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,7-Split-Hanger-SPEC-Sheet.pdf,0.57,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/7-Split-Hanger-SPEC-Sheet.pdf
-Product Rep,F_Manufacturers,Ecko,8-Stud-Strap-SPEC-Sheet-1.pdf,0.22,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/8-Stud-Strap-SPEC-Sheet-1.pdf
-Product Rep,F_Manufacturers,Ecko,A1-1-WB75-2.pdf,0.60,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/A1-1-WB75-2.pdf
-Product Rep,F_Manufacturers,Ecko,BPIR-Ecko-Brackets.pdf,0.31,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/BPIR-Ecko-Brackets.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-Bolts-Rods-Washers-Fixing-BPIR-Decl-V1.0.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-Bolts-Rods-Washers-Fixing-BPIR-Decl-V1.0.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-Brads-BPIR-Decl-V1.0 (1).pdf,6.39,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-Brads-BPIR-Decl-V1.0 (1).pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-Brads-BPIR-Decl-V1.0.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-Brads-BPIR-Decl-V1.0.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-Collated-Nails-BPIR-Decl-V1.0.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-Collated-Nails-BPIR-Decl-V1.0.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-Loose-Nails-Exterior-BPIR-Decl-V1.1.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-Loose-Nails-Exterior-BPIR-Decl-V1.1.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-Loose-Nails-Interior-BPIR-Decl-V1.0.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-Loose-Nails-Interior-BPIR-Decl-V1.0.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-Staples-BPIR-Decl-V1.0.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-Staples-BPIR-Decl-V1.0.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-TRex-17-Screws-BPIR-Decl-V1.0.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-TRex-17-Screws-BPIR-Decl-V1.0.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO-WANZ-Fixing-BPIR-Decl-V1.0.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO-WANZ-Fixing-BPIR-Decl-V1.0.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO_T-REX17_Decking_Screw_CSK.pdf,0.63,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO_T-REX17_Decking_Screw_CSK.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO_T-REX17_Decking_Screw_Cylindrical.pdf,0.74,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO_T-REX17_Decking_Screw_Cylindrical.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO_T-REX17_Decking_Screw_Trim.pdf,0.82,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO_T-REX17_Decking_Screw_Trim.pdf
-Product Rep,F_Manufacturers,Ecko,ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf
-Product Rep,F_Manufacturers,Ecko,T-REX17-Screws_TurboTIP_01_JoltScrew.pdf,1.16,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/T-REX17-Screws_TurboTIP_01_JoltScrew.pdf
-Product Rep,F_Manufacturers,Ecko,T-REX17-Screws_TurboTIP_01_batten-screws.pdf,1.39,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/T-REX17-Screws_TurboTIP_01_batten-screws.pdf
-Product Rep,F_Manufacturers,Ecko,T-REX17-Screws_TurboTIP_01_decking-screws-SS304.pdf,0.97,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ecko/T-REX17-Screws_TurboTIP_01_decking-screws-SS304.pdf
-Product Rep,F_Manufacturers,MacSim,Fasteners_Direct_Catalogue_MacSim_Products.pdf,31.16,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/MacSim/Fasteners_Direct_Catalogue_MacSim_Products.pdf
-Product Rep,F_Manufacturers,Mainland Fasteners,Mainland_Fasteners_Mini_Catalogue.pdf,20.92,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Mainland_Fasteners/Mainland_Fasteners_Mini_Catalogue.pdf
-Product Rep,F_Manufacturers,MiTek,MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf,5.32,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/MiTek/MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf
-Product Rep,F_Manufacturers,MiTek,MiTek_Stud-to-Top-Plate_Fixing_Schedule_2024.pdf,0.24,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/MiTek/MiTek_Stud-to-Top-Plate_Fixing_Schedule_2024.pdf
-Product Rep,F_Manufacturers,NZ Nails,NZ_Nails_Building_Product_Information_Sheet.pdf,0.16,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/NZ_Nails/NZ_Nails_Building_Product_Information_Sheet.pdf
-Product Rep,F_Manufacturers,NZSIP,NZ_SIP_Technical_Manual_Fasteners_Section.pdf,10.39,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/NZSIP/NZ_SIP_Technical_Manual_Fasteners_Section.pdf
-Product Rep,F_Manufacturers,Paslode,Paslode_2020_Full_Catalog.pdf,2.78,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Paslode/Paslode_2020_Full_Catalog.pdf
-Product Rep,F_Manufacturers,Paslode,Paslode_Fastener_Selection_Chart.pdf,0.13,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Paslode/Paslode_Fastener_Selection_Chart.pdf
-Product Rep,F_Manufacturers,Paslode,Paslode_Impulse_Purlin_Nails_Technical.pdf,0.12,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Paslode/Paslode_Impulse_Purlin_Nails_Technical.pdf
-Product Rep,F_Manufacturers,Paslode,Paslode_NZ_Nails_BRANZ_Appraisal_546.pdf,0.77,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Paslode/Paslode_NZ_Nails_BRANZ_Appraisal_546.pdf
-Product Rep,F_Manufacturers,Paslode,Paslode_Purlin_Nails_BRANZ_Appraisal.pdf,0.69,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Paslode/Paslode_Purlin_Nails_BRANZ_Appraisal.pdf
-Product Rep,F_Manufacturers,PlaceMakers,PlaceMakers_Fastenings_Catalogue_2020.pdf,9.75,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/PlaceMakers/PlaceMakers_Fastenings_Catalogue_2020.pdf
-Product Rep,F_Manufacturers,Pryda,NZ_Pryda_Bracing_Anchor_PDS.pdf,0.47,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Anchor_PDS.pdf
-Product Rep,F_Manufacturers,Pryda,NZ_Pryda_Bracing_Design_Guide_V1.02.pdf,4.19,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Design_Guide_V1.02.pdf
-Product Rep,F_Manufacturers,Pryda,NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf,4.52,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf
-Product Rep,F_Manufacturers,Pryda,Pryda_Builders_Guide_NZ.pdf,17.25,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Pryda/Pryda_Builders_Guide_NZ.pdf
-Product Rep,F_Manufacturers,Pryda,SP_Fasteners_Pryda_Product_Catalogue.pdf,17.49,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Pryda/SP_Fasteners_Pryda_Product_Catalogue.pdf
-Product Rep,F_Manufacturers,Ramset,Ramset_Technical_Product_Guide.pdf,3.11,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Ramset/Ramset_Technical_Product_Guide.pdf
-Product Rep,F_Manufacturers,SPAX,SPAX_Decking_Screw_Guide.pdf,0.39,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/SPAX/SPAX_Decking_Screw_Guide.pdf
-Product Rep,F_Manufacturers,SPAX,SPAX_Pacific_Product_Catalogue_2018-2019.pdf,31.22,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/SPAX/SPAX_Pacific_Product_Catalogue_2018-2019.pdf
-Product Rep,F_Manufacturers,Simpson Strong Tie,Simpson_Strong-Tie_Mass_Timber_Connectors_AUNZ.pdf,16.47,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Mass_Timber_Connectors_AUNZ.pdf
-Product Rep,F_Manufacturers,Simpson Strong Tie,Simpson_Strong-Tie_NZS_3604_Timber_Connectors.pdf,4.07,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_NZS_3604_Timber_Connectors.pdf
-Product Rep,F_Manufacturers,Simpson Strong Tie,Simpson_Strong-Tie_Timber_Construction_Connectors_Catalog.pdf,37.60,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Timber_Construction_Connectors_Catalog.pdf
-Product Rep,F_Manufacturers,Titan,Titan_Framing_Nails_BPIR_Declaration.pdf,0.13,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Titan/Titan_Framing_Nails_BPIR_Declaration.pdf
-Product Rep,F_Manufacturers,Zenith,Zenith_Hardware_Catalogue_2017.pdf,10.42,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2017.pdf
-Product Rep,F_Manufacturers,Zenith,Zenith_Hardware_Catalogue_2020.pdf,6.72,Fasteners Full Suite,Text Only,679,0,F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2020.pdf
+agent_zone,category,brand,filename,file_size_mb,ingest_status,text_chunks,visual_assets,db_source_matched,storage_path
+Product Rep,F_Manufacturers,Bremick,Bremick_Industrial_Fasteners_Catalogue.pdf,0.97,Not Ingested,0,0,,F_Manufacturers/Fasteners/Bremick/Bremick_Industrial_Fasteners_Catalogue.pdf
+Product Rep,F_Manufacturers,Bremick,Bremick_Masonry_Anchor_Catalogue.pdf,4.49,Not Ingested,0,0,,F_Manufacturers/Fasteners/Bremick/Bremick_Masonry_Anchor_Catalogue.pdf
+Product Rep,F_Manufacturers,Bremick,Bremick_Socket_Screws_Catalogue.pdf,1.31,Not Ingested,0,0,,F_Manufacturers/Fasteners/Bremick/Bremick_Socket_Screws_Catalogue.pdf
+Product Rep,F_Manufacturers,Bremick,Bremick_Stainless_Steel_Catalogue.pdf,0.97,Not Ingested,0,0,,F_Manufacturers/Fasteners/Bremick/Bremick_Stainless_Steel_Catalogue.pdf
+Product Rep,F_Manufacturers,Buildex,Buildex_Low_Profile_Roof_Clip_Fastener_Guide.pdf,0.39,Not Ingested,0,0,,F_Manufacturers/Fasteners/Buildex/Buildex_Low_Profile_Roof_Clip_Fastener_Guide.pdf
+Product Rep,F_Manufacturers,Buildex,ITW_Buildex_2020_Catalog.pdf,2.74,Not Ingested,0,0,,F_Manufacturers/Fasteners/Buildex/ITW_Buildex_2020_Catalog.pdf
+Product Rep,F_Manufacturers,Buildex,ITW_Buildex_Catalog_2024-25.pdf,2.64,Not Ingested,0,0,,F_Manufacturers/Fasteners/Buildex/ITW_Buildex_Catalog_2024-25.pdf
+Product Rep,F_Manufacturers,Delfast,Delfast_Nails_BRANZ_Appraisal_1154.pdf,0.55,Not Ingested,0,0,,F_Manufacturers/Fasteners/Delfast/Delfast_Nails_BRANZ_Appraisal_1154.pdf
+Product Rep,F_Manufacturers,Delfast,Delfast_PlaceMakers_Nail_Guide_2023.pdf,1.76,Not Ingested,0,0,,F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Nail_Guide_2023.pdf
+Product Rep,F_Manufacturers,Delfast,Delfast_PlaceMakers_Rural_Range_2021.pdf,3.48,Not Ingested,0,0,,F_Manufacturers/Fasteners/Delfast/Delfast_PlaceMakers_Rural_Range_2021.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-AG16-BRADS.pdf,0.81,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-AG16-BRADS.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-BC-BRADS.pdf,0.74,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-BC-BRADS.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-Blue-Head-Screw-Bolt-Installation-Guide.pdf,12.71,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-Blue-Head-Screw-Bolt-Installation-Guide.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-Bottom-Plate-Fixing-Installation-Guide-2.pdf,18.00,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-Bottom-Plate-Fixing-Installation-Guide-2.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-Bottom-Plate-Fixing-Installation-Guide.pdf,12.29,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-Bottom-Plate-Fixing-Installation-Guide.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-DA-BRADS.pdf,0.75,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-DA-BRADS.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-EC-BRADS.pdf,0.73,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-EC-BRADS.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-Orange-Head-Screw-Bolt-Installation-Guide.pdf,12.53,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-Orange-Head-Screw-Bolt-Installation-Guide.pdf
+Product Rep,F_Manufacturers,Ecko,0-ECKO-Through-Bolt-Installation-Guide.pdf,12.09,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/0-ECKO-Through-Bolt-Installation-Guide.pdf
+Product Rep,F_Manufacturers,Ecko,1-Bracing-Bracket-SPEC-Sheet-1.pdf,0.68,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/1-Bracing-Bracket-SPEC-Sheet-1.pdf
+Product Rep,F_Manufacturers,Ecko,1-FrameFit-Packer-SPEC-Sheet_OCT25.pdf,0.33,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/1-FrameFit-Packer-SPEC-Sheet_OCT25.pdf
+Product Rep,F_Manufacturers,Ecko,1-TurboSpitze-Cladding-Screws-SPEC-Sheet.pdf,0.90,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/1-TurboSpitze-Cladding-Screws-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,12kN-Pile-Fixing-SPEC-Sheet.pdf,2.32,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/12kN-Pile-Fixing-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,2-I-Joist-Hangers-SPEC-Sheet.pdf,3.54,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/2-I-Joist-Hangers-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,2-Joist-Hangers-SPEC-Sheet.pdf,2.94,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/2-Joist-Hangers-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,3-CPC-SPEC-Sheet.pdf,1.00,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/3-CPC-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,3-ECKO-Loose-Nails-Staples.pdf,5.62,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/3-ECKO-Loose-Nails-Staples.pdf
+Product Rep,F_Manufacturers,Ecko,4-ECKO-Collated-Fasteners.pdf,13.16,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/4-ECKO-Collated-Fasteners.pdf
+Product Rep,F_Manufacturers,Ecko,4-ECKO-Collated-fasteners-gas-pack.pdf,3.73,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/4-ECKO-Collated-fasteners-gas-pack.pdf
+Product Rep,F_Manufacturers,Ecko,4-Steel-Strap-SPEC-Sheet.pdf,0.70,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/4-Steel-Strap-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,5-ECKO-H-Packer.pdf,5.08,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/5-ECKO-H-Packer.pdf
+Product Rep,F_Manufacturers,Ecko,6-ECKO-Masonry-Fixings.pdf,6.64,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/6-ECKO-Masonry-Fixings.pdf
+Product Rep,F_Manufacturers,Ecko,6-MultiGrip-SPEC-Sheet.pdf,0.26,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/6-MultiGrip-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,6kN-Pile-Fixing-SPEC-Sheet.pdf,0.68,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/6kN-Pile-Fixing-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,7-Split-Hanger-SPEC-Sheet.pdf,0.57,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/7-Split-Hanger-SPEC-Sheet.pdf
+Product Rep,F_Manufacturers,Ecko,8-Stud-Strap-SPEC-Sheet-1.pdf,0.22,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/8-Stud-Strap-SPEC-Sheet-1.pdf
+Product Rep,F_Manufacturers,Ecko,A1-1-WB75-2.pdf,0.60,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/A1-1-WB75-2.pdf
+Product Rep,F_Manufacturers,Ecko,BPIR-Ecko-Brackets.pdf,0.31,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/BPIR-Ecko-Brackets.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-Bolts-Rods-Washers-Fixing-BPIR-Decl-V1.0.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-Bolts-Rods-Washers-Fixing-BPIR-Decl-V1.0.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-Brads-BPIR-Decl-V1.0 (1).pdf,6.39,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-Brads-BPIR-Decl-V1.0 (1).pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-Brads-BPIR-Decl-V1.0.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-Brads-BPIR-Decl-V1.0.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-Collated-Nails-BPIR-Decl-V1.0.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-Collated-Nails-BPIR-Decl-V1.0.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-Loose-Nails-Exterior-BPIR-Decl-V1.1.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-Loose-Nails-Exterior-BPIR-Decl-V1.1.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-Loose-Nails-Interior-BPIR-Decl-V1.0.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-Loose-Nails-Interior-BPIR-Decl-V1.0.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-Staples-BPIR-Decl-V1.0.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-Staples-BPIR-Decl-V1.0.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-TRex-17-Screws-BPIR-Decl-V1.0.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-TRex-17-Screws-BPIR-Decl-V1.0.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO-WANZ-Fixing-BPIR-Decl-V1.0.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO-WANZ-Fixing-BPIR-Decl-V1.0.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO_T-REX17_Decking_Screw_CSK.pdf,0.63,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO_T-REX17_Decking_Screw_CSK.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO_T-REX17_Decking_Screw_Cylindrical.pdf,0.74,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO_T-REX17_Decking_Screw_Cylindrical.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO_T-REX17_Decking_Screw_Trim.pdf,0.82,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO_T-REX17_Decking_Screw_Trim.pdf
+Product Rep,F_Manufacturers,Ecko,ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/ECKO_T-Rex_17_Screws_BPIR_Declaration.pdf
+Product Rep,F_Manufacturers,Ecko,T-REX17-Screws_TurboTIP_01_JoltScrew.pdf,1.16,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/T-REX17-Screws_TurboTIP_01_JoltScrew.pdf
+Product Rep,F_Manufacturers,Ecko,T-REX17-Screws_TurboTIP_01_batten-screws.pdf,1.39,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/T-REX17-Screws_TurboTIP_01_batten-screws.pdf
+Product Rep,F_Manufacturers,Ecko,T-REX17-Screws_TurboTIP_01_decking-screws-SS304.pdf,0.97,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ecko/T-REX17-Screws_TurboTIP_01_decking-screws-SS304.pdf
+Product Rep,F_Manufacturers,MacSim,Fasteners_Direct_Catalogue_MacSim_Products.pdf,31.16,Not Ingested,0,0,,F_Manufacturers/Fasteners/MacSim/Fasteners_Direct_Catalogue_MacSim_Products.pdf
+Product Rep,F_Manufacturers,Mainland Fasteners,Mainland_Fasteners_Mini_Catalogue.pdf,20.92,Not Ingested,0,0,,F_Manufacturers/Fasteners/Mainland_Fasteners/Mainland_Fasteners_Mini_Catalogue.pdf
+Product Rep,F_Manufacturers,MiTek,MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf,5.32,Not Ingested,0,0,,F_Manufacturers/Fasteners/MiTek/MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf
+Product Rep,F_Manufacturers,MiTek,MiTek_Stud-to-Top-Plate_Fixing_Schedule_2024.pdf,0.24,Not Ingested,0,0,,F_Manufacturers/Fasteners/MiTek/MiTek_Stud-to-Top-Plate_Fixing_Schedule_2024.pdf
+Product Rep,F_Manufacturers,NZ Nails,NZ_Nails_Building_Product_Information_Sheet.pdf,0.16,Not Ingested,0,0,,F_Manufacturers/Fasteners/NZ_Nails/NZ_Nails_Building_Product_Information_Sheet.pdf
+Product Rep,F_Manufacturers,NZSIP,NZ_SIP_Technical_Manual_Fasteners_Section.pdf,10.39,Not Ingested,0,0,,F_Manufacturers/Fasteners/NZSIP/NZ_SIP_Technical_Manual_Fasteners_Section.pdf
+Product Rep,F_Manufacturers,Paslode,Paslode_2020_Full_Catalog.pdf,2.78,Not Ingested,0,0,,F_Manufacturers/Fasteners/Paslode/Paslode_2020_Full_Catalog.pdf
+Product Rep,F_Manufacturers,Paslode,Paslode_Fastener_Selection_Chart.pdf,0.13,Not Ingested,0,0,,F_Manufacturers/Fasteners/Paslode/Paslode_Fastener_Selection_Chart.pdf
+Product Rep,F_Manufacturers,Paslode,Paslode_Impulse_Purlin_Nails_Technical.pdf,0.12,Not Ingested,0,0,,F_Manufacturers/Fasteners/Paslode/Paslode_Impulse_Purlin_Nails_Technical.pdf
+Product Rep,F_Manufacturers,Paslode,Paslode_NZ_Nails_BRANZ_Appraisal_546.pdf,0.77,Not Ingested,0,0,,F_Manufacturers/Fasteners/Paslode/Paslode_NZ_Nails_BRANZ_Appraisal_546.pdf
+Product Rep,F_Manufacturers,Paslode,Paslode_Purlin_Nails_BRANZ_Appraisal.pdf,0.69,Not Ingested,0,0,,F_Manufacturers/Fasteners/Paslode/Paslode_Purlin_Nails_BRANZ_Appraisal.pdf
+Product Rep,F_Manufacturers,PlaceMakers,PlaceMakers_Fastenings_Catalogue_2020.pdf,9.75,Not Ingested,0,0,,F_Manufacturers/Fasteners/PlaceMakers/PlaceMakers_Fastenings_Catalogue_2020.pdf
+Product Rep,F_Manufacturers,Pryda,NZ_Pryda_Bracing_Anchor_PDS.pdf,0.47,Not Ingested,0,0,,F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Anchor_PDS.pdf
+Product Rep,F_Manufacturers,Pryda,NZ_Pryda_Bracing_Design_Guide_V1.02.pdf,4.19,Not Ingested,0,0,,F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Bracing_Design_Guide_V1.02.pdf
+Product Rep,F_Manufacturers,Pryda,NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf,4.52,Not Ingested,0,0,,F_Manufacturers/Fasteners/Pryda/NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf
+Product Rep,F_Manufacturers,Pryda,Pryda_Builders_Guide_NZ.pdf,17.25,Not Ingested,0,0,,F_Manufacturers/Fasteners/Pryda/Pryda_Builders_Guide_NZ.pdf
+Product Rep,F_Manufacturers,Pryda,SP_Fasteners_Pryda_Product_Catalogue.pdf,17.49,Not Ingested,0,0,,F_Manufacturers/Fasteners/Pryda/SP_Fasteners_Pryda_Product_Catalogue.pdf
+Product Rep,F_Manufacturers,Ramset,Ramset_Technical_Product_Guide.pdf,3.11,Not Ingested,0,0,,F_Manufacturers/Fasteners/Ramset/Ramset_Technical_Product_Guide.pdf
+Product Rep,F_Manufacturers,SPAX,SPAX_Decking_Screw_Guide.pdf,0.39,Not Ingested,0,0,,F_Manufacturers/Fasteners/SPAX/SPAX_Decking_Screw_Guide.pdf
+Product Rep,F_Manufacturers,SPAX,SPAX_Pacific_Product_Catalogue_2018-2019.pdf,31.22,Not Ingested,0,0,,F_Manufacturers/Fasteners/SPAX/SPAX_Pacific_Product_Catalogue_2018-2019.pdf
+Product Rep,F_Manufacturers,Simpson Strong Tie,Simpson_Strong-Tie_Mass_Timber_Connectors_AUNZ.pdf,16.47,Not Ingested,0,0,,F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Mass_Timber_Connectors_AUNZ.pdf
+Product Rep,F_Manufacturers,Simpson Strong Tie,Simpson_Strong-Tie_NZS_3604_Timber_Connectors.pdf,4.07,Not Ingested,0,0,,F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_NZS_3604_Timber_Connectors.pdf
+Product Rep,F_Manufacturers,Simpson Strong Tie,Simpson_Strong-Tie_Timber_Construction_Connectors_Catalog.pdf,37.60,Not Ingested,0,0,,F_Manufacturers/Fasteners/Simpson_Strong_Tie/Simpson_Strong-Tie_Timber_Construction_Connectors_Catalog.pdf
+Product Rep,F_Manufacturers,Titan,Titan_Framing_Nails_BPIR_Declaration.pdf,0.13,Not Ingested,0,0,,F_Manufacturers/Fasteners/Titan/Titan_Framing_Nails_BPIR_Declaration.pdf
+Product Rep,F_Manufacturers,Zenith,Zenith_Hardware_Catalogue_2017.pdf,10.42,Not Ingested,0,0,,F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2017.pdf
+Product Rep,F_Manufacturers,Zenith,Zenith_Hardware_Catalogue_2020.pdf,6.72,Not Ingested,0,0,,F_Manufacturers/Fasteners/Zenith/Zenith_Hardware_Catalogue_2020.pdf
