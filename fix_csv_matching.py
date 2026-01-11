@@ -109,12 +109,23 @@ CATEGORIES = {
 # =============================================================================
 
 def get_all_db_sources():
-    """Get all unique sources and their chunk counts from the database."""
-    result = supabase.table('documents').select('source').execute()
+    """Get all unique sources and their chunk counts from the database (with pagination)."""
     sources = {}
-    for row in result.data:
-        src = row.get('source', 'UNKNOWN')
-        sources[src] = sources.get(src, 0) + 1
+    offset = 0
+    batch_size = 1000
+    
+    print("   Fetching all sources (paginated)...")
+    while True:
+        result = supabase.table('documents').select('source').range(offset, offset + batch_size - 1).execute()
+        if not result.data:
+            break
+        for row in result.data:
+            src = row.get('source', 'UNKNOWN')
+            sources[src] = sources.get(src, 0) + 1
+        offset += batch_size
+        if len(result.data) < batch_size:
+            break
+    
     return sources
 
 def normalize_string(s):
