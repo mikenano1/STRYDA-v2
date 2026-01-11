@@ -156,14 +156,21 @@ def extract_core_filename(source_name):
 # MATCHING ALGORITHM
 # =============================================================================
 
-def find_matching_source(filename, storage_path, db_sources):
+def find_matching_source(filename, storage_path, db_sources, db_sources_normalized):
     """
     Find the matching database source for a storage filename.
     
+    Handles these patterns from the database:
+    1. "Brand Deep Dive - filename.pdf" (552 sources)
+    2. "Brand - filename" without .pdf (96 sources - Abodo Wood)  
+    3. Plain filename (174 sources - ECKO, Simpson, etc.)
+    4. "Brand_filename" underscore pattern (16 sources - James Hardie)
+    
     Returns: (source_name, chunk_count) or (None, 0)
     """
-    # Clean up filename
-    filename_clean = filename.replace('.pdf', '').replace('.PDF', '')
+    # Clean up filename variations
+    filename_with_pdf = filename if filename.endswith('.pdf') else f"{filename}.pdf"
+    filename_no_pdf = filename.replace('.pdf', '').replace('.PDF', '')
     filename_normalized = normalize_string(filename)
     
     # Extract brand from storage path
@@ -174,51 +181,53 @@ def find_matching_source(filename, storage_path, db_sources):
             brand_from_path = part
             break
     
-    # Build list of possible source patterns to match
+    # Build list of possible source patterns to match (in order of likelihood)
     patterns_to_try = []
     
-    # Pattern 1: Brand + " - " + filename (most common for Abodo Wood)
     if brand_from_path:
         for brand_variant in BRAND_MAPPINGS.get(brand_from_path, []):
-            patterns_to_try.append(f"{brand_variant} - {filename_clean}")
-            patterns_to_try.append(f"{brand_variant} Deep Dive - {filename_clean}")
-            patterns_to_try.append(f"{brand_variant} - {filename}")  # with .pdf
-            patterns_to_try.append(f"{brand_variant} Deep Dive - {filename}")
+            # Pattern 1: "Brand Deep Dive - filename.pdf" (most common - 552 sources)
+            patterns_to_try.append(f"{brand_variant} Deep Dive - {filename_with_pdf}")
+            patterns_to_try.append(f"{brand_variant} Deep Dive - {filename_no_pdf}.pdf")
+            
+            # Pattern 2: "Brand - filename" without .pdf (Abodo Wood style - 96 sources)
+            patterns_to_try.append(f"{brand_variant} - {filename_no_pdf}")
+            
+            # Pattern 4: "Brand_filename" underscore style (James Hardie - 16 sources)
+            underscore_name = filename_no_pdf.replace('-', '_').replace(' ', '_')
+            patterns_to_try.append(f"{brand_variant}_{underscore_name}")
+            
+            # Also try with brand having underscore
+            brand_underscore = brand_variant.replace(' ', '_')
+            patterns_to_try.append(f"{brand_underscore}_{underscore_name}")
     
-    # Pattern 2: Direct filename match
-    patterns_to_try.append(filename_clean)
-    patterns_to_try.append(filename)
-    
-    # Pattern 3: Filename with dashes replaced
-    patterns_to_try.append(filename_clean.replace('-', ' '))
+    # Pattern 3: Plain filename (ECKO, Simpson, etc. - 174 sources)
+    patterns_to_try.append(filename_no_pdf)
+    patterns_to_try.append(filename_with_pdf)
     
     # Try exact matches first
     for pattern in patterns_to_try:
         if pattern in db_sources:
             return pattern, db_sources[pattern]
     
-    # Try normalized matching
+    # If no exact match, try normalized matching
+    # First, check if any DB source CONTAINS the filename
     for db_source, count in db_sources.items():
-        db_normalized = normalize_string(db_source)
-        
-        # Check if filename is contained in source
+        # Check if DB source ends with the filename (with or without .pdf)
+        if db_source.endswith(f' - {filename_with_pdf}'):
+            return db_source, count
+        if db_source.endswith(f' - {filename_no_pdf}'):
+            return db_source, count
+    
+    # Try normalized substring matching
+    for db_source, db_normalized in db_sources_normalized.items():
+        # Check if normalized filename is in normalized source
         if filename_normalized and filename_normalized in db_normalized:
-            return db_source, count
+            return db_source, db_sources[db_source]
         
-        # Check if source core filename matches
-        core_filename = normalize_string(extract_core_filename(db_source))
-        if core_filename and core_filename == filename_normalized:
-            return db_source, count
-        
-        # Partial match: check significant overlap
-        if filename_normalized and len(filename_normalized) > 10:
-            # Check if 80% of words match
-            file_words = set(filename_normalized.split())
-            db_words = set(db_normalized.split())
-            if file_words and db_words:
-                overlap = len(file_words & db_words) / len(file_words)
-                if overlap > 0.8:
-                    return db_source, count
+        # Check if normalized source ends with normalized filename
+        if db_normalized.endswith(filename_normalized):
+            return db_source, db_sources[db_source]
     
     return None, 0
 
