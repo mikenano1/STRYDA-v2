@@ -394,10 +394,14 @@ def main():
     print(f"   Found {len(db_sources)} unique sources")
     print(f"   Total chunks: {sum(db_sources.values())}")
     
+    # Pre-compute normalized sources for faster matching
+    print("   Building normalized source index...")
+    db_sources_normalized = {src: normalize_string(src) for src in db_sources.keys()}
+    
     # Generate CSVs for each category
     summaries = []
     for category_name, config in CATEGORIES.items():
-        summary = generate_csv(category_name, config, db_sources, '/app/data')
+        summary = generate_csv(category_name, config, db_sources, db_sources_normalized, '/app/data')
         summaries.append(summary)
         
         # Copy to public exports
