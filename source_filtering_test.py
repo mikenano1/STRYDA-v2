@@ -18,7 +18,7 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 # Backend URL
-BACKEND_URL = "https://eng-image-extract.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://integrity-hub-5.preview.emergentagent.com/api/chat"
 
 # Test queries organized by expected source
 TEST_QUERIES = {

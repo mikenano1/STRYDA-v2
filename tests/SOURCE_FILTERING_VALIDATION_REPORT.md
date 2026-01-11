@@ -2,7 +2,7 @@
 
 **Test Date:** 2025-11-25T06:30:31.409292
 
-**Backend URL:** https://eng-image-extract.preview.emergentagent.com/api/chat
+**Backend URL:** https://integrity-hub-5.preview.emergentagent.com/api/chat
 
 **Total Queries Tested:** 20
 

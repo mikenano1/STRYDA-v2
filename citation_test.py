@@ -6,7 +6,7 @@ Additional testing to understand citation system behavior
 import requests
 import json
 
-BACKEND_URL = "https://eng-image-extract.preview.emergentagent.com"
+BACKEND_URL = "https://integrity-hub-5.preview.emergentagent.com"
 
 def test_citation_scenarios():
     """Test various scenarios to understand when citations are provided"""

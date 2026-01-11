@@ -8,7 +8,7 @@ import { Platform } from 'react-native';
 // AUTOMATIC URL DETECTION
 // 1. If Web: Use relative path (proxied)
 // 2. If Native: Use explicit production URL
-const PROD_URL = 'https://eng-image-extract.preview.emergentagent.com'; 
+const PROD_URL = 'https://integrity-hub-5.preview.emergentagent.com'; 
 const API_BASE_URL = Platform.OS === 'web' ? '' : PROD_URL;
 
 export interface Citation {

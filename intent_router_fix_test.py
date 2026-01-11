@@ -10,7 +10,7 @@ import time
 from typing import Dict, List, Tuple
 
 # Backend URL
-BACKEND_URL = "https://eng-image-extract.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://integrity-hub-5.preview.emergentagent.com/api/chat"
 
 # Test queries
 GENERAL_QUERIES = [
