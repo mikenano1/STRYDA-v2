@@ -290,7 +290,7 @@ def extract_category_from_path(storage_path):
 # CSV GENERATION
 # =============================================================================
 
-def generate_csv(category_name, config, db_sources, output_dir):
+def generate_csv(category_name, config, db_sources, db_sources_normalized, output_dir):
     """Generate a CSV for a specific category."""
     bucket = config['bucket']
     path = config['path']
@@ -322,7 +322,7 @@ def generate_csv(category_name, config, db_sources, output_dir):
         category = extract_category_from_path(storage_path)
         
         # Find matching source in database
-        db_source, chunks = find_matching_source(filename, storage_path, db_sources)
+        db_source, chunks = find_matching_source(filename, storage_path, db_sources, db_sources_normalized)
         
         if db_source:
             ingest_status = 'Ingested'
