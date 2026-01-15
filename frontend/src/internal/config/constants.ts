@@ -3,7 +3,7 @@
  * Hardcoded preview URL for production deployment
  */
 
-export const API_BASE = "https://integrity-hub-5.preview.emergentagent.com";
+export const API_BASE = "https://doclib-scraper.preview.emergentagent.com";
 export const FEATURE_TIER1 = true;
 
 export const CONFIG = {

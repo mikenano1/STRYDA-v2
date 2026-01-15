@@ -10,7 +10,7 @@ import json
 import time
 from datetime import datetime
 
-BACKEND_URL = "https://integrity-hub-5.preview.emergentagent.com"
+BACKEND_URL = "https://doclib-scraper.preview.emergentagent.com"
 
 async def test_review_request_scenarios():
     """Test the specific scenarios from the review request"""

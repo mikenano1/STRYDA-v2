@@ -5,7 +5,7 @@ import requests
 import json
 import time
 
-BACKEND_URL = "https://integrity-hub-5.preview.emergentagent.com"
+BACKEND_URL = "https://doclib-scraper.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # One query per category

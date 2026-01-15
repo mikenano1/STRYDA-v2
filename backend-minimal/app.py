@@ -807,7 +807,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://app.emergent.sh",
-        "https://integrity-hub-5.preview.emergentagent.com",
+        "https://doclib-scraper.preview.emergentagent.com",
         "http://localhost:3000",  # Dev only
     ],
     allow_credentials=False,  # Enhanced security
