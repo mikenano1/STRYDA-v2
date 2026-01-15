@@ -26,11 +26,12 @@ from urllib.parse import urljoin, urlparse, unquote
 from supabase import create_client
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv("/app/backend-minimal/.env")
 
 # Supabase configuration
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("SUPABASE_KEY")
+print(f"🔗 Supabase URL: {SUPABASE_URL[:30]}..." if SUPABASE_URL else "❌ No SUPABASE_URL")
 BUCKET_NAME = "product-library"
 
 # Initialize Supabase client
