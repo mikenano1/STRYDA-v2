@@ -543,14 +543,42 @@ def consolidate_citations(docs: List[Dict], max_primary: int = 3, max_secondary:
     import re
     
     def normalize_source_name(title: str) -> str:
-        """Normalize source name by stripping suffixes after |, -, or • (bullet point)"""
-        # Split on Pipe, Dash, OR Bullet Point using regex
-        # "NZS 3604 • Section 2" -> "NZS 3604"
-        # "GIB Site Guide | Page 4" -> "GIB Site Guide"
-        # "NZS 3604:2011 - Section 7" -> "NZS 3604:2011"
-        base_title = re.split(r'[|\-•]', title)[0]
-        base_title = base_title.replace('Deep Dive', '').strip()
-        return base_title
+        """
+        Normalize source name for grouping while preserving document identity.
+        
+        FIXED: Previous version split on ANY dash, which destroyed filenames like
+        'MBIE-Minor-Variation-Guidance' -> 'MBIE'. Now we:
+        1. Only split on ' | ' (pipe with spaces) or ' • ' (bullet with spaces)
+        2. Only split on ' - ' (dash with spaces) when followed by Page/Section/Clause
+        3. Remove 'Deep Dive' suffix but preserve the document name
+        
+        Examples:
+        - "GIB Site Guide | Page 4" -> "GIB Site Guide"
+        - "NZS 3604:2011 - Section 7" -> "NZS 3604:2011"
+        - "MBIE-Minor-Variation-Guidance" -> "MBIE-Minor-Variation-Guidance" (preserved!)
+        - "Kingspan Deep Dive - product-name.pdf" -> "Kingspan - product-name.pdf"
+        """
+        # Step 1: Split on ' | ' (pipe with spaces) - clear metadata separator
+        if ' | ' in title:
+            title = title.split(' | ')[0]
+        
+        # Step 2: Split on ' • ' (bullet with spaces)
+        if ' • ' in title:
+            title = title.split(' • ')[0]
+        
+        # Step 3: Only split on ' - ' when followed by Page/Section/Clause/p./s./etc.
+        # This preserves filenames with dashes like 'MBIE-Minor-Variation-Guidance'
+        page_suffix_pattern = r' - (?:Page|Section|Clause|p\.|s\.|Ch\.|Chapter|Part)\b'
+        if re.search(page_suffix_pattern, title, re.IGNORECASE):
+            title = re.split(page_suffix_pattern, title, flags=re.IGNORECASE)[0]
+        
+        # Step 4: Remove 'Deep Dive' suffix but keep the rest
+        title = re.sub(r'\s*Deep Dive\s*', ' ', title).strip()
+        
+        # Step 5: Clean up any double spaces
+        title = re.sub(r'\s+', ' ', title).strip()
+        
+        return title
     
     if not docs:
         return {'primary': [], 'secondary': [], 'grouped': {}}
