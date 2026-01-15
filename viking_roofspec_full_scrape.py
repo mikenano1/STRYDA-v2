@@ -233,10 +233,62 @@ def get_storage_folder(url, link_text):
         if keyword in text_lower:
             return "B_Enclosure/Viking_Roofspec/00_General_Resources"
     
-    # Check folder mapping
-    for keyword, folder in FOLDER_MAPPING.items():
-        if keyword in combined:
-            return folder
+    # Check URL path for product category (most reliable)
+    # Enviroclad files
+    if "/enviroclad" in url_lower or "vik_env" in text_lower or "env_" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Enviroclad_TPO"
+    
+    # Torch-On files
+    if "/torch-on" in url_lower or "torch" in text_lower or "gemini" in text_lower or "lybra" in text_lower or "phoenix" in text_lower or "halley" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Torch_On_Membranes"
+    
+    # Rubber membranes
+    if "/rubber" in url_lower or "butyl" in text_lower or "epiclad" in text_lower or "epdm" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Rubber_Membranes"
+    
+    # SilCoat
+    if "/silcoat" in url_lower or "silcoat" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Liquid_Membranes"
+    
+    # WarmSpan2 (check before WarmSpan to avoid false matches)
+    if "warmspan2" in url_lower or "warmspan²" in url_lower or "warmspan2" in text_lower or "h1-roof" in text_lower or "h1 roof" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated"
+    
+    # WarmSpan
+    if "/warmspan" in url_lower or "warmspan" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated"
+    
+    # WarmRoof
+    if "/warmroof" in url_lower or "warmroof" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated"
+    
+    # Roof Garden / Green Roofs
+    if "/roof-garden" in url_lower or "roof garden" in text_lower or "anti-root" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Green_Roofs"
+    
+    # CertainTeed Shingles
+    if "/certainteed" in url_lower or "certainteed" in text_lower or "landmark" in text_lower or "highland" in text_lower or "presidential" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Shingles_Asphalt"
+    
+    # EcoStar
+    if "/ecostar" in url_lower or "ecostar" in text_lower or "majestic" in text_lower or "seneca" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Shingles_Synthetic"
+    
+    # Dec-K-ing / Decking
+    if "/dec-k-ing" in url_lower or "dec-k-ing" in text_lower or "decking" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Decking_Systems"
+    
+    # Buzon / Pedestals
+    if "/buzon" in url_lower or "buzon" in text_lower or "pedestal" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Decking_Systems"
+    
+    # Floating Deck
+    if "/floating-deck" in url_lower or "floating deck" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Decking_Systems"
+    
+    # Tanking
+    if "/tanking" in url_lower or "tanking" in text_lower:
+        return "B_Enclosure/Viking_Roofspec/Tanking_Systems"
     
     # Default folder
     return "B_Enclosure/Viking_Roofspec/00_General_Resources"
