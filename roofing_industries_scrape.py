@@ -152,6 +152,9 @@ stats = {
 
 def sanitize_filename(name):
     """Clean filename for safe storage"""
+    # Remove trademark/registered symbols that cause Supabase errors
+    name = name.replace('™', '').replace('®', '').replace('©', '')
+    # Remove other invalid characters
     name = re.sub(r'[<>:"/\\|?*]', '', name)
     name = re.sub(r'\s+', ' ', name).strip()
     if len(name) > 200:
