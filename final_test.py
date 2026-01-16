@@ -7,7 +7,7 @@ import asyncio
 import aiohttp
 import json
 
-BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
+BACKEND_URL = "https://knowledgebase-hub.preview.emergentagent.com"
 
 async def final_comprehensive_test():
     """Run comprehensive test to confirm issues"""

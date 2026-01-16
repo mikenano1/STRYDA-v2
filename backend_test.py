@@ -13,7 +13,7 @@ import time
 from typing import Dict, Any, List
 
 # Test Configuration
-BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://knowledgebase-hub.preview.emergentagent.com/api/chat"
 SESSION_ID = "test_session_bug_fixes"
 USER_ID = "test_user"
 

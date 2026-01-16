@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 # URL = "http://localhost:8001" # Internal
-URL = "https://pdf-library-14.preview.emergentagent.com" # External proxy
+URL = "https://knowledgebase-hub.preview.emergentagent.com" # External proxy
 
 def test_delete():
     fake_id = "non_existent_session_123"

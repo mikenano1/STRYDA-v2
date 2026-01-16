@@ -6,7 +6,7 @@ Test the enhanced chat endpoint directly to see if citations work there
 import requests
 import json
 
-BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
+BACKEND_URL = "https://knowledgebase-hub.preview.emergentagent.com"
 
 def test_enhanced_chat_endpoint():
     """Test the enhanced chat endpoint directly"""

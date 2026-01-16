@@ -10,7 +10,7 @@ import time
 from typing import Dict, List, Tuple
 
 # Backend URL
-BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com/api/chat"
+BACKEND_URL = "https://knowledgebase-hub.preview.emergentagent.com/api/chat"
 
 # Test queries
 GENERAL_QUERIES = [

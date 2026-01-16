@@ -3,137 +3,129 @@
 The user's primary goal is to build a complete, accurate, and meticulously organized knowledge base for the STRYDA RAG application. This involves a large-scale data sourcing effort to scrape technical PDF documentation from various manufacturer websites, applying a strict STRYDA MASTER PROTOCOL for file naming, organization, and deduplication.
 
 **PRODUCT REQUIREMENTS (STRYDA MASTER PROTOCOL)**:
-1.  **Rule 1 (Contextual Naming)**: No generic filenames. Scrape surrounding context (e.g., H2/H3 tags) to create descriptive names.
+1.  **Rule 1 (Contextual Naming/Organization)**: No generic filenames. Scrape surrounding context to create descriptive names. Crucially, separate documents based on system types (e.g.,  vs. ).
 2.  **Rule 2 (Sanitization)**: Strip all hash codes and special characters from filenames.
 3.  **Rule 3 (Universal vs. Specific)**: Consolidate generic documents (warranties, maintenance guides) into a manufacturer-specific  folder.
-4.  **Rule 6 (Hidden Technical Data)**: Scan files named Accessories or Brochure for technical data (e.g., Span Tables) and rename them appropriately.
-5.  **Rule 7 (Supply Chain Hierarchy)**: Do NOT download/store upstream supplier data (e.g., ColorSteel, Galvsteel). These must exist only in the central  directory.
-6.  **Rule 8 (The Monolith Law)**: Centralize large master documents that cover multiple product categories into the  folder.
+4.  **Rule 6 (Hidden Technical Data)**: Scan files for critical technical data (e.g., Span Tables, H1 Compliance, Sealing Tape) and ensure they are captured and correctly named/placed.
+5.  **Rule 7 (Supply Chain Hierarchy)**: Do NOT download/store upstream supplier data.
+6.  **Rule 8 (The Monolith Law)**: Centralize large master documents that cover multiple product categories (e.g., Fire and Acoustic Design Manual) into the  folder.
 </original_problem_statement>
 
 **User's preferred language**: English
 
 **what currently exists?**
-- A comprehensive and well-organized library of thousands of technical PDFs in Supabase Storage, categorized under  and .
-- Scraping is complete for a wide range of manufacturers, including Metalcraft, Monier, Velux, Thermakraft, DriStud, Gerard, GAF, Nuralite, Alsynite, Ampelite, and PSP.
-- A codified STRYDA MASTER PROTOCOL exists in two forms:
-    - : A markdown document for agent instructions.
-    - : A Python module with functions and constants to programmatically enforce the sourcing rules during scraping.
-- Numerous Python scraping scripts (, , etc.) are located in the  directory.
+- A large and growing library of technical PDFs in the  Supabase Storage bucket.
+- The library is organized by construction category () and manufacturer.
+- Completed and verified categories include: Metalcraft, Monier, Velux, Underlays (Thermakraft, DriStud), Roofing (Gerard, GAF, Nuralite), Translucent Roofing (Alsynite, Ampelite, PSP), Rigid Air Barriers (GIB, Ecoply, James Hardie, IBS), and Fibre Cement Cladding (James Hardie, Innova/BGC).
+- A codified protocol exists in  and .
+- A suite of Python scraping scripts exists for each completed manufacturer/category.
 
 **Last working item**:
-    - Last item agent was working: Scraping translucent roofing libraries for three manufacturers: Alsynite One, Ampelite, and PSP. This involved crawling their websites, identifying PDF resources, applying Protocol v2.0 for naming and organization, and uploading the files to Supabase Storage.
-    - Status: USER VERIFICATION PENDING (The script ran successfully, uploaded 102 PDFs, and the agent performed a verification by listing the files and checking the folder structure in Supabase. The task is functionally complete from the agent's side.)
-    - Agent Testing Done: Y
-    - Which testing method agent to use? manual testing by curl. The next agent should simply confirm with the user if the results are satisfactory. No further scraping is required for this task.
+    - Last item agent was working: Scraping the Full Window Joinery library, covering the Big 3 aluminium manufacturers (APL, Altus, Fairview) and key uPVC specialists (NK Windows, Starke). The agent was in the initial information-gathering phase, crawling the manufacturer websites and the EBOSS specification portal to identify all relevant PDF documents before building the final scraper script.
+    - Status: IN PROGRESS
+    - Agent Testing Done: N
+    - Which testing method agent to use? The agent should first complete the scraping script and execute it. Afterward, it should perform a manual verification audit by listing the files in Supabase Storage and checking them against the user's requirements (e.g.,  separation,  folder existence).
     - User Testing Done: N
 
 **All Pending/In progress Issue list**:
-  - Issue 1: Solerati manual failed to download during the Gap Fill - Phase 2 task (P2)
+  - Issue 1: Solerati manual failed to download (P2)
   
   Issues Detail:
   - Issue 1: 
-     - **Description**: While scraping high-value manuals, the URL for the Solerati Installation Manual () returned an HTTP 202 status code, and the file was not successfully downloaded.
-     - **Attempted fixes**: The agent noted the failure but did not attempt a fix as it successfully downloaded 6 of the other 7 manuals in the same batch.
+     - **Description**: From a previous session, the URL for the Solerati Installation Manual () failed to download. This task was noted but never addressed.
+     - **Attempted fixes**: None.
      - **Next debug checklist**:
-        1. Try to access the URL again using  to see if the issue was transient.
-        2. If it still fails, search for an alternative URL for the La Escandella Installation Manual on the  website or via a web search.
-        3. If a new URL is found, create a small, targeted script to download and place it in .
-     - **Why fix this issue and what will be achieved with the fix?**: This is a high-value Master Installation Manual. Ingesting it will provide critical installation knowledge for Solerati tile products to the RAG system.
+        1. Attempt to download the file again using  or  to check if the issue was transient.
+        2. If it fails, search for an alternative URL for the La Escandella Installation Manual on the  website or via a web search on platforms like ArchiPro or EBOSS.
+        3. Create a small, targeted script to download the file and place it in the correct Supabase path: .
+     - **Why fix this issue and what will be achieved with the fix?**: This is a high-value Master Installation Manual. Ingesting it will complete the knowledge set for Solerati tile products.
      - **Status**:  NOT STARTED
      - **Is recurring issue?**: N
      - **Should Test frontend/backend/both after fix?**: N/A
      - **Blocked on other issue**: None
 
 **In progress Task List**:
-- No tasks are currently in progress. The last task was completed.
+  - Task 1: Scrape Window Joinery Libraries (P0)
+
+ Task Detail:
+  - Task 1: 
+     - **Where to resume**: The agent has already crawled the primary sources (EBOSS, NK Windows, Starke) to gather links and context. The next step is to consolidate this information, create a new scraper script , and execute it. The script must enforce the user-specified protocol rules (e.g., separate folder for Altus ).
+     - **What will be achieved with this?**: This will add a comprehensive library of window and glazing technical documents to the knowledge base, achieving near 100% market coverage for this critical building category.
+     - **Status**:  IN PROGRESS
+     - **Should Test frontend/backend/both after fix?**: N/A. Manual verification required post-scrape.
+     - **Blocked on something**: No.
 
 **Upcoming and Future Tasks**
 - **Upcoming Tasks:**
-    - **P0: Ingest All Scraped PDFs into RAG Database**: This is the single most critical next step. The primary goal of the entire data sourcing project is to make this knowledge searchable. This involves running the ingestion pipeline on the hundreds of new PDFs scraped during this session for all manufacturers (Metalcraft, Monier, Velux, GAF, Nuralite, Alsynite, etc.).
-    - **P1: Update Master CSV Trackers**: After the ingestion is complete, run the  script (or a similar tool) to generate an updated Source of Truth inventory of all documents now available in the RAG database.
+    - **P0: Ingest All Scraped PDFs into RAG Database**: This is the highest priority after the data sourcing phase is complete. This involves running an ingestion pipeline to process the hundreds of newly acquired PDFs and make their content searchable.
+    - **P1: Update Master CSV Trackers**: After ingestion, run or create a script to generate an updated inventory of all documents in the RAG database, serving as a Source of Truth.
 
 - **Future Tasks:**
-    - **P2: Populate the  Database**: An original high-level goal to extract technical drawings and tables for a specialized Engineer agent remains pending.
-    - **P3: Implement OCR for Image-Only PDFs**: Address the known issue of image-based PDFs that fail ingestion due to a lack of a text layer. This will require an OCR pipeline.
+    - **P2: Implement OCR for Image-Only PDFs**: Address the known issue of image-based PDFs that fail ingestion by integrating an OCR pipeline (e.g., PyMuPDF with Tesseract).
+    - **P3: Populate the  Database**: An original goal to extract technical drawings and tables for a specialized agent remains pending.
 
 **Completed work in this session**
-- **Metalcraft Roofing Scrape**: Scraped and organized 128 PDFs.
-- **Metalcraft Structural Scrape & Consolidation**: Scraped 25 PDFs, corrected the root folder from  to , and consolidated a monolithic Structural Guide to a central location, removing 4 duplicates.
-- **STRYDA Protocol Codification**: Created  and  to formalize and programmatically enforce all data sourcing rules.
-- **Monier Roofing Scrape**: Scraped and organized 10 PDFs using the new protocol rules.
-- **Velux Skylights Scrape**: Scraped and organized 48 PDFs.
-- **Underlays & Wraps Scrape**: Scraped 43 PDFs from Thermakraft and DriStud, separating them by application (roof vs. wall).
-- **Roofing Gap Fill Scrape**: Scraped 57 PDFs from Gerard, GAF, and Nuralite to fill gaps in the roofing knowledge base.
-- **High-Value Manuals Scrape**: Targeted and downloaded 6 critical installation manuals for Viking, Nuralite, and Gerard.
-- **Translucent Roofing Scrape**: Scraped 102 PDFs from Alsynite, Ampelite, and PSP.
+- **Translucent Roofing Audit & Fix**: Verified the entire  folder. Identified and fixed a gap by scraping 4 missing Ampelite installation guides that contained Anti-Noise Tape details.
+- **Rigid Air Barriers Scrape**: Scraped and organized 24 PDFs for GIB, Ecoply, James Hardie, and IBS. Successfully sourced IBS documents from alternative mirrors (PlaceMakers, ArchiPro, EBOSS) to bypass Cloudflare protection on the main website.
+- **Fibre Cement Cladding Scrape**: Scraped and organized 88 PDFs for James Hardie and Innova (formerly BGC), strictly enforcing the separation of  and  systems as per Protocol Rule 1.
 
 **Earlier issues found/mentioned but not fixed**
    - **Issue 1: Solerati Manual Download Failure**
      - **Debug checklist**: See All Pending/In progress Issue list section above.
-     - **Why to solve this issue and what will be achieved with this?**: To complete the set of high-value installation manuals and provide crucial knowledge to the RAG.
+     - **Why to solve this issue and what will be achieved with this?**: To complete the set of high-value installation manuals.
      - **Should Test frontend/backend/both after fix**: N/A
      - **Is recurring issue?**: N
 
-   - **Issue 2: Image-Only PDFs cannot be ingested**
-     - **Debug checklist**: These files were identified in a previous session. They lack a text layer and will require an OCR tool (e.g., PyMuPDF with Tesseract) to extract content before ingestion.
-     - **Why to solve this issue and what will be achieved with this?**: Makes the content of scanned documents and image-based PDFs searchable, enriching the knowledge base.
-     - **Should Test frontend/backend/both after fix**: Backend (ingestion pipeline).
-     - **Is recurring issue?**: Y
+   - **Issue 2: Website Bot Protection (Cloudflare)**
+     - **Debug checklist**: The agent encountered aggressive bot protection on . Attempts to download directly using  and  failed. The successful workaround was to search for the required documents on alternative, unprotected sources like distributor websites (PlaceMakers) and specification platforms (ArchiPro, EBOSS). This should be the primary strategy if similar issues arise.
+     - **Why to solve this issue and what will be achieved with this?**: Allows data acquisition from protected websites without complex browser automation.
+     - **Should Test frontend/backend/both after fix**: N/A
+     - **Is recurring issue?**: Y (for specific sites like IBS)
 
 **Known issue recurrence from previous fork**
   - **Issue recurrence in previous fork**: Script timeouts on long-running operations.
-  - **Recurrence count**: Encountered once during the Metalcraft scrape.
-  - **Status**: RESOLVED (workaround). The agent successfully handled this by checking the background progress and re-running the script, which correctly skipped already-completed work. The next agent should be aware of this pattern for any large-scale file operations.
+  - **Recurrence count**: 0 in this session.
+  - **Status**: RESOLVED (workaround). While timeouts weren't an issue, the agent successfully navigated a similar challenge (blocked downloads from IBS) by pivoting to alternative sources, demonstrating resilient scripting.
 
 **Code Architecture**
 
 
 **Key Technical Concepts**
-- **Web Scraping**: Python with  and  to parse HTML and extract PDF links.
-- **Cloud Storage Management**: Extensive use of  to list, upload, move, and delete files in Supabase Storage, managing a complex folder hierarchy.
-- **Protocol-Driven Development**: Adhering to a strict, codified set of rules () for data sourcing, naming, and organization.
-- **Resilient Scripting**: Handling timeouts and deduplicating files before upload ().
-- **Content-Based File Processing**: Using  to open PDF files, extract text content, and perform actions based on keywords.
+- **Web Scraping**: Python with  and .
+- **Cloud Storage Management**:  for all file operations (list, upload, move, delete) in Supabase Storage.
+- **Protocol-Driven Development**: Strict adherence to the codified rules in .
+- **Resilient Scraping**: Developing workarounds for website anti-bot measures (e.g., Cloudflare) by finding and using alternative mirror sites.
+- **Iterative Auditing & Refinement**: Running verification scripts post-scrape, identifying gaps, sourcing missing data, and re-auditing to confirm compliance (as demonstrated with the Translucent Roofing task).
+- **Content-Based Analysis**: Using  to open PDFs and search their text content to verify the presence of key terms during audits.
 
 **key DB schema**
   - ** (PostgreSQL table)**: The ultimate destination for RAG data. Not modified in this session.
-  - ** (Supabase Storage Bucket)**: The primary target of all work in this session, containing the raw PDF files organized by manufacturer and supplier.
+  - ** (Supabase Storage Bucket)**: The primary target of all work, containing the raw PDF files.
 
 **All files of reference**
-- : Contains the core logic for enforcing the STRYDA MASTER PROTOCOL. All new scrapers should use this.
-- : The source of truth for all data sourcing and organization rules.
-- : The most recent scraper, serving as a good example of current best practices.
+- : Core logic for enforcing the STRYDA MASTER PROTOCOL.
+- : The human-readable source of truth for all data sourcing rules.
+- : The most recently completed scraper, serving as a good example of enforcing complex contextual rules (Cavity vs. Direct fix).
+- : A good example of sourcing data from multiple different URLs and mirrors for a single category.
 
 **Critical Info for New Agent**
-1.  **The Goal is INGESTION**: The massive data sourcing phase is now substantively complete. Your highest priority is to work with the user to begin ingesting the hundreds of newly acquired PDFs into the RAG database. All previous work leads to this step.
-2.  **Protocol is King**: Continue to adhere strictly to the . Use the functions in  for any new scraping or cleanup tasks to ensure consistency.
-3.  **Handle the Minor Loose End**: Before moving to ingestion, you may want to quickly address the single failed Solerati manual download (see Pending Issue list).
-4.  **No More Mobile App Context**: This is a backend data engineering project. Ignore all system prompt context related to Expo, React Native, or mobile development.
+1.  **Immediate Task**: Your first priority is to complete the Full Window Joinery scraping task. The information gathering is partially done; you need to write and execute the Python scraper script.
+2.  **The Main Goal is INGESTION**: Remember that all data sourcing work is a precursor to the main event: ingesting these hundreds of PDFs into the RAG database. This is the top-priority task once data sourcing is paused or complete.
+3.  **Anticipate Website Defenses**: Some manufacturer websites (like ) use bot protection. If direct downloads fail, your first move should be to search for the documents on alternative sources like EBOSS, ArchiPro, or distributor websites (e.g., PlaceMakers) before attempting complex workarounds.
+4.  **Audit Your Work**: The established workflow is: scrape -> audit -> fix -> re-audit. After every major scraping task, create and run a simple verification check to ensure you've met all the user's protocol requirements.
 
 **documents created in this job**
 - 
 - 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+- Various temporary/adhoc scripts for auditing and fixing, which were not committed (e.g., ).
 
 **Last 10 User Messages and any pending HUMAN messages**
-1.  **Msg 197 (continue)**: User prompted to continue before forking. (COMPLETED)
-2.  **Msg 186 (Translucent Roofing)**: User assigned the task to scrape Alsynite, Ampelite, and PSP. (COMPLETED)
-3.  **Msg 177 (Gap Fill Phase 2)**: User assigned the task to scrape 7 specific high-value installation manuals. (COMPLETED, with one file failed)
-4.  **Msg 175 (Summary)**: Agent provided a summary of the Roofing Gap Fill task. (COMPLETED)
-5.  **Msg 153 (Confirm Task)**: User asked to confirm completion of the full Roofing Gap Fill task. (HANDLED - Agent clarified what was done and what was not)
-6.  **Msg 150 (continue)**: User provided a continue prompt. (HANDLED)
-7.  **Msg 132 (Underlays & Wraps)**: User assigned the task to scrape Thermakraft and DriStud. (COMPLETED)
-8.  **Msg 118 (Velux Skylights)**: User assigned the task to scrape Velux. (COMPLETED)
-9.  **Msg 90 (Monier Roofing)**: User assigned the task to scrape Monier using the new Protocol v2.0. (COMPLETED)
-10. **Msg 79 (Codify Protocol)**: User assigned the critical task of creating the  and  files. (COMPLETED)
+1.  : **Assigns Full Window Joinery scrape task.** (IN PROGRESS)
+2.  : **Assigns Fibre Cement Cladding scrape task.** (COMPLETED)
+3.  : Asks agent to **find more IBS documents from mirror sources.** (COMPLETED)
+4.  : **Assigns Rigid Air Barriers scrape task.** (COMPLETED)
+5.  : **Initiates Quality Audit on Translucent Roofing library.** (COMPLETED)
+6.  The preceding messages were part of a continuous development flow and do not represent distinct user requests.
 
 **Project Health Check:**
 - **Broken**: Nothing is broken.
@@ -149,8 +141,8 @@ The user's primary goal is to build a complete, accurate, and meticulously organ
   - Troubleshoot agent used after agent stuck in loop: NO
   - Test files created: N/A
   - Known regressions: None.
-  - **Note**: The agent performed manual verification after each scraping task by listing files in Supabase, which proved effective for this project type.
+  - **Note**: The agent has effectively used a manual verification pattern for this project type: running ad-hoc Python scripts to list Supabase files and check PDF content, then presenting the results as a markdown audit. This has worked well.
 
 **What agent forgot to execute**
-- The agent successfully followed all user directives. The only outstanding item is a single failed PDF download (Solerati manual), which the agent noted but did not resolve. This is a minor pending task rather than a forgotten instruction.
+- The agent did not address the single failed Solerati manual download from the previous fork's pending issue list. It was superseded by a new series of user-directed scraping tasks and has been carried over again as a pending issue.
 </analysis>
