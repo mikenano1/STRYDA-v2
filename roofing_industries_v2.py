@@ -97,7 +97,7 @@ UNIVERSAL_KEYWORDS = [
 ]
 
 # Generic link text that needs context scraping
-GENERIC_LINK_TEXT = ["download", "view", "click here", "pdf", ""]
+GENERIC_LINK_TEXT = ["download", "download guide", "download brochure", "view", "click here", "pdf", ""]
 
 uploaded_files = set()
 universal_files = set()
