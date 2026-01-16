@@ -92,27 +92,30 @@ def print_tree(tree):
         print(f"\n├── 📂 {manufacturer}/ ({mfr_total} files)")
         
         # Print subfolders
-        for subfolder in sorted(subfolders.keys()):
+        subfolder_list = sorted(subfolders.keys())
+        for i, subfolder in enumerate(subfolder_list):
             files = subfolders[subfolder]
-            print(f"│   ├── 📁 {subfolder}/ ({len(files)} files)")
-            for f in sorted(files)[:5]:  # Show first 5 files
-                print(f"│   │   ├── 📄 {f}")
+            is_last_subfolder = (i == len(subfolder_list) - 1) and root_files == 0
+            prefix = "└──" if is_last_subfolder else "├──"
+            print(f"│   {prefix} 📁 {subfolder}/ ({len(files)} files)")
+            for j, f in enumerate(sorted(files)[:5]):
+                file_prefix = "    └──" if j == min(4, len(files)-1) else "    ├──"
+                print(f"│   │   {file_prefix} 📄 {f}")
             if len(files) > 5:
-                print(f"│   │   └── ... and {len(files)-5} more files")
+                print(f"│   │       └── ... and {len(files)-5} more files")
         
         # Print root files
         if root_files > 0:
             print(f"│   └── [Root Files: {root_files}]")
-            for f in sorted(data["files"])[:3]:
-                print(f"│       ├── 📄 {f}")
+            for i, f in enumerate(sorted(data["files"])[:3]):
+                file_prefix = "└──" if i == min(2, root_files-1) else "├──"
+                print(f"│       {file_prefix} 📄 {f}")
             if root_files > 3:
-                print(f"│       └── ... and {root_files-3} more files")
+                print(f"│           └── ... and {root_files-3} more files")
     
     print(f"\n{'='*70}")
     print(f"📊 TOTAL FILES: {total_files}")
     print("="*70)
-    
-    return tree, total_files
 
 def compliance_checks(tree, all_files):
     """Run compliance verification checks."""
@@ -242,7 +245,7 @@ print("\n📥 Fetching file list from Supabase Storage...")
 all_files = list_all_files(TARGET_PATH)
 print(f"   Found {len(all_files)} files total")
 
-tree, total = build_tree(all_files)
+tree = build_tree(all_files)
 print_tree(tree)
 
 issues = compliance_checks(tree, all_files)
