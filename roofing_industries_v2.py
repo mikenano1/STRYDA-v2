@@ -60,12 +60,20 @@ PRODUCT_PAGES = [
     "/rainwater-solutions/rainwater-heads",
 ]
 
-# Profile folder mapping
+# Profile folder mapping - ORDER MATTERS! More specific patterns first
 PROFILE_FOLDER_MAP = {
-    "corrugate": "Corrugate",
+    # True Oak variants - MUST come before "corrugate"
     "true-oak-corrugate": "True_Oak_Corrugate",
     "true-oak-deep": "True_Oak_Deep",
+    "true oak corrugate": "True_Oak_Corrugate",
+    "true oak deep": "True_Oak_Deep",
+    "true oak": "True_Oak_Corrugate",  # Default True Oak to Corrugate variant
+    
+    # Regular Corrugate - AFTER True Oak
+    "corrugate": "Corrugate",
     "slimline": "Slimline",
+    
+    # Trapezoidal
     "rt7": "RT7",
     "trimrib": "Trimrib",
     "multirib": "Multirib",
@@ -73,6 +81,8 @@ PROFILE_FOLDER_MAP = {
     "ribline": "Ribline",
     "maxispan": "Maxispan",
     "ri925": "RI925",
+    
+    # Architectural
     "eurostyle": "Eurostyle",
     "epic": "Eurostyle",
     "spanlok": "Eurostyle",
@@ -80,6 +90,8 @@ PROFILE_FOLDER_MAP = {
     "panelok": "Eurostyle",
     "slimclad": "Slimclad",
     "dri-clad": "DRI_CLAD",
+    
+    # Rainwater
     "rainwater": "Rainwater_Systems",
     "gutter": "Rainwater_Systems",
     "downpipe": "Rainwater_Systems",
