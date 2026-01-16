@@ -278,7 +278,7 @@ def detect_profile_from_url(url, link_text):
 
 
 def get_storage_folder(url, link_text, doc_name):
-    """Determine the correct storage folder"""
+    """Determine the correct storage folder - checks specific patterns before generic ones"""
     url_lower = url.lower()
     text_lower = (link_text or "").lower()
     doc_lower = (doc_name or "").lower()
@@ -289,8 +289,37 @@ def get_storage_folder(url, link_text, doc_name):
         if keyword in combined:
             return "B_Enclosure/Roofing_Industries/00_General_Resources"
     
-    # Check URL path for profile
-    for keyword, folder in PROFILE_FOLDER_MAP.items():
+    # Check URL path for profile - ORDER MATTERS!
+    # Check more specific patterns first (true-oak before corrugate)
+    ordered_checks = [
+        ("true-oak-corrugate", "True_Oak_Corrugate"),
+        ("true-oak-deep", "True_Oak_Deep"),
+        ("true oak", "True_Oak_Corrugate"),
+        ("corrugate", "Corrugate"),
+        ("slimline", "Slimline"),
+        ("rt7", "RT7"),
+        ("trimrib", "Trimrib"),
+        ("multirib", "Multirib"),
+        ("multidek", "Multidek"),
+        ("ribline", "Ribline"),
+        ("maxispan", "Maxispan"),
+        ("ri925", "RI925"),
+        ("eurostyle", "Eurostyle"),
+        ("epic", "Eurostyle"),
+        ("spanlok", "Eurostyle"),
+        ("eurolok", "Eurostyle"),
+        ("panelok", "Eurostyle"),
+        ("slimclad", "Slimclad"),
+        ("dri-clad", "DRI_CLAD"),
+        ("rainwater", "Rainwater_Systems"),
+        ("gutter", "Rainwater_Systems"),
+        ("downpipe", "Rainwater_Systems"),
+        ("fascia", "Rainwater_Systems"),
+        ("ezi-lok", "Rainwater_Systems"),
+        ("ezi-flo", "Rainwater_Systems"),
+    ]
+    
+    for keyword, folder in ordered_checks:
         if keyword in url_lower:
             return f"B_Enclosure/Roofing_Industries/{folder}"
     
