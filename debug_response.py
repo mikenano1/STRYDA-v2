@@ -7,7 +7,7 @@ import asyncio
 import aiohttp
 import json
 
-BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 
 async def debug_response_structure():
     """Debug the actual response structure"""

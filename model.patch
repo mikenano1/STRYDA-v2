@@ -50,7 +50,7 @@ index 00dde87..e69de29 100644
 -------+import time
 -------+from datetime import datetime
 -------+
--------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+-------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 -------+
 -------+async def test_detailed_final_sweep():
 -------+    """Test the Final Sweep queries and capture detailed responses"""
@@ -330,7 +330,7 @@ index 00dde87..e69de29 100644
 -------------+import aiohttp
 ------------- import json
 ------------- 
-------------- BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+------------- BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 --------------API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 ------------- 
 --------------query = "nzs 3604 stud spacing requirements"
@@ -398,7 +398,7 @@ index 00dde87..e69de29 100644
 -------------+import aiohttp
 -------------+import json
 -------------+
--------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+-------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 -------------+
 -------------+async def final_comprehensive_test():
 -------------+    """Run comprehensive test to confirm issues"""
@@ -530,7 +530,7 @@ index 00dde87..e69de29 100644
 --------------+import requests
 --------------+import json
 --------------+
---------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+--------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 --------------+
 --------------+def test_citation_scenarios():
 --------------+    """Test various scenarios to understand when citations are provided"""
@@ -619,7 +619,7 @@ index 00dde87..e69de29 100644
 --------------+import requests
 --------------+import json
 --------------+
---------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+--------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 --------------+
 --------------+def test_enhanced_chat_endpoint():
 --------------+    """Test the enhanced chat endpoint directly"""
@@ -2332,7 +2332,7 @@ index 00dde87..e69de29 100644
 -----------------------------+import requests
 -----------------------------+import json
 -----------------------------+
------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+-----------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 -----------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 -----------------------------+
 -----------------------------+query = "nzs 3604 stud spacing requirements"
@@ -2893,7 +2893,7 @@ index 00dde87..e69de29 100644
 ----------------------------------+from typing import Dict, List, Tuple
 ----------------------------------+
 ----------------------------------+# Backend URL
-----------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com/api/chat"
+----------------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com/api/chat"
 ----------------------------------+
 ----------------------------------+# Test queries
 ----------------------------------+GENERAL_QUERIES = [
@@ -3287,7 +3287,7 @@ index 00dde87..e69de29 100644
 -----------------------------------+from datetime import datetime
 -----------------------------------+
 -----------------------------------+# Backend URL from environment
------------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+-----------------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 -----------------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 -----------------------------------+
 -----------------------------------+# Test queries
@@ -3810,7 +3810,7 @@ index 00dde87..e69de29 100644
 -----------------------------------------+import os
 -----------------------------------------+
 -----------------------------------------+# Backend URL from environment
------------------------------------------+BACKEND_URL = os.getenv('BACKEND_URL', 'https://rag-scraper.preview.emergentagent.com')
+-----------------------------------------+BACKEND_URL = os.getenv('BACKEND_URL', 'https://pdf-library-14.preview.emergentagent.com')
 -----------------------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 -----------------------------------------+
 -----------------------------------------+# Test queries organized by category
@@ -6933,7 +6933,7 @@ index 00dde87..e69de29 100644
 ---------------------------------------------------------------     CORSMiddleware,
 ---------------------------------------------------------------     allow_origins=[
 ---------------------------------------------------------------         "https://app.emergent.sh",
----------------------------------------------------------------         "https://rag-scraper.preview.emergentagent.com",
+---------------------------------------------------------------         "https://pdf-library-14.preview.emergentagent.com",
 ----------------------------------------------------------------        "http://localhost:3000",
 ----------------------------------------------------------------        "http://localhost:19006",
 ----------------------------------------------------------------        "http://localhost:8001",
@@ -10807,7 +10807,7 @@ index 00dde87..e69de29 100644
 ------------------------------------------------------------------------------------------+        })
 ------------------------------------------------------------------------------------------+        
 ------------------------------------------------------------------------------------------+        # URLs to test
-------------------------------------------------------------------------------------------+        self.production_url = "https://rag-scraper.preview.emergentagent.com"
+------------------------------------------------------------------------------------------+        self.production_url = "https://pdf-library-14.preview.emergentagent.com"
 ------------------------------------------------------------------------------------------+        self.local_url = "http://localhost:8001"
 ------------------------------------------------------------------------------------------+    
 ------------------------------------------------------------------------------------------+    def log_result(self, test_name: str, success: bool, details: str, url: str = ""):
@@ -13491,7 +13491,7 @@ index 00dde87..e69de29 100644
 -----------------------------------------+
 -----------------------------------------+**Audit Date:** 2025-11-08 15:36:57 UTC
 -----------------------------------------+
------------------------------------------+**Backend URL:** https://rag-scraper.preview.emergentagent.com
+-----------------------------------------+**Backend URL:** https://pdf-library-14.preview.emergentagent.com
 -----------------------------------------+
 -----------------------------------------+**Total Documents Ingested:** 1,742 (NZ Building Code, NZS 3604, E2/AS1, NZMRM, etc.)
 -----------------------------------------+
@@ -13647,7 +13647,7 @@ index 00dde87..e69de29 100644
 ----------------------------------------+## Test Information
 ----------------------------------------+
 ----------------------------------------+- **Test Date**: 2025-11-10 07:04:01 UTC
-----------------------------------------+- **Backend URL**: https://rag-scraper.preview.emergentagent.com
+----------------------------------------+- **Backend URL**: https://pdf-library-14.preview.emergentagent.com
 ----------------------------------------+- **Total Queries**: 20
 ----------------------------------------+- **Fixes Applied**: Intent router clause patterns, comparative query detection
 ----------------------------------------+
@@ -13895,7 +13895,7 @@ index 00dde87..e69de29 100644
 ---------------------------------------+from typing import List, Dict, Any
 ---------------------------------------+
 ---------------------------------------+# Backend URL
----------------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+---------------------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 ---------------------------------------+
 ---------------------------------------+# 20 test queries from CITATION_PRECISION_AUDIT.md
 ---------------------------------------+TEST_QUERIES = [
@@ -15407,7 +15407,7 @@ index 00dde87..e69de29 100644
 ----------------------------------+## Test Overview
 ----------------------------------+- **Date**: 2025-11-12 19:09:52
 ----------------------------------+- **Total Queries**: 20 (10 general + 10 compliance)
-----------------------------------+- **Backend URL**: https://rag-scraper.preview.emergentagent.com/api/chat
+----------------------------------+- **Backend URL**: https://pdf-library-14.preview.emergentagent.com/api/chat
 ----------------------------------+
 ----------------------------------+## Before Fix
 ----------------------------------+- **Intent Accuracy**: 60% (12/20)
@@ -16461,7 +16461,7 @@ index 00dde87..e69de29 100644
 ------------------------------+from datetime import datetime
 ------------------------------+
 ------------------------------+# Backend URL
-------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com/api/chat"
+------------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com/api/chat"
 ------------------------------+
 ------------------------------+# Test queries organized by expected source
 ------------------------------+TEST_QUERIES = {
@@ -16858,7 +16858,7 @@ index 00dde87..e69de29 100644
 ------------------------------+
 ------------------------------+**Test Date:** 2025-11-25T06:30:31.409292
 ------------------------------+
-------------------------------+**Backend URL:** https://rag-scraper.preview.emergentagent.com/api/chat
+------------------------------+**Backend URL:** https://pdf-library-14.preview.emergentagent.com/api/chat
 ------------------------------+
 ------------------------------+**Total Queries Tested:** 20
 ------------------------------+
@@ -17078,7 +17078,7 @@ index 00dde87..e69de29 100644
 -----------------------------+import os
 -----------------------------+
 -----------------------------+# Configuration
------------------------------+BACKEND_URL = os.getenv("BACKEND_URL", "https://rag-scraper.preview.emergentagent.com")
+-----------------------------+BACKEND_URL = os.getenv("BACKEND_URL", "https://pdf-library-14.preview.emergentagent.com")
 -----------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 -----------------------------+TIMEOUT = 30  # seconds per query
 -----------------------------+
@@ -17573,7 +17573,7 @@ index 00dde87..e69de29 100644
 -----------------------------+import time
 -----------------------------+from datetime import datetime
 -----------------------------+
------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+-----------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 -----------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 -----------------------------+
 -----------------------------+# 2 queries per category (10 total)
@@ -17672,7 +17672,7 @@ index 00dde87..e69de29 100644
 -----------------------------+import json
 -----------------------------+import time
 -----------------------------+
------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+-----------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 -----------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 -----------------------------+
 -----------------------------+# One query per category
@@ -17749,7 +17749,7 @@ index 00dde87..e69de29 100644
 -----------------------------+from datetime import datetime
 -----------------------------+import os
 -----------------------------+
------------------------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+-----------------------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 -----------------------------+API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 -----------------------------+TIMEOUT = 30
 -----------------------------+
@@ -17981,7 +17981,7 @@ index 00dde87..e69de29 100644
 -----------------------------+# STRYDA-v2 POST-REGENERATION VALIDATION REPORT
 -----------------------------+
 -----------------------------+**Test Date:** 2025-11-25 07:16:43  
------------------------------+**Backend URL:** https://rag-scraper.preview.emergentagent.com  
+-----------------------------+**Backend URL:** https://pdf-library-14.preview.emergentagent.com  
 -----------------------------+**Total Queries:** 30
 -----------------------------+
 -----------------------------+---
@@ -18127,7 +18127,7 @@ index 00dde87..e69de29 100644
 -----------------------------+# POST-REGENERATION VALIDATION RESULTS
 -----------------------------+
 -----------------------------+**Date:** 2025-11-25 07:29:59  
------------------------------+**Backend:** https://rag-scraper.preview.emergentagent.com  
+-----------------------------+**Backend:** https://pdf-library-14.preview.emergentagent.com  
 -----------------------------+**Total Queries:** 30  
 -----------------------------+**Pass Rate:** 25/30 (83.3%)  
 -----------------------------+**Total Time:** 288.3s
@@ -18290,7 +18290,7 @@ index 00dde87..e69de29 100644
 --------------+from datetime import datetime
 --------------+
 --------------+# Backend URL from frontend environment
---------------+BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+--------------+BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 --------------+
 --------------+def test_gate_logic_review_request():
 --------------+    """
@@ -18568,7 +18568,7 @@ index 00dde87..e69de29 100644
 ------------- from datetime import datetime
 ------------- 
 --------------# Backend URL from frontend environment
-------------- BACKEND_URL = "https://rag-scraper.preview.emergentagent.com"
+------------- BACKEND_URL = "https://pdf-library-14.preview.emergentagent.com"
 ------------- 
 --------------def test_gate_logic_review_request():
 --------------    """

@@ -184,7 +184,7 @@ export default function StrydaChat() {
       } as any);
 
       try {
-          const API_BASE_URL = Platform.OS === 'web' ? '' : 'https://rag-scraper.preview.emergentagent.com';
+          const API_BASE_URL = Platform.OS === 'web' ? '' : 'https://pdf-library-14.preview.emergentagent.com';
           const targetUrl = `${API_BASE_URL.replace(/\/$/, "")}/api/transcribe`;
           
           const response = await fetch(targetUrl, {
