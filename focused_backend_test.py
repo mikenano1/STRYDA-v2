@@ -19,7 +19,7 @@ class FocusedBackendTester:
         })
         
         # URLs to test
-        self.production_url = "https://doclib-scraper.preview.emergentagent.com"
+        self.production_url = "https://rag-scraper.preview.emergentagent.com"
         self.local_url = "http://localhost:8001"
     
     def log_result(self, test_name: str, success: bool, details: str, url: str = ""):

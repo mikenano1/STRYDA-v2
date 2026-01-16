@@ -1,4 +1,4 @@
-export const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? 'https://doclib-scraper.preview.emergentagent.com';
+export const API_BASE = process.env.EXPO_PUBLIC_API_BASE ?? 'https://rag-scraper.preview.emergentagent.com';
 export const DEV_DIAG = false; // Disabled by default for production
 
 export async function pingHealth() {

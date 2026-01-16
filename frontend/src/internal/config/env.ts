@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://doclib-scraper.preview.emergentagent.com",
+  API_BASE: "https://rag-scraper.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 
