@@ -9,10 +9,10 @@ from supabase import create_client
 from collections import defaultdict
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv("/app/backend-minimal/.env")
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY") or os.getenv("SUPABASE_KEY")
 BUCKET = "product-library"
 TARGET_PATH = "B_Enclosure/Translucent_Roofing"
 
@@ -49,7 +49,7 @@ def list_all_files(path_prefix):
 
 def build_tree(files):
     """Build a tree structure from file paths."""
-    tree = defaultdict(lambda: {"files": [], "subfolders": defaultdict(dict)})
+    tree = defaultdict(lambda: {"files": [], "subfolders": defaultdict(list)})
     
     for file_path in files:
         # Remove the base path
@@ -65,8 +65,6 @@ def build_tree(files):
             else:
                 subfolder = parts[1]
                 filename = "/".join(parts[2:])
-                if subfolder not in tree[manufacturer]["subfolders"]:
-                    tree[manufacturer]["subfolders"][subfolder] = []
                 tree[manufacturer]["subfolders"][subfolder].append(filename)
     
     return tree
@@ -114,7 +112,7 @@ def print_tree(tree):
     print(f"📊 TOTAL FILES: {total_files}")
     print("="*70)
     
-    return tree
+    return tree, total_files
 
 def compliance_checks(tree, all_files):
     """Run compliance verification checks."""
@@ -140,57 +138,88 @@ def compliance_checks(tree, all_files):
     # Check B: Are /Laserlite_2000/ and /Topglass_Industrial/ clearly separated?
     print("\n✅ CHECK B: /Laserlite_2000/ and /Topglass_Industrial/ separated?")
     
-    laserlite_exists = "Laserlite_2000" in tree or any("Laserlite_2000" in f for f in all_files)
-    topglass_exists = "Topglass_Industrial" in tree or any("Topglass_Industrial" in f for f in all_files)
-    
     # Check within Alsynite for product lines
     alsynite_subs = tree.get("Alsynite_One", {}).get("subfolders", {})
-    laserlite_in_alsynite = any("Laserlite" in k for k in alsynite_subs.keys())
-    topglass_in_alsynite = any("Topglass" in k for k in alsynite_subs.keys())
+    laserlite_in_alsynite = [k for k in alsynite_subs.keys() if "Laserlite" in k]
+    topglass_in_alsynite = [k for k in alsynite_subs.keys() if "Topglass" in k]
+    
+    # Also check as top-level manufacturers
+    laserlite_toplevel = "Laserlite_2000" in tree
+    topglass_toplevel = "Topglass_Industrial" in tree
     
     if laserlite_in_alsynite and topglass_in_alsynite:
         print(f"   ✅ PASS - Both product lines found as separate subfolders in Alsynite_One:")
-        for k in alsynite_subs.keys():
-            if "Laserlite" in k or "Topglass" in k:
-                print(f"      - {k}/ ({len(alsynite_subs[k])} files)")
-    elif laserlite_exists or topglass_exists:
-        print(f"   ⚠️ PARTIAL - Found as separate manufacturers (acceptable):")
-        print(f"      - Laserlite_2000: {'Found' if laserlite_exists else 'Not Found'}")
-        print(f"      - Topglass_Industrial: {'Found' if topglass_exists else 'Not Found'}")
+        for k in laserlite_in_alsynite + topglass_in_alsynite:
+            print(f"      - {k}/ ({len(alsynite_subs[k])} files)")
+    elif laserlite_toplevel or topglass_toplevel:
+        print(f"   ⚠️ NOTE - Found as top-level manufacturers:")
+        if laserlite_toplevel:
+            print(f"      - /Laserlite_2000/ exists")
+        if topglass_toplevel:
+            print(f"      - /Topglass_Industrial/ exists")
     else:
-        print(f"   ❌ FAIL - Neither product line clearly separated!")
-        issues.append("CHECK_B")
+        # Search for keywords in any file paths
+        laserlite_files = [f for f in all_files if "laserlite" in f.lower() or "laser" in f.lower()]
+        topglass_files = [f for f in all_files if "topglass" in f.lower()]
+        
+        if laserlite_files or topglass_files:
+            print(f"   ⚠️ PARTIAL - Found in file names:")
+            print(f"      - Laserlite files: {len(laserlite_files)}")
+            print(f"      - Topglass files: {len(topglass_files)}")
+        else:
+            print(f"   ❌ FAIL - Neither product line found!")
+            issues.append("CHECK_B")
     
     # Check C: Is the "Noise Stop Tape" manual present?
     print("\n✅ CHECK C: 'Noise Stop Tape' manual in /Ampelite_NZ/ or /PSP_Limited/?")
     
-    noise_stop_files = [f for f in all_files if "noise" in f.lower() or "stop" in f.lower() or "tape" in f.lower()]
-    
     ampelite_files = [f for f in all_files if "Ampelite" in f]
     psp_files = [f for f in all_files if "PSP" in f]
     
-    noise_in_ampelite = [f for f in ampelite_files if "noise" in f.lower() or "tape" in f.lower()]
-    noise_in_psp = [f for f in psp_files if "noise" in f.lower() or "tape" in f.lower()]
+    noise_in_ampelite = [f for f in ampelite_files if "noise" in f.lower() or "noisestop" in f.lower().replace("_", "")]
+    noise_in_psp = [f for f in psp_files if "noise" in f.lower() or "noisestop" in f.lower().replace("_", "")]
+    
+    # Also check for tape-related files
+    tape_files = [f for f in all_files if "tape" in f.lower()]
     
     if noise_in_ampelite:
         print(f"   ✅ PASS - Found in Ampelite_NZ:")
-        for f in noise_in_ampelite:
+        for f in noise_in_ampelite[:3]:
             print(f"      - {f.split('/')[-1]}")
     elif noise_in_psp:
         print(f"   ✅ PASS - Found in PSP_Limited:")
-        for f in noise_in_psp:
+        for f in noise_in_psp[:3]:
             print(f"      - {f.split('/')[-1]}")
-    elif noise_stop_files:
-        print(f"   ⚠️ PARTIAL - Found elsewhere:")
-        for f in noise_stop_files[:3]:
-            print(f"      - {f}")
     else:
-        print(f"   ❌ FAIL - 'Noise Stop Tape' manual NOT found!")
-        # Search for any tape-related files
-        tape_files = [f for f in all_files if "tape" in f.lower()]
-        if tape_files:
-            print(f"   📋 Tape-related files found: {tape_files}")
-        issues.append("CHECK_C")
+        # Search broadly
+        all_noise = [f for f in all_files if "noise" in f.lower()]
+        if all_noise:
+            print(f"   ⚠️ PARTIAL - Found elsewhere ({len(all_noise)} files):")
+            for f in all_noise[:3]:
+                print(f"      - {f}")
+        elif tape_files:
+            print(f"   ⚠️ PARTIAL - 'Tape' files found ({len(tape_files)}):")
+            for f in tape_files[:3]:
+                print(f"      - {f}")
+        else:
+            print(f"   ❌ FAIL - 'Noise Stop Tape' manual NOT found!")
+            issues.append("CHECK_C")
+    
+    # Check for flat structure (no subfolders at all)
+    print("\n✅ CHECK D: Structure has proper sub-organization?")
+    manufacturers_with_subfolders = sum(1 for m in tree if m != "_root" and tree[m].get("subfolders"))
+    total_manufacturers = sum(1 for m in tree if m != "_root")
+    
+    if manufacturers_with_subfolders == 0:
+        print(f"   🚨 CRITICAL: FLAT STRUCTURE - No manufacturer has sub-folders!")
+        issues.append("FLAT_STRUCTURE")
+    elif manufacturers_with_subfolders < total_manufacturers:
+        print(f"   ⚠️ PARTIAL: {manufacturers_with_subfolders}/{total_manufacturers} manufacturers have sub-folders")
+        flat_mfrs = [m for m in tree if m != "_root" and not tree[m].get("subfolders")]
+        for m in flat_mfrs:
+            print(f"      - ⚠️ {m}/ has no sub-organization")
+    else:
+        print(f"   ✅ PASS - All {total_manufacturers} manufacturers have proper sub-folders")
     
     # Final verdict
     print("\n" + "="*70)
@@ -200,12 +229,6 @@ def compliance_checks(tree, all_files):
     else:
         print("✅ AUDIT RESULT: ALL CHECKS PASSED")
     print("="*70)
-    
-    # Check for flat structure (no subfolders)
-    is_flat = all(len(tree.get(m, {}).get("subfolders", {})) == 0 for m in tree if m != "_root")
-    if is_flat:
-        print("\n🚨 CRITICAL: FLAT STRUCTURE DETECTED - No sub-organization!")
-        issues.append("FLAT_STRUCTURE")
     
     return issues
 
@@ -219,7 +242,7 @@ print("\n📥 Fetching file list from Supabase Storage...")
 all_files = list_all_files(TARGET_PATH)
 print(f"   Found {len(all_files)} files total")
 
-tree = build_tree(all_files)
+tree, total = build_tree(all_files)
 print_tree(tree)
 
 issues = compliance_checks(tree, all_files)
@@ -228,3 +251,7 @@ if issues:
     print("\n" + "🚨"*35)
     print("ACTION REQUIRED: Structure needs correction!")
     print("🚨"*35)
+else:
+    print("\n" + "✅"*35)
+    print("AUDIT COMPLETE: Structure is compliant!")
+    print("✅"*35)
