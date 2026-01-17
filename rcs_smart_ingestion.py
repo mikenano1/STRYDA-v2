@@ -374,14 +374,14 @@ def insert_chunk(conn, chunk: ProcessedChunk) -> bool:
                     page_hash, version_id, is_latest, hierarchy_level, role,
                     page_title, dwg_id, agent_owner, bounding_boxes,
                     has_table, has_diagram, unit_range, geo_context,
-                    is_active, priority, metadata, created_at
+                    is_active, priority, created_at
                 )
                 VALUES (
                     %s, %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s,
                     %s, %s, %s, %s,
                     %s, %s, %s, %s,
-                    %s, %s, %s, NOW()
+                    %s, %s, NOW()
                 )
                 ON CONFLICT (id) DO UPDATE SET
                     content = EXCLUDED.content,
@@ -411,7 +411,6 @@ def insert_chunk(conn, chunk: ProcessedChunk) -> bool:
                 chunk.geo_context,
                 chunk.is_active,
                 chunk.priority,
-                json.dumps(chunk.metadata),
             ))
         return True
     except Exception as e:
