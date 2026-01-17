@@ -539,11 +539,6 @@ def process_rcs_pdf(source_path: str, pdf_bytes: bytes, conn) -> Tuple[int, int]
             geo_context=geo_context,
             is_active=True,
             priority=70,  # Standard manufacturer priority
-            metadata={
-                "brand": "RCS",
-                "ingested_at": datetime.now().isoformat(),
-                "protocol_version": "2.0",
-            }
         )
         
         # Insert into database
