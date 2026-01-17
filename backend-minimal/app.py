@@ -2499,6 +2499,96 @@ class CreateProjectRequest(BaseModel):
     name: str
     address: Optional[str] = None
 
+# ══════════════════════════════════════════════════════════════════════════════
+# PROTOCOL V2.0: FEEDBACK API - Self-Correction Loop
+# ══════════════════════════════════════════════════════════════════════════════
+
+class FeedbackRequest(BaseModel):
+    """Request model for chunk feedback submission."""
+    chunk_id: str
+    feedback_type: str  # 'incorrect', 'outdated', 'misleading', 'duplicate'
+    feedback_note: Optional[str] = None
+    suggested_correction: Optional[str] = None
+    user_id: Optional[str] = None
+
+
+@app.post("/api/feedback")
+@limiter.limit("30/minute")
+def submit_chunk_feedback(req: FeedbackRequest, request: Request):
+    """
+    Submit feedback for a document chunk (Protocol V2.0 Self-Correction Loop).
+    
+    Safety-first thresholds:
+    - incorrect/misleading: 1 flag = IMMEDIATE deactivation
+    - outdated/duplicate: 3 flags = auto-deactivation
+    """
+    try:
+        from feedback_api import submit_feedback
+        
+        result = submit_feedback(
+            chunk_id=req.chunk_id,
+            feedback_type=req.feedback_type,
+            feedback_note=req.feedback_note,
+            suggested_correction=req.suggested_correction,
+            user_id=req.user_id,
+        )
+        
+        return {
+            "ok": result.success,
+            "message": result.message,
+            "action_taken": result.action_taken,
+            "chunk_status": result.chunk_status,
+            "feedback_count": result.feedback_count,
+        }
+        
+    except Exception as e:
+        print(f"❌ Feedback submission error: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(e)}
+        )
+
+
+@app.get("/api/feedback/stats")
+@limiter.limit("10/minute")
+def get_feedback_statistics(request: Request):
+    """Get feedback system statistics for monitoring."""
+    try:
+        from feedback_api import get_feedback_stats
+        
+        stats = get_feedback_stats()
+        return {"ok": True, "stats": stats}
+        
+    except Exception as e:
+        print(f"❌ Feedback stats error: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(e)}
+        )
+
+
+@app.get("/api/feedback/flagged")
+@limiter.limit("10/minute")
+def get_flagged_documents(request: Request, limit: int = 50, unresolved_only: bool = True):
+    """Get list of flagged document chunks for moderation."""
+    try:
+        from feedback_api import get_flagged_chunks
+        
+        chunks = get_flagged_chunks(limit=limit, unresolved_only=unresolved_only)
+        return {"ok": True, "flagged_chunks": chunks, "count": len(chunks)}
+        
+    except Exception as e:
+        print(f"❌ Flagged chunks error: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"ok": False, "error": str(e)}
+        )
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# PROJECTS API
+# ══════════════════════════════════════════════════════════════════════════════
+
 @app.post("/api/projects")
 @limiter.limit("10/minute")
 def create_project(req: CreateProjectRequest, request: Request):
