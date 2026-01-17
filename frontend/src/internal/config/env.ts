@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://knowledgebase-hub.preview.emergentagent.com",
+  API_BASE: "https://techscraper.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 

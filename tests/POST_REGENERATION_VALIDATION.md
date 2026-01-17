@@ -1,7 +1,7 @@
 # STRYDA-v2 POST-REGENERATION VALIDATION REPORT
 
 **Test Date:** 2025-11-25 07:16:43  
-**Backend URL:** https://knowledgebase-hub.preview.emergentagent.com  
+**Backend URL:** https://techscraper.preview.emergentagent.com  
 **Total Queries:** 30
 
 ---

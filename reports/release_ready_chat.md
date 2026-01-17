@@ -96,7 +96,7 @@
 ## 🚀 Deployment Information
 
 ### Preview Details:
-- **Preview URL**: https://knowledgebase-hub.preview.emergentagent.com
+- **Preview URL**: https://techscraper.preview.emergentagent.com
 - **QR Code**: Available via Expo development tools
 - **API Integration**: Backend fully operational at localhost:8001
 
