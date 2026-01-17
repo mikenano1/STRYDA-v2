@@ -47,7 +47,7 @@ BUCKET = "product-library"
 DATABASE_URL = "postgresql://postgres.qxqisgjhbjwvoxsjibes:8skmVOJbMyaQHyQl@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
 
 # Use Emergent LLM Key for embeddings
-EMERGENT_LLM_KEY = os.getenv('EMERGENT_LLM_KEY', 'ek_prod_f68e9a13-4099-49f3-ab64-e11855103a16')
+EMERGENT_LLM_KEY = os.getenv('EMERGENT_LLM_KEY', 'sk-emergent-c29FeA026998521257')
 
 SUPABASE_HEADERS = {
     "apikey": SERVICE_KEY,
