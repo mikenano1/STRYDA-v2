@@ -122,7 +122,7 @@ class ProcessedChunk:
     snippet: str
     embedding: List[float]
     page_hash: str
-    version_id: str
+    version_id: int  # Integer type
     is_latest: bool
     hierarchy_level: int
     role: str
@@ -136,7 +136,6 @@ class ProcessedChunk:
     geo_context: str
     is_active: bool
     priority: int
-    metadata: dict
 
 # =============================================================================
 # STEP 1: SMART INGESTION (Vectorization)
