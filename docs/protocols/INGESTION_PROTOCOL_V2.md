@@ -282,11 +282,230 @@ Before ingesting any new document:
 
 ---
 
-## 9. CHANGE LOG
+## 9. THE "UNIT & RANGE" GUARDRAIL (Accuracy Check)
+
+### Rule
+During ingestion, if the text agent identifies a measurement (e.g., "150mm" or "Zone 3"), it **must be tagged** with a `unit_range` metadata key.
+
+### Purpose
+This prevents the AI from confusing a **minimum requirement with a maximum requirement**—a common mistake that can lead to structural failure.
+
+### Implementation
+
+```json
+{
+  "unit_range": {
+    "value": 150,
+    "unit": "mm",
+    "type": "minimum",           // "minimum", "maximum", "nominal", "range", "exact"
+    "context": "cavity_depth",
+    "source_text": "minimum 150mm cavity required"
+  }
+}
+```
+
+### Tagging Examples
+
+| Source Text | Type | Tag |
+|-------------|------|-----|
+| "Minimum 50mm cavity" | `minimum` | `{"min": 50, "unit": "mm"}` |
+| "Maximum 600mm centres" | `maximum` | `{"max": 600, "unit": "mm"}` |
+| "90-150mm range" | `range` | `{"min": 90, "max": 150, "unit": "mm"}` |
+| "Wind Zone Very High" | `zone` | `{"zone": "Very High", "type": "wind"}` |
+| "Seismic Zone 3" | `zone` | `{"zone": 3, "type": "seismic"}` |
+
+### Validation Rule
+```python
+def validate_measurement(chunk):
+    """
+    Flag any measurement without unit_range metadata
+    """
+    if has_measurement(chunk.text) and not chunk.unit_range:
+        raise IngestionError(f"Measurement found without unit_range tag: {chunk.id}")
+```
+
+---
+
+## 10. REGIONALITY TAGGING (The "NZ-Specific" Filter)
+
+### Rule
+Any document mentioning **"Exposure Zones," "Wind Zones," or "Seismic Zones"** must be tagged with `geo_context: NZ_Specific`.
+
+### Purpose
+This prevents the AI from accidentally pulling **international standards** (like Australian or US codes) if Neo happens to ingest a global manufacturer's manual that wasn't properly filtered.
+
+### Trigger Keywords
+
+| Keyword Pattern | geo_context Tag |
+|----------------|-----------------|
+| "NZ Wind Zone", "Very High Wind Zone" | `NZ_Specific` |
+| "NZ Seismic Zone", "Zone 1-4" (seismic) | `NZ_Specific` |
+| "Exposure Zone" (corrosion) | `NZ_Specific` |
+| "NZS 3604", "E2/AS1", "NZBC" | `NZ_Specific` |
+| "AS/NZS" (joint standard) | `NZ_Specific` |
+| "BCA", "AS 1684" (AU only) | `AU_Specific` |
+| "IBC", "ASTM" (US only) | `US_Specific` |
+
+### Implementation
+
+```python
+NZ_KEYWORDS = [
+    r'NZ\s*Wind\s*Zone',
+    r'(Very\s*High|High|Medium|Low)\s*Wind\s*Zone',
+    r'Seismic\s*Zone\s*[1-4]',
+    r'Exposure\s*Zone\s*[A-D]',
+    r'NZS\s*\d+',
+    r'E2\/AS1',
+    r'NZBC',
+    r'BRANZ'
+]
+
+def tag_regionality(chunk):
+    text = chunk.text.upper()
+    
+    if any(re.search(kw, text, re.IGNORECASE) for kw in NZ_KEYWORDS):
+        chunk.geo_context = "NZ_Specific"
+    elif "BCA" in text or re.search(r'\bAS\s*\d{4}\b', text):
+        chunk.geo_context = "AU_Specific"
+    else:
+        chunk.geo_context = "Universal"
+    
+    return chunk
+```
+
+### Query Filter
+```sql
+-- Always filter for NZ context in production
+SELECT * FROM document_chunks 
+WHERE geo_context IN ('NZ_Specific', 'Universal')
+AND query_embedding <-> $1 < 0.5
+ORDER BY query_embedding <-> $1
+LIMIT 10;
+```
+
+---
+
+## 11. THE "SELF-CORRECTION" LOOP (Feedback Loop)
+
+### Rule
+Neo must implement a `user_feedback_link` for every retrieved chunk.
+
+### Action
+If an expert user sees an answer that is slightly off, they can **flag that specific Vector ID**. Neo can then:
+1. **Blacklist** that specific chunk (exclude from future retrieval)
+2. **Re-weight** that chunk (lower its retrieval priority)
+3. **Correct** the metadata (fix unit_range, hierarchy_level, etc.)
+
+...without having to rebuild the entire brain.
+
+### Feedback Schema
+
+```sql
+CREATE TABLE chunk_feedback (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    chunk_id UUID REFERENCES document_chunks(id),
+    user_id UUID,
+    feedback_type TEXT NOT NULL,        -- 'incorrect', 'outdated', 'misleading', 'duplicate'
+    feedback_note TEXT,
+    suggested_correction TEXT,
+    created_at TIMESTAMP DEFAULT NOW(),
+    resolved BOOLEAN DEFAULT FALSE,
+    resolution_action TEXT              -- 'blacklisted', 'reweighted', 'corrected', 'dismissed'
+);
+
+-- Index for quick lookup
+CREATE INDEX idx_chunk_feedback_chunk ON chunk_feedback(chunk_id);
+CREATE INDEX idx_chunk_feedback_unresolved ON chunk_feedback(resolved) WHERE resolved = FALSE;
+```
+
+### Feedback Actions
+
+| feedback_type | Action | Effect |
+|---------------|--------|--------|
+| `incorrect` | Blacklist | `is_active = false`, excluded from retrieval |
+| `outdated` | Flag for review | `needs_review = true` |
+| `misleading` | Re-weight | `weight_modifier = 0.5` (50% lower priority) |
+| `duplicate` | Merge | Link to canonical chunk |
+
+### Implementation
+
+```python
+class ChunkFeedback:
+    def flag_incorrect(self, chunk_id: str, note: str):
+        """Blacklist a chunk from retrieval"""
+        supabase.table('document_chunks').update({
+            'is_active': False,
+            'blacklist_reason': note
+        }).eq('id', chunk_id).execute()
+        
+        self.log_feedback(chunk_id, 'incorrect', note, 'blacklisted')
+    
+    def reweight_chunk(self, chunk_id: str, weight: float, note: str):
+        """Lower the retrieval priority of a chunk"""
+        supabase.table('document_chunks').update({
+            'weight_modifier': weight
+        }).eq('id', chunk_id).execute()
+        
+        self.log_feedback(chunk_id, 'misleading', note, 'reweighted')
+    
+    def correct_metadata(self, chunk_id: str, corrections: dict, note: str):
+        """Fix metadata without re-ingesting"""
+        supabase.table('document_chunks').update(corrections).eq('id', chunk_id).execute()
+        
+        self.log_feedback(chunk_id, 'metadata_error', note, 'corrected')
+```
+
+### User Interface Contract
+
+Every response must include a feedback mechanism:
+
+```typescript
+interface ChunkReference {
+  chunk_id: string;
+  content_snippet: string;
+  source_document: string;
+  feedback_link: string;  // "/api/feedback?chunk_id=xxx"
+}
+
+// Response includes feedback option
+{
+  "answer": "The minimum cavity depth is 50mm...",
+  "sources": [
+    {
+      "chunk_id": "abc-123",
+      "content_snippet": "Minimum 50mm cavity required",
+      "feedback_link": "/api/feedback?chunk_id=abc-123"
+    }
+  ]
+}
+```
+
+### Feedback Dashboard Metrics
+
+Track feedback to identify problematic sources:
+
+```sql
+-- Most flagged documents
+SELECT 
+    dc.source_document,
+    COUNT(cf.id) as flag_count,
+    ARRAY_AGG(DISTINCT cf.feedback_type) as feedback_types
+FROM chunk_feedback cf
+JOIN document_chunks dc ON cf.chunk_id = dc.id
+WHERE cf.resolved = FALSE
+GROUP BY dc.source_document
+ORDER BY flag_count DESC
+LIMIT 10;
+```
+
+---
+
+## 12. CHANGE LOG
 
 | Version | Date | Changes |
 |---------|------|---------|
 | 2.0 | Jan 2026 | Initial release of 4-Agent Architecture protocol |
+| 2.1 | Jan 2026 | Added Unit/Range Guardrail, Regionality Tagging, Self-Correction Loop |
 
 ---
 
