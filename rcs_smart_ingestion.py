@@ -480,7 +480,7 @@ def process_rcs_pdf(source_path: str, pdf_bytes: bytes, conn) -> Tuple[int, int]
         print(f"      ⚠️ No text extracted from PDF")
         return 0, 0
     
-    version_id = str(uuid.uuid4())[:8]
+    version_id = int(time.time()) % 100000  # Integer version
     agent_owner = get_agent_owner(source_path)
     
     for page_num, text in pages:
