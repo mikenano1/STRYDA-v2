@@ -568,14 +568,18 @@ def list_rcs_files() -> List[str]:
     return files
 
 def download_pdf(source_path: str) -> Optional[bytes]:
-    """Download PDF from Supabase storage"""
+    """Download PDF from Supabase storage (authenticated)"""
     from urllib.parse import quote
-    url = f"{SUPABASE_URL}/storage/v1/object/public/{BUCKET}/{quote(source_path, safe='/')}"
+    
+    # Use authenticated endpoint (not public)
+    url = f"{SUPABASE_URL}/storage/v1/object/{BUCKET}/{quote(source_path, safe='/')}"
     
     try:
-        response = requests.get(url, timeout=60)
+        response = requests.get(url, headers=SUPABASE_HEADERS, timeout=60)
         if response.status_code == 200:
             return response.content
+        else:
+            print(f"      ⚠️ HTTP {response.status_code}")
     except Exception as e:
         print(f"      ⚠️ Download error: {e}")
     return None
