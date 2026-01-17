@@ -2,7 +2,7 @@
 
 **Test Date:** 2025-11-25T06:30:31.409292
 
-**Backend URL:** https://techscraper.preview.emergentagent.com/api/chat
+**Backend URL:** https://strydahub.preview.emergentagent.com/api/chat
 
 **Total Queries Tested:** 20
 

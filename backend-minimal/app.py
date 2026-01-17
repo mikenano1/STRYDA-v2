@@ -835,7 +835,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://app.emergent.sh",
-        "https://techscraper.preview.emergentagent.com",
+        "https://strydahub.preview.emergentagent.com",
         "http://localhost:3000",  # Dev only
     ],
     allow_credentials=False,  # Enhanced security
