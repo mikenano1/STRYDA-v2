@@ -633,10 +633,13 @@ def validate_barriers():
     
     # Test 3: Geo context
     print('\n3️⃣ Testing Regionality Tagging...')
-    geo = classify_geo_context("Wind Zone Very High requirements")
+    geo = classify_geo_context("NZ Wind Zone Very High requirements as per NZS 3604")
     assert geo == "NZ_Specific", f"Expected NZ_Specific, got {geo}"
     
-    geo = classify_geo_context("General installation instructions")
+    geo = classify_geo_context("BRANZ Appraisal 550 for New Zealand")
+    assert geo == "NZ_Specific", f"Expected NZ_Specific for BRANZ, got {geo}"
+    
+    geo = classify_geo_context("General installation instructions for timber framing")
     assert geo == "Universal", f"Expected Universal, got {geo}"
     print('   ✅ Regionality tagging working')
     
