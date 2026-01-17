@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-STRYDA RAG API Bug Fix Testing
-Testing specific bug fixes for source context and response completeness
+STRYDA RAG Backend Testing - Protocol V2.0 Infrastructure
 Testing Agent: Backend Testing Agent
 Date: 2025-01-04
-Focus: Bug Fix 1 (Window Variation Source) & Bug Fix 2 (Deck Height Source & Completeness)
+Focus: Protocol V2.0 infrastructure verification
 """
 
 import requests
@@ -13,9 +12,9 @@ import time
 from typing import Dict, Any, List
 
 # Test Configuration
-BACKEND_URL = "https://strydahub.preview.emergentagent.com/api/chat"
-SESSION_ID = "test_session_bug_fixes"
-USER_ID = "test_user"
+BASE_URL = "https://strydahub.preview.emergentagent.com"
+CHAT_URL = f"{BASE_URL}/api/chat"
+SESSION_ID = "test-v2-infra"
 
 def make_chat_request(message: str) -> Dict[str, Any]:
     """Make a chat request to the STRYDA RAG API"""
