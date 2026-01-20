@@ -1,7 +1,7 @@
 {
   "audit_metadata": {
     "audit_date": "2025-11-08T15:36:57.017802",
-    "backend_url": "https://strydahub.preview.emergentagent.com",
+    "backend_url": "https://techlib-manager.preview.emergentagent.com",
     "total_documents_ingested": 1742,
     "total_queries_tested": 20
   },
