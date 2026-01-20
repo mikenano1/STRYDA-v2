@@ -267,6 +267,14 @@ def generate_deterministic_embedding(text: str) -> List[float]:
     magnitude = sum(x**2 for x in embedding) ** 0.5
     return [x / magnitude for x in embedding]
 
+def sanitize_text_for_db(text: str) -> str:
+    """Remove NUL characters and other problematic bytes for PostgreSQL"""
+    # Remove NUL (0x00) characters that break PostgreSQL
+    text = text.replace('\x00', '')
+    # Remove other control characters except newlines and tabs
+    text = ''.join(c if c.isprintable() or c in '\n\t\r' else ' ' for c in text)
+    return text
+
 def extract_text_from_pdf(pdf_bytes: bytes) -> List[Tuple[int, str]]:
     """Extract text from all pages of a PDF"""
     pages = []
@@ -278,6 +286,8 @@ def extract_text_from_pdf(pdf_bytes: bytes) -> List[Tuple[int, str]]:
             page = doc[page_num]
             text = page.get_text("text")
             if text.strip():
+                # Sanitize text to remove NUL characters
+                text = sanitize_text_for_db(text)
                 pages.append((page_num + 1, text))
         doc.close()
     except Exception as e:
