@@ -330,73 +330,72 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
         
         # Detect compliance documentation
         compliance_info = detect_compliance_docs(full_text, filename)
-    
-    # Determine document type
-    doc_type = 'Unknown'
-    filename_lower = filename.lower()
-    if 'technical' in filename_lower or 'specification' in filename_lower:
-        doc_type = 'Technical_Specification'
-    elif 'installation' in filename_lower or 'guide' in filename_lower:
-        doc_type = 'Installation_Guide'
-    elif 'branz' in filename_lower or 'appraisal' in filename_lower:
-        doc_type = 'BRANZ_Appraisal'
-    elif 'codemark' in filename_lower:
-        doc_type = 'CodeMark_Certificate'
-    elif 'warranty' in filename_lower:
-        doc_type = 'Warranty'
-    elif 'data' in filename_lower and 'sheet' in filename_lower:
-        doc_type = 'Technical_Data_Sheet'
-    elif 'bpir' in filename_lower or 'bpis' in filename_lower:
-        doc_type = 'BPIR_Statement'
-    else:
-        doc_type = 'Product_Document'
-    
-    # Extract sector-specific anchors
-    anchors = extract_sector_anchors(full_text, sector)
-    
-    # Extract scope limitations (first paragraph with "limitation" or "scope")
-    scope_match = re.search(r'(?:limitation|scope|restriction)[:\s]+([^.]+\.)', full_text, re.IGNORECASE)
-    scope_limitation = scope_match.group(1) if scope_match else ''
-    
-    # Add to compliance register
-    product_name = filename.replace('.pdf', '').replace('_', ' ')[:100]
-    register_entry = add_to_register(brand, product_name, doc_type, compliance_info, scope_limitation)
-    register_entries.append(register_entry)
-    
-    # Flag MISSING_DOCS
-    if register_entry['status'] == 'MISSING':
-        print(f"      ⚠️ MISSING_DOCS: {brand} - {product_name[:30]}")
-    
-    # Chunk and ingest
-    chunks = chunk_text(full_text)
-    chunks_inserted = 0
-    
-    for i, chunk in enumerate(chunks):
-        # Generate embedding
-        embedding = generate_embedding(chunk)
-        if not embedding:
-            continue
         
-        # Calculate page number estimate
-        page_estimate = min(i * page_count // len(chunks) + 1, page_count)
+        # Determine document type
+        doc_type = 'Unknown'
+        filename_lower = filename.lower()
+        if 'technical' in filename_lower or 'specification' in filename_lower:
+            doc_type = 'Technical_Specification'
+        elif 'installation' in filename_lower or 'guide' in filename_lower:
+            doc_type = 'Installation_Guide'
+        elif 'branz' in filename_lower or 'appraisal' in filename_lower:
+            doc_type = 'BRANZ_Appraisal'
+        elif 'codemark' in filename_lower:
+            doc_type = 'CodeMark_Certificate'
+        elif 'warranty' in filename_lower:
+            doc_type = 'Warranty'
+        elif 'data' in filename_lower and 'sheet' in filename_lower:
+            doc_type = 'Technical_Data_Sheet'
+        elif 'bpir' in filename_lower or 'bpis' in filename_lower:
+            doc_type = 'BPIR_Statement'
+        else:
+            doc_type = 'Product_Document'
         
-        # Build metadata
-        metadata = {
-            'brand': brand,
-            'sector': sector,
-            'doc_type': doc_type,
-            'page_count': page_count,
-            'compliance_status': register_entry['status'],
-            'anchors': anchors,
-        }
+        # Extract sector-specific anchors
+        anchors = extract_sector_anchors(full_text, sector)
         
-        if compliance_info['has_codemark']:
-            metadata['codemark_id'] = compliance_info['codemark_id']
-        if compliance_info['has_branz']:
-            metadata['branz_number'] = compliance_info['branz_number']
+        # Extract scope limitations (first paragraph with "limitation" or "scope")
+        scope_match = re.search(r'(?:limitation|scope|restriction)[:\s]+([^.]+\.)', full_text, re.IGNORECASE)
+        scope_limitation = scope_match.group(1) if scope_match else ''
         
-        # Insert into database
-        try:
+        # Add to compliance register
+        product_name = filename.replace('.pdf', '').replace('_', ' ')[:100]
+        register_entry = add_to_register(brand, product_name, doc_type, compliance_info, scope_limitation)
+        register_entries.append(register_entry)
+        
+        # Flag MISSING_DOCS
+        if register_entry['status'] == 'MISSING':
+            print(f"      ⚠️ MISSING_DOCS: {brand} - {product_name[:30]}")
+        
+        # Chunk and ingest
+        chunks = chunk_text(full_text)
+        chunks_inserted = 0
+        
+        for i, chunk in enumerate(chunks):
+            # Generate embedding
+            embedding = generate_embedding(chunk)
+            if not embedding:
+                continue
+            
+            # Calculate page number estimate
+            page_estimate = min(i * page_count // len(chunks) + 1, page_count)
+            
+            # Build metadata
+            metadata = {
+                'brand': brand,
+                'sector': sector,
+                'doc_type': doc_type,
+                'page_count': page_count,
+                'compliance_status': register_entry['status'],
+                'anchors': anchors,
+            }
+            
+            if compliance_info['has_codemark']:
+                metadata['codemark_id'] = compliance_info['codemark_id']
+            if compliance_info['has_branz']:
+                metadata['branz_number'] = compliance_info['branz_number']
+            
+            # Insert into database
             cur.execute("""
                 INSERT INTO documents (
                     content, source, page, embedding, page_hash,
@@ -423,11 +422,7 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
                 doc_type
             ))
             chunks_inserted += 1
-        except Exception as e:
-            print(f"      ❌ Insert error: {e}")
-            conn.rollback()
-            continue
-    
+        
         if chunks_inserted > 0:
             conn.commit()
         
@@ -437,9 +432,11 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
         
     except Exception as e:
         print(f"      ❌ Processing error: {e}")
-        if conn:
+        try:
             conn.rollback()
             conn.close()
+        except:
+            pass
         return 0
 
 def main():
