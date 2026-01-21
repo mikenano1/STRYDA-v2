@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 import os
 
-BACKEND_URL = "https://smarter-kb.preview.emergentagent.com"
+BACKEND_URL = "https://strydamaster.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 TIMEOUT = 30
 

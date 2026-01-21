@@ -96,7 +96,7 @@
 ## 🚀 Deployment Information
 
 ### Preview Details:
-- **Preview URL**: https://smarter-kb.preview.emergentagent.com
+- **Preview URL**: https://strydamaster.preview.emergentagent.com
 - **QR Code**: Available via Expo development tools
 - **API Integration**: Backend fully operational at localhost:8001
 
