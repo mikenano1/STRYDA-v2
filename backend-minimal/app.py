@@ -84,12 +84,16 @@ from v3_citation_priority import (
 )
 
 # Helper function for building citations
-def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
+def build_simple_citations(docs: List[Dict], max_citations: int = 3, query: str = "") -> List[Dict]:
     """
-    Build simple page-level citations from retrieved documents
+    Build simple page-level citations from retrieved documents.
+    V3.0: Sorted by citation priority (NZBC > Standards > Industry > Products)
     """
+    # Apply V3.0 citation hierarchy sorting
+    sorted_docs = sort_citations_by_priority(docs)
+    
     citations = []
-    for idx, doc in enumerate(docs[:max_citations]):
+    for idx, doc in enumerate(sorted_docs[:max_citations]):
         source = doc.get("source", "Unknown")
         page = doc.get("page", 0)
         snippet = doc.get("snippet", "")[:200]
@@ -104,7 +108,8 @@ def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dic
             "snippet": snippet,
             "anchor": None,
             "confidence": doc.get("final_score", 0.8),
-            "pill_text": f"[{source.replace('NZS 3604:2011', 'NZS 3604')}] p.{page}"
+            "pill_text": f"[{source.replace('NZS 3604:2011', 'NZS 3604')}] p.{page}",
+            "priority_level": CITATION_PRIORITY.get(source.lower().split('/')[0], 50)  # V3.0 priority
         }
         citations.append(citation)
     
