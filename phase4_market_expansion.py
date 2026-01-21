@@ -459,6 +459,20 @@ def main():
     print(f"   🏠 Roofing: {len(roofing_files)} PDFs")
     print(f"   🪟 Windows: {len(windows_files)} PDFs")
     
+    # Load existing register
+    existing_register = load_existing_register()
+    new_register_entries = []
+    
+    # Stats tracking
+    stats = {
+        'roofing_files': 0,
+        'roofing_chunks': 0,
+        'windows_files': 0,
+        'windows_chunks': 0,
+        'missing_docs': 0,
+        'errors': 0,
+    }
+    
     # Process Roofing
     print(f"\n{'=' * 80}")
     print("🏠 PROCESSING ROOFING SECTOR")
