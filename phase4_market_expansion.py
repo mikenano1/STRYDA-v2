@@ -459,23 +459,6 @@ def main():
     print(f"   🏠 Roofing: {len(roofing_files)} PDFs")
     print(f"   🪟 Windows: {len(windows_files)} PDFs")
     
-    # Connect to database
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    
-    # Load existing register
-    existing_register = load_existing_register()
-    new_register_entries = []
-    
-    # Stats tracking
-    stats = {
-        'roofing_files': 0,
-        'roofing_chunks': 0,
-        'windows_files': 0,
-        'windows_chunks': 0,
-        'missing_docs': 0,
-        'errors': 0,
-    }
-    
     # Process Roofing
     print(f"\n{'=' * 80}")
     print("🏠 PROCESSING ROOFING SECTOR")
@@ -486,7 +469,7 @@ def main():
         print(f"\n[{i}/{len(roofing_files)}] {filename[:50]}...")
         
         try:
-            chunks = ingest_file(file_info, 'roofing', conn, new_register_entries)
+            chunks = ingest_file(file_info, 'roofing', new_register_entries)
             if chunks > 0:
                 stats['roofing_files'] += 1
                 stats['roofing_chunks'] += chunks
@@ -509,7 +492,7 @@ def main():
         print(f"\n[{i}/{len(windows_files)}] {filename[:50]}...")
         
         try:
-            chunks = ingest_file(file_info, 'windows', conn, new_register_entries)
+            chunks = ingest_file(file_info, 'windows', new_register_entries)
             if chunks > 0:
                 stats['windows_files'] += 1
                 stats['windows_chunks'] += chunks
