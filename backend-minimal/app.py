@@ -1869,6 +1869,48 @@ Do you have a material preference, or would you like me to filter by which merch
                             }
                 
                 # =====================================================
+                # REGISTER-FIRST AUDIT: Check compliance register FIRST
+                # HARDWIRED: Must check BEFORE any other processing
+                # =====================================================
+                
+                compliance_warning, should_block = check_and_warn(user_message)
+                
+                if compliance_warning:
+                    print(f"🚨 REGISTER-FIRST AUDIT: Compliance flag detected!")
+                    
+                    if should_block:
+                        # EXPIRED product - BLOCK response completely
+                        print(f"🛑 STOP-WORK: Product is EXPIRED - blocking response")
+                        
+                        # Save to chat_messages
+                        try:
+                            conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                            with conn.cursor() as cur:
+                                cur.execute("""
+                                    INSERT INTO chat_messages (session_id, role, content)
+                                    VALUES (%s, %s, %s);
+                                """, (session_id, "assistant", compliance_warning))
+                            conn.commit()
+                            conn.close()
+                        except Exception as e:
+                            print(f"⚠️ Failed to save compliance warning: {e}")
+                        
+                        return {
+                            "answer": compliance_warning,
+                            "intent": "compliance_stop_work",
+                            "citations": [{
+                                "source": "Compliance_Master_Register.csv",
+                                "page": "Product Audit",
+                                "confidence": 1.0,
+                                "pill_text": "[Compliance Register, 2026-01-21, EXPIRED]"
+                            }],
+                            "can_show_citations": True,
+                            "model": "register_first_audit",
+                            "compliance_status": "EXPIRED",
+                            "timestamp": int(time.time())
+                        }
+                
+                # =====================================================
                 # PROTOCOL 1.1: SPAN TABLE ISOLATION (EARLY INTERCEPT)
                 # FORBIDDEN: AI must NEVER calculate timber spans
                 # =====================================================
