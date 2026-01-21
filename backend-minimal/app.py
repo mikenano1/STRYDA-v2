@@ -1859,6 +1859,44 @@ Do you have a material preference, or would you like me to filter by which merch
                             }
                 
                 # =====================================================
+                # PROTOCOL 1.1: SPAN TABLE ISOLATION (EARLY INTERCEPT)
+                # FORBIDDEN: AI must NEVER calculate timber spans
+                # =====================================================
+                
+                if is_span_query_v11(user_message):
+                    print(f"🚫 PROTOCOL 1.1: Span query intercepted - returning table reference only")
+                    
+                    span_response = generate_span_table_response(user_message)
+                    
+                    # Save to chat_messages
+                    try:
+                        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
+                        with conn.cursor() as cur:
+                            cur.execute("""
+                                INSERT INTO chat_messages (session_id, role, content)
+                                VALUES (%s, %s, %s);
+                            """, (session_id, "assistant", span_response))
+                        conn.commit()
+                        conn.close()
+                    except Exception as e:
+                        print(f"⚠️ Failed to save span response: {e}")
+                    
+                    return {
+                        "answer": span_response,
+                        "intent": "span_table_reference",
+                        "citations": [{
+                            "source": "NZS 3604:2011",
+                            "page": "See table reference above",
+                            "confidence": 1.0,
+                            "pill_text": "[NZS 3604:2011, Current, Span Tables]"
+                        }],
+                        "can_show_citations": True,
+                        "model": "protocol_1.1_span_isolation",
+                        "v3_span_warning": True,
+                        "timestamp": int(time.time())
+                    }
+                
+                # =====================================================
                 # THE FOREMAN: INTELLIGENT SEARCH ROUTING (4-Agent Architecture)
                 # Routes queries to appropriate specialist agent(s)
                 # =====================================================
