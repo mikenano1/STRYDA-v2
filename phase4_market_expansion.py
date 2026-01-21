@@ -425,12 +425,22 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
             chunks_inserted += 1
         except Exception as e:
             print(f"      ❌ Insert error: {e}")
+            conn.rollback()
             continue
     
-    if chunks_inserted > 0:
-        conn.commit()
-    
-    return chunks_inserted
+        if chunks_inserted > 0:
+            conn.commit()
+        
+        cur.close()
+        conn.close()
+        return chunks_inserted
+        
+    except Exception as e:
+        print(f"      ❌ Processing error: {e}")
+        if conn:
+            conn.rollback()
+            conn.close()
+        return 0
 
 def main():
     """Main ingestion pipeline"""
