@@ -290,8 +290,8 @@ def generate_embedding(text: str) -> List[float]:
 # MAIN INGESTION ENGINE
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def ingest_file(file_info: Dict, sector: str, conn, register_entries: List[Dict]) -> int:
-    """Ingest a single PDF file"""
+def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> int:
+    """Ingest a single PDF file with fresh connection per file"""
     storage_path = file_info['path']
     filename = file_info['name']
     
@@ -315,12 +315,18 @@ def ingest_file(file_info: Dict, sector: str, conn, register_entries: List[Dict]
     # Generate content hash for deduplication
     content_hash = hashlib.sha256(full_text.encode()).hexdigest()[:16]
     
-    # Check for duplicates
+    # Fresh connection per file to avoid transaction issues
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    conn.autocommit = False
     cur = conn.cursor()
-    cur.execute("SELECT id FROM documents WHERE page_hash = %s LIMIT 1", (content_hash,))
-    if cur.fetchone():
-        print(f"      ⏭️ Skipping duplicate: {filename[:40]}...")
-        return 0
+    
+    try:
+        # Check for duplicates
+        cur.execute("SELECT id FROM documents WHERE page_hash = %s LIMIT 1", (content_hash,))
+        if cur.fetchone():
+            print(f"      ⏭️ Skipping duplicate: {filename[:40]}...")
+            conn.close()
+            return 0
     
     # Detect compliance documentation
     compliance_info = detect_compliance_docs(full_text, filename)
