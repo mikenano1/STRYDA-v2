@@ -477,13 +477,14 @@ def run_marshall_reingestion():
             
             file_chunks += 1
         
+        page_count = len(doc)
         doc.close()
         
         stats["files"] += 1
         stats["chunks"] += file_chunks
         stats["with_sequencing"] += file_sequencing
         
-        print(f"    ✅ {len(doc)} pages → {file_chunks} chunks")
+        print(f"    ✅ {page_count} pages → {file_chunks} chunks")
         if file_sequencing > 0:
             print(f"    🔗 Sequencing data extracted: {file_sequencing} pages")
     
