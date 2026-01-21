@@ -74,6 +74,15 @@ from required_inputs_gate import gate_required_inputs
 from gate_field_extractor import extract_gate_fields
 from token_budget_router import pick_max_tokens
 
+# V3.0 Citation Priority & Span Table Warning
+from v3_citation_priority import (
+    apply_v3_citation_hierarchy,
+    sort_citations_by_priority,
+    is_span_query,
+    get_span_table_warning,
+    CITATION_PRIORITY
+)
+
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3) -> List[Dict]:
     """
