@@ -399,12 +399,12 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
             cur.execute("""
                 INSERT INTO documents (
                     content, source, page, embedding, page_hash,
-                    hierarchy_level, agent_owner, trade, priority, is_active,
+                    trade, priority, is_active,
                     ingestion_source, unit_range, doc_type
                 ) VALUES (
                     %s, %s, %s, %s::vector, %s,
-                    %s, %s, %s, %s, %s,
-                    %s, %s, %s
+                    %s, %s, %s,
+                    %s, %s::jsonb, %s
                 )
             """, (
                 chunk,
@@ -412,8 +412,6 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
                 page_estimate,
                 embedding,
                 f"{content_hash}_{i}",
-                'Product',  # hierarchy_level
-                sector,     # agent_owner
                 sector,     # trade
                 80,         # priority
                 True,       # is_active
