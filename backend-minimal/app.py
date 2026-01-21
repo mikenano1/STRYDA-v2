@@ -2212,6 +2212,14 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                 consolidated = consolidate_citations(docs, max_primary=3, max_secondary=5)
                 primary_citations = consolidated.get('primary', [])
                 
+                # V3.0: Add Span Table Warning if applicable
+                span_warning = None
+                if is_span_query(user_message):
+                    span_warning = get_span_table_warning(user_message)
+                    # Append warning to answer
+                    answer = answer + "\n\n" + span_warning
+                    print(f"⚠️ V3.0: Added span table verification warning")
+                
                 # Final response
                 response = {
                     "answer": answer,
@@ -2220,7 +2228,8 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                     "secondary_citations": consolidated.get('secondary', []),  # Hidden/expandable
                     "can_show_citations": len(primary_citations) > 0,
                     "model": f"{GEMINI_MODEL}-hybrid",
-                    "timestamp": int(time.time())
+                    "timestamp": int(time.time()),
+                    "v3_span_warning": span_warning is not None  # Flag for frontend
                 }
                 
             except Exception as e:
