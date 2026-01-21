@@ -400,7 +400,7 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
                 INSERT INTO documents (
                     content, source, page, embedding, page_hash,
                     hierarchy_level, agent_owner, trade, priority, is_active,
-                    source_path, unit_range, doc_type
+                    ingestion_source, unit_range, doc_type
                 ) VALUES (
                     %s, %s, %s, %s::vector, %s,
                     %s, %s, %s, %s, %s,
@@ -417,8 +417,8 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
                 sector,     # trade
                 80,         # priority
                 True,       # is_active
-                storage_path,
-                json.dumps(metadata),
+                storage_path,  # ingestion_source (storage path)
+                json.dumps(metadata),  # unit_range (JSON metadata)
                 doc_type
             ))
             chunks_inserted += 1
