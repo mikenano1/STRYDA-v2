@@ -20,7 +20,7 @@ from typing import Dict, List, Any
 from datetime import datetime
 
 # Backend URL from environment
-BACKEND_URL = "https://techlib-manager.preview.emergentagent.com"
+BACKEND_URL = "https://smarter-kb.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # Test queries

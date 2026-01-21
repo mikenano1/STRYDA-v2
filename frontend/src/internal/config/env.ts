@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://techlib-manager.preview.emergentagent.com",
+  API_BASE: "https://smarter-kb.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 

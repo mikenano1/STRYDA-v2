@@ -9,7 +9,7 @@ import json
 import time
 from datetime import datetime
 
-BACKEND_URL = "https://techlib-manager.preview.emergentagent.com"
+BACKEND_URL = "https://smarter-kb.preview.emergentagent.com"
 
 async def test_detailed_final_sweep():
     """Test the Final Sweep queries and capture detailed responses"""
