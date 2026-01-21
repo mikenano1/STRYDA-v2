@@ -1,0 +1,68 @@
+{
+  "audit_date": "2026-01-21",
+  "protocol_version": "3.0-X",
+  "total_brands_audited": 4,
+  
+  "summary": {
+    "complete": 2,
+    "missing_bpir": 2,
+    "missing_nzbn": 4
+  },
+  
+  "brands": {
+    "Marshall Innovations": {
+      "status": "COMPLETE",
+      "has_bpir": true,
+      "has_branz": true,
+      "has_codemark": false,
+      "has_nzbn": false,
+      "doc_types": ["BPIR", "BRANZ_Appraisal", "Brochure", "Product_Guide", "Technical_Data_Sheet"],
+      "action_required": "Add NZBN to unit_range metadata"
+    },
+    "Knauf": {
+      "status": "COMPLETE",
+      "has_bpir": true,
+      "has_branz": false,
+      "has_codemark": false,
+      "has_nzbn": false,
+      "doc_types": ["BPIR_Summary", "Installation_Guide", "Technical_Data_Sheet"],
+      "action_required": "Add NZBN to unit_range metadata"
+    },
+    "Kingspan": {
+      "status": "INCOMPLETE",
+      "has_bpir": false,
+      "has_branz": false,
+      "has_codemark": true,
+      "has_nzbn": false,
+      "doc_types": ["CodeMark_Certificate", "EPD", "Installation_Guide", "Technical_Data_Sheet", "Technical_Drawing", "Warranty"],
+      "action_required": "Source BPIR Summary document, add NZBN"
+    },
+    "Masons": {
+      "status": "INCOMPLETE",
+      "has_bpir": false,
+      "has_branz": false,
+      "has_codemark": false,
+      "has_nzbn": false,
+      "doc_types": ["Technical_Data_Sheet"],
+      "action_required": "Source BPIR Summary, BRANZ/CodeMark certification, add NZBN"
+    }
+  },
+  
+  "v3_features_implemented": {
+    "citation_priority": {
+      "status": "ACTIVE",
+      "description": "NZBC > NZ Standards > Industry Codes > Product Manuals",
+      "file": "v3_citation_priority.py"
+    },
+    "span_table_warning": {
+      "status": "ACTIVE",
+      "description": "AI table-reading beta warning for structural spans",
+      "triggers": ["span table", "joist span", "rafter span", "lintel size", "maximum span"]
+    },
+    "bpir_audit": {
+      "status": "COMPLETE",
+      "description": "Scanned all products for BPIR Summary and NZBN",
+      "findings": "2/4 brands missing BPIR, 4/4 brands missing NZBN"
+    }
+  }
+}
