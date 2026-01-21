@@ -247,10 +247,10 @@ def ingest_to_database(pdf_data: dict) -> int:
             # Insert chunk
             cur.execute("""
                 INSERT INTO documents (
-                    content, source, page_number, page_hash,
+                    content, source, page, page_hash,
                     hierarchy_level, agent_owner, geo_context,
-                    unit_range, is_active, created_at
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    unit_range, is_active, created_at, brand_name, trade
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """, (
                 chunk_content,
                 storage_path,
@@ -261,7 +261,9 @@ def ingest_to_database(pdf_data: dict) -> int:
                 "NZ_Specific",
                 json.dumps(unit_range) if unit_range else None,
                 True,
-                datetime.utcnow()
+                datetime.utcnow(),
+                "Masons",
+                "underlays"
             ))
             
             chunks_inserted += 1
