@@ -1,0 +1,142 @@
+{
+  "protocol_version": "2.0",
+  "created": "2026-01-21",
+  "description": "Universal Anchor Map for STRYDA RAG - Maps guardrail keys to compliance sources",
+  
+  "anchor_keys": {
+    "UV_LIMIT": {
+      "description": "Maximum UV exposure days before covering",
+      "unit": "days",
+      "compliance_sources": ["E2-AS1", "Manufacturer TDS"],
+      "product_categories": ["underlays", "wraps", "membranes"],
+      "validation_rule": "product_uv_days <= code_max_uv_days"
+    },
+    "R_VALUE_CEILING": {
+      "description": "Thermal resistance for ceiling insulation",
+      "unit": "m²K/W",
+      "compliance_sources": ["H1-AS1", "BRANZ Insulation Guide"],
+      "product_categories": ["insulation"],
+      "validation_rule": "product_r_value >= code_min_r_value",
+      "2026_requirement": "R6.6 minimum (Climate Zone 1-3)"
+    },
+    "R_VALUE_WALL": {
+      "description": "Thermal resistance for wall insulation",
+      "unit": "m²K/W", 
+      "compliance_sources": ["H1-AS1", "BRANZ Insulation Guide"],
+      "product_categories": ["insulation"],
+      "validation_rule": "product_r_value >= code_min_r_value",
+      "2026_requirement": "R2.0 minimum"
+    },
+    "R_VALUE_FLOOR": {
+      "description": "Thermal resistance for floor insulation",
+      "unit": "m²K/W",
+      "compliance_sources": ["H1-AS1", "BRANZ Insulation Guide"],
+      "product_categories": ["insulation"],
+      "validation_rule": "product_r_value >= code_min_r_value",
+      "2026_requirement": "R1.3 minimum"
+    },
+    "TIMBER_HAZARD_CLASS": {
+      "description": "Preservative treatment hazard classification",
+      "unit": "H-class",
+      "compliance_sources": ["NZS 3602:2003", "NZS 3640"],
+      "product_categories": ["timber", "framing"],
+      "validation_rule": "product_h_class >= application_required_h_class",
+      "classes": ["H1.1", "H1.2", "H3.1", "H3.2", "H4", "H5", "H6"]
+    },
+    "WIND_ZONE": {
+      "description": "Wind zone classification for fixing requirements",
+      "unit": "zone",
+      "compliance_sources": ["E2-AS1", "NZS 3604"],
+      "product_categories": ["cladding", "roofing", "underlays"],
+      "zones": ["Low", "Medium", "High", "Very High", "Extra High"]
+    },
+    "FIRE_RATING": {
+      "description": "Fire resistance rating",
+      "unit": "FRR (mins)",
+      "compliance_sources": ["C-AS1", "C-AS2"],
+      "product_categories": ["wall_systems", "fire_rated"],
+      "validation_rule": "product_frr >= required_frr"
+    },
+    "SILL_REQUIREMENT": {
+      "description": "Sill flashing layer requirement",
+      "unit": "layers",
+      "compliance_sources": ["E2-AS1"],
+      "product_categories": ["flashings", "underlays"],
+      "validation_rule": "2-layer sill for nail/screw sealability"
+    },
+    "AIR_GAP": {
+      "description": "Required ventilation air gap",
+      "unit": "mm",
+      "compliance_sources": ["E2-AS1", "H1-AS1"],
+      "product_categories": ["insulation", "cladding"],
+      "validation_rule": "air_gap >= 25mm for drainage"
+    },
+    "CODEMARK": {
+      "description": "CodeMark certification status",
+      "unit": "boolean",
+      "compliance_sources": ["MBIE"],
+      "product_categories": ["all"],
+      "validation_rule": "has_valid_codemark == true"
+    },
+    "BRANZ_APPRAISAL": {
+      "description": "BRANZ Appraisal certification",
+      "unit": "appraisal_number",
+      "compliance_sources": ["BRANZ"],
+      "product_categories": ["all"],
+      "validation_rule": "has_valid_appraisal == true"
+    },
+    "BPIR_CLASS": {
+      "description": "Building Product Information Requirements classification",
+      "unit": "class",
+      "compliance_sources": ["BPIR Regulations 2022"],
+      "product_categories": ["all"],
+      "classes": ["Class 1 (High Risk)", "Class 2 (Moderate Risk)"]
+    },
+    "DRAINAGE_GRADE": {
+      "description": "Minimum drainage fall/grade",
+      "unit": "ratio or %",
+      "compliance_sources": ["AS/NZS 3500.2", "G13-AS1"],
+      "product_categories": ["plumbing", "drainage"]
+    },
+    "RCD_REQUIRED": {
+      "description": "Residual Current Device requirement",
+      "unit": "mA",
+      "compliance_sources": ["AS/NZS 3000:2018"],
+      "product_categories": ["electrical"],
+      "validation_rule": "rcd_sensitivity <= 30mA"
+    },
+    "BALUSTRADE_HEIGHT": {
+      "description": "Minimum balustrade height requirement",
+      "unit": "mm",
+      "compliance_sources": ["F4-AS1"],
+      "product_categories": ["balustrades", "barriers"],
+      "validation_rule": "height >= 1000mm when fall > 1m"
+    },
+    "OPENING_SIZE": {
+      "description": "Maximum opening size in barriers",
+      "unit": "mm",
+      "compliance_sources": ["F4-AS1"],
+      "product_categories": ["balustrades", "barriers"],
+      "validation_rule": "opening <= 100mm"
+    }
+  },
+  
+  "brand_mapping": {
+    "Marshall Innovations": {
+      "products": ["Tekton", "Super-Stick", "Trade Flash"],
+      "anchor_keys": ["UV_LIMIT", "SILL_REQUIREMENT", "BRANZ_APPRAISAL"]
+    },
+    "Masons": {
+      "products": ["40 Below Platinum", "UNI PRO", "Barricade WD", "VHP Maxi"],
+      "anchor_keys": ["UV_LIMIT", "SILL_REQUIREMENT", "WIND_ZONE"]
+    },
+    "Kingspan": {
+      "products": ["Kooltherm K12", "Kooltherm K7", "Kooltherm K17"],
+      "anchor_keys": ["R_VALUE_CEILING", "R_VALUE_WALL", "R_VALUE_FLOOR", "CODEMARK"]
+    },
+    "Knauf": {
+      "products": ["Earthwool Ceiling", "Earthwool Wall", "Earthwool Underfloor"],
+      "anchor_keys": ["R_VALUE_CEILING", "R_VALUE_WALL", "R_VALUE_FLOOR", "AIR_GAP"]
+    }
+  }
+}
