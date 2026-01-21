@@ -542,7 +542,8 @@ def main():
     print(f"   ✅ Register updated: {len(all_entries)} total entries")
     print(f"   ⚠️ MISSING_DOCS flagged: {stats['missing_docs']} products")
     
-    # Final stats
+    # Final stats - use fresh connection
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cur = conn.cursor()
     cur.execute("SELECT COUNT(*) FROM documents")
     total_chunks = cur.fetchone()[0]
