@@ -94,6 +94,16 @@ from source_hierarchy_protocol import (
     SPAN_TABLE_REFERENCES
 )
 
+# REGISTER-FIRST AUDIT PROTOCOL
+from register_first_audit import (
+    check_and_warn,
+    enforce_citation_visibility,
+    load_compliance_register
+)
+
+# Load compliance register on startup
+load_compliance_register()
+
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3, query: str = "") -> List[Dict]:
     """
