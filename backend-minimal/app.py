@@ -83,6 +83,17 @@ from v3_citation_priority import (
     CITATION_PRIORITY
 )
 
+# SOURCE HIERARCHY PROTOCOL 1.1
+from source_hierarchy_protocol import (
+    get_authority_weight,
+    enforce_nzbc_precedence,
+    format_citation,
+    generate_span_table_response,
+    is_span_query as is_span_query_v11,
+    PROTOCOL_1_1_SYSTEM_INJECTION,
+    SPAN_TABLE_REFERENCES
+)
+
 # Helper function for building citations
 def build_simple_citations(docs: List[Dict], max_citations: int = 3, query: str = "") -> List[Dict]:
     """
