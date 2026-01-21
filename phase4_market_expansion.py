@@ -327,9 +327,9 @@ def ingest_file(file_info: Dict, sector: str, register_entries: List[Dict]) -> i
             print(f"      ⏭️ Skipping duplicate: {filename[:40]}...")
             conn.close()
             return 0
-    
-    # Detect compliance documentation
-    compliance_info = detect_compliance_docs(full_text, filename)
+        
+        # Detect compliance documentation
+        compliance_info = detect_compliance_docs(full_text, filename)
     
     # Determine document type
     doc_type = 'Unknown'
