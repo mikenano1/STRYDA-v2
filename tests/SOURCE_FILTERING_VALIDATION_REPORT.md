@@ -2,7 +2,7 @@
 
 **Test Date:** 2025-11-25T06:30:31.409292
 
-**Backend URL:** https://strydamaster.preview.emergentagent.com/api/chat
+**Backend URL:** https://inteldoc-agent.preview.emergentagent.com/api/chat
 
 **Total Queries Tested:** 20
 

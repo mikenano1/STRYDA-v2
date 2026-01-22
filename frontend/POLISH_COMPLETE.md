@@ -38,7 +38,7 @@
 
 **Local URL:** http://localhost:3000  
 **Tunnel Subdomain:** nzbuilder-ai  
-**Preview URL:** https://strydamaster.preview.emergentagent.com  
+**Preview URL:** https://inteldoc-agent.preview.emergentagent.com  
 
 **QR Code:** Generate from Expo Dev Tools at http://localhost:3000
 

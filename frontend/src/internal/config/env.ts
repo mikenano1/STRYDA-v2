@@ -4,7 +4,7 @@
  */
 
 export const ENV = {
-  API_BASE: "https://strydamaster.preview.emergentagent.com",
+  API_BASE: "https://inteldoc-agent.preview.emergentagent.com",
   USE_BACKEND: true,
 } as const;
 

@@ -3,7 +3,7 @@
 ## Test Overview
 - **Date**: 2025-11-12 19:09:52
 - **Total Queries**: 20 (10 general + 10 compliance)
-- **Backend URL**: https://strydamaster.preview.emergentagent.com/api/chat
+- **Backend URL**: https://inteldoc-agent.preview.emergentagent.com/api/chat
 
 ## Before Fix
 - **Intent Accuracy**: 60% (12/20)
