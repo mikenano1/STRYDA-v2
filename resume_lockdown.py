@@ -35,7 +35,7 @@ REGISTER_PATH = "/app/protocols/Compliance_Master_Register.csv"
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 openai_client = openai.OpenAI(api_key=OPENAI_KEY)
 
-START_FROM = 439  # 0-indexed, so file 440
+START_FROM = 500  # 0-indexed, so file 501
 
 def download_pdf(path):
     try:
