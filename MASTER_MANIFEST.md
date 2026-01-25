@@ -6,9 +6,11 @@
 ## 📂 Protocol Registry
 | Protocol | File | Status |
 |----------|------|--------|
-| V2 Ingestion | `/protocols/INGESTION_V2.md` | ✅ Active (File Hygiene) |
+| **V3.0 PLATINUM** | `/protocols/INGESTION_V3_PLATINUM.md` | ⚡ **ACTIVE (Primary Engine)** |
+| V2.5 Hybrid OCR | `/protocols/PARSING_STANDARD_V2_5.md` | 📦 Legacy/Fallback |
+| V2 Ingestion | `/protocols/INGESTION_V2.md` | 📦 Legacy/Fallback (File Hygiene) |
 | V3 Compliance | `/protocols/COMPLIANCE_V3.md` | ✅ Active (Hierarchy of Law) |
-| V4 Auto-Auditor | `/protocols/AUTO_AUDITOR_V4.md` | 🔄 Pending Build (Logic Engine) |
+| V4 Auto-Auditor | `/protocols/AUTO_AUDITOR_V4.md` | ✅ Active (Logic Engine) |
 
 ## 📊 Data Assets
 | Asset | Location | Records |
