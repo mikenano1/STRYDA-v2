@@ -43,3 +43,5 @@ Neo must update `PROJECT_STATE.md` at the end of every session with:
 
 ---
 *Manifest Version: 1.0 | Created: June 2025*
+
+* **/protocols/PARSING_STANDARD_V2_5.md**: Active (Hybrid OCR + Vision Logic)
