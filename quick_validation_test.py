@@ -5,7 +5,7 @@ import requests
 import json
 import time
 
-BACKEND_URL = "https://inteldoc-agent.preview.emergentagent.com"
+BACKEND_URL = "https://buildbot-nz.preview.emergentagent.com"
 API_ENDPOINT = f"{BACKEND_URL}/api/chat"
 
 # One query per category

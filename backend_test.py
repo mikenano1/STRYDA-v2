@@ -12,7 +12,7 @@ import time
 from typing import Dict, Any, List
 
 # Test Configuration
-BASE_URL = "https://inteldoc-agent.preview.emergentagent.com"
+BASE_URL = "https://buildbot-nz.preview.emergentagent.com"
 CHAT_URL = f"{BASE_URL}/api/chat"
 SESSION_ID = "test-v2-infra"
 

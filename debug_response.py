@@ -7,7 +7,7 @@ import asyncio
 import aiohttp
 import json
 
-BACKEND_URL = "https://inteldoc-agent.preview.emergentagent.com"
+BACKEND_URL = "https://buildbot-nz.preview.emergentagent.com"
 
 async def debug_response_structure():
     """Debug the actual response structure"""

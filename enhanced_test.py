@@ -6,7 +6,7 @@ Test the enhanced chat endpoint directly to see if citations work there
 import requests
 import json
 
-BACKEND_URL = "https://inteldoc-agent.preview.emergentagent.com"
+BACKEND_URL = "https://buildbot-nz.preview.emergentagent.com"
 
 def test_enhanced_chat_endpoint():
     """Test the enhanced chat endpoint directly"""
