@@ -1,31 +1,69 @@
-# STRYDA PROTOCOL V2.5: GOD-TIER PARSING
+# STRYDA PROTOCOL V2.5: INTELLIGENT HYBRID PARSING
 **Status:** 🔴 MANDATORY FOR ALL TECHNICAL DATA
 
-## 1. The "Context Glue" Rule
-Standard AI reads text linearly and loses context. Stryda must use **Cell-Level Context Injection**.
-* **Requirement:** Every data point extracted from a table must be stored with its Headers attached.
-* **Bad:** "24,000"
-* **Good:** "Product: Hex Nut | Size: 1/2 inch | Property: Proof Load | Value: 24,000"
+## 1. The "Smart Switch" Rule
+* **IF TABLE DETECTED:**
+  * Action: Must use OCR (Tesseract) to extract text.
+  * Logic: **Context Injection**. Every cell value must be stored with its Row/Column headers attached (e.g., "Size: 1/2 | Load: 24,000").
+  
+* **IF DIAGRAM DETECTED:**
+  * Action: Crop and save as Image.
+  * Logic: **Triangulation Labeling**. Filename must be derived from:
+    1. Parent Product Name
+    2. Surrounding "Anchor Text" (e.g., "Figure 2")
+    3. Vision AI Caption
 
-## 2. Vision-First Enforcement
-* **Tables:** Detect gridlines. Do NOT flatten to plain text. Parse as structured Key-Value pairs.
-* **Diagrams:** Use Vision to caption images (e.g., "Diagram showing rafter connection details").
+## 2. Image-Only Handling
+* If `get_text()` returns < 50 chars, the file is treated as a Scan.
+* OCR is mandatory. Skipping files is prohibited.
 
-## 3. The "Engineer" Agent
-* This protocol activates the "Engineer" agent capability for all Ingestion tasks.
-* The Engineer ensures every technical specification is self-contained and retrievable.
-* No orphaned values - every number has its context permanently attached.
-
-## 4. Implementation Requirements
+## 3. Implementation Stack
 ```python
-# CONTEXT GLUE PATTERN
-chunk = f"Context: {{Product: {product} | Row: {row_header} | Col: {col_header}}} -> Value: {value}"
+# Required Tools
+import pytesseract          # OCR Engine
+from pdf2image import convert_from_bytes  # PDF to Image
+from PIL import Image       # Image processing
+import fitz                 # PyMuPDF for text-layer PDFs
 ```
 
-## 5. Quality Standard
-* **Minimum:** Every table cell must be queryable independently
-* **Target:** "What is the proof load for 1/2 inch hex nut?" returns exact value with full context
-* **Validation:** Vision Verification test must PASS before production deployment
+## 4. Processing Flow
+```
+PDF Input
+    │
+    ▼
+┌─────────────────┐
+│ Try get_text()  │
+└────────┬────────┘
+         │
+    < 50 chars?
+    /         \
+   NO          YES
+   │            │
+   ▼            ▼
+[Text Layer]  [Image Scan]
+   │            │
+   ▼            ▼
+PyMuPDF      OCR Pipeline
+Extract      ├─► pdf2image
+   │         ├─► Tesseract
+   │         └─► Text Output
+   │            │
+   └────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Context Inject  │
+│ Table Parser    │
+└────────┬────────┘
+         │
+         ▼
+   Vector Database
+```
+
+## 5. Quality Standards
+* **Minimum OCR Confidence:** 70%
+* **Table Detection:** Grid pattern or aligned columns
+* **Context Format:** `Context: {Product: X | Size: Y | Property: Z} -> Value: V`
 
 ---
-*Protocol Version: 2.5 (God-Tier) | Created: January 2026*
+*Protocol Version: 2.5 (Hybrid OCR + Vision) | Created: January 2026*
