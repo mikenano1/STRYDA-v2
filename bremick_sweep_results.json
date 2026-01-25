@@ -1,0 +1,26 @@
+[
+  {
+    "original": "Bremick_Industrial_Fasteners_Catalogue.pdf",
+    "v2_name": "Bremick - Industrial Fasteners Catalogue - Catalogue.pdf",
+    "doc_type": "Catalogue",
+    "route": "/01_Structure/Fasteners/Bremick/00_Catalogues/"
+  },
+  {
+    "original": "Bremick_Masonry_Anchor_Catalogue.pdf",
+    "v2_name": "Bremick - Masonry Anchor Catalogue - Technical Data Sheet.pdf",
+    "doc_type": "Technical Data Sheet",
+    "route": "/01_Structure/Fasteners/Bremick/Anchors/"
+  },
+  {
+    "original": "Bremick_Socket_Screws_Catalogue.pdf",
+    "v2_name": "Bremick - Socket Screws Catalogue - Catalogue.pdf",
+    "doc_type": "Catalogue",
+    "route": "/01_Structure/Fasteners/Bremick/Screws/"
+  },
+  {
+    "original": "Bremick_Stainless_Steel_Catalogue.pdf",
+    "v2_name": "Bremick - Stainless Steel Catalogue - Technical Data Sheet.pdf",
+    "doc_type": "Technical Data Sheet",
+    "route": "/01_Structure/Fasteners/Bremick/Stainless_Steel/"
+  }
+]
