@@ -46,7 +46,7 @@ SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
 DATABASE_URL = os.getenv('DATABASE_URL')
 OPENAI_KEY = os.getenv('OPENAI_API_KEY')
-GEMINI_KEY = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')
+GEMINI_KEY = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY') or os.getenv('EMERGENT_LLM_KEY')
 
 # Initialize clients
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
