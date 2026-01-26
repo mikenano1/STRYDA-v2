@@ -1,11 +1,11 @@
 {
   "processed": 0,
   "chunks": 0,
-  "tables": 0,
-  "diagrams": 0,
-  "pages_scanned": 0,
+  "tables": 85,
+  "diagrams": 122,
+  "pages_scanned": 132,
   "errors": 0,
-  "skipped": 39,
-  "branz_appraisals": 3,
-  "completed": "2026-01-26T05:17:14.808276"
+  "skipped": 0,
+  "branz_appraisals": 2,
+  "completed": "2026-01-26T05:49:43.085980"
 }
