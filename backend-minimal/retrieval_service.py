@@ -401,6 +401,10 @@ def detect_protected_brand(query: str) -> Optional[str]:
                 return 'Pryda'
             elif brand == 'bremick':
                 return 'Bremick'
+            elif brand in ['delfast', 'jdn', 'd-head', 'batten staple', 'rx40a', 
+                          'cn series', 't-nail', 'c-nail', 'framing nail', 
+                          'cladding nail', 'fencing staple']:
+                return 'Delfast'
             elif brand in ['hilti', 'hit-hy', 'hit-re', 'hit-mm', 'hvu', 'hst', 'hsl', 
                           'hus', 'kwik bolt', 'kwikbolt', 'trubolts', 'kb-tz', 'hda', 
                           'hce', 'hcl', 'hrd']:
