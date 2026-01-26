@@ -344,6 +344,16 @@ BRAND_SYNONYM_MAP = {
     'pryda': ['Pryda'],
     # Bremick brands
     'bremick': ['Bremick'],
+    # ============================================================
+    # DELFAST BRAND SYNONYMS (Hard-Wire Law 1)
+    # ============================================================
+    'delfast': ['Delfast', 'JDN', 'D-Head', 'Batten Staple', 'PlaceMakers'],
+    'jdn': ['Delfast', 'JDN', 'Joist Nail', 'Cladding Nail'],
+    'd-head': ['Delfast', 'D-Head', 'Framing Nail', '34 Degree'],
+    'batten staple': ['Delfast', 'Batten Staple', 'Fencing Staple'],
+    'rx40a': ['Delfast', 'RX40A', 'Pneumatic Nailer'],
+    'cn series': ['Delfast', 'CN Series', 'Coil Nail'],
+    'placemakers nail': ['Delfast', 'PlaceMakers'],
 }
 
 # ==============================================================================
