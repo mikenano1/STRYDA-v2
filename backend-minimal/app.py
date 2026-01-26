@@ -63,6 +63,14 @@ from simple_conversation_store import bootstrap_conversation, get_conversation, 
 from retrieval_service import semantic_search, godtier_retrieval, apply_god_tier_laws
 from core_prompts import STRYDA_SYSTEM_PROMPT
 
+# LAW 5: DELFAST ZERO-HIT CONSULTATIVE TRIGGER
+from delfast_consultative import (
+    is_delfast_query,
+    generate_delfast_consultative_response,
+    apply_delfast_zero_hit_trigger,
+    extract_delfast_context
+)
+
 # Material Triage for Insulation (Attribute Filter Protocol)
 from simple_tier1_retrieval import (
     check_insulation_triage_needed,
