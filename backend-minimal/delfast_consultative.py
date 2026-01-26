@@ -281,17 +281,6 @@ def generate_delfast_consultative_response(
             return True, _generate_zone_clarification(query, context)
     
     # ═══════════════════════════════════════════════════════════════════════
-    # RULE 3: STAPLE QUERIES - CONFIRM APPLICATION
-    # ═══════════════════════════════════════════════════════════════════════
-    if 'staple' in query_lower:
-        # Check if application type is specified
-        application_keywords = ['fencing', 'rural', 'fence', 'building', 'floor', 'sarking', 'marine']
-        has_application = any(kw in query_lower for kw in application_keywords)
-        
-        if not has_application:
-            return True, _generate_staple_clarification(query, context)
-    
-    # ═══════════════════════════════════════════════════════════════════════
     # NO INTERVENTION NEEDED - Let retrieval proceed
     # ═══════════════════════════════════════════════════════════════════════
     return False, None
