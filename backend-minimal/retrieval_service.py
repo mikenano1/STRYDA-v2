@@ -373,6 +373,7 @@ SUPREME_AUTHORITY_DOCS = {
     'MiTek': 'Residential-Manual',
     'Pryda': 'Pryda-Manual',
     'Bremick': 'Technical-Data-Sheet',
+    'Delfast': 'BRANZ-Appraisal',  # BRANZ Appraisal 1154 is the supreme authority
 }
 
 # Structural connector terms for MiTek products
