@@ -1,0 +1,460 @@
+{
+  "protocol_version": "3.1-F",
+  "created": "2026-01-21",
+  "updated": "2026-01-21",
+  "description": "Universal Anchor Map for STRYDA RAG - Complete 6-Sector Shield",
+  "sectors": {
+    "A_Thermal_Energy": {
+      "governing_docs": [
+        "H1-AS1",
+        "H1-VM1",
+        "BRANZ Insulation Guide"
+      ],
+      "anchors": [
+        "R_VALUE_CEILING",
+        "R_VALUE_WALL",
+        "R_VALUE_FLOOR",
+        "R_VALUE_SLAB_EDGE",
+        "THERMAL_BRIDGE_PSI",
+        "CONSTRUCTION_R_TOTAL",
+        "GLAZING_R_VALUE",
+        "AIR_GAP_MM"
+      ]
+    },
+    "B_Weathertightness": {
+      "governing_docs": [
+        "E2-AS1",
+        "E3-AS1",
+        "NZS 3604"
+      ],
+      "anchors": [
+        "UV_LIMIT_DAYS",
+        "WIND_ZONE",
+        "RISK_MATRIX_SCORE",
+        "DIRECT_FIX_LIMIT",
+        "CAVITY_DEPTH_MM",
+        "SILL_LAYERS",
+        "FLASHING_SEQUENCE",
+        "CLADDING_CLEARANCE_MM"
+      ]
+    },
+    "C_Fire_Life_Safety": {
+      "governing_docs": [
+        "C/AS1",
+        "C/AS2",
+        "NZS 4541",
+        "AS/NZS 1530.3"
+      ],
+      "anchors": [
+        "Fire_Resistance_Rating_FRR",
+        "Group_Number_Lining_Rating",
+        "Critical_Radiant_Flux_kWm2",
+        "Smoke_Development_Index",
+        "Ignitability_Index",
+        "External_Wall_Combustibility"
+      ]
+    },
+    "D_Structural_Safety": {
+      "governing_docs": [
+        "B1-AS1",
+        "NZS 3604",
+        "NZS 3602",
+        "NZS 4229"
+      ],
+      "anchors": [
+        "TIMBER_HAZARD_CLASS",
+        "BRACING_UNITS_BU",
+        "SPAN_TABLE_REF",
+        "FIXING_PATTERN",
+        "LOAD_BEARING_CAPACITY",
+        "SEISMIC_ZONE"
+      ]
+    },
+    "E_Legal_BPIR_Assurance": {
+      "governing_docs": [
+        "BPIR Regs 2022",
+        "Building Act 2004"
+      ],
+      "anchors": [
+        "BPIR_Class_1_or_2",
+        "NZ_Business_Number_NZBN",
+        "Scope_of_Use_Limitations",
+        "Maintenance_Requirements_Link",
+        "Section_26_Warning_Status",
+        "Manufacturer_Design_Guide_Ref"
+      ]
+    },
+    "F_Certification": {
+      "governing_docs": [
+        "MBIE CodeMark Scheme",
+        "BRANZ Appraisal Program",
+        "BPIR Regs 2022"
+      ],
+      "anchors": [
+        "CodeMark_ID",
+        "BRANZ_Appraisal_Number",
+        "Certification_Expiry_Date",
+        "Appraisal_Scope_Limitations",
+        "CODEMARK_CERTIFICATE",
+        "GREENTAG_LEVEL",
+        "EPD_REFERENCE",
+        "WARRANTY_YEARS"
+      ]
+    }
+  },
+  "anchor_definitions": {
+    "R_VALUE_CEILING": {
+      "description": "Thermal resistance for ceiling insulation",
+      "unit": "m\u00b2K/W",
+      "compliance_sources": [
+        "H1-AS1",
+        "BRANZ Insulation Guide"
+      ],
+      "product_categories": [
+        "insulation"
+      ],
+      "validation_rule": "product_r_value >= code_min_r_value",
+      "2026_requirement": "R6.6 minimum (Climate Zone 1-3)"
+    },
+    "R_VALUE_WALL": {
+      "description": "Thermal resistance for wall insulation",
+      "unit": "m\u00b2K/W",
+      "compliance_sources": [
+        "H1-AS1",
+        "BRANZ Insulation Guide"
+      ],
+      "product_categories": [
+        "insulation"
+      ],
+      "validation_rule": "product_r_value >= code_min_r_value",
+      "2026_requirement": "R2.0 minimum"
+    },
+    "R_VALUE_FLOOR": {
+      "description": "Thermal resistance for floor insulation",
+      "unit": "m\u00b2K/W",
+      "compliance_sources": [
+        "H1-AS1",
+        "BRANZ Insulation Guide"
+      ],
+      "product_categories": [
+        "insulation"
+      ],
+      "validation_rule": "product_r_value >= code_min_r_value",
+      "2026_requirement": "R1.3 minimum"
+    },
+    "UV_LIMIT_DAYS": {
+      "description": "Maximum UV exposure days before covering",
+      "unit": "days",
+      "compliance_sources": [
+        "E2-AS1",
+        "Manufacturer TDS"
+      ],
+      "product_categories": [
+        "underlays",
+        "wraps",
+        "membranes"
+      ],
+      "validation_rule": "product_uv_days <= code_max_uv_days",
+      "2026_requirement": "180 days maximum"
+    },
+    "TIMBER_HAZARD_CLASS": {
+      "description": "Preservative treatment hazard classification",
+      "unit": "H-class",
+      "compliance_sources": [
+        "NZS 3602:2003",
+        "NZS 3640"
+      ],
+      "product_categories": [
+        "timber",
+        "framing"
+      ],
+      "validation_rule": "product_h_class >= application_required_h_class",
+      "classes": [
+        "H1.1",
+        "H1.2",
+        "H3.1",
+        "H3.2",
+        "H4",
+        "H5",
+        "H6"
+      ]
+    },
+    "WIND_ZONE": {
+      "description": "Wind zone classification for fixing requirements",
+      "unit": "zone",
+      "compliance_sources": [
+        "E2-AS1",
+        "NZS 3604"
+      ],
+      "product_categories": [
+        "cladding",
+        "roofing",
+        "underlays"
+      ],
+      "zones": [
+        "Low",
+        "Medium",
+        "High",
+        "Very High",
+        "Extra High"
+      ]
+    },
+    "Fire_Resistance_Rating_FRR": {
+      "description": "Fire resistance rating in minutes (structural/integrity/insulation)",
+      "unit": "FRR (mins)",
+      "compliance_sources": [
+        "C/AS1",
+        "C/AS2"
+      ],
+      "product_categories": [
+        "wall_systems",
+        "fire_rated",
+        "passive_fire"
+      ],
+      "validation_rule": "product_frr >= required_frr",
+      "format": "structural/integrity/insulation (e.g., 60/60/60)"
+    },
+    "Group_Number_Lining_Rating": {
+      "description": "Interior surface lining fire classification",
+      "unit": "group",
+      "compliance_sources": [
+        "C/AS1",
+        "AS/NZS 3837"
+      ],
+      "product_categories": [
+        "linings",
+        "wall_finishes",
+        "ceiling_finishes"
+      ],
+      "groups": [
+        "Group 1-S",
+        "Group 1",
+        "Group 2",
+        "Group 3"
+      ]
+    },
+    "Critical_Radiant_Flux_kWm2": {
+      "description": "Flooring critical radiant flux rating",
+      "unit": "kW/m\u00b2",
+      "compliance_sources": [
+        "C/AS1",
+        "AS/NZS 9239.1"
+      ],
+      "product_categories": [
+        "flooring",
+        "floor_coverings"
+      ],
+      "validation_rule": "CRF >= required_minimum"
+    },
+    "Smoke_Development_Index": {
+      "description": "Smoke development classification",
+      "unit": "index",
+      "compliance_sources": [
+        "AS/NZS 1530.3"
+      ],
+      "product_categories": [
+        "linings",
+        "insulation"
+      ],
+      "validation_rule": "SDI <= maximum_allowed"
+    },
+    "BPIR_Class_1_or_2": {
+      "description": "Building Product Information Requirements classification",
+      "unit": "class",
+      "compliance_sources": [
+        "BPIR Regulations 2022"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "classes": [
+        "Class 1 (High Risk)",
+        "Class 2 (Moderate Risk)"
+      ],
+      "validation_rule": "has_bpir_declaration == true"
+    },
+    "Section_26_Warning_Status": {
+      "description": "Building Act Section 26 warning requirement",
+      "unit": "boolean",
+      "compliance_sources": [
+        "Building Act 2004 s26"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "validation_rule": "warnings_disclosed == true"
+    },
+    "SILL_LAYERS": {
+      "description": "Sill flashing layer requirement",
+      "unit": "layers",
+      "compliance_sources": [
+        "E2-AS1"
+      ],
+      "product_categories": [
+        "flashings",
+        "underlays"
+      ],
+      "validation_rule": "2-layer sill for nail/screw sealability"
+    },
+    "AIR_GAP_MM": {
+      "description": "Required ventilation air gap",
+      "unit": "mm",
+      "compliance_sources": [
+        "E2-AS1",
+        "H1-AS1"
+      ],
+      "product_categories": [
+        "insulation",
+        "cladding"
+      ],
+      "validation_rule": "air_gap >= 25mm for drainage"
+    },
+    "CODEMARK_CERTIFICATE": {
+      "description": "CodeMark certification status",
+      "unit": "boolean",
+      "compliance_sources": [
+        "MBIE"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "validation_rule": "has_valid_codemark == true"
+    },
+    "BRANZ_APPRAISAL_NUMBER": {
+      "description": "BRANZ Appraisal certification",
+      "unit": "appraisal_number",
+      "compliance_sources": [
+        "BRANZ"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "validation_rule": "has_valid_appraisal == true"
+    },
+    "CodeMark_ID": {
+      "description": "CodeMark certificate identification number",
+      "unit": "certificate_id",
+      "compliance_sources": [
+        "MBIE",
+        "CodeMark Scheme"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "validation_rule": "has_valid_codemark AND not_expired",
+      "format": "CMxxxxxxx or alphanumeric"
+    },
+    "BRANZ_Appraisal_Number": {
+      "description": "BRANZ Technical Appraisal certificate number",
+      "unit": "appraisal_number",
+      "compliance_sources": [
+        "BRANZ"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "validation_rule": "has_valid_appraisal AND not_expired",
+      "format": "3-4 digit number"
+    },
+    "Certification_Expiry_Date": {
+      "description": "Expiry date of CodeMark or BRANZ certification",
+      "unit": "date",
+      "compliance_sources": [
+        "Certificate document"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "validation_rule": "expiry_date > today",
+      "format": "YYYY-MM-DD"
+    },
+    "Appraisal_Scope_Limitations": {
+      "description": "Restrictions on where/how the certified product can be used",
+      "unit": "text",
+      "compliance_sources": [
+        "CodeMark Certificate",
+        "BRANZ Appraisal"
+      ],
+      "product_categories": [
+        "all"
+      ],
+      "validation_rule": "must_flag_if_restricted",
+      "examples": [
+        "Wind Zone Limited",
+        "Not for Fire-rated assemblies",
+        "External use only"
+      ]
+    }
+  },
+  "brand_mapping": {
+    "Marshall Innovations": {
+      "products": [
+        "Tekton",
+        "Super-Stick",
+        "Trade Flash"
+      ],
+      "primary_sector": "B_Weathertightness",
+      "anchors": [
+        "UV_LIMIT_DAYS",
+        "SILL_LAYERS",
+        "BRANZ_APPRAISAL_NUMBER"
+      ]
+    },
+    "Masons": {
+      "products": [
+        "40 Below Platinum",
+        "UNI PRO",
+        "Barricade WD",
+        "VHP Maxi"
+      ],
+      "primary_sector": "B_Weathertightness",
+      "anchors": [
+        "UV_LIMIT_DAYS",
+        "SILL_LAYERS",
+        "WIND_ZONE"
+      ]
+    },
+    "Kingspan": {
+      "products": [
+        "Kooltherm K12",
+        "Kooltherm K7",
+        "Kooltherm K17"
+      ],
+      "primary_sector": "A_Thermal_Energy",
+      "anchors": [
+        "R_VALUE_CEILING",
+        "R_VALUE_WALL",
+        "R_VALUE_FLOOR",
+        "CODEMARK_CERTIFICATE"
+      ]
+    },
+    "Knauf": {
+      "products": [
+        "Earthwool Ceiling",
+        "Earthwool Wall",
+        "Earthwool Underfloor"
+      ],
+      "primary_sector": "A_Thermal_Energy",
+      "anchors": [
+        "R_VALUE_CEILING",
+        "R_VALUE_WALL",
+        "R_VALUE_FLOOR",
+        "AIR_GAP_MM"
+      ]
+    },
+    "GIB": {
+      "products": [
+        "Fire Rated Systems",
+        "EzyBrace",
+        "Bracing"
+      ],
+      "primary_sector": "C_Fire_Life_Safety",
+      "anchors": [
+        "Fire_Resistance_Rating_FRR",
+        "Group_Number_Lining_Rating",
+        "BRACING_UNITS_BU"
+      ]
+    }
+  },
+  "last_updated": "2026-01-21T22:34:46.713267"
+}

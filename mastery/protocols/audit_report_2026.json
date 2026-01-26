@@ -1,0 +1,56 @@
+{
+  "generated": "2026-01-21T21:44:20.395254",
+  "code_version": "2026",
+  "summary": {
+    "pass": 2,
+    "fail": 0,
+    "unverified": 1
+  },
+  "anchor_tags": {
+    "UV_LIMIT": 106,
+    "R_VALUE_CEILING": 530,
+    "R_VALUE_WALL": 0,
+    "R_VALUE_FLOOR": 0,
+    "TIMBER_HAZARD_CLASS": 362,
+    "WIND_ZONE": 301,
+    "FIRE_RATING": 455,
+    "SILL_REQUIREMENT": 184,
+    "AIR_GAP": 221,
+    "CODEMARK": 15,
+    "BRANZ_APPRAISAL": 290,
+    "BPIR_CLASS": 76,
+    "DRAINAGE_GRADE": 0,
+    "RCD_REQUIRED": 31,
+    "BALUSTRADE_HEIGHT": 337,
+    "OPENING_SIZE": 0
+  },
+  "results": {
+    "PASS": [
+      {
+        "brand": "Kingspan",
+        "status": "PASS",
+        "checks": [
+          "\u2705 Certification: CodeMark_Certificate present"
+        ],
+        "issues": []
+      },
+      {
+        "brand": "Marshall Innovations",
+        "status": "PASS",
+        "checks": [
+          "\u2705 Certification: BPIR present"
+        ],
+        "issues": []
+      }
+    ],
+    "FAIL": [],
+    "UNVERIFIED": [
+      {
+        "brand": "Masons",
+        "status": "UNVERIFIED",
+        "checks": [],
+        "issues": []
+      }
+    ]
+  }
+}
