@@ -333,7 +333,10 @@ PROTECTED_BRANDS = [
     'pryda', 'bremick', 'multinail', 'simpson', 'hilti', 'ramset', 'buildex',
     # Hilti product lines (Law 1 Brand Supremacy for concrete/chemical anchors)
     'hit-hy', 'hit-re', 'hit-mm', 'hvu', 'hst', 'hsl', 'hus', 'kwik bolt',
-    'kwikbolt', 'trubolts', 'kb-tz', 'hda', 'hce', 'hcl', 'hrd'
+    'kwikbolt', 'trubolts', 'kb-tz', 'hda', 'hce', 'hcl', 'hrd',
+    # DELFAST - Protected Brand (Hard-Wire Law 1)
+    'delfast', 'jdn', 'd-head', 'batten staple', 'rx40a', 'cn series', 
+    't-nail', 'c-nail', 'framing nail', 'cladding nail', 'fencing staple'
 ]
 
 # ==============================================================================
