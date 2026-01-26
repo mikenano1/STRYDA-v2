@@ -1,63 +1,62 @@
 """
-STRYDA LAW 5: DELFAST ZERO-HIT CONSULTATIVE TRIGGER
-====================================================
+STRYDA LAW 5: DELFAST ZERO-HIT CONSULTATIVE TRIGGER (HARDENED)
+===============================================================
 Protocol: /protocols/BRAND_SHIELD_DELFAST.md
 
-When a Delfast query returns insufficient data, this module:
-1. NEVER says "Data not found" or "consult the manual"
-2. Asks for: Timber Grade, Application (Structural/Non-structural), Environment
-3. Suggests nearest standard equivalent from available data
+HARDWIRED RULES:
+1. NEVER say "Data not found", "consult the manual", or "I don't have"
+2. For CAPACITY queries: MUST have timber type + thickness OR ask
+3. For DURABILITY queries: MUST have zone specified OR ask
+4. For STAPLE queries: Search ALL Delfast sources (Catalogue + BRANZ)
+5. Suggest alternatives from available data
 
-Triggers:
-- JDN, D-Head, Batten Staple, RX40A, CN Series, T-Nail, C-Nail
-- Framing Nail, Cladding Nail, Fencing Staple
-- Any Delfast capacity/specification query
+MANDATORY CONTEXT FOR CAPACITY QUERIES:
+- Timber thickness (19mm, 32mm, 45mm, etc.)
+- Timber species/grade (SG8, radiata, vitex, etc.)  
+- Application type (structural, cladding, fencing)
 """
 
 import re
 from typing import Dict, List, Optional, Tuple
 
 # ============================================================================
-# DELFAST PRODUCT TRIGGERS
+# DELFAST PRODUCT TRIGGERS (EXPANDED)
 # ============================================================================
 
 DELFAST_TRIGGERS = [
     # Product codes
     'jdn', 'd-head', 'd head', 'batten staple', 'rx40a', 'cn series',
-    't-nail', 't nail', 'c-nail', 'c nail',
+    't-nail', 't nail', 'c-nail', 'c nail', 'smartnail',
     # Generic terms mapped to Delfast
     'framing nail', 'cladding nail', 'fencing staple', 'coil nail',
     '34 degree', 'paper collated', 'wire collated',
     # Brand
     'delfast',
+    # Additional triggers
+    'stainless staple', 'galvanised staple', 'fence staple',
+    'ring shank', 'bright nail', 'galv nail',
 ]
 
-# Standard alternatives for fallback suggestions
-DELFAST_ALTERNATIVES = {
-    # JDN variants
-    'jd5': ['jd4', 'jd3', 'jdn-65', 'jdn-50'],
-    'jd4': ['jd5', 'jd3', 'jdn-65'],
-    'jd3': ['jd4', 'jdn-50'],
-    'jdn-75': ['jdn-65', 'jdn-90'],
-    'jdn-65': ['jdn-50', 'jdn-75'],
-    'jdn-50': ['jdn-65', 'jdn-40'],
-    # D-Head variants
-    'd-head 90': ['d-head 75', 'd-head 100', '90mm framing'],
-    'd-head 75': ['d-head 65', 'd-head 90', '75mm framing'],
-    'd-head 65': ['d-head 75', 'd-head 50'],
-    # Staple variants
-    '4.0mm staple': ['3.5mm staple', '4.5mm staple', 'barbed staple'],
-    'barbed staple': ['4.0mm staple', 'batten staple'],
-    # Generic mappings
-    'framing nail': ['d-head', '90mm nail', '75mm nail'],
-    'cladding nail': ['jdn', 'hardwood nail', '316 stainless nail'],
-    'fencing staple': ['batten staple', 'barbed staple'],
-}
+# ============================================================================
+# CAPACITY QUERY DETECTION (HARDENED)
+# ============================================================================
 
-# Zone-based consultative triggers
-ZONE_KEYWORDS = ['zone b', 'zone c', 'zone d', 'sea spray', 'marine', 'coastal']
-TIMBER_KEYWORDS = ['sg8', 'sg10', 'sg6', 'msg6', 'msg8', 'msg10', 'pine', 'hardwood', 'radiata']
-STRUCTURAL_KEYWORDS = ['structural', 'load bearing', 'load-bearing', 'capacity', 'shear', 'withdrawal', 'pull-out', 'pullout']
+CAPACITY_KEYWORDS = [
+    'capacity', 'load', 'strength', 'withdrawal', 'pull-out', 'pullout',
+    'shear', 'lateral', 'holding', 'kn', 'newton', 'force',
+    'how strong', 'how much load', 'can it hold', 'will it hold'
+]
+
+TIMBER_THICKNESS_PATTERNS = [
+    r'\b(\d{2,3})\s*mm\b',  # "32mm", "45mm"
+    r'\b(\d{2,3})mm\b',
+]
+
+TIMBER_SPECIES = [
+    'pine', 'radiata', 'vitex', 'cedar', 'macrocarpa', 'rimu', 'kwila',
+    'hardwood', 'softwood', 'treated', 'h3', 'h4', 'h5',
+    'sg6', 'sg8', 'sg10', 'sg12', 'msg6', 'msg8', 'msg10'
+]
 
 # ============================================================================
 # DETECTION FUNCTIONS
@@ -69,140 +68,129 @@ def is_delfast_query(query: str) -> bool:
     return any(trigger in query_lower for trigger in DELFAST_TRIGGERS)
 
 
+def is_capacity_query(query: str) -> bool:
+    """Check if this is a capacity/load/strength query - MUST enforce clarification."""
+    query_lower = query.lower()
+    return any(kw in query_lower for kw in CAPACITY_KEYWORDS)
+
+
+def has_timber_thickness(query: str) -> Tuple[bool, Optional[str]]:
+    """Check if timber thickness is specified."""
+    for pattern in TIMBER_THICKNESS_PATTERNS:
+        match = re.search(pattern, query.lower())
+        if match:
+            return True, match.group(1) + "mm"
+    return False, None
+
+
+def has_timber_species(query: str) -> Tuple[bool, Optional[str]]:
+    """Check if timber species/grade is specified."""
+    query_lower = query.lower()
+    for species in TIMBER_SPECIES:
+        if species in query_lower:
+            return True, species.upper()
+    return False, None
+
+
 def extract_delfast_context(query: str) -> Dict:
-    """Extract context from a Delfast query."""
+    """Extract ALL context from a Delfast query."""
     query_lower = query.lower()
     
-    context = {
-        'has_zone': any(z in query_lower for z in ZONE_KEYWORDS),
-        'has_timber': any(t in query_lower for t in TIMBER_KEYWORDS),
-        'is_structural': any(s in query_lower for s in STRUCTURAL_KEYWORDS),
-        'detected_zone': None,
-        'detected_timber': None,
-        'detected_product': None,
-    }
+    has_thickness, thickness = has_timber_thickness(query)
+    has_species, species = has_timber_species(query)
     
-    # Detect specific zone
+    # Zone detection
+    zone_keywords = ['zone b', 'zone c', 'zone d', 'sea spray', 'marine', 'coastal']
+    detected_zone = None
     for zone in ['zone d', 'zone c', 'zone b', 'sea spray']:
         if zone in query_lower:
-            context['detected_zone'] = zone.title()
+            detected_zone = zone.title()
             break
     
-    # Detect timber grade
-    timber_pattern = r'\b(sg\d+|msg\d+)\b'
-    timber_match = re.search(timber_pattern, query_lower)
-    if timber_match:
-        context['detected_timber'] = timber_match.group(1).upper()
-    
-    # Detect product
-    for product in ['jdn', 'd-head', 'batten staple', 'coil nail', 'framing nail', 'cladding nail']:
+    # Product detection
+    detected_product = None
+    for product in ['jdn', 'd-head', 'batten staple', 'coil nail', 'framing nail', 
+                    'cladding nail', 'stainless staple', 'fencing staple']:
         if product in query_lower:
-            context['detected_product'] = product.title()
+            detected_product = product.title()
             break
+    
+    context = {
+        'has_zone': any(z in query_lower for z in zone_keywords),
+        'has_timber_thickness': has_thickness,
+        'has_timber_species': has_species,
+        'is_capacity_query': is_capacity_query(query),
+        'detected_zone': detected_zone,
+        'detected_thickness': thickness,
+        'detected_species': species,
+        'detected_product': detected_product,
+    }
     
     return context
 
 
-def find_nearest_alternative(product: str, available_products: List[str]) -> Optional[str]:
-    """Find the nearest alternative product from available data."""
-    product_lower = product.lower().strip()
-    
-    # Check if product has alternatives defined
-    if product_lower in DELFAST_ALTERNATIVES:
-        alternatives = DELFAST_ALTERNATIVES[product_lower]
-        for alt in alternatives:
-            alt_lower = alt.lower()
-            for avail in available_products:
-                if alt_lower in avail.lower():
-                    return avail
-    
-    # Fuzzy match - look for similar sizes
-    size_match = re.search(r'(\d+)', product)
-    if size_match:
-        target_size = int(size_match.group(1))
-        closest = None
-        min_diff = float('inf')
-        
-        for avail in available_products:
-            avail_match = re.search(r'(\d+)', avail)
-            if avail_match:
-                avail_size = int(avail_match.group(1))
-                diff = abs(target_size - avail_size)
-                if diff < min_diff:
-                    min_diff = diff
-                    closest = avail
-        
-        if closest and min_diff <= 15:  # Within 15mm
-            return closest
-    
-    return None
-
-
 # ============================================================================
-# ZERO-HIT CONSULTATIVE RESPONSE GENERATOR
+# HARDENED LAW 5: MANDATORY CLARIFICATION GENERATORS
 # ============================================================================
 
-def generate_delfast_consultative_response(
-    query: str,
-    retrieved_docs: List[Dict],
-    context: Dict
-) -> Tuple[bool, Optional[str]]:
-    """
-    LAW 5: Generate consultative response for Delfast queries with insufficient data.
+def _generate_capacity_clarification(query: str, context: Dict) -> str:
+    """MANDATORY: Generate clarification for capacity queries missing timber details."""
+    product = context.get('detected_product', 'nail')
+    has_thickness = context.get('has_timber_thickness', False)
+    has_species = context.get('has_timber_species', False)
+    thickness = context.get('detected_thickness')
+    species = context.get('detected_species')
     
-    Returns:
-        (should_intervene, consultative_message)
-        - should_intervene=True means replace the normal response
-        - consultative_message contains the asking/suggestion text
-    """
-    if not is_delfast_query(query):
-        return False, None
+    missing = []
+    if not has_thickness:
+        missing.append("timber thickness")
+    if not has_species:
+        missing.append("timber type/grade")
     
-    query_context = extract_delfast_context(query)
+    if not missing:
+        return None  # All info provided
     
-    # Check if we have sufficient data in retrieved docs
-    delfast_docs = [d for d in retrieved_docs if 'delfast' in d.get('source', '').lower() or 'delfast' in d.get('content', '').lower()]
+    clarification = f"""I have the capacity data for {product} in the Delfast BRANZ Appraisal, but I need these details to give you the correct value:
+
+"""
     
-    # If we have good Delfast data, no intervention needed
-    if len(delfast_docs) >= 3:
-        # But check for zone ambiguity on durability queries
-        if any(kw in query.lower() for kw in ['durability', 'corrosion', 'zone', 'galv', 'stainless']):
-            if not query_context['has_zone']:
-                return True, _generate_zone_clarification(query, query_context)
-        return False, None
+    if not has_thickness:
+        clarification += """**1. Timber Thickness:**
+- 19mm (weatherboard, sarking)
+- 32mm (standard framing)
+- 45mm (heavy framing, bearers)
+- Other: ___mm
+
+"""
     
-    # LOW DATA SCENARIO - Generate consultative response
+    if not has_species:
+        clarification += """**2. Timber Type/Grade:**
+- Radiata Pine (SG8)
+- Treated Pine (H3.2, H4, H5)
+- MSG8/MSG10 (machine stress graded)
+- Hardwood (Vitex, Cedar, etc.)
+- Other: ___
+
+"""
     
-    # Scenario 1: Structural capacity query without timber grade
-    if query_context['is_structural'] and not query_context['has_timber']:
-        return True, _generate_structural_clarification(query, query_context)
+    if has_thickness and thickness:
+        clarification += f"✓ You mentioned: {thickness}\n"
+    if has_species and species:
+        clarification += f"✓ You mentioned: {species}\n"
     
-    # Scenario 2: Durability query without zone
-    if any(kw in query.lower() for kw in ['durability', 'corrosion', 'zone', 'galv', 'stainless', 'marine']):
-        if not query_context['has_zone']:
-            return True, _generate_zone_clarification(query, query_context)
+    clarification += """
+💡 **Why this matters:** Withdrawal capacity varies by **50-200%** depending on timber thickness and species. A 90mm D-Head in 19mm pine has very different holding power than in 45mm hardwood.
+
+Just reply with the details (e.g., "32mm radiata" or "45mm H3.2 treated") and I'll pull the exact capacity from BRANZ Appraisal 1154."""
     
-    # Scenario 3: Generic application clarification
-    if not query_context['is_structural'] and query_context['detected_product']:
-        return True, _generate_application_clarification(query, query_context, delfast_docs)
-    
-    # Scenario 4: Product not found - suggest alternative
-    if len(delfast_docs) == 0:
-        # Extract available products from retrieved docs
-        available = [d.get('source', '') for d in retrieved_docs if d.get('source')]
-        alternative = find_nearest_alternative(query_context.get('detected_product', ''), available)
-        
-        if alternative:
-            return True, _generate_alternative_suggestion(query, query_context, alternative)
-    
-    return False, None
+    return clarification
 
 
 def _generate_zone_clarification(query: str, context: Dict) -> str:
-    """Generate zone clarification question."""
+    """Generate zone clarification for durability queries."""
     product = context.get('detected_product', 'nail')
     
-    return f"""I can help with the durability rating for {product}s, but I need one key detail:
+    return f"""I have the durability ratings for {product}s from BRANZ Appraisal 1154, but I need one key detail:
 
 **What durability zone is this for?**
 - **Zone B** (most of NZ, >100m from coast)
@@ -213,73 +201,90 @@ def _generate_zone_clarification(query: str, context: Dict) -> str:
 💡 **Why this matters:** The required finish changes dramatically:
 - Zone B/C: Hot-dip galvanised is typically suitable
 - Zone D: Mechanical galvanising may be insufficient - 304 Stainless often required
-- Sea Spray: Grade 316 Stainless Steel is mandatory per BRANZ Appraisal 1154
+- Sea Spray: **Grade 316 Stainless Steel is mandatory** per BRANZ Appraisal 1154
 
 Just reply with your zone (e.g., "Zone C") and I'll give you the exact specification."""
 
 
-def _generate_structural_clarification(query: str, context: Dict) -> str:
-    """Generate structural application clarification."""
-    product = context.get('detected_product', 'nail')
-    
-    return f"""I can look up the capacity data for {product}, but I need a few details to give you the correct value:
+def _generate_staple_clarification(query: str, context: Dict) -> str:
+    """Generate clarification for staple queries."""
+    return """I have Delfast staple data in both the BRANZ Appraisal and Product Catalogue. To find the right product:
 
-**1. Timber Grade:**
-- SG8, SG10, SG12 (structural softwood)
-- MSG6, MSG8, MSG10 (machine stress graded)
-- H3.2, H4, H5 (treated timber grades)
+**What type of staple application?**
+- **Fencing/Rural** (batten staples, barbed staples for wire)
+- **Building/Construction** (flooring staples, sarking staples)
+- **Stainless Steel** (for coastal/marine zones)
 
-**2. Application Type:**
-- Structural connection (e.g., framing, joist-to-bearer)
-- Non-structural/Decorative (e.g., cladding, trim)
+**What size range?**
+- 3.15mm series (cordless stapler compatible)
+- 4.0mm series (pneumatic)
+- Other: ___mm
 
-**3. Load Direction:**
-- Shear (parallel to nail)
-- Withdrawal (pulling out)
-- Lateral (perpendicular)
-
-💡 The capacity can vary by **200-300%** depending on these factors.
-
-Just reply with the details (e.g., "SG8, structural, shear load") and I'll pull the exact value from the BRANZ Appraisal."""
-
-
-def _generate_application_clarification(query: str, context: Dict, available_docs: List[Dict]) -> str:
-    """Generate application type clarification."""
-    product = context.get('detected_product', 'nail')
-    
-    return f"""I found some data on {product}, but to give you the most relevant specification:
-
-**Is this for a structural connection or decorative application?**
-
-- **Structural** (e.g., JDN into SG8 framing, load-bearing connections)
-  → I'll reference BRANZ Appraisal 1154 capacity tables
-  
-- **Decorative/Cladding** (e.g., exterior weatherboard, trim)
-  → I'll focus on durability/corrosion resistance requirements
-
-This helps me pull the right data - structural needs capacity values, cladding needs durability ratings."""
-
-
-def _generate_alternative_suggestion(query: str, context: Dict, alternative: str) -> str:
-    """Generate alternative product suggestion."""
-    requested = context.get('detected_product', 'product')
-    
-    return f"""I don't have specific data for **{requested}** in my Delfast documentation, but I found a close alternative:
-
-📋 **Available Alternative:** {alternative}
-
-This is from the BRANZ Appraisal 1154 data. The specifications are typically similar for adjacent sizes.
-
-Would you like me to:
-1. **Show the {alternative} data** (likely close to what you need)
-2. **Check if your specific size is mentioned elsewhere** in the PlaceMakers Nail Guide
-
-Just reply with "1" or "2" and I'll proceed."""
+Just reply with application type and I'll pull the matching products with SKU codes from the PlaceMakers Catalogue."""
 
 
 # ============================================================================
-# INTEGRATION HELPER
+# MAIN CONSULTATIVE LOGIC (HARDENED)
 # ============================================================================
+
+def generate_delfast_consultative_response(
+    query: str,
+    retrieved_docs: List[Dict],
+    context: Dict
+) -> Tuple[bool, Optional[str]]:
+    """
+    LAW 5 HARDENED: Generate consultative response for Delfast queries.
+    
+    MANDATORY TRIGGERS:
+    1. Capacity query without timber thickness/species -> MUST clarify
+    2. Durability query without zone -> MUST clarify
+    3. Staple query -> Confirm application type
+    
+    Returns:
+        (should_intervene, consultative_message)
+    """
+    if not is_delfast_query(query):
+        return False, None
+    
+    query_lower = query.lower()
+    
+    # ═══════════════════════════════════════════════════════════════════════
+    # RULE 1: CAPACITY QUERIES - MANDATORY TIMBER DETAILS
+    # ═══════════════════════════════════════════════════════════════════════
+    if context.get('is_capacity_query') or is_capacity_query(query):
+        has_thickness = context.get('has_timber_thickness', False)
+        has_species = context.get('has_timber_species', False)
+        
+        # HARDENED: If EITHER is missing, MUST ask
+        if not has_thickness or not has_species:
+            clarification = _generate_capacity_clarification(query, context)
+            if clarification:
+                return True, clarification
+    
+    # ═══════════════════════════════════════════════════════════════════════
+    # RULE 2: DURABILITY QUERIES - MANDATORY ZONE
+    # ═══════════════════════════════════════════════════════════════════════
+    durability_keywords = ['durability', 'corrosion', 'zone', 'galv', 'stainless', 'marine', 'coastal', 'rust']
+    if any(kw in query_lower for kw in durability_keywords):
+        if not context.get('has_zone', False):
+            return True, _generate_zone_clarification(query, context)
+    
+    # ═══════════════════════════════════════════════════════════════════════
+    # RULE 3: STAPLE QUERIES - CONFIRM APPLICATION
+    # ═══════════════════════════════════════════════════════════════════════
+    if 'staple' in query_lower:
+        # Check if application type is specified
+        application_keywords = ['fencing', 'rural', 'fence', 'building', 'floor', 'sarking', 'marine']
+        has_application = any(kw in query_lower for kw in application_keywords)
+        
+        if not has_application:
+            return True, _generate_staple_clarification(query, context)
+    
+    # ═══════════════════════════════════════════════════════════════════════
+    # NO INTERVENTION NEEDED - Let retrieval proceed
+    # ═══════════════════════════════════════════════════════════════════════
+    return False, None
+
 
 def apply_delfast_zero_hit_trigger(
     query: str,
@@ -290,13 +295,12 @@ def apply_delfast_zero_hit_trigger(
     Post-process check: If the generated answer is weak/generic for a Delfast query,
     replace it with consultative response.
     
-    Returns:
-        (final_answer, was_modified)
+    HARDENED: Also catches "I don't have specific data" type responses.
     """
     if not is_delfast_query(query):
         return generated_answer, False
     
-    # Check for weak/generic responses
+    # Check for weak/generic responses that should NEVER happen
     weak_indicators = [
         'data not found',
         'not available',
@@ -306,6 +310,13 @@ def apply_delfast_zero_hit_trigger(
         'unable to find',
         'no specific data',
         'couldn\'t find',
+        'not in my data',
+        'don\'t have that information',
+        'cannot find',
+        'no data for',
+        'doesn\'t have',
+        'does not have',
+        'information not available',
     ]
     
     answer_lower = generated_answer.lower()
@@ -314,12 +325,46 @@ def apply_delfast_zero_hit_trigger(
     if is_weak:
         context = extract_delfast_context(query)
         
-        # Generate consultative response based on query type
-        if any(kw in query.lower() for kw in ['durability', 'zone', 'corrosion', 'galv']):
+        # Generate appropriate consultative response
+        if is_capacity_query(query):
+            return _generate_capacity_clarification(query, context), True
+        elif any(kw in query.lower() for kw in ['durability', 'zone', 'corrosion', 'galv', 'stainless']):
             return _generate_zone_clarification(query, context), True
-        elif any(kw in query.lower() for kw in ['capacity', 'load', 'strength', 'shear']):
-            return _generate_structural_clarification(query, context), True
+        elif 'staple' in query.lower():
+            return _generate_staple_clarification(query, context), True
         else:
-            return _generate_application_clarification(query, context, []), True
+            # Generic fallback
+            return _generate_capacity_clarification(query, context) or _generate_zone_clarification(query, context), True
     
     return generated_answer, False
+
+
+# ============================================================================
+# QUERY EXPANSION FOR BETTER RETRIEVAL
+# ============================================================================
+
+def expand_delfast_query(query: str) -> str:
+    """
+    Expand Delfast queries to search ALL relevant sources.
+    Called before retrieval to ensure we search Catalogue + BRANZ.
+    """
+    expansions = []
+    query_lower = query.lower()
+    
+    # Add source expansions
+    if 'staple' in query_lower:
+        expansions.extend(['PlaceMakers', 'Catalogue', 'Rural Range', 'fencing'])
+    
+    if 'jdn' in query_lower:
+        expansions.extend(['withdrawal', 'capacity', 'cladding', 'BRANZ 1154'])
+    
+    if 'd-head' in query_lower or 'framing' in query_lower:
+        expansions.extend(['withdrawal', 'capacity', 'framing', 'BRANZ 1154'])
+    
+    if 'stainless' in query_lower:
+        expansions.extend(['316', '304', 'marine', 'coastal', 'sea spray'])
+    
+    if expansions:
+        return query + " " + " ".join(expansions)
+    
+    return query
