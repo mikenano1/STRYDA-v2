@@ -106,6 +106,31 @@ PRODUCT_SYNONYMS = {
     'hilti hit': ['chemical anchor', 'adhesive anchor', 'injection anchor'],
     'hit-hy': ['hybrid anchor', 'chemical anchor'],
     'hit-re': ['epoxy anchor', 'chemical anchor'],
+    # ============================================================
+    # LAW 7 EXPANSION: DELFAST NAIL/STAPLE SYNONYM MAPPINGS
+    # ============================================================
+    # Framing Nail synonyms
+    'framing nail': ['d-head', 'd head', '34 degree', 'paper collated', 'stick nail'],
+    'd-head': ['framing nail', '34 degree', 'paper collated'],
+    'd head': ['framing nail', 'd-head', '34 degree', 'paper collated'],
+    '34 degree': ['framing nail', 'd-head', 'paper collated'],
+    'paper collated': ['framing nail', 'd-head', '34 degree'],
+    # Cladding Nail synonyms
+    'cladding nail': ['jdn', 'hardwood nail', '316 stainless', 'joist nail'],
+    'jdn': ['cladding nail', 'hardwood nail', '316 stainless', 'joist nail', 'jdn nail'],
+    'hardwood nail': ['jdn', 'cladding nail', '316 stainless'],
+    '316 stainless': ['jdn', 'cladding nail', 'hardwood nail', 'marine grade'],
+    # Fencing Staple synonyms
+    'fencing staple': ['batten staple', 'barbed staple', '4.0mm staple', 'fence staple'],
+    'batten staple': ['fencing staple', 'barbed staple', '4.0mm staple'],
+    'barbed staple': ['fencing staple', 'batten staple', '4.0mm staple'],
+    '4.0mm staple': ['fencing staple', 'batten staple', 'barbed staple'],
+    # Additional Delfast product mappings
+    'coil nail': ['cn series', 'wire collated', 'coil nails'],
+    'cn series': ['coil nail', 'wire collated'],
+    't-nail': ['t nail', 'brad nail', 'finishing nail'],
+    'c-nail': ['c nail', 'clipped head'],
+    'rx40a': ['pneumatic nail', 'gun nail'],
 }
 
 
