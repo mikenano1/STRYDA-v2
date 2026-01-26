@@ -615,7 +615,7 @@ def semantic_search(
                    OR source ILIKE '%%MiTek%%'
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, emb, top_k * 3))
+            """, (emb, emb, effective_top_k * 3))  # TRUTH BRIDGE: Use effective_top_k
             extra = cur.fetchall()
             # Merge and dedupe
             seen_ids = {c[0] for c in candidates}
@@ -648,7 +648,7 @@ def semantic_search(
                 WHERE source LIKE %s AND source LIKE %s
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, specific_product, specific_material, emb, top_k * 2))
+            """, (emb, specific_product, specific_material, emb, effective_top_k * 2))
             candidates = cur.fetchall()
         elif specific_product:
             cur.execute("""
@@ -658,7 +658,7 @@ def semantic_search(
                 WHERE source LIKE %s
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, specific_product, emb, top_k * 2))
+            """, (emb, specific_product, emb, effective_top_k * 2))
             candidates = cur.fetchall()
             
             if len(candidates) < 5:
@@ -669,7 +669,7 @@ def semantic_search(
                     WHERE source LIKE 'Bremick%%'
                     ORDER BY embedding <=> %s::vector
                     LIMIT %s
-                """, (emb, emb, top_k * 3))
+                """, (emb, emb, effective_top_k * 3))
                 candidates = cur.fetchall()
         else:
             cur.execute("""
@@ -679,7 +679,7 @@ def semantic_search(
                 WHERE source LIKE 'Bremick%%'
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, emb, top_k * 3))
+            """, (emb, emb, effective_top_k * 3))
             candidates = cur.fetchall()
     else:
         cur.execute("""
@@ -689,7 +689,7 @@ def semantic_search(
             WHERE is_active = true
             ORDER BY embedding <=> %s::vector
             LIMIT %s
-        """, (emb, emb, top_k * 3))
+        """, (emb, emb, effective_top_k * 3))
         candidates = cur.fetchall()
     
     conn.close()
