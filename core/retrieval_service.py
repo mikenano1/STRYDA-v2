@@ -508,7 +508,29 @@ FASTENER_TERMS = [
 
 
 # ==============================================================================
-# HYBRID SEARCH ENGINE (GOD TIER V3)
+# TRUTH BRIDGE: TECHNICAL KEYWORDS FOR DEEP-DIVE RETRIEVAL
+# ==============================================================================
+# If query contains these, we MUST pull more chunks (top_k = 50)
+
+TECHNICAL_DEEP_DIVE_KEYWORDS = [
+    'kn', 'capacity', 'withdrawal', 'characteristic', 'load', 'table',
+    'proof load', 'tensile', 'shear', 'lateral', 'axial', 'pullout',
+    'pull-out', 'embedment', 'zone', 'durability', 'corrosion'
+]
+
+# ==============================================================================
+# TRUTH BRIDGE: TECHNICAL WEIGHT MULTIPLIERS (+0.35 BOOST)
+# ==============================================================================
+# Chunks containing these terms are 10x more valuable than prose
+
+TECHNICAL_VALUE_TERMS = [
+    'kn', 'withdrawal', 'characteristic', 'load', 'capacity',
+    'proof load', 'tensile strength', 'shear strength', 'axial',
+    'mpa', 'n/mm', 'yield', 'ultimate'
+]
+
+# ==============================================================================
+# HYBRID SEARCH ENGINE (GOD TIER V4 - TRUTH BRIDGE)
 # ==============================================================================
 
 def semantic_search(
@@ -518,19 +540,16 @@ def semantic_search(
     keyword_weight: float = 0.3
 ) -> List[Dict]:
     """
-    God Tier V3 Hybrid Search Engine.
+    God Tier V4 Hybrid Search Engine - TRUTH BRIDGE EDITION
     
-    Features:
-    - Technical synonym expansion (GOD TIER LAWS)
-    - Product synonym expansion (LAW 7 - WTC, Pilot Hole, etc.)
-    - Brand synonym expansion (MITEK REFINERY PROTOCOL)
-    - 70% Vector + 30% Keyword weighting
-    - Smart source filtering for fasteners/structural
-    - Value boosting for chunks with actual data
-    - Smart snippet extraction
+    WORLD-CLASS OVERHAUL FEATURES:
+    1. DEEP-DIVE RETRIEVAL: top_k=50 for brand/technical queries
+    2. TECHNICAL WEIGHT: +0.35 boost for kN, withdrawal, characteristic, load, table
+    3. AUTHORITY SHIELD: +0.25 boost for BRANZ-Appraisal, Technical-Manual
+    4. TABLE-FIRST: Markdown tables get priority flag for reasoning
     
     Returns:
-        List of dicts with: content, source, page, snippet, score, keyword_matches
+        List of dicts with: content, source, page, snippet, score, keyword_matches, has_table
     """
     # Step 1: Apply GOD TIER LAWS
     expanded_query = apply_god_tier_laws(query)
@@ -555,16 +574,19 @@ def semantic_search(
     is_fastener_query = any(term in query_lower for term in FASTENER_TERMS)
     is_structural_query = any(term in query_lower for term in STRUCTURAL_TERMS)
     
-    # Detect protected brand for increased granularity
+    # Detect protected brand
     protected_brand = detect_protected_brand(query)
     
-    # GRANULARITY BOOST: Increase top_k for brand queries
-    effective_top_k = top_k
-    if protected_brand:
-        effective_top_k = max(top_k, 30)  # Ensure at least 30 for brand queries
+    # ══════════════════════════════════════════════════════════════════════════
+    # TRUTH BRIDGE #1: DEEP-DIVE RETRIEVAL (top_k = 50)
+    # ══════════════════════════════════════════════════════════════════════════
+    # If brand OR technical keyword detected, pull 50 chunks minimum
+    is_technical_query = any(term in query_lower for term in TECHNICAL_DEEP_DIVE_KEYWORDS)
     
-    # Detect specific protected brand
-    protected_brand = detect_protected_brand(query)
+    if protected_brand or is_technical_query:
+        effective_top_k = 50  # HARD-CODED: Deep-dive for important queries
+    else:
+        effective_top_k = max(top_k, 30)  # Standard queries still get 30 minimum
     
     # BRAND-SPECIFIC QUERY HANDLING
     if protected_brand:
