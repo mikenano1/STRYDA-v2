@@ -249,6 +249,17 @@ def generate_delfast_consultative_response(
     query_lower = query.lower()
     
     # ═══════════════════════════════════════════════════════════════════════
+    # RULE 3: STAPLE QUERIES - CONFIRM APPLICATION (CHECK FIRST!)
+    # ═══════════════════════════════════════════════════════════════════════
+    if 'staple' in query_lower:
+        # Check if application type is specified
+        application_keywords = ['fencing', 'rural', 'fence', 'building', 'floor', 'sarking', 'marine']
+        has_application = any(kw in query_lower for kw in application_keywords)
+        
+        if not has_application:
+            return True, _generate_staple_clarification(query, context)
+    
+    # ═══════════════════════════════════════════════════════════════════════
     # RULE 1: CAPACITY QUERIES - MANDATORY TIMBER DETAILS
     # ═══════════════════════════════════════════════════════════════════════
     if context.get('is_capacity_query') or is_capacity_query(query):
