@@ -700,6 +700,7 @@ def semantic_search(
     for row in candidates:
         doc_id, content, source, page, vector_score = row
         content_lower = content.lower()
+        source_lower = source.lower() if source else ''
         
         # Keyword score
         keyword_matches = sum(1 for kw in keywords if kw.lower() in content_lower)
@@ -712,7 +713,54 @@ def semantic_search(
         if keywords and all(kw.lower() in content_lower for kw in keywords):
             hybrid_score += 0.15
         
-        # Value boost for chunks with actual data
+        # ══════════════════════════════════════════════════════════════════════════
+        # TRUTH BRIDGE #2: TECHNICAL WEIGHT MULTIPLIER (+0.35)
+        # ══════════════════════════════════════════════════════════════════════════
+        # A cell with a number is 10x more valuable than prose about "quality"
+        technical_boost = 0.0
+        for term in TECHNICAL_VALUE_TERMS:
+            if term in content_lower:
+                technical_boost = 0.35
+                break
+        
+        # Extra boost if chunk contains actual numeric values with units
+        if re.search(r'\d+\.?\d*\s*(kn|kN|mpa|MPa|mm|n/mm)', content):
+            technical_boost = max(technical_boost, 0.35)
+        
+        hybrid_score += technical_boost
+        
+        # ══════════════════════════════════════════════════════════════════════════
+        # TRUTH BRIDGE #3: AUTHORITY SHIELD (+0.25)
+        # ══════════════════════════════════════════════════════════════════════════
+        # BRANZ-Appraisal and Technical-Manual are SUPREME AUTHORITY
+        authority_boost = 0.0
+        if 'branz' in source_lower or 'appraisal' in source_lower:
+            authority_boost = 0.25
+        elif 'technical' in source_lower and 'manual' in source_lower:
+            authority_boost = 0.25
+        elif 'technical' in source_lower and 'data' in source_lower:
+            authority_boost = 0.15  # TDS gets partial boost
+        
+        # Penalize Product Catalogues when Appraisals exist
+        if 'catalogue' in source_lower or 'catalog' in source_lower:
+            authority_boost = -0.10  # Slight penalty for catalogues
+        
+        hybrid_score += authority_boost
+        
+        # ══════════════════════════════════════════════════════════════════════════
+        # TRUTH BRIDGE #4: TABLE-FIRST FLAG
+        # ══════════════════════════════════════════════════════════════════════════
+        # If chunk contains a markdown table (| --- |), flag it for priority reasoning
+        has_table = bool(re.search(r'\|[\s-]+\|', content) or '|---|' in content or '| --- |' in content)
+        
+        # Table bonus: tables with values get massive boost
+        if has_table:
+            hybrid_score += 0.20
+            # Extra if table has numeric values
+            if re.search(r'\|\s*\d+\.?\d*\s*\|', content):
+                hybrid_score += 0.15
+        
+        # Legacy value boost for chunks with actual data
         if 'torque' in query_lower and 'installation torque' in content_lower:
             if re.search(r'torque.*\|\s*\d+', content_lower) or re.search(r'value:\s*\d+', content_lower):
                 hybrid_score += 0.20
@@ -732,7 +780,10 @@ def semantic_search(
             'snippet': snippet,
             'score': hybrid_score,
             'vector_score': vector_score,
-            'keyword_matches': keyword_matches
+            'keyword_matches': keyword_matches,
+            'has_table': has_table,  # TRUTH BRIDGE #4: Flag for reasoning priority
+            'authority_boost': authority_boost,
+            'technical_boost': technical_boost
         })
     
     # ==============================================================================
