@@ -68,7 +68,9 @@ from delfast_consultative import (
     is_delfast_query,
     generate_delfast_consultative_response,
     apply_delfast_zero_hit_trigger,
-    extract_delfast_context
+    extract_delfast_context,
+    expand_delfast_query,
+    is_capacity_query
 )
 
 # Material Triage for Insulation (Attribute Filter Protocol)
