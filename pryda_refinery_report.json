@@ -1,0 +1,360 @@
+{
+  "timestamp": "2026-01-25T21:48:24.698452",
+  "summary": {
+    "processed": 12,
+    "moved": 12,
+    "duplicates": 2,
+    "errors": 0
+  },
+  "files_moved": [
+    {
+      "original": "NZ-Pryda-Brackets-Fixes-Design-Guide.pdf",
+      "sanitized": "Pryda - Brackets Fixes Design Guide.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Brackets Fixes Design Guide.pdf"
+    },
+    {
+      "original": "NZ-Pryda-Builder-Angle-Bracket-Guide-August-V1.01.pdf",
+      "sanitized": "Pryda - Builder Angle Bracket Guide v1.0.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Builder Angle Bracket Guide v1.0.pdf"
+    },
+    {
+      "original": "NZ-Pryda-Fasteners-Design-Guide.pdf",
+      "sanitized": "Pryda - Fasteners Design Guide.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Fasteners Design Guide.pdf"
+    },
+    {
+      "original": "NZ-Pryda-Flat-Straps-L-Angle-Bracket-Guide-August-V1.01.pdf",
+      "sanitized": "Pryda - Flat Straps L Angle Bracket Guide v1.0.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Flat Straps L Angle Bracket Guide v1.0.pdf"
+    },
+    {
+      "original": "NZ-Pryda-Hangers-Truss-Boots-Design-Guide.pdf",
+      "sanitized": "Pryda - Hangers Truss Boots Design Guide.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Hangers Truss Boots Design Guide.pdf"
+    },
+    {
+      "original": "NZ-Pryda-Post-Anchor-Bearer-Bracket-Guide-August-V1.01-1.pdf",
+      "sanitized": "Pryda - Post Anchor Bearer Bracket Guide v1.01.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Post Anchor Bearer Bracket Guide v1.01.pdf"
+    },
+    {
+      "original": "pryda-connectors-and-engineered-systems-foundation-fixings.pdf",
+      "sanitized": "Pryda - Foundation Fixings.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Foundation Fixings.pdf"
+    },
+    {
+      "original": "pryda-connectors-and-engineered-systems-hangers-and-brackets.pdf",
+      "sanitized": "Pryda - Hangers And Brackets.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Hangers And Brackets.pdf"
+    },
+    {
+      "original": "pryda-connectors-and-engineered-systems-nail-plates.pdf",
+      "sanitized": "Pryda - Nail Plates.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Nail Plates.pdf"
+    },
+    {
+      "original": "pryda-connectors-and-engineered-systems-timber-connections-and-straps.pdf",
+      "sanitized": "Pryda - Timber Connections And Straps.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Timber Connections And Straps.pdf"
+    },
+    {
+      "original": "Pryda-Floor-Cassette-Manual.pdf",
+      "sanitized": "Pryda - Floor Cassette Manual.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Floor Cassette Manual.pdf"
+    },
+    {
+      "original": "Pryda-Truss-Systems-for-Floors-Rafters-NZ.pdf",
+      "sanitized": "Pryda - Truss Systems For Floors Rafters Nz.pdf",
+      "path": "F_Manufacturers/Fasteners/Pryda/Pryda - Truss Systems For Floors Rafters Nz.pdf"
+    }
+  ],
+  "technical_recon": [
+    {
+      "file": "Pryda - Brackets Fixes Design Guide.pdf",
+      "has_span_tables": true,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "span",
+        "spacing",
+        "tie-down",
+        "bracing",
+        "connector",
+        "hanger",
+        "strap",
+        "anchor",
+        "bracket",
+        "joist",
+        "bearer",
+        "rafter",
+        "truss"
+      ],
+      "load_patterns": [
+        "6",
+        "1.4",
+        "20",
+        "30",
+        "10",
+        "12"
+      ],
+      "estimated_complexity": "HIGH"
+    },
+    {
+      "file": "Pryda - Builder Angle Bracket Guide v1.0.pdf",
+      "has_span_tables": false,
+      "has_kn_loads": false,
+      "has_dimensions": false,
+      "technical_keywords": [
+        "bracing",
+        "bracket",
+        "wind zone"
+      ],
+      "load_patterns": [],
+      "estimated_complexity": "LOW"
+    },
+    {
+      "file": "Pryda - Fasteners Design Guide.pdf",
+      "has_span_tables": false,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "connector",
+        "hanger",
+        "strap",
+        "anchor",
+        "bracket",
+        "joist",
+        "bearer",
+        "truss"
+      ],
+      "load_patterns": [
+        "6",
+        "1.4",
+        "20",
+        "30",
+        "10",
+        "12"
+      ],
+      "estimated_complexity": "HIGH"
+    },
+    {
+      "file": "Pryda - Flat Straps L Angle Bracket Guide v1.0.pdf",
+      "has_span_tables": false,
+      "has_kn_loads": false,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "bracing",
+        "strap",
+        "anchor",
+        "bracket",
+        "wind zone"
+      ],
+      "load_patterns": [],
+      "estimated_complexity": "LOW"
+    },
+    {
+      "file": "Pryda - Hangers Truss Boots Design Guide.pdf",
+      "has_span_tables": true,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "span",
+        "spacing",
+        "connector",
+        "hanger",
+        "strap",
+        "anchor",
+        "bracket",
+        "joist",
+        "bearer",
+        "rafter",
+        "truss",
+        "nail plate"
+      ],
+      "load_patterns": [
+        "6",
+        "1.4",
+        "20",
+        "30",
+        "10",
+        "12"
+      ],
+      "estimated_complexity": "HIGH"
+    },
+    {
+      "file": "Pryda - Post Anchor Bearer Bracket Guide v1.01.pdf",
+      "has_span_tables": false,
+      "has_kn_loads": false,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "bracing",
+        "anchor",
+        "bracket",
+        "bearer",
+        "wind zone"
+      ],
+      "load_patterns": [],
+      "estimated_complexity": "LOW"
+    },
+    {
+      "file": "Pryda - Foundation Fixings.pdf",
+      "has_span_tables": false,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "tie-down",
+        "connector",
+        "strap",
+        "anchor",
+        "bracket"
+      ],
+      "load_patterns": [
+        "7.5",
+        "6",
+        "12"
+      ],
+      "estimated_complexity": "LOW"
+    },
+    {
+      "file": "Pryda - Hangers And Brackets.pdf",
+      "has_span_tables": false,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "connector",
+        "hanger",
+        "bracket",
+        "joist",
+        "rafter",
+        "truss"
+      ],
+      "load_patterns": [
+        "6.2"
+      ],
+      "estimated_complexity": "MEDIUM"
+    },
+    {
+      "file": "Pryda - Nail Plates.pdf",
+      "has_span_tables": false,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "bracing",
+        "connector",
+        "strap",
+        "joist",
+        "bearer",
+        "rafter",
+        "truss",
+        "nail plate"
+      ],
+      "load_patterns": [
+        "5.5",
+        "4.1"
+      ],
+      "estimated_complexity": "MEDIUM"
+    },
+    {
+      "file": "Pryda - Timber Connections And Straps.pdf",
+      "has_span_tables": true,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "span",
+        "tie-down",
+        "bracing",
+        "connector",
+        "hanger",
+        "strap",
+        "bracket",
+        "joist",
+        "rafter",
+        "truss"
+      ],
+      "load_patterns": [
+        "4.7",
+        "4.6",
+        "4.1"
+      ],
+      "estimated_complexity": "MEDIUM"
+    },
+    {
+      "file": "Pryda - Floor Cassette Manual.pdf",
+      "has_span_tables": true,
+      "has_kn_loads": false,
+      "has_dimensions": false,
+      "technical_keywords": [
+        "span",
+        "spacing",
+        "centres",
+        "maximum span",
+        "tie-down",
+        "bracing",
+        "strap",
+        "anchor",
+        "bracket",
+        "joist",
+        "bearer",
+        "rafter",
+        "truss",
+        "cyclonic"
+      ],
+      "load_patterns": [],
+      "estimated_complexity": "MEDIUM"
+    },
+    {
+      "file": "Pryda - Truss Systems For Floors Rafters Nz.pdf",
+      "has_span_tables": true,
+      "has_kn_loads": true,
+      "has_dimensions": true,
+      "technical_keywords": [
+        "span",
+        "centres",
+        "bracing",
+        "bracket",
+        "joist",
+        "rafter",
+        "truss"
+      ],
+      "load_patterns": [
+        "1.8"
+      ],
+      "estimated_complexity": "MEDIUM"
+    }
+  ],
+  "kn_patterns": [
+    "1.4",
+    "1.8",
+    "4.1",
+    "4.6",
+    "4.7",
+    "5.5",
+    "6",
+    "6.2",
+    "7.5",
+    "10",
+    "12",
+    "20",
+    "30"
+  ],
+  "keywords": [
+    "connector",
+    "cyclonic",
+    "truss",
+    "strap",
+    "bracing",
+    "rafter",
+    "joist",
+    "bracket",
+    "span",
+    "hanger",
+    "centres",
+    "spacing",
+    "anchor",
+    "bearer",
+    "wind zone",
+    "maximum span",
+    "nail plate",
+    "tie-down"
+  ]
+}

@@ -1,0 +1,789 @@
+🔗 Supabase URL: https://qxqisgjhbjwvoxsjibes.s...
+======================================================================
+🚀 VIKING ROOFSPEC FULL CATALOG SCRAPER
+======================================================================
+
+📊 Target: 29 pages to scrape
+📁 Destination bucket: product-library
+📂 Base folder: B_Enclosure/Viking_Roofspec/
+
+
+======================================================================
+PHASE 1: COLLECTING PDF LINKS
+======================================================================
+
+📄 Scraping: /products-systems/membrane-roofing/enviroclad/
+  Found 4 unique PDF links
+
+📄 Scraping: /products-systems/membrane-roofing/torch-on/
+  Found 3 unique PDF links
+
+📄 Scraping: /products-systems/membrane-roofing/rubber-membranes/
+  Found 3 unique PDF links
+
+📄 Scraping: /products-systems/membrane-roofing/silcoat/
+  Found 2 unique PDF links
+
+📄 Scraping: /products-systems/membrane-roofing/warmspan/
+  Found 2 unique PDF links
+
+📄 Scraping: /products-systems/membrane-roofing/warmspan2/
+  Found 4 unique PDF links
+
+📄 Scraping: /products-systems/membrane-roofing/warmroof/
+  Found 2 unique PDF links
+
+📄 Scraping: /products-systems/membrane-roofing/roof-garden/
+  Found 2 unique PDF links
+
+📄 Scraping: /products-systems/shingle-and-tile-roofing/certainteed-asphalt-shingles/
+  Found 4 unique PDF links
+
+📄 Scraping: /products-systems/shingle-and-tile-roofing/ecostar/
+  Found 2 unique PDF links
+
+📄 Scraping: /products-systems/waterproof-decks/dec-k-ing/
+  Found 4 unique PDF links
+
+📄 Scraping: /products-systems/waterproof-decks/buzon-pedestals/
+  Found 3 unique PDF links
+
+📄 Scraping: /products-systems/waterproof-decks/floating-deck-systems/
+  Found 0 unique PDF links
+
+📄 Scraping: /products-systems/tanking/
+  Found 0 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/enviroclad/
+  Found 157 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/torch-on/
+  Found 118 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/warmspan2/
+  Found 124 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/warmroof-with-enviroclad/
+  Found 82 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/warmroof-with-torch-on/
+  Found 38 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/warmspan-with-enviroclad/
+  Found 80 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/warmspan-with-torch-on/
+  Found 41 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/rubber-membranes/
+  Found 99 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/roof-garden/
+  Found 16 unique PDF links
+
+📄 Scraping: /details-documents/membrane-roofing/silcoat/
+  Found 12 unique PDF links
+
+📄 Scraping: /details-documents/shingle-and-tile-roofing/certainteed-asphalt-shingles/
+  Found 42 unique PDF links
+
+📄 Scraping: /details-documents/shingle-and-tile-roofing/ecostar/
+  Found 31 unique PDF links
+
+📄 Scraping: /details-documents/waterproof-decks/dec-k-ing/
+  Found 59 unique PDF links
+
+📄 Scraping: /details-documents/waterproof-decks/buzon-pedestals/
+  ❌ Error scraping page: 404 Client Error: Not Found for url: https://www.vikingroofspec.co.nz/details-documents/waterproof-d
+
+📄 Scraping: /details-documents/tanking/
+  Found 0 unique PDF links
+
+📊 Total unique PDFs found: 803
+
+======================================================================
+PHASE 2: DOWNLOADING AND UPLOADING PDFs
+======================================================================
+
+[1/803] Processing...
+  📥 Downloading: Enviroclad BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - Enviroclad BRANZ Appraisal.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - Enviroclad BRANZ Appraisal.pdf
+
+[2/803] Processing...
+  📥 Downloading: Enviroclad CodeMark Certificate...
+      → Folder: B_Enclosure/Viking_Roofspec/Enviroclad_TPO
+      → Filename: Viking Roofspec - Enviroclad - Enviroclad CodeMark Certificate.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Enviroclad - Enviroclad CodeMark Certificate.pdf
+
+[3/803] Processing...
+  📥 Downloading: Enviroclad Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - Enviroclad Brochure.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - Enviroclad Brochure.pdf
+
+[4/803] Processing...
+  📥 Downloading: Enviroclad Sample Warranty...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Universal - Enviroclad Sample Warranty.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Universal - Enviroclad Sample Warranty.pdf
+
+[5/803] Processing...
+  📥 Downloading: Viking Torch On BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/Torch_On_Membranes
+      → Filename: Viking Roofspec - Torch-On - Viking Torch On BRANZ Appraisal.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Torch-On - Viking Torch On BRANZ Appraisal.pdf
+
+[6/803] Processing...
+  📥 Downloading: Torch On Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Torch_On_Membranes
+      → Filename: Viking Roofspec - Torch-On - Torch On Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Torch-On - Torch On Brochure.pdf
+
+[7/803] Processing...
+  📥 Downloading: Torch-On Sample Warranty...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Universal - Torch-On Sample Warranty.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Universal - Torch-On Sample Warranty.pdf
+
+[8/803] Processing...
+  📥 Downloading: Rubber Membrane Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Rubber - Rubber Membrane Brochure.pdf
+  ✅ Uploaded: Viking Roofspec - Rubber - Rubber Membrane Brochure.pdf
+
+[9/803] Processing...
+  📥 Downloading: Rubber Membrane BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Rubber - Rubber Membrane BRANZ Appraisal.pdf
+  ✅ Uploaded: Viking Roofspec - Rubber - Rubber Membrane BRANZ Appraisal.pdf
+
+[10/803] Processing...
+  📥 Downloading: Viking Epiclad Potable Certificate...
+      → Folder: B_Enclosure/Viking_Roofspec/Rubber_Membranes
+      → Filename: Viking Roofspec - Rubber - Viking Epiclad Potable Certificate.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Rubber - Viking Epiclad Potable Certificate.pdf
+
+[11/803] Processing...
+  📥 Downloading: Silcoat Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Liquid_Membranes
+      → Filename: Viking Roofspec - SilCoat - Silcoat Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - SilCoat - Silcoat Brochure.pdf
+
+[12/803] Processing...
+  📥 Downloading: Silcoat Application Guide...
+      → Folder: B_Enclosure/Viking_Roofspec/Liquid_Membranes
+      → Filename: Viking Roofspec - SilCoat - Silcoat Application Guide.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - SilCoat - Silcoat Application Guide.pdf
+
+[13/803] Processing...
+  📥 Downloading: WarmSpan BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmSpan - WarmSpan BRANZ Appraisal.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - WarmSpan - WarmSpan BRANZ Appraisal.pdf
+
+[14/803] Processing...
+  📥 Downloading: WarmSpan Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmSpan - WarmSpan Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - WarmSpan - WarmSpan Brochure.pdf
+
+[15/803] Processing...
+  📥 Downloading: Viking WarmSpan² Engineering Report...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmSpan2 - Viking WarmSpan² Engineering Report.pdf
+  ❌ Upload error: Viking Roofspec - WarmSpan2 - Viking WarmSpan² Engineering Report.pdf - {'statusCode': 400, 'error': InvalidKey, 'message': Invalid key: B_Enclosure/Viking_Roofspec/Warm_Ro
+
+[16/803] Processing...
+  📥 Downloading: Viking WarmSpan² System PTS...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmSpan2 - Viking WarmSpan² System PTS.pdf
+  ❌ Upload error: Viking Roofspec - WarmSpan2 - Viking WarmSpan² System PTS.pdf - {'statusCode': 400, 'error': InvalidKey, 'message': Invalid key: B_Enclosure/Viking_Roofspec/Warm_Ro
+
+[17/803] Processing...
+  📥 Downloading: WarmSpan² - Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmSpan2 - WarmSpan² - Brochure.pdf
+  ❌ Upload error: Viking Roofspec - WarmSpan2 - WarmSpan² - Brochure.pdf - {'statusCode': 400, 'error': InvalidKey, 'message': Invalid key: B_Enclosure/Viking_Roofspec/Warm_Ro
+
+[18/803] Processing...
+  📥 Downloading: WarmSpan² - FAQs...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmSpan2 - WarmSpan² - FAQs.pdf
+  ❌ Upload error: Viking Roofspec - WarmSpan2 - WarmSpan² - FAQs.pdf - {'statusCode': 400, 'error': InvalidKey, 'message': Invalid key: B_Enclosure/Viking_Roofspec/Warm_Ro
+
+[19/803] Processing...
+  📥 Downloading: WarmRoof Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmRoof - WarmRoof Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - WarmRoof - WarmRoof Brochure.pdf
+
+[20/803] Processing...
+  📥 Downloading: WarmRoof BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/Warm_Roofs_Insulated
+      → Filename: Viking Roofspec - WarmSpan - WarmRoof BRANZ Appraisal.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - WarmSpan - WarmRoof BRANZ Appraisal.pdf
+
+[21/803] Processing...
+  📥 Downloading: Roof Garden BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/Green_Roofs
+      → Filename: Viking Roofspec - Roof Garden - Roof Garden BRANZ Appraisal.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Roof Garden - Roof Garden BRANZ Appraisal.pdf
+
+[22/803] Processing...
+  📥 Downloading: Roof Garden Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Green_Roofs
+      → Filename: Viking Roofspec - Roof Garden - Roof Garden Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Roof Garden - Roof Garden Brochure.pdf
+
+[23/803] Processing...
+  📥 Downloading: CertainTeed Details - Full Set PDF...
+      → Folder: B_Enclosure/Viking_Roofspec/Shingles_Asphalt
+      → Filename: Viking Roofspec - CertainTeed - CertainTeed Details - Full Set PDF.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - CertainTeed - CertainTeed Details - Full Set PDF.pdf
+
+[24/803] Processing...
+  📥 Downloading: CertainTeed BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/Shingles_Asphalt
+      → Filename: Viking Roofspec - CertainTeed - CertainTeed BRANZ Appraisal.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - CertainTeed - CertainTeed BRANZ Appraisal.pdf
+
+[25/803] Processing...
+  📥 Downloading: CertainTeed Potable Water Certificate...
+      → Folder: B_Enclosure/Viking_Roofspec/Shingles_Asphalt
+      → Filename: Viking Roofspec - CertainTeed - CertainTeed Potable Water Certificate.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - CertainTeed - CertainTeed Potable Water Certificate.pdf
+
+[26/803] Processing...
+  📥 Downloading: CertainTeed Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Shingles_Asphalt
+      → Filename: Viking Roofspec - CertainTeed - CertainTeed Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - CertainTeed - CertainTeed Brochure.pdf
+
+[27/803] Processing...
+  📥 Downloading: EcoStar Details Full Set...
+      → Folder: B_Enclosure/Viking_Roofspec/Shingles_Synthetic
+      → Filename: Viking Roofspec - EcoStar - EcoStar Details Full Set.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - EcoStar - EcoStar Details Full Set.pdf
+
+[28/803] Processing...
+  📥 Downloading: EcoStar Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Shingles_Synthetic
+      → Filename: Viking Roofspec - EcoStar - EcoStar Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - EcoStar - EcoStar Brochure.pdf
+
+[29/803] Processing...
+  📥 Downloading: Dec-K-Ing Details Full Set PDF...
+      → Folder: B_Enclosure/Viking_Roofspec/Decking_Systems
+      → Filename: Viking Roofspec - Dec-K-ing - Dec-K-Ing Details Full Set PDF.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Dec-K-ing - Dec-K-Ing Details Full Set PDF.pdf
+
+[30/803] Processing...
+  📥 Downloading: Dec-K-ing BRANZ Appraisal...
+      → Folder: B_Enclosure/Viking_Roofspec/Decking_Systems
+      → Filename: Viking Roofspec - Dec-K-ing - Dec-K-ing BRANZ Appraisal.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Dec-K-ing - Dec-K-ing BRANZ Appraisal.pdf
+
+[31/803] Processing...
+  📥 Downloading: Dec-K-ing PTS...
+      → Folder: B_Enclosure/Viking_Roofspec/Decking_Systems
+      → Filename: Viking Roofspec - Dec-K-ing - Dec-K-ing PTS.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Dec-K-ing - Dec-K-ing PTS.pdf
+
+[32/803] Processing...
+  📥 Downloading: Dec-K-ing Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Decking_Systems
+      → Filename: Viking Roofspec - Dec-K-ing - Dec-K-ing Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Dec-K-ing - Dec-K-ing Brochure.pdf
+
+[33/803] Processing...
+  📥 Downloading: Viking Buzon Details Full Set...
+      → Folder: B_Enclosure/Viking_Roofspec/Decking_Systems
+      → Filename: Viking Roofspec - Buzon - Viking Buzon Details Full Set.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Buzon - Viking Buzon Details Full Set.pdf
+
+[34/803] Processing...
+  📥 Downloading: Buzon Accessory Guide...
+      → Folder: B_Enclosure/Viking_Roofspec/Decking_Systems
+      → Filename: Viking Roofspec - Buzon - Buzon Accessory Guide.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Buzon - Buzon Accessory Guide.pdf
+
+[35/803] Processing...
+  📥 Downloading: Buzon Brochure...
+      → Folder: B_Enclosure/Viking_Roofspec/Decking_Systems
+      → Filename: Viking Roofspec - Buzon - Buzon Brochure.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Buzon - Buzon Brochure.pdf
+
+[36/803] Processing...
+  📥 Downloading: enviroclad details full set...
+      → Folder: B_Enclosure/Viking_Roofspec/Enviroclad_TPO
+      → Filename: Viking Roofspec - Enviroclad - enviroclad details full set.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Enviroclad - enviroclad details full set.pdf
+
+[37/803] Processing...
+  📥 Downloading: vik env 000 index001...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Universal - vik env 000 index001.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - Universal - vik env 000 index001.pdf
+
+[38/803] Processing...
+  📥 Downloading: vik env 000 notes002...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 000 notes002.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 000 notes002.pdf
+
+[39/803] Processing...
+  📥 Downloading: vik env 000 notes001...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 000 notes001.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 000 notes001.pdf
+
+[40/803] Processing...
+  📥 Downloading: vik env 001 peneoutl...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 001 peneoutl.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 001 peneoutl.pdf
+
+[41/803] Processing...
+  📥 Downloading: vik env 001a peneoutl...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 001a peneoutl.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 001a peneoutl.pdf
+
+[42/803] Processing...
+  📥 Downloading: vik env 002 penebalc...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 002 penebalc.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 002 penebalc.pdf
+
+[43/803] Processing...
+  📥 Downloading: vik env 002a penebalc...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 002a penebalc.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 002a penebalc.pdf
+
+[44/803] Processing...
+  📥 Downloading: vik env 003 penesump...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 003 penesump.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 003 penesump.pdf
+
+[45/803] Processing...
+  📥 Downloading: vik env 004 peneplin...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 004 peneplin.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 004 peneplin.pdf
+
+[46/803] Processing...
+  📥 Downloading: vik env 004a penecrik...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 004a penecrik.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 004a penecrik.pdf
+
+[47/803] Processing...
+  📥 Downloading: vik env 005 vertpipe...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 005 vertpipe.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 005 vertpipe.pdf
+
+[48/803] Processing...
+  📥 Downloading: vik env 005a horipipe...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 005a horipipe.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 005a horipipe.pdf
+
+[49/803] Processing...
+  📥 Downloading: vik env 006 vertduct...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 006 vertduct.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 006 vertduct.pdf
+
+[50/803] Processing...
+  📥 Downloading: vik env 006a horiduct...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 006a horiduct.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 006a horiduct.pdf
+
+[51/803] Processing...
+  📥 Downloading: vik env 007 peneflue...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 007 peneflue.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 007 peneflue.pdf
+
+[52/803] Processing...
+  📥 Downloading: vik env 008 skylacch...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 008 skylacch.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 008 skylacch.pdf
+
+[53/803] Processing...
+  📥 Downloading: vik env 009 postdeck...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 009 postdeck.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 009 postdeck.pdf
+
+[54/803] Processing...
+  📥 Downloading: vik env 010 penetpo...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 010 penetpo.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 010 penetpo.pdf
+
+[55/803] Processing...
+  📥 Downloading: vik env 011 penepost...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 011 penepost.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 011 penepost.pdf
+
+[56/803] Processing...
+  📥 Downloading: vik env 012 peneplin...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 012 peneplin.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 012 peneplin.pdf
+
+[57/803] Processing...
+  📥 Downloading: vik env 013 peneplin...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 013 peneplin.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 013 peneplin.pdf
+
+[58/803] Processing...
+  📥 Downloading: vik env 014 peneacou...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 014 peneacou.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 014 peneacou.pdf
+
+[59/803] Processing...
+  📥 Downloading: vik env 015 peenejot...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 015 peenejot.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 015 peenejot.pdf
+
+[60/803] Processing...
+  📥 Downloading: vik env 020 ventroof...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 020 ventroof.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 020 ventroof.pdf
+
+[61/803] Processing...
+  📥 Downloading: vik env 020a ventroof...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 020a ventroof.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 020a ventroof.pdf
+
+[62/803] Processing...
+  📥 Downloading: vik env 020b ventroof...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 020b ventroof.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 020b ventroof.pdf
+
+[63/803] Processing...
+  📥 Downloading: vik env 020c ventroof...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 020c ventroof.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 020c ventroof.pdf
+
+[64/803] Processing...
+  📥 Downloading: vik env 021 ventdrip...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 021 ventdrip.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 021 ventdrip.pdf
+
+[65/803] Processing...
+  📥 Downloading: vik env 021a ventpapa...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 021a ventpapa.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 021a ventpapa.pdf
+
+[66/803] Processing...
+  📥 Downloading: vik env 021b ventsoff...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 021b ventsoff.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 021b ventsoff.pdf
+
+[67/803] Processing...
+  📥 Downloading: vik env 030 vergbarg...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 030 vergbarg.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 030 vergbarg.pdf
+
+[68/803] Processing...
+  📥 Downloading: vik env 031 vergbarg...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 031 vergbarg.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 031 vergbarg.pdf
+
+[69/803] Processing...
+  📥 Downloading: vik env 031a vergbarg...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 031a vergbarg.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 031a vergbarg.pdf
+
+[70/803] Processing...
+  📥 Downloading: vik env 032 vergdrip...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 032 vergdrip.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 032 vergdrip.pdf
+
+[71/803] Processing...
+  📥 Downloading: vik env 033 vergedge...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 033 vergedge.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 033 vergedge.pdf
+
+[72/803] Processing...
+  📥 Downloading: vik env 033a vergedge...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 033a vergedge.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 033a vergedge.pdf
+
+[73/803] Processing...
+  📥 Downloading: vik env 040 paracap...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 040 paracap.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 040 paracap.pdf
+
+[74/803] Processing...
+  📥 Downloading: vik env 040a parawall...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 040a parawall.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 040a parawall.pdf
+
+[75/803] Processing...
+  📥 Downloading: vik env 041 parascup...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 041 parascup.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 041 parascup.pdf
+
+[76/803] Processing...
+  📥 Downloading: vik env 042 paraover...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 042 paraover.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 042 paraover.pdf
+
+[77/803] Processing...
+  📥 Downloading: vik env 050 guttoutl...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 050 guttoutl.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 050 guttoutl.pdf
+
+[78/803] Processing...
+  📥 Downloading: vik env 051 guttwall...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 051 guttwall.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 051 guttwall.pdf
+
+[79/803] Processing...
+  📥 Downloading: vik env 052 guttwall...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 052 guttwall.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 052 guttwall.pdf
+
+[80/803] Processing...
+  📥 Downloading: vik env 060 intsecrn...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 060 intsecrn.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 060 intsecrn.pdf
+
+[81/803] Processing...
+  📥 Downloading: vik env 061 intsicnr...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 061 intsicnr.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 061 intsicnr.pdf
+
+[82/803] Processing...
+  📥 Downloading: vik env 062 intssubs...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 062 intssubs.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 062 intssubs.pdf
+
+[83/803] Processing...
+  📥 Downloading: vik env 062a intssubs...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 062a intssubs.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 062a intssubs.pdf
+
+[84/803] Processing...
+  📥 Downloading: vik env 063 intsseis...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 063 intsseis.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 063 intsseis.pdf
+
+[85/803] Processing...
+  📥 Downloading: vik env 064 intsridg...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 064 intsridg.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 064 intsridg.pdf
+
+[86/803] Processing...
+  📥 Downloading: vik env 065 intsvall...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 065 intsvall.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 065 intsvall.pdf
+
+[87/803] Processing...
+  📥 Downloading: vik env 066 intsshel...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 066 intsshel.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 066 intsshel.pdf
+
+[88/803] Processing...
+  📥 Downloading: vik env 067 intsshtt...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 067 intsshtt.pdf
+  ⏭️  Already exists in storage: Viking Roofspec - General - vik env 067 intsshtt.pdf
+
+[89/803] Processing...
+  📥 Downloading: vik env 068 intslapt...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 068 intslapt.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 068 intslapt.pdf
+
+[90/803] Processing...
+  📥 Downloading: vik env 070 rjunupst...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 070 rjunupst.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 070 rjunupst.pdf
+
+[91/803] Processing...
+  📥 Downloading: vik env 071 rjunmetl...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 071 rjunmetl.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 071 rjunmetl.pdf
+
+[92/803] Processing...
+  📥 Downloading: vik env 071a rjuntile...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 071a rjuntile.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 071a rjuntile.pdf
+
+[93/803] Processing...
+  📥 Downloading: vik env 071b rjunshin...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 071b rjunshin.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 071b rjunshin.pdf
+
+[94/803] Processing...
+  📥 Downloading: vik env 072 rjunguti...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 072 rjunguti.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 072 rjunguti.pdf
+
+[95/803] Processing...
+  📥 Downloading: vik env 073 rjunmanv...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 073 rjunmanv.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 073 rjunmanv.pdf
+
+[96/803] Processing...
+  📥 Downloading: vik env 074 rjundorm...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 074 rjundorm.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 074 rjundorm.pdf
+
+[97/803] Processing...
+  📥 Downloading: vik env 074a rjundorm...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 074a rjundorm.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 074a rjundorm.pdf
+
+[98/803] Processing...
+  📥 Downloading: vik env 080 aprnupst...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 080 aprnupst.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 080 aprnupst.pdf
+
+[99/803] Processing...
+  📥 Downloading: vik env 080a aprnurab...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 080a aprnurab.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 080a aprnurab.pdf
+
+[100/803] Processing...
+  📥 Downloading: vik env 081 aprnuter...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 081 aprnuter.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 081 aprnuter.pdf
+
+[101/803] Processing...
+  📥 Downloading: vik env 090 doorthrs...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 090 doorthrs.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 090 doorthrs.pdf
+
+[102/803] Processing...
+  📥 Downloading: vik env 091 windthrs...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 091 windthrs.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 091 windthrs.pdf
+
+[103/803] Processing...
+  📥 Downloading: vik env 100 deckbalu...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 100 deckbalu.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 100 deckbalu.pdf
+
+[104/803] Processing...
+  📥 Downloading: vik env 101 deckbalu...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 101 deckbalu.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 101 deckbalu.pdf
+
+[105/803] Processing...
+  📥 Downloading: vik env 120 acctpowr...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - General - vik env 120 acctpowr.pdf
+  ✅ Uploaded: Viking Roofspec - General - vik env 120 acctpowr.pdf
+
+[106/803] Processing...
+  📥 Downloading: viking enviroclad pipe seal boot stp430 detail...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad pipe seal boot stp430 detail.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad pipe seal boot stp430 detail.pdf
+
+[107/803] Processing...
+  📥 Downloading: viking enviroclad pipe seal boot stp430 model...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad pipe seal boot stp430 model.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad pipe seal boot stp430 model.pdf
+
+[108/803] Processing...
+  📥 Downloading: viking enviroclad scupper 100x100mm stp602 detail...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x100mm stp602 detail.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x100mm stp602 detail.pdf
+
+[109/803] Processing...
+  📥 Downloading: viking enviroclad scupper 100x100mm stp602 model...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x100mm stp602 model.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x100mm stp602 model.pdf
+
+[110/803] Processing...
+  📥 Downloading: viking enviroclad scupper 100x65mm stp601 detail...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x65mm stp601 detail.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x65mm stp601 detail.pdf
+
+[111/803] Processing...
+  📥 Downloading: viking enviroclad scupper 100x65mm stp601 model...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x65mm stp601 model.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad scupper 100x65mm stp601 model.pdf
+
+[112/803] Processing...
+  📥 Downloading: viking enviroclad scupper200x80mm stp603 detail...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad scupper200x80mm stp603 detail.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad scupper200x80mm stp603 detail.pdf
+
+[113/803] Processing...
+  📥 Downloading: viking enviroclad scupper 200x80mm stp603 model...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad scupper 200x80mm stp603 model.pdf
+  ✅ Uploaded: Viking Roofspec - Enviroclad - viking enviroclad scupper 200x80mm stp603 model.pdf
+
+[114/803] Processing...
+  📥 Downloading: viking enviroclad scupper overflow enviroclad 200x80mm stp60...
+      → Folder: B_Enclosure/Viking_Roofspec/00_General_Resources
+      → Filename: Viking Roofspec - Enviroclad - viking enviroclad scupper overflow enviroclad 200x80mm stp604 detail.pdf

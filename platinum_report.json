@@ -1,11 +1,11 @@
 {
-  "processed": 0,
-  "chunks": 0,
-  "tables": 0,
-  "diagrams": 0,
-  "pages_scanned": 0,
+  "processed": 288,
+  "chunks": 8361,
+  "tables": 2010,
+  "diagrams": 1121,
+  "pages_scanned": 1138,
   "errors": 0,
-  "skipped": 291,
-  "register": 0,
-  "completed": "2026-01-25T05:54:23.657308"
+  "skipped": 3,
+  "register": 288,
+  "completed": "2026-01-25T13:28:09.378831"
 }

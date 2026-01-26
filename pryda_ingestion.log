@@ -1,0 +1,83 @@
+================================================================================
+⚡ PRYDA RE-INGESTION (CLEAN SLATE)
+   Started: 2026-01-26T01:22:18.003827
+   Rule: Every chunk tagged with [BRAND: PRYDA]
+================================================================================
+
+📂 SCANNING FOR PRYDA FILES...
+   Found 17 Pryda PDFs
+   • NZ_Pryda_Bracing_Anchor_PDS.pdf
+   • NZ_Pryda_Bracing_Design_Guide_V1.02.pdf
+   • NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf
+   • Pryda - Brackets Fixes Design Guide.pdf
+   • Pryda - Builder Angle Bracket Guide v1.0.pdf
+   ... and 12 more
+
+🔄 INGESTING 17 PRYDA FILES...
+================================================================================
+
+[ 1/17] NZ_Pryda_Bracing_Anchor_PDS.pdf...
+      📊 5 pages → 9 chunks
+      ✅ Ingested 9 chunks (priority: 90)
+
+[ 2/17] NZ_Pryda_Bracing_Design_Guide_V1.02.pdf...
+      📖 STRUCTURAL BIBLE: 1.5x weight
+      📊 39 pages → 64 chunks
+      ✅ Ingested 64 chunks (priority: 135)
+
+[ 3/17] NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf...
+      📖 STRUCTURAL BIBLE: 1.5x weight
+      📊 55 pages → 85 chunks
+      ✅ Ingested 85 chunks (priority: 135)
+
+[ 4/17] Pryda - Brackets Fixes Design Guide.pdf...
+      📊 78 pages → 126 chunks
+      ✅ Ingested 126 chunks (priority: 90)
+
+[ 5/17] Pryda - Builder Angle Bracket Guide v1.0.pdf...
+      📊 1 pages → 2 chunks
+      ✅ Ingested 2 chunks (priority: 90)
+
+[ 6/17] Pryda - Fasteners Design Guide.pdf...
+      📊 22 pages → 35 chunks
+      ✅ Ingested 35 chunks (priority: 90)
+
+[ 7/17] Pryda - Flat Straps L Angle Bracket Guide v1.0.pdf...
+      📊 1 pages → 2 chunks
+      ✅ Ingested 2 chunks (priority: 90)
+
+[ 8/17] Pryda - Floor Cassette Manual.pdf...
+      📖 STRUCTURAL BIBLE: 1.5x weight
+      📊 23 pages → 40 chunks
+      ✅ Ingested 40 chunks (priority: 135)
+
+[ 9/17] Pryda - Foundation Fixings.pdf...
+      📊 5 pages → 10 chunks
+      ✅ Ingested 10 chunks (priority: 90)
+
+[10/17] Pryda - Hangers And Brackets.pdf...
+      📊 6 pages → 12 chunks
+      ✅ Ingested 12 chunks (priority: 90)
+
+[11/17] Pryda - Hangers Truss Boots Design Guide.pdf...
+      📊 68 pages → 117 chunks
+      ✅ Ingested 117 chunks (priority: 90)
+
+[12/17] Pryda - Nail Plates.pdf...
+      📊 7 pages → 14 chunks
+      ✅ Ingested 14 chunks (priority: 90)
+
+[13/17] Pryda - Post Anchor Bearer Bracket Guide v1.01.pdf...
+      📊 1 pages → 2 chunks
+      ✅ Ingested 2 chunks (priority: 90)
+
+[14/17] Pryda - Timber Connections And Straps.pdf...
+      📊 7 pages → 14 chunks
+      ✅ Ingested 14 chunks (priority: 90)
+
+[15/17] Pryda - Truss Systems For Floors Rafters Nz.pdf...
+      📊 6 pages → 10 chunks
+      ✅ Ingested 10 chunks (priority: 90)
+
+[16/17] Pryda_Builders_Guide_NZ.pdf...
+      📊 80 pages → 129 chunks

@@ -1,0 +1,174 @@
+{
+  "total": 20,
+  "passed": 12,
+  "failed": 5,
+  "hallucinations": 5,
+  "details": [
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023",
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023",
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023"
+      ],
+      "question": "What products does Lumberlok make?"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023",
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023",
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023"
+      ],
+      "question": "Show me Bowmac bracket options"
+    },
+    {
+      "status": "HALLUCINATION",
+      "reason": "Contains: NZS 3604",
+      "question": "What is a GIB HandiBrac?"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Technical Manuals - Posistrut Manual"
+      ],
+      "question": "PosiStrut floor systems"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - General - 6Kn 12Kn Stud To Bottom Plate Fixing",
+        "MiTek - General - 6Kn 12Kn Stud To Bottom Plate Fixing",
+        "MiTek - Foundation Fixings - Ordinary Pile Fixing"
+      ],
+      "question": "What is the 12kN pile fixing?"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - General - 6Kn 12Kn Stud To Bottom Plate Fixing",
+        "MiTek - General - 6Kn 12Kn Stud To Bottom Plate Fixing",
+        "MiTek - Plate Fixings - Top Plate Stiffener"
+      ],
+      "question": "6kN stud to bottom plate fixing options"
+    },
+    {
+      "status": "WEAK",
+      "reason": "Expected 'kN' not in content",
+      "question": "What are the characteristic loads for Lumberlok connectors?",
+      "sources": [
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings"
+      ]
+    },
+    {
+      "status": "HALLUCINATION",
+      "reason": "Contains: NZS 3604",
+      "question": "HandiBrac load rating"
+    },
+    {
+      "status": "HALLUCINATION",
+      "reason": "Contains: NZS 3604",
+      "question": "MiTek joist hangers"
+    },
+    {
+      "status": "HALLUCINATION",
+      "reason": "Contains: NZS 3604",
+      "question": "Top plate stiffener from MiTek"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site (1)",
+        "MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site",
+        "MiTek - Stud-Lok Fixings - Sl80 White"
+      ],
+      "question": "Stud-Lok fixing options"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Roof Fixings - Concealed Purlin Cleats",
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Technical Manuals - Posistrut Manual"
+      ],
+      "question": "Purlin cleats for roof fixing"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023",
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023",
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023"
+      ],
+      "question": "Is Bowmac BPIR certified?"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023",
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023",
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023"
+      ],
+      "question": "Lumberlok BPIR certificate"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Technical Manuals - Residential Manual March 2024",
+        "MiTek - BPIR Compliance - Bpir Gang Nail Nz 2023",
+        "MiTek - BPIR Compliance - Bpir Gang Nail Nz 2023"
+      ],
+      "question": "Gang-Nail compliance NZ"
+    },
+    {
+      "status": "WEAK",
+      "reason": "Expected 'Residential' not in sources",
+      "question": "MiTek residential construction guide",
+      "sources": [
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023",
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023"
+      ]
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Technical Manuals - Flitch Beam Manual",
+        "MiTek - Technical Manuals - Flitch Beam Manual",
+        "MiTek - Technical Manuals - Flitch Beam Manual"
+      ],
+      "question": "Flitch beam design manual"
+    },
+    {
+      "status": "PASS",
+      "sources": [
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Technical Manuals - Posistrut Manual"
+      ],
+      "question": "PosiStrut installation instructions"
+    },
+    {
+      "status": "HALLUCINATION",
+      "reason": "Contains: NZS 3604",
+      "question": "timber connector characteristic strength"
+    },
+    {
+      "status": "WEAK",
+      "reason": "Expected 'Multi-Brace' not in sources",
+      "question": "multi-brace bracing system",
+      "sources": [
+        "MiTek - Bracing Systems - Multi Brace",
+        "MiTek - Bracing Systems - Multi Brace",
+        "MiTek - Technical Manuals - Posistrut Manual"
+      ]
+    }
+  ],
+  "pass_rate": 60.0,
+  "hallucination_rate": 25.0,
+  "completed": "2026-01-26T01:05:31.577656"
+}

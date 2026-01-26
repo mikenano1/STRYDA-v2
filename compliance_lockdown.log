@@ -1,0 +1,156 @@
+══════════════════════════════════════════════════════════════════════
+  STRYDA PROTOCOL V2.0 - COMPLIANCE SECTOR LOCKDOWN
+══════════════════════════════════════════════════════════════════════
+  Started: 2026-01-21T10:06:49.962270
+══════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────
+  PHASE 1: ARCHIVING EXPIRED DOCUMENTS (Rule S8)
+──────────────────────────────────────────────────────────────────────
+  ℹ️ SKIP: C-AS3_Amendment-4_2019-EXPIRED.pdf (not in database)
+  ℹ️ SKIP: C-AS4_Amendment-4_2019-EXPIRED.pdf (not in database)
+  ℹ️ SKIP: C-AS5_Amendment-4_2019-EXPIRED.pdf (not in database)
+  ℹ️ SKIP: C-AS6_Amendment-4_2019-EXPIRED.pdf (not in database)
+  ℹ️ SKIP: C-AS7_Amendment-4_2019-EXPIRED.pdf (not in database)
+  ℹ️ SKIP: CAS3-Amendment4-2019-EXPIRED.pdf (not in database)
+
+──────────────────────────────────────────────────────────────────────
+  PHASE 2: PROCESSING ACTIVE COMPLIANCE DOCUMENTS
+──────────────────────────────────────────────────────────────────────
+
+  📄 Processing: B1-Structure-Amendment13.pdf
+     ✅ Ingested: 178 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - B1_AS1 - Structure (Amd 13).pdf
+
+  📄 Processing: b1-structure-as1-second-edition.pdf
+     ✅ Ingested: 43 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - B1_AS1 - Structure (2nd Ed).pdf
+
+  📄 Processing: building-code.pdf
+     ✅ Ingested: 634 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - Building Code (Master).pdf
+
+  📄 Processing: C-AS1_2nd-Edition_2023.pdf
+     ✅ Ingested: 94 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - C_AS1 - Fire Safety (2nd Ed 2023).pdf
+
+  📄 Processing: C-AS2_2nd-Edition_2025.pdf
+     ✅ Ingested: 265 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - C_AS2 - Fire Safety (2nd Ed 2025).pdf
+
+  📄 Processing: C-VM2_Amendment-6_2020.pdf
+     ✅ Ingested: 207 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - C_VM2 - Fire Safety Verification (Amd 6 2020).pdf
+
+  📄 Processing: E1-AS1_1st-Edition-Amd12-2024.pdf
+     ✅ Ingested: 118 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - E1_AS1 - Surface Water (1st Ed Amd 12 2024).pdf
+
+  📄 Processing: E2-AS1_4th-Edition-2025.pdf
+     🛡️ Guardrails extracted: ['risk_matrix', 'wind_zone', 'direct_fix_limit']
+     ✅ Ingested: 335 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - E2_AS1 - External Moisture (4th Ed 2025).pdf
+
+  📄 Processing: e2-external-moisture-as1-fourth-edition.pdf
+     ✅ Ingested: 331 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - E2_AS1 - External Moisture (4th Ed Full).pdf
+
+  📄 Processing: E3-AS1_2nd-Edition-Amd7-2020.pdf
+     ✅ Ingested: 42 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - E3_AS1 - Internal Moisture (2nd Ed Amd 7 2020).pdf
+
+  📄 Processing: F4-AS1_Amendment-6-2021.pdf
+     🛡️ Guardrails extracted: ['balustrade_height_1m', 'openings_100mm']
+     ✅ Ingested: 30 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - F4_AS1 - Safety from Falling (Amd 6 2021).pdf
+
+  📄 Processing: F6-AS1_Amendment-3-2021.pdf
+     ✅ Ingested: 37 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - F6_AS1 - Visibility in Escape Routes (Amd 3 2021).pdf
+
+  📄 Processing: F7-AS1_5th-Edition-2023.pdf
+     ✅ Ingested: 10 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - F7_AS1 - Warning Systems (5th Ed 2023).pdf
+
+  📄 Processing: G12-AS1_3rd-Edition-Amd14-2024.pdf
+     ✅ Ingested: 178 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - G12_AS1 - Water Supplies (3rd Ed Amd 14 2024).pdf
+
+  📄 Processing: G13-AS1_3rd-Edition-Amd14-2024.pdf
+     ✅ Ingested: 104 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - G13_AS1 - Foul Water (3rd Ed Amd 14 2024).pdf
+
+  📄 Processing: H1-AS1_6th-Edition.pdf
+     🛡️ Guardrails extracted: ['schedule_method_removed', 'calculation_method_required', 'r_value_ceiling', 'r_value_wall']
+     ✅ Ingested: 124 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - H1_AS1 - Energy Efficiency (6th Ed 2026).pdf
+
+  📄 Processing: H1-VM1_6th-Edition-2025.pdf
+     ✅ Ingested: 83 chunks → 01_Compliance/NZBC_Acceptable_Solutions/NZBC - H1_VM1 - Energy Efficiency Verification (6th Ed 2025).pdf
+
+  📄 Processing: NZS-36042011.pdf
+     ✅ Ingested: 861 chunks → 01_Compliance/Standards/Standards - NZS 3604_2011 - Timber-framed Buildings.pdf
+
+  📄 Processing: SNZ-HB-3604-2011-Selected-Extracts.pdf
+     ✅ Ingested: 0 chunks → 01_Compliance/Standards/Standards - NZS 3604_2011 - Handbook Extracts.pdf
+
+  📄 Processing: NZS-42292013.pdf
+     ✅ Ingested: 320 chunks → 01_Compliance/Standards/Standards - NZS 4229_2013 - Concrete Masonry Buildings.pdf
+
+  📄 Processing: MBIE-Minor-Variation-Guidance.pdf.pdf
+     ✅ Ingested: 45 chunks → 01_Compliance/MBIE_Guidance/MBIE - Minor Variation Guidance.pdf
+
+  📄 Processing: MBIE-Schedule-1-Exemptions-Guidance.pdf.pdf
+     ✅ Ingested: 332 chunks → 01_Compliance/MBIE_Guidance/MBIE - Schedule 1 Exemptions Guidance.pdf
+
+  📄 Processing: MBIE-Tolerances-Guide.pdf.pdf
+     🛡️ Guardrails extracted: ['framing_tolerance', 'floor_level', 'wall_plumb']
+     ✅ Ingested: 121 chunks → 01_Compliance/MBIE_Guidance/MBIE - Materials and Workmanship Tolerances Guide.pdf
+
+  📄 Processing: nz_metal_roofing.pdf
+     🛡️ Guardrails extracted: ['min_pitch_corrugate', 'min_pitch_tray', 'lap_requirements']
+     ✅ Ingested: 1043 chunks → 01_Compliance/Industry_Codes/Industry - NZ Metal Roofing Code of Practice.pdf
+
+  📄 Processing: WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+     ✅ Ingested: 78 chunks → 01_Compliance/Industry_Codes/Industry - WGANZ Guide to E2_AS1 (V1.7 2022).pdf
+
+  📄 Processing: Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+     ✅ Ingested: 257 chunks → 01_Compliance/Industry_Codes/Industry - Wet Area Membrane Code of Practice (4th Ed 2020).pdf
+
+  📄 Processing: Ardex-Waterproofing-Manual.pdf
+     ✅ Ingested: 677 chunks → 01_Compliance/Industry_Codes/Industry - Ardex Waterproofing Manual.pdf
+
+  📄 Processing: GIB-Fire-Systems-Manual.pdf
+     ✅ Ingested: 291 chunks → 01_Compliance/Industry_Codes/GIB - Fire Rated Systems Manual.pdf
+
+  📄 Processing: GIB-Bracing-Supplement-2016.pdf
+     ✅ Ingested: 33 chunks → 01_Compliance/Industry_Codes/GIB - Bracing Systems Supplement (2016).pdf
+
+  📄 Processing: GIB-EzyBrace-Systems-2016.pdf
+     ✅ Ingested: 78 chunks → 01_Compliance/Industry_Codes/GIB - EzyBrace Systems (2016).pdf
+
+──────────────────────────────────────────────────────────────────────
+  PHASE 3: GUARDRAIL EXTRACTION REPORT (Rule 6)
+──────────────────────────────────────────────────────────────────────
+
+  📋 E2 External Moisture:
+     ✅ risk_matrix: E2 Risk Matrix Score
+     ✅ wind_zone: Wind Zone classifications
+     ✅ direct_fix_limit: Direct-fix limitations
+
+  📋 F4 Safety from Falling:
+     ✅ balustrade_height_1m: 1m balustrade threshold
+     ✅ openings_100mm: 100mm max opening
+
+  📋 H1 Energy Efficiency:
+     ✅ schedule_method_removed: Schedule Method REMOVED Nov 2025
+     ✅ calculation_method_required: Calculation Method now mandatory
+     ❌ r_value_ceiling: Ceiling R-value requirements
+     ❌ r_value_wall: Wall R-value requirements
+
+  📋 MBIE Tolerances:
+     ❌ framing_tolerance: Framing tolerances
+     ✅ floor_level: Floor level tolerances
+     ✅ wall_plumb: Wall plumb tolerances
+
+  📋 Metal Roofing COP:
+     ✅ min_pitch_corrugate: Min pitch per profile
+     ✅ min_pitch_tray: Standing seam pitch
+     ✅ lap_requirements: Lap requirements
+
+══════════════════════════════════════════════════════════════════════
+  COMPLIANCE SECTOR LOCKDOWN - FINAL REPORT
+══════════════════════════════════════════════════════════════════════
+  📊 Documents Archived (Expired): 0 chunks
+  📊 Documents Processed: 30
+  📊 Total Chunks Created: 6949
+  📊 Guardrail Documents: 5
+  ❌ Errors: 0
+══════════════════════════════════════════════════════════════════════
+  ✅ COMPLIANCE LIBRARY 100% WEAPONIZED FOR 2026
+  Completed: 2026-01-21T10:56:56.068266
+══════════════════════════════════════════════════════════════════════

@@ -1,0 +1,112 @@
+{
+  "total": 10,
+  "passed": 9,
+  "failed": 1,
+  "nzs3604_contamination": 0,
+  "details": [
+    {
+      "question": "What is the characteristic load for a MiTek 12kN pile fixing?",
+      "status": "PASS",
+      "sources": [
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "MiTek 6kN 12kN stud to bottom plate fixing",
+      "status": "PASS",
+      "sources": [
+        "Fasteners - MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Technical Manuals - Posistrut Manual"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "Lumberlok timber connector load capacity",
+      "status": "PASS",
+      "sources": [
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "Bowmac angle bracket specifications",
+      "status": "PASS",
+      "sources": [
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023",
+        "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023",
+        "MiTek - GIB Systems - Gib Handibrac Brochure 0322"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "PosiStrut floor system installation guide",
+      "status": "PASS",
+      "sources": [
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "MiTek - Technical Manuals - Posistrut Manual"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "MiTek Residential Manual March 2024",
+      "status": "WRONG_SOURCE",
+      "sources": [
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023",
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "Fasteners - MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "Stud-Lok fixing options for lintels",
+      "status": "PASS",
+      "sources": [
+        "MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site (1)",
+        "MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site",
+        "MiTek - Stud-Lok Fixings - Sl80 White"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "GIB HandiBrac bracing system load rating",
+      "status": "PASS",
+      "sources": [
+        "MiTek - GIB Systems - Gib Handibrac Brochure 0322",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Technical Manuals - Posistrut Manual"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "MiTek joist hanger specifications",
+      "status": "PASS",
+      "sources": [
+        "Fasteners - MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings",
+        "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings",
+        "MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023"
+      ],
+      "contaminated": false
+    },
+    {
+      "question": "Flitch beam design manual from MiTek",
+      "status": "PASS",
+      "sources": [
+        "MiTek - Technical Manuals - Flitch Beam Manual",
+        "MiTek - Technical Manuals - Posistrut Manual",
+        "Fasteners - MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings"
+      ],
+      "contaminated": false
+    }
+  ],
+  "pass_rate": 90.0,
+  "contamination_rate": 0.0,
+  "verdict": "ACCEPTABLE",
+  "completed": "2026-01-26T01:19:31.550301"
+}

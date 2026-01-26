@@ -1,0 +1,94 @@
+{
+  "timestamp": "2026-01-26T00:19:06.798579",
+  "type": "PLATINUM_ASCENSION_REAUDIT",
+  "total_queries": 10,
+  "passed": 1,
+  "failed": 9,
+  "pass_rate": 10.0,
+  "kn_lookup_rate": 0.0,
+  "certification": "\ud83d\udfe1 SILVER",
+  "results": [
+    {
+      "query": "Characteristic capacity of Pryda joist hanger JH 120/45?",
+      "category": "kn_lookup",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data."
+    },
+    {
+      "query": "Nail plate NP load capacity per 100mm?",
+      "category": "kn_lookup",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data."
+    },
+    {
+      "query": "Truss boot TB uplift rating?",
+      "category": "kn_lookup",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data"
+    },
+    {
+      "query": "Multi-grip connector capacity?",
+      "category": "kn_lookup",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data."
+    },
+    {
+      "query": "Pryda cyclonic tie-down C3 zone rating?",
+      "category": "kn_lookup",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data"
+    },
+    {
+      "query": "What is the kN capacity of Pryda H2 connector?",
+      "category": "kn_lookup",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data"
+    },
+    {
+      "query": "flat strap characteristic capacity in SG8 timber?",
+      "category": "sg_comparison",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data"
+    },
+    {
+      "query": "flat strap load capacity for SG10 timber?",
+      "category": "sg_comparison",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data"
+    },
+    {
+      "query": "H2 connector characteristic capacity in SG8 timber?",
+      "category": "sg_comparison",
+      "passed": false,
+      "has_kn": false,
+      "hallucinations": [],
+      "answer_snippet": "Specific value not in available Pryda data"
+    },
+    {
+      "query": "NZS 3604 requirements for Pryda joist hangers?",
+      "category": "cross_domain",
+      "passed": true,
+      "has_kn": false,
+      "hallucinations": [
+        "nzs 3604"
+      ],
+      "answer_snippet": "Data not in Pryda Spec. Referring to Manufacturer Loadings only.\n\nPryda connector capacities are based on:\n- Timber joint group (J2, J3, JD4, JD5)\n- Nail/screw fixing pattern\n- Characteristic load (kN"
+    }
+  ]
+}

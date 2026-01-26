@@ -59,6 +59,10 @@ from missing_context_engine import should_ask_for_context, extract_context_from_
 from context_session import create_session, get_session, clear_session, has_active_session
 from simple_conversation_store import bootstrap_conversation, get_conversation, clear_conversation, has_conversation, set_pending_gate, update_pending_gate, get_pending_gate, clear_pending_gate
 
+# V3.0 GOD TIER RETRIEVAL ENGINE
+from retrieval_service import semantic_search, godtier_retrieval, apply_god_tier_laws
+from core_prompts import STRYDA_SYSTEM_PROMPT
+
 # Material Triage for Insulation (Attribute Filter Protocol)
 from simple_tier1_retrieval import (
     check_insulation_triage_needed,
@@ -272,42 +276,44 @@ def determine_search_strategy(query: str) -> str:
 def execute_hybrid_search(query: str, intent: str, top_k: int = 10) -> tuple:
     """
     Execute the "Council Meeting" - parallel searches from both agents.
+    V3.0: Now uses GOD TIER retrieval engine.
     
     Returns:
         Tuple of (inspector_results, product_results, merged_results)
     """
-    from simple_tier1_retrieval import simple_tier1_retrieval
+    print(f"   🤝 HYBRID SEARCH (V3): Calling God Tier retrieval...")
     
-    print(f"   🤝 HYBRID SEARCH: Calling both Inspector and Product Rep...")
+    # Step 1: Get all relevant documents using V3 engine
+    all_results = godtier_retrieval(query, top_k=top_k * 2, intent=intent)
+    print(f"      ⚡ God Tier returned: {len(all_results)} docs")
     
-    # Step 1: Get compliance/regulatory documents
-    inspector_results = simple_tier1_retrieval(
-        query, 
-        top_k=top_k, 
-        intent=intent,
-        agent_mode=SearchStrategy.INSPECTOR
-    )
-    print(f"      👷 Inspector returned: {len(inspector_results)} docs")
+    # Step 2: Split into inspector/product based on doc_type
+    inspector_results = []
+    product_results = []
     
-    # Step 2: Get product/manufacturer documents
-    product_results = simple_tier1_retrieval(
-        query,
-        top_k=top_k,
-        intent=intent,
-        agent_mode=SearchStrategy.PRODUCT_REP
-    )
-    print(f"      📦 Product Rep returned: {len(product_results)} docs")
+    for doc in all_results:
+        doc_type = doc.get('doc_type', '').lower()
+        source = doc.get('source', '').lower()
+        
+        # Compliance/regulatory documents go to inspector
+        if any(term in source for term in ['nzs', 'as/nzs', 'branz', 'codemark', 'bpir', 'compliance']):
+            doc['_agent_source'] = 'inspector'
+            inspector_results.append(doc)
+        else:
+            # Product/manufacturer documents go to product_rep
+            doc['_agent_source'] = 'product_rep'
+            product_results.append(doc)
+    
+    print(f"      👷 Inspector: {len(inspector_results)} | 📦 Product Rep: {len(product_results)}")
     
     # Step 3: Merge results with Inspector taking priority
-    # Inspector docs come first (The Law takes precedence)
     merged_results = []
     seen_ids = set()
     
     # Add all inspector results first (compliance is priority)
-    for doc in inspector_results:
+    for doc in inspector_results[:top_k]:
         doc_id = doc.get('id', str(doc.get('source', '')) + str(doc.get('page', '')))
         if doc_id not in seen_ids:
-            doc['_agent_source'] = 'inspector'  # Tag source
             merged_results.append(doc)
             seen_ids.add(doc_id)
     
@@ -395,39 +401,82 @@ def execute_engineer_search(query: str, top_k: int = 5) -> List[Dict]:
             """, (query_embedding, detected_codes, query_embedding, top_k))
         else:
             # No codes detected - use pure vector search
-            cursor.execute("""
-                SELECT 
-                    id, source_document, source_page, image_type, brand,
-                    storage_path, summary, technical_variables, confidence,
-                    product_codes, drawing_type,
-                    1 - (embedding <=> %s::vector) as similarity
-                FROM visuals
-                WHERE embedding IS NOT NULL
-                ORDER BY embedding <=> %s::vector
-                LIMIT %s
-            """, (query_embedding, query_embedding, top_k))
+            # LAW 1: BRAND SUPREMACY - Check if query has a protected brand
+            from retrieval_service import detect_protected_brand
+            protected_brand = detect_protected_brand(query)
+            
+            if protected_brand:
+                # HARD FILTER by brand
+                print(f"      🛡️ LAW 1: Brand Supremacy - filtering visual assets by: {protected_brand}")
+                cursor.execute("""
+                    SELECT 
+                        id, source_document, source_page, image_type, brand,
+                        storage_path, summary, technical_variables, confidence,
+                        product_codes, drawing_type,
+                        1 - (embedding <=> %s::vector) as similarity
+                    FROM visuals
+                    WHERE embedding IS NOT NULL
+                    AND (brand ILIKE %s OR source_document ILIKE %s)
+                    ORDER BY embedding <=> %s::vector
+                    LIMIT %s
+                """, (query_embedding, f'%{protected_brand}%', f'%{protected_brand}%', query_embedding, top_k))
+            else:
+                # No brand - pure vector search
+                cursor.execute("""
+                    SELECT 
+                        id, source_document, source_page, image_type, brand,
+                        storage_path, summary, technical_variables, confidence,
+                        product_codes, drawing_type,
+                        1 - (embedding <=> %s::vector) as similarity
+                    FROM visuals
+                    WHERE embedding IS NOT NULL
+                    ORDER BY embedding <=> %s::vector
+                    LIMIT %s
+                """, (query_embedding, query_embedding, top_k))
         
         results = [dict(r) for r in cursor.fetchall()]
         cursor.close()
         conn.close()
         
-        # Log results
+        # Log results - FALLBACK with Brand Supremacy
         if detected_codes and not results:
-            print(f"      ⚠️ No results with code filter - trying without filter")
-            # Fallback to vector search if no matches
+            print(f"      ⚠️ No results with code filter - trying with brand filter only")
+            # Fallback to brand-filtered search if no code matches
+            from retrieval_service import detect_protected_brand
+            protected_brand = detect_protected_brand(query)
+            
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
             cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-            cursor.execute("""
-                SELECT 
-                    id, source_document, source_page, image_type, brand,
-                    storage_path, summary, technical_variables, confidence,
-                    product_codes, drawing_type,
-                    1 - (embedding <=> %s::vector) as similarity
-                FROM visuals
-                WHERE embedding IS NOT NULL
-                ORDER BY embedding <=> %s::vector
-                LIMIT %s
-            """, (query_embedding, query_embedding, top_k))
+            
+            if protected_brand:
+                # LAW 1: BRAND SUPREMACY - Still enforce brand filter in fallback
+                print(f"      🛡️ LAW 1: Fallback with brand filter: {protected_brand}")
+                cursor.execute("""
+                    SELECT 
+                        id, source_document, source_page, image_type, brand,
+                        storage_path, summary, technical_variables, confidence,
+                        product_codes, drawing_type,
+                        1 - (embedding <=> %s::vector) as similarity
+                    FROM visuals
+                    WHERE embedding IS NOT NULL
+                    AND (brand ILIKE %s OR source_document ILIKE %s)
+                    ORDER BY embedding <=> %s::vector
+                    LIMIT %s
+                """, (query_embedding, f'%{protected_brand}%', f'%{protected_brand}%', query_embedding, top_k))
+            else:
+                # No brand - pure vector search
+                cursor.execute("""
+                    SELECT 
+                        id, source_document, source_page, image_type, brand,
+                        storage_path, summary, technical_variables, confidence,
+                        product_codes, drawing_type,
+                        1 - (embedding <=> %s::vector) as similarity
+                    FROM visuals
+                    WHERE embedding IS NOT NULL
+                    ORDER BY embedding <=> %s::vector
+                    LIMIT %s
+                """, (query_embedding, query_embedding, top_k))
+            
             results = [dict(r) for r in cursor.fetchall()]
             cursor.close()
             conn.close()
@@ -1911,42 +1960,14 @@ Do you have a material preference, or would you like me to filter by which merch
                         }
                 
                 # =====================================================
-                # PROTOCOL 1.1: SPAN TABLE ISOLATION (EARLY INTERCEPT)
-                # FORBIDDEN: AI must NEVER calculate timber spans
+                # LAW 4: SPAN TABLE LOCK LIFTED (ARCHITECTURE REBASE)
+                # The Neural Orchestrator reads tables and reports values
+                # with a professional disclaimer - NO LONGER FORBIDDEN
                 # =====================================================
                 
-                if is_span_query_v11(user_message):
-                    print(f"🚫 PROTOCOL 1.1: Span query intercepted - returning table reference only")
-                    
-                    span_response = generate_span_table_response(user_message)
-                    
-                    # Save to chat_messages
-                    try:
-                        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
-                        with conn.cursor() as cur:
-                            cur.execute("""
-                                INSERT INTO chat_messages (session_id, role, content)
-                                VALUES (%s, %s, %s);
-                            """, (session_id, "assistant", span_response))
-                        conn.commit()
-                        conn.close()
-                    except Exception as e:
-                        print(f"⚠️ Failed to save span response: {e}")
-                    
-                    return {
-                        "answer": span_response,
-                        "intent": "span_table_reference",
-                        "citations": [{
-                            "source": "NZS 3604:2011",
-                            "page": "See table reference above",
-                            "confidence": 1.0,
-                            "pill_text": "[NZS 3604:2011, Current, Span Tables]"
-                        }],
-                        "can_show_citations": True,
-                        "model": "protocol_1.1_span_isolation",
-                        "v3_span_warning": True,
-                        "timestamp": int(time.time())
-                    }
+                # SPAN LOCK REMOVED - Let queries flow through to normal retrieval
+                # The system will now read span tables accurately with a disclaimer
+                # added in the response formatting stage
                 
                 # =====================================================
                 # THE FOREMAN: INTELLIGENT SEARCH ROUTING (4-Agent Architecture)
@@ -2003,18 +2024,21 @@ Do you have a material preference, or would you like me to filter by which merch
                     
                 elif search_strategy == SearchStrategy.INSPECTOR:
                     # INSPECTOR: Compliance-focused search only
-                    docs = tier1_retrieval(user_message, top_k=20, intent=final_intent, agent_mode='inspector')
-                    print(f"   👷 INSPECTOR search: {len(docs)} compliance docs")
+                    # V3.0 GOD TIER RETRIEVAL
+                    docs = godtier_retrieval(user_message, top_k=20, intent=final_intent, agent_mode='inspector')
+                    print(f"   👷 INSPECTOR search (V3): {len(docs)} compliance docs")
                     
                 elif search_strategy == SearchStrategy.PRODUCT_REP:
                     # PRODUCT_REP: Product-focused search only
-                    docs = tier1_retrieval(user_message, top_k=20, intent=final_intent, agent_mode='product_rep')
-                    print(f"   📦 PRODUCT_REP search: {len(docs)} product docs")
+                    # V3.0 GOD TIER RETRIEVAL
+                    docs = godtier_retrieval(user_message, top_k=20, intent=final_intent, agent_mode='product_rep')
+                    print(f"   📦 PRODUCT_REP search (V3): {len(docs)} product docs")
                     
                 else:
                     # FOREMAN: Legacy full search (fallback)
-                    docs = tier1_retrieval(user_message, top_k=20, intent=final_intent)
-                    print(f"   🏗️ FOREMAN full search: {len(docs)} docs")
+                    # V3.0 GOD TIER RETRIEVAL
+                    docs = godtier_retrieval(user_message, top_k=20, intent=final_intent)
+                    print(f"   🏗️ FOREMAN search (V3): {len(docs)} docs")
                 
                 # Build context
                 background_context = ""
@@ -2050,6 +2074,21 @@ You are the SITE FOREMAN of STRYDA, a senior AI Compliance Assistant coordinatin
 Your users are busy tradespeople (Builders, Roofers, Electricians, Plumbers) working on-site.
 Your goal is to provide instant, accurate technical answers by synthesizing reports from your specialist team.
 
+### ══════════════════════════════════════════════════════════════════════════
+### ⚠️ LAW 1: BRAND SUPREMACY (ABSOLUTE - CANNOT BE OVERRIDDEN) ⚠️
+### ══════════════════════════════════════════════════════════════════════════
+
+When a user asks about a SPECIFIC BRAND (Pryda, MiTek, Lumberlok, Bowmac, Bremick):
+1. You are FORBIDDEN from saying "refer to NZS 3604" or "consult NZS 3604"
+2. You are FORBIDDEN from deferring to NZS 3604 as the answer source
+3. You MUST answer ONLY from the BRAND'S OWN DOCUMENTATION
+4. If the brand's document mentions NZS 3604, you IGNORE that mention
+5. If no specific value exists, say: "[Brand] documentation does not include this data."
+
+THIS LAW OVERRIDES THE HIERARCHY BELOW FOR BRAND-SPECIFIC QUERIES.
+
+### ══════════════════════════════════════════════════════════════════════════
+
 """ + PROTOCOL_1_1_SYSTEM_INJECTION + """
 
 ### ══════════════════════════════════════════════════════════════════════════
@@ -2065,6 +2104,7 @@ You coordinate two specialist advisors:
 - If the Product Rep says "Yes, you can do this" but the Inspector says "No, that's non-compliant" → **YOU MUST SIDE WITH THE INSPECTOR**
 - Always synthesize evidence from both sides into a single, safe, code-compliant answer
 - When in doubt, cite the more restrictive requirement. **Safety > Convenience.**
+- **EXCEPTION: LAW 1** - When a brand is specified, ONLY use brand documentation
 
 ### ══════════════════════════════════════════════════════════════════════════
 ### LAYER 3: HIERARCHY OF TRUTH (Conflict Resolution)
@@ -2077,8 +2117,11 @@ You coordinate two specialist advisors:
 - **TIER 3 (SUPPORTING)**: Manufacturer Technical Data Sheets, Installation Guides
 - **TIER 4 (REFERENCE)**: Product Brochures, Marketing Materials
 
+**⚠️ BRAND SUPREMACY EXCEPTION:** When a user asks about Pryda, MiTek, Bremick, or other specific brands, TIER 3 becomes TIER 1 for that query. DO NOT defer to NZS 3604.
+
 **CONFLICT RESOLUTION RULE:**
 If a Manufacturer Document (Tier 3) conflicts with the Building Code/NZS Standards (Tier 1), you MUST prioritize Tier 1.
+**UNLESS** the user specifically asked about a brand - then use brand docs only.
 
 ✅ CORRECT: "While GreenStuf TDS claims no air gap is needed, E2/AS1 best practice requires a 25mm ventilation gap. The Code requirement takes precedence."
 ❌ INCORRECT: "You don't need a gap because GreenStuf says so."
@@ -2096,11 +2139,29 @@ If a Manufacturer Document (Tier 3) conflicts with the Building Code/NZS Standar
 ### CORE INSTRUCTIONS
 1. Be Direct: Do not use fluff. Start with the answer immediately. Use bullet points for steps or lists.
 2. Trade-Specific Context:
-   - If the user asks about timber/framing, reference NZS 3604.
+   - If the user asks about timber/framing (NO brand specified), reference NZS 3604.
+   - If the user asks about a SPECIFIC BRAND (Pryda, MiTek, etc.), use ONLY brand documentation.
    - If the user asks about weathertightness, reference E2/AS1.
    - If the user asks about plumbing, reference AS/NZS 3500.
    - If the user asks about electrical, reference AS/NZS 3000.
 3. No Hallucinations: If the answer is not in your knowledge base, state clearly: "I cannot find a specific clause for this in the current standards." Do not guess.
+
+### ZERO-HIT TRIGGER (BRAND QUERIES)
+If brand-locked search returns NO DIRECT MATCH for "Span" or "Capacity":
+1. DO NOT just say "Data not found" - you MUST suggest alternatives
+2. Ask for missing variables (spacing, grade, load)
+3. Suggest alternative products from the SAME BRAND
+
+EXAMPLE RESPONSE:
+"I couldn't find a proprietary span for solid 190x45 timber in the Pryda Guide. 
+However, are you open to using Pryda Span-Fast or PosiStruts? 
+If so, tell me your spacing and load, and I can pull those specific tables for you."
+
+BRAND ALTERNATIVES:
+- Pryda: Span-Fast, PosiStruts, Floor Cassettes
+- MiTek: PosiStrut, Posi-Joist, Gang-Nail trusses
+- Bremick: Different grades, alternative thread types
+- Hilti: Alternative anchor types (mechanical vs chemical)
 
 ### GLOBAL SMART TRIAGE PROTOCOL (ALL PRODUCT CATEGORIES)
 This applies to ALL product queries across categories: Fasteners, Insulation, Cladding, Linings, Underlay, etc.
@@ -2315,13 +2376,9 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                 consolidated = consolidate_citations(docs, max_primary=3, max_secondary=5)
                 primary_citations = consolidated.get('primary', [])
                 
-                # V3.0: Add Span Table Warning if applicable
-                span_warning = None
-                if is_span_query(user_message):
-                    span_warning = get_span_table_warning(user_message)
-                    # Append warning to answer
-                    answer = answer + "\n\n" + span_warning
-                    print(f"⚠️ V3.0: Added span table verification warning")
+                # LAW 4: SPAN LOCK LIFTED - Read tables, add disclaimer (not block)
+                # The system now reads span tables and reports values
+                # No warning injection - just answer the question
                 
                 # Final response
                 response = {
@@ -2331,8 +2388,7 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                     "secondary_citations": consolidated.get('secondary', []),  # Hidden/expandable
                     "can_show_citations": len(primary_citations) > 0,
                     "model": f"{GEMINI_MODEL}-hybrid",
-                    "timestamp": int(time.time()),
-                    "v3_span_warning": span_warning is not None  # Flag for frontend
+                    "timestamp": int(time.time())
                 }
                 
             except Exception as e:
@@ -2350,7 +2406,9 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
             
             # Retrieval (async-ready in structure, though function is sync)
             try:
-                docs = tier1_retrieval(user_message, top_k=20, intent=final_intent)
+                # V3.0 GOD TIER RETRIEVAL
+                docs = godtier_retrieval(user_message, top_k=20, intent=final_intent)
+                print(f"   🔒 Strict compliance (V3): {len(docs)} docs")
             except Exception as e:
                 print(f"⚠️ Retrieval failed: {e}")
                 docs = []

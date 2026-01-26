@@ -1,0 +1,1634 @@
+================================================================================
+PHASE 4: MARKET EXPANSION - ROOFING & WINDOWS INGESTION
+================================================================================
+Started: 2026-01-21T23:22:15.152449
+
+📦 Files to process:
+   🏠 Roofing: 1685 PDFs
+   🪟 Windows: 155 PDFs
+
+================================================================================
+🏠 PROCESSING ROOFING SECTOR
+================================================================================
+
+[1/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Alternat...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[2/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Barge De...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[3/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Barge Fl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[4/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Cavity W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[5/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Change I...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[6/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Eaves Bo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[7/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Eaves Bo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[8/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Flashing...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[9/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[10/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[11/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[12/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[13/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[14/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[15/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[16/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[17/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[18/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[19/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[20/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[21/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[22/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[23/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[24/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Horizont...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[25/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[26/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[27/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[28/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Large Pe...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[29/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Non-Cavi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[30/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Parapet ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[31/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Permanen...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[32/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Pipe Pen...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[33/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Pipe Pen...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[34/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Product ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 3 chunks
+
+[35/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Product ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 14 chunks
+
+[36/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Range Ho...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[37/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Recommen...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[38/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Resident...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[39/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Resident...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[40/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Resident...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[41/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Ridge De...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[42/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Ridged V...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[43/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Roof-Wal...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[44/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Step In ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[45/1685] Dimond Roofing - Brownbuilt 900 (BB900) - The Inst...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 124 chunks
+
+[46/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Valley G...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[47/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[48/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[49/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[50/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+   📊 Progress: 50/1685 files, 221 chunks
+
+[51/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[52/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[53/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[54/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[55/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[56/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[57/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[58/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Vertical...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 1 chunks
+
+[59/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Wall-Roo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[60/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Wall-Roo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[61/1685] Dimond Roofing - Brownbuilt 900 (BB900) - Wall-Roo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Brownbuilt 90
+      ✅ Ingested 2 chunks
+
+[62/1685] Dimond Roofing - Corrugate - Alternative Change In...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - A
+      ✅ Ingested 2 chunks
+
+[63/1685] Dimond Roofing - Corrugate - Barge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - B
+      ✅ Ingested 2 chunks
+
+[64/1685] Dimond Roofing - Corrugate - Barge Flashing Fixing...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - B
+      ✅ Ingested 2 chunks
+
+[65/1685] Dimond Roofing - Corrugate - Barge Rolled Flashing...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - B
+      ✅ Ingested 2 chunks
+
+[66/1685] Dimond Roofing - Corrugate - Cavity Wall To Floor ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - C
+      ✅ Ingested 1 chunks
+
+[67/1685] Dimond Roofing - Corrugate - Change In Pitch Detai...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - C
+      ✅ Ingested 2 chunks
+
+[68/1685] Dimond Roofing - Corrugate - Eaves Box Gutter With...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - E
+      ✅ Ingested 2 chunks
+
+[69/1685] Dimond Roofing - Corrugate - Eaves Box Gutter.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - E
+      ✅ Ingested 2 chunks
+
+[70/1685] Dimond Roofing - Corrugate - Flashing Longitudinal...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - F
+      ✅ Ingested 1 chunks
+
+[71/1685] Dimond Roofing - Corrugate - Horizontal Cavity Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 1 chunks
+
+[72/1685] Dimond Roofing - Corrugate - Horizontal Cavity Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[73/1685] Dimond Roofing - Corrugate - Horizontal Cavity Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 1 chunks
+
+[74/1685] Dimond Roofing - Corrugate - Horizontal Cavity Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[75/1685] Dimond Roofing - Corrugate - Horizontal Cavity Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[76/1685] Dimond Roofing - Corrugate - Horizontal Cavity Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[77/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 1 chunks
+
+[78/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[79/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[80/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 1 chunks
+
+[81/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 1 chunks
+
+[82/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[83/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[84/1685] Dimond Roofing - Corrugate - Horizontal Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[85/1685] Dimond Roofing - Corrugate - Horizontal Non-Cavity...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[86/1685] Dimond Roofing - Corrugate - Horizontal Sheet Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - H
+      ✅ Ingested 2 chunks
+
+[87/1685] Dimond Roofing - Corrugate - Junction To Brick.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - J
+      ✅ Ingested 2 chunks
+
+[88/1685] Dimond Roofing - Corrugate - Junction To Concrete....
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - J
+      ✅ Ingested 2 chunks
+
+[89/1685] Dimond Roofing - Corrugate - Junction To Panel Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - J
+      ✅ Ingested 2 chunks
+
+[90/1685] Dimond Roofing - Corrugate - Large Penetration Det...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - L
+      ✅ Ingested 1 chunks
+
+[91/1685] Dimond Roofing - Corrugate - Non-Cavity Wall To Fl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - N
+      ✅ Ingested 2 chunks
+
+[92/1685] Dimond Roofing - Corrugate - Parapet Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - P
+      ✅ Ingested 2 chunks
+
+[93/1685] Dimond Roofing - Corrugate - Permanent Wall-Roof J...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - P
+      ✅ Ingested 2 chunks
+
+[94/1685] Dimond Roofing - Corrugate - Pipe Penetration Deta...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - P
+      ✅ Ingested 1 chunks
+
+[95/1685] Dimond Roofing - Corrugate - Pipe Penetration Thro...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - P
+      ✅ Ingested 1 chunks
+
+[96/1685] Dimond Roofing - Corrugate - Product Brochure.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - P
+      ✅ Ingested 2 chunks
+
+[97/1685] Dimond Roofing - Corrugate - Product Technical Sta...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - P
+      ✅ Ingested 14 chunks
+
+[98/1685] Dimond Roofing - Corrugate - Range Hood Penetratio...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 1 chunks
+
+[99/1685] Dimond Roofing - Corrugate - Recommended Change In...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 2 chunks
+
+[100/1685] Dimond Roofing - Corrugate - Residential Barge-Rak...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 2 chunks
+
+   📊 Progress: 100/1685 files, 318 chunks
+
+[101/1685] Dimond Roofing - Corrugate - Residential Gutter-Wa...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 2 chunks
+
+[102/1685] Dimond Roofing - Corrugate - Residential Upper Mon...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 2 chunks
+
+[103/1685] Dimond Roofing - Corrugate - Ridge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 2 chunks
+
+[104/1685] Dimond Roofing - Corrugate - Ridged Ventilators De...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 2 chunks
+
+[105/1685] Dimond Roofing - Corrugate - Roof-Wall Apex.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - R
+      ✅ Ingested 2 chunks
+
+[106/1685] Dimond Roofing - Corrugate - Step In Roofing.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - S
+      ✅ Ingested 2 chunks
+
+[107/1685] Dimond Roofing - Corrugate - The Installers Guide....
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - T
+      ✅ Ingested 124 chunks
+
+[108/1685] Dimond Roofing - Corrugate - Valley Gutter Detail....
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 1 chunks
+
+[109/1685] Dimond Roofing - Corrugate - Vertical Cavity Cladd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 2 chunks
+
+[110/1685] Dimond Roofing - Corrugate - Vertical Cavity Cladd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 1 chunks
+
+[111/1685] Dimond Roofing - Corrugate - Vertical Cladding Win...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 1 chunks
+
+[112/1685] Dimond Roofing - Corrugate - Vertical Cladding Win...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 2 chunks
+
+[113/1685] Dimond Roofing - Corrugate - Vertical Cladding Win...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 2 chunks
+
+[114/1685] Dimond Roofing - Corrugate - Vertical Cladding Win...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 1 chunks
+
+[115/1685] Dimond Roofing - Corrugate - Vertical Cladding Wit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 1 chunks
+
+[116/1685] Dimond Roofing - Corrugate - Vertical Cladding Wit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 2 chunks
+
+[117/1685] Dimond Roofing - Corrugate - Vertical Cladding Wit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 2 chunks
+
+[118/1685] Dimond Roofing - Corrugate - Vertical Cladding Wit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 1 chunks
+
+[119/1685] Dimond Roofing - Corrugate - Vertical Non-Cavity C...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 2 chunks
+
+[120/1685] Dimond Roofing - Corrugate - Vertical Non-Cavity C...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - V
+      ✅ Ingested 1 chunks
+
+[121/1685] Dimond Roofing - Corrugate - Wall-Roof Junction 90...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - W
+      ✅ Ingested 2 chunks
+
+[122/1685] Dimond Roofing - Corrugate - Wall-Roof Junction 90...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - W
+      ✅ Ingested 2 chunks
+
+[123/1685] Dimond Roofing - Corrugate - Wall-Roof Junction.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Corrugate - W
+      ✅ Ingested 2 chunks
+
+[124/1685] Dimond Roofing - DHS Purlins - AG-Old-Dimond_Struc...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 150 chunks
+
+[125/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_1012.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[126/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_1014.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[127/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_1084.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[128/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_1086.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[129/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_1088.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[130/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_1092.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[131/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2012.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[132/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2014.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[133/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2022.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[134/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2034.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[135/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2044.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 2 chunks
+
+[136/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2046.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 2 chunks
+
+[137/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2048.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 2 chunks
+
+[138/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2055.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[139/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2064.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[140/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2066.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[141/1685] Dimond Roofing - DHS Purlins - dim_drv_dhs_2075.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[142/1685] Dimond Roofing - DHS Purlins - Horizontal Non-Cavi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[143/1685] Dimond Roofing - DHS Purlins - Large Penetration D...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[144/1685] Dimond Roofing - DHS Purlins - Parapet Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[145/1685] Dimond Roofing - DHS Purlins - Ridge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[146/1685] Dimond Roofing - DHS Purlins - Step In Roofing.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[147/1685] Dimond Roofing - DHS Purlins - Vertical Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[148/1685] Dimond Roofing - DHS Purlins - Vertical Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 2 chunks
+
+[149/1685] Dimond Roofing - DHS Purlins - Vertical Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[150/1685] Dimond Roofing - DHS Purlins - Vertical Cladding W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+   📊 Progress: 150/1685 files, 659 chunks
+
+[151/1685] Dimond Roofing - DHS Purlins - Vertical Non-Cavity...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[152/1685] Dimond Roofing - DHS Purlins - Vertical Non-Cavity...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DHS Purlins -
+      ✅ Ingested 1 chunks
+
+[153/1685] Dimond Roofing - DP955 - Alternative Change In Pit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Alter
+      ✅ Ingested 2 chunks
+
+[154/1685] Dimond Roofing - DP955 - Barge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Barge
+      ✅ Ingested 2 chunks
+
+[155/1685] Dimond Roofing - DP955 - Barge Flashing Fixing.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Barge
+      ✅ Ingested 2 chunks
+
+[156/1685] Dimond Roofing - DP955 - Cavity Wall To Floor Junc...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Cavit
+      ✅ Ingested 1 chunks
+
+[157/1685] Dimond Roofing - DP955 - Change In Pitch Detail.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Chang
+      ✅ Ingested 2 chunks
+
+[158/1685] Dimond Roofing - DP955 - Eaves Box Gutter With Cav...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Eaves
+      ✅ Ingested 2 chunks
+
+[159/1685] Dimond Roofing - DP955 - Eaves Box Gutter.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Eaves
+      ✅ Ingested 2 chunks
+
+[160/1685] Dimond Roofing - DP955 - FBDI_30_Brochure-DP955-Di...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - FBDI 
+      ✅ Ingested 3 chunks
+
+[161/1685] Dimond Roofing - DP955 - FBDI_90_Notice_Dimond-Pro...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - FBDI 
+      ✅ Ingested 2 chunks
+
+[162/1685] Dimond Roofing - DP955 - Flashing Longitudinal Joi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Flash
+      ✅ Ingested 1 chunks
+
+[163/1685] Dimond Roofing - DP955 - Horizontal Cavity Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 1 chunks
+
+[164/1685] Dimond Roofing - DP955 - Horizontal Cavity Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[165/1685] Dimond Roofing - DP955 - Horizontal Cavity Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 1 chunks
+
+[166/1685] Dimond Roofing - DP955 - Horizontal Cavity Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[167/1685] Dimond Roofing - DP955 - Horizontal Cavity Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[168/1685] Dimond Roofing - DP955 - Horizontal Cavity Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[169/1685] Dimond Roofing - DP955 - Horizontal Cladding Windo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 1 chunks
+
+[170/1685] Dimond Roofing - DP955 - Horizontal Cladding Windo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[171/1685] Dimond Roofing - DP955 - Horizontal Cladding Windo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[172/1685] Dimond Roofing - DP955 - Horizontal Cladding Windo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 1 chunks
+
+[173/1685] Dimond Roofing - DP955 - Horizontal Cladding With ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 1 chunks
+
+[174/1685] Dimond Roofing - DP955 - Horizontal Cladding With ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[175/1685] Dimond Roofing - DP955 - Horizontal Cladding With ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[176/1685] Dimond Roofing - DP955 - Horizontal Cladding With ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[177/1685] Dimond Roofing - DP955 - Horizontal Non-Cavity Cla...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[178/1685] Dimond Roofing - DP955 - Horizontal Sheet Cladding...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Horiz
+      ✅ Ingested 2 chunks
+
+[179/1685] Dimond Roofing - DP955 - Junction To Brick.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Junct
+      ✅ Ingested 2 chunks
+
+[180/1685] Dimond Roofing - DP955 - Junction To Concrete.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Junct
+      ✅ Ingested 2 chunks
+
+[181/1685] Dimond Roofing - DP955 - Junction To Panel Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Junct
+      ✅ Ingested 2 chunks
+
+[182/1685] Dimond Roofing - DP955 - Large Penetration Detail....
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Large
+      ✅ Ingested 1 chunks
+
+[183/1685] Dimond Roofing - DP955 - Non-Cavity Wall To Floor ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Non-C
+      ✅ Ingested 1 chunks
+
+[184/1685] Dimond Roofing - DP955 - Parapet Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Parap
+      ✅ Ingested 2 chunks
+
+[185/1685] Dimond Roofing - DP955 - Permanent Wall-Roof Junct...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Perma
+      ✅ Ingested 2 chunks
+
+[186/1685] Dimond Roofing - DP955 - Pipe Penetration Detail.p...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Pipe 
+      ✅ Ingested 1 chunks
+
+[187/1685] Dimond Roofing - DP955 - Pipe Penetration Through ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Pipe 
+      ✅ Ingested 1 chunks
+
+[188/1685] Dimond Roofing - DP955 - Range Hood Penetration.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Range
+      ✅ Ingested 1 chunks
+
+[189/1685] Dimond Roofing - DP955 - Recommended Change In Pit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Recom
+      ✅ Ingested 2 chunks
+
+[190/1685] Dimond Roofing - DP955 - Residential Barge-Raking ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Resid
+      ✅ Ingested 2 chunks
+
+[191/1685] Dimond Roofing - DP955 - Residential Gutter-Wall D...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Resid
+      ✅ Ingested 2 chunks
+
+[192/1685] Dimond Roofing - DP955 - Residential Upper Mono Sl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Resid
+      ✅ Ingested 2 chunks
+
+[193/1685] Dimond Roofing - DP955 - Ridge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Ridge
+      ✅ Ingested 2 chunks
+
+[194/1685] Dimond Roofing - DP955 - Ridged Ventilators Detail...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Ridge
+      ✅ Ingested 2 chunks
+
+[195/1685] Dimond Roofing - DP955 - Roof-Wall Apex.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Roof-
+      ✅ Ingested 2 chunks
+
+[196/1685] Dimond Roofing - DP955 - Step In Roofing.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Step 
+      ✅ Ingested 2 chunks
+
+[197/1685] Dimond Roofing - DP955 - V1 - PRODUCT TECHNCIAL ST...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - V1 - 
+      ✅ Ingested 13 chunks
+
+[198/1685] Dimond Roofing - DP955 - V1 - The Installers Guide...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - V1 - 
+      ✅ Ingested 124 chunks
+
+[199/1685] Dimond Roofing - DP955 - Valley Gutter Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Valle
+      ✅ Ingested 1 chunks
+
+[200/1685] Dimond Roofing - DP955 - Vertical Cavity Cladding-...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 2 chunks
+
+   📊 Progress: 200/1685 files, 878 chunks
+
+[201/1685] Dimond Roofing - DP955 - Vertical Cavity Cladding-...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 1 chunks
+
+[202/1685] Dimond Roofing - DP955 - Vertical Cladding Window ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 1 chunks
+
+[203/1685] Dimond Roofing - DP955 - Vertical Cladding Window ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 2 chunks
+
+[204/1685] Dimond Roofing - DP955 - Vertical Cladding Window ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 2 chunks
+
+[205/1685] Dimond Roofing - DP955 - Vertical Cladding Window ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 1 chunks
+
+[206/1685] Dimond Roofing - DP955 - Vertical Cladding With Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 1 chunks
+
+[207/1685] Dimond Roofing - DP955 - Vertical Cladding With Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 2 chunks
+
+[208/1685] Dimond Roofing - DP955 - Vertical Cladding With Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 2 chunks
+
+[209/1685] Dimond Roofing - DP955 - Vertical Cladding With Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 1 chunks
+
+[210/1685] Dimond Roofing - DP955 - Vertical Non-Cavity Cladd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 2 chunks
+
+[211/1685] Dimond Roofing - DP955 - Vertical Non-Cavity Cladd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Verti
+      ✅ Ingested 1 chunks
+
+[212/1685] Dimond Roofing - DP955 - Wall-Roof Junction 90 Deg...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Wall-
+      ✅ Ingested 2 chunks
+
+[213/1685] Dimond Roofing - DP955 - Wall-Roof Junction 90 Deg...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Wall-
+      ✅ Ingested 2 chunks
+
+[214/1685] Dimond Roofing - DP955 - Wall-Roof Junction.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - DP955 - Wall-
+      ✅ Ingested 2 chunks
+
+[215/1685] Dimond Roofing - Dimondclad Interlock - DimondClad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad In
+      ✅ Ingested 6 chunks
+
+[216/1685] Dimond Roofing - Dimondclad Interlock - FBDI_90_No...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad In
+      ✅ Ingested 2 chunks
+
+[217/1685] Dimond Roofing - Dimondclad Interlock - Interlock-...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad In
+      ✅ Ingested 21 chunks
+
+[218/1685] Dimond Roofing - Dimondclad Interlock - V1-PRODUCT...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad In
+      ✅ Ingested 9 chunks
+
+[219/1685] Dimond Roofing - Dimondclad Rib 20 - Cavity Wall T...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[220/1685] Dimond Roofing - Dimondclad Rib 20 - FBDI_90_Notic...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[221/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[222/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[223/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[224/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[225/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[226/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[227/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[228/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[229/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[230/1685] Dimond Roofing - Dimondclad Rib 20 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[231/1685] Dimond Roofing - Dimondclad Rib 20 - Junction To B...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[232/1685] Dimond Roofing - Dimondclad Rib 20 - Junction To C...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[233/1685] Dimond Roofing - Dimondclad Rib 20 - Junction To P...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[234/1685] Dimond Roofing - Dimondclad Rib 20 - Pipe Penetrat...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[235/1685] Dimond Roofing - Dimondclad Rib 20 - Range Hood Pe...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[236/1685] Dimond Roofing - Dimondclad Rib 20 - V1 - PRODUCT ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 10 chunks
+
+[237/1685] Dimond Roofing - Dimondclad Rib 20 - V1 - The Inst...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 124 chunks
+
+[238/1685] Dimond Roofing - Dimondclad Rib 20 - Vertical Cavi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[239/1685] Dimond Roofing - Dimondclad Rib 20 - Vertical Cavi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[240/1685] Dimond Roofing - Dimondclad Rib 20 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[241/1685] Dimond Roofing - Dimondclad Rib 20 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[242/1685] Dimond Roofing - Dimondclad Rib 20 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[243/1685] Dimond Roofing - Dimondclad Rib 20 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[244/1685] Dimond Roofing - Dimondclad Rib 20 - Wall-Roof Jun...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[245/1685] Dimond Roofing - Dimondclad Rib 50 - Cavity Wall T...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[246/1685] Dimond Roofing - Dimondclad Rib 50 - FBDI_37_Broch...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[247/1685] Dimond Roofing - Dimondclad Rib 50 - FBDI_90_Notic...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[248/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[249/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[250/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+   📊 Progress: 250/1685 files, 1,118 chunks
+
+[251/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[252/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[253/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Ca...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[254/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[255/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[256/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[257/1685] Dimond Roofing - Dimondclad Rib 50 - Horizontal Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[258/1685] Dimond Roofing - Dimondclad Rib 50 - Junction To B...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[259/1685] Dimond Roofing - Dimondclad Rib 50 - Junction To C...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[260/1685] Dimond Roofing - Dimondclad Rib 50 - Junction To P...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[261/1685] Dimond Roofing - Dimondclad Rib 50 - Pipe Penetrat...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[262/1685] Dimond Roofing - Dimondclad Rib 50 - Range Hood Pe...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[263/1685] Dimond Roofing - Dimondclad Rib 50 - V1 - PRODUCT ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 10 chunks
+
+[264/1685] Dimond Roofing - Dimondclad Rib 50 - V1 - The Inst...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 124 chunks
+
+[265/1685] Dimond Roofing - Dimondclad Rib 50 - Vertical Cavi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[266/1685] Dimond Roofing - Dimondclad Rib 50 - Vertical Cavi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[267/1685] Dimond Roofing - Dimondclad Rib 50 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[268/1685] Dimond Roofing - Dimondclad Rib 50 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[269/1685] Dimond Roofing - Dimondclad Rib 50 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[270/1685] Dimond Roofing - Dimondclad Rib 50 - Vertical Clad...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 1 chunks
+
+[271/1685] Dimond Roofing - Dimondclad Rib 50 - Wall-Roof Jun...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondclad Ri
+      ✅ Ingested 2 chunks
+
+[272/1685] Dimond Roofing - Dimondek 400 - Alternative Change...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[273/1685] Dimond Roofing - Dimondek 400 - Barge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[274/1685] Dimond Roofing - Dimondek 400 - Barge Flashing Fix...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[275/1685] Dimond Roofing - Dimondek 400 - Cavity Wall To Flo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[276/1685] Dimond Roofing - Dimondek 400 - Change In Pitch De...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[277/1685] Dimond Roofing - Dimondek 400 - Eaves Box Gutter W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[278/1685] Dimond Roofing - Dimondek 400 - Eaves Box Gutter.p...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[279/1685] Dimond Roofing - Dimondek 400 - FBDI_10_Brochure -...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 19 chunks
+
+[280/1685] Dimond Roofing - Dimondek 400 - FBDI_28_Brochure-D...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[281/1685] Dimond Roofing - Dimondek 400 - FBDI_90_Notice_Dim...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[282/1685] Dimond Roofing - Dimondek 400 - Flashing Longitudi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[283/1685] Dimond Roofing - Dimondek 400 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[284/1685] Dimond Roofing - Dimondek 400 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[285/1685] Dimond Roofing - Dimondek 400 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[286/1685] Dimond Roofing - Dimondek 400 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[287/1685] Dimond Roofing - Dimondek 400 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[288/1685] Dimond Roofing - Dimondek 400 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[289/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[290/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[291/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[292/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[293/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[294/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[295/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[296/1685] Dimond Roofing - Dimondek 400 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[297/1685] Dimond Roofing - Dimondek 400 - Horizontal Non-Cav...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[298/1685] Dimond Roofing - Dimondek 400 - Horizontal Sheet C...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[299/1685] Dimond Roofing - Dimondek 400 - Junction To Brick....
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[300/1685] Dimond Roofing - Dimondek 400 - Junction To Concre...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+   📊 Progress: 300/1685 files, 1,349 chunks
+
+[301/1685] Dimond Roofing - Dimondek 400 - Junction To Panel ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[302/1685] Dimond Roofing - Dimondek 400 - Large Penetration ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[303/1685] Dimond Roofing - Dimondek 400 - Non-Cavity Wall To...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[304/1685] Dimond Roofing - Dimondek 400 - Parapet Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[305/1685] Dimond Roofing - Dimondek 400 - Permanent Wall-Roo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[306/1685] Dimond Roofing - Dimondek 400 - Pipe Penetration D...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[307/1685] Dimond Roofing - Dimondek 400 - Pipe Penetration T...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[308/1685] Dimond Roofing - Dimondek 400 - Range Hood Penetra...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[309/1685] Dimond Roofing - Dimondek 400 - Recommended Change...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[310/1685] Dimond Roofing - Dimondek 400 - Residential Barge-...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[311/1685] Dimond Roofing - Dimondek 400 - Residential Gutter...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[312/1685] Dimond Roofing - Dimondek 400 - Residential Upper ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[313/1685] Dimond Roofing - Dimondek 400 - Ridge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[314/1685] Dimond Roofing - Dimondek 400 - Ridged Ventilators...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[315/1685] Dimond Roofing - Dimondek 400 - Roof-Wall Apex.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[316/1685] Dimond Roofing - Dimondek 400 - Step In Roofing.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[317/1685] Dimond Roofing - Dimondek 400 - V1 - PRODUCT TECHN...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 14 chunks
+
+[318/1685] Dimond Roofing - Dimondek 400 - V1 - The Installer...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 124 chunks
+
+[319/1685] Dimond Roofing - Dimondek 400 - Valley Gutter Deta...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[320/1685] Dimond Roofing - Dimondek 400 - Vertical Cavity Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[321/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[322/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[323/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[324/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[325/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[326/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[327/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[328/1685] Dimond Roofing - Dimondek 400 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[329/1685] Dimond Roofing - Dimondek 400 - Vertical Non-Cavit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[330/1685] Dimond Roofing - Dimondek 400 - Vertical Non-Cavit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 1 chunks
+
+[331/1685] Dimond Roofing - Dimondek 400 - Wall-Roof Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[332/1685] Dimond Roofing - Dimondek 400 - Wall-Roof Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[333/1685] Dimond Roofing - Dimondek 400 - Wall-Roof Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 400 
+      ✅ Ingested 2 chunks
+
+[334/1685] Dimond Roofing - Dimondek 630 - Alternative Change...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[335/1685] Dimond Roofing - Dimondek 630 - Barge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[336/1685] Dimond Roofing - Dimondek 630 - Barge Flashing Fix...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[337/1685] Dimond Roofing - Dimondek 630 - Cavity Wall To Flo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[338/1685] Dimond Roofing - Dimondek 630 - Change In Pitch De...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[339/1685] Dimond Roofing - Dimondek 630 - Eaves Box Gutter W...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[340/1685] Dimond Roofing - Dimondek 630 - Eaves Box Gutter.p...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[341/1685] Dimond Roofing - Dimondek 630 - FBDI_29_Brochure-D...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[342/1685] Dimond Roofing - Dimondek 630 - FBDI_90_Notice_Dim...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[343/1685] Dimond Roofing - Dimondek 630 - Flashing Longitudi...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[344/1685] Dimond Roofing - Dimondek 630 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[345/1685] Dimond Roofing - Dimondek 630 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[346/1685] Dimond Roofing - Dimondek 630 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[347/1685] Dimond Roofing - Dimondek 630 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[348/1685] Dimond Roofing - Dimondek 630 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[349/1685] Dimond Roofing - Dimondek 630 - Horizontal Cavity ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[350/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+   📊 Progress: 350/1685 files, 1,569 chunks
+
+[351/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[352/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[353/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[354/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[355/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[356/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[357/1685] Dimond Roofing - Dimondek 630 - Horizontal Claddin...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[358/1685] Dimond Roofing - Dimondek 630 - Horizontal Non-Cav...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[359/1685] Dimond Roofing - Dimondek 630 - Horizontal Sheet C...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[360/1685] Dimond Roofing - Dimondek 630 - Junction To Brick....
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[361/1685] Dimond Roofing - Dimondek 630 - Junction To Concre...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[362/1685] Dimond Roofing - Dimondek 630 - Junction To Panel ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[363/1685] Dimond Roofing - Dimondek 630 - Large Penetration ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[364/1685] Dimond Roofing - Dimondek 630 - Non-Cavity Wall To...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[365/1685] Dimond Roofing - Dimondek 630 - Parapet Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[366/1685] Dimond Roofing - Dimondek 630 - Permanent Wall-Roo...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[367/1685] Dimond Roofing - Dimondek 630 - Pipe Penetration D...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[368/1685] Dimond Roofing - Dimondek 630 - Pipe Penetration T...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[369/1685] Dimond Roofing - Dimondek 630 - Range Hood Penetra...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[370/1685] Dimond Roofing - Dimondek 630 - Recommended Change...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[371/1685] Dimond Roofing - Dimondek 630 - Residential Barge-...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[372/1685] Dimond Roofing - Dimondek 630 - Residential Gutter...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[373/1685] Dimond Roofing - Dimondek 630 - Residential Upper ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[374/1685] Dimond Roofing - Dimondek 630 - Ridge Detail.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[375/1685] Dimond Roofing - Dimondek 630 - Ridged Ventilators...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[376/1685] Dimond Roofing - Dimondek 630 - Roof-Wall Apex.pdf...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[377/1685] Dimond Roofing - Dimondek 630 - Step In Roofing.pd...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[378/1685] Dimond Roofing - Dimondek 630 - V1 - PRODUCT TECHN...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 12 chunks
+
+[379/1685] Dimond Roofing - Dimondek 630 - V1 - The Installer...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 124 chunks
+
+[380/1685] Dimond Roofing - Dimondek 630 - Valley Gutter Deta...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[381/1685] Dimond Roofing - Dimondek 630 - Vertical Cavity Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[382/1685] Dimond Roofing - Dimondek 630 - Vertical Cavity Cl...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 1 chunks
+
+[383/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[384/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[385/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[386/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[387/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[388/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[389/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[390/1685] Dimond Roofing - Dimondek 630 - Vertical Cladding ...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[391/1685] Dimond Roofing - Dimondek 630 - Vertical Non-Cavit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[392/1685] Dimond Roofing - Dimondek 630 - Vertical Non-Cavit...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[393/1685] Dimond Roofing - Dimondek 630 - Wall-Roof Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[394/1685] Dimond Roofing - Dimondek 630 - Wall-Roof Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[395/1685] Dimond Roofing - Dimondek 630 - Wall-Roof Junction...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Dimondek 630 
+      ✅ Ingested 2 chunks
+
+[396/1685] Dimond Roofing - Eurotray Angle Seam - Barge Detai...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Eurotray Angl
+      ✅ Ingested 2 chunks
+
+[397/1685] Dimond Roofing - Eurotray Angle Seam - Cavity Wall...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Eurotray Angl
+      ✅ Ingested 2 chunks
+
+[398/1685] Dimond Roofing - Eurotray Angle Seam - dim_eta_105...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Eurotray Angl
+      ✅ Ingested 2 chunks
+
+[399/1685] Dimond Roofing - Eurotray Angle Seam - dim_eta_106...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Eurotray Angl
+      ✅ Ingested 2 chunks
+
+[400/1685] Dimond Roofing - Eurotray Angle Seam - dim_eta_122...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Eurotray Angl
+      ✅ Ingested 2 chunks
+
+   📊 Progress: 400/1685 files, 1,794 chunks
+
+[401/1685] Dimond Roofing - Eurotray Angle Seam - dim_eta_211...
+      ⚠️ MISSING_DOCS: Dimond Roofing - Dimond Roofing - Eurotray Angl
+      ✅ Ingested 2 chunks
+
+[402/1685] Dimond Roofing - Eurotray Angle Seam - dim_eta_220...

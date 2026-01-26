@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 STRYDA V3.0 PLATINUM INGESTION ENGINE
-Cloud Vision API using Gemini Flash
+Cloud Vision API using Emergent Integrations for Gemini Flash
 
 Protocol: /protocols/INGESTION_V3_PLATINUM.md
-Engine: Gemini 1.5 Flash Vision API
+Engine: Gemini 2.5 Flash Vision API via Emergent Integrations
 """
 import os
 import sys
@@ -12,53 +12,50 @@ import json
 import hashlib
 import base64
 import re
+import asyncio
 from datetime import datetime
 from pathlib import Path
 from io import BytesIO
 
-# Unbuffered logging
-sys.stdout = open('/app/platinum_ingestion.log', 'w', buffering=1)
-sys.stderr = sys.stdout
+# Unbuffered logging to file
+log_file = open('/app/platinum_ingestion.log', 'w', buffering=1)
 
-print("=" * 80, flush=True)
-print("   ⚡ STRYDA V3.0 PLATINUM - CLOUD VISION INGESTION", flush=True)
-print(f"   Started: {datetime.now().isoformat()}", flush=True)
-print("   Engine: Gemini 1.5 Flash Vision API", flush=True)
-print("=" * 80, flush=True)
+def log(msg):
+    """Log to both file and print"""
+    print(msg, file=log_file, flush=True)
+    print(msg, flush=True)
+
+log("=" * 80)
+log("   ⚡ STRYDA V3.0 PLATINUM - CLOUD VISION INGESTION")
+log(f"   Started: {datetime.now().isoformat()}")
+log("   Engine: Gemini 2.5 Flash Vision API (Emergent Integration)")
+log("=" * 80)
 
 # Load environment
-env_file = Path('/app/backend-minimal/.env')
-if env_file.exists():
-    for line in env_file.read_text().splitlines():
-        if '=' in line and not line.startswith('#'):
-            key, val = line.split('=', 1)
-            os.environ[key.strip()] = val.strip()
+from dotenv import load_dotenv
+load_dotenv('/app/backend-minimal/.env')
 
 import psycopg2
 import openai
 from supabase import create_client
 from pdf2image import convert_from_bytes
 from PIL import Image
-import google.generativeai as genai
+from emergentintegrations.llm.chat import LlmChat, UserMessage, FileContent
 
 # Config
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY')
 DATABASE_URL = os.getenv('DATABASE_URL')
 OPENAI_KEY = os.getenv('OPENAI_API_KEY')
-GEMINI_KEY = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY') or os.getenv('EMERGENT_LLM_KEY')
+EMERGENT_KEY = os.getenv('EMERGENT_LLM_KEY')
 
 # Initialize clients
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 openai_client = openai.OpenAI(api_key=OPENAI_KEY)
-genai.configure(api_key=GEMINI_KEY)
 
-# Vision model
-vision_model = genai.GenerativeModel('gemini-1.5-flash')
-
-print(f"\n✅ Platinum Engine initialized", flush=True)
-print(f"   Vision Model: Gemini 1.5 Flash", flush=True)
-print(f"   Embedding Model: text-embedding-3-small", flush=True)
+log(f"\n✅ Platinum Engine initialized")
+log(f"   Vision Model: Gemini 2.5 Flash (Emergent)")
+log(f"   Embedding Model: text-embedding-3-small")
 
 # ============================================================================
 # PLATINUM VISION PROMPT
@@ -93,9 +90,40 @@ OUTPUT FORMAT:
 
 Be thorough - every specification matters for construction compliance."""
 
+
 # ============================================================================
-# VISION API EXTRACTION
+# VISION API EXTRACTION USING EMERGENT INTEGRATIONS
 # ============================================================================
+
+async def extract_page_with_vision(img_base64: str, product_name: str, page_num: int) -> str:
+    """
+    Use Emergent Integrations to call Gemini Vision API.
+    """
+    try:
+        # Create a new chat instance for this page
+        chat = LlmChat(
+            api_key=EMERGENT_KEY,
+            session_id=f"platinum-{hashlib.md5(product_name.encode()).hexdigest()[:8]}-p{page_num}",
+            system_message="You are a technical document parser. Extract all content accurately."
+        ).with_model("gemini", "gemini-2.5-flash")
+        
+        # Create file content with image
+        file_content = FileContent(content_type="image/jpeg", file_content_base64=img_base64)
+        
+        # Create message with image
+        user_message = UserMessage(
+            text=VISION_PROMPT,
+            file_contents=[file_content]
+        )
+        
+        # Send and get response
+        response = await chat.send_message(user_message)
+        return response
+        
+    except Exception as e:
+        log(f"      ⚠️ Vision API error page {page_num}: {str(e)[:60]}")
+        return ""
+
 
 def extract_with_vision(pdf_bytes, product_name):
     """
@@ -107,49 +135,37 @@ def extract_with_vision(pdf_bytes, product_name):
     diagrams_found = 0
     
     try:
-        # Convert PDF to images (300 DPI for clarity)
-        images = convert_from_bytes(pdf_bytes, dpi=200, fmt='JPEG')
-        print(f"      📄 Converted {len(images)} pages to images", flush=True)
+        # Convert PDF to images (150 DPI for balance of quality and speed)
+        images = convert_from_bytes(pdf_bytes, dpi=150, fmt='JPEG')
+        log(f"      📄 Converted {len(images)} pages to images")
         
         for page_num, img in enumerate(images, 1):
-            # Convert PIL image to bytes for API
+            # Convert PIL image to base64
             img_buffer = BytesIO()
             img.save(img_buffer, format='JPEG', quality=85)
             img_bytes = img_buffer.getvalue()
+            img_base64 = base64.b64encode(img_bytes).decode('utf-8')
             
-            # Create image part for Gemini
-            image_part = {
-                "mime_type": "image/jpeg",
-                "data": base64.b64encode(img_bytes).decode('utf-8')
-            }
+            # Call Vision API asynchronously
+            page_content = asyncio.run(extract_page_with_vision(img_base64, product_name, page_num))
             
-            try:
-                # Call Gemini Vision API
-                response = vision_model.generate_content([
-                    VISION_PROMPT,
-                    {"mime_type": "image/jpeg", "data": base64.b64encode(img_bytes).decode('utf-8')}
-                ])
-                
-                page_content = response.text
-                
-                # Count tables and diagrams
-                if '## TABLES' in page_content and '|' in page_content:
-                    tables_found += page_content.count('|---')
-                if '## DIAGRAMS' in page_content:
-                    diagrams_found += 1
-                
-                # Add product context prefix
-                contextualized = f"[Document: {product_name} | Page: {page_num}]\n\n{page_content}"
-                all_content.append(contextualized)
-                
-            except Exception as e:
-                print(f"      ⚠️ Vision API error page {page_num}: {str(e)[:40]}", flush=True)
+            if not page_content:
                 continue
+            
+            # Count tables and diagrams
+            if '## TABLES' in page_content and '|' in page_content:
+                tables_found += page_content.count('|---')
+            if '## DIAGRAMS' in page_content:
+                diagrams_found += 1
+            
+            # Add product context prefix
+            contextualized = f"[Document: {product_name} | Page: {page_num}]\n\n{page_content}"
+            all_content.append(contextualized)
         
         return all_content, len(images), tables_found, diagrams_found
         
     except Exception as e:
-        print(f"      ❌ PDF conversion error: {str(e)[:50]}", flush=True)
+        log(f"      ❌ PDF conversion error: {str(e)[:50]}")
         return [], 0, 0, 0
 
 
@@ -165,7 +181,6 @@ def chunk_vision_output(content_pages, product_name, chunk_size=1200, overlap=20
         sections = re.split(r'(## TABLES|## DIAGRAMS|## TEXT)', page_content)
         
         current_section = ""
-        current_chunk = ""
         
         for part in sections:
             part = part.strip()
@@ -178,10 +193,9 @@ def chunk_vision_output(content_pages, product_name, chunk_size=1200, overlap=20
             
             # For tables, try to keep them intact
             if current_section == '## TABLES':
-                # Split by table markers
                 table_blocks = re.split(r'\n\n+', part)
                 for block in table_blocks:
-                    if '|' in block:  # It's a table
+                    if '|' in block:
                         chunk = f"[TABLE from {product_name}]\n{block}"
                         chunks.append(chunk)
                     elif block.strip():
@@ -216,7 +230,7 @@ def get_embedding(text):
         )
         return r.data[0].embedding
     except Exception as e:
-        print(f"      ⚠️ Embedding error: {str(e)[:30]}", flush=True)
+        log(f"      ⚠️ Embedding error: {str(e)[:30]}")
         return None
 
 
@@ -224,26 +238,27 @@ def get_embedding(text):
 # SCAN FILES
 # ============================================================================
 
-print(f"\n📂 Scanning Bremick files...", flush=True)
+log(f"\n📂 Scanning Bremick files...")
 
 def scan_folder(bucket, path):
     files = []
     try:
         items = supabase.storage.from_(bucket).list(path, {'limit': 500})
         for item in items:
-            if item['name'].lower().endswith('.pdf'):
-                files.append({'name': item['name'], 'path': f"{path}/{item['name']}", 'bucket': bucket})
-            elif item.get('id') is None:
-                files.extend(scan_folder(bucket, f"{path}/{item['name']}"))
-    except:
-        pass
+            name = item['name']
+            if name.lower().endswith('.pdf'):
+                files.append({'name': name, 'path': f"{path}/{name}", 'bucket': bucket})
+            elif item.get('id') is None:  # It's a folder
+                files.extend(scan_folder(bucket, f"{path}/{name}"))
+    except Exception as e:
+        log(f"   Error scanning {path}: {e}")
     return files
 
 bremick_files = scan_folder('product-library', 'F_Manufacturers/Fasteners/Bremick')
 total_files = len(bremick_files)
 
-print(f"   🔩 Found {total_files} Bremick files", flush=True)
-print("=" * 80, flush=True)
+log(f"   🔩 Found {total_files} Bremick files")
+log("=" * 80)
 
 # ============================================================================
 # PLATINUM INGESTION LOOP
@@ -265,13 +280,13 @@ for i, file_info in enumerate(bremick_files, 1):
     filepath = file_info['path']
     bucket = file_info['bucket']
     
-    print(f"\n[{i:3}/{total_files}] {filename[:55]}...", flush=True)
+    log(f"\n[{i:3}/{total_files}] {filename[:55]}...")
     
     try:
         # Download
         pdf_data = supabase.storage.from_(bucket).download(filepath)
         if not pdf_data:
-            print(f"      ⏭️ Skip: Download failed", flush=True)
+            log(f"      ⏭️ Skip: Download failed")
             stats['skipped'] += 1
             continue
         
@@ -283,7 +298,7 @@ for i, file_info in enumerate(bremick_files, 1):
         content_pages, pages, tables, diagrams = extract_with_vision(pdf_data, full_product)
         
         if not content_pages:
-            print(f"      ⏭️ Skip: No content extracted", flush=True)
+            log(f"      ⏭️ Skip: No content extracted")
             stats['skipped'] += 1
             continue
         
@@ -294,7 +309,7 @@ for i, file_info in enumerate(bremick_files, 1):
         # Smart chunking
         chunks = chunk_vision_output(content_pages, full_product)
         
-        print(f"      📊 {pages}p | {len(chunks)} chunks | {tables} tables | {diagrams} diagrams", flush=True)
+        log(f"      📊 {pages}p | {len(chunks)} chunks | {tables} tables | {diagrams} diagrams")
         
         # Dedupe
         content_hash = hashlib.sha256(''.join(chunks[:3]).encode()).hexdigest()[:16]
@@ -306,7 +321,7 @@ for i, file_info in enumerate(bremick_files, 1):
         # Check exists
         cur.execute("SELECT 1 FROM documents WHERE page_hash LIKE %s LIMIT 1", (f"{content_hash}%",))
         if cur.fetchone():
-            print(f"      ⏭️ Skip: Already exists", flush=True)
+            log(f"      ⏭️ Skip: Already exists")
             stats['skipped'] += 1
             conn.close()
             continue
@@ -329,18 +344,19 @@ for i, file_info in enumerate(bremick_files, 1):
             try:
                 cur.execute("""
                     INSERT INTO documents (
-                        content, source, page, embedding, page_hash, chunk_hash,
-                        trade, priority, is_active, doc_type, hierarchy_level
-                    ) VALUES (%s, %s, %s, %s::vector, %s, %s, %s, %s, %s, %s, %s)
+                        content, source, page, embedding, page_hash,
+                        trade, priority, is_active, doc_type, hierarchy_level,
+                        has_table, has_diagram, brand_name
+                    ) VALUES (%s, %s, %s, %s::vector, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
                     chunk, full_product, ci + 1, emb,
                     f"{content_hash}_{ci}",
-                    hashlib.md5(chunk.encode()).hexdigest()[:12],
-                    'fasteners', 95, True, doc_type, 4
+                    'fasteners', 95, True, doc_type, 4,
+                    '[TABLE' in chunk, '[DIAGRAM' in chunk, 'Bremick'
                 ))
                 inserted += 1
             except Exception as e:
-                pass
+                log(f"      ⚠️ DB insert error: {str(e)[:40]}")
         
         conn.commit()
         conn.close()
@@ -348,7 +364,7 @@ for i, file_info in enumerate(bremick_files, 1):
         if inserted > 0:
             stats['processed'] += 1
             stats['chunks'] += inserted
-            print(f"      ✅ Ingested {inserted} chunks [PLATINUM]", flush=True)
+            log(f"      ✅ Ingested {inserted} chunks [PLATINUM]")
             
             register_entries.append({
                 'brand': 'Bremick',
@@ -358,14 +374,14 @@ for i, file_info in enumerate(bremick_files, 1):
             })
         
     except Exception as e:
-        print(f"      ❌ Error: {str(e)[:50]}", flush=True)
+        log(f"      ❌ Error: {str(e)[:50]}")
         stats['errors'] += 1
     
-    # Checkpoint
+    # Checkpoint every 10 files
     if i % 10 == 0:
-        print(f"\n📊 CHECKPOINT [{i}/{total_files}]", flush=True)
-        print(f"   Processed: {stats['processed']} | Pages: {stats['pages_scanned']} | Chunks: {stats['chunks']}", flush=True)
-        print(f"   Tables: {stats['tables']} | Diagrams: {stats['diagrams']} | Errors: {stats['errors']}", flush=True)
+        log(f"\n📊 CHECKPOINT [{i}/{total_files}]")
+        log(f"   Processed: {stats['processed']} | Pages: {stats['pages_scanned']} | Chunks: {stats['chunks']}")
+        log(f"   Tables: {stats['tables']} | Diagrams: {stats['diagrams']} | Errors: {stats['errors']}")
 
 # Update register
 import csv
@@ -382,20 +398,22 @@ with open(reg_path, 'w', newline='') as f:
     w.writerows(existing + register_entries)
 
 # Final report
-print(f"\n{'='*80}", flush=True)
-print(f"   ⚡ V3.0 PLATINUM INGESTION - COMPLETE", flush=True)
-print(f"{'='*80}", flush=True)
-print(f"   ✅ Files Processed: {stats['processed']}", flush=True)
-print(f"   📄 Total Chunks: {stats['chunks']}", flush=True)
-print(f"   📊 Tables Extracted: {stats['tables']}", flush=True)
-print(f"   🖼️ Diagrams Captured: {stats['diagrams']}", flush=True)
-print(f"   📑 Pages Scanned: {stats['pages_scanned']}", flush=True)
-print(f"   ⏭️ Skipped: {stats['skipped']}", flush=True)
-print(f"   ❌ Errors: {stats['errors']}", flush=True)
-print(f"   📋 Register Added: {len(register_entries)}", flush=True)
-print(f"\n   Protocol: V3.0 PLATINUM (Cloud Vision)", flush=True)
-print(f"   Completed: {datetime.now().isoformat()}", flush=True)
-print("=" * 80, flush=True)
+log(f"\n{'='*80}")
+log(f"   ⚡ V3.0 PLATINUM INGESTION - COMPLETE")
+log(f"{'='*80}")
+log(f"   ✅ Files Processed: {stats['processed']}")
+log(f"   📄 Total Chunks: {stats['chunks']}")
+log(f"   📊 Tables Extracted: {stats['tables']}")
+log(f"   🖼️ Diagrams Captured: {stats['diagrams']}")
+log(f"   📑 Pages Scanned: {stats['pages_scanned']}")
+log(f"   ⏭️ Skipped: {stats['skipped']}")
+log(f"   ❌ Errors: {stats['errors']}")
+log(f"   📋 Register Added: {len(register_entries)}")
+log(f"\n   Protocol: V3.0 PLATINUM (Cloud Vision)")
+log(f"   Completed: {datetime.now().isoformat()}")
+log("=" * 80)
 
 with open('/app/platinum_report.json', 'w') as f:
     json.dump({**stats, 'register': len(register_entries), 'completed': datetime.now().isoformat()}, f, indent=2)
+
+log_file.close()

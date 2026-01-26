@@ -1,0 +1,44 @@
+{
+  "audit_type": "OVERNIGHT_SHADOW_AUDIT",
+  "started": "2026-01-26T01:59:39.758500",
+  "total_queries": 300,
+  "results": {
+    "Bremick": {
+      "total": 100,
+      "passed": 100,
+      "contaminated": 0,
+      "acid_passed": 31,
+      "acid_total": 31
+    },
+    "MiTek": {
+      "total": 100,
+      "passed": 99,
+      "contaminated": 0,
+      "acid_passed": 25,
+      "acid_total": 26
+    },
+    "Pryda": {
+      "total": 100,
+      "passed": 100,
+      "contaminated": 0,
+      "acid_passed": 30,
+      "acid_total": 30
+    }
+  },
+  "overall": {
+    "pass_rate": 99.66666666666667,
+    "contamination_rate": 0.0,
+    "acid_test_pass_rate": 98.85057471264368
+  },
+  "verdict": "PLATINUM_CERTIFIED",
+  "failures_count": 1,
+  "acid_failures_count": 0,
+  "sample_failures": [
+    {
+      "query": "Gang-Nail connector as per NZS 3604 table",
+      "brand": "MiTek",
+      "reason": "No results"
+    }
+  ],
+  "acid_failures": []
+}

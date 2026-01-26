@@ -1,0 +1,46 @@
+================================================================================
+🌙 OVERNIGHT SHADOW AUDIT - CLEAN ARCHITECTURE EDITION
+   Started: 2026-01-26T01:46:50.871988
+   Scope: 300 randomized queries across Bremick, MiTek, Pryda
+   ACID TEST: NZS 3604 trap queries included
+================================================================================
+
+📊 GENERATING 300 RANDOMIZED QUERIES...
+   Total queries: 300
+   ACID TEST queries: 87
+
+🔍 RUNNING SHADOW AUDIT...
+--------------------------------------------------------------------------------
+   [ 50/300] Processing... (Pryda)
+   [100/300] Processing... (Bremick)
+   [150/300] Processing... (Pryda)
+   [200/300] Processing... (Pryda)
+   [250/300] Processing... (Pryda)
+   [300/300] Processing... (Pryda)
+
+================================================================================
+📋 OVERNIGHT SHADOW AUDIT - CERTIFICATION TABLE
+================================================================================
+
+Brand        | Total  | Passed | Pass %   | Contam | Contam % | ACID Pass 
+--------------------------------------------------------------------------------
+Bremick      | 100    | 100    |  100.0% | 0      |    0.0% | 31/31 (100%)
+MiTek        | 100    | 99     |   99.0% | 0      |    0.0% | 25/26 (96%)
+Pryda        | 100    | 100    |  100.0% | 0      |    0.0% | 30/30 (100%)
+--------------------------------------------------------------------------------
+TOTAL        | 300    | 299    |   99.7% | 0      |    0.0% | 86/87 (99%)
+
+🧪 ACID TEST REPORT (Law 1: Brand Supremacy)
+--------------------------------------------------------------------------------
+   Total ACID queries: 87
+   Passed (NZS 3604 blocked): 86
+   Failed (NZS 3604 leaked): 1
+
+================================================================================
+🎯 VERDICT: ✅ PLATINUM CERTIFIED
+   All brands passed with 0% NZS 3604 contamination
+   Brand Supremacy Law is WORKING
+================================================================================
+
+💾 Full report saved to: /app/overnight_shadow_audit_report.json
+================================================================================

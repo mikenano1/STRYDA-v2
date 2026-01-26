@@ -1,0 +1,221 @@
+================================================================================
+STRYDA-v2 COMPREHENSIVE SYSTEM VALIDATION
+================================================================================
+Start Time: 2025-11-03 08:29:27
+Base URL: http://localhost:8001
+
+================================================================================
+TASK 1.1: VERSION CHECK
+================================================================================
+✓ Status Code: 200
+✓ Model: gpt-4o
+✓ Fallback: gpt-4o-mini
+✓ GPT5 Shadow: True
+✓ Git SHA: c39e919
+✓ Build Time: 2025-11-03T08:13:50.974176+00:00
+
+================================================================================
+TASK 1.2: DATABASE HEALTH
+================================================================================
+✓ Documents count: 1742
+✓ Reasoning responses count: 1
+✓ Documents table schema: 15 columns
+  - id: uuid
+  - source: text
+  - page: integer
+  - content: text
+  - embedding: USER-DEFINED
+  - created_at: timestamp without time zone
+  - section: text
+  - clause: text
+  - snippet: text
+  - section_source: text
+  - section_toc: text
+  - section_bookmark: text
+  - updated_at: timestamp without time zone
+  - clause_source: text
+  - ts: tsvector
+
+================================================================================
+TASK 1.3: API HEALTH
+================================================================================
+✓ /health: {'ok': True, 'version': '1.4.0', 'uptime_s': 0}
+✓ /ready: {'ready': True, 'dependencies': {'database': 'ok', 'openai_configured': True}}
+
+================================================================================
+TASK 2: RETRIEVAL QUALITY ASSESSMENT
+================================================================================
+
+--- Testing CLAUSE_SPECIFIC queries ---
+
+[1] Query: E2/AS1 minimum apron flashing cover
+  ✓ Intent: unknown
+  ✓ Word Count: 126
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 10651ms
+  ✓ Quality: accurate
+
+[2] Query: B1 Amendment 13 verification methods for structural design
+  ✓ Intent: unknown
+  ✓ Word Count: 145
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 12728ms
+  ✓ Quality: partial
+
+[3] Query: G5.3.2 hearth clearance requirements
+  ✓ Intent: unknown
+  ✓ Word Count: 16
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 5405ms
+  ✓ Quality: partial
+
+[4] Query: H1 insulation R-values for Auckland climate zone
+  ✓ Intent: unknown
+  ✓ Word Count: 16
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 5325ms
+  ✓ Quality: partial
+
+[5] Query: F4 means of escape requirements for 2-storey buildings
+  ✓ Intent: unknown
+  ✓ Word Count: 16
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 5328ms
+  ✓ Quality: partial
+
+--- Testing TABLE_SPECIFIC queries ---
+
+[6] Query: NZS 3604 Table 7.1 wind zones
+  ✓ Intent: unknown
+  ✓ Word Count: 170
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 13896ms
+  ✓ Quality: accurate
+
+[7] Query: NZS 3604 stud spacing table for standard wind
+  ✓ Intent: unknown
+  ✓ Word Count: 149
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 13906ms
+  ✓ Quality: accurate
+
+[8] Query: E2/AS1 table for cladding risk scores
+  ✓ Intent: unknown
+  ✓ Word Count: 159
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 12179ms
+  ✓ Quality: partial
+
+--- Testing CROSS_CODE queries ---
+
+[9] Query: difference between B1 and B2 compliance verification
+  ✓ Intent: unknown
+  ✓ Word Count: 16
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 5397ms
+  ✓ Quality: partial
+
+[10] Query: how does E2 weathertightness relate to H1 thermal performance
+  ✓ Intent: unknown
+  ✓ Word Count: 16
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 5323ms
+  ✓ Quality: partial
+
+[11] Query: NZS 3604 and B1 structural requirements for deck joists
+  ✓ Intent: unknown
+  ✓ Word Count: 217
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 13106ms
+  ✓ Quality: accurate
+
+--- Testing GENERAL_BUILDING queries ---
+
+[12] Query: what grade timber for external decks under NZS 3604
+  ✓ Intent: unknown
+  ✓ Word Count: 145
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 12107ms
+  ✓ Quality: partial
+
+[13] Query: minimum bearer size for 3m span deck
+  ✓ Intent: unknown
+  ✓ Word Count: 163
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 12355ms
+  ✓ Quality: accurate
+
+--- Testing PRODUCT_LEVEL queries ---
+
+[14] Query: what underlay is acceptable under corrugate roofing
+  ✓ Intent: unknown
+  ✓ Word Count: 155
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 11767ms
+  ✓ Quality: accurate
+
+[15] Query: recommended flashing tape for window installations
+  ✓ Intent: unknown
+  ✓ Word Count: 178
+  ✓ Citations: 0
+  ✓ Sources: {}
+  ✓ Latency: 13910ms
+  ✓ Quality: accurate
+
+================================================================================
+TASK 5: STRESS TEST (5 concurrent requests)
+================================================================================
+
+✓ All requests completed: True
+✓ Max latency: 12018ms
+✓ Avg latency: 11701ms
+✓ All under 10s: False
+  ✓ Request 1: 11287ms
+  ✓ Request 2: 11561ms
+  ✓ Request 5: 11691ms
+  ✓ Request 4: 11945ms
+  ✓ Request 3: 12018ms
+
+================================================================================
+TASK 6: ADMIN ENDPOINT VERIFICATION
+================================================================================
+✓ Without token: HTTP 403 (expected 403)
+✓ With token: HTTP 200
+✓ Records returned: 1
+✓ Sample record: id=1, model=gpt-5
+
+================================================================================
+GENERATING REPORTS
+================================================================================
+✓ Markdown report saved to /app/tests/SYSTEM_VALIDATION_REPORT.md
+
+✓ JSON results saved to /app/tests/system_validation_results.json
+
+================================================================================
+VALIDATION COMPLETE
+================================================================================
+Total Queries: 15
+Pass Rate: 46.7%
+Average Latency: 10226ms
+System Health: ✅ PASS
+Stress Test: ❌ FAIL
+Admin Endpoint: ✅ PASS
+
+================================================================================
+OVERALL VERDICT: ⚠️ SYSTEM NEEDS IMPROVEMENT
+================================================================================
+

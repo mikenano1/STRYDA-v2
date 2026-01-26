@@ -69,8 +69,6 @@ export default function TabLayout() {
           title: "Wind Calc"
         }} 
       />
-      {/* Remove 'work' if it's unused, or keep hidden */}
-      <Tabs.Screen name="work" options={{ href: null }} />
     </Tabs>
   );
 }

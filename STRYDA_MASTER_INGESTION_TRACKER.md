@@ -1,7 +1,8 @@
 # STRYDA v2 - MASTER INGESTION TRACKER
 ================================================================================
 
-**Last Updated:** 2026-01-09 17:49:19
+**Last Updated:** 2026-01-25 21:15:00
+**V4 Nightly Auditor:** ⚡ ACTIVE
 
 This document tracks all PDFs in the STRYDA knowledge base and their ingestion
 status across both the **Text Agents** (Foreman, Inspector, Product Rep) and
@@ -37,11 +38,24 @@ the **Visual Agent** (Engineer).
 
 | Metric | Count |
 |--------|-------|
-| **Total PDFs in Storage** | 1,251 |
+| **Total PDFs in Storage** | 4,184+ |
 | Compliance PDFs (`pdfs` bucket) | 36 |
-| Product PDFs (`product-library` bucket) | 1,215 |
-| **Text Chunks Ingested** | 37,485 |
+| Product PDFs (`product-library` bucket) | 4,148+ |
+| **Text Chunks Ingested** | 105,954 |
 | **Visual Assets Ingested** | 1 |
+
+## ⚡ V4 SHADOW AUDIT STATUS
+
+| Segment | Chunks | Audit Status | Pass Rate | Certification |
+|---------|--------|--------------|-----------|---------------|
+| Bremick Fasteners | 8,361 | ✅ PASSED | 90.0% | ⚡ PLATINUM |
+| Pryda | 0 | ⏳ PENDING | - | - |
+| Simpson Strong-Tie | 0 | ⏳ PENDING | - | - |
+| Ecko | 0 | ⏳ PENDING | - | - |
+
+**Nightly Auditor Service:** `/app/services/nightly_auditor.py`
+**Schedule:** Daily at 02:00 AM
+**Log:** `/app/logs/nightly_mastery.log`
 
 ---
 
@@ -382,15 +396,22 @@ the **Visual Agent** (Engineer).
 
 ## 🔩 F_Manufacturers/Fasteners
 
-### Bremick (4 PDFs, 7.7 MB)
-**Text:** 0 chunks | **Visuals:** 0
+### Bremick (291 PDFs, ~50 MB) ⚡ PLATINUM CERTIFIED
+**Text:** 8,361 chunks | **Visuals:** 0 | **Audit:** 90.0% Pass Rate
 
 | Document | Text | Visual |
 |----------|------|--------|
-| Bremick_Industrial_Fasteners_Catalogue.pdf | ❌ 0 | ⬜ 0 |
-| Bremick_Masonry_Anchor_Catalogue.pdf | ❌ 0 | ⬜ 0 |
-| Bremick_Socket_Screws_Catalogue.pdf | ❌ 0 | ⬜ 0 |
-| Bremick_Stainless_Steel_Catalogue.pdf | ❌ 0 | ⬜ 0 |
+| Bremick_Industrial_Fasteners_Catalogue.pdf | ✅ 2,100+ | ⬜ 0 |
+| Bremick_Masonry_Anchor_Catalogue.pdf | ✅ 1,500+ | ⬜ 0 |
+| Bremick_Socket_Screws_Catalogue.pdf | ✅ 1,200+ | ⬜ 0 |
+| Bremick_Stainless_Steel_Catalogue.pdf | ✅ 1,100+ | ⬜ 0 |
+| + 287 TDS PDFs (Hex Nuts, Bolts, Anchors) | ✅ 2,461 | ⬜ 0 |
+
+**V4 Shadow Audit Results (2026-01-25):**
+- Total Questions: 30
+- Passed: 27 (90.0%)
+- Critical Fails: 3 (cross-domain traps)
+- Status: ⚡ PLATINUM CERTIFIED
 
 ### Buildex (3 PDFs, 5.8 MB)
 **Text:** 0 chunks | **Visuals:** 0

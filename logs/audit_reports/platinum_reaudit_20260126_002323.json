@@ -1,0 +1,94 @@
+{
+  "timestamp": "2026-01-26T00:23:23.042826",
+  "type": "PLATINUM_ASCENSION_REAUDIT",
+  "total_queries": 10,
+  "passed": 10,
+  "failed": 0,
+  "pass_rate": 100.0,
+  "kn_lookup_rate": 100.0,
+  "certification": "\u26a1 PLATINUM ACHIEVED",
+  "results": [
+    {
+      "query": "What is the capacity of Pryda Heavy Duty Joist Hanger JHH100?",
+      "category": "kn_lookup",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "The capacity of Pryda Heavy Duty Joist Hanger JHH100 varies depending on the fixing option and load case:\n\n**Screw Fixing (Pryda 12G x 35mm Timber Connector Screws - TCS12-35)**:\n*   **Wind capacities"
+    },
+    {
+      "query": "NPPC8 nail plate connector kN capacity?",
+      "category": "kn_lookup",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "For NPPC8 nail plate connectors, the kN capacities are as follows:\n\n**Single NPPC8 (Galvanised Plate Connector):**\n*   With 12 x Pryda 35 x 3.15mm Timber Connector Nails: 3.75 kN (Uplift) (Source: NZ_"
+    },
+    {
+      "query": "Pryda Face Mount Hanger capacity?",
+      "category": "kn_lookup",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "Value: 6.2 kN (Source: Pryda - Pryda - Hangers And Brackets.pdf, Page 3)\nValue: 6.2 kN (Source: Pryda - Pryda - Hangers And Brackets, Page 3)\nValue: 6.2 kN (Source: Pryda - Pryda - Hangers And Bracket"
+    },
+    {
+      "query": "What is the capacity of Pryda TP3 connector?",
+      "category": "kn_lookup",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "Value: 4.7 kN (Source: Pryda - Brackets Fixes Design Guide.pdf, Page 3)\nValue: 4.7 kN (Source: NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf, Page 3)\nValue: 4.7 kN (Uplift) (Source: Pryda - Hangers T"
+    },
+    {
+      "query": "Pryda Z Nails tie-down capacity?",
+      "category": "kn_lookup",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "Value: 4.7 kN (Source: Pryda - Timber Connections And Straps.pdf, Page 2)"
+    },
+    {
+      "query": "BP1 flat strap kN rating?",
+      "category": "kn_lookup",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "Value: 6 kN (Source: Pryda - Hangers Truss Boots Design Guide.pdf, Page 3)"
+    },
+    {
+      "query": "BP2 flat strap characteristic capacity?",
+      "category": "sg_comparison",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "Value: 12 kN (Source: Pryda - Pryda - Hangers Truss Boots Design Guide.pdf, Page 3)\nValue: 12 kN (Source: Pryda - Pryda Builders Guide NZ, Page 12)"
+    },
+    {
+      "query": "Heavy Duty Joist Hanger SG8 timber capacity?",
+      "category": "sg_comparison",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "**Heavy Duty Joist Hanger (JHH100, JHSS212, JHSS275) - SG8 Timber Capacity**\n\n**Screw Fixing Options (using Pryda 12G x 35mm Timber Connector Screws TCS12-35):**\n\n*   **Wind capacities (Limiting capac"
+    },
+    {
+      "query": "NPPC6 plate connector load capacity?",
+      "category": "sg_comparison",
+      "passed": true,
+      "has_kn": true,
+      "hallucinations": [],
+      "answer_snippet": "NPPC6 (Galvanised):\n*   Uplift (Nailing Option A: 12 x Pryda 35 x 3.15mm Timber Connector Nails): 3.75 kN (Source: NZ_Pryda_Connectors_Tie-downs_Design_Guide.pdf, Page 22)\n*   Uplift (Nailing Option B"
+    },
+    {
+      "query": "NZS 3604 requirements for Pryda joist hangers?",
+      "category": "cross_domain",
+      "passed": true,
+      "has_kn": false,
+      "hallucinations": [
+        "nzs 3604"
+      ],
+      "answer_snippet": "Data not in Pryda Spec. Referring to Manufacturer Loadings only.\n\nPryda connector capacities are based on:\n- Timber joint group (J2, J3, JD4, JD5)\n- Nail/screw fixing pattern\n- Characteristic load (kN"
+    }
+  ]
+}

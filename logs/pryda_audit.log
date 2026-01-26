@@ -1,0 +1,90 @@
+================================================================================
+   ⚡ STRYDA V4 PRYDA RED-TEAM AUDIT
+   Started: 2026-01-25T23:43:05.146173
+   Target: 0% hallucination on characteristic capacities
+   Focus: SG8 vs SG10 timber grade differences
+================================================================================
+
+📋 Generated 50 trap questions
+   Distribution:
+      cross_domain: 5
+      installation: 5
+      joint_group: 10
+      kn_lookup: 10
+      nomenclature: 5
+      sg_comparison: 15
+
+⚡ EXECUTING 50 QUERIES...
+------------------------------------------------------------
+
+   [10/50] Progress: 20%
+
+   [20/50] Progress: 40%
+
+   [30/50] Progress: 60%
+
+   [40/50] Progress: 80%
+
+   [50/50] Progress: 100%
+
+================================================================================
+   📊 V4 PRYDA AUDIT - FINAL REPORT
+================================================================================
+
+┌─────────────────────────────────────────────────────────────┐
+│  PRYDA SEGMENT AUDIT RESULTS                               │
+├─────────────────────────────────────────────────────────────┤
+│  Total Queries:          50                                  │
+│  ✅ PASSED:              40 (80.0%)                           │
+│  🔴 CRITICAL FAILS:       1 (Hallucination)                  │
+│  🟠 RETRIEVAL FAILS:      0 (Wrong/No Context)              │
+│  🟡 DATA FAILS:           9 (Missing kN Value)               │
+│  ❌ ERRORS:               0                                    │
+├─────────────────────────────────────────────────────────────┤
+│  📈 SUCCESS RATE:       80.0%                              │
+│  🚨 HALLUCINATION:       2.0%                              │
+│  TARGET: 0%            ❌ NOT MET                           │
+└─────────────────────────────────────────────────────────────┘
+
+   CERTIFICATION: ✅ GOLD
+
+🔴 CRITICAL FAILURES (HALLUCINATION):
+------------------------------------------------------------
+   Q: NZS 3604 requirements for Pryda joist hangers?...
+   Hallucinations: ['nzs 3604', 'nzs3604']
+
+
+🟡 DATA FAILURES (Missing kN):
+------------------------------------------------------------
+   Q: Characteristic capacity of Pryda joist hanger JH 120/45...
+
+   Q: Nail plate NP load capacity per 100mm?...
+
+   Q: flat strap characteristic capacity in SG8 timber?...
+
+   Q: Truss boot TB uplift rating?...
+
+   Q: Multi-grip connector capacity?...
+
+   Q: flat strap load capacity for SG10 timber?...
+
+   Q: Pryda cyclonic tie-down C3 zone rating?...
+
+   Q: What is the kN capacity of Pryda H2 connector?...
+
+   Q: H2 connector characteristic capacity in SG8 timber?...
+
+
+📊 RESULTS BY CATEGORY:
+------------------------------------------------------------
+   cross_domain          4/ 5 (80%)
+   installation          5/ 5 (100%)
+   joint_group          10/10 (100%)
+   kn_lookup             4/10 (40%)
+   nomenclature          5/ 5 (100%)
+   sg_comparison        12/15 (80%)
+
+📁 Full report: /app/logs/audit_reports/pryda_v4_audit_20260125_234942.json
+
+   Completed: 2026-01-25T23:49:42.014797
+================================================================================

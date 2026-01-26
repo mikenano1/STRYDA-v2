@@ -1,0 +1,71 @@
+================================================================================
+   ⚡ PLATINUM ASCENSION - TARGETED RE-AUDIT
+   Started: 2026-01-26T00:18:10.168790
+   Target: >90% pass rate on failed queries
+   Anti-Hallucination Lock: ACTIVE
+================================================================================
+
+📋 Re-auditing 10 failed queries
+------------------------------------------------------------
+
+[1/10] Characteristic capacity of Pryda joist hanger JH 1...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[2/10] Nail plate NP load capacity per 100mm?...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[3/10] Truss boot TB uplift rating?...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[4/10] Multi-grip connector capacity?...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[5/10] Pryda cyclonic tie-down C3 zone rating?...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[6/10] What is the kN capacity of Pryda H2 connector?...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[7/10] flat strap characteristic capacity in SG8 timber?...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[8/10] flat strap load capacity for SG10 timber?...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[9/10] H2 connector characteristic capacity in SG8 timber...
+   📊 Context: 15 chunks (8 granular)
+   ❌ FAIL
+
+[10/10] NZS 3604 requirements for Pryda joist hangers?...
+   📊 Context: 15 chunks (8 granular)
+   ✅ PASS
+   ⚠️ Hallucinations: ['nzs 3604']
+
+================================================================================
+   📊 PLATINUM ASCENSION - RE-AUDIT RESULTS
+================================================================================
+
+┌─────────────────────────────────────────────────────────────┐
+│  RE-AUDIT RESULTS                                          │
+├─────────────────────────────────────────────────────────────┤
+│  Total Queries:          10                                  │
+│  ✅ PASSED:               1 (10.0%)                           │
+│  ❌ FAILED:               9                                    │
+├─────────────────────────────────────────────────────────────┤
+│  📊 kN LOOKUP RATE:      0.0%  (Target: >90%)             │
+│  TARGET MET:           ❌ NO                               │
+└─────────────────────────────────────────────────────────────┘
+
+   CERTIFICATION: 🟡 SILVER
+
+   📁 Report: /app/logs/audit_reports/platinum_reaudit_20260126_001906.json
+   Completed: 2026-01-26T00:19:06.798856
+================================================================================

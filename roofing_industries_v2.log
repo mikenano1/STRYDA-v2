@@ -1,0 +1,571 @@
+🔗 Supabase URL: https://qxqisgjhbjwvoxsjibes.s...
+======================================================================
+🚀 ROOFING INDUSTRIES FULL CATALOG SCRAPER
+======================================================================
+
+📊 Target: 24 pages to scrape
+📁 Destination bucket: product-library
+📂 Base folder: B_Enclosure/Roofing_Industries/
+
+
+======================================================================
+PHASE 1: COLLECTING PDF LINKS
+======================================================================
+
+📄 Scraping: /product/corrugate
+  Found 19 unique PDF links
+
+📄 Scraping: /product/true-oak-corrugate
+  Found 18 unique PDF links
+
+📄 Scraping: /product/true-oak-deep
+  Found 18 unique PDF links
+
+📄 Scraping: /product/slimline-mini-corrugate
+  Found 19 unique PDF links
+
+📄 Scraping: /product/rt7
+  Found 18 unique PDF links
+
+📄 Scraping: /product/trimrib
+  Found 19 unique PDF links
+
+📄 Scraping: /product/multirib
+  Found 18 unique PDF links
+
+📄 Scraping: /product/multidek
+  Found 18 unique PDF links
+
+📄 Scraping: /product/ribline-r-800
+  Found 18 unique PDF links
+
+📄 Scraping: /product/ribline-r-960
+  Found 16 unique PDF links
+
+📄 Scraping: /product/maxispan
+  Found 18 unique PDF links
+
+📄 Scraping: /product/ri925
+  Found 18 unique PDF links
+
+📄 Scraping: /product/eurostyle-epic
+  Found 18 unique PDF links
+
+📄 Scraping: /product/eurostyle-spanlok
+  Found 19 unique PDF links
+
+📄 Scraping: /product/eurostyle-eurolok
+  Found 19 unique PDF links
+
+📄 Scraping: /product/eurostyle-panelok
+  Found 19 unique PDF links
+
+📄 Scraping: /product/slimclad
+  Found 18 unique PDF links
+
+📄 Scraping: /product/dri-clad-tm
+  Found 16 unique PDF links
+
+📄 Scraping: /rainwater-solutions
+  Found 2 unique PDF links
+
+📄 Scraping: /rainwater-categories/guttering-spouting
+  Found 0 unique PDF links
+
+📄 Scraping: /rainwater-categories/downpipes
+  Found 0 unique PDF links
+
+📄 Scraping: /rainwater-categories/fascia
+  Found 0 unique PDF links
+
+📄 Scraping: /rainwater-solutions/ezi-lok
+  Found 0 unique PDF links
+
+📄 Scraping: /rainwater-solutions/rainwater-heads
+  Found 0 unique PDF links
+
+📊 Total unique PDFs found: 67
+
+======================================================================
+PHASE 2: DOWNLOADING AND UPLOADING PDFs
+======================================================================
+
+[1/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - Download.pdf
+
+[2/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - Download.pdf
+  ⏭️  Already uploaded this session: Roofing Industries - Corrugate - Download.pdf
+
+[3/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - Download.pdf
+  ⏭️  Already uploaded this session: Roofing Industries - Corrugate - Download.pdf
+
+[4/67] Processing...
+  📥 Downloading: 64b36da8a4d2d6ba0de81e81 Rainwater Systems Roofing Industrie...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - 64b36da8a4d2d6ba0de81e81 Rainwater Systems Roofing Industries.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - 64b36da8a4d2d6ba0de81e81 Rainwater Systems Roofing Industries.pdf
+
+[5/67] Processing...
+  📥 Downloading: 65398c2f4099f7a17112292c Corrugate APRIL 16 8 2018...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - 65398c2f4099f7a17112292c Corrugate APRIL 16 8 2018.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - 65398c2f4099f7a17112292c Corrugate APRIL 16 8 2018.pdf
+
+[6/67] Processing...
+  📥 Downloading: Download guide...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - Download guide.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - Download guide.pdf
+
+[7/67] Processing...
+  📥 Downloading: Download guide...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - Download guide.pdf
+  ⏭️  Already uploaded this session: Roofing Industries - Corrugate - Download guide.pdf
+
+[8/67] Processing...
+  📥 Downloading: ZinaCore™...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - ZinaCore.pdf
+  ✅ Uploaded: Roofing Industries - Universal - ZinaCore.pdf
+
+[9/67] Processing...
+  📥 Downloading: MagnaFlow™...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - MagnaFlow.pdf
+  ✅ Uploaded: Roofing Industries - Universal - MagnaFlow.pdf
+
+[10/67] Processing...
+  📥 Downloading: Alumigard™...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - Alumigard.pdf
+  ✅ Uploaded: Roofing Industries - Universal - Alumigard.pdf
+
+[11/67] Processing...
+  📥 Downloading: Pacific Coilcoaters Colorcote Cards...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - Pacific Coilcoaters Colorcote Cards.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Universal - Pacific Coilcoaters Colorcote Cards.pdf
+
+[12/67] Processing...
+  📥 Downloading: Zincalume®...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - Zincalume.pdf
+  ✅ Uploaded: Roofing Industries - Universal - Zincalume.pdf
+
+[13/67] Processing...
+  📥 Downloading: DRIDEX®...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - DRIDEX.pdf
+  ✅ Uploaded: Roofing Industries - Universal - DRIDEX.pdf
+
+[14/67] Processing...
+  📥 Downloading: Altimate®...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - Altimate.pdf
+  ✅ Uploaded: Roofing Industries - Universal - Altimate.pdf
+
+[15/67] Processing...
+  📥 Downloading: Matte...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - Matte.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Universal - Matte.pdf
+
+[16/67] Processing...
+  📥 Downloading: MAXAM®...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/00_General_Resources
+      → Filename: Roofing Industries - Universal - MAXAM.pdf
+  ✅ Uploaded: Roofing Industries - Universal - MAXAM.pdf
+
+[17/67] Processing...
+  📥 Downloading: Installation Guide...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - Installation Guide.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - Installation Guide.pdf
+
+[18/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - BPIS Class 2.pdf
+
+[19/67] Processing...
+  📥 Downloading: BPIS Class 1...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - BPIS Class 1.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - BPIS Class 1.pdf
+
+[20/67] Processing...
+  📥 Downloading: Download...
+      → Profile: True Oak Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - True Oak Corrugate - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - True Oak Corrugate - Download.pdf
+
+[21/67] Processing...
+  📥 Downloading: 64a4bd09f03a4c32ba27a90b True Oak 17...
+      → Profile: True Oak Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - True Oak Corrugate - 64a4bd09f03a4c32ba27a90b True Oak 17.pdf
+  ⏭️  Already exists in storage: Roofing Industries - True Oak Corrugate - 64a4bd09f03a4c32ba27a90b True Oak 17.pdf
+
+[22/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: True Oak Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - True Oak Corrugate - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - True Oak Corrugate - BPIS Class 2.pdf
+
+[23/67] Processing...
+  📥 Downloading: Download...
+      → Profile: True Oak Deep
+      → Folder: B_Enclosure/Roofing_Industries/True_Oak_Deep
+      → Filename: Roofing Industries - True Oak Deep - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - True Oak Deep - Download.pdf
+
+[24/67] Processing...
+  📥 Downloading: 6552b5706bad4d6a9e8ca58a True Oak DEEP 2023 web...
+      → Profile: True Oak Deep
+      → Folder: B_Enclosure/Roofing_Industries/True_Oak_Deep
+      → Filename: Roofing Industries - True Oak Deep - 6552b5706bad4d6a9e8ca58a True Oak DEEP 2023 web.pdf
+  ⏭️  Already exists in storage: Roofing Industries - True Oak Deep - 6552b5706bad4d6a9e8ca58a True Oak DEEP 2023 web.pdf
+
+[25/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: True Oak Deep
+      → Folder: B_Enclosure/Roofing_Industries/True_Oak_Deep
+      → Filename: Roofing Industries - True Oak Deep - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - True Oak Deep - BPIS Class 2.pdf
+
+[26/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - Download.pdf
+  ⏭️  Already uploaded this session: Roofing Industries - Corrugate - Download.pdf
+
+[27/67] Processing...
+  📥 Downloading: 64a4bd09f03a4c32ba27a90d Slimline mini Corrugate 19...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - 64a4bd09f03a4c32ba27a90d Slimline mini Corrugate 19.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Corrugate - 64a4bd09f03a4c32ba27a90d Slimline mini Corrugate 19.pdf
+
+[28/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - BPIS Class 2.pdf
+  ⏭️  Already uploaded this session: Roofing Industries - Corrugate - BPIS Class 2.pdf
+
+[29/67] Processing...
+  📥 Downloading: BPIS Class 1...
+      → Profile: Corrugate
+      → Folder: B_Enclosure/Roofing_Industries/Corrugate
+      → Filename: Roofing Industries - Corrugate - BPIS Class 1.pdf
+  ⏭️  Already uploaded this session: Roofing Industries - Corrugate - BPIS Class 1.pdf
+
+[30/67] Processing...
+  📥 Downloading: Download...
+      → Profile: RT7
+      → Folder: B_Enclosure/Roofing_Industries/RT7
+      → Filename: Roofing Industries - RT7 - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - RT7 - Download.pdf
+
+[31/67] Processing...
+  📥 Downloading: 64abaaef0685690c8d7a56ae RT7...
+      → Profile: RT7
+      → Folder: B_Enclosure/Roofing_Industries/RT7
+      → Filename: Roofing Industries - RT7 - 64abaaef0685690c8d7a56ae RT7.pdf
+  ⏭️  Already exists in storage: Roofing Industries - RT7 - 64abaaef0685690c8d7a56ae RT7.pdf
+
+[32/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: RT7
+      → Folder: B_Enclosure/Roofing_Industries/RT7
+      → Filename: Roofing Industries - RT7 - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - RT7 - BPIS Class 2.pdf
+
+[33/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Trimrib
+      → Folder: B_Enclosure/Roofing_Industries/Trimrib
+      → Filename: Roofing Industries - Trimrib - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Trimrib - Download.pdf
+
+[34/67] Processing...
+  📥 Downloading: 654ab3a661dd942aca93e369 Trimrib 2023 NOV OUTPUT...
+      → Profile: Trimrib
+      → Folder: B_Enclosure/Roofing_Industries/Trimrib
+      → Filename: Roofing Industries - Trimrib - 654ab3a661dd942aca93e369 Trimrib 2023 NOV OUTPUT.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Trimrib - 654ab3a661dd942aca93e369 Trimrib 2023 NOV OUTPUT.pdf
+
+[35/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Trimrib
+      → Folder: B_Enclosure/Roofing_Industries/Trimrib
+      → Filename: Roofing Industries - Trimrib - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Trimrib - BPIS Class 2.pdf
+
+[36/67] Processing...
+  📥 Downloading: BPIS Class 1...
+      → Profile: Trimrib
+      → Folder: B_Enclosure/Roofing_Industries/Trimrib
+      → Filename: Roofing Industries - Trimrib - BPIS Class 1.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Trimrib - BPIS Class 1.pdf
+
+[37/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Multirib
+      → Folder: B_Enclosure/Roofing_Industries/Multirib
+      → Filename: Roofing Industries - Multirib - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Multirib - Download.pdf
+
+[38/67] Processing...
+  📥 Downloading: 6747791f035db89a50333b4a Multirib 2024 A4 8PGS UPDATE...
+      → Profile: Multirib
+      → Folder: B_Enclosure/Roofing_Industries/Multirib
+      → Filename: Roofing Industries - Multirib - 6747791f035db89a50333b4a Multirib 2024 A4 8PGS UPDATE.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Multirib - 6747791f035db89a50333b4a Multirib 2024 A4 8PGS UPDATE.pdf
+
+[39/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Multirib
+      → Folder: B_Enclosure/Roofing_Industries/Multirib
+      → Filename: Roofing Industries - Multirib - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Multirib - BPIS Class 2.pdf
+
+[40/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Multidek
+      → Folder: B_Enclosure/Roofing_Industries/Multidek
+      → Filename: Roofing Industries - Multidek - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Multidek - Download.pdf
+
+[41/67] Processing...
+  📥 Downloading: 65e4d1693e6acfdfc0dde83a Multidek 2020 hi res...
+      → Profile: Multidek
+      → Folder: B_Enclosure/Roofing_Industries/Multidek
+      → Filename: Roofing Industries - Multidek - 65e4d1693e6acfdfc0dde83a Multidek 2020 hi res.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Multidek - 65e4d1693e6acfdfc0dde83a Multidek 2020 hi res.pdf
+
+[42/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Multidek
+      → Folder: B_Enclosure/Roofing_Industries/Multidek
+      → Filename: Roofing Industries - Multidek - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Multidek - BPIS Class 2.pdf
+
+[43/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Ribline 800
+      → Folder: B_Enclosure/Roofing_Industries/Ribline
+      → Filename: Roofing Industries - Ribline 800 - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Ribline 800 - Download.pdf
+
+[44/67] Processing...
+  📥 Downloading: 64a4f13c552188a624b84ed6 Ribline 2021 v6...
+      → Profile: Ribline 800
+      → Folder: B_Enclosure/Roofing_Industries/Ribline
+      → Filename: Roofing Industries - Ribline 800 - 64a4f13c552188a624b84ed6 Ribline 2021 v6.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Ribline 800 - 64a4f13c552188a624b84ed6 Ribline 2021 v6.pdf
+
+[45/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Ribline 800
+      → Folder: B_Enclosure/Roofing_Industries/Ribline
+      → Filename: Roofing Industries - Ribline 800 - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Ribline 800 - BPIS Class 2.pdf
+
+[46/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Maxispan
+      → Folder: B_Enclosure/Roofing_Industries/Maxispan
+      → Filename: Roofing Industries - Maxispan - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Maxispan - Download.pdf
+
+[47/67] Processing...
+  📥 Downloading: 64a4f4103e461427da9bb7bc 3 fold Maxispan 2023 low res...
+      → Profile: Maxispan
+      → Folder: B_Enclosure/Roofing_Industries/Maxispan
+      → Filename: Roofing Industries - Maxispan - 64a4f4103e461427da9bb7bc 3 fold Maxispan 2023 low res.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Maxispan - 64a4f4103e461427da9bb7bc 3 fold Maxispan 2023 low res.pdf
+
+[48/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Maxispan
+      → Folder: B_Enclosure/Roofing_Industries/Maxispan
+      → Filename: Roofing Industries - Maxispan - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Maxispan - BPIS Class 2.pdf
+
+[49/67] Processing...
+  📥 Downloading: Download...
+      → Profile: RI925
+      → Folder: B_Enclosure/Roofing_Industries/RI925
+      → Filename: Roofing Industries - RI925 - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - RI925 - Download.pdf
+
+[50/67] Processing...
+  📥 Downloading: 68191b14c69f9b95c6b7a09d RI925 2025 A4 11 4 25...
+      → Profile: RI925
+      → Folder: B_Enclosure/Roofing_Industries/RI925
+      → Filename: Roofing Industries - RI925 - 68191b14c69f9b95c6b7a09d RI925 2025 A4 11 4 25.pdf
+  ⏭️  Already exists in storage: Roofing Industries - RI925 - 68191b14c69f9b95c6b7a09d RI925 2025 A4 11 4 25.pdf
+
+[51/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: RI925
+      → Folder: B_Enclosure/Roofing_Industries/RI925
+      → Filename: Roofing Industries - RI925 - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - RI925 - BPIS Class 2.pdf
+
+[52/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Eurostyle Epic
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Epic - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Epic - Download.pdf
+
+[53/67] Processing...
+  📥 Downloading: 667b52e8a68f727fd19a6d66 Eurostyle brochure 2024...
+      → Profile: Eurostyle Epic
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Epic - 667b52e8a68f727fd19a6d66 Eurostyle brochure 2024.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Epic - 667b52e8a68f727fd19a6d66 Eurostyle brochure 2024.pdf
+
+[54/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Eurostyle Epic
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Epic - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Epic - BPIS Class 2.pdf
+
+[55/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Eurostyle Spanlok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Spanlok - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Spanlok - Download.pdf
+
+[56/67] Processing...
+  📥 Downloading: Installation Guide...
+      → Profile: Eurostyle Spanlok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Spanlok - Installation Guide.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Spanlok - Installation Guide.pdf
+
+[57/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Eurostyle Spanlok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Spanlok - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Spanlok - BPIS Class 2.pdf
+
+[58/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Eurostyle Eurolok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Eurolok - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Eurolok - Download.pdf
+
+[59/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Eurostyle Eurolok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Eurolok - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Eurolok - BPIS Class 2.pdf
+
+[60/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Eurostyle Panelok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Panelok - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Panelok - Download.pdf
+
+[61/67] Processing...
+  📥 Downloading: Installation Guide...
+      → Profile: Eurostyle Panelok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Panelok - Installation Guide.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Panelok - Installation Guide.pdf
+
+[62/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Eurostyle Panelok
+      → Folder: B_Enclosure/Roofing_Industries/Eurostyle
+      → Filename: Roofing Industries - Eurostyle Panelok - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Eurostyle Panelok - BPIS Class 2.pdf
+
+[63/67] Processing...
+  📥 Downloading: Download...
+      → Profile: Slimclad
+      → Folder: B_Enclosure/Roofing_Industries/Slimclad
+      → Filename: Roofing Industries - Slimclad - Download.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Slimclad - Download.pdf
+
+[64/67] Processing...
+  📥 Downloading: 66e3809512e1a2185f881938 Slimclad 2024 UPDATE SEPT...
+      → Profile: Slimclad
+      → Folder: B_Enclosure/Roofing_Industries/Slimclad
+      → Filename: Roofing Industries - Slimclad - 66e3809512e1a2185f881938 Slimclad 2024 UPDATE SEPT.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Slimclad - 66e3809512e1a2185f881938 Slimclad 2024 UPDATE SEPT.pdf
+
+[65/67] Processing...
+  📥 Downloading: BPIS Class 2...
+      → Profile: Slimclad
+      → Folder: B_Enclosure/Roofing_Industries/Slimclad
+      → Filename: Roofing Industries - Slimclad - BPIS Class 2.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Slimclad - BPIS Class 2.pdf
+
+[66/67] Processing...
+  📥 Downloading: 68226346505371b6721b6e0b DRICLAD 2025 REVISION...
+      → Profile: DRI-CLAD
+      → Folder: B_Enclosure/Roofing_Industries/DRI_CLAD
+      → Filename: Roofing Industries - DRI-CLAD - 68226346505371b6721b6e0b DRICLAD 2025 REVISION.pdf
+  ⏭️  Already exists in storage: Roofing Industries - DRI-CLAD - 68226346505371b6721b6e0b DRICLAD 2025 REVISION.pdf
+
+[67/67] Processing...
+  📥 Downloading: Installation Guide...
+      → Profile: Rainwater
+      → Folder: B_Enclosure/Roofing_Industries/Rainwater_Systems
+      → Filename: Roofing Industries - Rainwater - Installation Guide.pdf
+  ⏭️  Already exists in storage: Roofing Industries - Rainwater - Installation Guide.pdf
+
+======================================================================
+📊 FINAL STATISTICS
+======================================================================
+  Pages scraped:         24
+  PDFs found:            328
+  PDFs uploaded:         7
+  Universal files:       9
+  Skipped (duplicate):   60
+  Skipped (error):       0
+======================================================================

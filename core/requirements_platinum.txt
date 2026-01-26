@@ -1,0 +1,30 @@
+# STRYDA PLATINUM V3.1 - Core Dependencies
+# =========================================
+# Last Updated: 2026-01-26
+# Locked versions for production stability
+# System requirement: apt-get install poppler-utils
+
+# LLM & Vision (Emergent Integrations)
+emergentintegrations==0.1.0
+google-generativeai==0.8.5
+openai==1.99.9
+
+# PDF Processing
+pdf2image==1.17.0
+Pillow>=10.0.0
+PyMuPDF>=1.23.0
+
+# Database
+psycopg2-binary==2.9.9
+supabase==2.24.0
+
+# Utilities
+python-dotenv>=1.0.0
+aiohttp>=3.9.0
+
+# OCR Fallback (optional)
+pytesseract>=0.3.10
+
+# NOTE: System dependency required
+# Run: apt-get install poppler-utils
+

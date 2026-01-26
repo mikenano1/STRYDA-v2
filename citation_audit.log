@@ -1,0 +1,248 @@
+
+================================================================================
+STRYDA-v2 CITATION PRECISION & RETRIEVAL ACCURACY AUDIT
+================================================================================
+Backend URL: https://buildbot-nz.preview.emergentagent.com
+Total Queries: 20
+Started: 2025-11-08T15:33:30.049497
+================================================================================
+
+
+################################################################################
+# CATEGORY: CLAUSE SPECIFIC
+################################################################################
+
+================================================================================
+Testing Query: E2/AS1 minimum apron flashing cover
+Category: clause_specific
+================================================================================
+✓ Response: 124 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 10650ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: B1 Amendment 13 verification methods for structural design
+Category: clause_specific
+================================================================================
+✓ Response: 123 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 11044ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: G5.3.2 hearth clearance requirements for solid fuel appliances
+Category: clause_specific
+================================================================================
+✓ Response: 16 words
+✓ Citations: 0
+✓ Sources: []
+✓ Latency: 5474ms
+✓ Verdict: ❌ FAIL - No citations provided
+
+================================================================================
+Testing Query: H1 insulation R-values for Auckland climate zone
+Category: clause_specific
+================================================================================
+✓ Response: 16 words
+✓ Citations: 0
+✓ Sources: []
+✓ Latency: 5441ms
+✓ Verdict: ❌ FAIL - No citations provided
+
+================================================================================
+Testing Query: F4 means of escape requirements for 2-storey residential buildings
+Category: clause_specific
+================================================================================
+✓ Response: 16 words
+✓ Citations: 0
+✓ Sources: []
+✓ Latency: 5407ms
+✓ Verdict: ❌ FAIL - No citations provided
+
+================================================================================
+Testing Query: E2.3.7 cladding requirements for horizontal weatherboards
+Category: clause_specific
+================================================================================
+✓ Response: 141 words
+✓ Citations: 1
+✓ Sources: ['Unknown']
+✓ Latency: 10584ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: B1.3.3 foundation requirements for standard soil conditions
+Category: clause_specific
+================================================================================
+✓ Response: 16 words
+✓ Citations: 0
+✓ Sources: []
+✓ Latency: 5468ms
+✓ Verdict: ❌ FAIL - No citations provided
+
+================================================================================
+Testing Query: NZS 3604 clause 5.4.2 bracing requirements
+Category: clause_specific
+================================================================================
+✓ Response: 150 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 10876ms
+✓ Verdict: ⚠️ PARTIAL
+
+
+################################################################################
+# CATEGORY: TABLE SPECIFIC
+################################################################################
+
+================================================================================
+Testing Query: NZS 3604 Table 7.1 wind zones for New Zealand regions
+Category: table_specific
+================================================================================
+✓ Response: 158 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 10895ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: NZS 3604 stud spacing table for standard wind zone
+Category: table_specific
+================================================================================
+✓ Response: 132 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 10890ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: E2/AS1 table for cladding risk scores and weathertightness
+Category: table_specific
+================================================================================
+✓ Response: 163 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 10563ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: NZS 3604 Table 8.3 bearer and joist sizing for decks
+Category: table_specific
+================================================================================
+✓ Response: 200 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 15909ms
+✓ Verdict: ⚠️ PARTIAL
+
+
+################################################################################
+# CATEGORY: CROSS REFERENCE
+################################################################################
+
+================================================================================
+Testing Query: difference between B1 and B2 structural compliance verification methods
+Category: cross_reference
+================================================================================
+✓ Response: 16 words
+✓ Citations: 0
+✓ Sources: []
+✓ Latency: 5469ms
+✓ Verdict: ❌ FAIL - No citations provided
+
+================================================================================
+Testing Query: how does E2 weathertightness relate to H1 thermal performance at wall penetrations
+Category: cross_reference
+================================================================================
+✓ Response: 16 words
+✓ Citations: 0
+✓ Sources: []
+✓ Latency: 5458ms
+✓ Verdict: ❌ FAIL - No citations provided
+
+================================================================================
+Testing Query: NZS 3604 and B1 Amendment 13 requirements for deck joist connections
+Category: cross_reference
+================================================================================
+✓ Response: 187 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 11965ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: relationship between F7 warning systems and G5 solid fuel heating
+Category: cross_reference
+================================================================================
+✓ Response: 16 words
+✓ Citations: 0
+✓ Sources: []
+✓ Latency: 5457ms
+✓ Verdict: ❌ FAIL - No citations provided
+
+
+################################################################################
+# CATEGORY: PRODUCT PRACTICAL
+################################################################################
+
+================================================================================
+Testing Query: what underlay is acceptable under corrugate metal roofing per NZMRM
+Category: product_practical
+================================================================================
+✓ Response: 113 words
+✓ Citations: 1
+✓ Sources: ['Unknown']
+✓ Latency: 10551ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: recommended flashing tape specifications for window installations
+Category: product_practical
+================================================================================
+✓ Response: 171 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 12143ms
+✓ Verdict: ✅ PASS
+
+================================================================================
+Testing Query: what grade timber for external deck joists under NZS 3604
+Category: product_practical
+================================================================================
+✓ Response: 160 words
+✓ Citations: 2
+✓ Sources: ['Unknown']
+✓ Latency: 11176ms
+✓ Verdict: ⚠️ PARTIAL
+
+================================================================================
+Testing Query: minimum fixing requirements for cladding in Very High wind zone
+Category: product_practical
+================================================================================
+✓ Response: 193 words
+✓ Citations: 3
+✓ Sources: ['Unknown']
+✓ Latency: 11528ms
+✓ Verdict: ✅ PASS
+
+✅ Markdown report saved to: /app/tests/CITATION_PRECISION_AUDIT.md
+✅ JSON report saved to: /app/tests/citation_precision_audit.json
+
+
+================================================================================
+AUDIT COMPLETE - FINAL SUMMARY
+================================================================================
+Total Queries: 20
+✅ Pass: 2
+⚠️  Partial: 11
+❌ Fail: 7
+
+Pass Rate: 10.0% (Expected: ≥80%)
+Avg Latency: 9.3s (Expected: <7s)
+Citation Accuracy: 65.0% (Expected: ≥90%)
+Fabricated Citations: 0 (Expected: 0)
+================================================================================
+⚠️ OVERALL VERDICT: ❌ NEEDS IMPROVEMENT - Critical metrics below expectations
+================================================================================

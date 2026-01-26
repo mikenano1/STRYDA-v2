@@ -1,0 +1,398 @@
+{
+  "processed": [
+    {
+      "original": "12kN-Pile-Fixing_2024-v1.pdf",
+      "sanitized": "MiTek - Foundation Fixings - 12Kn Pile Fixing.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Foundation Fixings - 12Kn Pile Fixing.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Foundation Fixings",
+      "kn_ratings": [
+        "12kN"
+      ]
+    },
+    {
+      "original": "12kN-Retro-Subfloor-Fixing_2024-v1.pdf",
+      "sanitized": "MiTek - Foundation Fixings - 12Kn Retro Subfloor Fixing.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Foundation Fixings - 12Kn Retro Subfloor Fixing.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Foundation Fixings",
+      "kn_ratings": [
+        "12kN"
+      ]
+    },
+    {
+      "original": "6kN-12kN-Stud-to-Bottom-Plate-Fixing_2024-v1.pdf",
+      "sanitized": "MiTek - General - 6Kn 12Kn Stud To Bottom Plate Fixing.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - General - 6Kn 12Kn Stud To Bottom Plate Fixing.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "General",
+      "kn_ratings": [
+        "6kN",
+        "12kN"
+      ]
+    },
+    {
+      "original": "6kN-Pile-Fixing_2024-v1.pdf",
+      "sanitized": "MiTek - Foundation Fixings - 6Kn Pile Fixing.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Foundation Fixings - 6Kn Pile Fixing.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Foundation Fixings",
+      "kn_ratings": [
+        "6kN"
+      ]
+    },
+    {
+      "original": "Bottom-Plate-Screw-Bolt_2024-v1.pdf",
+      "sanitized": "MiTek - General - Bottom Plate Screw Bolt.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - General - Bottom Plate Screw Bolt.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "General",
+      "kn_ratings": []
+    },
+    {
+      "original": "BOWMAC-Angle-Brackets-Without-Gusset_05.2023.pdf",
+      "sanitized": "MiTek - Bowmac Brackets - Angle Brackets Without Gusset.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Bowmac Brackets - Angle Brackets Without Gusset.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Bowmac Brackets",
+      "kn_ratings": []
+    },
+    {
+      "original": "BOWMAC-Heavy-Duty-Short-Angle-Brackets_05.2023.pdf",
+      "sanitized": "MiTek - Bowmac Brackets - Heavy Duty Short Angle Brackets.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Bowmac Brackets - Heavy Duty Short Angle Brackets.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Bowmac Brackets",
+      "kn_ratings": []
+    },
+    {
+      "original": "BOWMAC-Post-Bearer-Brackets_05.2023.pdf",
+      "sanitized": "MiTek - Bowmac Brackets - Post Bearer Brackets.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Bowmac Brackets - Post Bearer Brackets.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Bowmac Brackets",
+      "kn_ratings": []
+    },
+    {
+      "original": "BOWMAC-Stainless-Steel-Structural-Brackets_2024-v1.pdf",
+      "sanitized": "MiTek - Bowmac Brackets - Stainless Steel Structural Brackets.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Bowmac Brackets - Stainless Steel Structural Brackets.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Bowmac Brackets",
+      "kn_ratings": []
+    },
+    {
+      "original": "BPIR-Bowmac-NZ-2023.pdf",
+      "sanitized": "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023.pdf",
+      "status": "UPLOADED",
+      "doc_type": "COMPLIANCE_CERT",
+      "product_group": "Bowmac Brackets",
+      "kn_ratings": []
+    },
+    {
+      "original": "BPIR-Gang-Nail-AU-2023.pdf",
+      "sanitized": "MiTek - BPIR Compliance - Bpir Gang Nail Au 2023.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - BPIR Compliance - Bpir Gang Nail Au 2023.pdf",
+      "status": "UPLOADED",
+      "doc_type": "COMPLIANCE_CERT",
+      "product_group": "BPIR Compliance",
+      "kn_ratings": []
+    },
+    {
+      "original": "BPIR-Gang-Nail-NZ-2023.pdf",
+      "sanitized": "MiTek - BPIR Compliance - Bpir Gang Nail Nz 2023.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - BPIR Compliance - Bpir Gang Nail Nz 2023.pdf",
+      "status": "UPLOADED",
+      "doc_type": "COMPLIANCE_CERT",
+      "product_group": "BPIR Compliance",
+      "kn_ratings": []
+    },
+    {
+      "original": "BPIR-Lumberlok-AU-2023.pdf",
+      "sanitized": "MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023.pdf",
+      "status": "UPLOADED",
+      "doc_type": "COMPLIANCE_CERT",
+      "product_group": "Lumberlok Connectors",
+      "kn_ratings": []
+    },
+    {
+      "original": "BPIR-Lumberlok-NZ-2023.pdf",
+      "sanitized": "MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023.pdf",
+      "status": "UPLOADED",
+      "doc_type": "COMPLIANCE_CERT",
+      "product_group": "Lumberlok Connectors",
+      "kn_ratings": []
+    },
+    {
+      "original": "Concealed-Purlin-Cleats_2024-v1.pdf",
+      "sanitized": "MiTek - Roof Fixings - Concealed Purlin Cleats.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Roof Fixings - Concealed Purlin Cleats.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Roof Fixings",
+      "kn_ratings": []
+    },
+    {
+      "original": "Deck-Joist-Fixing_2024-v1.pdf",
+      "sanitized": "MiTek - Floor Systems - Deck Joist Fixing.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Floor Systems - Deck Joist Fixing.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Floor Systems",
+      "kn_ratings": []
+    },
+    {
+      "original": "FLITCH-BEAM-Manual.pdf",
+      "sanitized": "MiTek - Technical Manuals - Flitch Beam Manual.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Technical Manuals - Flitch Beam Manual.pdf",
+      "status": "UPLOADED",
+      "doc_type": "STRUCTURAL_BIBLE",
+      "product_group": "Technical Manuals",
+      "kn_ratings": []
+    },
+    {
+      "original": "Framing-Stud-Stiffener_2024-v1.pdf",
+      "sanitized": "MiTek - Bracing Systems - Framing Stud Stiffener.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Bracing Systems - Framing Stud Stiffener.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Bracing Systems",
+      "kn_ratings": []
+    },
+    {
+      "original": "GIB-HandiBrac-Brochure-0322.pdf",
+      "sanitized": "MiTek - GIB Systems - Gib Handibrac Brochure 0322.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - GIB Systems - Gib Handibrac Brochure 0322.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "GIB Systems",
+      "kn_ratings": []
+    },
+    {
+      "original": "GIB-Quiet-Tie-1.pdf",
+      "sanitized": "MiTek - GIB Systems - Gib Quiet Tie 1.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - GIB Systems - Gib Quiet Tie 1.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "GIB Systems",
+      "kn_ratings": []
+    },
+    {
+      "original": "Internal-Wall-Bracket_2024-v1.pdf",
+      "sanitized": "MiTek - General - Internal Wall Bracket.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - General - Internal Wall Bracket.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "General",
+      "kn_ratings": []
+    },
+    {
+      "original": "Joist-Hangers_2024-v1.pdf",
+      "sanitized": "MiTek - Floor Systems - Joist Hangers.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Floor Systems - Joist Hangers.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Floor Systems",
+      "kn_ratings": []
+    },
+    {
+      "original": "MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadings.pdf",
+      "sanitized": "MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Lumberlok Connectors - Lumberlok Timber Connectors Characteristic Loadings.pdf",
+      "status": "UPLOADED",
+      "doc_type": "SPEC_MASTER",
+      "product_group": "Lumberlok Connectors",
+      "kn_ratings": []
+    },
+    {
+      "original": "Multi-Brace_2024-v1.pdf",
+      "sanitized": "MiTek - Bracing Systems - Multi Brace.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Bracing Systems - Multi Brace.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Bracing Systems",
+      "kn_ratings": []
+    },
+    {
+      "original": "Ordinary-Pile-Fixing_2024-v1.pdf",
+      "sanitized": "MiTek - Foundation Fixings - Ordinary Pile Fixing.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Foundation Fixings - Ordinary Pile Fixing.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Foundation Fixings",
+      "kn_ratings": []
+    },
+    {
+      "original": "Plate-Lok_2024-v1.pdf",
+      "sanitized": "MiTek - General - Plate Lok.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - General - Plate Lok.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "General",
+      "kn_ratings": []
+    },
+    {
+      "original": "PosiStrut-Manual.pdf",
+      "sanitized": "MiTek - Technical Manuals - Posistrut Manual.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Technical Manuals - Posistrut Manual.pdf",
+      "status": "UPLOADED",
+      "doc_type": "STRUCTURAL_BIBLE",
+      "product_group": "Technical Manuals",
+      "kn_ratings": []
+    },
+    {
+      "original": "PS1-DJF-Test-Results-2025-03-26.pdf",
+      "sanitized": "MiTek - Test Data - Ps1 Djf Test Results 2025 03 26.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Test Data - Ps1 Djf Test Results 2025 03 26.pdf",
+      "status": "UPLOADED",
+      "doc_type": "TEST_DATA",
+      "product_group": "Test Data",
+      "kn_ratings": []
+    },
+    {
+      "original": "PS24-PS29-Supplemental-Floor-Span-Dec-2025.pdf",
+      "sanitized": "MiTek - Span Tables - Ps24 Ps29 Supplemental Floor Span Dec 2025.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Span Tables - Ps24 Ps29 Supplemental Floor Span Dec 2025.pdf",
+      "status": "UPLOADED",
+      "doc_type": "SPAN_TABLE",
+      "product_group": "Span Tables",
+      "kn_ratings": []
+    },
+    {
+      "original": "Residential-Manual-March-2024.pdf",
+      "sanitized": "MiTek - Technical Manuals - Residential Manual March 2024.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Technical Manuals - Residential Manual March 2024.pdf",
+      "status": "UPLOADED",
+      "doc_type": "STRUCTURAL_BIBLE",
+      "product_group": "Technical Manuals",
+      "kn_ratings": []
+    },
+    {
+      "original": "Screw-Ties_2024-v1.pdf",
+      "sanitized": "MiTek - General - Screw Ties.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - General - Screw Ties.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "General",
+      "kn_ratings": []
+    },
+    {
+      "original": "STUD-LOK-Lintel-Fixing-Options-for-On-Site_2024-v1 (1).pdf",
+      "sanitized": "MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site (1).pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site (1).pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Stud-Lok Fixings",
+      "kn_ratings": []
+    },
+    {
+      "original": "STUD-LOK-Lintel-Fixing-Options-for-On-Site_2024-v1.pdf",
+      "sanitized": "MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Stud-Lok Fixings - Lintel Fixing Options For On Site.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Stud-Lok Fixings",
+      "kn_ratings": []
+    },
+    {
+      "original": "STUD-LOK-SL170-blue-Top-Plate-Fixing_2024-v1.pdf",
+      "sanitized": "MiTek - Stud-Lok Fixings - Sl170 Blue Top Plate Fixing.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Stud-Lok Fixings - Sl170 Blue Top Plate Fixing.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Stud-Lok Fixings",
+      "kn_ratings": []
+    },
+    {
+      "original": "STUD-LOK-SL80-white_2024-v1.pdf",
+      "sanitized": "MiTek - Stud-Lok Fixings - Sl80 White.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Stud-Lok Fixings - Sl80 White.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Stud-Lok Fixings",
+      "kn_ratings": []
+    },
+    {
+      "original": "STUD-LOK-Stringer-to-Stud-Fixing-Schedule_2024-v1.pdf",
+      "sanitized": "MiTek - Stud-Lok Fixings - Stringer To Stud Fixing Schedule.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Stud-Lok Fixings - Stringer To Stud Fixing Schedule.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Stud-Lok Fixings",
+      "kn_ratings": []
+    },
+    {
+      "original": "Stud-Saver_2024-v1.pdf",
+      "sanitized": "MiTek - General - Stud Saver.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - General - Stud Saver.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "General",
+      "kn_ratings": []
+    },
+    {
+      "original": "Top-Plate-Stiffener_2024-v1.pdf",
+      "sanitized": "MiTek - Plate Fixings - Top Plate Stiffener.pdf",
+      "path": "F_Manufacturers/Structural/MiTek/MiTek - Plate Fixings - Top Plate Stiffener.pdf",
+      "status": "UPLOADED",
+      "doc_type": "PRODUCT_TDS",
+      "product_group": "Plate Fixings",
+      "kn_ratings": []
+    }
+  ],
+  "structural_bibles": [
+    "MiTek - Technical Manuals - Flitch Beam Manual.pdf",
+    "MiTek - Technical Manuals - Posistrut Manual.pdf",
+    "MiTek - Technical Manuals - Residential Manual March 2024.pdf"
+  ],
+  "compliance_certs": [
+    "MiTek - Bowmac Brackets - Bpir Bowmac Nz 2023.pdf",
+    "MiTek - BPIR Compliance - Bpir Gang Nail Au 2023.pdf",
+    "MiTek - BPIR Compliance - Bpir Gang Nail Nz 2023.pdf",
+    "MiTek - Lumberlok Connectors - Bpir Lumberlok Au 2023.pdf",
+    "MiTek - Lumberlok Connectors - Bpir Lumberlok Nz 2023.pdf"
+  ],
+  "kn_ratings": {
+    "MiTek - Foundation Fixings - 12Kn Pile Fixing.pdf": [
+      "12kN"
+    ],
+    "MiTek - Foundation Fixings - 12Kn Retro Subfloor Fixing.pdf": [
+      "12kN"
+    ],
+    "MiTek - General - 6Kn 12Kn Stud To Bottom Plate Fixing.pdf": [
+      "6kN",
+      "12kN"
+    ],
+    "MiTek - Foundation Fixings - 6Kn Pile Fixing.pdf": [
+      "6kN"
+    ]
+  },
+  "synonym_map": {
+    "Lumberlok": "MiTek",
+    "LUMBERLOK": "MiTek",
+    "Bowmac": "MiTek",
+    "BOWMAC": "MiTek",
+    "Gang-Nail": "MiTek",
+    "GIB-HandiBrac": "MiTek",
+    "PosiStrut": "MiTek",
+    "Stud-Lok": "MiTek",
+    "STUD-LOK": "MiTek",
+    "Plate-Lok": "MiTek",
+    "Multi-Brace": "MiTek"
+  },
+  "errors": [],
+  "generated": "2026-01-26T00:49:01.484540",
+  "target_location": "product-library/F_Manufacturers/Structural/MiTek"
+}

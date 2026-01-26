@@ -1,0 +1,603 @@
+{
+  "timestamp": "2026-01-25T23:49:42.013649",
+  "segment": "Pryda Structural Connectors",
+  "protocol": "V4 Red-Team Audit",
+  "focus": "SG8 vs SG10 timber grade differences",
+  "total_questions": 50,
+  "success_rate": 80.0,
+  "hallucination_rate": 2.0,
+  "certification": "\u2705 GOLD",
+  "stats": {
+    "total": 50,
+    "passed": 40,
+    "critical_fails": 1,
+    "retrieval_fails": 0,
+    "data_fails": 9,
+    "errors": 0
+  },
+  "category_breakdown": {
+    "kn_lookup": {
+      "total": 10,
+      "passed": 4
+    },
+    "nomenclature": {
+      "total": 5,
+      "passed": 5
+    },
+    "sg_comparison": {
+      "total": 15,
+      "passed": 12
+    },
+    "joint_group": {
+      "total": 10,
+      "passed": 10
+    },
+    "cross_domain": {
+      "total": 5,
+      "passed": 4
+    },
+    "installation": {
+      "total": 5,
+      "passed": 5
+    }
+  },
+  "results": [
+    {
+      "query": "Characteristic capacity of Pryda joist hanger JH 120/45?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6805433480257322,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data"
+    },
+    {
+      "query": "JH120/45 joist hanger load",
+      "category": "nomenclature",
+      "trap_type": "naming_variation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6309032874216096,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided context does not contain the load capacity for a \"JH120/45 joist hanger\". The listed joist hangers are MPFB4590, MPFB45120, MPFB45180, and FB94/152 (Source: Pryda"
+    },
+    {
+      "query": "Nail plate NP load capacity per 100mm?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5465433364270961,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided load tables list capacities for specific products (e.g., BPA) as total values, not per 100mm of length or width."
+    },
+    {
+      "query": "flat strap characteristic capacity in SG8 timber?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5897899918657193,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided context mentions flat strap products like \"Pryda Cyclone Strap\" and \"Batten/Purlin Strap\" but does not include their characteristic capacity in kN values, specifi"
+    },
+    {
+      "query": "Pryda framing anchor shear capacity?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.619313134979005,
+      "has_numeric": true,
+      "answer_snippet": "The shear capacity for the Pryda framing anchor (BPA) for loads \"Along Plate\" is as follows:\n\n*   **Basic Load:** 2.2 kN (Source: Pryda - SP Fasteners Pryda Product Catalogue, Page 9)\n*   **Design (W "
+    },
+    {
+      "query": "What is the characteristic load for Pryda H2 connector in joint group J2?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.7015991023811918,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data"
+    },
+    {
+      "query": "H2 connector capacity in J2 timber joint group?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6597875252100339,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided sources do not contain information regarding the H2 connector capacity in J2 timber joint group."
+    },
+    {
+      "query": "What is the capacity difference between SG8 and SG10 for a PB 90 post anchor?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5982338905267927,
+      "has_numeric": true,
+      "answer_snippet": "The provided Pryda data specifies the following for the PBA (NZ Pryda Bracing Anchor):\n\n*   **SG8 Timber**: Value: 10.7 kN (Source: Pryda - NZ Pryda Bracing Anchor PDS, Page 9)\n\nThe capacity for a PB "
+    },
+    {
+      "query": "What is the characteristic load for Pryda nail plate in joint group JD4?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.7099354984534992,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided context does not contain the characteristic load for Pryda nail plates in joint group JD4. The pages described either state that the information is not present or"
+    },
+    {
+      "query": "Truss boot TB uplift rating?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.4989195194839908,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided Pryda data does not specify the uplift rating for a Truss boot TB. Uplift capacity data is provided for Cyclone Straps, but not for Truss Boots."
+    },
+    {
+      "query": "tie-down strap characteristic capacity in SG8 timber?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6122072134827387,
+      "has_numeric": true,
+      "answer_snippet": "The characteristic capacity for a tie-down function in SG8 timber is available for the NZ Bracing Anchor (PBA).\n\nFor the NZ Bracing Anchor (PBA), in SG8 and minimum JD5 timber:\nValue: 10.7 kN (Source:"
+    },
+    {
+      "query": "Floor joist spacing with Pryda connectors?",
+      "category": "cross_domain",
+      "trap_type": "cross_domain_trap",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6034644990095199,
+      "has_numeric": true,
+      "answer_snippet": "Pryda floor truss spacing options are:\n*   Pryda Span Truss: 600 mm (Source: Pryda - Pryda - Floor Cassette Manual, Page 7)\n*   Pryda Span Truss: 450 mm (Source: Pryda - Pryda - Floor Cassette Manual,"
+    },
+    {
+      "query": "PB 90 post anchor capacity in JD5 timber joint group?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6990516572832562,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided documents do not list a \"PB 90 post anchor\" with a specified capacity."
+    },
+    {
+      "query": "What is the capacity difference between SG8 and SG10 for a nail plate?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5942429317359198,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided Pryda data does not contain load tables with specific kN values for nail plates that differentiate capacities between timber grades SG8 and SG10.\n\nWhile SG8 is me"
+    },
+    {
+      "query": "Fixing pattern for tie-down strap to achieve rated capacity?",
+      "category": "installation",
+      "trap_type": "installation_spec",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5300854249146757,
+      "has_numeric": true,
+      "answer_snippet": "To achieve the rated capacity of the Pryda Cyclone Strap for tie-down applications:\n\nThe fixing pattern is **5 nails per leg**, with the strap legs wrapped under the support member.\n\n*   **Capacity fo"
+    },
+    {
+      "query": "Edge distance requirement for Pryda post anchor?",
+      "category": "installation",
+      "trap_type": "installation_spec",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5847097283874099,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data for \"Pryda post anchor\" types as listed in the \"Pryda - Post Anchor Bearer Bracket Guide\".\n\nHowever, for the **Pryda Bracing Anchor (PBA)**, the anchor bolt edge distance is:\nV"
+    },
+    {
+      "query": "Multi-grip connector capacity?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.47930839970068373,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data."
+    },
+    {
+      "query": "Compare the kN load rating of joist hanger in SG8 versus SG10 timber",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6704237228446003,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda data:\n\nThe **NZ Pryda Face Mount Hanger** has a design capacity of **6.2 kN**.\n(Source: Pryda - Hangers And Brackets, Page 9; Pryda - Hangers And Brackets, Page 8)\n\nThe pro"
+    },
+    {
+      "query": "Pryda H-2 connector capacity",
+      "category": "nomenclature",
+      "trap_type": "naming_variation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5657133915061375,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data."
+    },
+    {
+      "query": "What is the shear capacity for Pryda nail plate in joint group JD4?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.7144733800055437,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data."
+    },
+    {
+      "query": "Is there a different capacity for truss boot when using SG8 compared to SG10?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5985177682043812,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda technical data:\n\nThe capacities (though no specific kN values are provided in the extracted pages) for Pryda hangers and truss boots are stated to apply to \"timber grade SG"
+    },
+    {
+      "query": "Pryda connector for 45mm timber",
+      "category": "nomenclature",
+      "trap_type": "naming_variation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.621974804879284,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda technical data, the following connectors are suitable for 45mm timber, however, specific kN values for these connections are not present in the provided context.\n\n**PFF2**\n"
+    },
+    {
+      "query": "NZS 3604 requirements for Pryda joist hangers?",
+      "category": "cross_domain",
+      "trap_type": "cross_domain_trap",
+      "status": "\ud83d\udd34 CRITICAL",
+      "is_critical": true,
+      "hallucinations": [
+        "nzs 3604",
+        "nzs3604"
+      ],
+      "retrieval_score": 0.7144909930446977,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda technical data, the NZS 3604 requirements for Pryda joist hangers (and general Pryda structural brackets, which include hangers) primarily relate to corrosion protection an"
+    },
+    {
+      "query": "What timber span should I use with Pryda connectors?",
+      "category": "cross_domain",
+      "trap_type": "cross_domain_trap",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [
+        "timber span"
+      ],
+      "retrieval_score": 0.6784925381015782,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided Pryda data mentions that \"Pryda truss systems\" have a \"long span capacity \u2013 up to 7 metres or more\" (Source: Pryda - Pryda - Truss Systems For Floors Rafters Nz, "
+    },
+    {
+      "query": "Pryda PB 90 post anchor uplift load in kN?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6618591847972919,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The product \"Pryda PB 90 post anchor\" is not listed in the provided context, nor are uplift load capacities for products explicitly named as \"post anchors\".\n\nThe \"PBA (NZ Brac"
+    },
+    {
+      "query": "What nailing pattern is required for Pryda H2 to achieve full capacity?",
+      "category": "installation",
+      "trap_type": "installation_spec",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6064334168984257,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided documents do not contain information for \"Pryda H2\"."
+    },
+    {
+      "query": "flat strap load capacity for SG10 timber?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.617910902256609,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data.\n\nThe provided Pryda data does not contain specific load capacities (kN values) for flat straps, such as the Pryda Cyclone Strap or Batten/Purlin Strap, specifically for SG10 t"
+    },
+    {
+      "query": "Compare the kN load rating of PB 90 post anchor in SG8 versus SG10 timber",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6683068049434829,
+      "has_numeric": true,
+      "answer_snippet": "The kN load rating for a PB 90 post anchor in SG8 versus SG10 timber is not found in the provided Pryda data.\n\nThe provided data contains information for the \"NZ Pryda Bracing Anchor (PBA)\" with a cap"
+    },
+    {
+      "query": "Bearer size for Pryda post anchor connection?",
+      "category": "cross_domain",
+      "trap_type": "cross_domain_trap",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6159813156087678,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided Pryda technical data specifies the dimensions of various Pryda anchors (e.g., PBA: 88mm height x 85mm length x 50mm width) and their fastening requirements to tim"
+    },
+    {
+      "query": "Is there a different capacity for joist hanger when using SG8 compared to SG10?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6211209367771411,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda technical data:\n\nThe capacities for Pryda connectors generally apply for timber grade SG8. For example:\n*   \"Capacities apply for dry (maximum moisture content of 18%) Radi"
+    },
+    {
+      "query": "What is the capacity difference between SG8 and SG10 for a tie-down strap?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5662216881496832,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda technical data:\n\nThe specific capacity values for a Pryda Cyclone Strap (tie-down strap) are not explicitly provided for SG8 or SG10 timber grades within the given context."
+    },
+    {
+      "query": "Flat strap FS tensile capacity?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5071297329178283,
+      "has_numeric": true,
+      "answer_snippet": "The tensile capacities for flat straps vary depending on the product, nailing, and timber joint group:\n\n**Pryda Cyclone Strap:**\n\n*   **Steel Capacity:**\n    *   Value: 14.5 kN (Source: Pryda - SP Fas"
+    },
+    {
+      "query": "Pryda cyclonic tie-down C3 zone rating?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5921363480609407,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided Pryda data does not contain specific kN values for Pryda Cyclone Straps directly associated with a \"C3 zone rating.\" While \"Zone C\" is mentioned in the context of"
+    },
+    {
+      "query": "What is the kN capacity of Pryda H2 connector?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6273487041262689,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided snippets do not contain the kN capacity for the Pryda H2 connector."
+    },
+    {
+      "query": "Bracing anchor BA 100 design load?",
+      "category": "kn_lookup",
+      "trap_type": "exact_value",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6791666527105567,
+      "has_numeric": true,
+      "answer_snippet": "The design load (capacity) for the Pryda Bracing Anchor (PBA), referred to as the Bracing anchor, is:\n\nValue: 10.7 kN (Source: Pryda - NZ Pryda Bracing Anchor PDS, Page 9)\nThis capacity applies to SG8"
+    },
+    {
+      "query": "Minimum nail count for joist hanger JH to SG8 timber?",
+      "category": "installation",
+      "trap_type": "installation_spec",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6106096775245097,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided documents specify the type of fasteners for joist hangers (e.g., Pryda 35 x 3.15mm Timber Connector Nails) and that capacities apply to SG8 timber, but explicitly"
+    },
+    {
+      "query": "Is there a different capacity for H2 connector when using SG8 compared to SG10?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5504134271390505,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided documents refer to \"NZ Pryda Face Mount Hanger\" and other hangers, but an \"H2 connector\" is not explicitly mentioned with associated capacities.\n\nThe documents in"
+    },
+    {
+      "query": "Compare the kN load rating of truss boot in SG8 versus SG10 timber",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6565480590174916,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda data, the kN load rating for a truss boot in SG8 or SG10 timber cannot be determined.\n\nThe data indicates:\n*   \"Capacities apply for dry... timber grade SG8\" (Source: Pryda"
+    },
+    {
+      "query": "tie down vs tie-down Pryda capacity",
+      "category": "nomenclature",
+      "trap_type": "naming_variation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5570676060029208,
+      "has_numeric": true,
+      "answer_snippet": "The exact kN capacity values for \"tie down\" or \"tie-down\" products, such as the Pryda Cyclone Strap, are not found in the provided Pryda data. While the \"Pryda - SP Fasteners Pryda Product Catalogue |"
+    },
+    {
+      "query": "What is the uplift capacity for Pryda tie-down strap in joint group J4?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.7095042153555791,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided context describes the Pryda Cyclone Strap and mentions \"LOAD TABLES\" but does not include the actual numerical uplift capacity values for Joint Group J4."
+    },
+    {
+      "query": "Can I use 3.15mm nails instead of 3.75mm for Pryda connectors?",
+      "category": "installation",
+      "trap_type": "installation_spec",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5643592782180369,
+      "has_numeric": true,
+      "answer_snippet": "The Pryda data specifies the use of 35 x 3.15 mm NZ Pryda Timber Connector Nails for fastening NZ Nail-On Plates and Angles.\n\nThere is no mention in the provided Pryda data of 3.75mm nails or their in"
+    },
+    {
+      "query": "joist hanger 120/45 Pryda",
+      "category": "nomenclature",
+      "trap_type": "naming_variation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.46037524336426516,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data. The provided context does not contain specific product specifications or load capacities in kN for a \"joist hanger 120/45\"."
+    },
+    {
+      "query": "What is the shear capacity for Pryda truss boot in joint group JD5?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.7373278709139756,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data. The provided context indicates that Pryda Truss Boots are applicable to Joint Groups JD4/J2, with no mention of JD5."
+    },
+    {
+      "query": "What is the characteristic load for Pryda bracing anchor in joint group J2?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.7238251872233544,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data for Joint Group J2.\n\nThe capacity for the NZ Bracing Anchor (PBA) is 10.7 kN for SG8 and minimum JD5 timber.\nValue: 10.7 kN (Source: Pryda - NZ Pryda Bracing Anchor PDS, Page 9"
+    },
+    {
+      "query": "What is the shear capacity for Pryda nail plate in joint group J3?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.7260846875266077,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data."
+    },
+    {
+      "query": "H2 connector characteristic capacity in SG8 timber?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\ud83d\udfe1 DATA",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.5846990402737257,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data."
+    },
+    {
+      "query": "PB 90 post anchor load capacity for SG10 timber?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6694518001923041,
+      "has_numeric": true,
+      "answer_snippet": "The provided Pryda data does not explicitly list \"PB 90 post anchor\". However, the data details the \"PBA\" (NZ Pryda Bracing Anchor) which is designed for fixing timber studs to timber bottom plates to"
+    },
+    {
+      "query": "Wind zone calculation for Pryda tie-downs?",
+      "category": "cross_domain",
+      "trap_type": "cross_domain_trap",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [
+        "nzs 3604"
+      ],
+      "retrieval_score": 0.5340834849176491,
+      "has_numeric": true,
+      "answer_snippet": "Based on the provided Pryda context, information for \"wind zone calculation\" in terms of specific kN values for wind loads or a methodology to perform such calculations is not found.\n\nThe provided dat"
+    },
+    {
+      "query": "What is the uplift capacity for Pryda H2 connector in joint group J2?",
+      "category": "joint_group",
+      "trap_type": "joint_group_specificity",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6712189298709362,
+      "has_numeric": false,
+      "answer_snippet": "Not found in Pryda data"
+    },
+    {
+      "query": "tie-down strap load capacity for SG10 timber?",
+      "category": "sg_comparison",
+      "trap_type": "timber_grade_differentiation",
+      "status": "\u2705 PASS",
+      "is_critical": false,
+      "hallucinations": [],
+      "retrieval_score": 0.6169882122184682,
+      "has_numeric": true,
+      "answer_snippet": "Not found in Pryda data.\n\nThe provided Pryda data specifies load capacities for \"Cyclone Strap\" for timber Joint Groups J4 and J5. One source clarifies that \"Capacities apply for dry ... Radiata Pine "
+    }
+  ]
+}

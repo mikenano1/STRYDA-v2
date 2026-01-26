@@ -1,0 +1,219 @@
+================================================================================
+⚡ PLATINUM MITEK INGESTION ENGINE (V3.0)
+   Started: 2026-01-26T01:00:03.868784
+================================================================================
+
+📂 LOADING MITEK MANIFEST...
+   Found 38 files in manifest
+
+📖 APPLYING BIBLE PRIORITY SORT...
+   ✅ Bibles and Compliance docs prioritized
+      [1] FLITCH-BEAM-Manual.pdf... (weight: 1.5x)
+      [2] MiTek_LUMBERLOK_Timber_Connectors_Characteris... (weight: 1.5x)
+      [3] PosiStrut-Manual.pdf... (weight: 1.5x)
+      [4] Residential-Manual-March-2024.pdf... (weight: 1.5x)
+      [5] BPIR-Bowmac-NZ-2023.pdf... (weight: 1.3x)
+
+🔄 INGESTING 38 MITEK FILES...
+================================================================================
+
+[ 1/38] FLITCH-BEAM-Manual.pdf...
+      📖 BIBLE PRIORITY: 1.5x weight multiplier
+      ⚡ kN VALUES: 1.0kN, 1.8kN, 2.7kN, 2.7kN, 1.0kN
+      📊 17p | 28 chunks | 0 tables | 5 kN values
+      ✅ Ingested 28 chunks (priority: 135)
+
+[ 2/38] MiTek_LUMBERLOK_Timber_Connectors_Characteristic_Loadin...
+      📖 BIBLE PRIORITY: 1.5x weight multiplier
+      🏷️ CROSS-BRAND: MiTek, Lumberlok
+      ⚡ kN VALUES: 3.9 kN, 8.4 kN, 4.2 kN, 3.0 kN, 14.8 kN...
+      📊 12p | 22 chunks | 4 tables | 124 kN values
+      ✅ Ingested 22 chunks (priority: 135)
+
+[ 3/38] PosiStrut-Manual.pdf...
+      📖 BIBLE PRIORITY: 1.5x weight multiplier
+      🏷️ CROSS-BRAND: MiTek, PosiStrut
+      ⚡ kN VALUES: 1.1 kN, 1.8 kN, 2.7 kN, 2.7 kN, 6kN
+      📊 48p | 74 chunks | 8 tables | 5 kN values
+      ✅ Ingested 74 chunks (priority: 135)
+
+[ 4/38] Residential-Manual-March-2024.pdf...
+      📖 BIBLE PRIORITY: 1.5x weight multiplier
+      ⚡ kN VALUES: 1.1 kN
+      📊 25p | 37 chunks | 0 tables | 1 kN values
+      ✅ Ingested 37 chunks (priority: 135)
+
+[ 5/38] BPIR-Bowmac-NZ-2023.pdf...
+      📖 BIBLE PRIORITY: 1.3x weight multiplier
+      🏷️ CROSS-BRAND: Bowmac, MiTek
+      📊 4p | 6 chunks | 1 tables | 0 kN values
+      ✅ Ingested 6 chunks (priority: 117)
+
+[ 6/38] BPIR-Gang-Nail-AU-2023.pdf...
+      📖 BIBLE PRIORITY: 1.3x weight multiplier
+      🏷️ CROSS-BRAND: Gang-Nail, MiTek
+      📊 4p | 5 chunks | 1 tables | 0 kN values
+      ✅ Ingested 5 chunks (priority: 117)
+
+[ 7/38] BPIR-Gang-Nail-NZ-2023.pdf...
+      📖 BIBLE PRIORITY: 1.3x weight multiplier
+      🏷️ CROSS-BRAND: Gang-Nail, MiTek
+      📊 4p | 5 chunks | 1 tables | 0 kN values
+      ✅ Ingested 5 chunks (priority: 117)
+
+[ 8/38] BPIR-Lumberlok-AU-2023.pdf...
+      📖 BIBLE PRIORITY: 1.3x weight multiplier
+      🏷️ CROSS-BRAND: MiTek, Lumberlok
+      📊 4p | 5 chunks | 1 tables | 0 kN values
+      ✅ Ingested 5 chunks (priority: 117)
+
+[ 9/38] BPIR-Lumberlok-NZ-2023.pdf...
+      📖 BIBLE PRIORITY: 1.3x weight multiplier
+      🏷️ CROSS-BRAND: MiTek, Lumberlok
+      ⚡ kN VALUES: 6kN, 12kN, 9kN, 16kN, 6kN...
+      📊 4p | 6 chunks | 1 tables | 7 kN values
+      ✅ Ingested 6 chunks (priority: 117)
+
+[10/38] 12kN-Pile-Fixing_2024-v1.pdf...
+      ⏭️ No content extracted - skipping
+
+[11/38] 12kN-Retro-Subfloor-Fixing_2024-v1.pdf...
+      ⏭️ No content extracted - skipping
+
+[12/38] 6kN-12kN-Stud-to-Bottom-Plate-Fixing_2024-v1.pdf...
+      ⚡ kN VALUES: 6kN, 12kN
+      📊 2p | 2 chunks | 0 tables | 2 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[13/38] 6kN-Pile-Fixing_2024-v1.pdf...
+      ⏭️ No content extracted - skipping
+
+[14/38] Bottom-Plate-Screw-Bolt_2024-v1.pdf...
+      ⏭️ No content extracted - skipping
+
+[15/38] BOWMAC-Angle-Brackets-Without-Gusset_05.2023.pdf...
+      🏷️ CROSS-BRAND: Bowmac, MiTek
+      📊 2p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[16/38] BOWMAC-Heavy-Duty-Short-Angle-Brackets_05.2023.pdf...
+      🏷️ CROSS-BRAND: Bowmac, MiTek
+      📊 1p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[17/38] BOWMAC-Post-Bearer-Brackets_05.2023.pdf...
+      🏷️ CROSS-BRAND: Bowmac, MiTek
+      📊 2p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[18/38] BOWMAC-Stainless-Steel-Structural-Brackets_2024-v1.pdf...
+      🏷️ CROSS-BRAND: Bowmac, MiTek
+      📊 4p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[19/38] Concealed-Purlin-Cleats_2024-v1.pdf...
+      ⚡ kN VALUES: 16kN
+      📊 2p | 1 chunks | 0 tables | 1 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[20/38] Deck-Joist-Fixing_2024-v1.pdf...
+      📊 4p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[21/38] Framing-Stud-Stiffener_2024-v1.pdf...
+      ⏭️ No content extracted - skipping
+
+[22/38] GIB-HandiBrac-Brochure-0322.pdf...
+      🏷️ CROSS-BRAND: Winstone, MiTek, GIB
+      ⚡ kN VALUES: 12kN, 15kN
+      📊 4p | 6 chunks | 3 tables | 2 kN values
+      ✅ Ingested 6 chunks (priority: 90)
+
+[23/38] GIB-Quiet-Tie-1.pdf...
+      🏷️ CROSS-BRAND: Winstone, MiTek, GIB
+      📊 2p | 3 chunks | 0 tables | 0 kN values
+      ✅ Ingested 3 chunks (priority: 90)
+
+[24/38] Internal-Wall-Bracket_2024-v1.pdf...
+      📊 1p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[25/38] Joist-Hangers_2024-v1.pdf...
+      ⏭️ No content extracted - skipping
+
+[26/38] Multi-Brace_2024-v1.pdf...
+      📊 2p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[27/38] Ordinary-Pile-Fixing_2024-v1.pdf...
+      📊 1p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[28/38] Plate-Lok_2024-v1.pdf...
+      📊 2p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[29/38] PS1-DJF-Test-Results-2025-03-26.pdf...
+      ⚡ kN VALUES: 0.75 kN, 0.75 kN, 1.181 kN, 1.294 kN, 2.173 kN...
+      📊 5p | 7 chunks | 1 tables | 25 kN values
+      ✅ Ingested 7 chunks (priority: 90)
+
+[30/38] PS24-PS29-Supplemental-Floor-Span-Dec-2025.pdf...
+      📊 1p | 2 chunks | 1 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[31/38] Screw-Ties_2024-v1.pdf...
+      📊 2p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[32/38] STUD-LOK-Lintel-Fixing-Options-for-On-Site_2024-v1 (1)....
+      🏷️ CROSS-BRAND: Stud-Lok, MiTek
+      📊 4p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[33/38] STUD-LOK-Lintel-Fixing-Options-for-On-Site_2024-v1.pdf...
+      🏷️ CROSS-BRAND: Stud-Lok, MiTek
+      📊 4p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[34/38] STUD-LOK-SL170-blue-Top-Plate-Fixing_2024-v1.pdf...
+      🏷️ CROSS-BRAND: Stud-Lok, MiTek
+      ⏭️ No content extracted - skipping
+
+[35/38] STUD-LOK-SL80-white_2024-v1.pdf...
+      🏷️ CROSS-BRAND: Stud-Lok, MiTek
+      📊 2p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+[36/38] STUD-LOK-Stringer-to-Stud-Fixing-Schedule_2024-v1.pdf...
+      🏷️ CROSS-BRAND: Stud-Lok, MiTek
+      📊 6p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[37/38] Stud-Saver_2024-v1.pdf...
+      📊 2p | 2 chunks | 0 tables | 0 kN values
+      ✅ Ingested 2 chunks (priority: 90)
+
+[38/38] Top-Plate-Stiffener_2024-v1.pdf...
+      📊 2p | 1 chunks | 0 tables | 0 kN values
+      ✅ Ingested 1 chunks (priority: 90)
+
+================================================================================
+⚡ PLATINUM MITEK INGESTION - COMPLETE
+================================================================================
+
+✅ Files Processed: 31
+📄 Total Chunks: 233
+📑 Pages Scanned: 179
+📊 Tables Found: 22
+⚡ kN Values Extracted: 172
+📖 Bible Docs (1.5x weight): 9
+🏷️ Cross-Brand Tagged: 18
+⏭️ Skipped: 7
+❌ Errors: 0
+
+   Protocol: PLATINUM V3.0 + BIBLE PRIORITY
+   Completed: 2026-01-26T01:03:12.205430
+================================================================================
+
+💾 Report saved to: /app/mitek_ingestion_report.json

@@ -1,0 +1,552 @@
+================================================================================
+        STRYDA PRODUCTION BUILD - BREMICK INGESTION
+        Started: 2026-01-25T04:38:52.887886
+================================================================================
+
+✅ Clients initialized
+   Chunk size: 1000 chars
+   Overlap: 150 chars
+   Embedding model: text-embedding-3-small
+
+================================================================================
+   PHASE 1: SCANNING BREMICK FILES IN STORAGE
+================================================================================
+   📂 Chemical_Anchors: 12 files
+   📂 Drop_In_Anchors: 3 files
+   📂 Galvanised: 6 files
+   📂 General: 111 files
+   📂 Hex_Bolts: 38 files
+   📂 Hex_Nuts: 40 files
+   📂 Sleeve_Anchors: 6 files
+   📂 Stainless_Steel: 32 files
+   📂 Washers: 1 files
+   📂 Zinc_Plated: 38 files
+
+   📊 TOTAL FILES TO INGEST: 287
+
+================================================================================
+   PHASE 2: CHUNK, EMBED & PUSH TO DATABASE
+================================================================================
+
+[  1/287] Bremick-NCCCompliant-ChemicalInjection-Polyester-G...
+      📄 4 pages, 6904 chars → 9 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+      ⚠️ Insert error chunk 8: current transaction is aborted, commands
+
+[  2/287] Bremick-NCCCompliant-ChemicalInjection-Polyester-S...
+      📄 4 pages, 6563 chars → 8 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+
+[  3/287] Bremick-NCCCompliant-ChemicalInjection-Polyester-Z...
+      📄 4 pages, 6818 chars → 9 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+      ⚠️ Insert error chunk 8: current transaction is aborted, commands
+
+[  4/287] Bremick-NCCCompliant-ChemicalInjection-PureEpoxy-G...
+      📄 5 pages, 8262 chars → 10 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+      ⚠️ Insert error chunk 8: current transaction is aborted, commands
+      ⚠️ Insert error chunk 9: current transaction is aborted, commands
+
+[  5/287] Bremick-NCCCompliant-ChemicalInjection-PureEpoxy-S...
+      📄 4 pages, 7110 chars → 9 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+      ⚠️ Insert error chunk 8: current transaction is aborted, commands
+
+[  6/287] Bremick-NCCCompliant-ChemicalInjection-PureEpoxy-Z...
+      📄 4 pages, 7446 chars → 9 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+      ⚠️ Insert error chunk 8: current transaction is aborted, commands
+
+[  7/287] Bremick-NCCCompliant-ChemicalInjection-Vinylester-...
+      📄 5 pages, 7730 chars → 10 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+      ⚠️ Insert error chunk 8: current transaction is aborted, commands
+      ⚠️ Insert error chunk 9: current transaction is aborted, commands
+
+[  8/287] Bremick-NCCCompliant-ChemicalInjection-Vinylester-...
+      📄 4 pages, 6794 chars → 8 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+
+[  9/287] Bremick-NCCCompliant-ChemicalInjection-Vinylester-...
+      📄 4 pages, 7131 chars → 9 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+      ⚠️ Insert error chunk 8: current transaction is aborted, commands
+
+[ 10/287] Bremick-NCCCompliant-ChemicalSpinCapsule-Galvanise...
+      📄 3 pages, 4954 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 11/287] Bremick-NCCCompliant-ChemicalSpinCapsule-Stainless...
+      📄 3 pages, 4951 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 12/287] Bremick-NCCCompliant-ChemicalSpinCapsule-ZincPlate...
+      📄 3 pages, 4942 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 13/287] Bremick-NCCCompliant-DropinAnchor-ZincPlated-TDS.p...
+      📄 3 pages, 3691 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 14/287] Bremick-NSC-DropInAnchor-StainlessSteel-PDS.pdf...
+      📄 3 pages, 3970 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 15/287] Bremick-NSC-DropInAnchor-ZincPlated-PDS.pdf...
+      📄 4 pages, 4429 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 16/287] Bremick-NSC-KewUniversalFrameAnchor-Galvanised-PDS...
+      📄 3 pages, 3883 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 17/287] Bremick-NSC-MasonryScrewWallGrabScrew-Galvanised-P...
+      📄 2 pages, 2373 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 18/287] Bremick-NSC-ScrewAnchor-Galvanised-PDS.pdf...
+      📄 5 pages, 6089 chars → 8 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+
+[ 19/287] Bremick-NSC-SDriveAnchor-Galvanised-PDS.pdf...
+      📄 4 pages, 4976 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 20/287] Bremick-NSC-SplitDriveAnchor-Galvanised-PDS.pdf...
+      📄 3 pages, 4063 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 21/287] Bremick-NSC-ThroughBolt-Galvanised-PDS.pdf...
+      📄 3 pages, 4365 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 22/287] Bremick-NCCCompliant-ScrewAnchor-Countersunk-BiMet...
+      📄 3 pages, 4618 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 23/287] Bremick-NCCCompliant-ScrewAnchor-Countersunk-Ceram...
+      📄 3 pages, 4336 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 24/287] Bremick-NCCCompliant-ScrewAnchor-External-Ceramic-...
+      📄 3 pages, 3248 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 25/287] Bremick-NCCCompliant-ScrewAnchor-Hex-BiMetal-TDS.p...
+      📄 3 pages, 4632 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 26/287] Bremick-NCCCompliant-ScrewAnchor-Hex-Ceramic-TDS.p...
+      📄 3 pages, 4907 chars → 6 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+
+[ 27/287] Bremick-NCCCompliant-ScrewAnchor-Pan-Ceramic-TDS.p...
+      📄 3 pages, 3569 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 28/287] Bremick-NSC-CavityWallAnchor-PDS.pdf...
+      📄 3 pages, 3016 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 29/287] Bremick-NSC-GravityToggle-PDS.pdf...
+      📄 2 pages, 2348 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 30/287] Bremick-NSC-HollowWallPlasticToggle-PDS.pdf...
+      📄 2 pages, 2351 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 31/287] Bremick-NSC-KewHammerFixInsulationFastener-PDS.pdf...
+      📄 3 pages, 2766 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 32/287] Bremick-NSC-KewInsulationPlug-PDS.pdf...
+      📄 2 pages, 2014 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 33/287] Bremick-NSC-KewMetalInsulationFastener-PDS.pdf...
+      📄 2 pages, 2120 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 34/287] Bremick-NSC-KewSuperExpansionPlug-PDS.pdf...
+      📄 3 pages, 3249 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 35/287] Bremick-NSC-KewSuperUniversalPlug-PDS.pdf...
+      📄 3 pages, 3315 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 36/287] Bremick-NSC-KewUniversalInsulationDisk-PDS.pdf...
+      📄 2 pages, 2581 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 37/287] Bremick-NSC-MasonryScrewAnchor-Hex&CountersunkHead...
+      📄 3 pages, 3370 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 38/287] Bremick-NSC-NylonWallPlug-PDS.pdf...
+      📄 2 pages, 2651 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 39/287] Bremick-NSC-PlasterboardPlug-PDS.pdf...
+      📄 2 pages, 1973 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 40/287] Bremick-NSC-PVCWallPlug-PDS.pdf...
+      📄 2 pages, 2411 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 41/287] Bremick-NSC-SpringToggle-RoundHead&CountersunkHead...
+      📄 3 pages, 2906 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 42/287] Bremick-NSC-SpringToggle-SquareHook&CupHook-PDS.pd...
+      📄 3 pages, 2665 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 43/287] coach-screw-class-4-6-metric-hdg.pdf...
+      📄 2 pages, 3343 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 44/287] coatings-and-materials.pdf...
+      📄 1 pages, 4020 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 45/287] connector-screws.pdf...
+      📄 1 pages, 1168 chars → 2 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+
+[ 46/287] cup-bolt-class-4-6-metric-hdg.pdf...
+      📄 2 pages, 3898 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 47/287] flange-purlin-class-4-6-metric-hdg.pdf...
+      📄 2 pages, 3172 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 48/287] flange-purlin-class-8-8-metric-hdg.pdf...
+      📄 2 pages, 3160 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 49/287] hex-head-coach-screws-metric.pdf...
+      📄 2 pages, 2170 chars → 3 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+
+[ 50/287] ko-structural-assemblies-class-8-8-metric.pdf...
+      📄 3 pages, 6391 chars → 8 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+      ⚠️ Insert error chunk 5: current transaction is aborted, commands
+      ⚠️ Insert error chunk 6: current transaction is aborted, commands
+      ⚠️ Insert error chunk 7: current transaction is aborted, commands
+
+   📊 CHECKPOINT [50/287]
+      Processed: 0
+      Chunks: 0
+      Errors: 0
+      Skipped: 0
+
+
+[ 51/287] masonry-screw-anchors.pdf...
+      📄 1 pages, 1392 chars → 2 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+
+[ 52/287] nylon-insert-lock-nut-class-6-metric-hdg.pdf...
+      📄 2 pages, 3521 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 53/287] nylon-insert-lock-nut-class-8-metric-hdg.pdf...
+      📄 2 pages, 3526 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 54/287] S5HC812-32-80-BF2066-Hex-Head-SDM-Deep-Driller.pdf...
+      📄 2 pages, 3773 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 55/287] s5wc812-32-50-bf2088-wafer-sdm-deep-driller.pdf...
+      📄 2 pages, 3216 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 56/287] sbbc3141-200-bf103-type-17-bugle-batten.pdf...
+      📄 2 pages, 4094 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 57/287] sbbc414-150-bf242-type-17-bugle-batten.pdf...
+      📄 2 pages, 3490 chars → 5 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+      ⚠️ Insert error chunk 4: current transaction is aborted, commands
+
+[ 58/287] sbbc614-150-bf184-type-17-bugle-batten.pdf...
+      📄 2 pages, 3378 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 59/287] sbbcz14-100-bf158-type-17-bugle-batten.pdf...
+      📄 2 pages, 3322 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 60/287] SET-SCREW-CLASS-10-9-METRIC-BLACK.pdf...
+      📄 2 pages, 3137 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 61/287] SET-SCREW-CLASS-4-6-METRIC-HDG.pdf...
+      📄 2 pages, 3159 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 62/287] SET-SCREW-CLASS-8-8-METRIC-BLACK.pdf...
+      📄 2 pages, 3180 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 63/287] SET-SCREW-CLASS-8-8-METRIC-HDG.pdf...
+      📄 2 pages, 3288 chars → 4 chunks
+      ⚠️ Insert error chunk 0: column "chunk_hash" of relation "documen
+      ⚠️ Insert error chunk 1: current transaction is aborted, commands
+      ⚠️ Insert error chunk 2: current transaction is aborted, commands
+      ⚠️ Insert error chunk 3: current transaction is aborted, commands
+
+[ 64/287] SET-SCREW-GRADE-8-UNC-BLACK.pdf...
