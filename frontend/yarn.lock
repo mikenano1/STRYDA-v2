@@ -1984,19 +1984,6 @@
     color "^4.2.3"
     sf-symbols-typescript "^2.1.0"
 
-"@react-navigation/core@^7.12.1":
-  version "7.12.1"
-  resolved "https://registry.npmjs.org/@react-navigation/core/-/core-7.12.1.tgz"
-  integrity sha512-ir6s25CDkReufi0vQhSIAe+AAHHJN9zTgGlS6iDS1yqbwgl2MiBAZzpaOL1T5llYujie2jF/bODeLz2j4k80zw==
-  dependencies:
-    "@react-navigation/routers" "^7.4.1"
-    escape-string-regexp "^4.0.0"
-    nanoid "^3.3.11"
-    query-string "^7.1.3"
-    react-is "^19.1.0"
-    use-latest-callback "^0.2.4"
-    use-sync-external-store "^1.5.0"
-
 "@react-navigation/core@^7.14.0":
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-7.14.0.tgz#d24f93d424ab33f645262dc4775e4708aa3d9a8b"
@@ -2029,7 +2016,7 @@
     use-latest-callback "^0.2.4"
     use-sync-external-store "^1.5.0"
 
-"@react-navigation/native-stack@^7.3.16":
+"@react-navigation/native-stack@7.10.1", "@react-navigation/native-stack@^7.3.16":
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-7.10.1.tgz#de6551286a5e9e2b0c466daa83e0f9bf0321815b"
   integrity sha512-8jt7olKysn07HuKKSjT/ahZZTV+WaZa96o9RI7gAwh7ATlUDY02rIRttwvCyjovhSjD9KCiuJ+Hd4kwLidHwJw==
@@ -2039,18 +2026,7 @@
     sf-symbols-typescript "^2.1.0"
     warn-once "^0.1.1"
 
-"@react-navigation/native@^7.1.6":
-  version "7.1.14"
-  resolved "https://registry.npmjs.org/@react-navigation/native/-/native-7.1.14.tgz"
-  integrity sha512-X233/CNx41FpshlWe4uEAUN8CNem3ju4t5pnVKcdhDR0cTQT1rK6P0ZwjSylD9zXdnHvJttFjBhKTot6TcvSqA==
-  dependencies:
-    "@react-navigation/core" "^7.12.1"
-    escape-string-regexp "^4.0.0"
-    fast-deep-equal "^3.1.3"
-    nanoid "^3.3.11"
-    use-latest-callback "^0.2.4"
-
-"@react-navigation/native@^7.1.8":
+"@react-navigation/native@7.1.28", "@react-navigation/native@^7.1.8":
   version "7.1.28"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-7.1.28.tgz#1ee75cf3a8b3e4365f94c5d657bb3c015e387720"
   integrity sha512-d1QDn+KNHfHGt3UIwOZvupvdsDdiHYZBEj7+wL2yDVo3tMezamYy60H9s3EnNVE1Ae1ty0trc7F2OKqo/RmsdQ==
@@ -2060,13 +2036,6 @@
     fast-deep-equal "^3.1.3"
     nanoid "^3.3.11"
     use-latest-callback "^0.2.4"
-
-"@react-navigation/routers@^7.4.1":
-  version "7.4.1"
-  resolved "https://registry.npmjs.org/@react-navigation/routers/-/routers-7.4.1.tgz"
-  integrity sha512-42mZrMzQ0LfKxUb5OHIurYrPYyRsXFLolucILrvm21f0O40Sw0Ufh1bnn/jRqnxZZu7wvpUGIGYM8nS9zVE1Aw==
-  dependencies:
-    nanoid "^3.3.11"
 
 "@react-navigation/routers@^7.5.3":
   version "7.5.3"
@@ -4108,7 +4077,7 @@ expo-modules-core@3.0.29:
   dependencies:
     invariant "^2.2.4"
 
-expo-router@~6.0.21:
+expo-router@^6.0.22:
   version "6.0.22"
   resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-6.0.22.tgz#d77b5af4ddfbd742375cca1f23b080c69e69841d"
   integrity sha512-6eOwobaVZQRsSQv0IoWwVlPbJru1zbreVsuPFIWwk7HApENStU2MggrceHXJqXjGho+FKeXxUop/gqOFDzpOMg==
@@ -6577,10 +6546,10 @@ react-native-web@^0.21.0:
     postcss-value-parser "^4.2.0"
     styleq "^0.1.3"
 
-react-native-webview@^13.16.0:
-  version "13.16.0"
-  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.16.0.tgz#c995148f944a7eaf12389f0e6d5c6f5e6a775686"
-  integrity sha512-Nh13xKZWW35C0dbOskD7OX01nQQavOzHbCw9XoZmar4eXCo7AvrYJ0jlUfRVVIJzqINxHlpECYLdmAdFsl9xDA==
+react-native-webview@13.15.0:
+  version "13.15.0"
+  resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-13.15.0.tgz#b6d2f8d8dd65897db76659ddd8198d2c74ec5a79"
+  integrity sha512-Vzjgy8mmxa/JO6l5KZrsTC7YemSdq+qB01diA0FqjUTaWGAGwuykpJ73MDj3+mzBSlaDxAEugHzTtkUQkQEQeQ==
   dependencies:
     escape-string-regexp "^4.0.0"
     invariant "2.2.4"

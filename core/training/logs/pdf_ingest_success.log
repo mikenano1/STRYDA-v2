@@ -1,0 +1,1244 @@
+[2025-11-30T03:58:53.589925] 
+1. Loading manifest from /app/backend-minimal/training/docs_manifest.jsonl
+[2025-11-30T03:58:53.590143]    ✅ Loaded 24 PDF entries
+[2025-11-30T03:58:53.590176] 
+2. Connecting to database
+[2025-11-30T03:58:55.049748] 
+3. Processing PDFs
+[2025-11-30T03:58:55.049886] Downloading pdfs/C-AS1_2nd-Edition-Amendment1.pdf
+[2025-11-30T03:58:56.171250] Downloading pdfs/C-AS2_3rd-Edition-Amendment4-2024.pdf
+[2025-11-30T03:58:56.967030]    ⏭️  Skipping expired document
+[2025-11-30T03:58:56.967070]    ⏭️  Skipping expired document
+[2025-11-30T03:58:56.967098]    ⏭️  Skipping expired document
+[2025-11-30T03:58:56.967124]    ⏭️  Skipping expired document
+[2025-11-30T03:58:56.967147]    ⏭️  Skipping expired document
+[2025-11-30T03:58:56.967180]    ⏭️  Skipping expired document
+[2025-11-30T03:58:56.967203]    ⏭️  Skipping expired document
+[2025-11-30T03:58:56.967228] Downloading pdfs/E1-AS1_1st-Edition-Amendment12.pdf
+[2025-11-30T03:58:57.902225] Downloading pdfs/E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T03:58:58.845917] Downloading pdfs/E3-AS1_2nd-Edition.pdf
+[2025-11-30T03:58:59.779150] Downloading pdfs/F4-AS1_Amendment6-2021.pdf
+[2025-11-30T03:59:00.613266] Downloading pdfs/F6-AS1_Amendment3-2021.pdf
+[2025-11-30T03:59:01.564630] Downloading pdfs/F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T03:59:02.463811] Downloading pdfs/G12-AS1_3rd-Edition.pdf
+[2025-11-30T03:59:03.325192] Downloading pdfs/G13-AS1_3rd-Edition.pdf
+[2025-11-30T03:59:04.174200] Downloading pdfs/H1-AS1_6th-Edition.pdf
+[2025-11-30T03:59:04.990378] Downloading pdfs/H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T03:59:05.877356] Downloading pdfs/GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T03:59:06.690199] Downloading pdfs/GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T03:59:07.591610] Downloading pdfs/GIB-Fire-Systems-Manual.pdf
+[2025-11-30T03:59:08.444690] Downloading pdfs/Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T03:59:09.339606] Downloading pdfs/Ardex-Waterproofing-Manual.pdf
+[2025-11-30T03:59:09.795507] 
+================================================================================
+[2025-11-30T03:59:09.795567] INGESTION COMPLETE
+[2025-11-30T03:59:09.795606] ================================================================================
+[2025-11-30T03:59:09.795629] Success: 0
+[2025-11-30T03:59:09.795650] Failed: 17
+[2025-11-30T03:59:09.795670] Skipped: 7
+[2025-11-30T03:59:09.795689] Total pages ingested: 0
+[2025-11-30T03:59:09.795709] Total chunks created: 0
+[2025-11-30T04:23:05.806919] 
+1. Loading manifest from /app/backend-minimal/training/docs_manifest.jsonl
+[2025-11-30T04:23:05.807097]    ✅ Loaded 24 PDF entries
+[2025-11-30T04:23:05.809437] 
+2. Connecting to database
+[2025-11-30T04:23:07.063168] 
+3. Processing PDFs
+[2025-11-30T04:23:07.063305] Downloading pdfs/C-AS1_2nd-Edition-Amendment1.pdf
+[2025-11-30T04:23:08.014939] Downloading pdfs/C-AS2_3rd-Edition-Amendment4-2024.pdf
+[2025-11-30T04:23:08.830701]    ⏭️  Skipping expired document
+[2025-11-30T04:23:08.830739]    ⏭️  Skipping expired document
+[2025-11-30T04:23:08.830767]    ⏭️  Skipping expired document
+[2025-11-30T04:23:08.830791]    ⏭️  Skipping expired document
+[2025-11-30T04:23:08.830813]    ⏭️  Skipping expired document
+[2025-11-30T04:23:08.830839]    ⏭️  Skipping expired document
+[2025-11-30T04:23:08.830861]    ⏭️  Skipping expired document
+[2025-11-30T04:23:08.830884] Downloading pdfs/E1-AS1_1st-Edition-Amendment12.pdf
+[2025-11-30T04:23:09.721925] Downloading pdfs/E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:23:10.627680] Downloading pdfs/E3-AS1_2nd-Edition.pdf
+[2025-11-30T04:23:11.564428] Downloading pdfs/F4-AS1_Amendment6-2021.pdf
+[2025-11-30T04:23:12.478318] Downloading pdfs/F6-AS1_Amendment3-2021.pdf
+[2025-11-30T04:23:13.343870] Downloading pdfs/F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T04:23:14.262763] Downloading pdfs/G12-AS1_3rd-Edition.pdf
+[2025-11-30T04:23:15.115986] Downloading pdfs/G13-AS1_3rd-Edition.pdf
+[2025-11-30T04:23:16.034009] Downloading pdfs/H1-AS1_6th-Edition.pdf
+[2025-11-30T04:23:16.851092] Downloading pdfs/H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T04:23:17.719072] Downloading pdfs/GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T04:23:18.542457] Downloading pdfs/GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T04:23:19.496094] Downloading pdfs/GIB-Fire-Systems-Manual.pdf
+[2025-11-30T04:23:20.328205] Downloading pdfs/Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T04:23:21.219820] Downloading pdfs/Ardex-Waterproofing-Manual.pdf
+[2025-11-30T04:23:22.073246] 
+================================================================================
+[2025-11-30T04:23:22.075091] INGESTION COMPLETE
+[2025-11-30T04:23:22.075123] ================================================================================
+[2025-11-30T04:23:22.075143] Success: 0
+[2025-11-30T04:23:22.075163] Failed: 17
+[2025-11-30T04:23:22.075182] Skipped: 7
+[2025-11-30T04:23:22.075202] Total pages ingested: 0
+[2025-11-30T04:23:22.075220] Total chunks created: 0
+[2025-11-30T04:30:35.919300] 
+1. Loading manifest from /app/backend-minimal/training/docs_manifest.jsonl
+[2025-11-30T04:30:35.919496]    ✅ Loaded 34 PDF entries
+[2025-11-30T04:30:35.919527] 
+2. Connecting to database
+[2025-11-30T04:30:37.195272] 
+3. Processing PDFs
+[2025-11-30T04:30:37.195402] Downloading pdfs/E3-AS1_2nd-Edition-Amd7-2020.pdf
+[2025-11-30T04:30:39.996252]    ✅ Downloaded 960,628 bytes
+[2025-11-30T04:30:39.996394] Extracting text from E3-AS1_2nd-Edition-Amd7-2020.pdf
+[2025-11-30T04:30:41.925981]    ✅ Extracted 24 pages
+[2025-11-30T04:30:41.926200]    ✅ Created 68 chunks
+[2025-11-30T04:30:41.926241] Generating embeddings for 68 chunks
+[2025-11-30T04:30:43.850729]    [68/68] Generated embeddings
+[2025-11-30T04:30:43.850851] Inserting 68 chunks into database
+[2025-11-30T04:30:58.526407] ✅ Ingested E3-AS1_2nd-Edition-Amd7-2020.pdf: 24 pages, 68 chunks
+[2025-11-30T04:30:58.527089] Downloading pdfs/G12-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T04:31:01.797256]    ✅ Downloaded 6,189,325 bytes
+[2025-11-30T04:31:01.797386] Extracting text from G12-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T04:31:06.522037]    ✅ Extracted 82 pages
+[2025-11-30T04:31:06.522411]    ✅ Created 304 chunks
+[2025-11-30T04:31:06.522458] Generating embeddings for 304 chunks
+[2025-11-30T04:31:07.577469]    [100/304] Generated embeddings
+[2025-11-30T04:31:09.003938]    [200/304] Generated embeddings
+[2025-11-30T04:31:10.511418]    [300/304] Generated embeddings
+[2025-11-30T04:31:11.232616]    [304/304] Generated embeddings
+[2025-11-30T04:31:11.232736] Inserting 304 chunks into database
+[2025-11-30T04:32:12.274695] ✅ Ingested G12-AS1_3rd-Edition-Amd14-2024.pdf: 82 pages, 304 chunks
+[2025-11-30T04:32:12.277318]    ⏭️  Skipping expired document
+[2025-11-30T04:32:12.277391]    ⏭️  Skipping expired document
+[2025-11-30T04:32:12.277421]    ⏭️  Skipping expired document
+[2025-11-30T04:32:12.277445]    ⏭️  Skipping expired document
+[2025-11-30T04:32:12.277468]    ⏭️  Skipping expired document
+[2025-11-30T04:32:12.277495]    ⏭️  Skipping expired document
+[2025-11-30T04:32:12.277522]    ⏭️  Skipping expired document
+[2025-11-30T04:32:12.277549] Downloading pdfs/E1-AS1_1st-Edition-Amd12-2024.pdf
+[2025-11-30T04:32:15.433091]    ✅ Downloaded 2,785,297 bytes
+[2025-11-30T04:32:15.433224] Extracting text from E1-AS1_1st-Edition-Amd12-2024.pdf
+[2025-11-30T04:32:19.336847]    ✅ Extracted 59 pages
+[2025-11-30T04:32:19.337143]    ✅ Created 201 chunks
+[2025-11-30T04:32:19.337189] Generating embeddings for 201 chunks
+[2025-11-30T04:32:19.969160]    [100/201] Generated embeddings
+[2025-11-30T04:32:21.359978]    [200/201] Generated embeddings
+[2025-11-30T04:32:22.241112]    [201/201] Generated embeddings
+[2025-11-30T04:32:22.241242] Inserting 201 chunks into database
+[2025-11-30T04:33:02.656526] ✅ Ingested E1-AS1_1st-Edition-Amd12-2024.pdf: 59 pages, 201 chunks
+[2025-11-30T04:33:02.658291] Downloading pdfs/E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:33:06.521160]    ✅ Downloaded 12,833,606 bytes
+[2025-11-30T04:33:06.521302] Extracting text from E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:33:42.184652]    ✅ Extracted 196 pages
+[2025-11-30T04:33:42.185240]    ✅ Created 568 chunks
+[2025-11-30T04:33:42.185298] Generating embeddings for 568 chunks
+[2025-11-30T04:33:42.792056]    [100/568] Generated embeddings
+[2025-11-30T04:33:43.159966]    [200/568] Generated embeddings
+[2025-11-30T04:33:43.597400]    [300/568] Generated embeddings
+[2025-11-30T04:33:44.184309]    [400/568] Generated embeddings
+[2025-11-30T04:33:44.728691]    [500/568] Generated embeddings
+[2025-11-30T04:33:45.768288]    [568/568] Generated embeddings
+[2025-11-30T04:33:45.768424] Inserting 568 chunks into database
+[2025-11-30T04:54:45.676445] 
+1. Loading manifest from /app/backend-minimal/training/docs_manifest.jsonl
+[2025-11-30T04:54:45.676652]    ✅ Loaded 34 PDF entries
+[2025-11-30T04:54:45.676688] 
+2. Connecting to database
+[2025-11-30T04:54:47.009270] 
+3. Processing PDFs
+[2025-11-30T04:54:47.423176]    ⏭️  SKIP already ingested: E3-AS1_2nd-Edition-Amd7-2020.pdf
+[2025-11-30T04:54:47.628832]    ⏭️  SKIP already ingested: G12-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T04:54:47.628964]    ⏭️  Skipping expired document
+[2025-11-30T04:54:47.628998]    ⏭️  Skipping expired document
+[2025-11-30T04:54:47.629025]    ⏭️  Skipping expired document
+[2025-11-30T04:54:47.629048]    ⏭️  Skipping expired document
+[2025-11-30T04:54:47.629070]    ⏭️  Skipping expired document
+[2025-11-30T04:54:47.629102]    ⏭️  Skipping expired document
+[2025-11-30T04:54:47.629125]    ⏭️  Skipping expired document
+[2025-11-30T04:54:47.834813]    ⏭️  SKIP already ingested: E1-AS1_1st-Edition-Amd12-2024.pdf
+[2025-11-30T04:54:48.040942] INGEST START: E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:54:48.041054] Downloading pdfs/E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:54:48.811458]    ✅ Downloaded 12,833,606 bytes
+[2025-11-30T04:54:48.811599] Extracting text from E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:55:22.535417]    ✅ Extracted 196 pages
+[2025-11-30T04:55:22.536021]    ✅ Created 568 chunks (total_chunks=568)
+[2025-11-30T04:55:22.536092] Generating embeddings for 568 chunks
+[2025-11-30T04:55:23.601610]    [100/568] Generated embeddings
+[2025-11-30T04:55:24.716473]    [200/568] Generated embeddings
+[2025-11-30T04:55:25.594033]    [300/568] Generated embeddings
+[2025-11-30T04:55:26.115744]    [400/568] Generated embeddings
+[2025-11-30T04:55:26.656948]    [500/568] Generated embeddings
+[2025-11-30T04:55:27.331007]    [568/568] Generated embeddings
+[2025-11-30T04:55:27.331137] Inserting 568 chunks into database (batched)
+[2025-11-30T04:55:48.826198]    Inserted batch 1-100 for E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:56:10.325906]    Inserted batch 101-200 for E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:56:31.790410]    Inserted batch 201-300 for E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:56:53.250402]    Inserted batch 301-400 for E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:57:14.710052]    Inserted batch 401-500 for E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:57:29.446742]    Inserted batch 501-568 for E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T04:57:29.446894] ✅ INGEST DONE: E2-AS1_4th-Edition-2025.pdf, chunks_inserted=568
+[2025-11-30T04:57:29.446928] ✅ Ingested E2-AS1_4th-Edition-2025.pdf: 196 pages, 568 chunks
+[2025-11-30T04:57:29.863238] INGEST START: C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T04:57:29.863351] Downloading pdfs/C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T04:57:33.099866]    ✅ Downloaded 2,730,026 bytes
+[2025-11-30T04:57:33.100004] Extracting text from C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T04:57:33.945338]    ✅ Extracted 42 pages
+[2025-11-30T04:57:33.945632]    ✅ Created 167 chunks (total_chunks=167)
+[2025-11-30T04:57:33.945679] Generating embeddings for 167 chunks
+[2025-11-30T04:57:35.175016]    [100/167] Generated embeddings
+[2025-11-30T04:57:35.585834]    [167/167] Generated embeddings
+[2025-11-30T04:57:35.585963] Inserting 167 chunks into database (batched)
+[2025-11-30T04:57:57.064334]    Inserted batch 1-100 for C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T04:58:11.572552]    Inserted batch 101-167 for C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T04:58:11.572705] ✅ INGEST DONE: C-AS1_2nd-Edition_2023.pdf, chunks_inserted=167
+[2025-11-30T04:58:11.572740] ✅ Ingested C-AS1_2nd-Edition_2023.pdf: 42 pages, 167 chunks
+[2025-11-30T04:58:11.986028] INGEST START: F4-AS1_Amendment-6-2021.pdf
+[2025-11-30T04:58:11.986172] Downloading pdfs/F4-AS1_Amendment-6-2021.pdf
+[2025-11-30T04:58:14.644542]    ✅ Downloaded 668,650 bytes
+[2025-11-30T04:58:14.644681] Extracting text from F4-AS1_Amendment-6-2021.pdf
+[2025-11-30T04:58:15.604220]    ✅ Extracted 24 pages
+[2025-11-30T04:58:15.604401]    ✅ Created 49 chunks (total_chunks=49)
+[2025-11-30T04:58:15.604436] Generating embeddings for 49 chunks
+[2025-11-30T04:58:15.973790]    [49/49] Generated embeddings
+[2025-11-30T04:58:15.973913] Inserting 49 chunks into database (batched)
+[2025-11-30T04:58:26.700747]    Inserted batch 1-49 for F4-AS1_Amendment-6-2021.pdf
+[2025-11-30T04:58:26.700884] ✅ INGEST DONE: F4-AS1_Amendment-6-2021.pdf, chunks_inserted=49
+[2025-11-30T04:58:26.700918] ✅ Ingested F4-AS1_Amendment-6-2021.pdf: 24 pages, 49 chunks
+[2025-11-30T04:58:27.113259] INGEST START: F6-AS1_Amendment-3-2021.pdf
+[2025-11-30T04:58:27.113390] Downloading pdfs/F6-AS1_Amendment-3-2021.pdf
+[2025-11-30T04:58:29.792141]    ✅ Downloaded 503,226 bytes
+[2025-11-30T04:58:29.792268] Extracting text from F6-AS1_Amendment-3-2021.pdf
+[2025-11-30T04:58:30.248173]    ✅ Extracted 26 pages
+[2025-11-30T04:58:30.248345]    ✅ Created 61 chunks (total_chunks=61)
+[2025-11-30T04:58:30.248378] Generating embeddings for 61 chunks
+[2025-11-30T04:58:30.919961]    [61/61] Generated embeddings
+[2025-11-30T04:58:30.920094] Inserting 61 chunks into database (batched)
+[2025-11-30T04:58:44.185159]    Inserted batch 1-61 for F6-AS1_Amendment-3-2021.pdf
+[2025-11-30T04:58:44.185319] ✅ INGEST DONE: F6-AS1_Amendment-3-2021.pdf, chunks_inserted=61
+[2025-11-30T04:58:44.185353] ✅ Ingested F6-AS1_Amendment-3-2021.pdf: 26 pages, 61 chunks
+[2025-11-30T04:58:44.597953] INGEST START: F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T04:58:44.598083] Downloading pdfs/F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T04:58:47.218481]    ✅ Downloaded 507,218 bytes
+[2025-11-30T04:58:47.218612] Extracting text from F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T04:58:47.345407]    ✅ Extracted 7 pages
+[2025-11-30T04:58:47.345560]    ✅ Created 17 chunks (total_chunks=17)
+[2025-11-30T04:58:47.345611] Generating embeddings for 17 chunks
+[2025-11-30T04:58:47.786203]    [17/17] Generated embeddings
+[2025-11-30T04:58:47.786318] Inserting 17 chunks into database (batched)
+[2025-11-30T04:58:51.779871]    Inserted batch 1-17 for F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T04:58:51.780003] ✅ INGEST DONE: F7-AS1_5th-Edition-2023.pdf, chunks_inserted=17
+[2025-11-30T04:58:51.780039] ✅ Ingested F7-AS1_5th-Edition-2023.pdf: 7 pages, 17 chunks
+[2025-11-30T04:58:52.192676] INGEST START: H1-AS1_6th-Edition.pdf
+[2025-11-30T04:58:52.192810] Downloading pdfs/H1-AS1_6th-Edition.pdf
+[2025-11-30T04:58:55.157305]    ✅ Downloaded 1,551,973 bytes
+[2025-11-30T04:58:55.157436] Extracting text from H1-AS1_6th-Edition.pdf
+[2025-11-30T04:58:57.495744]    ✅ Extracted 55 pages
+[2025-11-30T04:58:57.496073]    ✅ Created 228 chunks (total_chunks=228)
+[2025-11-30T04:58:57.496115] Generating embeddings for 228 chunks
+[2025-11-30T04:58:58.078726]    [100/228] Generated embeddings
+[2025-11-30T04:58:58.817937]    [200/228] Generated embeddings
+[2025-11-30T04:58:59.219444]    [228/228] Generated embeddings
+[2025-11-30T04:58:59.219565] Inserting 228 chunks into database (batched)
+[2025-11-30T04:59:20.196393]    Inserted batch 1-100 for H1-AS1_6th-Edition.pdf
+[2025-11-30T04:59:40.176856]    Inserted batch 101-200 for H1-AS1_6th-Edition.pdf
+[2025-11-30T04:59:46.045247]    Inserted batch 201-228 for H1-AS1_6th-Edition.pdf
+[2025-11-30T04:59:46.045390] ✅ INGEST DONE: H1-AS1_6th-Edition.pdf, chunks_inserted=228
+[2025-11-30T04:59:46.045424] ✅ Ingested H1-AS1_6th-Edition.pdf: 55 pages, 228 chunks
+[2025-11-30T04:59:46.429610] INGEST START: G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T04:59:46.429782] Downloading pdfs/G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T04:59:50.113031]    ✅ Downloaded 3,426,535 bytes
+[2025-11-30T04:59:50.113173] Extracting text from G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T04:59:56.629225]    ✅ Extracted 61 pages
+[2025-11-30T04:59:56.629517]    ✅ Created 167 chunks (total_chunks=167)
+[2025-11-30T04:59:56.629559] Generating embeddings for 167 chunks
+[2025-11-30T04:59:57.529294]    [100/167] Generated embeddings
+[2025-11-30T04:59:57.938549]    [167/167] Generated embeddings
+[2025-11-30T04:59:57.938684] Inserting 167 chunks into database (batched)
+[2025-11-30T05:00:17.917916]    Inserted batch 1-100 for G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:00:31.405539]    Inserted batch 101-167 for G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:00:31.405677] ✅ INGEST DONE: G13-AS1_3rd-Edition-Amd14-2024.pdf, chunks_inserted=167
+[2025-11-30T05:00:31.405711] ✅ Ingested G13-AS1_3rd-Edition-Amd14-2024.pdf: 61 pages, 167 chunks
+[2025-11-30T05:00:31.789226]    ⏭️  SKIP already ingested: H1-AS1_6th-Edition.pdf
+[2025-11-30T05:00:31.981444] INGEST START: H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:00:31.981587] Downloading pdfs/H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:00:34.692463]    ✅ Downloaded 995,676 bytes
+[2025-11-30T05:00:34.692614] Extracting text from H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:00:35.898280]    ✅ Extracted 37 pages
+[2025-11-30T05:00:35.898546]    ✅ Created 151 chunks (total_chunks=151)
+[2025-11-30T05:00:35.898600] Generating embeddings for 151 chunks
+[2025-11-30T05:00:36.590506]    [100/151] Generated embeddings
+[2025-11-30T05:00:37.129126]    [151/151] Generated embeddings
+[2025-11-30T05:00:37.129253] Inserting 151 chunks into database (batched)
+[2025-11-30T05:00:57.066618]    Inserted batch 1-100 for H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:01:07.416031]    Inserted batch 101-151 for H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:01:07.416188] ✅ INGEST DONE: H1-VM1_6th-Edition-2025.pdf, chunks_inserted=151
+[2025-11-30T05:01:07.416223] ✅ Ingested H1-VM1_6th-Edition-2025.pdf: 37 pages, 151 chunks
+[2025-11-30T05:01:07.799934] INGEST START: GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T05:01:07.800070] Downloading pdfs/GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T05:01:10.682440]    ✅ Downloaded 1,912,758 bytes
+[2025-11-30T05:01:10.682581] Extracting text from GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T05:01:11.724011]    ✅ Extracted 17 pages
+[2025-11-30T05:01:11.724219]    ✅ Created 65 chunks (total_chunks=65)
+[2025-11-30T05:01:11.724260] Generating embeddings for 65 chunks
+[2025-11-30T05:01:12.277884]    [65/65] Generated embeddings
+[2025-11-30T05:01:12.278010] Inserting 65 chunks into database (batched)
+[2025-11-30T05:01:25.367565]    Inserted batch 1-65 for GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T05:01:25.367721] ✅ INGEST DONE: GIB-Bracing-Supplement-2016.pdf, chunks_inserted=65
+[2025-11-30T05:01:25.367757] ✅ Ingested GIB-Bracing-Supplement-2016.pdf: 17 pages, 65 chunks
+[2025-11-30T05:01:25.750997] INGEST START: GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:01:25.751145] Downloading pdfs/GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:01:28.930608]    ✅ Downloaded 3,839,441 bytes
+[2025-11-30T05:01:28.930740] Extracting text from GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:01:31.050473]    ✅ Extracted 32 pages
+[2025-11-30T05:01:31.050769]    ✅ Created 138 chunks (total_chunks=138)
+[2025-11-30T05:01:31.050812] Generating embeddings for 138 chunks
+[2025-11-30T05:01:31.603126]    [100/138] Generated embeddings
+[2025-11-30T05:01:31.874479]    [138/138] Generated embeddings
+[2025-11-30T05:01:31.874618] Inserting 138 chunks into database (batched)
+[2025-11-30T05:01:51.827922]    Inserted batch 1-100 for GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:01:59.638784]    Inserted batch 101-138 for GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:01:59.638913] ✅ INGEST DONE: GIB-EzyBrace-Systems-2016.pdf, chunks_inserted=138
+[2025-11-30T05:01:59.638945] ✅ Ingested GIB-EzyBrace-Systems-2016.pdf: 32 pages, 138 chunks
+[2025-11-30T05:02:00.023344] INGEST START: GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:02:00.023512] Downloading pdfs/GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:02:03.693556]    ✅ Downloaded 10,099,305 bytes
+[2025-11-30T05:02:03.693702] Extracting text from GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:02:14.881787]    ✅ Extracted 152 pages
+[2025-11-30T05:02:14.882404]    ✅ Created 587 chunks (total_chunks=587)
+[2025-11-30T05:02:14.882465] Generating embeddings for 587 chunks
+[2025-11-30T05:02:15.573335]    [100/587] Generated embeddings
+[2025-11-30T05:02:16.179189]    [200/587] Generated embeddings
+[2025-11-30T05:02:16.910061]    [300/587] Generated embeddings
+[2025-11-30T05:02:17.702930]    [400/587] Generated embeddings
+[2025-11-30T05:02:18.351737]    [500/587] Generated embeddings
+[2025-11-30T05:02:19.724488]    [587/587] Generated embeddings
+[2025-11-30T05:02:19.724630] Inserting 587 chunks into database (batched)
+[2025-11-30T05:02:39.601496]    Inserted batch 1-100 for GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:02:59.487350]    Inserted batch 101-200 for GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:03:06.546864] 
+1. Loading manifest from /app/backend-minimal/training/docs_manifest.jsonl
+[2025-11-30T05:03:06.547067]    ✅ Loaded 34 PDF entries
+[2025-11-30T05:03:06.547108] 
+2. Connecting to database
+[2025-11-30T05:03:07.799969] 
+3. Processing PDFs
+[2025-11-30T05:03:08.186701]    ⏭️  SKIP already ingested: E3-AS1_2nd-Edition-Amd7-2020.pdf
+[2025-11-30T05:03:08.378386]    ⏭️  SKIP already ingested: G12-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:03:08.378525]    ⏭️  Skipping expired document
+[2025-11-30T05:03:08.378559]    ⏭️  Skipping expired document
+[2025-11-30T05:03:08.378598]    ⏭️  Skipping expired document
+[2025-11-30T05:03:08.378624]    ⏭️  Skipping expired document
+[2025-11-30T05:03:08.378647]    ⏭️  Skipping expired document
+[2025-11-30T05:03:08.378672]    ⏭️  Skipping expired document
+[2025-11-30T05:03:08.378695]    ⏭️  Skipping expired document
+[2025-11-30T05:03:08.570251]    ⏭️  SKIP already ingested: E1-AS1_1st-Edition-Amd12-2024.pdf
+[2025-11-30T05:03:08.762418]    ⏭️  SKIP already ingested: E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T05:03:08.954145]    ⏭️  SKIP already ingested: C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T05:03:09.145712]    ⏭️  SKIP already ingested: F4-AS1_Amendment-6-2021.pdf
+[2025-11-30T05:03:09.337287]    ⏭️  SKIP already ingested: F6-AS1_Amendment-3-2021.pdf
+[2025-11-30T05:03:09.533140]    ⏭️  SKIP already ingested: F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T05:03:09.724714]    ⏭️  SKIP already ingested: H1-AS1_6th-Edition.pdf
+[2025-11-30T05:03:09.916343]    ⏭️  SKIP already ingested: G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:03:10.108318]    ⏭️  SKIP already ingested: H1-AS1_6th-Edition.pdf
+[2025-11-30T05:03:10.300110]    ⏭️  SKIP already ingested: H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:03:10.491927]    ⏭️  SKIP already ingested: GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T05:03:10.683593]    ⏭️  SKIP already ingested: GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:03:10.875166]    ⏭️  SKIP already ingested: GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:03:11.066756] INGEST START: Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:03:11.066881] Downloading pdfs/Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:03:14.025279]    ✅ Downloaded 2,255,705 bytes
+[2025-11-30T05:03:14.025407] Extracting text from Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:03:16.751803]    ✅ Extracted 106 pages
+[2025-11-30T05:03:16.752322]    ✅ Created 456 chunks (total_chunks=456)
+[2025-11-30T05:03:16.752375] Generating embeddings for 456 chunks
+[2025-11-30T05:03:17.474233]    [100/456] Generated embeddings
+[2025-11-30T05:03:18.102948]    [200/456] Generated embeddings
+[2025-11-30T05:03:18.737109]    [300/456] Generated embeddings
+[2025-11-30T05:03:19.386880]    Inserted batch 201-300 for GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:03:19.744531]    [400/456] Generated embeddings
+[2025-11-30T05:03:20.204556]    [456/456] Generated embeddings
+[2025-11-30T05:03:20.204681] Inserting 456 chunks into database (batched)
+[2025-11-30T05:03:39.256562]    Inserted batch 301-400 for GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:03:40.068764]    Inserted batch 1-100 for Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:03:59.130668]    Inserted batch 401-500 for GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:03:59.944349]    Inserted batch 101-200 for Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:04:16.471301]    Inserted batch 501-587 for GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:04:16.471441] ✅ INGEST DONE: GIB-Fire-Systems-Manual.pdf, chunks_inserted=587
+[2025-11-30T05:04:16.471475] ✅ Ingested GIB-Fire-Systems-Manual.pdf: 152 pages, 587 chunks
+[2025-11-30T05:04:16.857846]    ⏭️  SKIP already ingested: Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:04:17.049148] INGEST START: Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:04:17.049275] Downloading pdfs/Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:04:19.795518]    Inserted batch 201-300 for Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:04:21.751874]    ✅ Downloaded 44,661,564 bytes
+[2025-11-30T05:04:21.752006] Extracting text from Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:04:39.658144]    Inserted batch 301-400 for Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:04:45.037931]    ✅ Extracted 386 pages
+[2025-11-30T05:04:45.039405]    ✅ Created 1725 chunks (total_chunks=1725)
+[2025-11-30T05:04:45.039479] Generating embeddings for 1725 chunks
+[2025-11-30T05:04:45.694176]    [100/1725] Generated embeddings
+[2025-11-30T05:04:46.134331]    [200/1725] Generated embeddings
+[2025-11-30T05:04:46.690422]    [300/1725] Generated embeddings
+[2025-11-30T05:04:47.238842]    [400/1725] Generated embeddings
+[2025-11-30T05:04:47.807427]    [500/1725] Generated embeddings
+[2025-11-30T05:04:48.185631]    [600/1725] Generated embeddings
+[2025-11-30T05:04:48.612113]    [700/1725] Generated embeddings
+[2025-11-30T05:04:48.982697]    [800/1725] Generated embeddings
+[2025-11-30T05:04:49.610122]    [900/1725] Generated embeddings
+[2025-11-30T05:04:50.413780]    [1000/1725] Generated embeddings
+[2025-11-30T05:04:50.727612]    [1100/1725] Generated embeddings
+[2025-11-30T05:04:50.954735]    Inserted batch 401-456 for Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:04:50.954878] ✅ INGEST DONE: Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf, chunks_inserted=456
+[2025-11-30T05:04:50.954912] ✅ Ingested Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf: 106 pages, 456 chunks
+[2025-11-30T05:04:51.340205] INGEST START: Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:04:51.340328] Downloading pdfs/Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:04:51.617952]    [1200/1725] Generated embeddings
+[2025-11-30T05:04:51.936800]    ✅ Downloaded 44,661,564 bytes
+[2025-11-30T05:04:51.936940] Extracting text from Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:04:52.243015]    [1300/1725] Generated embeddings
+[2025-11-30T05:04:52.778342]    [1400/1725] Generated embeddings
+[2025-11-30T05:04:53.273936]    [1500/1725] Generated embeddings
+[2025-11-30T05:04:53.748753]    [1600/1725] Generated embeddings
+[2025-11-30T05:04:54.198023]    [1700/1725] Generated embeddings
+[2025-11-30T05:04:54.656141]    [1725/1725] Generated embeddings
+[2025-11-30T05:04:54.656265] Inserting 1725 chunks into database (batched)
+[2025-11-30T05:05:14.559033]    Inserted batch 1-100 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:05:15.267799]    ✅ Extracted 386 pages
+[2025-11-30T05:05:15.269267]    ✅ Created 1725 chunks (total_chunks=1725)
+[2025-11-30T05:05:15.269342] Generating embeddings for 1725 chunks
+[2025-11-30T05:05:16.040225]    [100/1725] Generated embeddings
+[2025-11-30T05:05:16.504157]    [200/1725] Generated embeddings
+[2025-11-30T05:05:17.167066]    [300/1725] Generated embeddings
+[2025-11-30T05:05:17.564262]    [400/1725] Generated embeddings
+[2025-11-30T05:05:18.044376]    [500/1725] Generated embeddings
+[2025-11-30T05:05:18.659369]    [600/1725] Generated embeddings
+[2025-11-30T05:05:19.117226]    [700/1725] Generated embeddings
+[2025-11-30T05:05:19.538901]    [800/1725] Generated embeddings
+[2025-11-30T05:05:19.943480]    [900/1725] Generated embeddings
+[2025-11-30T05:05:20.474184]    [1000/1725] Generated embeddings
+[2025-11-30T05:05:21.078300]    [1100/1725] Generated embeddings
+[2025-11-30T05:05:21.782023]    [1200/1725] Generated embeddings
+[2025-11-30T05:05:23.052553]    [1300/1725] Generated embeddings
+[2025-11-30T05:05:23.575951]    [1400/1725] Generated embeddings
+[2025-11-30T05:05:24.179481]    [1500/1725] Generated embeddings
+[2025-11-30T05:05:24.519609]    [1600/1725] Generated embeddings
+[2025-11-30T05:05:24.980242]    [1700/1725] Generated embeddings
+[2025-11-30T05:05:25.418266]    [1725/1725] Generated embeddings
+[2025-11-30T05:05:25.418388] Inserting 1725 chunks into database (batched)
+[2025-11-30T05:05:34.466603]    Inserted batch 101-200 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:05:45.318232]    Inserted batch 1-100 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:05:54.356817]    Inserted batch 201-300 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:06:05.212233]    Inserted batch 101-200 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:06:14.257747]    Inserted batch 301-400 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:06:25.098312]    Inserted batch 201-300 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:06:34.170698]    Inserted batch 401-500 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:06:45.005442]    Inserted batch 301-400 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:06:54.037983]    Inserted batch 501-600 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:07:04.859504]    Inserted batch 401-500 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:07:13.936310]    Inserted batch 601-700 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:07:24.746170]    Inserted batch 501-600 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:07:33.814398]    Inserted batch 701-800 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:07:44.626755]    Inserted batch 601-700 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:07:53.720903]    Inserted batch 801-900 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:08:04.479873]    Inserted batch 701-800 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:08:13.608123]    Inserted batch 901-1000 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:08:24.325373]    Inserted batch 801-900 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:08:33.515741]    Inserted batch 1001-1100 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:08:44.182137]    Inserted batch 901-1000 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:08:53.394362]    Inserted batch 1101-1200 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:09:04.041553]    Inserted batch 1001-1100 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:09:13.280196]    Inserted batch 1201-1300 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:09:23.886050]    Inserted batch 1101-1200 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:09:33.168095]    Inserted batch 1301-1400 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:09:43.740364]    Inserted batch 1201-1300 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:09:53.078940]    Inserted batch 1401-1500 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:10:03.611304]    Inserted batch 1301-1400 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:10:12.996436]    Inserted batch 1501-1600 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:10:23.442002]    Inserted batch 1401-1500 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:10:32.849623]    Inserted batch 1601-1700 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:10:38.098467]    Inserted batch 1701-1725 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:10:38.098632] ✅ INGEST DONE: Ardex-Waterproofing-Manual.pdf, chunks_inserted=1725
+[2025-11-30T05:10:38.100986] ✅ Ingested Ardex-Waterproofing-Manual.pdf: 386 pages, 1725 chunks
+[2025-11-30T05:10:38.496370] INGEST START: B1-Structure-Amendment13.pdf
+[2025-11-30T05:10:38.496497] Downloading pdfs/B1-Structure-Amendment13.pdf
+[2025-11-30T05:10:41.692863]    ✅ Downloaded 1,684,014 bytes
+[2025-11-30T05:10:41.692988] Extracting text from B1-Structure-Amendment13.pdf
+[2025-11-30T05:10:43.270689]    Inserted batch 1501-1600 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:10:44.686095]    ✅ Extracted 88 pages
+[2025-11-30T05:10:44.686473]    ✅ Created 291 chunks (total_chunks=291)
+[2025-11-30T05:10:44.686520] Generating embeddings for 291 chunks
+[2025-11-30T05:10:45.236986]    [100/291] Generated embeddings
+[2025-11-30T05:10:45.973236]    [200/291] Generated embeddings
+[2025-11-30T05:10:46.649527]    [291/291] Generated embeddings
+[2025-11-30T05:10:46.649659] Inserting 291 chunks into database (batched)
+[2025-11-30T05:11:03.109116]    Inserted batch 1601-1700 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:11:06.529640]    Inserted batch 1-100 for B1-Structure-Amendment13.pdf
+[2025-11-30T05:11:08.353530]    Inserted batch 1701-1725 for Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:11:08.353681] ✅ INGEST DONE: Ardex-Waterproofing-Manual.pdf, chunks_inserted=1725
+[2025-11-30T05:11:08.353715] ✅ Ingested Ardex-Waterproofing-Manual.pdf: 386 pages, 1725 chunks
+[2025-11-30T05:11:08.751221]    ⏭️  SKIP already ingested: B1-Structure-Amendment13.pdf
+[2025-11-30T05:11:08.945693] INGEST START: b1-structure-as1-second-edition.pdf
+[2025-11-30T05:11:08.945806] Downloading pdfs/b1-structure-as1-second-edition.pdf
+[2025-11-30T05:11:11.223225]    ✅ Downloaded 621,525 bytes
+[2025-11-30T05:11:11.223351] Extracting text from b1-structure-as1-second-edition.pdf
+[2025-11-30T05:11:11.643802]    ✅ Extracted 21 pages
+[2025-11-30T05:11:11.644000]    ✅ Created 77 chunks (total_chunks=77)
+[2025-11-30T05:11:11.644035] Generating embeddings for 77 chunks
+[2025-11-30T05:11:12.263221]    [77/77] Generated embeddings
+[2025-11-30T05:11:12.263354] Inserting 77 chunks into database (batched)
+[2025-11-30T05:11:26.373881]    Inserted batch 101-200 for B1-Structure-Amendment13.pdf
+[2025-11-30T05:11:27.636389]    Inserted batch 1-77 for b1-structure-as1-second-edition.pdf
+[2025-11-30T05:11:27.636532] ✅ INGEST DONE: b1-structure-as1-second-edition.pdf, chunks_inserted=77
+[2025-11-30T05:11:27.636568] ✅ Ingested b1-structure-as1-second-edition.pdf: 21 pages, 77 chunks
+[2025-11-30T05:11:28.018540] INGEST START: building-code.pdf
+[2025-11-30T05:11:28.018672] Downloading pdfs/building-code.pdf
+[2025-11-30T05:11:30.833039]    ✅ Downloaded 1,641,595 bytes
+[2025-11-30T05:11:30.833168] Extracting text from building-code.pdf
+[2025-11-30T05:11:34.447026]    ✅ Extracted 226 pages
+[2025-11-30T05:11:34.447961]    ✅ Created 1135 chunks (total_chunks=1135)
+[2025-11-30T05:11:34.448023] Generating embeddings for 1135 chunks
+[2025-11-30T05:11:35.188893]    [100/1135] Generated embeddings
+[2025-11-30T05:11:35.952099]    [200/1135] Generated embeddings
+[2025-11-30T05:11:36.511250]    [300/1135] Generated embeddings
+[2025-11-30T05:11:37.032556]    [400/1135] Generated embeddings
+[2025-11-30T05:11:37.679709]    [500/1135] Generated embeddings
+[2025-11-30T05:11:38.509367]    [600/1135] Generated embeddings
+[2025-11-30T05:11:39.570886]    [700/1135] Generated embeddings
+[2025-11-30T05:11:39.890282]    [800/1135] Generated embeddings
+[2025-11-30T05:11:40.380816]    [900/1135] Generated embeddings
+[2025-11-30T05:11:40.978376]    [1000/1135] Generated embeddings
+[2025-11-30T05:11:41.838617]    [1100/1135] Generated embeddings
+[2025-11-30T05:11:42.104206]    [1135/1135] Generated embeddings
+[2025-11-30T05:11:42.104322] Inserting 1135 chunks into database (batched)
+[2025-11-30T05:11:44.461674]    Inserted batch 201-291 for B1-Structure-Amendment13.pdf
+[2025-11-30T05:11:44.461812] ✅ INGEST DONE: B1-Structure-Amendment13.pdf, chunks_inserted=291
+[2025-11-30T05:11:44.461847] ✅ Ingested B1-Structure-Amendment13.pdf: 88 pages, 291 chunks
+[2025-11-30T05:11:44.846447]    ⏭️  SKIP already ingested: b1-structure-as1-second-edition.pdf
+[2025-11-30T05:11:45.039067] INGEST START: building-code.pdf
+[2025-11-30T05:11:45.039188] Downloading pdfs/building-code.pdf
+[2025-11-30T05:11:45.277648]    ✅ Downloaded 1,641,595 bytes
+[2025-11-30T05:11:45.277763] Extracting text from building-code.pdf
+[2025-11-30T05:11:48.884690]    ✅ Extracted 226 pages
+[2025-11-30T05:11:48.885629]    ✅ Created 1135 chunks (total_chunks=1135)
+[2025-11-30T05:11:48.887130] Generating embeddings for 1135 chunks
+[2025-11-30T05:11:49.422500]    [100/1135] Generated embeddings
+[2025-11-30T05:11:50.066824]    [200/1135] Generated embeddings
+[2025-11-30T05:11:50.907227]    [300/1135] Generated embeddings
+[2025-11-30T05:11:51.424083]    [400/1135] Generated embeddings
+[2025-11-30T05:11:52.048956]    [500/1135] Generated embeddings
+[2025-11-30T05:11:52.647809]    [600/1135] Generated embeddings
+[2025-11-30T05:11:53.333341]    [700/1135] Generated embeddings
+[2025-11-30T05:11:53.858092]    [800/1135] Generated embeddings
+[2025-11-30T05:11:54.308385]    [900/1135] Generated embeddings
+[2025-11-30T05:11:54.673220]    [1000/1135] Generated embeddings
+[2025-11-30T05:11:55.109318]    [1100/1135] Generated embeddings
+[2025-11-30T05:11:55.538761]    [1135/1135] Generated embeddings
+[2025-11-30T05:11:55.538888] Inserting 1135 chunks into database (batched)
+[2025-11-30T05:12:02.034450]    Inserted batch 1-100 for building-code.pdf
+[2025-11-30T05:12:15.378588]    Inserted batch 1-100 for building-code.pdf
+[2025-11-30T05:12:21.940523]    Inserted batch 101-200 for building-code.pdf
+[2025-11-30T05:12:35.213072]    Inserted batch 101-200 for building-code.pdf
+[2025-11-30T05:12:41.866018]    Inserted batch 201-300 for building-code.pdf
+[2025-11-30T05:12:55.065898]    Inserted batch 201-300 for building-code.pdf
+[2025-11-30T05:13:01.781125]    Inserted batch 301-400 for building-code.pdf
+[2025-11-30T05:13:14.938653]    Inserted batch 301-400 for building-code.pdf
+[2025-11-30T05:13:21.727974]    Inserted batch 401-500 for building-code.pdf
+[2025-11-30T05:13:34.895835]    Inserted batch 401-500 for building-code.pdf
+[2025-11-30T05:13:41.782685]    Inserted batch 501-600 for building-code.pdf
+[2025-11-30T05:13:54.810165]    Inserted batch 501-600 for building-code.pdf
+[2025-11-30T05:14:01.740958]    Inserted batch 601-700 for building-code.pdf
+[2025-11-30T05:14:14.685834]    Inserted batch 601-700 for building-code.pdf
+[2025-11-30T05:14:22.066382]    Inserted batch 701-800 for building-code.pdf
+[2025-11-30T05:14:34.540728]    Inserted batch 701-800 for building-code.pdf
+[2025-11-30T05:14:41.984602]    Inserted batch 801-900 for building-code.pdf
+[2025-11-30T05:14:54.374192]    Inserted batch 801-900 for building-code.pdf
+[2025-11-30T05:15:01.891807]    Inserted batch 901-1000 for building-code.pdf
+[2025-11-30T05:15:14.243601]    Inserted batch 901-1000 for building-code.pdf
+[2025-11-30T05:15:22.200383]    Inserted batch 1001-1100 for building-code.pdf
+[2025-11-30T05:15:29.411743]    Inserted batch 1101-1135 for building-code.pdf
+[2025-11-30T05:15:29.411895] ✅ INGEST DONE: building-code.pdf, chunks_inserted=1135
+[2025-11-30T05:15:29.411932] ✅ Ingested building-code.pdf: 226 pages, 1135 chunks
+[2025-11-30T05:15:29.805044] INGEST START: C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:15:29.805187] Downloading pdfs/C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:15:33.298191]    ✅ Downloaded 6,073,774 bytes
+[2025-11-30T05:15:33.298329] Extracting text from C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:15:34.111190]    Inserted batch 1001-1100 for building-code.pdf
+[2025-11-30T05:15:36.741418]    ✅ Extracted 124 pages
+[2025-11-30T05:15:36.741904]    ✅ Created 471 chunks (total_chunks=471)
+[2025-11-30T05:15:36.741957] Generating embeddings for 471 chunks
+[2025-11-30T05:15:37.383780]    [100/471] Generated embeddings
+[2025-11-30T05:15:38.094526]    [200/471] Generated embeddings
+[2025-11-30T05:15:38.950604]    [300/471] Generated embeddings
+[2025-11-30T05:15:39.867156]    [400/471] Generated embeddings
+[2025-11-30T05:15:40.175707]    [471/471] Generated embeddings
+[2025-11-30T05:15:40.175855] Inserting 471 chunks into database (batched)
+[2025-11-30T05:15:41.318363]    Inserted batch 1101-1135 for building-code.pdf
+[2025-11-30T05:15:41.318493] ✅ INGEST DONE: building-code.pdf, chunks_inserted=1135
+[2025-11-30T05:15:41.318523] ✅ Ingested building-code.pdf: 226 pages, 1135 chunks
+[2025-11-30T05:15:41.709882] INGEST START: C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:15:41.710053] Downloading pdfs/C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:15:41.972624]    ✅ Downloaded 6,073,774 bytes
+[2025-11-30T05:15:41.972838] Extracting text from C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:15:45.489189]    ✅ Extracted 124 pages
+[2025-11-30T05:15:45.489695]    ✅ Created 471 chunks (total_chunks=471)
+[2025-11-30T05:15:45.489748] Generating embeddings for 471 chunks
+[2025-11-30T05:15:45.892329]    [100/471] Generated embeddings
+[2025-11-30T05:15:46.340184]    [200/471] Generated embeddings
+[2025-11-30T05:15:46.743586]    [300/471] Generated embeddings
+[2025-11-30T05:15:47.390390]    [400/471] Generated embeddings
+[2025-11-30T05:15:48.108706]    [471/471] Generated embeddings
+[2025-11-30T05:15:48.108833] Inserting 471 chunks into database (batched)
+[2025-11-30T05:16:00.060583]    Inserted batch 1-100 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:16:07.991403]    Inserted batch 1-100 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:16:20.002644]    Inserted batch 101-200 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:16:27.930551]    Inserted batch 101-200 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:16:40.069177]    Inserted batch 201-300 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:16:47.979778]    Inserted batch 201-300 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:17:00.057090]    Inserted batch 301-400 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:17:08.062855]    Inserted batch 301-400 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:17:14.701172]    Inserted batch 401-471 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:17:14.701319] ✅ INGEST DONE: C-AS2_2nd-Edition_2025.pdf, chunks_inserted=471
+[2025-11-30T05:17:14.701353] ✅ Ingested C-AS2_2nd-Edition_2025.pdf: 124 pages, 471 chunks
+[2025-11-30T05:17:15.090543] INGEST START: e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:17:15.090657] Downloading pdfs/e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:17:19.043217]    ✅ Downloaded 23,449,577 bytes
+[2025-11-30T05:17:19.043378] Extracting text from e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:17:22.525942]    Inserted batch 401-471 for C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:17:22.526070] ✅ INGEST DONE: C-AS2_2nd-Edition_2025.pdf, chunks_inserted=471
+[2025-11-30T05:17:22.526117] ✅ Ingested C-AS2_2nd-Edition_2025.pdf: 124 pages, 471 chunks
+[2025-11-30T05:17:22.913522] INGEST START: e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:17:22.913744] Downloading pdfs/e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:17:23.279895]    ✅ Downloaded 23,449,577 bytes
+[2025-11-30T05:17:23.280031] Extracting text from e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:17:23.362980]    ✅ Extracted 196 pages
+[2025-11-30T05:17:23.363518]    ✅ Created 564 chunks (total_chunks=564)
+[2025-11-30T05:17:23.363588] Generating embeddings for 564 chunks
+[2025-11-30T05:17:24.001049]    [100/564] Generated embeddings
+[2025-11-30T05:17:24.498988]    [200/564] Generated embeddings
+[2025-11-30T05:17:25.013150]    [300/564] Generated embeddings
+[2025-11-30T05:17:25.702734]    [400/564] Generated embeddings
+[2025-11-30T05:17:26.837498]    [500/564] Generated embeddings
+[2025-11-30T05:17:27.301676]    [564/564] Generated embeddings
+[2025-11-30T05:17:27.301825] Inserting 564 chunks into database (batched)
+[2025-11-30T05:17:27.505155]    ✅ Extracted 196 pages
+[2025-11-30T05:17:27.505759]    ✅ Created 564 chunks (total_chunks=564)
+[2025-11-30T05:17:27.505844] Generating embeddings for 564 chunks
+[2025-11-30T05:17:28.023210]    [100/564] Generated embeddings
+[2025-11-30T05:17:28.365741]    [200/564] Generated embeddings
+[2025-11-30T05:17:29.131625]    [300/564] Generated embeddings
+[2025-11-30T05:17:29.614259]    [400/564] Generated embeddings
+[2025-11-30T05:17:30.285414]    [500/564] Generated embeddings
+[2025-11-30T05:17:30.774011]    [564/564] Generated embeddings
+[2025-11-30T05:17:30.774153] Inserting 564 chunks into database (batched)
+[2025-11-30T05:17:47.367436]    Inserted batch 1-100 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:17:50.786281]    Inserted batch 1-100 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:18:07.381516]    Inserted batch 101-200 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:18:10.720694]    Inserted batch 101-200 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:18:27.366405]    Inserted batch 201-300 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:18:30.630094]    Inserted batch 201-300 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:18:47.348765]    Inserted batch 301-400 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:18:50.579499]    Inserted batch 301-400 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:19:07.336974]    Inserted batch 401-500 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:19:10.448678]    Inserted batch 401-500 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:19:20.244266]    Inserted batch 501-564 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:19:20.244407] ✅ INGEST DONE: e2-external-moisture-as1-fourth-edition.pdf, chunks_inserted=564
+[2025-11-30T05:19:20.244441] ✅ Ingested e2-external-moisture-as1-fourth-edition.pdf: 196 pages, 564 chunks
+[2025-11-30T05:19:20.635592] INGEST START: nz_metal_roofing.pdf
+[2025-11-30T05:19:20.635701] Downloading pdfs/nz_metal_roofing.pdf
+[2025-11-30T05:19:23.299520]    Inserted batch 501-564 for e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:19:23.299672] ✅ INGEST DONE: e2-external-moisture-as1-fourth-edition.pdf, chunks_inserted=564
+[2025-11-30T05:19:23.299707] ✅ Ingested e2-external-moisture-as1-fourth-edition.pdf: 196 pages, 564 chunks
+[2025-11-30T05:19:23.688109] INGEST START: nz_metal_roofing.pdf
+[2025-11-30T05:19:23.688236] Downloading pdfs/nz_metal_roofing.pdf
+[2025-11-30T05:19:25.094752]    ✅ Downloaded 18,820,703 bytes
+[2025-11-30T05:19:25.094892] Extracting text from nz_metal_roofing.pdf
+[2025-11-30T05:19:25.312592]    ✅ Downloaded 18,820,703 bytes
+[2025-11-30T05:19:25.312737] Extracting text from nz_metal_roofing.pdf
+[2025-11-30T05:20:15.660323]    ✅ Extracted 593 pages
+[2025-11-30T05:20:15.662285]    ✅ Created 1893 chunks (total_chunks=1893)
+[2025-11-30T05:20:15.662367] Generating embeddings for 1893 chunks
+[2025-11-30T05:20:15.878901]    ✅ Extracted 593 pages
+[2025-11-30T05:20:15.880859]    ✅ Created 1893 chunks (total_chunks=1893)
+[2025-11-30T05:20:15.880939] Generating embeddings for 1893 chunks
+[2025-11-30T05:20:16.338484]    [100/1893] Generated embeddings
+[2025-11-30T05:20:16.549617]    [100/1893] Generated embeddings
+[2025-11-30T05:20:16.817170]    [200/1893] Generated embeddings
+[2025-11-30T05:20:17.329432]    [300/1893] Generated embeddings
+[2025-11-30T05:20:17.352657]    [200/1893] Generated embeddings
+[2025-11-30T05:20:18.090911]    [400/1893] Generated embeddings
+[2025-11-30T05:20:18.279443]    [300/1893] Generated embeddings
+[2025-11-30T05:20:18.713456]    [500/1893] Generated embeddings
+[2025-11-30T05:20:18.829019]    [400/1893] Generated embeddings
+[2025-11-30T05:20:19.131365]    [600/1893] Generated embeddings
+[2025-11-30T05:20:19.473305]    [500/1893] Generated embeddings
+[2025-11-30T05:20:19.770632]    [700/1893] Generated embeddings
+[2025-11-30T05:20:20.133924]    [600/1893] Generated embeddings
+[2025-11-30T05:20:20.487360]    [800/1893] Generated embeddings
+[2025-11-30T05:20:20.696188]    [700/1893] Generated embeddings
+[2025-11-30T05:20:21.075346]    [900/1893] Generated embeddings
+[2025-11-30T05:20:21.119728]    [800/1893] Generated embeddings
+[2025-11-30T05:20:21.540499]    [1000/1893] Generated embeddings
+[2025-11-30T05:20:21.784993]    [900/1893] Generated embeddings
+[2025-11-30T05:20:22.013317]    [1100/1893] Generated embeddings
+[2025-11-30T05:20:22.220188]    [1000/1893] Generated embeddings
+[2025-11-30T05:20:22.692822]    [1200/1893] Generated embeddings
+[2025-11-30T05:20:22.806356]    [1100/1893] Generated embeddings
+[2025-11-30T05:20:23.243368]    [1300/1893] Generated embeddings
+[2025-11-30T05:20:23.643244]    [1200/1893] Generated embeddings
+[2025-11-30T05:20:23.719414]    [1400/1893] Generated embeddings
+[2025-11-30T05:20:24.114393]    [1300/1893] Generated embeddings
+[2025-11-30T05:20:24.234626]    [1500/1893] Generated embeddings
+[2025-11-30T05:20:24.651629]    [1400/1893] Generated embeddings
+[2025-11-30T05:20:24.830661]    [1600/1893] Generated embeddings
+[2025-11-30T05:20:25.191641]    [1500/1893] Generated embeddings
+[2025-11-30T05:20:25.277661]    [1700/1893] Generated embeddings
+[2025-11-30T05:20:25.688004]    [1600/1893] Generated embeddings
+[2025-11-30T05:20:25.726259]    [1800/1893] Generated embeddings
+[2025-11-30T05:20:26.114803]    [1893/1893] Generated embeddings
+[2025-11-30T05:20:26.114927] Inserting 1893 chunks into database (batched)
+[2025-11-30T05:20:26.346378]    [1700/1893] Generated embeddings
+[2025-11-30T05:20:27.040309]    [1800/1893] Generated embeddings
+[2025-11-30T05:20:27.907453]    [1893/1893] Generated embeddings
+[2025-11-30T05:20:27.907599] Inserting 1893 chunks into database (batched)
+[2025-11-30T05:20:46.085608]    Inserted batch 1-100 for nz_metal_roofing.pdf
+[2025-11-30T05:20:47.789401]    Inserted batch 1-100 for nz_metal_roofing.pdf
+[2025-11-30T05:21:06.058970]    Inserted batch 101-200 for nz_metal_roofing.pdf
+[2025-11-30T05:21:07.699435]    Inserted batch 101-200 for nz_metal_roofing.pdf
+[2025-11-30T05:21:26.016246]    Inserted batch 201-300 for nz_metal_roofing.pdf
+[2025-11-30T05:21:27.571153]    Inserted batch 201-300 for nz_metal_roofing.pdf
+[2025-11-30T05:21:45.990118]    Inserted batch 301-400 for nz_metal_roofing.pdf
+[2025-11-30T05:21:47.458835]    Inserted batch 301-400 for nz_metal_roofing.pdf
+[2025-11-30T05:22:05.938701]    Inserted batch 401-500 for nz_metal_roofing.pdf
+[2025-11-30T05:22:07.329654]    Inserted batch 401-500 for nz_metal_roofing.pdf
+[2025-11-30T05:22:25.906142]    Inserted batch 501-600 for nz_metal_roofing.pdf
+[2025-11-30T05:22:27.199303]    Inserted batch 501-600 for nz_metal_roofing.pdf
+[2025-11-30T05:22:45.871161]    Inserted batch 601-700 for nz_metal_roofing.pdf
+[2025-11-30T05:22:47.091553]    Inserted batch 601-700 for nz_metal_roofing.pdf
+[2025-11-30T05:23:05.851726]    Inserted batch 701-800 for nz_metal_roofing.pdf
+[2025-11-30T05:23:07.002754]    Inserted batch 701-800 for nz_metal_roofing.pdf
+[2025-11-30T05:23:25.793943]    Inserted batch 801-900 for nz_metal_roofing.pdf
+[2025-11-30T05:23:26.872493]    Inserted batch 801-900 for nz_metal_roofing.pdf
+[2025-11-30T05:23:36.003529] 
+1. Loading manifest from /app/backend-minimal/training/docs_manifest.jsonl
+[2025-11-30T05:23:36.003731]    ✅ Loaded 34 PDF entries
+[2025-11-30T05:23:36.003764] 
+2. Connecting to database
+[2025-11-30T05:23:37.248680] 
+3. Processing PDFs
+[2025-11-30T05:23:37.637067]    ⏭️  SKIP already ingested: E3-AS1_2nd-Edition-Amd7-2020.pdf
+[2025-11-30T05:23:37.831379]    ⏭️  SKIP already ingested: G12-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:23:38.026037] INGEST START: C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:23:38.026175] Downloading pdfs/C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:23:41.297635]    ✅ Downloaded 3,757,652 bytes
+[2025-11-30T05:23:41.297766] Extracting text from C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:23:45.751612]    Inserted batch 901-1000 for nz_metal_roofing.pdf
+[2025-11-30T05:23:46.766915]    Inserted batch 901-1000 for nz_metal_roofing.pdf
+[2025-11-30T05:23:50.775119]    ✅ Extracted 112 pages
+[2025-11-30T05:23:50.775590]    ✅ Created 392 chunks (total_chunks=392)
+[2025-11-30T05:23:50.777444] Generating embeddings for 392 chunks
+[2025-11-30T05:23:51.742972]    [100/392] Generated embeddings
+[2025-11-30T05:23:52.324869]    [200/392] Generated embeddings
+[2025-11-30T05:23:52.856118]    [300/392] Generated embeddings
+[2025-11-30T05:23:53.236605]    [392/392] Generated embeddings
+[2025-11-30T05:23:53.236767] Inserting 392 chunks into database (batched)
+[2025-11-30T05:24:05.715969]    Inserted batch 1001-1100 for nz_metal_roofing.pdf
+[2025-11-30T05:24:06.627749]    Inserted batch 1001-1100 for nz_metal_roofing.pdf
+[2025-11-30T05:24:13.230599]    Inserted batch 1-100 for C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:24:25.668291]    Inserted batch 1101-1200 for nz_metal_roofing.pdf
+[2025-11-30T05:24:26.571994]    Inserted batch 1101-1200 for nz_metal_roofing.pdf
+[2025-11-30T05:24:33.176373]    Inserted batch 101-200 for C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:24:45.661777]    Inserted batch 1201-1300 for nz_metal_roofing.pdf
+[2025-11-30T05:24:46.545915]    Inserted batch 1201-1300 for nz_metal_roofing.pdf
+[2025-11-30T05:24:53.123220]    Inserted batch 201-300 for C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:25:05.663010]    Inserted batch 1301-1400 for nz_metal_roofing.pdf
+[2025-11-30T05:25:06.519504]    Inserted batch 1301-1400 for nz_metal_roofing.pdf
+[2025-11-30T05:25:11.558143]    Inserted batch 301-392 for C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:25:11.558290] ✅ INGEST DONE: C-AS3_Amendment-4_2019-EXPIRED.pdf, chunks_inserted=392
+[2025-11-30T05:25:11.558326] ✅ Ingested C-AS3_Amendment-4_2019-EXPIRED.pdf: 112 pages, 392 chunks
+[2025-11-30T05:25:11.948391] INGEST START: CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:25:11.948545] Downloading pdfs/CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:25:15.349706]    ✅ Downloaded 3,757,652 bytes
+[2025-11-30T05:25:15.349854] Extracting text from CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:25:25.449428]    ✅ Extracted 112 pages
+[2025-11-30T05:25:25.449936]    ✅ Created 392 chunks (total_chunks=392)
+[2025-11-30T05:25:25.449994] Generating embeddings for 392 chunks
+[2025-11-30T05:25:25.638754]    Inserted batch 1401-1500 for nz_metal_roofing.pdf
+[2025-11-30T05:25:26.200699]    [100/392] Generated embeddings
+[2025-11-30T05:25:26.530905]    Inserted batch 1401-1500 for nz_metal_roofing.pdf
+[2025-11-30T05:25:26.776642]    [200/392] Generated embeddings
+[2025-11-30T05:25:27.309799]    [300/392] Generated embeddings
+[2025-11-30T05:25:27.761030]    [392/392] Generated embeddings
+[2025-11-30T05:25:27.761174] Inserting 392 chunks into database (batched)
+[2025-11-30T05:25:45.609046]    Inserted batch 1501-1600 for nz_metal_roofing.pdf
+[2025-11-30T05:25:46.567699]    Inserted batch 1501-1600 for nz_metal_roofing.pdf
+[2025-11-30T05:25:47.764818]    Inserted batch 1-100 for CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:26:05.634448]    Inserted batch 1601-1700 for nz_metal_roofing.pdf
+[2025-11-30T05:26:06.617032]    Inserted batch 1601-1700 for nz_metal_roofing.pdf
+[2025-11-30T05:26:07.763528]    Inserted batch 101-200 for CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:26:25.578407]    Inserted batch 1701-1800 for nz_metal_roofing.pdf
+[2025-11-30T05:26:26.625217]    Inserted batch 1701-1800 for nz_metal_roofing.pdf
+[2025-11-30T05:26:27.728578]    Inserted batch 201-300 for CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:26:44.183653]    Inserted batch 1801-1893 for nz_metal_roofing.pdf
+[2025-11-30T05:26:44.183803] ✅ INGEST DONE: nz_metal_roofing.pdf, chunks_inserted=1893
+[2025-11-30T05:26:44.183836] ✅ Ingested nz_metal_roofing.pdf: 593 pages, 1893 chunks
+[2025-11-30T05:26:44.589794] INGEST START: NZS-36042011.pdf
+[2025-11-30T05:26:44.590093] Downloading pdfs/NZS-36042011.pdf
+[2025-11-30T05:26:45.298144]    Inserted batch 1801-1893 for nz_metal_roofing.pdf
+[2025-11-30T05:26:45.298293] ✅ INGEST DONE: nz_metal_roofing.pdf, chunks_inserted=1893
+[2025-11-30T05:26:45.298329] ✅ Ingested nz_metal_roofing.pdf: 593 pages, 1893 chunks
+[2025-11-30T05:26:46.100882] INGEST START: NZS-36042011.pdf
+[2025-11-30T05:26:46.101028] Downloading pdfs/NZS-36042011.pdf
+[2025-11-30T05:26:46.548762]    Inserted batch 301-392 for CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:26:46.548908] ✅ INGEST DONE: CAS3-Amendment4-2019-EXPIRED.pdf, chunks_inserted=392
+[2025-11-30T05:26:46.548959] ✅ Ingested CAS3-Amendment4-2019-EXPIRED.pdf: 112 pages, 392 chunks
+[2025-11-30T05:26:46.939471] INGEST START: C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:26:46.939608] Downloading pdfs/C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:26:48.407742]    ✅ Downloaded 10,560,721 bytes
+[2025-11-30T05:26:48.407885] Extracting text from NZS-36042011.pdf
+[2025-11-30T05:26:48.659852]    ✅ Downloaded 10,560,721 bytes
+[2025-11-30T05:26:48.659991] Extracting text from NZS-36042011.pdf
+[2025-11-30T05:26:50.085816]    ✅ Downloaded 4,323,110 bytes
+[2025-11-30T05:26:50.085957] Extracting text from C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:27:07.565659]    ✅ Extracted 449 pages
+[2025-11-30T05:27:07.567108]    ✅ Created 1540 chunks (total_chunks=1540)
+[2025-11-30T05:27:07.567194] Generating embeddings for 1540 chunks
+[2025-11-30T05:27:07.939304]    ✅ Extracted 449 pages
+[2025-11-30T05:27:07.940736]    ✅ Created 1540 chunks (total_chunks=1540)
+[2025-11-30T05:27:07.940821] Generating embeddings for 1540 chunks
+[2025-11-30T05:27:08.387440]    ✅ Extracted 129 pages
+[2025-11-30T05:27:08.387987]    ✅ Created 455 chunks (total_chunks=455)
+[2025-11-30T05:27:08.388047] Generating embeddings for 455 chunks
+[2025-11-30T05:27:08.398201]    [100/1540] Generated embeddings
+[2025-11-30T05:27:08.496921]    [100/1540] Generated embeddings
+[2025-11-30T05:27:08.911706]    [100/455] Generated embeddings
+[2025-11-30T05:27:09.101063]    [200/1540] Generated embeddings
+[2025-11-30T05:27:09.211044]    [200/1540] Generated embeddings
+[2025-11-30T05:27:09.616795]    [200/455] Generated embeddings
+[2025-11-30T05:27:09.884982]    [300/1540] Generated embeddings
+[2025-11-30T05:27:09.981128]    [300/1540] Generated embeddings
+[2025-11-30T05:27:10.119557]    [300/455] Generated embeddings
+[2025-11-30T05:27:10.406984]    [400/1540] Generated embeddings
+[2025-11-30T05:27:10.546594]    [400/455] Generated embeddings
+[2025-11-30T05:27:10.731645]    [400/1540] Generated embeddings
+[2025-11-30T05:27:10.879998]    [455/455] Generated embeddings
+[2025-11-30T05:27:10.880120] Inserting 455 chunks into database (batched)
+[2025-11-30T05:27:11.166469]    [500/1540] Generated embeddings
+[2025-11-30T05:27:11.509805]    [500/1540] Generated embeddings
+[2025-11-30T05:27:11.534121]    [600/1540] Generated embeddings
+[2025-11-30T05:27:11.955632]    [700/1540] Generated embeddings
+[2025-11-30T05:27:12.192817]    [600/1540] Generated embeddings
+[2025-11-30T05:27:12.449824]    [800/1540] Generated embeddings
+[2025-11-30T05:27:12.987323]    [700/1540] Generated embeddings
+[2025-11-30T05:27:13.255286]    [900/1540] Generated embeddings
+[2025-11-30T05:27:13.541446]    [800/1540] Generated embeddings
+[2025-11-30T05:27:13.751507]    [1000/1540] Generated embeddings
+[2025-11-30T05:27:14.302032]    [1100/1540] Generated embeddings
+[2025-11-30T05:27:14.342872]    [900/1540] Generated embeddings
+[2025-11-30T05:27:14.959350]    [1200/1540] Generated embeddings
+[2025-11-30T05:27:15.128086]    [1000/1540] Generated embeddings
+[2025-11-30T05:27:15.668210]    [1300/1540] Generated embeddings
+[2025-11-30T05:27:15.825748]    [1100/1540] Generated embeddings
+[2025-11-30T05:27:16.182097]    [1200/1540] Generated embeddings
+[2025-11-30T05:27:16.272641]    [1400/1540] Generated embeddings
+[2025-11-30T05:27:16.853717]    [1300/1540] Generated embeddings
+[2025-11-30T05:27:17.362490]    [1500/1540] Generated embeddings
+[2025-11-30T05:27:17.485333]    [1400/1540] Generated embeddings
+[2025-11-30T05:27:17.875446]    [1540/1540] Generated embeddings
+[2025-11-30T05:27:17.875560] Inserting 1540 chunks into database (batched)
+[2025-11-30T05:27:18.087210]    [1500/1540] Generated embeddings
+[2025-11-30T05:27:18.716072]    [1540/1540] Generated embeddings
+[2025-11-30T05:27:18.716200] Inserting 1540 chunks into database (batched)
+[2025-11-30T05:27:30.861796]    Inserted batch 1-100 for C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:27:37.892642]    Inserted batch 1-100 for NZS-36042011.pdf
+[2025-11-30T05:27:38.690065]    Inserted batch 1-100 for NZS-36042011.pdf
+[2025-11-30T05:27:50.836325]    Inserted batch 101-200 for C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:27:57.927204]    Inserted batch 101-200 for NZS-36042011.pdf
+[2025-11-30T05:27:58.708274]    Inserted batch 101-200 for NZS-36042011.pdf
+[2025-11-30T05:28:10.804421]    Inserted batch 201-300 for C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:28:17.945522]    Inserted batch 201-300 for NZS-36042011.pdf
+[2025-11-30T05:28:18.730458]    Inserted batch 201-300 for NZS-36042011.pdf
+[2025-11-30T05:28:30.764931]    Inserted batch 301-400 for C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:28:37.998708]    Inserted batch 301-400 for NZS-36042011.pdf
+[2025-11-30T05:28:38.781871]    Inserted batch 301-400 for NZS-36042011.pdf
+[2025-11-30T05:28:41.931007]    Inserted batch 401-455 for C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:28:41.931167] ✅ INGEST DONE: C-AS4_Amendment-4_2019-EXPIRED.pdf, chunks_inserted=455
+[2025-11-30T05:28:41.931203] ✅ Ingested C-AS4_Amendment-4_2019-EXPIRED.pdf: 129 pages, 455 chunks
+[2025-11-30T05:28:42.321474] INGEST START: C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:28:42.321636] Downloading pdfs/C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:28:45.614050]    ✅ Downloaded 4,078,844 bytes
+[2025-11-30T05:28:45.614204] Extracting text from C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:28:56.890727]    ✅ Extracted 125 pages
+[2025-11-30T05:28:56.891269]    ✅ Created 428 chunks (total_chunks=428)
+[2025-11-30T05:28:56.891331] Generating embeddings for 428 chunks
+[2025-11-30T05:28:57.451759]    [100/428] Generated embeddings
+[2025-11-30T05:28:57.947790]    [200/428] Generated embeddings
+[2025-11-30T05:28:58.021387]    Inserted batch 401-500 for NZS-36042011.pdf
+[2025-11-30T05:28:58.600257]    [300/428] Generated embeddings
+[2025-11-30T05:28:58.806277]    Inserted batch 401-500 for NZS-36042011.pdf
+[2025-11-30T05:28:59.480857]    [400/428] Generated embeddings
+[2025-11-30T05:29:01.582846]    [428/428] Generated embeddings
+[2025-11-30T05:29:01.582999] Inserting 428 chunks into database (batched)
+[2025-11-30T05:29:17.994335]    Inserted batch 501-600 for NZS-36042011.pdf
+[2025-11-30T05:29:18.862088]    Inserted batch 501-600 for NZS-36042011.pdf
+[2025-11-30T05:29:21.538006]    Inserted batch 1-100 for C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:29:37.935652]    Inserted batch 601-700 for NZS-36042011.pdf
+[2025-11-30T05:29:38.883877]    Inserted batch 601-700 for NZS-36042011.pdf
+[2025-11-30T05:29:41.487342]    Inserted batch 101-200 for C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:29:57.894411]    Inserted batch 701-800 for NZS-36042011.pdf
+[2025-11-30T05:29:58.920948]    Inserted batch 701-800 for NZS-36042011.pdf
+[2025-11-30T05:30:01.463547]    Inserted batch 201-300 for C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:30:17.904471]    Inserted batch 801-900 for NZS-36042011.pdf
+[2025-11-30T05:30:18.972929]    Inserted batch 801-900 for NZS-36042011.pdf
+[2025-11-30T05:30:21.421764]    Inserted batch 301-400 for C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:30:27.289396]    Inserted batch 401-428 for C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:30:27.289592] ✅ INGEST DONE: C-AS5_Amendment-4_2019-EXPIRED.pdf, chunks_inserted=428
+[2025-11-30T05:30:27.289628] ✅ Ingested C-AS5_Amendment-4_2019-EXPIRED.pdf: 125 pages, 428 chunks
+[2025-11-30T05:30:27.680147] INGEST START: C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:30:27.680338] Downloading pdfs/C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:30:31.028726]    ✅ Downloaded 3,871,353 bytes
+[2025-11-30T05:30:31.028876] Extracting text from C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:30:37.865594]    Inserted batch 901-1000 for NZS-36042011.pdf
+[2025-11-30T05:30:39.012812]    Inserted batch 901-1000 for NZS-36042011.pdf
+[2025-11-30T05:30:41.264343]    ✅ Extracted 116 pages
+[2025-11-30T05:30:41.264873]    ✅ Created 392 chunks (total_chunks=392)
+[2025-11-30T05:30:41.264925] Generating embeddings for 392 chunks
+[2025-11-30T05:30:42.039669]    [100/392] Generated embeddings
+[2025-11-30T05:30:42.498210]    [200/392] Generated embeddings
+[2025-11-30T05:30:43.096151]    [300/392] Generated embeddings
+[2025-11-30T05:30:43.685181]    [392/392] Generated embeddings
+[2025-11-30T05:30:43.685320] Inserting 392 chunks into database (batched)
+[2025-11-30T05:30:57.845505]    Inserted batch 1001-1100 for NZS-36042011.pdf
+[2025-11-30T05:30:59.058296]    Inserted batch 1001-1100 for NZS-36042011.pdf
+[2025-11-30T05:31:03.664780]    Inserted batch 1-100 for C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:31:17.826236]    Inserted batch 1101-1200 for NZS-36042011.pdf
+[2025-11-30T05:31:19.096113]    Inserted batch 1101-1200 for NZS-36042011.pdf
+[2025-11-30T05:31:23.602473]    Inserted batch 101-200 for C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:31:37.810834]    Inserted batch 1201-1300 for NZS-36042011.pdf
+[2025-11-30T05:31:39.119634]    Inserted batch 1201-1300 for NZS-36042011.pdf
+[2025-11-30T05:31:43.578167]    Inserted batch 201-300 for C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:31:56.982954] 
+1. Loading manifest from /app/backend-minimal/training/docs_manifest.jsonl
+[2025-11-30T05:31:56.983148]    ✅ Loaded 34 PDF entries
+[2025-11-30T05:31:56.983182] 
+2. Connecting to database
+[2025-11-30T05:31:57.804365]    Inserted batch 1301-1400 for NZS-36042011.pdf
+[2025-11-30T05:31:58.282355] 
+3. Processing PDFs
+[2025-11-30T05:31:58.686184]    ⏭️  SKIP already ingested: E3-AS1_2nd-Edition-Amd7-2020.pdf
+[2025-11-30T05:31:58.883602]    ⏭️  SKIP already ingested: G12-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:31:59.081123]    ⏭️  SKIP already ingested: C-AS3_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:31:59.182166]    Inserted batch 1301-1400 for NZS-36042011.pdf
+[2025-11-30T05:31:59.278850]    ⏭️  SKIP already ingested: CAS3-Amendment4-2019-EXPIRED.pdf
+[2025-11-30T05:31:59.476257]    ⏭️  SKIP already ingested: C-AS4_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:31:59.673669]    ⏭️  SKIP already ingested: C-AS5_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:31:59.871465]    ⏭️  SKIP already ingested: C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:00.069050] INGEST START: C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:00.069196] Downloading pdfs/C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:02.026496]    Inserted batch 301-392 for C-AS6_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:02.026662] ✅ INGEST DONE: C-AS6_Amendment-4_2019-EXPIRED.pdf, chunks_inserted=392
+[2025-11-30T05:32:02.026701] ✅ Ingested C-AS6_Amendment-4_2019-EXPIRED.pdf: 116 pages, 392 chunks
+[2025-11-30T05:32:02.417978] INGEST START: C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:02.418155] Downloading pdfs/C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:03.418790]    ✅ Downloaded 1,544,223 bytes
+[2025-11-30T05:32:03.418932] Extracting text from C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:03.501701]    ✅ Downloaded 1,544,223 bytes
+[2025-11-30T05:32:03.501865] Extracting text from C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:04.203428]    ✅ Extracted 21 pages
+[2025-11-30T05:32:04.203641]    ✅ Created 65 chunks (total_chunks=65)
+[2025-11-30T05:32:04.203679] Generating embeddings for 65 chunks
+[2025-11-30T05:32:04.821615]    ✅ Extracted 21 pages
+[2025-11-30T05:32:04.821820]    ✅ Created 65 chunks (total_chunks=65)
+[2025-11-30T05:32:04.821855] Generating embeddings for 65 chunks
+[2025-11-30T05:32:05.439923]    [65/65] Generated embeddings
+[2025-11-30T05:32:05.440051] Inserting 65 chunks into database (batched)
+[2025-11-30T05:32:05.444270]    [65/65] Generated embeddings
+[2025-11-30T05:32:05.444373] Inserting 65 chunks into database (batched)
+[2025-11-30T05:32:18.254996]    Inserted batch 1401-1500 for NZS-36042011.pdf
+[2025-11-30T05:32:18.573005]    Inserted batch 1-65 for C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:18.573169] ✅ INGEST DONE: C-AS7_Amendment-4_2019-EXPIRED.pdf, chunks_inserted=65
+[2025-11-30T05:32:18.573200] ✅ Ingested C-AS7_Amendment-4_2019-EXPIRED.pdf: 21 pages, 65 chunks
+[2025-11-30T05:32:18.607669]    Inserted batch 1-65 for C-AS7_Amendment-4_2019-EXPIRED.pdf
+[2025-11-30T05:32:18.607829] ✅ INGEST DONE: C-AS7_Amendment-4_2019-EXPIRED.pdf, chunks_inserted=65
+[2025-11-30T05:32:18.607857] ✅ Ingested C-AS7_Amendment-4_2019-EXPIRED.pdf: 21 pages, 65 chunks
+[2025-11-30T05:32:18.961556] INGEST START: C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:18.961746] Downloading pdfs/C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:18.996900] INGEST START: C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:18.997036] Downloading pdfs/C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:19.650630]    Inserted batch 1401-1500 for NZS-36042011.pdf
+[2025-11-30T05:32:21.998434]    ✅ Downloaded 2,149,011 bytes
+[2025-11-30T05:32:21.998610] Extracting text from C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:22.082375]    ✅ Downloaded 2,149,011 bytes
+[2025-11-30T05:32:22.082530] Extracting text from C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:24.773586]    ✅ Extracted 94 pages
+[2025-11-30T05:32:24.774025]    ✅ Created 367 chunks (total_chunks=367)
+[2025-11-30T05:32:24.774070] Generating embeddings for 367 chunks
+[2025-11-30T05:32:24.878703]    ✅ Extracted 94 pages
+[2025-11-30T05:32:24.879145]    ✅ Created 367 chunks (total_chunks=367)
+[2025-11-30T05:32:24.879190] Generating embeddings for 367 chunks
+[2025-11-30T05:32:25.423147]    [100/367] Generated embeddings
+[2025-11-30T05:32:25.970177]    [100/367] Generated embeddings
+[2025-11-30T05:32:26.112593]    [200/367] Generated embeddings
+[2025-11-30T05:32:26.459381]    Inserted batch 1501-1540 for NZS-36042011.pdf
+[2025-11-30T05:32:26.459508] ✅ INGEST DONE: NZS-36042011.pdf, chunks_inserted=1540
+[2025-11-30T05:32:26.459540] ✅ Ingested NZS-36042011.pdf: 449 pages, 1540 chunks
+[2025-11-30T05:32:26.654751]    [200/367] Generated embeddings
+[2025-11-30T05:32:26.851856]    [300/367] Generated embeddings
+[2025-11-30T05:32:26.860777] INGEST START: NZS-42292013.pdf
+[2025-11-30T05:32:26.860892] Downloading pdfs/NZS-42292013.pdf
+[2025-11-30T05:32:27.058798]    [300/367] Generated embeddings
+[2025-11-30T05:32:27.370686]    [367/367] Generated embeddings
+[2025-11-30T05:32:27.370823] Inserting 367 chunks into database (batched)
+[2025-11-30T05:32:27.414912]    [367/367] Generated embeddings
+[2025-11-30T05:32:27.415048] Inserting 367 chunks into database (batched)
+[2025-11-30T05:32:27.909494]    Inserted batch 1501-1540 for NZS-36042011.pdf
+[2025-11-30T05:32:27.909646] ✅ INGEST DONE: NZS-36042011.pdf, chunks_inserted=1540
+[2025-11-30T05:32:27.909682] ✅ Ingested NZS-36042011.pdf: 449 pages, 1540 chunks
+[2025-11-30T05:32:28.313657] INGEST START: NZS-42292013.pdf
+[2025-11-30T05:32:28.313785] Downloading pdfs/NZS-42292013.pdf
+[2025-11-30T05:32:30.131308]    ✅ Downloaded 5,221,267 bytes
+[2025-11-30T05:32:30.131445] Extracting text from NZS-42292013.pdf
+[2025-11-30T05:32:30.232415]    ✅ Downloaded 5,221,267 bytes
+[2025-11-30T05:32:30.232552] Extracting text from NZS-42292013.pdf
+[2025-11-30T05:32:36.363317]    ✅ Extracted 169 pages
+[2025-11-30T05:32:36.363964]    ✅ Created 598 chunks (total_chunks=598)
+[2025-11-30T05:32:36.364026] Generating embeddings for 598 chunks
+[2025-11-30T05:32:36.530217]    ✅ Extracted 169 pages
+[2025-11-30T05:32:36.530846]    ✅ Created 598 chunks (total_chunks=598)
+[2025-11-30T05:32:36.530901] Generating embeddings for 598 chunks
+[2025-11-30T05:32:36.884083]    [100/598] Generated embeddings
+[2025-11-30T05:32:37.620660]    [200/598] Generated embeddings
+[2025-11-30T05:32:38.136337]    [300/598] Generated embeddings
+[2025-11-30T05:32:38.176395]    [100/598] Generated embeddings
+[2025-11-30T05:32:38.644813]    [400/598] Generated embeddings
+[2025-11-30T05:32:38.809345]    [200/598] Generated embeddings
+[2025-11-30T05:32:39.138744]    [500/598] Generated embeddings
+[2025-11-30T05:32:39.238095]    [300/598] Generated embeddings
+[2025-11-30T05:32:39.667270]    [598/598] Generated embeddings
+[2025-11-30T05:32:39.667391] Inserting 598 chunks into database (batched)
+[2025-11-30T05:32:39.808799]    [400/598] Generated embeddings
+[2025-11-30T05:32:40.370804]    [500/598] Generated embeddings
+[2025-11-30T05:32:40.971030]    [598/598] Generated embeddings
+[2025-11-30T05:32:40.971168] Inserting 598 chunks into database (batched)
+[2025-11-30T05:32:47.382110]    Inserted batch 1-100 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:47.392854]    Inserted batch 1-100 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:32:59.648459]    Inserted batch 1-100 for NZS-42292013.pdf
+[2025-11-30T05:33:01.003698]    Inserted batch 1-100 for NZS-42292013.pdf
+[2025-11-30T05:33:07.362173]    Inserted batch 101-200 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:33:07.410638]    Inserted batch 101-200 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:33:19.608565]    Inserted batch 101-200 for NZS-42292013.pdf
+[2025-11-30T05:33:21.027741]    Inserted batch 101-200 for NZS-42292013.pdf
+[2025-11-30T05:33:27.337957]    Inserted batch 201-300 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:33:27.412469]    Inserted batch 201-300 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:33:39.590745]    Inserted batch 201-300 for NZS-42292013.pdf
+[2025-11-30T05:33:40.837153]    Inserted batch 301-367 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:33:40.837312] ✅ INGEST DONE: C-VM2_Amendment-6_2020.pdf, chunks_inserted=367
+[2025-11-30T05:33:40.839941] ✅ Ingested C-VM2_Amendment-6_2020.pdf: 94 pages, 367 chunks
+[2025-11-30T05:33:40.936515]    Inserted batch 301-367 for C-VM2_Amendment-6_2020.pdf
+[2025-11-30T05:33:40.936667] ✅ INGEST DONE: C-VM2_Amendment-6_2020.pdf, chunks_inserted=367
+[2025-11-30T05:33:40.936703] ✅ Ingested C-VM2_Amendment-6_2020.pdf: 94 pages, 367 chunks
+[2025-11-30T05:33:41.047750]    Inserted batch 201-300 for NZS-42292013.pdf
+[2025-11-30T05:33:41.229268]    ⏭️  SKIP already ingested: E1-AS1_1st-Edition-Amd12-2024.pdf
+[2025-11-30T05:33:41.326941]    ⏭️  SKIP already ingested: E1-AS1_1st-Edition-Amd12-2024.pdf
+[2025-11-30T05:33:41.425601]    ⏭️  SKIP already ingested: E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T05:33:41.523075]    ⏭️  SKIP already ingested: E2-AS1_4th-Edition-2025.pdf
+[2025-11-30T05:33:41.623208]    ⏭️  SKIP already ingested: C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T05:33:41.719223]    ⏭️  SKIP already ingested: C-AS1_2nd-Edition_2023.pdf
+[2025-11-30T05:33:41.819258]    ⏭️  SKIP already ingested: F4-AS1_Amendment-6-2021.pdf
+[2025-11-30T05:33:41.915287]    ⏭️  SKIP already ingested: F4-AS1_Amendment-6-2021.pdf
+[2025-11-30T05:33:42.015051]    ⏭️  SKIP already ingested: F6-AS1_Amendment-3-2021.pdf
+[2025-11-30T05:33:42.111652]    ⏭️  SKIP already ingested: F6-AS1_Amendment-3-2021.pdf
+[2025-11-30T05:33:42.211219]    ⏭️  SKIP already ingested: F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T05:33:42.307858]    ⏭️  SKIP already ingested: F7-AS1_5th-Edition-2023.pdf
+[2025-11-30T05:33:42.407099]    ⏭️  SKIP already ingested: H1-AS1_6th-Edition.pdf
+[2025-11-30T05:33:42.504210]    ⏭️  SKIP already ingested: H1-AS1_6th-Edition.pdf
+[2025-11-30T05:33:42.603058]    ⏭️  SKIP already ingested: G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:33:42.700302]    ⏭️  SKIP already ingested: G13-AS1_3rd-Edition-Amd14-2024.pdf
+[2025-11-30T05:33:42.798963]    ⏭️  SKIP already ingested: H1-AS1_6th-Edition.pdf
+[2025-11-30T05:33:42.896293]    ⏭️  SKIP already ingested: H1-AS1_6th-Edition.pdf
+[2025-11-30T05:33:42.994936]    ⏭️  SKIP already ingested: H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:33:43.092488]    ⏭️  SKIP already ingested: H1-VM1_6th-Edition-2025.pdf
+[2025-11-30T05:33:43.190971]    ⏭️  SKIP already ingested: GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T05:33:43.288640]    ⏭️  SKIP already ingested: GIB-Bracing-Supplement-2016.pdf
+[2025-11-30T05:33:43.386829]    ⏭️  SKIP already ingested: GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:33:43.484674]    ⏭️  SKIP already ingested: GIB-EzyBrace-Systems-2016.pdf
+[2025-11-30T05:33:43.582644]    ⏭️  SKIP already ingested: GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:33:43.680819]    ⏭️  SKIP already ingested: GIB-Fire-Systems-Manual.pdf
+[2025-11-30T05:33:43.778470]    ⏭️  SKIP already ingested: Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:33:43.876824]    ⏭️  SKIP already ingested: Internal-WetArea-Membrane-CodeOfPractice_4th-Edition-2020.pdf
+[2025-11-30T05:33:43.974845]    ⏭️  SKIP already ingested: Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:33:44.072862]    ⏭️  SKIP already ingested: Ardex-Waterproofing-Manual.pdf
+[2025-11-30T05:33:44.170693]    ⏭️  SKIP already ingested: B1-Structure-Amendment13.pdf
+[2025-11-30T05:33:44.268876]    ⏭️  SKIP already ingested: B1-Structure-Amendment13.pdf
+[2025-11-30T05:33:44.366581]    ⏭️  SKIP already ingested: b1-structure-as1-second-edition.pdf
+[2025-11-30T05:33:44.464858]    ⏭️  SKIP already ingested: b1-structure-as1-second-edition.pdf
+[2025-11-30T05:33:44.562393]    ⏭️  SKIP already ingested: building-code.pdf
+[2025-11-30T05:33:44.660808]    ⏭️  SKIP already ingested: building-code.pdf
+[2025-11-30T05:33:44.758339]    ⏭️  SKIP already ingested: C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:33:44.856792]    ⏭️  SKIP already ingested: C-AS2_2nd-Edition_2025.pdf
+[2025-11-30T05:33:44.954502]    ⏭️  SKIP already ingested: e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:33:45.053109]    ⏭️  SKIP already ingested: e2-external-moisture-as1-fourth-edition.pdf
+[2025-11-30T05:33:45.156951]    ⏭️  SKIP already ingested: nz_metal_roofing.pdf
+[2025-11-30T05:33:45.249884]    ⏭️  SKIP already ingested: nz_metal_roofing.pdf
+[2025-11-30T05:33:45.353542]    ⏭️  SKIP already ingested: NZS-36042011.pdf
+[2025-11-30T05:33:45.446184]    ⏭️  SKIP already ingested: NZS-36042011.pdf
+[2025-11-30T05:33:45.549619]    ⏭️  SKIP already ingested: NZS-42292013.pdf
+[2025-11-30T05:33:45.642289]    ⏭️  SKIP already ingested: NZS-42292013.pdf
+[2025-11-30T05:33:45.745605] INGEST START: SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:33:45.745730] Downloading pdfs/SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:33:45.838523] INGEST START: SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:33:45.838672] Downloading pdfs/SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:33:49.257934]    ✅ Downloaded 10,560,721 bytes
+[2025-11-30T05:33:49.258074] Extracting text from SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:33:49.430439]    ✅ Downloaded 10,560,721 bytes
+[2025-11-30T05:33:49.430619] Extracting text from SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:33:59.533618]    Inserted batch 301-400 for NZS-42292013.pdf
+[2025-11-30T05:34:01.094594]    Inserted batch 301-400 for NZS-42292013.pdf
+[2025-11-30T05:34:01.732230]    ✅ Extracted 449 pages
+[2025-11-30T05:34:01.735558]    ✅ Created 1540 chunks (total_chunks=1540)
+[2025-11-30T05:34:01.735648] Generating embeddings for 1540 chunks
+[2025-11-30T05:34:01.999389]    ✅ Extracted 449 pages
+[2025-11-30T05:34:02.001045]    ✅ Created 1540 chunks (total_chunks=1540)
+[2025-11-30T05:34:02.001130] Generating embeddings for 1540 chunks
+[2025-11-30T05:34:02.538795]    [100/1540] Generated embeddings
+[2025-11-30T05:34:02.662462]    [100/1540] Generated embeddings
+[2025-11-30T05:34:03.255741]    [200/1540] Generated embeddings
+[2025-11-30T05:34:03.342939]    [200/1540] Generated embeddings
+[2025-11-30T05:34:03.917736]    [300/1540] Generated embeddings
+[2025-11-30T05:34:04.110936]    [300/1540] Generated embeddings
+[2025-11-30T05:34:04.506804]    [400/1540] Generated embeddings
+[2025-11-30T05:34:04.645506]    [400/1540] Generated embeddings
+[2025-11-30T05:34:04.914977]    [500/1540] Generated embeddings
+[2025-11-30T05:34:05.140186]    [500/1540] Generated embeddings
+[2025-11-30T05:34:05.652059]    [600/1540] Generated embeddings
+[2025-11-30T05:34:05.827903]    [600/1540] Generated embeddings
+[2025-11-30T05:34:06.301431]    [700/1540] Generated embeddings
+[2025-11-30T05:34:06.700005]    [700/1540] Generated embeddings
+[2025-11-30T05:34:06.811325]    [800/1540] Generated embeddings
+[2025-11-30T05:34:07.198759]    [900/1540] Generated embeddings
+[2025-11-30T05:34:07.300760]    [800/1540] Generated embeddings
+[2025-11-30T05:34:08.107219]    [900/1540] Generated embeddings
+[2025-11-30T05:34:08.198143]    [1000/1540] Generated embeddings
+[2025-11-30T05:34:08.877350]    [1000/1540] Generated embeddings
+[2025-11-30T05:34:09.289292]    [1100/1540] Generated embeddings
+[2025-11-30T05:34:09.625609]    [1200/1540] Generated embeddings
+[2025-11-30T05:34:09.835141]    [1100/1540] Generated embeddings
+[2025-11-30T05:34:10.240848]    [1300/1540] Generated embeddings
+[2025-11-30T05:34:10.405388]    [1200/1540] Generated embeddings
+[2025-11-30T05:34:10.883498]    [1300/1540] Generated embeddings
+[2025-11-30T05:34:11.199652]    [1400/1540] Generated embeddings
+[2025-11-30T05:34:11.586417]    [1400/1540] Generated embeddings
+[2025-11-30T05:34:11.897495]    [1500/1540] Generated embeddings
+[2025-11-30T05:34:12.205544]    [1540/1540] Generated embeddings
+[2025-11-30T05:34:12.205692] Inserting 1540 chunks into database (batched)
+[2025-11-30T05:34:12.210954]    [1500/1540] Generated embeddings
+[2025-11-30T05:34:12.645360]    [1540/1540] Generated embeddings
+[2025-11-30T05:34:12.645494] Inserting 1540 chunks into database (batched)
+[2025-11-30T05:34:19.501038]    Inserted batch 401-500 for NZS-42292013.pdf
+[2025-11-30T05:34:21.128285]    Inserted batch 401-500 for NZS-42292013.pdf
+[2025-11-30T05:34:32.211015]    Inserted batch 1-100 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:34:32.629070]    Inserted batch 1-100 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:34:39.087166]    Inserted batch 501-598 for NZS-42292013.pdf
+[2025-11-30T05:34:39.087314] ✅ INGEST DONE: NZS-42292013.pdf, chunks_inserted=598
+[2025-11-30T05:34:39.087349] ✅ Ingested NZS-42292013.pdf: 169 pages, 598 chunks
+[2025-11-30T05:34:39.478689]    ⏭️  SKIP already ingested: SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:34:39.675250] INGEST START: WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:34:39.675380] Downloading pdfs/WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:34:40.767521]    Inserted batch 501-598 for NZS-42292013.pdf
+[2025-11-30T05:34:40.767672] ✅ INGEST DONE: NZS-42292013.pdf, chunks_inserted=598
+[2025-11-30T05:34:40.767705] ✅ Ingested NZS-42292013.pdf: 169 pages, 598 chunks
+[2025-11-30T05:34:41.160426]    ⏭️  SKIP already ingested: SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:34:41.357712] INGEST START: WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:34:41.357829] Downloading pdfs/WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:34:43.126049]    ✅ Downloaded 3,866,420 bytes
+[2025-11-30T05:34:43.126197] Extracting text from WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:34:43.272189]    ✅ Downloaded 3,866,420 bytes
+[2025-11-30T05:34:43.272329] Extracting text from WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:34:43.870521]    ✅ Extracted 74 pages
+[2025-11-30T05:34:43.870774]    ✅ Created 110 chunks (total_chunks=110)
+[2025-11-30T05:34:43.870817] Generating embeddings for 110 chunks
+[2025-11-30T05:34:44.013127]    ✅ Extracted 74 pages
+[2025-11-30T05:34:44.013356]    ✅ Created 110 chunks (total_chunks=110)
+[2025-11-30T05:34:44.013393] Generating embeddings for 110 chunks
+[2025-11-30T05:34:44.496956]    [100/110] Generated embeddings
+[2025-11-30T05:34:44.597029]    [100/110] Generated embeddings
+[2025-11-30T05:34:44.645470]    [110/110] Generated embeddings
+[2025-11-30T05:34:44.645602] Inserting 110 chunks into database (batched)
+[2025-11-30T05:34:44.786803]    [110/110] Generated embeddings
+[2025-11-30T05:34:44.786919] Inserting 110 chunks into database (batched)
+[2025-11-30T05:34:52.206164]    Inserted batch 101-200 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:34:52.594561]    Inserted batch 101-200 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:35:04.639225]    Inserted batch 1-100 for WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:35:04.864736]    Inserted batch 1-100 for WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:35:06.977296]    Inserted batch 101-110 for WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:35:06.977461] ✅ INGEST DONE: WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf, chunks_inserted=110
+[2025-11-30T05:35:06.977495] ✅ Ingested WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf: 74 pages, 110 chunks
+[2025-11-30T05:35:06.978608] 
+================================================================================
+[2025-11-30T05:35:06.978673] INGESTION COMPLETE
+[2025-11-30T05:35:06.978728] ================================================================================
+[2025-11-30T05:35:06.978749] Success: 20
+[2025-11-30T05:35:06.978767] Failed: 0
+[2025-11-30T05:35:06.978784] Skipped: 14
+[2025-11-30T05:35:06.978802] Total pages ingested: 2954
+[2025-11-30T05:35:06.978819] Total chunks created: 10525
+[2025-11-30T05:35:07.210415]    Inserted batch 101-110 for WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:35:07.210545] ✅ INGEST DONE: WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf, chunks_inserted=110
+[2025-11-30T05:35:07.210588] ✅ Ingested WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf: 74 pages, 110 chunks
+[2025-11-30T05:35:07.211734] 
+================================================================================
+[2025-11-30T05:35:07.211805] INGESTION COMPLETE
+[2025-11-30T05:35:07.211850] ================================================================================
+[2025-11-30T05:35:07.211873] Success: 10
+[2025-11-30T05:35:07.211893] Failed: 0
+[2025-11-30T05:35:07.211913] Skipped: 24
+[2025-11-30T05:35:07.211933] Total pages ingested: 2344
+[2025-11-30T05:35:07.211953] Total chunks created: 8569
+[2025-11-30T05:35:12.249029]    Inserted batch 201-300 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:35:12.590633]    Inserted batch 201-300 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:35:32.232590]    Inserted batch 301-400 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:35:32.547579]    Inserted batch 301-400 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:35:52.216526]    Inserted batch 401-500 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:35:52.559756]    Inserted batch 401-500 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:36:12.213332]    Inserted batch 501-600 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:36:12.504422]    Inserted batch 501-600 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:36:32.185492]    Inserted batch 601-700 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:36:32.389309]    Inserted batch 601-700 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:36:52.207855]    Inserted batch 701-800 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:36:52.317486]    Inserted batch 701-800 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:37:12.208744]    Inserted batch 801-900 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:37:12.217617]    Inserted batch 801-900 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:37:32.148043]    Inserted batch 901-1000 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:37:32.174895]    Inserted batch 901-1000 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:37:52.050906]    Inserted batch 1001-1100 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:37:52.154667]    Inserted batch 1001-1100 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:38:12.369954]    Inserted batch 1101-1200 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:38:12.546458]    Inserted batch 1101-1200 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:38:32.676695]    Inserted batch 1201-1300 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:38:32.940286]    Inserted batch 1201-1300 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:38:52.596059]    Inserted batch 1301-1400 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:38:52.946273]    Inserted batch 1301-1400 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:39:12.497895]    Inserted batch 1401-1500 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:39:12.911921]    Inserted batch 1401-1500 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:39:20.693013]    Inserted batch 1501-1540 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:39:20.693164] ✅ INGEST DONE: SNZ-HB-3604-2011-Selected-Extracts.pdf, chunks_inserted=1540
+[2025-11-30T05:39:20.693197] ✅ Ingested SNZ-HB-3604-2011-Selected-Extracts.pdf: 449 pages, 1540 chunks
+[2025-11-30T05:39:21.096246]    ⏭️  SKIP already ingested: WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:39:21.096540] 
+================================================================================
+[2025-11-30T05:39:21.096612] INGESTION COMPLETE
+[2025-11-30T05:39:21.096640] ================================================================================
+[2025-11-30T05:39:21.096667] Success: 8
+[2025-11-30T05:39:21.096688] Failed: 0
+[2025-11-30T05:39:21.096708] Skipped: 26
+[2025-11-30T05:39:21.096728] Total pages ingested: 1158
+[2025-11-30T05:39:21.096748] Total chunks created: 4031
+[2025-11-30T05:39:21.141129]    Inserted batch 1501-1540 for SNZ-HB-3604-2011-Selected-Extracts.pdf
+[2025-11-30T05:39:21.141262] ✅ INGEST DONE: SNZ-HB-3604-2011-Selected-Extracts.pdf, chunks_inserted=1540
+[2025-11-30T05:39:21.141292] ✅ Ingested SNZ-HB-3604-2011-Selected-Extracts.pdf: 449 pages, 1540 chunks
+[2025-11-30T05:39:21.545000]    ⏭️  SKIP already ingested: WGANZ-Guide-to-E2-AS1-Amd-10-V1.7-November-2022.pdf
+[2025-11-30T05:39:21.545356] 
+================================================================================
+[2025-11-30T05:39:21.545400] INGESTION COMPLETE
+[2025-11-30T05:39:21.545427] ================================================================================
+[2025-11-30T05:39:21.545448] Success: 3
+[2025-11-30T05:39:21.545468] Failed: 0
+[2025-11-30T05:39:21.545485] Skipped: 31
+[2025-11-30T05:39:21.545505] Total pages ingested: 564
+[2025-11-30T05:39:21.545522] Total chunks created: 1972

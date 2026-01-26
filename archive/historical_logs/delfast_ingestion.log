@@ -1,0 +1,280 @@
+================================================================================
+   🔩 STRYDA DELFAST EXPANSION - EMERGENT VISION
+   Started: 2026-01-26T05:19:28.204832
+   Engine: Gemini 2.5 Flash (via emergentintegrations)
+================================================================================
+
+✅ Delfast Expansion Engine initialized
+   Vision Model: Gemini 2.5 Flash (emergent)
+   Embedding Model: text-embedding-3-small
+
+📂 PHASE 1: FILE DISCOVERY
+============================================================
+   📁 Found 21 Delfast files
+
+📂 PHASE 2: PLATINUM VISION INGESTION
+============================================================
+
+[  1/21] Delfast_01_1154_2021_-_a1.pdf...
+      ⭐ BRANZ Appraisal - Enhanced extraction
+      📄 Converted 7 pages @ 200DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      ✓ Page 4 extracted
+      ✓ Page 5 extracted
+      ✓ Page 6 extracted
+      ✓ Page 7 extracted
+      📊 7p | 53 chunks | 9 tables | doc_type: Appraisal
+
+[  2/21] Delfast_2023jul0010-construction-catalogue-specs-p3.pdf...
+      📄 Converted 8 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      ✓ Page 4 extracted
+      ✓ Page 5 extracted
+      ✓ Page 6 extracted
+      ✓ Page 7 extracted
+      ✓ Page 8 extracted
+      📊 8p | 69 chunks | 28 tables | doc_type: Product_Catalogue
+
+[  3/21] Delfast_2025sep036-complete-compatibility-pdf-p2.pdf...
+      📄 Converted 28 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      ✓ Page 4 extracted
+      ✓ Page 5 extracted
+      ✓ Page 6 extracted
+      ✓ Page 7 extracted
+      ✓ Page 8 extracted
+      ✓ Page 9 extracted
+      ✓ Page 10 extracted
+      ✓ Page 11 extracted
+      ✓ Page 12 extracted
+      ✓ Page 13 extracted
+      ✓ Page 14 extracted
+      ✓ Page 15 extracted
+      ✓ Page 16 extracted
+      ✓ Page 17 extracted
+      ✓ Page 18 extracted
+      ✓ Page 19 extracted
+      ✓ Page 20 extracted
+      ✓ Page 21 extracted
+      ✓ Page 22 extracted
+      ✓ Page 23 extracted
+      ✓ Page 24 extracted
+      ✓ Page 25 extracted
+      ✓ Page 26 extracted
+      ✓ Page 27 extracted
+      ✓ Page 28 extracted
+      📊 28p | 173 chunks | 18 tables | doc_type: Technical_Data_Sheet
+
+[  4/21] Delfast_bpir-50mm-galvanised-roundhead-nail-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 15 chunks | 0 tables | doc_type: BPIR_Certificate
+
+[  5/21] Delfast_bpir-65mm-galvanised-roundhead-nail-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 14 chunks | 2 tables | doc_type: BPIR_Certificate
+
+📊 CHECKPOINT [5/21]
+   Processed: 0 | Chunks: 0 | BRANZ: 1
+
+[  6/21] Delfast_bpir-90mm-bright-d-head-nail-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 15 chunks | 0 tables | doc_type: BPIR_Certificate
+
+[  7/21] Delfast_bpir-90mm-gavanised-d-head-nail-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 15 chunks | 0 tables | doc_type: BPIR_Certificate
+
+[  8/21] Delfast_bpir-ac-coil-nails-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 17 chunks | 4 tables | doc_type: BPIR_Certificate
+
+[  9/21] Delfast_bpir-angle-brad-finishing-nails-v2.pdf...
+      📄 Converted 5 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      ✓ Page 4 extracted
+      ✓ Page 5 extracted
+      📊 5p | 25 chunks | 0 tables | doc_type: BPIR_Certificate
+
+[ 10/21] Delfast_bpir-black-metal-tile-nails-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+      ⚠️ Vision API error page 1: Failed to generate chat completion: litellm.BadReq
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+      ⚠️ Vision API error page 2: Failed to generate chat completion: litellm.BadReq
+      ✓ Page 3 extracted
+      📊 3p | 5 chunks | 0 tables | doc_type: BPIR_Certificate
+
+📊 CHECKPOINT [10/21]
+   Processed: 0 | Chunks: 0 | BRANZ: 1
+
+[ 11/21] Delfast_bpir-blue-purlin-screws-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+      ⚠️ Vision API error page 3: Failed to generate chat completion: litellm.BadReq
+      📊 3p | 12 chunks | 2 tables | doc_type: BPIR_Certificate
+
+[ 12/21] Delfast_bpir-bright-d-head-nails-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 19 chunks | 2 tables | doc_type: BPIR_Certificate
+
+[ 13/21] Delfast_bpir-dfc-black-coil-nails-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
+
+      ⚠️ Vision API error page 1: Failed to generate chat completion: litellm.BadReq
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 10 chunks | 0 tables | doc_type: BPIR_Certificate
+
+[ 14/21] Delfast_bpir-galvanised-d-head-nails-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 17 chunks | 0 tables | doc_type: BPIR_Certificate
+
+[ 15/21] Delfast_bpir-joist-hanger-nails-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 17 chunks | 4 tables | doc_type: BPIR_Certificate
+
+📊 CHECKPOINT [15/21]
+   Processed: 0 | Chunks: 0 | BRANZ: 1
+
+[ 16/21] Delfast_bpir-smartnail-coil-nails-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 17 chunks | 2 tables | doc_type: BPIR_Certificate
+
+[ 17/21] Delfast_bpir-washered-drive-pins-v2.pdf...
+      📄 Converted 3 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      📊 3p | 18 chunks | 4 tables | doc_type: BPIR_Certificate
+
+[ 18/21] Delfast_Nails_BRANZ_Appraisal_1154.pdf...
+      ⭐ BRANZ Appraisal - Enhanced extraction
+      📄 Converted 7 pages @ 200DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      ✓ Page 4 extracted
+      ✓ Page 5 extracted
+      ✓ Page 6 extracted
+      ✓ Page 7 extracted
+      📊 7p | 185 chunks | 10 tables | doc_type: Appraisal
+
+[ 19/21] Delfast_PlaceMakers_Nail_Guide_2023.pdf...
+      📄 Converted 15 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      ✓ Page 4 extracted
+      ✓ Page 5 extracted
+      ✓ Page 6 extracted
+      ✓ Page 7 extracted
+      ✓ Page 8 extracted
+      ✓ Page 9 extracted
+      ✓ Page 10 extracted
+      ✓ Page 11 extracted
+      ✓ Page 12 extracted
+      ✓ Page 13 extracted
+      ✓ Page 14 extracted
+      ✓ Page 15 extracted
+      📊 15p | 119 chunks | 0 tables | doc_type: Technical_Data_Sheet
+
+[ 20/21] Delfast_PlaceMakers_Rural_Range_2021.pdf...
+      📄 Converted 22 pages @ 150DPI
+      ✓ Page 1 extracted
+      ✓ Page 2 extracted
+      ✓ Page 3 extracted
+      ✓ Page 4 extracted
+      ✓ Page 5 extracted
+      ✓ Page 6 extracted
+      ✓ Page 7 extracted
+      ✓ Page 8 extracted
+      ✓ Page 9 extracted
+      ✓ Page 10 extracted
+      ✓ Page 11 extracted
+      ✓ Page 12 extracted
+      ✓ Page 13 extracted
+      ✓ Page 14 extracted
+      ✓ Page 15 extracted
+      ✓ Page 16 extracted
+      ✓ Page 17 extracted
+      ✓ Page 18 extracted
+      ✓ Page 19 extracted
+      ✓ Page 20 extracted
+      ✓ Page 21 extracted
+      ✓ Page 22 extracted
+      📊 22p | 145 chunks | 0 tables | doc_type: Technical_Data_Sheet
+
+📊 CHECKPOINT [20/21]
+   Processed: 0 | Chunks: 0 | BRANZ: 2
+
+[ 21/21] Delfast_ruspert-galvanising-sheet.pdf...
+      📄 Converted 1 pages @ 150DPI
+      ✓ Page 1 extracted
+      📊 1p | 4 chunks | 0 tables | doc_type: Technical_Data_Sheet
+
+================================================================================
+   🔩 DELFAST EXPANSION - COMPLETE
+================================================================================
+   ✅ Files Processed: 0
+   📄 Total Chunks: 0
+   📊 Tables Extracted: 85
+   🖼️ Diagrams Captured: 122
+   📑 Pages Scanned: 132
+   ⭐ BRANZ Appraisals: 2
+   ⏭️ Skipped: 0
+   ❌ Errors: 0
+
+   Protocol: V3.0 PLATINUM (Emergent Vision)
+   Completed: 2026-01-26T05:49:43.085847
+================================================================================
+
+✅ Report saved to /app/delfast_report.json
