@@ -590,7 +590,7 @@ def semantic_search(
     
     # BRAND-SPECIFIC QUERY HANDLING
     if protected_brand:
-        # Search ONLY the protected brand's documents
+        # Search ONLY the protected brand's documents with DEEP-DIVE
         brand_pattern = f'%{protected_brand}%'
         cur.execute("""
             SELECT id, content, source, page, 
@@ -599,7 +599,7 @@ def semantic_search(
             WHERE source ILIKE %s
             ORDER BY embedding <=> %s::vector
             LIMIT %s
-        """, (emb, brand_pattern, emb, top_k * 3))
+        """, (emb, brand_pattern, emb, effective_top_k * 3))  # TRUTH BRIDGE: Use effective_top_k
         candidates = cur.fetchall()
         
         # If brand is MiTek, also search sub-brands
