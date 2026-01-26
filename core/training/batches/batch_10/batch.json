@@ -1,0 +1,3607 @@
+{
+  "batch_id": "batch_10",
+  "category": "Joinery / Windows / Doors",
+  "status": "ready",
+  "items": [
+    {
+      "id": "J001",
+      "question": "What causes window reveals to warp after painting?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J002",
+      "question": "Why do sliding doors get stiff after a cold night?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J003",
+      "question": "What makes aluminium joinery whistle in high winds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J004",
+      "question": "Why does condensation run down the jambs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J005",
+      "question": "What causes draughts around new window frames?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J006",
+      "question": "Why do bifold doors sag at the hinge side?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J007",
+      "question": "What makes timber sills swell after rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J008",
+      "question": "Why do double-glazed units show internal fog?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J009",
+      "question": "What causes black mould around window corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J010",
+      "question": "Why do joinery beads pop out in hot weather?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J011",
+      "question": "How do you pack a window that's sitting out of square?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J012",
+      "question": "How do you reset a sticking sliding door?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J013",
+      "question": "How do you fix a bowed timber reveal?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J014",
+      "question": "How do you tighten loose joinery fixings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J015",
+      "question": "How do you adjust a door that won't latch properly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J016",
+      "question": "How do you refit a twisted aluminium corner join?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J017",
+      "question": "How do you fix a window that rattles in wind?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J018",
+      "question": "How do you install new seals on older joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J019",
+      "question": "How do you correct a sill flashing that sits too flat?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J020",
+      "question": "How do you rehang a door rubbing the carpet?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J021",
+      "question": "What clearance is needed under exterior doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J022",
+      "question": "What fall does a sill flashing require?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J023",
+      "question": "What H1 rules apply to high-performance windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J024",
+      "question": "What safety rules apply to glass near floor level?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J025",
+      "question": "What gaps are allowed around joinery frames?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J026",
+      "question": "What E2 details apply for boxed windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J027",
+      "question": "When do bedrooms need safety glazing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J028",
+      "question": "What are the rules for door swings near stairs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J029",
+      "question": "What venting requirements apply for weathertight joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J030",
+      "question": "What fire rules affect doors in escape routes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J031",
+      "question": "How do you straighten a bowed window head?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J032",
+      "question": "How do you fit joinery when the framing is 8mm out?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J033",
+      "question": "How do you pack a door jamb that leans?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J034",
+      "question": "How do you fit trims around uneven reveals?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J035",
+      "question": "How do you correct joinery installed too deep?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J036",
+      "question": "How do you refix fixings missed in framing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J037",
+      "question": "How do you adjust hinges on a sagging door?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J038",
+      "question": "How do you secure joinery on a raked wall?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J039",
+      "question": "How do you protect frames during cladding work?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J040",
+      "question": "How do you fix damaged jamb liners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J041",
+      "question": "What window frame material suits coastal homes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J042",
+      "question": "What glass coatings reduce heat gain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J043",
+      "question": "What door types suit high-moisture areas?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J044",
+      "question": "What hinges work best for heavy doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J045",
+      "question": "What seals reduce noise transfer through joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J046",
+      "question": "What products prevent condensation build-up?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J047",
+      "question": "What glazing options suit passive homes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J048",
+      "question": "What sill trays work for deep-reveal setups?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J049",
+      "question": "What handles survive best in salty air?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J050",
+      "question": "What frame colours resist fading?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J051",
+      "question": "Why do reveals show ripples after stopping?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J052",
+      "question": "Why do windows creak during strong winds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J053",
+      "question": "Why does water collect under sliding door tracks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J054",
+      "question": "Why do aluminium frames drip internally?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J055",
+      "question": "Why do painted doors swell in winter?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J056",
+      "question": "Why do hinges loosen on tall doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J057",
+      "question": "Why does glass look hazy after install?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J058",
+      "question": "Why do window rubbers shrink?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J059",
+      "question": "Why do doors slam shut with light breeze?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J060",
+      "question": "Why does water appear inside the glazing channel?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J061",
+      "question": "How do you lift a dropped sliding door panel?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J062",
+      "question": "How do you fix a stiff crank handle window?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J063",
+      "question": "How do you re-align french doors that won't close?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J064",
+      "question": "How do you repair damaged draught seals?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J065",
+      "question": "How do you re-fix joinery after framing moved?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J066",
+      "question": "How do you adjust rollers on aluminium sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J067",
+      "question": "How do you unjam a warped timber door?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J068",
+      "question": "How do you pack a frame sitting proud of linings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J069",
+      "question": "How do you fix reveal gaps wider at the top?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J070",
+      "question": "How do you correct door squeaks on metal frames?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J071",
+      "question": "What building wrap details apply behind joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J072",
+      "question": "What safety glazing is needed beside showers?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J073",
+      "question": "What H1 requirements affect north-facing windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J074",
+      "question": "What E2 allowances apply for head flashings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J075",
+      "question": "What rules govern door thresholds near decks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J076",
+      "question": "What's required when increasing glazing area?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J077",
+      "question": "What size vents meet ventilation rules?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J078",
+      "question": "What E2 details apply to bay windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J079",
+      "question": "What barrier rules apply beside full-height glazing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J080",
+      "question": "What standards apply to commercial door hardware?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J081",
+      "question": "How do you straighten reveals after humidity changes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J082",
+      "question": "How do you fix a sill that sits proud of cladding?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J083",
+      "question": "How do you adjust a window that won't latch?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J084",
+      "question": "How do you fix a hinge bound by swelling?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J085",
+      "question": "How do you tidy trims that won't sit flush?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J086",
+      "question": "How do you lift a heavy door dragging on tiles?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J087",
+      "question": "How do you repair joinery scratched during install?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J088",
+      "question": "How do you remove rattles from bifold panels?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J089",
+      "question": "How do you stop airflow through old joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J090",
+      "question": "How do you tidy misaligned mitres on trims?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J091",
+      "question": "What glazing suits high noise areas?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J092",
+      "question": "What frame materials suit bushfire zones?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J093",
+      "question": "What handles last longest in rentals?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J094",
+      "question": "What seals suit older timber joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J095",
+      "question": "What doors handle heavy moisture well?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J096",
+      "question": "What glazing spacers reduce condensation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J097",
+      "question": "What locks suit coastal air?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J098",
+      "question": "What sill systems work for flush thresholds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J099",
+      "question": "What thermal frames work best in cold areas?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J100",
+      "question": "What pivots suit oversized doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J101",
+      "question": "Why do sills hold water even with fall?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J102",
+      "question": "Why do sliding doors derail easily?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J103",
+      "question": "Why do aluminium doors bow in sun?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J104",
+      "question": "Why do handles come loose after a month?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J105",
+      "question": "Why does dust enter around new joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J106",
+      "question": "Why do door latches bind in humid weather?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J107",
+      "question": "Why does water drip from the top of a window?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J108",
+      "question": "Why do frames squeak during expansion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J109",
+      "question": "Why do bifolds feel gritty when sliding?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J110",
+      "question": "Why does paint peel near bottom corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J111",
+      "question": "How do you fit joinery into a bowed lintel?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J112",
+      "question": "How do you fix a raked head door installation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J113",
+      "question": "How do you re-secure loose window stays?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J114",
+      "question": "How do you correct door margins that taper?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J115",
+      "question": "How do you adjust centre-pivot windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J116",
+      "question": "How do you stop rattles in older windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J117",
+      "question": "How do you fix broken mullion clips?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J118",
+      "question": "How do you pack a jamb on a tapered frame?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J119",
+      "question": "How do you trim linings around deep-reveal joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J120",
+      "question": "How do you plane a tight timber door without exposing raw edges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J121",
+      "question": "What E2 details apply to flush sill sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J122",
+      "question": "What H1 rules apply to glazing orientation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J123",
+      "question": "What safety rules apply to school glazing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J124",
+      "question": "What door swing rules apply in small bathrooms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J125",
+      "question": "What glazing is allowed near pool areas?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J126",
+      "question": "What seal types reduce heat loss?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J127",
+      "question": "What standards apply for commercial sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J128",
+      "question": "What rebate sizes meet fire door requirements?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J129",
+      "question": "What requirements apply to joinery in wet rooms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J130",
+      "question": "What E2 checks apply at cavity junctions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J131",
+      "question": "How do you set margins on double doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J132",
+      "question": "How do you adjust a door with hinge bind?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J133",
+      "question": "How do you fix joins on split jamb liners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J134",
+      "question": "How do you correct bowed timber door stiles?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J135",
+      "question": "How do you reset a window sash that jumped track?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J136",
+      "question": "How do you fix trim that won't meet at corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J137",
+      "question": "How do you re-align a bowed mullion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J138",
+      "question": "How do you adjust sliders after carpet install?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J139",
+      "question": "How do you fix loose strike plates?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J140",
+      "question": "How do you secure joinery through weak studs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J141",
+      "question": "What window types suit high-salt zones?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J142",
+      "question": "What glazing blocks summer heat best?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J143",
+      "question": "What seals cope best with UV exposure?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J144",
+      "question": "What door cores are most stable?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J145",
+      "question": "What drip edges suit exposed sills?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J146",
+      "question": "What coatings suit natural timber joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J147",
+      "question": "What locksets suit solid-core doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J148",
+      "question": "What vents work with passive ventilation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J149",
+      "question": "What sill systems help with wheelchair access?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J150",
+      "question": "What joinery brands suit harsh climates?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J151",
+      "question": "Why does water track behind head flashings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J152",
+      "question": "Why do sliding doors bind when house settles?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J153",
+      "question": "Why do reveals show wavy lines under paint?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J154",
+      "question": "Why do timber frames twist near heaters?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J155",
+      "question": "Why do handles rust in coastal homes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J156",
+      "question": "Why do sills pool water despite good fall?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J157",
+      "question": "Why does condensation form under drip edges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J158",
+      "question": "Why do windows leak only in southerly storms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J159",
+      "question": "Why do jamb liners crack at top corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J160",
+      "question": "Why do bifold doors jump off rollers?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J161",
+      "question": "How do you re-align tall pivot doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J162",
+      "question": "How do you pack out window heads that bow?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J163",
+      "question": "How do you reseat seals that keep popping out?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J164",
+      "question": "How do you fix frame distortion from screw overdrive?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J165",
+      "question": "How do you sand tight reveals on painted joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J166",
+      "question": "How do you reinstall joinery after wall movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J167",
+      "question": "How do you adjust double sliders scraping mid-track?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J168",
+      "question": "How do you fix air leaks around modern joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J169",
+      "question": "How do you protect joinery during stucco application?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J170",
+      "question": "How do you rehang a door that self-opens?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J171",
+      "question": "What glazing suits bush-facing builds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J172",
+      "question": "What low-e coatings work best in cooler zones?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J173",
+      "question": "What door systems meet high acoustic ratings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J174",
+      "question": "What flashings work with recessed windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J175",
+      "question": "What seals reduce drafts on old baches?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J176",
+      "question": "What hardware suits oversized doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J177",
+      "question": "What trims suit modern square-set interiors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J178",
+      "question": "What sill pans are best for high-rainfall areas?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J179",
+      "question": "What thermal breaks reduce condensation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J180",
+      "question": "What frame types minimise movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J181",
+      "question": "Why do old joinery frames flex during wind gusts?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J182",
+      "question": "Why does water blow past sill dams in storms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J183",
+      "question": "Why do aluminium sliders grind over time?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J184",
+      "question": "Why do vertical lines show through on reveals?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J185",
+      "question": "Why do windows fog internally after a cold snap?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J186",
+      "question": "Why do jamb liners twist after installation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J187",
+      "question": "Why do handles loosen when temperatures drop?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J188",
+      "question": "Why do corner mitres open up after painting?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J189",
+      "question": "Why does air whistle through closed windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J190",
+      "question": "Why do timber doors warp during dry spells?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J191",
+      "question": "How do you re-square a bowed door frame?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J192",
+      "question": "How do you lift a slider with worn rollers?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J193",
+      "question": "How do you reset joinery flashing after cladding changes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J194",
+      "question": "How do you fix reveals after plasterboard swelling?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J195",
+      "question": "How do you correct a timber door rubbing at the top?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J196",
+      "question": "How do you stop rattles in tall aluminium windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J197",
+      "question": "How do you reseal a leaking corner join?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J198",
+      "question": "How do you pack joinery against wavy framing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J199",
+      "question": "How do you re-fix architraves that keep separating?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J200",
+      "question": "How do you adjust door closers in commercial units?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J201",
+      "question": "What causes sliding door tracks to fill with water?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J202",
+      "question": "Why do door jambs twist on hot days?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J203",
+      "question": "Why does condensation pool on aluminium meeting stiles?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J204",
+      "question": "What makes glazing beads pop during cold snaps?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J205",
+      "question": "Why do painted doors show hairline cracks near hinges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J206",
+      "question": "What causes rub marks on aluminium slider frames?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J207",
+      "question": "Why do bifold hinges loosen over time?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J208",
+      "question": "Why do window stays seize up in winter?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J209",
+      "question": "Why does water drip out of the mullion hours after rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J210",
+      "question": "Why do aluminium corner mitres flex under load?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J211",
+      "question": "How do you realign a door that swings closed on its own?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J212",
+      "question": "How do you pack out a jamb bowing inwards?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J213",
+      "question": "How do you fix a slider hitting the outside frame?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J214",
+      "question": "How do you tidy a reveal that's cracked along the edge?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J215",
+      "question": "How do you adjust a door that latches only when slammed?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J216",
+      "question": "How do you fix a window that binds halfway open?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J217",
+      "question": "How do you reseat glazing beads that keep coming loose?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J218",
+      "question": "How do you tighten sagging bifold tracks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J219",
+      "question": "How do you repair weather damage to a timber sill?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J220",
+      "question": "How do you stop airflow through recessed windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J221",
+      "question": "What gap is allowed between door leaf and frame?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J222",
+      "question": "What rules apply to external door thresholds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J223",
+      "question": "What E2 details apply around sill pans?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J224",
+      "question": "What clearances are required for fire-rated doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J225",
+      "question": "What safety glass rules apply beside stairs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J226",
+      "question": "What H1 glazing rules apply to south-facing openings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J227",
+      "question": "What weathertight rules apply to curved windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J228",
+      "question": "What requirements apply to school door hardware?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J229",
+      "question": "What glazing need restrictors in upper-storey windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J230",
+      "question": "What rules govern doors opening onto decks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J231",
+      "question": "How do you fix misaligned double-slider panels?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J232",
+      "question": "How do you rehang a door after the frame settled?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J233",
+      "question": "How do you correct a jamb liner installed crooked?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J234",
+      "question": "How do you tidy up trim mitres that won't close tight?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J235",
+      "question": "How do you pack joinery over wavy framing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J236",
+      "question": "How do you fix a warped timber door stile?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J237",
+      "question": "How do you align window stays with bent arms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J238",
+      "question": "How do you replace swollen bottom jambs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J239",
+      "question": "How do you restore a window that won't latch?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J240",
+      "question": "How do you correct cladding jammed into the sill flashing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J241",
+      "question": "What handles suit heavy external doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J242",
+      "question": "What hinges resist coastal corrosion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J243",
+      "question": "What seals reduce rattling in large sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J244",
+      "question": "What frame materials minimise sun distortion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J245",
+      "question": "What glazing works best for road-noise reduction?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J246",
+      "question": "What seals work for older timber windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J247",
+      "question": "What sill trays handle high rainfall?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J248",
+      "question": "What locks suit rental properties?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J249",
+      "question": "What reveal boards resist moisture well?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J250",
+      "question": "What hardware suits oversized pivot doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J251",
+      "question": "Why do sliders catch lint and debris in the track?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J252",
+      "question": "Why do door stops loosen on hollow-core doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J253",
+      "question": "Why do sills pool water during sideways rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J254",
+      "question": "Why do handles corrode in homes near salt water?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J255",
+      "question": "Why does condensation drip off the mullion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J256",
+      "question": "Why do aluminium frames flex and creak?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J257",
+      "question": "Why does water appear under the reveal lining?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J258",
+      "question": "Why do bifolds shake in moderate wind?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J259",
+      "question": "Why do rubbers shrink back from corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J260",
+      "question": "Why does a door leaf twist after painting?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J261",
+      "question": "How do you re-align a sticking ranchslider?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J262",
+      "question": "How do you remove play from a bifold pivot?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J263",
+      "question": "How do you fix a crooked window meeting stile?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J264",
+      "question": "How do you refit hinges bent by movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J265",
+      "question": "How do you reset joinery sitting too close to linings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J266",
+      "question": "How do you correct a bowed sliding door frame?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J267",
+      "question": "How do you pack out reveals to straighten margins?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J268",
+      "question": "How do you refix sagging aluminium mullions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J269",
+      "question": "How do you repair a sill that's been dented?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J270",
+      "question": "How do you realign locks that don't meet the keep?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J271",
+      "question": "What rules apply to accessible door thresholds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J272",
+      "question": "What E2 details apply to recessed joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J273",
+      "question": "What glazing types meet high-impact requirements?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J274",
+      "question": "What safety rules apply to full-height glass near pools?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J275",
+      "question": "What clearances are needed around fire escape doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J276",
+      "question": "What H1 requirements apply to skylight joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J277",
+      "question": "What compliance applies to lift lobby glazing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J278",
+      "question": "What E2 requirements apply for sills near cladding steps?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J279",
+      "question": "What ventilation is required for high-moisture rooms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J280",
+      "question": "What rules govern door swings into public pathways?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J281",
+      "question": "How do you fix a door frame that's out by 5mm?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J282",
+      "question": "How do you resecure trims that keep loosening?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J283",
+      "question": "How do you adjust a window that hits the reveal?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J284",
+      "question": "How do you move a strike plate without damaging the liner?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J285",
+      "question": "How do you fix a sticking timber door in summer?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J286",
+      "question": "How do you correct sagging french doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J287",
+      "question": "How do you tidy a poor mitre join on architraves?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J288",
+      "question": "How do you pack out a reveal that has twisted?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J289",
+      "question": "How do you waterproof a sill after damage?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J290",
+      "question": "How do you reseal drafty meeting stiles?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J291",
+      "question": "What joinery suits alpine climates?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J292",
+      "question": "What glazings reduce UV fade inside?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J293",
+      "question": "What frames resist warping in sudden temp swings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J294",
+      "question": "What doors suit areas with heavy wind exposure?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J295",
+      "question": "What sill systems suit low-slope decks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J296",
+      "question": "What seals suit metal-to-metal contact in sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J297",
+      "question": "What laminated glass offers noise control?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J298",
+      "question": "What pivot hardware suits extra-wide entries?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J299",
+      "question": "What window finishes suit harsh sun?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J300",
+      "question": "What glass spacers limit condensation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J301",
+      "question": "Why do window handles feel loose in summer?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J302",
+      "question": "Why does water blow past sill dams?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J303",
+      "question": "Why does glass fog on the outside?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J304",
+      "question": "Why do slider panels walk sideways?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J305",
+      "question": "Why does wind whistle through door gaps?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J306",
+      "question": "Why do sills sweat overnight?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J307",
+      "question": "Why do aluminium frames contract noisily?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J308",
+      "question": "Why does sliding joinery jam after a cold snap?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J309",
+      "question": "Why do jamb liners separate at mitres?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J310",
+      "question": "Why does water sit on top of head flashings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J311",
+      "question": "How do you refit a slider after new flooring?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J312",
+      "question": "How do you adjust bifolds that rub mid-track?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J313",
+      "question": "How do you lift a door dragging on vinyl?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J314",
+      "question": "How do you pack windows in uneven concrete openings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J315",
+      "question": "How do you restore a warped aluminium panel?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J316",
+      "question": "How do you correct crushed jamb liners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J317",
+      "question": "How do you tidy up reveals after movement cracks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J318",
+      "question": "How do you tighten a loose multipoint lock?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J319",
+      "question": "How do you reposition a window stay?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J320",
+      "question": "How do you refix trims damaged during install?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J321",
+      "question": "What thermally broken frames suit cold climates?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J322",
+      "question": "What glazing suits west-facing high heat areas?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J323",
+      "question": "What seals resist long-term UV?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J324",
+      "question": "What glass types reduce heat loss at night?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J325",
+      "question": "What hinges suit solid-core external doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J326",
+      "question": "What sill types work with tile-to-door thresholds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J327",
+      "question": "What laminated glass handles noise + safety?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J328",
+      "question": "What profiles hide deep-reveal transitions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J329",
+      "question": "What handles withstand commercial wear?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J330",
+      "question": "What sliders suit large ranch openings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J331",
+      "question": "Why do sliders get noisy over time?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J332",
+      "question": "Why does water track down the inside frame?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J333",
+      "question": "Why do meeting stiles deform?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J334",
+      "question": "Why does paint peel at bottom corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J335",
+      "question": "Why do seals pull away from tight corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J336",
+      "question": "Why do aluminium frames flex in strong sun?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J337",
+      "question": "Why does a door hinge squeal after rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J338",
+      "question": "Why does condensation drip onto flooring?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J339",
+      "question": "Why do head flashings overflow in storms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J340",
+      "question": "Why does a window binding come and go with weather?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J341",
+      "question": "How do you rehang heavy timber doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J342",
+      "question": "How do you fix a misaligned lock tongue?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J343",
+      "question": "How do you square up a window in a tapered framing bay?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J344",
+      "question": "How do you adjust a centre pivot door?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J345",
+      "question": "How do you reinforce a weak mullion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J346",
+      "question": "How do you tidy a skewed mitre return?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J347",
+      "question": "How do you fix a reveal bowed by humidity?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J348",
+      "question": "How do you stop leaks around sill transitions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J349",
+      "question": "How do you protect joinery during plastering?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J350",
+      "question": "How do you correct overpacked reveal corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J351",
+      "question": "What window types suit tiny homes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J352",
+      "question": "What seals help with draughty villas?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J353",
+      "question": "What handles fit tight-profile sliding windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J354",
+      "question": "What coatings withstand heavy salt air?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J355",
+      "question": "What sill pans suit recessed entries?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J356",
+      "question": "What double-glazing suits noise-heavy suburbs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J357",
+      "question": "What hinge systems suit tall doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J358",
+      "question": "What joinery performs best under harsh sun?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J359",
+      "question": "What glazing options minimise heat loss?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J360",
+      "question": "What frames suit homes with passive ventilation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J361",
+      "question": "Why do sliders rattle on windy nights?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J362",
+      "question": "Why do meeting stiles get condensation trails?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J363",
+      "question": "Why does a door swell only on the bottom half?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J364",
+      "question": "Why do frames twist after cladding changes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J365",
+      "question": "Why do bifold rollers squeak?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J366",
+      "question": "Why does water pool on the sill despite fall?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J367",
+      "question": "Why do rubbers shrink unevenly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J368",
+      "question": "Why do reveals crack along the edges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J369",
+      "question": "Why does the latch tongue misalign after settling?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J370",
+      "question": "Why do head flashings get water tracking up behind?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J371",
+      "question": "How do you correct head flashings forced out by cladding?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J372",
+      "question": "How do you re-align windows after frame shrinkage?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J373",
+      "question": "How do you reset sliders after new carpet?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J374",
+      "question": "How do you repair swollen timber jambs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J375",
+      "question": "How do you pack out a misaligned mullion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J376",
+      "question": "How do you refit joinery after a deck height change?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J377",
+      "question": "How do you stop air leaks around fixed panes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J378",
+      "question": "How do you fix noisy aluminium joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J379",
+      "question": "How do you check sill pans for blockages?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J380",
+      "question": "How do you stop a door dragging only at the toe?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J381",
+      "question": "What glazing suits extreme UV zones?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J382",
+      "question": "What seals suit oversized sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J383",
+      "question": "What sill systems minimise splashback?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J384",
+      "question": "What finish suits interior timber joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J385",
+      "question": "What locks handle constant moisture conditions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J386",
+      "question": "What thermal frames reduce condensation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J387",
+      "question": "What pivot hardware suits feature doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J388",
+      "question": "What frames work for fully glazed entryways?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J389",
+      "question": "What noise-rated units suit townhouses?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J390",
+      "question": "What glazing keeps heat in during winter?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J391",
+      "question": "Why do sliders wobble when fully open?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J392",
+      "question": "Why does condensation drip from the top rail?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J393",
+      "question": "Why does timber joinery twist after a hot day?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J394",
+      "question": "Why do seals squeak when the door moves?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J395",
+      "question": "Why do bifold doors scrape the sill?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J396",
+      "question": "Why does a window pane hum in strong wind?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J397",
+      "question": "Why does water splash past sill diverters?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J398",
+      "question": "Why do handles become gritty over time?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J399",
+      "question": "Why do jamb liners gape at the tops?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J400",
+      "question": "Why do head flashings vibrate in nor'westers?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J401",
+      "question": "What causes random drips from the top of window frames?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J402",
+      "question": "Why do aluminium sliders flex when closing hard?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J403",
+      "question": "Why do timber reveals cup after dry weather?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J404",
+      "question": "What makes door hinges click under load?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J405",
+      "question": "Why do glass units fog after heavy rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J406",
+      "question": "Why do sill rubbers trap dirt and water?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J407",
+      "question": "Why does condensation form only at meeting stiles?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J408",
+      "question": "Why do door edges swell unevenly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J409",
+      "question": "Why do some sliders rattle even when locked?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J410",
+      "question": "What causes sills to stain despite powder coating?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J411",
+      "question": "How do you correct a bowed aluminium head?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J412",
+      "question": "How do you pack a jamb that's twisted forward?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J413",
+      "question": "How do you fix a sash window binding on one side?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J414",
+      "question": "How do you repair a sill that took impact damage?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J415",
+      "question": "How do you adjust sliders scraping on the outer rail?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J416",
+      "question": "How do you straighten warped timber door leafs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J417",
+      "question": "How do you secure loose window beads?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J418",
+      "question": "How do you refit joinery after cladding changes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J419",
+      "question": "How do you unstick tight aluminium windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J420",
+      "question": "How do you repair cracked joinery mitres?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J421",
+      "question": "What glazing types suit very tall windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J422",
+      "question": "What handles suit coastal commercial doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J423",
+      "question": "What seals fit older shaped joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J424",
+      "question": "What frames work for hot, dry regions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J425",
+      "question": "What sliding gear handles heavy panels?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J426",
+      "question": "What coatings protect timber from grey-out?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J427",
+      "question": "What vent types fit modern airtight builds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J428",
+      "question": "What double-glazing suits colder climates?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J429",
+      "question": "What sill systems support wheelchair access?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J430",
+      "question": "What joinery materials resist extreme UV?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J431",
+      "question": "Why do sliders whistle under certain winds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J432",
+      "question": "Why do reveals crack after a framing correction?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J433",
+      "question": "Why does the mullion drip long after after rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J434",
+      "question": "Why do glazers' packers show through the frame?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J435",
+      "question": "Why does cold air leak through new rubber seals?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J436",
+      "question": "Why do aluminium doors bend subtly over time?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J437",
+      "question": "Why do sill dams overflow in sideways rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J438",
+      "question": "Why does paint bubble at door bottom edges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J439",
+      "question": "Why do tied curtains cause condensation marks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J440",
+      "question": "Why do sliding windows stick in the top corner?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J441",
+      "question": "How do you re-align mullions on large sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J442",
+      "question": "How do you fix bowing caused by overpacked screws?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J443",
+      "question": "How do you adjust a pivot hinge sagging slightly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J444",
+      "question": "How do you reseal a leaking window head?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J445",
+      "question": "How do you tidy a timber sill that warped at ends?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J446",
+      "question": "How do you correct bad mitres on aluminium trims?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J447",
+      "question": "How do you secure joinery over shallow studs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J448",
+      "question": "How do you pack jambs to get even margins?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J449",
+      "question": "How do you reseat glass that's slipped slightly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J450",
+      "question": "How do you repair reveal damage from moisture?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J451",
+      "question": "What glass types reduce overheating in summer?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J452",
+      "question": "What seals suit aluminium-to-timber interfaces?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J453",
+      "question": "What frames pair well with high-spec insulation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J454",
+      "question": "What sill pans handle deep window recesses?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J455",
+      "question": "What hinges hold extra-wide interior doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J456",
+      "question": "What glazing performs best in two-storey entries?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J457",
+      "question": "What latch systems work for heavy sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J458",
+      "question": "What joinery types suit extreme coastal sites?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J459",
+      "question": "What weatherstrips reduce noise ingress?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J460",
+      "question": "What profiles fit panelled doors cleanly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J461",
+      "question": "Why do doors bind only on hot afternoons?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J462",
+      "question": "Why does moisture gather behind head flashings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J463",
+      "question": "Why do handles feel loose after temperature change?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J464",
+      "question": "Why does paint crack where jamb meets wall?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J465",
+      "question": "Why does water track back under sill diverters?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J466",
+      "question": "Why do windows show cold draughts near corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J467",
+      "question": "Why do stiles twist on tall doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J468",
+      "question": "Why do rubbers creak on opening?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J469",
+      "question": "Why does dust enter around fixed panes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J470",
+      "question": "Why does aluminium ping during expansion?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J471",
+      "question": "How do you adjust a full-height slider scraping at top?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J472",
+      "question": "How do you repair dented aluminium reveals?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J473",
+      "question": "How do you re-pack glass without removing the unit?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J474",
+      "question": "How do you straighten jambs bowed by house movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J475",
+      "question": "How do you rehang heavy double doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J476",
+      "question": "How do you tidy cladding overlap into sill trays?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J477",
+      "question": "How do you fix a window that sits proud of linings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J478",
+      "question": "How do you lift a door that's rubbing only at hinge side?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J479",
+      "question": "How do you remedy rattles in a tall fixed pane?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J480",
+      "question": "How do you re-seat a fogged glazing unit?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J481",
+      "question": "What thermal frames reduce interior condensation lines?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J482",
+      "question": "What sliders suit extra-wide openings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J483",
+      "question": "What locksets suit wind-exposed entries?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J484",
+      "question": "What vents allow constant low-level airflow?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J485",
+      "question": "What frames perform best in bush-facing builds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J486",
+      "question": "What hinges suit commercial double-leaf doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J487",
+      "question": "What glazing units reduce morning condensation?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J488",
+      "question": "What sill trays integrate well with cladding returns?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J489",
+      "question": "What joinery systems match passive-house builds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J490",
+      "question": "What rubbers perform best in alpine regions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J491",
+      "question": "Why do cavity sliders jam after carpet install?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J492",
+      "question": "Why does water collect behind exterior jamb liners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J493",
+      "question": "Why does wind whistle through older timber frames?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J494",
+      "question": "Why do glazed doors fog around the edges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J495",
+      "question": "Why does moisture stain below recessed joinery?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J496",
+      "question": "Why do pivots stiffen up after a year?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J497",
+      "question": "Why does the latch misalign after new flooring?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J498",
+      "question": "Why do rubber seals feel sticky in humid weather?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J499",
+      "question": "Why do sill trays get blocked with debris?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J500",
+      "question": "Why does paint peel on bottom rails?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J501",
+      "question": "How do you fix a warped aluminium joinery section?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J502",
+      "question": "How do you tidy reveal gaps after house movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J503",
+      "question": "How do you re-pack a misaligned glazing unit?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J504",
+      "question": "How do you remove rattle from a hinged window?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J505",
+      "question": "How do you refit a sill diverter that popped out?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J506",
+      "question": "How do you lift sagging bifold hardware?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J507",
+      "question": "How do you correct bowed timber jambs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J508",
+      "question": "How do you re-install joinery after new cladding?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J509",
+      "question": "How do you plane a timber door without exposing raw edges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J510",
+      "question": "How do you fix rubbed-through anodised corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J511",
+      "question": "What glazing handles high wind pressure?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J512",
+      "question": "What sills pair with recessed deck thresholds?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J513",
+      "question": "What hardware suits double-height entries?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J514",
+      "question": "What glass types block street noise?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J515",
+      "question": "What joinery suits dark exterior colours?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J516",
+      "question": "What seals best prevent draughts?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J517",
+      "question": "What materials suit large floor-to-ceiling sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J518",
+      "question": "What finishes resist harsh salt spray?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J519",
+      "question": "What hinge systems suit light commercial?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J520",
+      "question": "What glazing prevents heat loss in winter?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J521",
+      "question": "Why do sliders jump off track during storms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J522",
+      "question": "Why does water backflow under sill flashings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J523",
+      "question": "Why do reveals crack again after repaint?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J524",
+      "question": "Why do rubbers compress unevenly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J525",
+      "question": "Why do windows fog between panes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J526",
+      "question": "Why does aluminium flex when locked?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J527",
+      "question": "Why do handles catch when half-turned?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J528",
+      "question": "Why does cold air leak through bottom corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J529",
+      "question": "Why do jamb liners twist after humidity changes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J530",
+      "question": "Why do sliders rumble when moving?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J531",
+      "question": "How do you re-align a bowed head flashing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J532",
+      "question": "How do you refit joinery after a framing correction?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J533",
+      "question": "How do you reseal a leaking sill pan?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J534",
+      "question": "How do you remove stiffness in pivot doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J535",
+      "question": "How do you straighten a twisted aluminium stile?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J536",
+      "question": "How do you re-secure rattling mullions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J537",
+      "question": "How do you pack a frame in a rough concrete opening?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J538",
+      "question": "How do you correct a bowed slider rail?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J539",
+      "question": "How do you re-seat glass to remove movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J540",
+      "question": "How do you fix creaking aluminium reveal lines?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J541",
+      "question": "What glazing suits interior doors with sun exposure?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J542",
+      "question": "What seals work best for internal sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J543",
+      "question": "What frames suit narrow modern profiles?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J544",
+      "question": "What hardware suits compact laundries?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J545",
+      "question": "What sill systems stop splashback from decks?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J546",
+      "question": "What surface coatings prevent chalking?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J547",
+      "question": "What joinery suits earthquake-prone zones?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J548",
+      "question": "What windows meet high acoustic ratings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J549",
+      "question": "What door leaf materials resist warping?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J550",
+      "question": "What glazing resists colour shift?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J551",
+      "question": "Why does water sit on threshold after light rain?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J552",
+      "question": "Why do sliders shudder on first movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J553",
+      "question": "Why does condensation track down mullions?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J554",
+      "question": "Why do aluminium corners separate slightly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J555",
+      "question": "Why does a door bind only at top latch corner?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J556",
+      "question": "Why do sill channels fill with debris quickly?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J557",
+      "question": "Why do reveals show movement lines?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J558",
+      "question": "Why does water weep from mullions late?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J559",
+      "question": "Why do handles loosen without use?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J560",
+      "question": "Why do rubber seals get glossy patches?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J561",
+      "question": "How do you level joinery in a warped opening?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J562",
+      "question": "How do you refit a slider after adjusting flooring?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J563",
+      "question": "How do you reseal a fogged glass unit?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J564",
+      "question": "How do you straighten bowed door edges?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J565",
+      "question": "How do you re-seat stubborn glazing beads?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J566",
+      "question": "How do you fix rattles behind aluminium liners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J567",
+      "question": "How do you reinforce joinery on tall openings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J568",
+      "question": "How do you reshape swollen timber jambs?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J569",
+      "question": "How do you fix doors that bow in hot weather?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J570",
+      "question": "How do you correct sag in heavy sliders?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J571",
+      "question": "What glazing suits homes near busy roads?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J572",
+      "question": "What sill details work for tiled entries?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J573",
+      "question": "What seals handle high-UV exposure?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J574",
+      "question": "What handles survive rental turnovers?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J575",
+      "question": "What frames suit airtight modern homes?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J576",
+      "question": "What coatings prevent salt pitting?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J577",
+      "question": "What pivot gear works for wide openings?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J578",
+      "question": "What joinery solves heat loss in winter?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J579",
+      "question": "What rubber profiles last longest?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J580",
+      "question": "What sill trays complement metal cladding?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J581",
+      "question": "Why does a window bind more on windy days?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J582",
+      "question": "Why do aluminium panels drum in sun?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J583",
+      "question": "Why does moisture streak under window frames?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J584",
+      "question": "Why do sliders pull sideways when closing?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J585",
+      "question": "Why does condensation form at the stile base?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J586",
+      "question": "Why do hinges squeak after long dry spells?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J587",
+      "question": "Why does paint crack along jamb liners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J588",
+      "question": "Why do sliders jam randomly through the day?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J589",
+      "question": "Why does water enter under fully closed doors?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J590",
+      "question": "Why do rubbers bunch up at the corners?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J591",
+      "question": "How do you adjust joinery after foundation movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J592",
+      "question": "How do you tighten sloppy locking mechanisms?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J593",
+      "question": "How do you re-align tall aluminium windows?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J594",
+      "question": "How do you correct reveal margins that drift?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J595",
+      "question": "How do you refit a drooping pivot door?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J596",
+      "question": "How do you pack joinery against uneven cladding?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J597",
+      "question": "How do you reset sliders after new cladding install?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J598",
+      "question": "How do you reseal water entry under sill trays?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J599",
+      "question": "How do you fix condensation control vents?",
+      "intent": "general_help",
+      "trade": "joinery"
+    },
+    {
+      "id": "J600",
+      "question": "How do you tidy trims after board movement?",
+      "intent": "general_help",
+      "trade": "joinery"
+    }
+  ]
+}

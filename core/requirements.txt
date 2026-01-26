@@ -1,0 +1,9 @@
+fastapi==0.115.0
+openai
+psycopg2-binary==2.9.9
+pydantic>=2.11.7
+pydantic_core
+python-dotenv==1.1.1
+python-multipart==0.0.12
+uvicorn==0.32.0
+emergentintegrations

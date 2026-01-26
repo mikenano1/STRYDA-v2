@@ -1,0 +1,10 @@
+{
+  "batch_id": "batch_04",
+  "category": "Drainage / Drainlayer",
+  "created_at": null,
+  "ingested_at": "2025-06-01T08:35:00",
+  "total_items": 100,
+  "embedding_model": "text-embedding-3-small",
+  "validation_status": "complete",
+  "failed_items": 0
+}

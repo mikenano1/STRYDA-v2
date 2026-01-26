@@ -1,0 +1,10 @@
+{
+  "batch_id": "batch_07",
+  "category": "Electrical (Sparkies)",
+  "created_at": null,
+  "ingested_at": "2025-06-01T08:50:00",
+  "total_items": 500,
+  "embedding_model": "text-embedding-3-small",
+  "validation_status": "complete",
+  "failed_items": 0
+}

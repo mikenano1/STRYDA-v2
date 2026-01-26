@@ -1,0 +1,10 @@
+{
+  "batch_id": "batch_11",
+  "category": "Waterproofing",
+  "created_at": null,
+  "ingested_at": "2025-11-29T08:25:16.783390",
+  "total_items": 200,
+  "embedding_model": "text-embedding-3-small",
+  "validation_status": "complete",
+  "failed_items": 0
+}

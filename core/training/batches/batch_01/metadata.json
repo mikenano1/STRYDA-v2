@@ -1,0 +1,10 @@
+{
+  "batch_id": "batch_01",
+  "category": "Builder / Carpenter",
+  "created_at": null,
+  "ingested_at": "2025-11-25T08:50:57.669643",
+  "total_items": 100,
+  "embedding_model": "text-embedding-3-small",
+  "validation_status": "complete",
+  "failed_items": 0
+}

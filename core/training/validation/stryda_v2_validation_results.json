@@ -1,0 +1,465 @@
+[
+  {
+    "question_id": 1,
+    "trade_hint": "carpentry",
+    "question": "What's the NZS 3604 stud spacing for 2.4m wall height in Extra High wind?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 2,
+    "trade_hint": "carpentry",
+    "question": "Do I need a jack stud under a steel lintel over 2.7m span?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 3,
+    "trade_hint": "carpentry",
+    "question": "Is double top plate required on a non-loadbearing internal wall?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 4,
+    "trade_hint": "carpentry",
+    "question": "Can I run ceiling battens directly across trusses or do I need clips?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 5,
+    "trade_hint": "carpentry",
+    "question": "If a house was built in 2005, which version of NZS 3604 applies to bracing design?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 6,
+    "trade_hint": "roofing",
+    "question": "What fall should I run longrun Colorsteel on in Extra High wind?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 7,
+    "trade_hint": "roofing",
+    "question": "Where should expansion joints go on a 24m long gable roof?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 8,
+    "trade_hint": "roofing",
+    "question": "What's the minimum soffit overhang for high wind zones?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 9,
+    "trade_hint": "roofing",
+    "question": "Is 75mm barge cover enough for Corrugate in Very High wind?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 10,
+    "trade_hint": "roofing",
+    "question": "How do I fix back flashing on a box gutter using NZMRM details?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 11,
+    "trade_hint": "cladding",
+    "question": "What cavity batten size do I need for bevelback weatherboards in Extra High?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 12,
+    "trade_hint": "cladding",
+    "question": "Can I direct fix fibre cement cladding to 20mm battens in High wind?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 13,
+    "trade_hint": "cladding",
+    "question": "Do I need a drained cavity on brick veneer for a 2-storey house?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 14,
+    "trade_hint": "cladding",
+    "question": "What's the overflashing requirement above a window head on vertical oblique?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 15,
+    "trade_hint": "cladding",
+    "question": "What was the E2/AS1 requirement for cavity ventilation back in 2007?",
+    "intent": "compliance_strict",
+    "citations_shown": true,
+    "citation_count": 3,
+    "top_docs": [
+      {
+        "source": "E2/AS1",
+        "page": 92
+      },
+      {
+        "source": "E2/AS1",
+        "page": 93
+      },
+      {
+        "source": "E2/AS1",
+        "page": 7
+      }
+    ]
+  },
+  {
+    "question_id": 16,
+    "trade_hint": "interior_linings",
+    "question": "For a 60min fire wall, which GIB system should I use?",
+    "intent": "product_info",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 17,
+    "trade_hint": "interior_linings",
+    "question": "Do I need to stagger plasterboard joints on a bracing wall?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 18,
+    "trade_hint": "interior_linings",
+    "question": "What screw spacing should I use for GIB on 600mm studs?",
+    "intent": "product_info",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 19,
+    "trade_hint": "interior_linings",
+    "question": "Which way should I run GIB UltraLine on a ceiling?",
+    "intent": "product_info",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 20,
+    "trade_hint": "interior_linings",
+    "question": "Is GIB EzyBrace acceptable for a garage conversion into a bedroom?",
+    "intent": "product_info",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 21,
+    "trade_hint": "fire",
+    "question": "What FRR do I need between a garage and a dwelling under C/AS2?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 22,
+    "trade_hint": "fire",
+    "question": "For a house built in 2014, which C/AS document applies for internal stairs?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 23,
+    "trade_hint": "fire",
+    "question": "Do I need a smoke seal on a 30min fire door?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 24,
+    "trade_hint": "fire",
+    "question": "What's the required separation distance for an unprotected opening near a boundary?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 25,
+    "trade_hint": "fire",
+    "question": "What did C/AS3 require for exit routes pre-2017?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 26,
+    "trade_hint": "concrete_foundations",
+    "question": "What cover do I need to reinforcement in a 300x300 strip footing?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 27,
+    "trade_hint": "concrete_foundations",
+    "question": "What is the slump requirement for a 50MPa footing pour?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 28,
+    "trade_hint": "concrete_foundations",
+    "question": "Can I use 665 mesh instead of HD10 bars in a raft slab?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 29,
+    "trade_hint": "concrete_foundations",
+    "question": "Do I need to vibrate a shallow wall pour if using 10mm aggregate?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 30,
+    "trade_hint": "concrete_foundations",
+    "question": "How do I seal a cold joint between an old culvert floor and new wing wall?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 31,
+    "trade_hint": "drainage",
+    "question": "What fall do I need on a stormwater lateral from house to boundary?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 32,
+    "trade_hint": "drainage",
+    "question": "What's the minimum gully trap depth?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 33,
+    "trade_hint": "drainage",
+    "question": "Can I run a downpipe into a soak pit on a clay site?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 34,
+    "trade_hint": "drainage",
+    "question": "What was the E1/AS1 stormwater requirement before the 2024 amendment?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 35,
+    "trade_hint": "drainage",
+    "question": "Do I need a backflow preventer on an external bathroom connection?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 36,
+    "trade_hint": "plumbing",
+    "question": "What's the max fixture unit load on a 100mm stack?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 37,
+    "trade_hint": "plumbing",
+    "question": "Do I need a vent pipe on a single-storey ensuite bathroom?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 38,
+    "trade_hint": "plumbing",
+    "question": "What temperature does a tempering valve need to be set to?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 39,
+    "trade_hint": "plumbing",
+    "question": "Can I use PEX for hot supply lines in a commercial fitout?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 40,
+    "trade_hint": "plumbing",
+    "question": "What was the G12 trapping requirement in the older (2010) edition?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 41,
+    "trade_hint": "energy",
+    "question": "What R-value does a ceiling need in climate zone 2 under H1/AS1 6th edition?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 42,
+    "trade_hint": "energy",
+    "question": "What was the roof R-value under the older H1 before the 2022 update?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 43,
+    "trade_hint": "energy",
+    "question": "Do I need thermal breaks behind longrun cladding?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 44,
+    "trade_hint": "energy",
+    "question": "How do I calculate window performance using H1/VM1?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 45,
+    "trade_hint": "energy",
+    "question": "What insulation is acceptable for an unlined garage under the current code?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 46,
+    "trade_hint": "waterproofing",
+    "question": "How do I waterproof a tiled shower over timber according to the internal wet area code?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 47,
+    "trade_hint": "waterproofing",
+    "question": "What Ardex system should I use for a tiled deck over habitable space?",
+    "intent": "product_info",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 48,
+    "trade_hint": "waterproofing",
+    "question": "Can I use Mapelastic AquaDefense under a cement-based tile adhesive?",
+    "intent": "implicit_compliance",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 49,
+    "trade_hint": "waterproofing",
+    "question": "Do I need a bond breaker in corners when using sheet membrane?",
+    "intent": "general_help",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  },
+  {
+    "question_id": 50,
+    "trade_hint": "waterproofing",
+    "question": "What fall should I use on an internal bathroom floor to the channel grate?",
+    "intent": "product_info",
+    "citations_shown": false,
+    "citation_count": 0,
+    "top_docs": []
+  }
+]
