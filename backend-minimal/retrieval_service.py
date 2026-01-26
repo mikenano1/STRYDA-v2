@@ -750,8 +750,16 @@ def semantic_search(
         # ══════════════════════════════════════════════════════════════════════════
         # TRUTH BRIDGE #4: TABLE-FIRST FLAG
         # ══════════════════════════════════════════════════════════════════════════
-        # If chunk contains a markdown table (| --- |), flag it for priority reasoning
-        has_table = bool(re.search(r'\|[\s-]+\|', content) or '|---|' in content or '| --- |' in content)
+        # Detect tables: markdown pipes, "Table X:", or structured data patterns
+        has_table = bool(
+            re.search(r'\|[\s-]+\|', content) or  # Markdown table
+            '|---|' in content or 
+            '| --- |' in content or
+            re.search(r'Table\s*\d+[:\s]', content, re.IGNORECASE) or  # "Table 1:"
+            re.search(r'\bProduct\s*:\s*\w+\s*\|', content, re.IGNORECASE) or  # Context injection format
+            re.search(r'\bSize\s*:\s*\d+', content, re.IGNORECASE) or  # Size: 90mm format
+            re.search(r'\bValue\s*:\s*\d+', content, re.IGNORECASE)  # Value: 1.2 format
+        )
         
         # Table bonus: tables with values get massive boost
         if has_table:
