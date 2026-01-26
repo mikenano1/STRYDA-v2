@@ -793,25 +793,33 @@ def semantic_search(
     if protected_brand:
         results = apply_brand_supremacy_penalty(results, protected_brand)
     
-    # Sort by hybrid score
+    # Sort by hybrid score (tables with values float to top)
     results.sort(key=lambda x: x['score'], reverse=True)
     
-    return results[:top_k]
+    # ══════════════════════════════════════════════════════════════════════════
+    # TRUTH BRIDGE: Return effective_top_k results
+    # ══════════════════════════════════════════════════════════════════════════
+    return results[:effective_top_k]
 
 
 # ==============================================================================
-# LEGACY COMPATIBILITY WRAPPER
+# LEGACY COMPATIBILITY WRAPPER (V4 - TRUTH BRIDGE)
 # ==============================================================================
 
 def godtier_retrieval(
     query: str,
-    top_k: int = 20,
+    top_k: int = 50,  # TRUTH BRIDGE: Default to 50 for deep-dive
     intent: str = None,
     agent_mode: str = None
 ) -> List[Dict]:
     """
     Wrapper for compatibility with existing tier1_retrieval interface.
     Maps to semantic_search with appropriate formatting.
+    
+    V4 TRUTH BRIDGE:
+    - Default top_k increased to 50 for deep-dive retrieval
+    - Includes has_table flag for Table-First reasoning
+    - Includes authority_boost for transparency
     """
     results = semantic_search(query, top_k=top_k)
     
@@ -827,7 +835,10 @@ def godtier_retrieval(
             'base_score': r['vector_score'],
             'doc_type': 'Technical_Data_Sheet',
             'trade': 'fasteners',
-            'priority': 95
+            'priority': 95,
+            'has_table': r.get('has_table', False),  # TRUTH BRIDGE #4: Table-First flag
+            'authority_boost': r.get('authority_boost', 0),  # TRUTH BRIDGE #3: Authority Shield
+            'technical_boost': r.get('technical_boost', 0)  # TRUTH BRIDGE #2: Technical Weight
         })
     
     return formatted
