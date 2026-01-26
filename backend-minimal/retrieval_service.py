@@ -508,7 +508,29 @@ FASTENER_TERMS = [
 
 
 # ==============================================================================
-# HYBRID SEARCH ENGINE (GOD TIER V3)
+# TRUTH BRIDGE: TECHNICAL KEYWORDS FOR DEEP-DIVE RETRIEVAL
+# ==============================================================================
+# If query contains these, we MUST pull more chunks (top_k = 50)
+
+TECHNICAL_DEEP_DIVE_KEYWORDS = [
+    'kn', 'capacity', 'withdrawal', 'characteristic', 'load', 'table',
+    'proof load', 'tensile', 'shear', 'lateral', 'axial', 'pullout',
+    'pull-out', 'embedment', 'zone', 'durability', 'corrosion'
+]
+
+# ==============================================================================
+# TRUTH BRIDGE: TECHNICAL WEIGHT MULTIPLIERS (+0.35 BOOST)
+# ==============================================================================
+# Chunks containing these terms are 10x more valuable than prose
+
+TECHNICAL_VALUE_TERMS = [
+    'kn', 'withdrawal', 'characteristic', 'load', 'capacity',
+    'proof load', 'tensile strength', 'shear strength', 'axial',
+    'mpa', 'n/mm', 'yield', 'ultimate'
+]
+
+# ==============================================================================
+# HYBRID SEARCH ENGINE (GOD TIER V4 - TRUTH BRIDGE)
 # ==============================================================================
 
 def semantic_search(
@@ -518,19 +540,16 @@ def semantic_search(
     keyword_weight: float = 0.3
 ) -> List[Dict]:
     """
-    God Tier V3 Hybrid Search Engine.
+    God Tier V4 Hybrid Search Engine - TRUTH BRIDGE EDITION
     
-    Features:
-    - Technical synonym expansion (GOD TIER LAWS)
-    - Product synonym expansion (LAW 7 - WTC, Pilot Hole, etc.)
-    - Brand synonym expansion (MITEK REFINERY PROTOCOL)
-    - 70% Vector + 30% Keyword weighting
-    - Smart source filtering for fasteners/structural
-    - Value boosting for chunks with actual data
-    - Smart snippet extraction
+    WORLD-CLASS OVERHAUL FEATURES:
+    1. DEEP-DIVE RETRIEVAL: top_k=50 for brand/technical queries
+    2. TECHNICAL WEIGHT: +0.35 boost for kN, withdrawal, characteristic, load, table
+    3. AUTHORITY SHIELD: +0.25 boost for BRANZ-Appraisal, Technical-Manual
+    4. TABLE-FIRST: Markdown tables get priority flag for reasoning
     
     Returns:
-        List of dicts with: content, source, page, snippet, score, keyword_matches
+        List of dicts with: content, source, page, snippet, score, keyword_matches, has_table
     """
     # Step 1: Apply GOD TIER LAWS
     expanded_query = apply_god_tier_laws(query)
@@ -555,20 +574,23 @@ def semantic_search(
     is_fastener_query = any(term in query_lower for term in FASTENER_TERMS)
     is_structural_query = any(term in query_lower for term in STRUCTURAL_TERMS)
     
-    # Detect protected brand for increased granularity
+    # Detect protected brand
     protected_brand = detect_protected_brand(query)
     
-    # GRANULARITY BOOST: Increase top_k for brand queries
-    effective_top_k = top_k
-    if protected_brand:
-        effective_top_k = max(top_k, 30)  # Ensure at least 30 for brand queries
+    # ══════════════════════════════════════════════════════════════════════════
+    # TRUTH BRIDGE #1: DEEP-DIVE RETRIEVAL (top_k = 50)
+    # ══════════════════════════════════════════════════════════════════════════
+    # If brand OR technical keyword detected, pull 50 chunks minimum
+    is_technical_query = any(term in query_lower for term in TECHNICAL_DEEP_DIVE_KEYWORDS)
     
-    # Detect specific protected brand
-    protected_brand = detect_protected_brand(query)
+    if protected_brand or is_technical_query:
+        effective_top_k = 50  # HARD-CODED: Deep-dive for important queries
+    else:
+        effective_top_k = max(top_k, 30)  # Standard queries still get 30 minimum
     
     # BRAND-SPECIFIC QUERY HANDLING
     if protected_brand:
-        # Search ONLY the protected brand's documents
+        # Search ONLY the protected brand's documents with DEEP-DIVE
         brand_pattern = f'%{protected_brand}%'
         cur.execute("""
             SELECT id, content, source, page, 
@@ -577,7 +599,7 @@ def semantic_search(
             WHERE source ILIKE %s
             ORDER BY embedding <=> %s::vector
             LIMIT %s
-        """, (emb, brand_pattern, emb, top_k * 3))
+        """, (emb, brand_pattern, emb, effective_top_k * 3))  # TRUTH BRIDGE: Use effective_top_k
         candidates = cur.fetchall()
         
         # If brand is MiTek, also search sub-brands
@@ -593,7 +615,7 @@ def semantic_search(
                    OR source ILIKE '%%MiTek%%'
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, emb, top_k * 3))
+            """, (emb, emb, effective_top_k * 3))  # TRUTH BRIDGE: Use effective_top_k
             extra = cur.fetchall()
             # Merge and dedupe
             seen_ids = {c[0] for c in candidates}
@@ -626,7 +648,7 @@ def semantic_search(
                 WHERE source LIKE %s AND source LIKE %s
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, specific_product, specific_material, emb, top_k * 2))
+            """, (emb, specific_product, specific_material, emb, effective_top_k * 2))
             candidates = cur.fetchall()
         elif specific_product:
             cur.execute("""
@@ -636,7 +658,7 @@ def semantic_search(
                 WHERE source LIKE %s
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, specific_product, emb, top_k * 2))
+            """, (emb, specific_product, emb, effective_top_k * 2))
             candidates = cur.fetchall()
             
             if len(candidates) < 5:
@@ -647,7 +669,7 @@ def semantic_search(
                     WHERE source LIKE 'Bremick%%'
                     ORDER BY embedding <=> %s::vector
                     LIMIT %s
-                """, (emb, emb, top_k * 3))
+                """, (emb, emb, effective_top_k * 3))
                 candidates = cur.fetchall()
         else:
             cur.execute("""
@@ -657,7 +679,7 @@ def semantic_search(
                 WHERE source LIKE 'Bremick%%'
                 ORDER BY embedding <=> %s::vector
                 LIMIT %s
-            """, (emb, emb, top_k * 3))
+            """, (emb, emb, effective_top_k * 3))
             candidates = cur.fetchall()
     else:
         cur.execute("""
@@ -667,7 +689,7 @@ def semantic_search(
             WHERE is_active = true
             ORDER BY embedding <=> %s::vector
             LIMIT %s
-        """, (emb, emb, top_k * 3))
+        """, (emb, emb, effective_top_k * 3))
         candidates = cur.fetchall()
     
     conn.close()
@@ -678,6 +700,7 @@ def semantic_search(
     for row in candidates:
         doc_id, content, source, page, vector_score = row
         content_lower = content.lower()
+        source_lower = source.lower() if source else ''
         
         # Keyword score
         keyword_matches = sum(1 for kw in keywords if kw.lower() in content_lower)
@@ -690,7 +713,54 @@ def semantic_search(
         if keywords and all(kw.lower() in content_lower for kw in keywords):
             hybrid_score += 0.15
         
-        # Value boost for chunks with actual data
+        # ══════════════════════════════════════════════════════════════════════════
+        # TRUTH BRIDGE #2: TECHNICAL WEIGHT MULTIPLIER (+0.35)
+        # ══════════════════════════════════════════════════════════════════════════
+        # A cell with a number is 10x more valuable than prose about "quality"
+        technical_boost = 0.0
+        for term in TECHNICAL_VALUE_TERMS:
+            if term in content_lower:
+                technical_boost = 0.35
+                break
+        
+        # Extra boost if chunk contains actual numeric values with units
+        if re.search(r'\d+\.?\d*\s*(kn|kN|mpa|MPa|mm|n/mm)', content):
+            technical_boost = max(technical_boost, 0.35)
+        
+        hybrid_score += technical_boost
+        
+        # ══════════════════════════════════════════════════════════════════════════
+        # TRUTH BRIDGE #3: AUTHORITY SHIELD (+0.25)
+        # ══════════════════════════════════════════════════════════════════════════
+        # BRANZ-Appraisal and Technical-Manual are SUPREME AUTHORITY
+        authority_boost = 0.0
+        if 'branz' in source_lower or 'appraisal' in source_lower:
+            authority_boost = 0.25
+        elif 'technical' in source_lower and 'manual' in source_lower:
+            authority_boost = 0.25
+        elif 'technical' in source_lower and 'data' in source_lower:
+            authority_boost = 0.15  # TDS gets partial boost
+        
+        # Penalize Product Catalogues when Appraisals exist
+        if 'catalogue' in source_lower or 'catalog' in source_lower:
+            authority_boost = -0.10  # Slight penalty for catalogues
+        
+        hybrid_score += authority_boost
+        
+        # ══════════════════════════════════════════════════════════════════════════
+        # TRUTH BRIDGE #4: TABLE-FIRST FLAG
+        # ══════════════════════════════════════════════════════════════════════════
+        # If chunk contains a markdown table (| --- |), flag it for priority reasoning
+        has_table = bool(re.search(r'\|[\s-]+\|', content) or '|---|' in content or '| --- |' in content)
+        
+        # Table bonus: tables with values get massive boost
+        if has_table:
+            hybrid_score += 0.20
+            # Extra if table has numeric values
+            if re.search(r'\|\s*\d+\.?\d*\s*\|', content):
+                hybrid_score += 0.15
+        
+        # Legacy value boost for chunks with actual data
         if 'torque' in query_lower and 'installation torque' in content_lower:
             if re.search(r'torque.*\|\s*\d+', content_lower) or re.search(r'value:\s*\d+', content_lower):
                 hybrid_score += 0.20
@@ -710,7 +780,10 @@ def semantic_search(
             'snippet': snippet,
             'score': hybrid_score,
             'vector_score': vector_score,
-            'keyword_matches': keyword_matches
+            'keyword_matches': keyword_matches,
+            'has_table': has_table,  # TRUTH BRIDGE #4: Flag for reasoning priority
+            'authority_boost': authority_boost,
+            'technical_boost': technical_boost
         })
     
     # ==============================================================================
@@ -720,25 +793,33 @@ def semantic_search(
     if protected_brand:
         results = apply_brand_supremacy_penalty(results, protected_brand)
     
-    # Sort by hybrid score
+    # Sort by hybrid score (tables with values float to top)
     results.sort(key=lambda x: x['score'], reverse=True)
     
-    return results[:top_k]
+    # ══════════════════════════════════════════════════════════════════════════
+    # TRUTH BRIDGE: Return effective_top_k results
+    # ══════════════════════════════════════════════════════════════════════════
+    return results[:effective_top_k]
 
 
 # ==============================================================================
-# LEGACY COMPATIBILITY WRAPPER
+# LEGACY COMPATIBILITY WRAPPER (V4 - TRUTH BRIDGE)
 # ==============================================================================
 
 def godtier_retrieval(
     query: str,
-    top_k: int = 20,
+    top_k: int = 50,  # TRUTH BRIDGE: Default to 50 for deep-dive
     intent: str = None,
     agent_mode: str = None
 ) -> List[Dict]:
     """
     Wrapper for compatibility with existing tier1_retrieval interface.
     Maps to semantic_search with appropriate formatting.
+    
+    V4 TRUTH BRIDGE:
+    - Default top_k increased to 50 for deep-dive retrieval
+    - Includes has_table flag for Table-First reasoning
+    - Includes authority_boost for transparency
     """
     results = semantic_search(query, top_k=top_k)
     
@@ -754,7 +835,10 @@ def godtier_retrieval(
             'base_score': r['vector_score'],
             'doc_type': 'Technical_Data_Sheet',
             'trade': 'fasteners',
-            'priority': 95
+            'priority': 95,
+            'has_table': r.get('has_table', False),  # TRUTH BRIDGE #4: Table-First flag
+            'authority_boost': r.get('authority_boost', 0),  # TRUTH BRIDGE #3: Authority Shield
+            'technical_boost': r.get('technical_boost', 0)  # TRUTH BRIDGE #2: Technical Weight
         })
     
     return formatted
