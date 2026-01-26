@@ -2380,6 +2380,29 @@ STRYDA: "At PlaceMakers, use **Ecko JHMG-3338** (Joist Hanger Nail 38 x 3.33 HDG
                 # Logging
                 print(f"🔍 Gemini output: {len(answer)} chars")
                 
+                # ══════════════════════════════════════════════════════════════════════════
+                # LAW 5: DELFAST ZERO-HIT CONSULTATIVE TRIGGER
+                # If answer is weak/generic for a Delfast query, replace with consultative
+                # ══════════════════════════════════════════════════════════════════════════
+                if is_delfast_query(user_message):
+                    print(f"   🔩 Delfast query detected - checking consultative trigger...")
+                    
+                    # Check if we should intervene BEFORE generating (proactive)
+                    should_intervene, consultative_msg = generate_delfast_consultative_response(
+                        user_message, docs, extract_delfast_context(user_message)
+                    )
+                    
+                    if should_intervene and consultative_msg:
+                        print(f"   🔩 LAW 5 ACTIVATED: Consultative response triggered")
+                        answer = consultative_msg
+                    else:
+                        # Check post-generation (reactive - for weak answers)
+                        answer, was_modified = apply_delfast_zero_hit_trigger(
+                            user_message, docs, answer
+                        )
+                        if was_modified:
+                            print(f"   🔩 LAW 5 POST-FIX: Weak answer replaced with consultative")
+                
                 # LAYER 6: Citation Consolidation
                 consolidated = consolidate_citations(docs, max_primary=3, max_secondary=5)
                 primary_citations = consolidated.get('primary', [])
